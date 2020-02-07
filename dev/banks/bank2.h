@@ -1,12 +1,32 @@
-extern const unsigned char	font_tiles_bmp[];
-#define				font_tiles_bmp_size 2166
-#define				font_tiles_bmp_bank 2
+extern const unsigned char	font_tiles__palette__bin[];
+#define				font_tiles__palette__bin_size 16
+#define				font_tiles__palette__bin_bank 2
 
-extern const unsigned char	game_tiles_png[];
-#define				game_tiles_png_size 5974
-#define				game_tiles_png_bank 2
+extern const unsigned char	font_tiles__tilemap__bin[];
+#define				font_tiles__tilemap__bin_size 128
+#define				font_tiles__tilemap__bin_bank 2
 
-extern const unsigned char	sprites_png[];
-#define				sprites_png_size 972
-#define				sprites_png_bank 2
+extern const unsigned char	font_tiles__tiles__psgcompr[];
+#define				font_tiles__tiles__psgcompr_size 663
+#define				font_tiles__tiles__psgcompr_bank 2
+
+extern const unsigned char	game_tiles__palette__bin[];
+#define				game_tiles__palette__bin_size 16
+#define				game_tiles__palette__bin_bank 2
+
+extern const unsigned char	game_tiles__tilemap__bin[];
+#define				game_tiles__tilemap__bin_size 208
+#define				game_tiles__tilemap__bin_bank 2
+
+extern const unsigned char	game_tiles__tiles__psgcompr[];
+#define				game_tiles__tiles__psgcompr_size 1376
+#define				game_tiles__tiles__psgcompr_bank 2
+
+extern const unsigned char	sprites__palette__bin[];
+#define				sprites__palette__bin_size 16
+#define				sprites__palette__bin_bank 2
+
+extern const unsigned char	sprites__tiles__psgcompr[];
+#define				sprites__tiles__psgcompr_size 1346
+#define				sprites__tiles__psgcompr_bank 2
 
