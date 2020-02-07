@@ -13,15 +13,17 @@ sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 fixedbank
 cd ..
 
 cd devkit
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _sms_manager.c
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _snd_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _sms_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _snd_manager.c
 cd ..
 
 
 cd engine
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 asm_manager.c
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 content_manager.c
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 font_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 asm_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 content_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 enum_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 font_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 global_manager.c
 cd ..
 
 ::cd object
@@ -70,25 +72,17 @@ ihx2sms output.ihx output.sms
 
 
 :: Delete
-cd banks
-if exist "*.asm" del "*.asm" > nul
-if exist "*.lst" del "*.lst" > nul
-if exist "*.sym" del "*.sym" > nul
-cd ..
+::cd banks
+::if exist "*.asm" del "*.asm" > nul; if exist "*.lst" del "*.lst" > nul; if exist "*.sym" del "*.sym" > nul
+::cd ..
 
 cd devkit
-if exist "*.asm" del "*.asm" > nul
-if exist "*.lst" del "*.lst" > nul
-if exist "*.sym" del "*.sym" > nul
+if exist "*.asm" del "*.asm" > nul; if exist "*.lst" del "*.lst" > nul; if exist "*.sym" del "*.sym" > nul
 cd ..
 
 
-if exist "*.asm" del "*.asm" > nul
-if exist "*.ihx" del "*.ihx" > nul
-if exist "*.lk"  del "*.lk" > nul
-if exist "*.lst" del "*.lst" > nul
-if exist "*.noi" del "*.noi" > nul
-if exist "*.sym" del "*.sym" > nul
+if exist "*.asm" del "*.asm" > nul; if exist "*.ihx" del "*.ihx" > nul; if exist "*.lk"  del "*.lk"  > nul
+if exist "*.lst" del "*.lst" > nul; if exist "*.noi" del "*.noi" > nul; if exist "*.sym" del "*.sym" > nul
 
 
 :: Run
