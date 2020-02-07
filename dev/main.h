@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 // LIBRARIES.
+#include "banks\bank2.h"
 #include "devkit\_sms_manager.h"
 #include "devkit\_snd_manager.h"
 
