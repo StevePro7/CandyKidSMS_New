@@ -44,8 +44,11 @@
     <ClInclude Include="engine\enum_manager.h" />
     <ClInclude Include="engine\font_manager.h" />
     <ClInclude Include="engine\global_manager.h" />
+    <ClInclude Include="engine\input_manager.h" />
+    <ClInclude Include="engine\screen_manager.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="screen\test_screen.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="banks\bank10.c" />
@@ -70,8 +73,11 @@
     <ClCompile Include="engine\enum_manager.c" />
     <ClCompile Include="engine\font_manager.c" />
     <ClCompile Include="engine\global_manager.c" />
+    <ClCompile Include="engine\input_manager.c" />
+    <ClCompile Include="engine\screen_manager.c" />
     <ClCompile Include="game.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="screen\test_screen.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1B06943A-5988-4DBA-A2D2-8F40F11EF7E6}</ProjectGuid>
