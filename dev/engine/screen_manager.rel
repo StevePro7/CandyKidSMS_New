@@ -2,10 +2,10 @@ XL2
 H 9 areas 6 global symbols
 M screen_manager
 O -mz80
-S _screen_test_screen_load Ref0000
 S .__.ABS. Def0000
+S _screen_load_screen_update Ref0000
 S ___sdcc_call_hl Ref0000
-S _screen_test_screen_update Ref0000
+S _screen_load_screen_load Ref0000
 A _CODE size 5D flags 0 addr 0
 S _engine_screen_manager_init Def0000
 S _engine_screen_manager_update Def001A
@@ -37,9 +37,9 @@ T 00 00
 R 00 00 00 00
 T 00 00 21 02 00 39 7E 32 41 00 21 40 00 36 00 21
 R 00 00 00 00 00 08 01 00 00 0B 01 00
-T 0E 00 00 00 22 1C 00 21 00 00 22
-R 00 00 00 00 02 02 00 00 00 05 01 00 02 08 03 00
-T 17 00 3C 00 C9
+T 0E 00 00 00 22 08 00 21 00 00 22
+R 00 00 00 00 02 02 03 00 00 05 01 00 02 08 01 00
+T 17 00 28 00 C9
 R 00 00 00 00 00 02 01 00
 T 1A 00
 R 00 00 00 00

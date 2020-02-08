@@ -9,7 +9,7 @@ set /a _started=_hours*60*60*100+_min*60*100+_sec*100+_cs
 
 :: Compile
 cd banks
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 fixedbank.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 fixedbank.c
 ::sdcc -c --no-std-crt0 -mz80 --Werror --opt-code-speed --constseg BANK15 bank15.c
 cd ..
 
@@ -34,6 +34,7 @@ cd ..
 ::cd ..
 
 cd screen
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 load_screen.c
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 test_screen.c
 cd ..
 
@@ -73,6 +74,7 @@ engine\content_manager.rel ^
 engine\font_manager.rel ^
 engine\input_manager.rel ^
 engine\screen_manager.rel ^
+screen\load_screen.rel ^
 screen\test_screen.rel
 
 :: Execute

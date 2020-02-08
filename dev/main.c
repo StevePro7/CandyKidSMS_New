@@ -18,7 +18,8 @@ void main (void)
 	engine_content_manager_load_tiles_game();
 	engine_content_manager_load_sprites_game();
 
-	open_screen_type = screen_type_test;
+	//open_screen_type = screen_type_test;
+	open_screen_type = screen_type_load;
 
 	engine_screen_manager_init( open_screen_type );
 	devkit_SMS_displayOn();
