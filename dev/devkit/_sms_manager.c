@@ -87,7 +87,7 @@ void devkit_SMS_setNextTileatXY( unsigned char x, unsigned char y )
 {
 	SMS_setNextTileatXY( x, y );
 }
-void devkit_SMS_setTile( const unsigned char tile )
+void devkit_SMS_setTile( const unsigned int tile )
 {
 	SMS_setTile( tile );
 }
@@ -214,6 +214,14 @@ unsigned char devkit_SPRITEMODE_NORMAL()
 unsigned int devkit_VDPFEATURE_HIDEFIRSTCOL()
 {
 	return VDPFEATURE_HIDEFIRSTCOL;
+}
+unsigned int devkit_TILE_PRIORITY()
+{
+	return TILE_PRIORITY;
+}
+unsigned int devkit_TILE_USE_SPRITE_PALETTE()
+{
+	return TILE_USE_SPRITE_PALETTE;
 }
 
 // Sega header.
