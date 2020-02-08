@@ -8,7 +8,7 @@
 //#include "..\engine\global_manager.h"
 #include "..\engine\input_manager.h"
 //#include "..\engine\level_manager.h"
-//#include "..\engine\sprite_manager.h"
+#include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
 
 // LOAD screen - test level manager load.
@@ -29,6 +29,8 @@ void screen_load_screen_update( unsigned char *screen_type )
 
 	//devkit_SMS_mapROMBank( 15 );
 	//data = bank15_txt[ 0 ];
+
+	engine_sprite_manager_draw_entity( 56, 64, 352 );
 
 	test = engine_input_manager_hold_fire1();
 	if( test )
