@@ -14,7 +14,7 @@ cd banks
 cd ..
 
 cd devkit
-::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _sms_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _sms_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 _snd_manager.c
 cd ..
 
@@ -28,6 +28,7 @@ cd engine
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 global_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 input_manager.c
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 screen_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 tile_manager.c
 cd ..
 
 ::cd object
@@ -74,6 +75,7 @@ engine\content_manager.rel ^
 engine\font_manager.rel ^
 engine\input_manager.rel ^
 engine\screen_manager.rel ^
+engine\tile_manager.rel ^
 screen\load_screen.rel ^
 screen\test_screen.rel
 
