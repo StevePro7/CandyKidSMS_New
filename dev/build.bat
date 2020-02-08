@@ -9,8 +9,8 @@ set /a _started=_hours*60*60*100+_min*60*100+_sec*100+_cs
 
 :: Compile
 cd banks
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 databank.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 fixedbank.c
-::sdcc -c --no-std-crt0 -mz80 --Werror --opt-code-speed --constseg BANK15 bank15.c
 cd ..
 
 cd devkit
@@ -68,7 +68,7 @@ sdcc -o output.ihx -mz80 --no-std-crt0 --data-loc 0xC000 ^
 banks\bank2.rel  banks\bank3.rel  banks\bank4.rel  banks\bank5.rel ^
 banks\bank6.rel  banks\bank7.rel  banks\bank8.rel  banks\bank9.rel ^
 banks\bank10.rel banks\bank11.rel banks\bank12.rel banks\bank13.rel ^
-banks\bank14.rel banks\bank15.rel banks\fixedbank.rel ^
+banks\bank14.rel banks\bank15.rel banks\databank.rel banks\fixedbank.rel ^
 devkit\_sms_manager.rel ^
 devkit\_snd_manager.rel ^
 engine\asm_manager.rel ^

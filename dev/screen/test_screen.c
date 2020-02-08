@@ -5,6 +5,7 @@
 #include "..\engine\input_manager.h"
 #include "..\engine\sprite_manager.h"
 #include "..\banks\bank15.h"
+#include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
 
