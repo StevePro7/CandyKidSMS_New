@@ -1,4 +1,5 @@
 #include "test_screen.h"
+#include "..\engine\audio_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\input_manager.h"
@@ -16,7 +17,9 @@ void screen_test_screen_load()
 	//bob = 7;
 	engine_font_manager_draw_data( bob, 10, 4 );
 	//engine_font_manager_draw_char( bob, 10, 5 );
-	engine_font_manager_draw_text( "TEST SCREEN!!", 10, 10 );
+	engine_font_manager_draw_text( "TEST SCREEN...!!", 10, 10 );
+
+	engine_audio_manager_sound_reset();
 }
 
 void screen_test_screen_update( unsigned char *screen_type )
