@@ -18,6 +18,8 @@ void screen_load_screen_load()
 
 	//engine_tile_manager_draw_gamer( 4, 4 );
 	engine_tile_manager_main_trees( 0, 4, 4 );
+	engine_tile_manager_main_bonus( tile_type_bonusC, 4, 6 );
+	engine_tile_manager_draw_sides( 8, 8 );
 }
 
 void screen_load_screen_update( unsigned char *screen_type )

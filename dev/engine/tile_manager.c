@@ -18,6 +18,7 @@
 static void draw_tile( unsigned char offset, unsigned char x, unsigned char y );
 static void draw_tile_priority( unsigned char offset, unsigned char x, unsigned char y );
 static void main_tile( unsigned char offset, unsigned char x, unsigned char y );
+static void comm_tile( const unsigned char *pnt, unsigned char offset, unsigned char x, unsigned char y );
 
 void engine_tile_manager_load_tile( unsigned char *tile_type, unsigned char tile_data )
 {
@@ -180,12 +181,13 @@ void engine_tile_manager_main_gamer( unsigned char x, unsigned char y )
 
 static void draw_tile( unsigned char offset, unsigned char x, unsigned char y )
 {
-	const unsigned char *pnt = game_tiles__tilemap__bin;
+	comm_tile( game_tiles__tilemap__bin, offset, x, y );
+	//const unsigned char *pnt = game_tiles__tilemap__bin;
 
-	devkit_SMS_setNextTileatXY( x + 0, y + 0 );	devkit_SMS_setTile( *pnt + offset + 0 );
-	devkit_SMS_setNextTileatXY( x + 1, y + 0 );	devkit_SMS_setTile( *pnt + offset + 1 );
-	devkit_SMS_setNextTileatXY( x + 0, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILES_OFFSET + 0 );
-	devkit_SMS_setNextTileatXY( x + 1, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILES_OFFSET + 1 );
+	//devkit_SMS_setNextTileatXY( x + 0, y + 0 );	devkit_SMS_setTile( *pnt + offset + 0 );
+	//devkit_SMS_setNextTileatXY( x + 1, y + 0 );	devkit_SMS_setTile( *pnt + offset + 1 );
+	//devkit_SMS_setNextTileatXY( x + 0, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILES_OFFSET + 0 );
+	//devkit_SMS_setNextTileatXY( x + 1, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILES_OFFSET + 1 );
 }
 
 static void draw_tile_priority( unsigned char offset, unsigned char x, unsigned char y )
@@ -200,8 +202,17 @@ static void draw_tile_priority( unsigned char offset, unsigned char x, unsigned 
 
 static void main_tile( unsigned char offset, unsigned char x, unsigned char y )
 {
-	const unsigned char *pnt = main_tiles__tilemap__bin;
+	comm_tile( main_tiles__tilemap__bin, offset, x, y );
+	//const unsigned char *pnt = main_tiles__tilemap__bin;
 
+	//devkit_SMS_setNextTileatXY( x + 0, y + 0 );	devkit_SMS_setTile( *pnt + offset + 0 );
+	//devkit_SMS_setNextTileatXY( x + 1, y + 0 );	devkit_SMS_setTile( *pnt + offset + 1 );
+	//devkit_SMS_setNextTileatXY( x + 0, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILES_OFFSET + 0 );
+	//devkit_SMS_setNextTileatXY( x + 1, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILES_OFFSET + 1 );
+}
+
+static void comm_tile( const unsigned char *pnt, unsigned char offset, unsigned char x, unsigned char y )
+{
 	devkit_SMS_setNextTileatXY( x + 0, y + 0 );	devkit_SMS_setTile( *pnt + offset + 0 );
 	devkit_SMS_setNextTileatXY( x + 1, y + 0 );	devkit_SMS_setTile( *pnt + offset + 1 );
 	devkit_SMS_setNextTileatXY( x + 0, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILES_OFFSET + 0 );

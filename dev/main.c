@@ -15,7 +15,8 @@ void main (void)
 	devkit_SMS_VDPturnOnFeature( devkit_VDPFEATURE_HIDEFIRSTCOL() );
 
 	engine_content_manager_load_tiles_font();
-	engine_content_manager_load_tiles_game();
+	//engine_content_manager_load_tiles_game();
+	engine_content_manager_load_tiles_main();
 	engine_content_manager_load_sprites_game();
 
 	//open_screen_type = screen_type_test;
