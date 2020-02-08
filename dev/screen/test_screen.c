@@ -2,7 +2,6 @@
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\input_manager.h"
-#include "..\banks\bank3.h"
 #include "..\banks\bank15.h"
 #include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
@@ -11,14 +10,12 @@ void screen_test_screen_load()
 {
 	unsigned char bob;
 	//bob = foo[ 0 ];
-	devkit_SMS_mapROMBank( bank3_txt_bank );
-	//bob = bank3_txt[ 0 ];
 	//bob = 7;
 	bob = foo[ 1 ];
 	//bob = bar;
 	engine_font_manager_draw_data( bob, 10, 4 );
 	//engine_font_manager_draw_char( bob, 10, 5 );
-	engine_font_manager_draw_text( "TEST SCREEN...!!", 10, 10 );
+	engine_font_manager_draw_text( "TEST SCREEN..!!!!", 10, 10 );
 }
 
 void screen_test_screen_update( unsigned char *screen_type )
