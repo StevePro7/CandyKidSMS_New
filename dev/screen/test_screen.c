@@ -30,7 +30,7 @@ void screen_test_screen_update( unsigned char *screen_type )
 
 	
 
-	test = engine_input_manager_hold_fire1();
+	test = engine_input_manager_hold( input_type_fire1 );
 	if( test )
 	{
 		bar++;

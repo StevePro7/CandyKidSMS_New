@@ -35,10 +35,10 @@ void screen_load_screen_update( unsigned char *screen_type )
 
 	engine_sprite_manager_draw_entity( 56, 64, 352 );
 
-	test = engine_input_manager_hold_fire1();
+	test = engine_input_manager_hold( input_type_right );
 	if( test )
 	{
-		engine_tile_manager_draw_blank( 4, 4 );
+		engine_font_manager_draw_text( "HOLD", 14, 14 );
 	}
 
 	*screen_type = screen_type_load;
