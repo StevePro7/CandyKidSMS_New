@@ -15,7 +15,6 @@ bmp2tile.exe raw\splash.bmp -savetiles "splash (tiles).psgcompr" -removedupes -n
 :: https://github.com/maxim-zhao/bmp2tile
 bmp2tile.exe raw\sprites.png -savetiles "sprites (tiles).psgcompr" -noremovedupes -nomirror -planar -tileoffset 0 -savepalette "sprites (palette).bin" -fullpalette  -spritepalette -exit
 
-
 cd ..
 folder2c bank2 bank2 2
 sdcc -c --no-std-crt0 -mz80 --Werror --opt-code-speed --constseg BANK2 bank2.c
