@@ -4,7 +4,7 @@
 #include "..\engine\global_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\sprite_manager.h"
-#include "..\banks\bank15.h"
+//#include "..\banks\bank15.h"
 //#include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
@@ -15,9 +15,9 @@ void screen_test_screen_load()
 	//bob = foo[ 0 ];
 	//bob = 8;
 	devkit_SMS_mapROMBank( FIXEDBANKSLOT );
-	bob = foo[ 5 ];
+	bob = foo[ 8 ];
 	devkit_SMS_mapROMBank( 2 );
-	//bob = bank15_txt[ 0 ];
+	
 	engine_font_manager_draw_data( bob, 10, 4 );
 	//engine_font_manager_draw_char( bob, 10, 5 );
 	engine_font_manager_draw_text( "TEST SCREEN..!!", 10, 10 );
