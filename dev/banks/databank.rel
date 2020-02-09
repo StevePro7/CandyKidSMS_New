@@ -1,19 +1,20 @@
 XL2
-H 9 areas 4 global symbols
+H 9 areas 5 global symbols
 M databank
 O -mz80
 S .__.ABS. Def0000
 A _CODE size 0 flags 0 addr 0
 A _DATA size 2 flags 0 addr 0
-S _game_state_tree_type Def0001
-S _game_state_exit_type Def0000
-A _INITIALIZED size 1 flags 0 addr 0
+S _state_object_tree_type Def0001
+S _state_object_exit_type Def0000
+A _INITIALIZED size C5 flags 0 addr 0
 S _data_bank_bar Def0000
+S _level_object_drawtiles_array Def0001
 A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _INITIALIZER size 1 flags 0 addr 0
+A _INITIALIZER size C5 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
 R 00 00 01 00
@@ -27,7 +28,41 @@ T 00 00
 R 00 00 02 00
 T 00 00
 R 00 00 02 00
+T 01 00
+R 00 00 02 00
+T 01 00
+R 00 00 02 00
 T 00 00
 R 00 00 07 00
 T 00 00 13
+R 00 00 07 00
+T 01 00
+R 00 00 07 00
+T 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 0F 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 1D 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 2B 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 39 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 47 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 55 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 63 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 71 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 7F 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 8D 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 9B 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T A9 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T B7 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 R 00 00 07 00

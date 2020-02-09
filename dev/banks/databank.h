@@ -1,9 +1,8 @@
 extern unsigned char data_bank_bar;
 
-
-// Global game state.
-extern unsigned char game_state_exit_type;
-extern unsigned char game_state_tree_type;
-
+// Global state.
+extern unsigned char state_object_exit_type;
+extern unsigned char state_object_tree_type;
 
 // Level Manager.
+extern unsigned char level_object_drawtiles_array[];
