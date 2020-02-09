@@ -22,7 +22,7 @@
 //
 //// Private helper methods.
 static void load_level( const unsigned char *data, const unsigned char size, const unsigned char bank, unsigned char mult );
-//static void draw_tiles( unsigned char x, unsigned char y, unsigned char multipler );
+static void draw_tiles( unsigned char x, unsigned char y, unsigned char multipler );
 //
 //void engine_level_manager_init_board()
 //{
@@ -111,7 +111,7 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 
 	halve = TOT_WORLDS / 2 * MAX_ROUNDS;
 	level = world * MAX_ROUNDS + round;
-	index = 0;
+	index = 1;
 
 	mult = ( level >= MULTIPLIER_LEVEL ) + 1;
 //	if( level >= halve )
@@ -139,19 +139,20 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 //	}
 }
 //
-//void engine_level_manager_draw_level()
-//{
-//	struct_level_object *lo = &global_level_object;
-//	unsigned char row, col;
-//
-//	for( row = 0; row < MAX_ROWS; row++ )
-//	{
-//		for( col = 0; col < MAX_COLS; col++ )
-//		{
-//			draw_tiles( col, row, lo->multiplier );
-//		}
-//	}
-//}
+void engine_level_manager_draw_level()
+{
+	//struct_level_object *lo = &global_level_object;
+	unsigned char row, col;
+
+	for( row = 0; row < MAX_ROWS; row++ )
+	{
+		for( col = 0; col < MAX_COLS; col++ )
+		{
+			//draw_tiles( col, row, lo->multiplier );
+			draw_tiles( col, row, 1 );
+		}
+	}
+}
 //
 //unsigned char engine_level_manager_get_tile_type( unsigned char x, unsigned char y )
 //{
@@ -272,14 +273,14 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 				//lo->drawtiles_array[ idx ] = tile_type;
 				level_object_drawtiles_array[ idx ] = tile_type;
 
-				if( tile_type_candy == tile_type )
-				{
-					//lo->candyCount++;
-				}
-				if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
-				{
-					//lo->bonusCount++;
-				}
+				//if( tile_type_candy == tile_type )
+				//{
+				//	//lo->candyCount++;
+				//}
+				//if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
+				//{
+				//	//lo->bonusCount++;
+				//}
 
 				// TODO read from game object. 
 				engine_tile_manager_load_coll( &coll_type, tile_data );
@@ -318,14 +319,15 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 	//}
 }
 
-//static void draw_tiles( unsigned char x, unsigned char y, unsigned char multipler )
-//{
-//	struct_level_object *lo = &global_level_object;
-//	unsigned char tile;
-//	unsigned char idx;
-//
-//	idx = ( y + 2 ) * MAZE_COLS + ( x + 2 );
-//	tile = lo->drawtiles_array[ idx ];
-//
-//	engine_tile_manager_draw_tile( tile, multipler, SCREEN_TILE_LEFT + ( x + 1 ) * 2, ( y + 1 ) * 2 );
-//}
+static void draw_tiles( unsigned char x, unsigned char y, unsigned char multipler )
+{
+	//struct_level_object *lo = &global_level_object;
+	unsigned char tile;
+	unsigned char idx;
+
+	idx = ( y + 2 ) * MAZE_COLS + ( x + 2 );
+	//tile = lo->drawtiles_array[ idx ];
+	tile = level_object_drawtiles_array[ idx ];
+
+	engine_tile_manager_draw_tile( tile, multipler, SCREEN_TILE_LEFT + ( x + 1 ) * 2, ( y + 1 ) * 2 );
+}

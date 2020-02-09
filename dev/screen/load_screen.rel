@@ -1,11 +1,13 @@
 XL2
-H 9 areas 4 global symbols
+H 9 areas 6 global symbols
 M load_screen
 O -mz80
+S _engine_level_manager_draw_level Ref0000
 S _engine_font_manager_draw_text Ref0000
 S .__.ABS. Def0000
-A _CODE size 27 flags 0 addr 0
-S _screen_load_screen_update Def0020
+S _engine_level_manager_load_level Ref0000
+A _CODE size 4E flags 0 addr 0
+S _screen_load_screen_update Def0047
 S _screen_load_screen_load Def0000
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
@@ -17,15 +19,25 @@ A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
 R 00 00 00 00
-T 00 00 21 0A 0A E5 21 0E 00 E5 CD 00 00 F1 F1 C9
-R 00 00 00 00 00 07 00 00 02 0B 00 00
-T 0E 00
+T 00 00 21 0A 0A E5 21 23 00 E5 CD 00 00 F1 21
+R 00 00 00 00 00 07 00 00 02 0B 01 00
+T 0D 00 00 00 E3 CD 00 00 21 0A 0C E3 21 35 00 E5
+R 00 00 00 00 02 06 03 00 00 0D 00 00
+T 1B 00 CD 00 00 F1 F1 C3 00 00
+R 00 00 00 00 02 03 01 00 02 08 00 00
+T 23 00
 R 00 00 00 00
-T 0E 00 4C 4F 41 44 20 53 43 52 45 45 4E 2E 58 58
+T 23 00 4C 4F 41 44 20 53 43 52 45 45 4E 2E 58 58
 R 00 00 00 00
-T 1C 00 2E 21 21 00
+T 31 00 2E 21 21 00
 R 00 00 00 00
-T 20 00
+T 35 00
 R 00 00 00 00
-T 20 00 C1 E1 E5 C5 36 04 C9
+T 35 00 4C 4F 41 44 20 53 43 52 45 45 4E 2E 59 59
+R 00 00 00 00
+T 43 00 2E 21 21 00
+R 00 00 00 00
+T 47 00
+R 00 00 00 00
+T 47 00 C1 E1 E5 C5 36 04 C9
 R 00 00 00 00

@@ -17,6 +17,11 @@ void screen_load_screen_load()
 	engine_font_manager_draw_text( "LOAD SCREEN.XX.!!", 10, 10 );
 
 	engine_level_manager_load_level( 0, 0 );
+
+	engine_font_manager_draw_text( "LOAD SCREEN.YY.!!", 10, 12 );
+
+	engine_level_manager_draw_level();
+
 	//engine_tile_manager_draw_gamer( 4, 4 );
 	//engine_tile_manager_main_trees( 0, 4, 4 );
 	//engine_tile_manager_main_trees( 1, 8, 4 );
