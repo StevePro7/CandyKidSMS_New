@@ -18,7 +18,7 @@ void engine_function_manager_convertZtoXY( unsigned char divide, unsigned char z
 	*y = z / divide;
 }
 
-
+// TODO change this function name.
 void changeBank( unsigned char b )
 {
 	if( b != lastbank )

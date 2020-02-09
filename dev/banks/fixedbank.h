@@ -1,5 +1,5 @@
 // Fixed  bank.
-#define FIXEDBANK	15
+#define FIXED_BANK	15
 
 // TODO delete
 extern const unsigned char foo[];

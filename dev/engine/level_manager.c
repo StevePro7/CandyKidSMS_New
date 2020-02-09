@@ -126,7 +126,7 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 //	}
 //
 	//devkit_SMS_mapROMBank( FIXEDBANKSLOT );
-	changeBank( FIXEDBANK );
+	changeBank( FIXED_BANK );
 	if( level < halve )
 	{
 		const unsigned char *data = level_object_AAdata[ index ];
@@ -137,7 +137,7 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 		//devkit_SMS_mapROMBank( 2 );
 		//engine_font_manager_draw_data( *data, 20, 19 );
 		//engine_font_manager_draw_data( size, 20, 20 );
-		engine_font_manager_draw_data( bank, 20, 21 );
+		//engine_font_manager_draw_data( bank, 20, 21 );
 		
 		load_level( data, size, bank, mult );
 	}
@@ -153,32 +153,34 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 void engine_level_manager_draw_level()
 {
 	//struct_level_object *lo = &global_level_object;
-	//unsigned char row, col;
+	unsigned char row, col;
 
 	//unsigned char x;
 	//unsigned char y;
-	//unsigned char tile;
-	//unsigned char idx;
+	unsigned char tile;
+	unsigned char idx;
 
-	//x = col;
-	//y = row;
+	//x = 9;// col;
+	//y = 0;// row;
 	//
 
-	//for( row = 0; row < MAX_ROWS; row++ )
-	//{
-	//	for( col = 0; col < MAX_COLS; col++ )
-	//	{
-	//		//draw_tiles( col, row, lo->multiplier );
-	//		//draw_tiles( col, row, 1 );
-	//	}
-	//}
+	for( row = 0; row < MAX_ROWS; row++ )
+	{
+		for( col = 0; col < MAX_COLS; col++ )
+		{
+			//draw_tiles( col, row, lo->multiplier );
+			draw_tiles( col, row, 1 );
+		}
+	}
 
 	//idx = ( y + 2 ) * MAZE_COLS + ( x + 2 );
-	////tile = lo->drawtiles_array[ idx ];
+	//////tile = lo->drawtiles_array[ idx ];
 	//tile = level_object_drawtiles_array[ idx ];
 
-	//engine_font_manager_draw_text( "BOB", 15, 13 );
-	//engine_font_manager_draw_data( tile, 15, 15 );
+	////engine_font_manager_draw_text( "BOBYB", 15, 3 );
+	////engine_font_manager_draw_data( idx, 15, 5 );
+
+	//engine_tile_manager_draw_tile( tile, 1, SCREEN_TILE_LEFT + ( x + 1 ) * 2, ( y + 1 ) * 2 );
 }
 //
 //unsigned char engine_level_manager_get_tile_type( unsigned char x, unsigned char y )
@@ -285,7 +287,7 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 	//lo->multiplier = mult;
 
 	mult = 0;
-	//devkit_SMS_mapROMBank( bank );
+	devkit_SMS_mapROMBank( bank );
 	for( row = 0; row < MAX_ROWS; row++ )
 	{
 		//for( col = 0; col < lo->load_cols; col++ )
