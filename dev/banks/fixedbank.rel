@@ -1,5 +1,5 @@
 XL2
-H A areas 7 global symbols
+H A areas E global symbols
 M fixedbank
 O -mz80
 S .__.ABS. Def0000
@@ -10,13 +10,20 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _BANK15 size 37 flags 0 addr 0
+A _BANK15 size 3E flags 0 addr 0
+S _board_object_left Def003B
+S _board_object_middle Def003C
 S _board_object_homeX Def002B
 S _board_object_homeY Def002F
 S _board_object_homeZ Def0033
 S _foo Def0000
+S _board_object_exitX Def0037
+S _board_object_exitY Def0038
+S _board_object_top Def0039
+S _board_object_bottom Def003A
 S _board_object_posnX Def000F
 S _board_object_posnY Def001D
+S _board_object_right Def003D
 A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
@@ -44,4 +51,32 @@ R 00 00 07 00
 T 33 00
 R 00 00 07 00
 T 33 00 96 8F 34 2D
+R 00 00 07 00
+T 37 00
+R 00 00 07 00
+T 37 00 06
+R 00 00 07 00
+T 38 00
+R 00 00 07 00
+T 38 00 10
+R 00 00 07 00
+T 39 00
+R 00 00 07 00
+T 39 00 00
+R 00 00 07 00
+T 3A 00
+R 00 00 07 00
+T 3A 00 16
+R 00 00 07 00
+T 3B 00
+R 00 00 07 00
+T 3B 00 02
+R 00 00 07 00
+T 3C 00
+R 00 00 07 00
+T 3C 00 18
+R 00 00 07 00
+T 3D 00
+R 00 00 07 00
+T 3D 00 1E
 R 00 00 07 00

@@ -20,6 +20,8 @@ const unsigned char board_object_homeX[] = { 0x0A, 0x03, 0x0A, 0x03 };
 const unsigned char board_object_homeY[] = { 0x0A, 0x0A, 0x03, 0x03 };
 const unsigned char board_object_homeZ[] = { 0x96, 0x8F, 0x34, 0x2D };
 
+const unsigned char board_object_exitX	= 0x06;
+const unsigned char board_object_exitY	= 0x10;
 const unsigned char board_object_top	= 0x00;
 const unsigned char board_object_bottom = 0x16;
 const unsigned char board_object_left	= 0x02;

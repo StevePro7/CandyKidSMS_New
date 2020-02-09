@@ -11,6 +11,8 @@ extern const unsigned char board_object_homeX[];
 extern const unsigned char board_object_homeY[];
 extern const unsigned char board_object_homeZ[];
 
+extern const unsigned char board_object_exitX;
+extern const unsigned char board_object_exitY;
 extern const unsigned char board_object_top;
 extern const unsigned char board_object_bottom;
 extern const unsigned char board_object_left;

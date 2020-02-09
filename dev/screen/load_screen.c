@@ -1,5 +1,5 @@
 #include "load_screen.h"
-//#include "..\engine\board_manager.h"
+#include "..\engine\board_manager.h"
 //#include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
@@ -17,12 +17,12 @@ void screen_load_screen_load()
 	engine_font_manager_draw_text( "LOAD SCREEN..!!", 10, 10 );
 
 	//engine_tile_manager_draw_gamer( 4, 4 );
-	engine_tile_manager_main_trees( 0, 4, 4 );
-	engine_tile_manager_main_trees( 1, 8, 4 );
-	engine_tile_manager_main_bonus( tile_type_bonusA, 4, 6 );
-	engine_tile_manager_main_bonus( tile_type_bonusB, 8, 6 );
-	engine_tile_manager_main_bonus( tile_type_bonusC, 12, 6 );
-	engine_tile_manager_draw_sides( 8, 8 );
+	//engine_tile_manager_main_trees( 0, 4, 4 );
+	//engine_tile_manager_main_trees( 1, 8, 4 );
+	//engine_tile_manager_main_bonus( tile_type_bonusA, 4, 6 );
+	//engine_tile_manager_main_bonus( tile_type_bonusB, 8, 6 );
+	//engine_tile_manager_main_bonus( tile_type_bonusC, 12, 6 );
+	//engine_tile_manager_draw_sides( 8, 8 );
 }
 
 void screen_load_screen_update( unsigned char *screen_type )
