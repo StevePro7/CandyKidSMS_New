@@ -1,5 +1,3 @@
-
-
 // Fixed  bank.
 #define FIXEDBANKSLOT 15
 
