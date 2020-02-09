@@ -1,1 +1,1 @@
-//unsigned char bar = 18;
+unsigned char data_bank_bar = 19;
