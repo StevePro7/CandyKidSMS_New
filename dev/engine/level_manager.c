@@ -113,17 +113,17 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 
 	halve = TOT_WORLDS / 2 * MAX_ROUNDS;
 	level = world * MAX_ROUNDS + round;
-	index = 1;
+	index = 0;
 
 	mult = ( level >= MULTIPLIER_LEVEL ) + 1;
-//	if( level >= halve )
-//	{
-//		index = level - halve;
-//	}
-//	else
-//	{
-//		index = level;
-//	}
+	if( level >= halve )
+	{
+		index = level - halve;
+	}
+	else
+	{
+		index = level;
+	}
 //
 	//devkit_SMS_mapROMBank( FIXEDBANKSLOT );
 	changeBank( FIXED_BANK );
@@ -155,15 +155,6 @@ void engine_level_manager_draw_level()
 	//struct_level_object *lo = &global_level_object;
 	unsigned char row, col;
 
-	//unsigned char x;
-	//unsigned char y;
-	unsigned char tile;
-	unsigned char idx;
-
-	//x = 9;// col;
-	//y = 0;// row;
-	//
-
 	for( row = 0; row < MAX_ROWS; row++ )
 	{
 		for( col = 0; col < MAX_COLS; col++ )
@@ -172,15 +163,6 @@ void engine_level_manager_draw_level()
 			draw_tiles( col, row, 1 );
 		}
 	}
-
-	//idx = ( y + 2 ) * MAZE_COLS + ( x + 2 );
-	//////tile = lo->drawtiles_array[ idx ];
-	//tile = level_object_drawtiles_array[ idx ];
-
-	////engine_font_manager_draw_text( "BOBYB", 15, 3 );
-	////engine_font_manager_draw_data( idx, 15, 5 );
-
-	//engine_tile_manager_draw_tile( tile, 1, SCREEN_TILE_LEFT + ( x + 1 ) * 2, ( y + 1 ) * 2 );
 }
 //
 //unsigned char engine_level_manager_get_tile_type( unsigned char x, unsigned char y )
