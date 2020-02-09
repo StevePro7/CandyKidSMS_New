@@ -1,4 +1,5 @@
 #include "font_manager.h"
+#include "global_manager.h"
 #include "..\banks\bank2.h"
 #include "..\devkit\_sms_manager.h"
 
@@ -11,6 +12,7 @@ void engine_font_manager_draw_char( unsigned char ch, unsigned char x, unsigned 
 {
 	const unsigned char *pnt = font_tiles__tilemap__bin;
 	unsigned char tile = ch - TEXT_ROOT;
+	devkit_SMS_mapROMBank( CONTENT_BANK );
 	devkit_SMS_setNextTileatXY( x, y );
 	devkit_SMS_setTile( *pnt + tile );
 }
@@ -20,6 +22,7 @@ void engine_font_manager_draw_text( unsigned char *text, unsigned char x, unsign
 	const unsigned char *pnt = font_tiles__tilemap__bin;
 	unsigned char idx = 0;
 
+	devkit_SMS_mapROMBank( CONTENT_BANK );
 	while( '\0' != text[idx] )
 	{
 		signed char tile = text[idx] - TEXT_ROOT;
@@ -40,6 +43,7 @@ void engine_font_manager_draw_data( unsigned int data, unsigned char x, unsigned
 	unsigned char remainder = 0;
 
 	char hold[DATA_LONG];
+	devkit_SMS_mapROMBank( CONTENT_BANK );
 	for( idx = 0; idx < DATA_LONG; ++idx )
 	{
 		quotient = data / UNIT_ROOT;
@@ -69,6 +73,7 @@ void engine_font_manager_draw_data_ZERO( unsigned int data, unsigned char x, uns
 	unsigned char tile;
 
 	char hold[DATA_LONG];
+	devkit_SMS_mapROMBank( CONTENT_BANK );
 	for( idx = 0; idx < DATA_LONG; ++idx )
 	{
 		hold[idx] = data % UNIT_ROOT;

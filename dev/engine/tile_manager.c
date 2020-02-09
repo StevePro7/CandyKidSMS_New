@@ -217,6 +217,7 @@ static void main_tile( unsigned char offset, unsigned char x, unsigned char y )
 
 static void comm_tile( const unsigned char *pnt, unsigned char offset, unsigned int priority, unsigned char x, unsigned char y )
 {
+	devkit_SMS_mapROMBank( 2 );
 	devkit_SMS_setNextTileatXY( x + 0, y + 0 );	devkit_SMS_setTile( ( *pnt + offset + 0 ) | priority );
 	devkit_SMS_setNextTileatXY( x + 1, y + 0 );	devkit_SMS_setTile( ( *pnt + offset + 1 ) | priority );
 	devkit_SMS_setNextTileatXY( x + 0, y + 1 );	devkit_SMS_setTile( ( *pnt + offset + BASE_TILES_OFFSET + 0 ) | priority );

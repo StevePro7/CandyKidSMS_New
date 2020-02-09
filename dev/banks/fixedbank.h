@@ -1,7 +1,7 @@
 // Fixed  bank.
-#define FIXEDBANKSLOT 15
+#define FIXEDBANK	15
 
-
+// TODO delete
 extern const unsigned char foo[];
 
 // Board Manager.

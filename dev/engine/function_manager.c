@@ -1,4 +1,8 @@
 #include "function_manager.h"
+#include "..\devkit\_sms_manager.h"
+
+// Bank changer
+unsigned char lastbank;
 
 void engine_function_manager_foo()
 {
@@ -12,4 +16,14 @@ void engine_function_manager_convertZtoXY( unsigned char divide, unsigned char z
 {
 	*x = z % divide;
 	*y = z / divide;
+}
+
+
+void changeBank( unsigned char b )
+{
+	if( b != lastbank )
+	{
+		devkit_SMS_mapROMBank( b );
+		lastbank = b;
+	}
 }

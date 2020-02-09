@@ -3,6 +3,7 @@
 #include "global_manager.h"
 #include "enum_manager.h"
 #include "font_manager.h"
+#include "function_manager.h"
 #include "tile_manager.h"
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
@@ -124,7 +125,8 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 //		index = level;
 //	}
 //
-	devkit_SMS_mapROMBank( FIXEDBANKSLOT );
+	//devkit_SMS_mapROMBank( FIXEDBANKSLOT );
+	changeBank( FIXEDBANK );
 	if( level < halve )
 	{
 		const unsigned char *data = level_object_AAdata[ index ];
@@ -132,7 +134,7 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 		const unsigned char bank = level_object_AAbank[ index ];
 		
 		// TODO implement changeBank so not hard coding
-		devkit_SMS_mapROMBank( 2 );
+		//devkit_SMS_mapROMBank( 2 );
 		//engine_font_manager_draw_data( *data, 20, 19 );
 		//engine_font_manager_draw_data( size, 20, 20 );
 		engine_font_manager_draw_data( bank, 20, 21 );
