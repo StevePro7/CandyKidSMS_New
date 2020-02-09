@@ -16,7 +16,7 @@ void screen_test_screen_load()
 	bob = data_bank_bar;
 	engine_font_manager_draw_data( bob, 10, 4 );
 	devkit_SMS_mapROMBank( FIXEDBANKSLOT );
-	bob = foo[ 9 ];
+	bob = foo[ 11 ];
 	devkit_SMS_mapROMBank( 2 );
 	engine_font_manager_draw_data( bob, 10, 6 );
 	//engine_font_manager_draw_char( bob, 10, 5 );
