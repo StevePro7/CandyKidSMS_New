@@ -7,9 +7,9 @@ S .__.ABS. Def0000
 S _foo Ref0000
 S _engine_font_manager_draw_data Ref0000
 S _devkit_SMS_mapROMBank Ref0000
-A _CODE size 48 flags 0 addr 0
+A _CODE size 46 flags 0 addr 0
 S _screen_test_screen_load Def0000
-S _screen_test_screen_update Def0041
+S _screen_test_screen_update Def003F
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -20,7 +20,7 @@ A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
 R 00 00 00 00
-T 00 00 3E 0F F5 33 CD 00 00 33 21 02 00 4E C5 3E
+T 00 00 3E 0F F5 33 CD 00 00 33 21 05 00 4E C5 3E
 R 00 00 00 00 02 07 04 00 02 0B 02 00
 T 0E 00 02 F5 33 CD 00 00 33 C1 06 00 21 0A 04 E5
 R 00 00 00 00 02 06 04 00
@@ -32,9 +32,9 @@ T 2F 00
 R 00 00 00 00
 T 2F 00 54 45 53 54 20 53 43 52 45 45 4E 2E 2E 21
 R 00 00 00 00
-T 3D 00 21 21 21 00
+T 3D 00 21 00
 R 00 00 00 00
-T 41 00
+T 3F 00
 R 00 00 00 00
-T 41 00 C1 E1 E5 C5 36 0E C9
+T 3F 00 C1 E1 E5 C5 36 0E C9
 R 00 00 00 00

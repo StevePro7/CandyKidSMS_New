@@ -14,13 +14,13 @@ void screen_test_screen_load()
 	unsigned char bob;
 	//bob = foo[ 0 ];
 	//bob = 8;
-	devkit_SMS_mapROMBank( 15 );
-	bob = foo[ 2 ];
+	devkit_SMS_mapROMBank( FIXEDBANKSLOT );
+	bob = foo[ 5 ];
 	devkit_SMS_mapROMBank( 2 );
 	//bob = bank15_txt[ 0 ];
 	engine_font_manager_draw_data( bob, 10, 4 );
 	//engine_font_manager_draw_char( bob, 10, 5 );
-	engine_font_manager_draw_text( "TEST SCREEN..!!!!", 10, 10 );
+	engine_font_manager_draw_text( "TEST SCREEN..!!", 10, 10 );
 }
 
 void screen_test_screen_update( unsigned char *screen_type )
