@@ -1,1 +1,4 @@
-//extern unsigned char foo[];
+// Data bank
+#define FIXEDBANKSLOT 15
+
+extern const unsigned char foo[];

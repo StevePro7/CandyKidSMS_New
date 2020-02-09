@@ -1,5 +1,5 @@
 XL2
-H 9 areas 1 global symbols
+H A areas 3 global symbols
 M fixedbank
 O -mz80
 S .__.ABS. Def0000
@@ -10,5 +10,18 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
+A _BANK15 size 15 flags 0 addr 0
+S _bank15_txt Def0000
+S _foo Def0006
 A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 07 00
+T 00 00 61 61 6E 6B 31 36
+R 00 00 07 00
+T 06 00
+R 00 00 07 00
+T 06 00 00 01 02 03 04 05 67 08 09 0A 0B 0C 0D 0E
+R 00 00 07 00
+T 14 00 0F
+R 00 00 07 00
