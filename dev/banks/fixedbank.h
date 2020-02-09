@@ -1,1 +1,1 @@
-extern unsigned char foo[];
+//extern unsigned char foo[];

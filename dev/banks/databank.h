@@ -1,1 +1,1 @@
-extern unsigned char bar;
+//extern unsigned char bar;

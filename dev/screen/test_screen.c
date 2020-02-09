@@ -13,8 +13,8 @@ void screen_test_screen_load()
 {
 	unsigned char bob;
 	//bob = foo[ 0 ];
-	//bob = 7;
-	bob = foo[ 1 ];
+	bob = 7;
+	//bob = foo[ 1 ];
 	//bob = bar;
 	engine_font_manager_draw_data( bob, 10, 4 );
 	//engine_font_manager_draw_char( bob, 10, 5 );
@@ -23,28 +23,27 @@ void screen_test_screen_load()
 
 void screen_test_screen_update( unsigned char *screen_type )
 {
-	unsigned char test;
+	//unsigned char test;
 	//unsigned char data;
 
 	//devkit_SMS_mapROMBank( 15 );
 	//data = bank15_txt[ 0 ];
 
-	
+	//test = engine_input_manager_hold( input_type_fire1 );
+	//if( test )
+	//{
+	//	bar++;
+	//	//devkit_SMS_mapROMBank( bank15_txt_bank );
+	//	//data = bank15_txt[ 0 ];
 
-	test = engine_input_manager_hold( input_type_fire1 );
-	if( test )
-	{
-		bar++;
-		//devkit_SMS_mapROMBank( bank15_txt_bank );
-		//data = bank15_txt[ 0 ];
+	//	//engine_font_manager_draw_data( bank15_txt[ 0 ], 10, 14 );
+	//	engine_font_manager_draw_data( bar, 10, 15 );
+	//	//bank15_txt[ 0 ]++;
+	//	//data++;
+	//	//engine_font_manager_draw_text( "FIRE", 10, 12 );
+	//	//engine_font_manager_draw_data( bank15_txt[ 0 ], 10, 16 );
+	//	//engine_font_manager_draw_data( data, 10, 17 );
+	//}
 
-		//engine_font_manager_draw_data( bank15_txt[ 0 ], 10, 14 );
-		engine_font_manager_draw_data( bar, 10, 15 );
-		//bank15_txt[ 0 ]++;
-		//data++;
-		//engine_font_manager_draw_text( "FIRE", 10, 12 );
-		//engine_font_manager_draw_data( bank15_txt[ 0 ], 10, 16 );
-		//engine_font_manager_draw_data( data, 10, 17 );
-	}
 	*screen_type = screen_type_test;
 }
