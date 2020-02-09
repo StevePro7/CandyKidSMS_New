@@ -25,3 +25,7 @@ extern const unsigned char board_object_right;
 extern const unsigned char *level_object_AAdata[];
 extern const unsigned char level_object_AAsize[];
 extern const unsigned char level_object_AAbank[];
+
+//extern const unsigned char *level_object_BBdata[];
+//extern const unsigned char level_object_BBsize[];
+//extern const unsigned char level_object_BBbank[];
