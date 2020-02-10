@@ -18,17 +18,17 @@ void screen_load_screen_load()
 {
 	engine_board_manager_init();
 
-	engine_font_manager_draw_text( "LOAD SCREEN!!", 10, 10 );
+	//engine_font_manager_draw_text( "LOAD SCREEN!!", 10, 10 );
 	//engine_font_manager_draw_char( 'X', 10, 16 );
 	//engine_font_manager_draw_data_ZERO( 400, 10, 16 );
 
-	//engine_level_manager_load_level( 6, 6 );
+	engine_level_manager_load_level( 2, 2 );
 
 //	devkit_SMS_mapROMBank( 2 );
 
 	
 
-	//engine_level_manager_draw_level();
+	engine_level_manager_draw_level();
 
 
 	//engine_font_manager_draw_data( level_object_drawtiles_array[16], 10, 0 );

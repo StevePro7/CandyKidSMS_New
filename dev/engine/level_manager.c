@@ -4,6 +4,8 @@
 #include "enum_manager.h"
 #include "font_manager.h"
 #include "function_manager.h"
+#include "mask_manager.h"
+#include "move_manager.h"
 #include "tile_manager.h"
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
@@ -29,41 +31,41 @@ static void draw_tiles( unsigned char x, unsigned char y, unsigned char multiple
 //void engine_level_manager_init_board()
 //{
 //	struct_level_object *lo = &global_level_object;
-//	unsigned char idx, row, col;
+//	unsigned char index, row, col;
 //
 //	// Initialize 14x14 maze.
 //	for( row = 0; row < MAZE_ROWS; row++ )
 //	{
 //		for( col = 0; col < MAZE_COLS; col++ )
 //		{
-//			idx = row * MAZE_COLS + col;
+//			index = row * MAZE_COLS + col;
 //
-//			lo->drawtiles_array[ idx ] = tile_type_blank;
-//			lo->collision_array[ idx ] = coll_type_empty;
-//			lo->direction_array[ idx ] = direction_type_none;
+//			lo->drawtiles_array[ index ] = tile_type_blank;
+//			lo->collision_array[ index ] = coll_type_empty;
+//			lo->direction_array[ index ] = direction_type_none;
 //		}
 //	}
 //
 //	// Calculate 12x12 outside tree border.
 //	for( col = 0; col < TREE_COLS; col++ )
 //	{
-//		idx = MAZE_ROWS * 1 + (col + 1);
-//		lo->drawtiles_array[ idx ] = tile_type_trees;
-//		lo->collision_array[ idx ] = coll_type_block;
+//		index = MAZE_ROWS * 1 + (col + 1);
+//		lo->drawtiles_array[ index ] = tile_type_trees;
+//		lo->collision_array[ index ] = coll_type_block;
 //
-//		idx = MAZE_ROWS * ( MAZE_ROWS - 2 ) + ( col + 1 );
-//		lo->drawtiles_array[ idx ] = tile_type_trees;
-//		lo->collision_array[ idx ] = coll_type_block;
+//		index = MAZE_ROWS * ( MAZE_ROWS - 2 ) + ( col + 1 );
+//		lo->drawtiles_array[ index ] = tile_type_trees;
+//		lo->collision_array[ index ] = coll_type_block;
 //	}
 //	for( row = 1; row < TREE_ROWS - 1; row++ )
 //	{
-//		idx = ( row + 1 ) * MAZE_COLS + 1;
-//		lo->drawtiles_array[ idx ] = tile_type_trees;
-//		lo->collision_array[ idx ] = coll_type_block;
+//		index = ( row + 1 ) * MAZE_COLS + 1;
+//		lo->drawtiles_array[ index ] = tile_type_trees;
+//		lo->collision_array[ index ] = coll_type_block;
 //
-//		idx = (row + 1) * MAZE_COLS + ( MAZE_COLS - 2 );
-//		lo->drawtiles_array[ idx ] = tile_type_trees;
-//		lo->collision_array[ idx ] = coll_type_block;
+//		index = (row + 1) * MAZE_COLS + ( MAZE_COLS - 2 );
+//		lo->drawtiles_array[ index ] = tile_type_trees;
+//		lo->collision_array[ index ] = coll_type_block;
 //	}
 //}
 //
@@ -74,7 +76,7 @@ static void draw_tiles( unsigned char x, unsigned char y, unsigned char multiple
 //	unsigned char loop;
 //	unsigned char tmpX;
 //	unsigned char tmpY;
-//	unsigned char idx;
+//	unsigned char index;
 //
 //	// TODO test this still draws correct trees!!
 //	// Want to leave coll type to block for all border trees
@@ -92,15 +94,15 @@ static void draw_tiles( unsigned char x, unsigned char y, unsigned char multiple
 //	//	//coll_type = coll_type_empty;
 //	//}
 //
-//	idx = 0;
+//	index = 0;
 //	for( loop = 0; loop < MAX_EXITS_PUBLIC; loop++ )
 //	{
 //		tmpX = board_exitX[ loop ];
 //		tmpY = board_exitY[ loop ];
 //
-//		idx = tmpY * MAZE_ROWS + tmpX;
-//		lo->drawtiles_array[ idx ] = tile_type;
-//		//lo->collision_array[ idx ] = coll_type;
+//		index = tmpY * MAZE_ROWS + tmpX;
+//		lo->drawtiles_array[ index ] = tile_type;
+//		//lo->collision_array[ index ] = coll_type;
 //	}
 //}
 //
@@ -251,7 +253,7 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 	unsigned char row, col;
 	unsigned char tile_data;
 
-	unsigned int idx;
+	unsigned int index;
 	unsigned char tile_type;
 	unsigned char coll_type;
 //	unsigned char dirX_type;
@@ -280,10 +282,10 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 			{
 				engine_tile_manager_load_tile( &tile_type, tile_data );
 
-				idx = ( row + 2 ) * MAZE_COLS + ( col + 2 );
+				index = ( row + 2 ) * MAZE_COLS + ( col + 2 );
 
-				//lo->drawtiles_array[ idx ] = tile_type;
-				level_object_drawtiles_array[ idx ] = tile_type;
+				//lo->drawtiles_array[ index ] = tile_type;
+				
 
 				//if( tile_type_candy == tile_type )
 				//{
@@ -296,7 +298,13 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 
 				// TODO read from game object. 
 				engine_tile_manager_load_coll( &coll_type, tile_data );
-				//lo->collision_array[ idx ] = coll_type;
+				if( coll_type_block == coll_type )
+				{
+					tile_type |= COLL_TYPE_MASK;
+				}
+
+				level_object_drawtiles_array[ index ] = tile_type;
+				//lo->collision_array[ index ] = coll_type;
 			}
 
 			o++;
@@ -304,7 +312,7 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 	}
 
 	// Subtract candy count if enemy(s) not move and candy or their board spot.
-	idx = 0;
+	index = 0;
 
 	// TODO now that level loaded pre-calculate the "next" tiles for each tile.
 	//for( row = 0; row < MAX_ROWS; row++ )
@@ -315,9 +323,9 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 	//		unsigned char y = row + 2;
 
 	//		dirX_type = direction_type_none;
-	//		for( idx = 0; idx < NUM_DIRECTIONS; idx++ )
+	//		for( index = 0; index < NUM_DIRECTIONS; index++ )
 	//		{
-	//			direction = directions[ idx ];
+	//			direction = directions[ index ];
 	//			coll_type = engine_level_manager_get_next_coll( x, y, direction );
 	//			if( coll_type_empty == coll_type )
 	//			{
@@ -325,8 +333,8 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 	//			}
 	//		}
 
-	//		idx = y * MAZE_COLS + x;
-	//		lo->direction_array[ idx ] = dirX_type;
+	//		index = y * MAZE_COLS + x;
+	//		lo->direction_array[ index ] = dirX_type;
 	//	}
 	//}
 
@@ -336,12 +344,12 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 static void draw_tiles( unsigned char x, unsigned char y, unsigned char multipler )
 {
 	//struct_level_object *lo = &global_level_object;
+	unsigned char index;
 	unsigned char tile;
-	unsigned char idx;
 
-	idx = ( y + 2 ) * MAZE_COLS + ( x + 2 );
-	//tile = lo->drawtiles_array[ idx ];
-	tile = level_object_drawtiles_array[ idx ];
+	index = ( y + 2 ) * MAZE_COLS + ( x + 2 );
+	//tile = lo->drawtiles_array[ index ];
+	tile = level_object_drawtiles_array[ index ];
 
 	engine_tile_manager_draw_tile( tile, multipler, SCREEN_TILE_LEFT + ( x + 1 ) * 2, ( y + 1 ) * 2 );
 }

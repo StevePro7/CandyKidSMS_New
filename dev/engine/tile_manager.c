@@ -1,7 +1,9 @@
 #include "tile_manager.h"
 #include "enum_manager.h"
 #include "font_manager.h"
+#include "function_manager.h"
 #include "global_manager.h"
+#include "mask_manager.h"
 #include "..\banks\bank2.h"
 #include "..\devkit\_sms_manager.h"
 #include <stdlib.h>
@@ -68,19 +70,26 @@ void engine_tile_manager_load_coll( unsigned char *coll_type, unsigned char tile
 }
 
 // TODO rename this as is too generic!
-void engine_tile_manager_draw_tile( unsigned char index, unsigned char multiplier, unsigned char x, unsigned char y )
+void engine_tile_manager_draw_tile( unsigned char tile, unsigned char multiplier, unsigned char x, unsigned char y )
 {
+	unsigned char upper_nibble;
+	unsigned char lower_nibble;
+	unsigned char tile_type;
+
 	engine_tile_manager_draw_blank( x, y );
 
-	if( tile_type_trees == index )
+	engine_function_manager_convertByteToNibbles( tile, &upper_nibble, &lower_nibble );
+	tile_type = lower_nibble & TILE_TYPE_MASK;
+
+	if( tile_type_trees == tile_type )
 	{
 		engine_tile_manager_draw_trees( tree_type_avoid, x, y );			// TODO don't hardcode here - get from board manager
 	}
-	else if( index >= tile_type_bonusA  && index <= tile_type_bonusD )
+	else if( tile_type >= tile_type_bonusA  && tile_type <= tile_type_bonusD )
 	{
-		engine_tile_manager_draw_bonus( index, multiplier, x, y );
+		engine_tile_manager_draw_bonus( tile, multiplier, x, y );
 	}
-	else if( tile_type_candy == index )
+	else if( tile_type_candy == tile_type )
 	{
 		unsigned char type = 0;
 		//while( 1 )
