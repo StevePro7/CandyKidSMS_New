@@ -15,7 +15,8 @@
 // LOAD screen - test level manager load.
 void screen_load_screen_load()
 {
-	devkit_SMS_mapROMBank( 5 );
+	engine_board_manager_init();
+
 	//engine_font_manager_draw_text( "CHECK SCREEN....!!", 10, 10 );
 	//engine_font_manager_draw_char( 'X', 10, 16 );
 	//engine_font_manager_draw_data_ZERO( 400, 10, 16 );

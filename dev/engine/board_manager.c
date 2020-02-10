@@ -1,7 +1,9 @@
-//#include "board_manager.h"
-//#include "enum_manager.h"
-//#include "global_manager.h"
+#include "board_manager.h"
+#include "enum_manager.h"
+#include "global_manager.h"
+#include "mask_manager.h"
 //#include "tile_manager.h"
+#include "..\banks\databank.h"
 //#include <stdio.h>
 //
 ////#define TOP_EXIT_Y		6
@@ -12,48 +14,46 @@
 //static void draw_side( unsigned char wide, unsigned char right );
 //static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right );
 //
-//// Methods.
-//void engine_board_manager_init()
-//{
-//	//struct_board_object *bo = &global_board_object;
-//	//unsigned char loop;
-//	//unsigned char left = SCREEN_TILE_LEFT * TILE_HALF;
-//	//int data;
-//	//signed char offset;
-//	//unsigned char bob;
-//	//unsigned char idx;
-//
-//	//for( loop = 0; loop < MAZE_ROWS; loop++ )
-//	//{
-//	//	offset = loop - 1;
-//	//	data = offset * TILE_SIZE;
-//
-//	//	bob = data;
-//	//	printf( "%d\n", bob );
-//	//	bo->posnX[ loop ] = data + left;
-//	//	bo->posnY[ loop ] = data;
-//
-//	//	idx = loop * MAZE_ROWS + loop;
-//	//	
-//	//}
-//
-//	//// TODO delete as will be set before hand!!
-//	//bo->save_tree_type = tree_type_avoid;
-//	//bo->save_exit_type = exit_type_public;
-//	//// TODO delete as will be set before hand!!
-//
-//	//bo->top		= 0;
-//	//bo->bottom	= ( SCREEN_TILE_HIGH - 1 ) * 2;
-//	//bo->left	= SCREEN_TILE_LEFT;
-//	//bo->right	= SCREEN_TILE_LEFT + ( SCREEN_TILE_WIDE - 2 ) * 2;
-//	//bo->right2	= SCREEN_TILE_LEFT + ( TREE_COLS - 1 ) * 2;
-//
-//	//// Calculate board homeZ positions.
-//	//for( loop = 0; loop < MAX_ACTORS; loop++ )
-//	//{
-//	//	engine_board_manager_calc_tileSpot( board_homeX[ loop ], board_homeY[ loop ], &board_homeZ[ loop ] );
-//	//}
-//}
+// Methods.
+void engine_board_manager_init()
+{
+	//struct_board_object *bo = &global_board_object;
+	unsigned char row, col;
+	unsigned char tile_type;
+	unsigned char idx;
+
+	// Initialize 14x14 board.
+	for( row = 0; row < MAZE_ROWS; row++ )
+	{
+		//for( col = 0; col < lo->load_cols; col++ )
+		for( col = 0; col < MAZE_COLS; col++ )
+		{
+			idx = ( row + 0 ) * MAZE_COLS + ( col + 0 );
+			level_object_drawtiles_array[ idx ] = coll_type_empty;
+		}
+	}
+
+
+	// Calculate 12x12 outside tree border.
+	// Set border to tree and collision = 1
+	tile_type = tile_type_trees | COLL_TYPE_MASK;
+	for( col = 0; col < TREE_COLS; col++ )
+	{
+		idx = MAZE_ROWS * 1 + (col + 1);
+		level_object_drawtiles_array[ idx ] = tile_type;
+	
+		idx = MAZE_ROWS * ( MAZE_ROWS - 2 ) + ( col + 1 );
+		level_object_drawtiles_array[ idx ] = tile_type;
+	}
+	for( row = 1; row < TREE_ROWS - 1; row++ )
+	{
+		idx = ( row + 1 ) * MAZE_COLS + 1;
+		level_object_drawtiles_array[ idx ] = tile_type;
+
+		idx = ( row + 1 ) * MAZE_COLS + ( MAZE_COLS - 2 );
+		level_object_drawtiles_array[ idx ] = tile_type;
+	}
+}
 //
 //void engine_board_manager_set_exit_type( unsigned char exit_type )
 //{

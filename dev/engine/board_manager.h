@@ -1,12 +1,12 @@
-//#ifndef _BOARD_MANAGER_H_
-//#define _BOARD_MANAGER_H_
+#ifndef _BOARD_MANAGER_H_
+#define _BOARD_MANAGER_H_
 //
 ////#include "..\object\board_object.h"
 //
 //// Global variable.
 ////extern struct_board_object global_board_object;
 //
-//void engine_board_manager_init();
+void engine_board_manager_init();
 //void engine_board_manager_set_exit_type( unsigned char exit_type );
 //void engine_board_manager_set_tree_type( unsigned char tree_type );
 //
@@ -22,4 +22,4 @@
 //// TODO - delete!!
 //void engine_board_manager_debugger();
 //
-//#endif//_BOARD_MANAGER_H_
+#endif//_BOARD_MANAGER_H_

@@ -22,7 +22,7 @@ cd ..
 cd engine
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 asm_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 audio_manager.c
-::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 board_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 board_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 content_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 enum_manager.c
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 font_manager.c
@@ -30,6 +30,7 @@ sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 function_
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 global_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 input_manager.c
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 level_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 mask_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 screen_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 sprite_manager.c
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 tile_manager.c
@@ -81,6 +82,7 @@ engine\font_manager.rel ^
 engine\function_manager.rel ^
 engine\input_manager.rel ^
 engine\level_manager.rel ^
+engine\mask_manager.rel ^
 engine\screen_manager.rel ^
 engine\sprite_manager.rel ^
 engine\tile_manager.rel ^
