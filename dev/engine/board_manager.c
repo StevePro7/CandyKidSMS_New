@@ -21,10 +21,12 @@
 void engine_board_manager_init()
 {
 	//struct_board_object *bo = &global_board_object;
+	unsigned char borders[] = { 0, 1, MAZE_ROWS - 2, MAZE_ROWS - 1 };
 	unsigned char row, col;
 	unsigned char test_type;
 	unsigned char direction;
 	unsigned char index;
+	unsigned char loop;
 
 	// Initialize 14x14 board.
 	for( row = 0; row < MAZE_ROWS; row++ )
@@ -57,31 +59,38 @@ void engine_board_manager_init()
 		level_object_drawtiles_array[ index ] = test_type;
 	}
 
-
-	index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
-	test_type = level_object_drawtiles_array[ index ];
-	engine_font_manager_draw_data( test_type, 10, 4 );
-
 	// Calculate 2px border movement options.
-	row = 1;
-	col = 1;
+	// Horizontal.
+	for( loop = 0; loop < NUM_DIRECTIONS; loop++ )
+	{
+		row = borders[ loop ];
+		for( col = 0; col < MAZE_COLS; col++ )
+		{
+			direction = engine_move_manager_test_direction( row, col );
 
-	// Calculate any direction around this tile.
-	direction = engine_move_manager_test_direction( row, col );
+			index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
+			test_type = level_object_drawtiles_array[ index ];
 
+			engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
+			level_object_drawtiles_array[ index ] = test_type;
+		}
+	}
 
-	index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
-	test_type = level_object_drawtiles_array[ index ];
+	// Vertical.
+	for( loop = 0; loop < NUM_DIRECTIONS; loop++ )
+	{
+		col = borders[ loop ];
+		for( row = 2; row < MAZE_ROWS - 2; row++ )
+		{
+			direction = engine_move_manager_test_direction( row, col );
 
-	engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
-	level_object_drawtiles_array[ index ] = test_type;
-	
+			index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
+			test_type = level_object_drawtiles_array[ index ];
 
-	index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
-	test_type = level_object_drawtiles_array[ index ];
-	engine_font_manager_draw_data( test_type, 10, 6 );
-
-	//for( col = 0; col < MAZE_COLS; col++ )
+			engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
+			level_object_drawtiles_array[ index ] = test_type;
+		}
+	}
 }
 //
 //void engine_board_manager_set_exit_type( unsigned char exit_type )
