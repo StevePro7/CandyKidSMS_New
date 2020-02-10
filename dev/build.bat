@@ -36,8 +36,10 @@ sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 level_man
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 tile_manager.c
 cd ..
 
-::cd object
-::cd ..
+cd object
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 delay_object.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 frame_object.c
+cd ..
 
 cd screen
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 load_screen.c
@@ -88,6 +90,8 @@ engine\move_manager.rel ^
 engine\screen_manager.rel ^
 engine\sprite_manager.rel ^
 engine\tile_manager.rel ^
+object\delay_object.rel ^
+object\frame_object.rel ^
 screen\load_screen.rel ^
 screen\test_screen.rel
 

@@ -44,8 +44,10 @@
     <ClInclude Include="engine\audio_manager.h" />
     <ClInclude Include="engine\board_manager.h" />
     <ClInclude Include="engine\content_manager.h" />
+    <ClInclude Include="engine\delay_manager.h" />
     <ClInclude Include="engine\enum_manager.h" />
     <ClInclude Include="engine\font_manager.h" />
+    <ClInclude Include="engine\frame_manager.h" />
     <ClInclude Include="engine\function_manager.h" />
     <ClInclude Include="engine\global_manager.h" />
     <ClInclude Include="engine\hack_manager.h" />
@@ -58,6 +60,8 @@
     <ClInclude Include="engine\tile_manager.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="object\delay_object.h" />
+    <ClInclude Include="object\frame_object.h" />
     <ClInclude Include="screen\load_screen.h" />
     <ClInclude Include="screen\test_screen.h" />
   </ItemGroup>
@@ -84,8 +88,10 @@
     <ClCompile Include="engine\audio_manager.c" />
     <ClCompile Include="engine\board_manager.c" />
     <ClCompile Include="engine\content_manager.c" />
+    <ClCompile Include="engine\delay_manager.c" />
     <ClCompile Include="engine\enum_manager.c" />
     <ClCompile Include="engine\font_manager.c" />
+    <ClCompile Include="engine\frame_manager.c" />
     <ClCompile Include="engine\function_manager.c" />
     <ClCompile Include="engine\global_manager.c" />
     <ClCompile Include="engine\hack_manager.c" />
@@ -98,6 +104,8 @@
     <ClCompile Include="engine\tile_manager.c" />
     <ClCompile Include="game.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="object\delay_object.c" />
+    <ClCompile Include="object\frame_object.c" />
     <ClCompile Include="screen\load_screen.c" />
     <ClCompile Include="screen\test_screen.c" />
   </ItemGroup>
