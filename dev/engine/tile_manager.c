@@ -5,6 +5,7 @@
 #include "global_manager.h"
 #include "mask_manager.h"
 #include "..\banks\bank2.h"
+#include "..\banks\databank.h"
 #include "..\devkit\_sms_manager.h"
 #include <stdlib.h>
 
@@ -83,7 +84,7 @@ void engine_tile_manager_draw_tile( unsigned char tile, unsigned char multiplier
 
 	if( tile_type_trees == tile_type )
 	{
-		engine_tile_manager_draw_trees( tree_type_avoid, x, y );			// TODO don't hardcode here - get from board manager
+		engine_tile_manager_draw_trees( state_object_tree_type, x, y );
 	}
 	else if( tile_type >= tile_type_bonusA  && tile_type <= tile_type_bonusD )
 	{
