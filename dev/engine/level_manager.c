@@ -160,7 +160,7 @@ void engine_level_manager_draw_level()
 		for( col = 0; col < MAX_COLS; col++ )
 		{
 			//draw_tiles( col, row, lo->multiplier );
-			draw_tiles( col, row, 1 );
+			draw_tiles( col, row, 2 );
 		}
 	}
 }
