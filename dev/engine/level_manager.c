@@ -295,19 +295,19 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 	}
 
 	// Set each tile directions available.
-	//for( row = 0; row < MAX_ROWS; row++ )
-	//{
-	//	for( col = 0; col < MAX_COLS; col++ )
-	//	{
-	//		direction = engine_move_manager_test_direction( ( row + 2 ), ( col + 2 ) );
+	for( row = 0; row < MAX_ROWS; row++ )
+	{
+		for( col = 0; col < MAX_COLS; col++ )
+		{
+			direction = engine_move_manager_test_direction( ( row + 2 ), ( col + 2 ) );
 
-	//		index = ( row + 2 ) * MAZE_COLS + ( col + 2 );
-	//		test_type = level_object_tiles_array[ index ];
+			index = ( row + 2 ) * MAZE_COLS + ( col + 2 );
+			test_type = level_object_tiles_array[ index ];
 
-	//		engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
-	//		level_object_tiles_array[ index ] = test_type;
-	//	}
-	//}
+			engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
+			level_object_tiles_array[ index ] = test_type;
+		}
+	}
 
 	// TODO - update if enemy not move and candy on home tile
 	// TODO - update if there is free man candy on this level
@@ -320,6 +320,5 @@ static void draw_tiles( unsigned char x, unsigned char y )
 
 	index = ( y + 2 ) * MAZE_COLS + ( x + 2 );
 	tile = level_object_tiles_array[ index ];
-
 	engine_tile_manager_draw_tile( tile, level_object_multiplier, SCREEN_TILE_LEFT + ( x + 1 ) * 2, ( y + 1 ) * 2 );
 }

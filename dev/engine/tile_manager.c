@@ -88,7 +88,7 @@ void engine_tile_manager_draw_tile( unsigned char tile, unsigned char multiplier
 	}
 	else if( tile_type >= tile_type_bonusA  && tile_type <= tile_type_bonusD )
 	{
-		engine_tile_manager_draw_bonus( tile, multiplier, x, y );
+		engine_tile_manager_draw_bonus( tile_type, multiplier, x, y );
 	}
 	else if( tile_type_candy == tile_type )
 	{
