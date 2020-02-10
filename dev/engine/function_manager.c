@@ -1,4 +1,5 @@
 #include "function_manager.h"
+#include "mask_manager.h"
 #include "..\devkit\_sms_manager.h"
 
 // Bank changer
@@ -17,6 +18,17 @@ void engine_function_manager_convertZtoXY( unsigned char divide, unsigned char z
 	*x = z % divide;
 	*y = z / divide;
 }
+
+void engine_function_manager_convertByteToNibbles( unsigned char byte, unsigned char *upper_nibble, unsigned char *lower_nibble )
+{
+	*upper_nibble = ( byte >> 4 ) & BYTE_NIBBLE_MASK;
+	*lower_nibble = byte & BYTE_NIBBLE_MASK;
+}
+void engine_function_manager_convertNibblesToByte( unsigned char upper_nibble, unsigned char lower_nibble, unsigned char *byte )
+{
+	*byte = lower_nibble | ( upper_nibble << 4 );
+}
+
 
 // TODO change this function name.
 void changeBank( unsigned char b )

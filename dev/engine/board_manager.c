@@ -1,7 +1,9 @@
 #include "board_manager.h"
 #include "enum_manager.h"
+#include "function_manager.h"
 #include "global_manager.h"
 #include "mask_manager.h"
+#include "move_manager.h"
 //#include "tile_manager.h"
 #include "..\banks\databank.h"
 //#include <stdio.h>
@@ -19,8 +21,9 @@ void engine_board_manager_init()
 {
 	//struct_board_object *bo = &global_board_object;
 	unsigned char row, col;
-	unsigned char tile_type;
-	unsigned char idx;
+	unsigned char test_type;
+	unsigned char direction;
+	unsigned char index;
 
 	// Initialize 14x14 board.
 	for( row = 0; row < MAZE_ROWS; row++ )
@@ -28,31 +31,46 @@ void engine_board_manager_init()
 		//for( col = 0; col < lo->load_cols; col++ )
 		for( col = 0; col < MAZE_COLS; col++ )
 		{
-			idx = ( row + 0 ) * MAZE_COLS + ( col + 0 );
-			level_object_drawtiles_array[ idx ] = coll_type_empty;
+			index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
+			level_object_drawtiles_array[ index ] = coll_type_empty;
 		}
 	}
 
-
 	// Calculate 12x12 outside tree border.
 	// Set border to tree and collision = 1
-	tile_type = tile_type_trees | COLL_TYPE_MASK;
+	test_type = tile_type_trees | COLL_TYPE_MASK;
 	for( col = 0; col < TREE_COLS; col++ )
 	{
-		idx = MAZE_ROWS * 1 + (col + 1);
-		level_object_drawtiles_array[ idx ] = tile_type;
+		index = MAZE_ROWS * 1 + (col + 1);
+		level_object_drawtiles_array[ index ] = test_type;
 	
-		idx = MAZE_ROWS * ( MAZE_ROWS - 2 ) + ( col + 1 );
-		level_object_drawtiles_array[ idx ] = tile_type;
+		index = MAZE_ROWS * ( MAZE_ROWS - 2 ) + ( col + 1 );
+		level_object_drawtiles_array[ index ] = test_type;
 	}
 	for( row = 1; row < TREE_ROWS - 1; row++ )
 	{
-		idx = ( row + 1 ) * MAZE_COLS + 1;
-		level_object_drawtiles_array[ idx ] = tile_type;
+		index = ( row + 1 ) * MAZE_COLS + 1;
+		level_object_drawtiles_array[ index ] = test_type;
 
-		idx = ( row + 1 ) * MAZE_COLS + ( MAZE_COLS - 2 );
-		level_object_drawtiles_array[ idx ] = tile_type;
+		index = ( row + 1 ) * MAZE_COLS + ( MAZE_COLS - 2 );
+		level_object_drawtiles_array[ index ] = test_type;
 	}
+
+	// Calculate 2px border movement options.
+	row = 1;
+	col = 1;
+
+	// Calculate any direction around this tile.
+	direction = engine_move_manager_test_direction( row, col );
+
+
+	index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
+	test_type = level_object_drawtiles_array[ index ];
+
+	engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
+	level_object_drawtiles_array[ index ] = test_type;
+	
+	//for( col = 0; col < MAZE_COLS; col++ )
 }
 //
 //void engine_board_manager_set_exit_type( unsigned char exit_type )
