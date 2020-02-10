@@ -11,6 +11,7 @@
 #include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\devkit\_sms_manager.h"
+#include "..\banks\databank.h"
 
 // LOAD screen - test level manager load.
 void screen_load_screen_load()
@@ -21,12 +22,16 @@ void screen_load_screen_load()
 	//engine_font_manager_draw_char( 'X', 10, 16 );
 	//engine_font_manager_draw_data_ZERO( 400, 10, 16 );
 
-	engine_level_manager_load_level( 7, 7 );
+	engine_level_manager_load_level( 6, 6 );
 
 //	devkit_SMS_mapROMBank( 2 );
-//	engine_font_manager_draw_text( "LOAD SCREEN.YY.!!", 10, 12 );
+
+	
 
 	engine_level_manager_draw_level();
+
+
+	engine_font_manager_draw_data( level_object_drawtiles_array[16], 10, 0 );
 
 	//engine_tile_manager_draw_gamer( 4, 4 );
 	//engine_tile_manager_main_trees( 0, 4, 4 );
