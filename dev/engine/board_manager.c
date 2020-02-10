@@ -1,5 +1,6 @@
 #include "board_manager.h"
 #include "enum_manager.h"
+#include "font_manager.h"
 #include "function_manager.h"
 #include "global_manager.h"
 #include "mask_manager.h"
@@ -56,6 +57,11 @@ void engine_board_manager_init()
 		level_object_drawtiles_array[ index ] = test_type;
 	}
 
+
+	index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
+	test_type = level_object_drawtiles_array[ index ];
+	engine_font_manager_draw_data( test_type, 10, 4 );
+
 	// Calculate 2px border movement options.
 	row = 1;
 	col = 1;
@@ -70,6 +76,11 @@ void engine_board_manager_init()
 	engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
 	level_object_drawtiles_array[ index ] = test_type;
 	
+
+	index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
+	test_type = level_object_drawtiles_array[ index ];
+	engine_font_manager_draw_data( test_type, 10, 6 );
+
 	//for( col = 0; col < MAZE_COLS; col++ )
 }
 //
