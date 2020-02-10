@@ -39,33 +39,6 @@ unsigned char engine_move_manager_test_direction( unsigned char row, unsigned ch
 		direction_type |= test_type;
 	}
 
-
-	// Check UP.
-	//if( 0 != row )
-	//{
-	//	index = ( row - 1 ) * MAZE_COLS + ( col + 0 );
-	//	tiles = level_object_tiles_array[ index ];
-	//	colls = COLL_TYPE_MASK == ( tiles & COLL_TYPE_MASK );
-	//	if( coll_type_empty == colls )
-	//	{
-	//		direction_type |= direction_type_upxx;
-	//	}
-	//}
-	//// Check DOWN.
-	//if( MAZE_ROWS - 1 != row )
-	//{
-	//	unsigned char test_type = test_direction( ( col + 0 ), ( row + 1 ), direction_type_upxx );
-	//	direction_type |= test_type;
-	//	//index = ( row + 1 ) * MAZE_COLS + ( col + 0 );
-	//	//tiles = level_object_tiles_array[ index ];
-	//	//colls = COLL_TYPE_MASK == ( tiles & COLL_TYPE_MASK );
-	//	//if( coll_type_empty == colls )
-	//	//{
-	//	//	direction_type |= direction_type_down;
-	//	//}
-	//}
-
-
 	return direction_type;
 }
 

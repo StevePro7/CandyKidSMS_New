@@ -22,7 +22,7 @@ void screen_load_screen_load()
 	//engine_font_manager_draw_char( 'X', 10, 16 );
 	//engine_font_manager_draw_data_ZERO( 400, 10, 16 );
 
-	engine_level_manager_load_level( 0, 4 );
+	engine_level_manager_load_level( 0, 9 );
 
 //	devkit_SMS_mapROMBank( 2 );
 

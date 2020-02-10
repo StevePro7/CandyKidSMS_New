@@ -1,13 +1,11 @@
 XL2
-H 9 areas B global symbols
+H 9 areas 9 global symbols
 M function_manager
 O -mz80
 S __moduchar Ref0000
 S __divuchar Ref0000
 S .__.ABS. Def0000
-S _devkit_SMS_mapROMBank Ref0000
-A _CODE size BF flags 0 addr 0
-S _changeBank Def009E
+A _CODE size 9E flags 0 addr 0
 S _engine_function_manager_convertNibblesToByte Def0085
 S _engine_function_manager_convertByteToNibbles Def0060
 S _engine_function_manager_convertZtoXY Def002B
@@ -68,11 +66,3 @@ T 85 00 21 04 00 39 4E 23 46 21 02 00 39 7E 07 07
 R 00 00 00 00
 T 93 00 07 07 E6 F0 21 03 00 39 B6 02 C9
 R 00 00 00 00
-T 9E 00
-R 00 00 00 00
-T 9E 00 21 02 00 39 7E FD 21 00 00 FD 96 00 C8 21
-R 00 00 00 00 00 09 01 00
-T AC 00 02 00 39 7E F5 33 CD 00 00 33 21 02 00 39
-R 00 00 00 00 02 09 03 00
-T BA 00 7E 32 00 00 C9
-R 00 00 00 00 00 04 01 00

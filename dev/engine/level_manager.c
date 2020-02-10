@@ -237,7 +237,7 @@ void engine_level_manager_draw_level()
 // Private helper methods.
 static void load_level( const unsigned char *data, const unsigned char size, const unsigned char bank, unsigned char mult )
 {
-	unsigned char directions[] = { direction_type_upxx, direction_type_down, direction_type_left, direction_type_rght };
+	//unsigned char directions[] = { direction_type_upxx, direction_type_down, direction_type_left, direction_type_rght };
 	//struct_level_object *lo = &global_level_object;
 
 	const unsigned char *o = data;
@@ -254,8 +254,6 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 	unsigned char draw_cols;
 	load_cols = size / MAX_ROWS;
 	draw_cols = load_cols - CRLF;
-	//lo->load_cols = size / MAX_ROWS;
-	//lo->draw_cols = lo->load_cols - CRLF;
 
 	level_object_bonus_count = 0;
 	level_object_candy_count = 0;
@@ -296,49 +294,23 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 		}
 	}
 
-	// Subtract candy count if enemy(s) not move and candy or their board spot.
-	for( row = 0; row < MAX_ROWS; row++ )
-	{
-		for( col = 0; col < MAX_COLS; col++ )
-		{
-			direction = engine_move_manager_test_direction( ( row + 2 ), ( col + 2 ) );
-
-			index = ( row + 2 ) * MAZE_COLS + ( col + 2 );
-			test_type = level_object_tiles_array[ index ];
-
-			engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
-			level_object_tiles_array[ index ] = test_type;
-		}
-	}
-
-
-	index = 0;
-
-	// TODO now that level loaded pre-calculate the "next" tiles for each tile.
+	// Set each tile directions available.
 	//for( row = 0; row < MAX_ROWS; row++ )
 	//{
 	//	for( col = 0; col < MAX_COLS; col++ )
 	//	{
-	//		unsigned char x = col + 2;
-	//		unsigned char y = row + 2;
+	//		direction = engine_move_manager_test_direction( ( row + 2 ), ( col + 2 ) );
 
-	//		dirX_type = direction_type_none;
-	//		for( index = 0; index < NUM_DIRECTIONS; index++ )
-	//		{
-	//			direction = directions[ index ];
-	//			coll_type = engine_level_manager_get_next_coll( x, y, direction );
-	//			if( coll_type_empty == coll_type )
-	//			{
-	//				dirX_type |= direction;
-	//			}
-	//		}
+	//		index = ( row + 2 ) * MAZE_COLS + ( col + 2 );
+	//		test_type = level_object_tiles_array[ index ];
 
-	//		index = y * MAZE_COLS + x;
-	//		lo->direction_array[ index ] = dirX_type;
+	//		engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
+	//		level_object_tiles_array[ index ] = test_type;
 	//	}
 	//}
 
-	//devkit_SMS_mapROMBank( 2 );
+	// TODO - update if enemy not move and candy on home tile
+	// TODO - update if there is free man candy on this level
 }
 
 static void draw_tiles( unsigned char x, unsigned char y )
