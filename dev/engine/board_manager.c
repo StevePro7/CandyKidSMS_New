@@ -35,7 +35,7 @@ void engine_board_manager_init()
 		for( col = 0; col < MAZE_COLS; col++ )
 		{
 			index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
-			level_object_drawtiles_array[ index ] = coll_type_empty;
+			level_object_tiles_array[ index ] = coll_type_empty;
 		}
 	}
 
@@ -45,18 +45,18 @@ void engine_board_manager_init()
 	for( col = 0; col < TREE_COLS; col++ )
 	{
 		index = MAZE_ROWS * 1 + (col + 1);
-		level_object_drawtiles_array[ index ] = test_type;
+		level_object_tiles_array[ index ] = test_type;
 	
 		index = MAZE_ROWS * ( MAZE_ROWS - 2 ) + ( col + 1 );
-		level_object_drawtiles_array[ index ] = test_type;
+		level_object_tiles_array[ index ] = test_type;
 	}
 	for( row = 1; row < TREE_ROWS - 1; row++ )
 	{
 		index = ( row + 1 ) * MAZE_COLS + 1;
-		level_object_drawtiles_array[ index ] = test_type;
+		level_object_tiles_array[ index ] = test_type;
 
 		index = ( row + 1 ) * MAZE_COLS + ( MAZE_COLS - 2 );
-		level_object_drawtiles_array[ index ] = test_type;
+		level_object_tiles_array[ index ] = test_type;
 	}
 
 	// Calculate 2px border movement options.
@@ -69,10 +69,10 @@ void engine_board_manager_init()
 			direction = engine_move_manager_test_direction( row, col );
 
 			index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
-			test_type = level_object_drawtiles_array[ index ];
+			test_type = level_object_tiles_array[ index ];
 
 			engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
-			level_object_drawtiles_array[ index ] = test_type;
+			level_object_tiles_array[ index ] = test_type;
 		}
 	}
 
@@ -85,14 +85,14 @@ void engine_board_manager_init()
 			direction = engine_move_manager_test_direction( row, col );
 
 			index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
-			test_type = level_object_drawtiles_array[ index ];
+			test_type = level_object_tiles_array[ index ];
 
 			engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
-			level_object_drawtiles_array[ index ] = test_type;
+			level_object_tiles_array[ index ] = test_type;
 		}
 	}
 }
-//
+
 //void engine_board_manager_set_exit_type( unsigned char exit_type )
 //{
 //	//struct_board_object *bo = &global_board_object;

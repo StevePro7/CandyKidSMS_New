@@ -8,6 +8,7 @@ void engine_function_manager_convertZtoXY( unsigned char divide, unsigned char z
 void engine_function_manager_convertByteToNibbles( unsigned char byte, unsigned char *upper_nibble, unsigned char *lower_nibble );
 void engine_function_manager_convertNibblesToByte( unsigned char upper_nibble, unsigned char lower_nibble, unsigned char *byte );
 
-void changeBank( unsigned char b );
+// TODO delete
+//void changeBank( unsigned char b );
 
 #endif//_FUNCTION_MANAGER_H_

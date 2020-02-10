@@ -2,8 +2,8 @@ XL2
 H 9 areas 3 global symbols
 M move_manager
 O -mz80
+S _level_object_tiles_array Ref0000
 S .__.ABS. Def0000
-S _level_object_drawtiles_array Ref0000
 A _CODE size B4 flags 0 addr 0
 S _engine_move_manager_test_direction Def0000
 A _DATA size 0 flags 0 addr 0
@@ -55,7 +55,7 @@ R 00 00 00 00
 T 88 00 DD E5 DD 21 00 00 DD 39 0E 00 DD 6E 05 5D
 R 00 00 00 00
 T 96 00 29 19 29 19 29 7D DD 86 04 6F 11 00 00 26
-R 00 00 00 00 02 0D 01 00
+R 00 00 00 00 02 0D 00 00
 T A4 00 00 19 7E E6 08 D6 08 28 03 DD 4E 06
 R 00 00 00 00
 T B0 00

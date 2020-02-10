@@ -22,16 +22,15 @@ void screen_load_screen_load()
 	//engine_font_manager_draw_char( 'X', 10, 16 );
 	//engine_font_manager_draw_data_ZERO( 400, 10, 16 );
 
-	engine_level_manager_load_level( 7, 3 );
+	engine_level_manager_load_level( 0, 4 );
 
 //	devkit_SMS_mapROMBank( 2 );
 
-	
 
 	engine_level_manager_draw_level();
 
 
-	//engine_font_manager_draw_data( level_object_drawtiles_array[16], 10, 0 );
+	//engine_font_manager_draw_data( level_object_tiles_array[16], 10, 0 );
 
 	//engine_tile_manager_draw_gamer( 4, 4 );
 	//engine_tile_manager_main_trees( 0, 4, 4 );

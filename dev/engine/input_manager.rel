@@ -4,7 +4,7 @@ M input_manager
 O -mz80
 S .__.ABS. Def0000
 S _devkit_SMS_getKeysStatus Ref0000
-A _CODE size 45 flags 0 addr 0
+A _CODE size 4F flags 0 addr 0
 S _engine_input_manager_update Def0000
 S _engine_input_manager_hold Def000D
 S _engine_input_manager_move Def003A
@@ -48,8 +48,10 @@ T 37 00 2E 01 C9
 R 00 00 00 00
 T 3A 00
 R 00 00 00 00
-T 3A 00 21 02 00 39 4E 3A 00 00 A1 6F C9
-R 00 00 00 00 00 08 02 00
+T 3A 00 21 02 00 39 4E 06 00 FD 21 00 00 FD 7E 00
+R 00 00 00 00 00 0B 02 00
+T 48 00 A1 6F FD 7E 01 A0 C9
+R 00 00 00 00
 T 00 00
 R 00 00 07 00
 T 00 00 00 00

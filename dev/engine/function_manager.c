@@ -30,12 +30,12 @@ void engine_function_manager_convertNibblesToByte( unsigned char upper_nibble, u
 }
 
 
-// TODO change this function name.
-void changeBank( unsigned char b )
-{
-	if( b != lastbank )
-	{
-		devkit_SMS_mapROMBank( b );
-		lastbank = b;
-	}
-}
+// TODO change this function name OR delete.
+//void changeBank( unsigned char b )
+//{
+//	if( b != lastbank )
+//	{
+//		devkit_SMS_mapROMBank( b );
+//		lastbank = b;
+//	}
+//}
