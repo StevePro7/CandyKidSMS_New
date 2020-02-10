@@ -19,6 +19,9 @@ void main (void)
 	//engine_content_manager_load_tiles_main();
 	engine_content_manager_load_sprites_game();
 
+	engine_hack_manager_init();
+	engine_hack_manager_invert();
+
 	//open_screen_type = screen_type_test;
 	open_screen_type = screen_type_load;
 

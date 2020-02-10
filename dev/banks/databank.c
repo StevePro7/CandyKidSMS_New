@@ -1,8 +1,12 @@
 unsigned char data_bank_bar = 19;
 
 // Global state.
-unsigned char state_object_exit_type;
 unsigned char state_object_tree_type;
+unsigned char state_object_exit_type;
+unsigned char state_object_world_no;
+unsigned char state_object_round_no;
+unsigned char state_object_music_on;
+unsigned char state_object_sound_on;
 
 // Level Manager.
 unsigned char level_object_tiles_array[] =
