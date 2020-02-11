@@ -32,17 +32,17 @@ void screen_intro_screen_load()
 
 	//engine_board_manager_debugger();
 
-	/*unsigned int frames[ MAX_COMMANDS ] = { 768, 1049, 1400, 1729, 2001, 3000 };
-	unsigned char commands[ MAX_COMMANDS ];
-	unsigned char args[ MAX_COMMANDS ];
+	//unsigned int frames[ MAX_COMMANDS ] = { 768, 1049, 1400, 1729, 2001, 3000 };
+	//unsigned char commands[ MAX_COMMANDS ];
+	//unsigned char args[ MAX_COMMANDS ];
 
-	unsigned char loop;
-	for( loop = 6; loop < 253; loop++ )
-	{
-		frames[ loop ] = loop;
-		commands[ loop ] = 9;
-		args[ loop ] = loop;
-	}*/
+	//unsigned char loop;
+	//for( loop = 6; loop < 253; loop++ )
+	//{
+	//	frames[ loop ] = loop;
+	//	commands[ loop ] = 9;
+	//	args[ loop ] = loop;
+	//}
 
 	/*frames[ 0 ] = 768; frames[ 1 ] = 1049; frames[ 2 ] = 1400; frames[ 3 ] = 1729; frames[ 4 ] = 2001; frames[ 5 ] = 3000;
 	frames[ 253 ] = 254; frames[ 254 ] = 300; 	frames[ 255 ] = 604;
