@@ -21,6 +21,11 @@ extern const unsigned char board_object_middle;
 extern const unsigned char board_object_right;
 
 
+// Audio Manager.
+extern const unsigned char *sound_object_data[];
+extern const unsigned char sound_object_bank[];
+
+
 // Level Manager.
 extern const unsigned char *level_object_AAdata[];
 extern const unsigned char level_object_AAsize[];

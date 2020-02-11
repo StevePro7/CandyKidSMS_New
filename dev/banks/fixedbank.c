@@ -1,3 +1,4 @@
+#include "..\banks\bank2.h"
 #include "..\banks\bank4.h"
 #include "..\banks\bank5.h"
 
@@ -29,6 +30,28 @@ const unsigned char board_object_bottom = 0x16;
 const unsigned char board_object_left	= 0x02;
 const unsigned char board_object_middle = 0x18;
 const unsigned char board_object_right	= 0x1E;
+
+
+
+// Audio Manager.
+const unsigned char *sound_object_data[] =
+{
+	sound_accept_psg,
+	sound_death_psg,
+	sound_gem_psg,
+	sound_level_psg,
+	sound_power_psg,
+	sound_reset_psg,
+};
+const unsigned char sound_object_bank[] =
+{
+	sound_accept_psg_bank,
+	sound_death_psg_bank,
+	sound_gem_psg_bank,
+	sound_level_psg_bank,
+	sound_power_psg_bank,
+	sound_reset_psg_bank,
+};
 
 
 // Level Manager.

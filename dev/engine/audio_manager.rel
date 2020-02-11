@@ -1,27 +1,19 @@
 XL2
-H 9 areas 13 global symbols
+H 9 areas B global symbols
 M audio_manager
 O -mz80
-S _sound_accept_psg Ref0000
 S _devkit_SFX_CHANNEL2 Ref0000
 S _devkit_PSGSFXGetStatus Ref0000
 S _devkit_PSGPlay Ref0000
-S _sound_gem_psg Ref0000
-S _sound_death_psg Ref0000
+S _sound_object_data Ref0000
+S _sound_object_bank Ref0000
+S _state_object_sound_on Ref0000
 S .__.ABS. Def0000
 S _devkit_PSGPlayNoRepeat Ref0000
-S _sound_level_psg Ref0000
-S _sound_reset_psg Ref0000
 S _devkit_PSGSFXPlay Ref0000
-S _sound_power_psg Ref0000
 S _devkit_SMS_mapROMBank Ref0000
-A _CODE size A0 flags 0 addr 0
-S _engine_audio_manager_sound_reset Def0046
-S _engine_audio_manager_sound_power Def0038
-S _engine_audio_manager_sound_accept Def0000
-S _engine_audio_manager_sound_gem Def001C
-S _engine_audio_manager_sound_death Def000E
-S _engine_audio_manager_sound_level Def002A
+A _CODE size 75 flags 0 addr 0
+S _engine_audio_manager_sound_play Def0000
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -32,45 +24,31 @@ A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
 R 00 00 00 00
-T 00 00 3E 02 F5 33 21 00 00 E5 CD 7E 00 F1 33 C9
-R 00 00 00 00 02 07 00 00 00 0B 00 00
-T 0E 00
+T 00 00 DD E5 DD 21 00 00 DD 39 3A 00 00 B7 28 3A
+R 00 00 00 00 02 0B 05 00
+T 0E 00 CD 00 00 7D B7 20 33 3E 0F F5 33 CD 00 00
+R 00 00 00 00 02 03 01 00 02 0E 09 00
+T 1C 00 33 01 00 00 DD 6E 04 26 00 29 09 4E 23 46
+R 00 00 00 00 02 04 03 00
+T 2A 00 11 00 00 DD 6E 04 26 00 19 56 C5 D5 33 CD
+R 00 00 00 00 02 03 04 00
+T 38 00 00 00 33 CD 00 00 55 C1 D5 33 C5 CD 00 00
+R 00 00 00 00 02 02 09 00 02 06 00 00 02 0E 08 00
+T 46 00 F1 33
 R 00 00 00 00
-T 0E 00 3E 02 F5 33 21 00 00 E5 CD 7E 00 F1 33 C9
-R 00 00 00 00 02 07 05 00 00 0B 00 00
-T 1C 00
+T 48 00
 R 00 00 00 00
-T 1C 00 3E 02 F5 33 21 00 00 E5 CD 7E 00 F1 33 C9
-R 00 00 00 00 02 07 04 00 00 0B 00 00
-T 2A 00
+T 48 00 DD E1 C9
 R 00 00 00 00
-T 2A 00 3E 02 F5 33 21 00 00 E5 CD 7E 00 F1 33 C9
-R 00 00 00 00 02 07 08 00 00 0B 00 00
-T 38 00
+T 4B 00
 R 00 00 00 00
-T 38 00 3E 02 F5 33 21 00 00 E5 CD 7E 00 F1 33 C9
-R 00 00 00 00 02 07 0B 00 00 0B 00 00
-T 46 00
+T 4B 00 21 04 00 39 7E F5 33 CD 00 00 33 D1 C1 C5
+R 00 00 00 00 02 0A 09 00
+T 59 00 D5 C5 CD 00 00 F1 C9
+R 00 00 00 00 02 05 02 00
+T 60 00
 R 00 00 00 00
-T 46 00 3E 02 F5 33 21 00 00 E5 CD 7E 00 F1 33 C9
-R 00 00 00 00 02 07 09 00 00 0B 00 00
-T 54 00
-R 00 00 00 00
-T 54 00 21 04 00 39 7E F5 33 CD 00 00 33 D1 C1 C5
-R 00 00 00 00 02 0A 0C 00
-T 62 00 D5 C5 CD 00 00 F1 C9
-R 00 00 00 00 02 05 03 00
-T 69 00
-R 00 00 00 00
-T 69 00 21 04 00 39 7E F5 33 CD 00 00 33 D1 C1 C5
-R 00 00 00 00 02 0A 0C 00
-T 77 00 D5 C5 CD 00 00 F1 C9
+T 60 00 21 04 00 39 7E F5 33 CD 00 00 33 D1 C1 C5
+R 00 00 00 00 02 0A 09 00
+T 6E 00 D5 C5 CD 00 00 F1 C9
 R 00 00 00 00 02 05 07 00
-T 7E 00
-R 00 00 00 00
-T 7E 00 CD 00 00 7D B7 C0 21 04 00 39 7E F5 33 CD
-R 00 00 00 00 02 03 02 00
-T 8C 00 00 00 33 CD 00 00 65 D1 C1 C5 D5 E5 33 C5
-R 00 00 00 00 02 02 0C 00 02 06 01 00
-T 9A 00 CD 00 00 F1 33 C9
-R 00 00 00 00 02 03 0A 00

@@ -1,0 +1,39 @@
+XL2
+H 9 areas 6 global symbols
+M actor_manager
+O -mz80
+S .__.ABS. Def0000
+A _CODE size 5 flags 0 addr 0
+S _engine_actor_manager_exec_enemy_mover Def0002
+S _engine_actor_manager_exec_gamer_speed Def0003
+S _engine_actor_manager_update Def0000
+S _engine_actor_manager_exec_enemy_speed Def0004
+S _engine_actor_manager_exec_gamer_mover Def0001
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00 C9
+R 00 00 00 00
+T 01 00
+R 00 00 00 00
+T 01 00 C9
+R 00 00 00 00
+T 02 00
+R 00 00 00 00
+T 02 00 C9
+R 00 00 00 00
+T 03 00
+R 00 00 00 00
+T 03 00 C9
+R 00 00 00 00
+T 04 00
+R 00 00 00 00
+T 04 00 C9
+R 00 00 00 00

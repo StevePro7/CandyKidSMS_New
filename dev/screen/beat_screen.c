@@ -12,30 +12,30 @@ static unsigned char first_time;
 
 void screen_beat_screen_load()
 {
-	unsigned char idx;
-	unsigned char max = 32;
-	unsigned int frame;
+	//unsigned char idx;
+	//unsigned char max = 32;
+	//unsigned int frame;
 
-	unsigned int frames[ MAX_COMMANDS ];
-//	unsigned char commands[ MAX_COMMANDS ];
-	unsigned char args[ MAX_COMMANDS ] =
-	{
-		direction_type_rght, direction_type_rght, direction_type_rght, direction_type_rght,
-		direction_type_down, direction_type_down, direction_type_down, direction_type_down,
-		direction_type_left, direction_type_left, direction_type_left, direction_type_left,
-		direction_type_upxx, direction_type_upxx, direction_type_upxx, direction_type_upxx,
-		direction_type_down, direction_type_down, direction_type_down, direction_type_down,
-		direction_type_rght, direction_type_rght, direction_type_rght, direction_type_rght,
-		direction_type_upxx, direction_type_upxx, direction_type_upxx, direction_type_upxx,
-		direction_type_left, direction_type_left, direction_type_left, direction_type_left,
-	};
+	//unsigned int frames[ MAX_COMMANDS ];
+	//unsigned char commands[ MAX_COMMANDS ];
+	//unsigned char args[ MAX_COMMANDS ] =
+	//{
+	//	direction_type_rght, direction_type_rght, direction_type_rght, direction_type_rght,
+	//	direction_type_down, direction_type_down, direction_type_down, direction_type_down,
+	//	direction_type_left, direction_type_left, direction_type_left, direction_type_left,
+	//	direction_type_upxx, direction_type_upxx, direction_type_upxx, direction_type_upxx,
+	//	direction_type_down, direction_type_down, direction_type_down, direction_type_down,
+	//	direction_type_rght, direction_type_rght, direction_type_rght, direction_type_rght,
+	//	direction_type_upxx, direction_type_upxx, direction_type_upxx, direction_type_upxx,
+	//	direction_type_left, direction_type_left, direction_type_left, direction_type_left,
+	//};
 
-	for( idx = 0; idx < max; idx++ )
-	{
-		frame = idx * 16;
-		frames[ idx ] = frame % MAX_BYTE_SIZE;
-		//commands[ idx ] = engine_command_manager_type( frame, command_type_enemy_mover );	// stevepro
-	}
+	//for( idx = 0; idx < max; idx++ )
+	//{
+	//	frame = idx * 16;
+	//	frames[ idx ] = frame % MAX_BYTE_SIZE;
+	//	//commands[ idx ] = engine_command_manager_type( frame, command_type_enemy_mover );	// stevepro
+	//}
 
 	engine_board_manager_init();
 	//engine_gamer_manager_init();
