@@ -1,9 +1,8 @@
 #include "audio_manager.h"
-#include "..\engine\font_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\devkit\_snd_manager.h"
-//#include "..\object\audio_object.h"
 #include "..\banks\bank2.h"
+#include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 
 // IMPORTANT disable compiler warning 196
@@ -45,22 +44,22 @@ static void play_sound( unsigned char *sound, unsigned char bank );
 // Sound.
 void engine_audio_manager_sound_play( unsigned char index )
 {
-	//unsigned char status;
 	const unsigned char *sound;
+	unsigned char status;
 	unsigned char bank;
 
-	//struct_hack_object *ho = &global_hack_object;
-	//if( !ho->hack_sound )
-	//{
-	//	return;
-	//}
+	// If sound effects are  disabled then return.
+	if( !state_object_sound_on )
+	{
+		return;
+	}
 
 	// If sound effect already playing then return.
-	//status = devkit_PSGSFXGetStatus();
-	//if( status )
-	//{
-	//	return;
-	//}
+	status = devkit_PSGSFXGetStatus();
+	if( status )
+	{
+		return;
+	}
 
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	sound = sound_object_data[ index ];
