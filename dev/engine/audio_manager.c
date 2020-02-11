@@ -11,17 +11,9 @@
 #pragma disable_warning 196
 #endif
 
-//#define sound_accept_psg		sound_accept_psg
-//#define sound_death_psg		sound_death_psg
-//#define sound_gem_psg			sound_gem_psg
-//#define sound_level_psg		sound_level_psg
-//#define sound_power_psg		sound_power_psg
-//#define sound_reset_psg		sound_reset_psg
-
 // Private helper functions.
 static void play_music( unsigned char *music, unsigned char bank );
 static void play_music_norepeat( unsigned char *music, unsigned char bank );
-static void play_sound( unsigned char *sound, unsigned char bank );
 
 // Music.
 //void engine_audio_manager_music_game( unsigned char index )
@@ -68,30 +60,6 @@ void engine_audio_manager_sound_play( unsigned char index )
 	devkit_SMS_mapROMBank( bank );
 	devkit_PSGSFXPlay( ( unsigned char* ) sound, devkit_SFX_CHANNEL2() );
 }
-//void engine_audio_manager_sound_accept()
-//{
-//	play_sound( ( unsigned char* ) sound_accept_psg, sound_accept_psg_bank );
-//}
-//void engine_audio_manager_sound_death()
-//{
-//	play_sound( ( unsigned char* ) sound_death_psg, sound_death_psg_bank );
-//}
-//void engine_audio_manager_sound_gem()
-//{
-//	play_sound( ( unsigned char* ) sound_gem_psg, sound_gem_psg_bank );
-//}
-//void engine_audio_manager_sound_level()
-//{
-//	play_sound( ( unsigned char* ) sound_level_psg, sound_level_psg_bank );
-//}
-//void engine_audio_manager_sound_power()
-//{
-//	play_sound( ( unsigned char* ) sound_power_psg, sound_power_psg_bank );
-//}
-//void engine_audio_manager_sound_reset()
-//{
-//	play_sound( ( unsigned char* ) sound_reset_psg, sound_reset_psg_bank );
-//}
 
 static void play_music( unsigned char *music, unsigned char bank )
 {
@@ -114,24 +82,4 @@ static void play_music_norepeat( unsigned char *music, unsigned char bank )
 
 	devkit_SMS_mapROMBank( bank );
 	devkit_PSGPlayNoRepeat( music );
-}
-static void play_sound( unsigned char *sound, unsigned char bank )
-{
-	unsigned char status;
-	//struct_hack_object *ho = &global_hack_object;
-	
-	//if( !ho->hack_sound )
-	//{
-	//	return;
-	//}
-
-	// If sound effect already playing then return.
-	status = devkit_PSGSFXGetStatus();
-	if( status )
-	{
-		return;
-	}
-
-	devkit_SMS_mapROMBank( bank );
-	devkit_PSGSFXPlay( sound, devkit_SFX_CHANNEL2() );
 }

@@ -12,7 +12,7 @@ S .__.ABS. Def0000
 S _devkit_PSGPlayNoRepeat Ref0000
 S _devkit_PSGSFXPlay Ref0000
 S _devkit_SMS_mapROMBank Ref0000
-A _CODE size 97 flags 0 addr 0
+A _CODE size 75 flags 0 addr 0
 S _engine_audio_manager_sound_play Def0000
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
@@ -52,11 +52,3 @@ T 60 00 21 04 00 39 7E F5 33 CD 00 00 33 D1 C1 C5
 R 00 00 00 00 02 0A 09 00
 T 6E 00 D5 C5 CD 00 00 F1 C9
 R 00 00 00 00 02 05 07 00
-T 75 00
-R 00 00 00 00
-T 75 00 CD 00 00 7D B7 C0 21 04 00 39 7E F5 33 CD
-R 00 00 00 00 02 03 01 00
-T 83 00 00 00 33 CD 00 00 65 D1 C1 C5 D5 E5 33 C5
-R 00 00 00 00 02 02 09 00 02 06 00 00
-T 91 00 CD 00 00 F1 33 C9
-R 00 00 00 00 02 03 08 00
