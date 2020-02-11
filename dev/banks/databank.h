@@ -8,6 +8,11 @@ extern unsigned char state_object_round_no;
 extern unsigned char state_object_music_on;
 extern unsigned char state_object_sound_on;
 
+// Command Manager.
+extern unsigned int command_object_frames[];
+extern unsigned char command_object_cmds[];
+extern unsigned char command_object_args[];
+
 // Level Manager.
 extern unsigned char level_object_tiles_array[];
 extern unsigned char level_object_bonus_count;
