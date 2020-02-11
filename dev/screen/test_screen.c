@@ -1,4 +1,5 @@
 #include "test_screen.h"
+#include "..\engine\audio_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\global_manager.h"
@@ -10,17 +11,24 @@
 
 void screen_test_screen_load()
 {
-	int bob;
-	//bob = foo[ 0 ];
-	//bob = 8;
-	bob = data_bank_bar;
-	engine_font_manager_draw_data( bob, 10, 4 );
-	devkit_SMS_mapROMBank( FIXED_BANK );
-	bob = foo[ 10 ];
-	devkit_SMS_mapROMBank( 2 );
-	engine_font_manager_draw_data( bob, 10, 6 );
-	//engine_font_manager_draw_char( bob, 10, 5 );
-	engine_font_manager_draw_text( "TEST SCREEN....!!", 10, 10 );
+	//int bob;
+	////bob = foo[ 0 ];
+	////bob = 8;
+	//bob = data_bank_bar;
+	//engine_font_manager_draw_data( bob, 10, 4 );
+	//devkit_SMS_mapROMBank( FIXED_BANK );
+	//bob = foo[ 10 ];
+	//devkit_SMS_mapROMBank( 2 );
+	//engine_font_manager_draw_data( bob, 10, 6 );
+	////engine_font_manager_draw_char( bob, 10, 5 );
+	engine_font_manager_draw_text( "TEST SCREEN..!!", 10, 10 );
+
+	engine_audio_manager_sound_play( sound_type_accept );
+	//engine_audio_manager_sound_death();
+	//engine_audio_manager_sound_gem();
+	//engine_audio_manager_sound_level();
+	//engine_audio_manager_sound_power();
+	//engine_audio_manager_sound_reset();
 }
 
 void screen_test_screen_update( unsigned char *screen_type )
