@@ -24,7 +24,7 @@ typedef struct tag_struct_gamer_object
 	unsigned char prev_move;	// Previous direction moved.
 	unsigned char direction;	// Current  direction moved.
 	unsigned char lifecycle;
-	unsigned int image;
+	unsigned char image;
 	unsigned char frame;
 	unsigned int calcd;
 	unsigned char images[ NUM_ENTITY_IMAGE ][ NUM_ENTITY_FRAME ];
