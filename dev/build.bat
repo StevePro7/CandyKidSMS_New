@@ -98,7 +98,8 @@ banks\bank14.rel banks\databank.rel banks\fixedbank.rel ^
 devkit\_sms_manager.rel devkit\_snd_manager.rel ^
 engine\asm_manager.rel engine\actor_manager.rel engine\audio_manager.rel engine\board_manager.rel ^
 engine\command_manager.rel engine\content_manager.rel ^
-engine\delay_manager.rel engine\enemy_manager.rel ^
+engine\delay_manager.rel ^
+engine\enemy_manager.rel ^
 engine\font_manager.rel engine\frame_manager.rel engine\function_manager.rel ^
 engine\gamer_manager.rel ^
 engine\hack_manager.rel engine\input_manager.rel ^
@@ -107,7 +108,7 @@ engine\move_manager.rel ^
 engine\screen_manager.rel ^
 engine\sprite_manager.rel ^
 engine\tile_manager.rel ^
-object\delay_object.rel object\enemy_object.rel object\frame_object.rel object\gamer_object.rel ^
+object\delay_object.rel object\frame_object.rel ^
 screen\none_screen.rel screen\splash_screen.rel screen\title_screen.rel screen\intro_screen.rel screen\load_screen.rel ^
 screen\demo_screen.rel screen\play_screen.rel 	screen\record_screen.rel screen\save_screen.rel screen\pass_screen.rel ^
 screen\dead_screen.rel screen\cont_screen.rel 	screen\over_screen.rel 	screen\beat_screen.rel 	screen\test_screen.rel ^
