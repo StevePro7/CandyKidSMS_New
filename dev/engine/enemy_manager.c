@@ -55,7 +55,7 @@ void engine_enemy_manager_init()
 		eo->direction = direction_type_none;
 		eo->lifecycle = lifecycle_type_idle;
 
-		eo->image = 0;
+		eo->image = frame_type_stance;
 		eo->frame = 0;
 
 		frame = enemy * NUM_ENTITY_IMAGE * NUM_ENTITY_FRAME + 0;
@@ -158,6 +158,7 @@ void engine_enemy_manager_update( unsigned char enemy )
 
 	if( eo->delta > TILE_HALF )
 	{
+		// TODO do the enemy hands.
 		eo->frame = 1 - eo->frame;
 		eo->delta = 0;
 		calcd_frame( enemy );
@@ -182,7 +183,9 @@ void engine_enemy_manager_move( unsigned char enemy, unsigned char direction )
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	eo->direction = direction;
 	eo->lifecycle = lifecycle_type_move;
-	eo->frame = 1;
+
+	// TODO do the enemy hands.
+	eo->frame = frame_type_toggle;
 	calcd_frame( enemy );
 }
 
