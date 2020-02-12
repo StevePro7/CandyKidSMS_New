@@ -1,5 +1,6 @@
 #include "test_screen.h"
 #include "..\engine\audio_manager.h"
+#include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\gamer_manager.h"
@@ -31,6 +32,7 @@ void screen_test_screen_load()
 	//engine_audio_manager_sound_play( sound_type_power );
 	//engine_audio_manager_sound_play( sound_type_reset );
 
+	engine_enemy_manager_init();
 	engine_gamer_manager_init();
 	//engine_audio_manager_sound_death();
 	//engine_audio_manager_sound_gem();
@@ -47,6 +49,7 @@ void screen_test_screen_update( unsigned char *screen_type )
 	//devkit_SMS_mapROMBank( 15 );
 	//data = bank15_txt[ 0 ];
 
+	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 	//test = engine_input_manager_hold( input_type_fire1 );
 	//if( test )
