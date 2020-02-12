@@ -27,9 +27,11 @@ sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 actor_man
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 command_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 content_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 delay_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 enemy_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 font_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 frame_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 function_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 gamer_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 hack_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 input_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 level_manager.c
@@ -96,7 +98,9 @@ banks\bank14.rel banks\databank.rel banks\fixedbank.rel ^
 devkit\_sms_manager.rel devkit\_snd_manager.rel ^
 engine\asm_manager.rel engine\actor_manager.rel engine\audio_manager.rel engine\board_manager.rel ^
 engine\command_manager.rel engine\content_manager.rel ^
-engine\delay_manager.rel engine\font_manager.rel engine\frame_manager.rel engine\function_manager.rel ^
+engine\delay_manager.rel engine\enemy_manager.rel ^
+engine\font_manager.rel engine\frame_manager.rel engine\function_manager.rel ^
+engine\gamer_manager.rel ^
 engine\hack_manager.rel engine\input_manager.rel ^
 engine\level_manager.rel ^
 engine\move_manager.rel ^

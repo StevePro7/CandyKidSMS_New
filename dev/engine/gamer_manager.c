@@ -50,7 +50,7 @@ void engine_gamer_manager_init()
 	go->lifecycle = lifecycle_type_idle;
 
 	go->image = 0;
-	go->frame = 0;
+	go->frame = frame_type_stance;
 	go->images[ 0 ][ 0 ] = images[ 0 ];
 	go->images[ 0 ][ 1 ] = images[ 1 ];
 	go->images[ 1 ][ 0 ] = images[ 2 ];
@@ -144,20 +144,12 @@ void engine_gamer_manager_draw()
 	engine_sprite_manager_draw_entity( go->posnX, go->posnY, go->calcd );
 }
 
-void engine_gamer_manager_text()
-{
-	struct_gamer_object *go = &global_gamer_object;
-
-	engine_font_manager_draw_data( go->delta, 20, 2 );
-	engine_font_manager_draw_data( go->total, 20, 3 );
-}
-
 void engine_gamer_manager_move( unsigned char direction )
 {
 	struct_gamer_object *go = &global_gamer_object;
 	go->direction = direction;
 	go->lifecycle = lifecycle_type_move;
-	go->frame = 1;
+	go->frame = frame_type_toggle;
 	calcd_frame();
 }
 
@@ -185,7 +177,11 @@ void engine_gamer_manager_stop()
 	calcd_frame();
 
 	// Check if in exit then move in previous direction [and wrap game board as necessary].
+
+	// TODO delete
 	engine_font_manager_draw_data( go->tileX, 20, 16 );
+	// TODO delete
+
 	if( go->tileX <= 1 || go->tileY <= 1 || go->tileX >= ( MAZE_COLS - 2 ) || go->tileY >= ( MAZE_ROWS - 2 ) )
 	{
 		engine_gamer_manager_wrap( go->prev_move );
