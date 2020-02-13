@@ -19,8 +19,11 @@ void screen_title_screen_load()
 	//engine_delay_manager_draw();
 	//engine_frame_manager_draw();
 
-	engine_board_manager_main_full();
-	engine_board_manager_main_exit();
+	//engine_board_manager_main_full();
+	//engine_board_manager_main_exit();
+
+	engine_board_manager_draw_full();
+	engine_board_manager_draw_exit();
 }
 
 void screen_title_screen_update( unsigned char *screen_type )
@@ -30,7 +33,7 @@ void screen_title_screen_update( unsigned char *screen_type )
 	if( input )
 	{
 		state_object_exit_type = 1 - state_object_exit_type;
-		engine_board_manager_main_exit();
+		engine_board_manager_draw_exit();
 	}
 
 	*screen_type = screen_type_title;

@@ -2,9 +2,9 @@ XL2
 H 9 areas 8 global symbols
 M title_screen
 O -mz80
-S _engine_board_manager_main_full Ref0000
 S _state_object_exit_type Ref0000
-S _engine_board_manager_main_exit Ref0000
+S _engine_board_manager_draw_full Ref0000
+S _engine_board_manager_draw_exit Ref0000
 S .__.ABS. Def0000
 S _engine_input_manager_hold Ref0000
 S _engine_delay_manager_load Ref0000
@@ -24,13 +24,13 @@ R 00 00 00 00
 T 00 00 21 00 00 E5 CD 00 00 21 00 00 E3 CD 00 00
 R 00 00 00 00 02 07 05 00 02 0E 05 00
 T 0E 00 F1 CD 00 00 C3 00 00
-R 00 00 00 00 02 04 00 00 02 07 02 00
+R 00 00 00 00 02 04 01 00 02 07 02 00
 T 15 00
 R 00 00 00 00
 T 15 00 3E 10 F5 33 CD 00 00 33 7D B7 28 0A 21
 R 00 00 00 00 02 07 04 00
 T 22 00 00 00 3E 01 96 77 CD 00 00
-R 00 00 00 00 02 02 01 00 02 09 02 00
+R 00 00 00 00 02 02 00 00 02 09 02 00
 T 2B 00
 R 00 00 00 00
 T 2B 00 C1 E1 E5 C5 36 02 C9

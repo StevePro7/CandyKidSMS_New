@@ -13,7 +13,7 @@
 #define BOT_SIDE_Y		22
 
 #define LFT_SIDE_X		0
-#define MID_SIDE_X		24
+#define MID_SIDE_X		22
 #define RGT_SIDE_X		28
 
 #define TOP_EXIT_Y		6
