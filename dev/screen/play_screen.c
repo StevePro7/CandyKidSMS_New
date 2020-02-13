@@ -25,9 +25,8 @@ static unsigned char frame_spot;
 
 void screen_play_screen_load()
 {
-	//engine_command_manager_init();
-	//state_object_sound_on();
-	engine_delay_manager_load( 10 );
+	engine_command_manager_init();
+	engine_delay_manager_load( 0 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
@@ -186,8 +185,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	//}
 
 
-	//// Execute all commands for this frame.
-	//engine_command_manager_execute( frame );
+	// Execute all commands for this frame.
+	engine_command_manager_execute( frame );
 
 
 	///*gamer_direction = engine_gamer_manager_input_direction();
