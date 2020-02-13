@@ -7,9 +7,7 @@
 #include "move_manager.h"
 #include "tile_manager.h"
 #include "..\banks\databank.h"
-//#include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
-//#include <stdio.h>
 
 #define TOP_SIDE_Y		0
 #define BOT_SIDE_Y		22
@@ -183,10 +181,10 @@ static void draw_gaps( unsigned char left, unsigned char midd, unsigned char rig
 		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + midd, BOT_SIDE_Y );
 
 		// Hard code top and bottom exits as they never move!
-		engine_tile_manager_main_trees( type, LFT_SIDE_X, TOP_EXIT_Y );
-		engine_tile_manager_main_trees( type, LFT_SIDE_X, BOT_EXIT_Y );
-		engine_tile_manager_main_trees( type, right, TOP_EXIT_Y );
-		engine_tile_manager_main_trees( type, right, BOT_EXIT_Y );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_EXIT_Y );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, BOT_EXIT_Y );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + right, TOP_EXIT_Y );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + right, BOT_EXIT_Y );
 		return;
 	}
 
@@ -197,8 +195,8 @@ static void draw_gaps( unsigned char left, unsigned char midd, unsigned char rig
 	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + midd, BOT_SIDE_Y );
 
 	// Hard code top and bottom exits as they never move!
-	engine_tile_manager_draw_blank( LFT_SIDE_X, TOP_EXIT_Y );
-	engine_tile_manager_draw_blank( LFT_SIDE_X, BOT_EXIT_Y );
-	engine_tile_manager_draw_blank( right, TOP_EXIT_Y );
-	engine_tile_manager_draw_blank( right, BOT_EXIT_Y );
+	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_EXIT_Y );
+	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X, BOT_EXIT_Y );
+	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + right, TOP_EXIT_Y );
+	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + right, BOT_EXIT_Y );
 }
