@@ -9,9 +9,9 @@ S _engine_enemy_manager_draw Ref0000
 S .__.ABS. Def0000
 S _engine_enemy_manager_init Ref0000
 S _engine_audio_manager_music_beat Ref0000
-A _CODE size 35 flags 0 addr 0
+A _CODE size 31 flags 0 addr 0
 S _screen_test_screen_load Def0000
-S _screen_test_screen_update Def0028
+S _screen_test_screen_update Def0024
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -28,11 +28,9 @@ T 0E 00 00 00 CD 00 00 C3 00 00
 R 00 00 00 00 02 02 06 00 02 05 05 00 02 08 01 00
 T 16 00
 R 00 00 00 00
-T 16 00 54 45 53 54 20 53 43 52 45 45 4E 21 2E 2E
+T 16 00 54 45 53 54 20 53 43 52 45 45 4E 21 21 00
 R 00 00 00 00
-T 24 00 2E 21 21 00
+T 24 00
 R 00 00 00 00
-T 28 00
-R 00 00 00 00
-T 28 00 CD 00 00 CD 00 00 C1 E1 E5 C5 36 0E C9
+T 24 00 CD 00 00 CD 00 00 C1 E1 E5 C5 36 0E C9
 R 00 00 00 00 02 03 03 00 02 06 00 00

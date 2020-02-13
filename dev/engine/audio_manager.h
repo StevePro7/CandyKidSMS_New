@@ -11,7 +11,7 @@ void engine_audio_manager_music_over();
 void engine_audio_manager_music_beat();
 
 // Sound.
-void engine_audio_manager_sound_play( unsigned char index );
+//void engine_audio_manager_sound_play( unsigned char index );
 //void engine_audio_manager_sound_accept();
 //void engine_audio_manager_sound_death();
 //void engine_audio_manager_sound_gem();

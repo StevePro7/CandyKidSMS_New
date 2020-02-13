@@ -15,7 +15,7 @@
 // Private helper functions.
 static void play_music( unsigned char *music, unsigned char bank );
 static void play_music_norepeat( unsigned char *music, unsigned char bank );
-static void play_sound( unsigned char *sound );
+//static void play_sound( unsigned char *sound );
 
 // Music.
 void engine_audio_manager_music_game( unsigned char index )
@@ -72,32 +72,32 @@ void engine_audio_manager_music_beat()
 
 
 // Sound.
-void engine_audio_manager_sound_play( unsigned char index )
-{
-	const unsigned char *sound;
-	unsigned char status;
-	unsigned char bank;
-
-	// If sound effects are  disabled then return.
-	if( !state_object_sound_on )
-	{
-		return;
-	}
-
-	// If sound effect already playing then return.
-	status = devkit_PSGSFXGetStatus();
-	if( status )
-	{
-		return;
-	}
-
-	devkit_SMS_mapROMBank( FIXED_BANK );
-	sound = sound_object_data[ index ];
-	bank = sound_object_bank[ index ];
-
-	devkit_SMS_mapROMBank( bank );
-	devkit_PSGSFXPlay( ( unsigned char* ) sound, devkit_SFX_CHANNEL2() );
-}
+//void engine_audio_manager_sound_play( unsigned char index )
+//{
+//	const unsigned char *sound;
+//	unsigned char status;
+//	unsigned char bank;
+//
+//	// If sound effects are  disabled then return.
+//	if( !state_object_sound_on )
+//	{
+//		return;
+//	}
+//
+//	// If sound effect already playing then return.
+//	status = devkit_PSGSFXGetStatus();
+//	if( status )
+//	{
+//		return;
+//	}
+//
+//	devkit_SMS_mapROMBank( FIXED_BANK );
+//	sound = sound_object_data[ index ];
+//	bank = sound_object_bank[ index ];
+//
+//	devkit_SMS_mapROMBank( bank );
+//	devkit_PSGSFXPlay( ( unsigned char* ) sound, devkit_SFX_CHANNEL2() );
+//}
 
 static void play_music( unsigned char *music, unsigned char bank )
 {
