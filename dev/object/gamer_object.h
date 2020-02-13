@@ -6,10 +6,10 @@
 typedef struct tag_struct_gamer_object
 {
 	// TODO test for this.
-	//unsigned char posnX;		// PositionX during movement.
-	//unsigned char posnY;		// PositionY during movement.
-	int posnX;					// PositionX during movement.
-	int posnY;					// PositionY during movement.
+	unsigned char posnX;		// PositionX during movement.
+	unsigned char posnY;		// PositionY during movement.
+	//int posnX;					// PositionX during movement.
+	//int posnY;					// PositionY during movement.
 	//unsigned char homeX;		// Home tileX on all restart.
 	//unsigned char homeY;		// Home tileY on all restart.
 	//unsigned char homeZ;		// Home tile stored as R x C.
