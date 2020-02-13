@@ -57,13 +57,15 @@ void engine_gamer_manager_init()
 	go->images[ 1 ][ 1 ] = images[ 3 ];
 
 	calcd_frame();
+
+	calcd_frame();
 	calcd_spots();
 
 	//TODO delete
-	engine_font_manager_draw_data( go->tileX, 16, 2 );
-	engine_font_manager_draw_data( go->tileY, 16, 3 );
-	engine_font_manager_draw_data( go->posnX, 16, 5 );
-	engine_font_manager_draw_data( go->posnY, 16, 6 );
+	//engine_font_manager_draw_data( go->tileX, 16, 2 );
+	//engine_font_manager_draw_data( go->tileY, 16, 3 );
+	//engine_font_manager_draw_data( go->posnX, 16, 5 );
+	//engine_font_manager_draw_data( go->posnY, 16, 6 );
 }
 
 void engine_gamer_manager_update()
