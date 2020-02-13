@@ -7,10 +7,17 @@
 #include "move_manager.h"
 #include "tile_manager.h"
 #include "..\banks\databank.h"
-#include "..\banks\fixedbank.h"
+//#include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
 //#include <stdio.h>
-//
+
+#define TOP_SIDE_Y		0
+#define BOT_SIDE_Y		22
+
+#define LFT_SIDE_X		0
+#define MID_SIDE_X		24
+#define RGT_SIDE_X		28
+
 #define TOP_EXIT_Y		6
 #define BOT_EXIT_Y		16
 //// Global variable.
@@ -95,28 +102,25 @@ void engine_board_manager_init()
 	}
 }
 
-
-
 void engine_board_manager_draw_full()
 {
 	//struct_board_object *bo = &global_board_object;
-	draw_side( TREE_COLS, board_object_middle );
+	draw_side( TREE_COLS, MID_SIDE_X );
 }
 void engine_board_manager_draw_exit()
 {
 	//struct_board_object *bo = &global_board_object;
-	draw_gaps( TOP_EXIT_Y, BOT_EXIT_Y, board_object_middle );
+	draw_gaps( TOP_EXIT_Y, BOT_EXIT_Y, MID_SIDE_X );
 }
 
 void engine_board_manager_main_full()
 {
-	//struct_board_object *bo = &global_board_object;
-	draw_side( SCREEN_TILE_WIDE - 1, board_object_right );
+	draw_side( SCREEN_TILE_WIDE - 1, RGT_SIDE_X );
 }
 void engine_board_manager_main_exit()
 {
 	//struct_board_object *bo = &global_board_object;
-	draw_gaps( 8, 20, board_object_right );
+	draw_gaps( 8, 20, RGT_SIDE_X );
 }
 
 // This is the function that draws opaque tile to hide Kid when moving through exit!
@@ -157,45 +161,44 @@ static void draw_side( unsigned char wide, unsigned char right )
 
 	for( loop = 0; loop < wide; loop++ )
 	{
-		engine_tile_manager_main_trees( type, board_object_left + loop * 2, board_object_top );
-		engine_tile_manager_main_trees( type, board_object_left + loop * 2, board_object_bottom );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, TOP_SIDE_Y );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, BOT_SIDE_Y );
 	}
 	for( loop = 1; loop < SCREEN_TILE_HIGH - 1; loop++ )
 	{
-		engine_tile_manager_main_trees( type, board_object_left, board_object_top + loop * 2 );
-		engine_tile_manager_main_trees( type, right, board_object_top + loop * 2 );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_SIDE_Y + loop * 2 );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + right, TOP_SIDE_Y + loop * 2 );
 	}
 }
 static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right )
 {
 	//struct_board_object *bo = &global_board_object;
 	unsigned char type = state_object_tree_type;
-	devkit_SMS_mapROMBank( FIXED_BANK );
 
 	if( exit_type_closed == state_object_exit_type )
 	{
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + left, board_object_top );
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + midd, board_object_top );
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + left, board_object_bottom );
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + midd, board_object_bottom );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + left, TOP_SIDE_Y );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + midd, TOP_SIDE_Y );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + left, BOT_SIDE_Y );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + midd, BOT_SIDE_Y );
 
 		// Hard code top and bottom exits as they never move!
-		engine_tile_manager_main_trees( type, board_object_left, TOP_EXIT_Y );
-		engine_tile_manager_main_trees( type, board_object_left, BOT_EXIT_Y );
+		engine_tile_manager_main_trees( type, LFT_SIDE_X, TOP_EXIT_Y );
+		engine_tile_manager_main_trees( type, LFT_SIDE_X, BOT_EXIT_Y );
 		engine_tile_manager_main_trees( type, right, TOP_EXIT_Y );
 		engine_tile_manager_main_trees( type, right, BOT_EXIT_Y );
 		return;
 	}
 
 	// Otherwise "draw" exits as blank tiles.
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, board_object_top );
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + midd, board_object_top );
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, board_object_bottom );
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + midd, board_object_bottom );
+	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, TOP_SIDE_Y );
+	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + midd, TOP_SIDE_Y );
+	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, BOT_SIDE_Y );
+	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + midd, BOT_SIDE_Y );
 
 	// Hard code top and bottom exits as they never move!
-	engine_tile_manager_draw_blank( board_object_left, TOP_EXIT_Y );
-	engine_tile_manager_draw_blank( board_object_left, BOT_EXIT_Y );
+	engine_tile_manager_draw_blank( LFT_SIDE_X, TOP_EXIT_Y );
+	engine_tile_manager_draw_blank( LFT_SIDE_X, BOT_EXIT_Y );
 	engine_tile_manager_draw_blank( right, TOP_EXIT_Y );
 	engine_tile_manager_draw_blank( right, BOT_EXIT_Y );
 }

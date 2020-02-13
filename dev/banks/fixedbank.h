@@ -10,14 +10,6 @@ extern const unsigned char board_object_homeY[];
 // TODO permanently delet as don't believe necc. as will calcSpots() "Z"
 //extern const unsigned char board_object_homeZ[];
 
-extern const unsigned char board_object_exitX;
-extern const unsigned char board_object_exitY;
-extern const unsigned char board_object_top;
-extern const unsigned char board_object_bottom;
-extern const unsigned char board_object_left;
-extern const unsigned char board_object_middle;
-extern const unsigned char board_object_right;
-
 
 // Enemy Manager.
 extern const unsigned char enemy_object_directions[];

@@ -27,14 +27,6 @@ const unsigned char board_object_homeY[] = { 0x0A, 0x0A, 0x03, 0x04 };
 // TODO permanently delet as don't believe necc. as will calcSpots() "Z"
 //const unsigned char board_object_homeZ[] = { 0x96, 0x8F, 0x34, 0x2D };
 
-const unsigned char board_object_exitX	= 0x06;
-const unsigned char board_object_exitY	= 0x10;
-const unsigned char board_object_top	= 0x00;
-const unsigned char board_object_bottom = 0x16;
-const unsigned char board_object_left	= 0x02;
-const unsigned char board_object_middle = 0x18;
-const unsigned char board_object_right	= 0x1E;
-
 
 // Enemy Manager.
 extern const unsigned char enemy_object_directions[] =
