@@ -26,7 +26,7 @@ static unsigned char frame_spot;
 void screen_play_screen_load()
 {
 	engine_command_manager_init();
-	engine_delay_manager_load( 0 );
+	engine_delay_manager_load( 15 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
@@ -101,15 +101,16 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// For continuity we want to check if actor can move immediately after stopping.
 	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
 	{
+		gamer_direction = direction_type_left;
 		if( 0 == frame )
 		{
 			engine_font_manager_draw_data( frame, 12, 14 );
-			engine_command_manager_add( frame, command_type_gamer_mover, direction_type_down );
+			engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
 		}
 		if( 16 == frame )
 		{
 			engine_font_manager_draw_data( frame, 12, 15 );
-			engine_command_manager_add( frame, command_type_gamer_mover, direction_type_rght );
+			engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
 		}
 
 		/*if( 40 == frame )
@@ -149,7 +150,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 		if( direction_type_none != eo->direction && lifecycle_type_move == eo->lifecycle )
 		{
 			//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
-			engine_enemy_manager_update( enemy );
+			//engine_enemy_manager_update( enemy );
 		}
 		if( direction_type_none != eo->direction && lifecycle_type_idle == eo->lifecycle )
 		{

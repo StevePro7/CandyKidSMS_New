@@ -1,7 +1,7 @@
 #include "gamer_manager.h"
 #include "board_manager.h"
 #include "enum_manager.h"
-//#include "font_manager.h"
+#include "font_manager.h"
 #include "function_manager.h"
 #include "global_manager.h"
 #include "input_manager.h"
@@ -181,7 +181,8 @@ void engine_gamer_manager_stop()
 	// Check if in exit then move in previous direction [and wrap game board as necessary].
 
 	// TODO delete
-	//engine_font_manager_draw_data( go->tileX, 20, 16 );
+	engine_font_manager_draw_data( go->tileX, 12, 8 );
+	engine_font_manager_draw_data( go->tileY, 12, 9 );
 	// TODO delete
 
 	if( go->tileX <= 1 || go->tileY <= 1 || go->tileX >= ( MAZE_COLS - 2 ) || go->tileY >= ( MAZE_ROWS - 2 ) )
