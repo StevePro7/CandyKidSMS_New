@@ -1,6 +1,7 @@
-#include "..\banks\bank2.h"
-#include "..\banks\bank4.h"
-#include "..\banks\bank5.h"
+#include "bank2.h"
+#include "bank4.h"
+#include "bank5.h"
+#include "..\engine\enum_manager.h"
 
 unsigned const char foo[] =
 {
@@ -21,7 +22,8 @@ const unsigned char board_object_posnY[] =
 // Order:									  Pro,  Adi,  Suz,  Kid.
 const unsigned char board_object_homeX[] = { 0x0A, 0x03, 0x0A, 0x03 };
 const unsigned char board_object_homeY[] = { 0x0A, 0x0A, 0x03, 0x03 };
-const unsigned char board_object_homeZ[] = { 0x96, 0x8F, 0x34, 0x2D };
+// TODO permanently delet as don't believe necc. as will calcSpots() "Z"
+//const unsigned char board_object_homeZ[] = { 0x96, 0x8F, 0x34, 0x2D };
 
 const unsigned char board_object_exitX	= 0x06;
 const unsigned char board_object_exitY	= 0x10;
@@ -31,6 +33,19 @@ const unsigned char board_object_left	= 0x02;
 const unsigned char board_object_middle = 0x18;
 const unsigned char board_object_right	= 0x1E;
 
+
+// Enemy Manager.
+extern const unsigned char enemy_object_directions[] =
+{
+	direction_type_rght, direction_type_upxx, direction_type_down, direction_type_left,
+	direction_type_rght, direction_type_down, direction_type_upxx, direction_type_left,
+	direction_type_left, direction_type_upxx, direction_type_down, direction_type_rght,
+	direction_type_left, direction_type_down, direction_type_upxx, direction_type_rght,
+	direction_type_upxx, direction_type_rght, direction_type_left, direction_type_down,
+	direction_type_down, direction_type_rght, direction_type_left, direction_type_upxx,
+	direction_type_upxx, direction_type_left, direction_type_rght, direction_type_down,
+	direction_type_down, direction_type_left, direction_type_rght, direction_type_upxx,
+};
 
 
 // Audio Manager.

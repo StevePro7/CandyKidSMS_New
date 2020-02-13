@@ -44,7 +44,7 @@ void engine_enemy_manager_init()
 		//eo->homeY = homeY;
 		//engine_board_manager_calc_tileSpot( eo->homeX, eo->homeY, &eo->homeZ );
 		eo->tileX = board_object_homeX[ enemy ];
-		eo->tileY = board_object_homeY[ enemy ];;
+		eo->tileY = board_object_homeY[ enemy ];
 		eo->delay = 2;		// TODO hardcoded - inject!
 		eo->timer = 0;
 		eo->delta = 0;

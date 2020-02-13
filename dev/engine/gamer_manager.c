@@ -60,10 +60,10 @@ void engine_gamer_manager_init()
 	calcd_spots();
 
 	//TODO delete
-	//engine_font_manager_draw_data( go->tileX, 20, 2 );
-	//engine_font_manager_draw_data( go->tileY, 20, 3 );
-	//engine_font_manager_draw_data( go->posnX, 20, 5 );
-	//engine_font_manager_draw_data( go->posnY, 20, 6 );
+	engine_font_manager_draw_data( go->tileX, 16, 2 );
+	engine_font_manager_draw_data( go->tileY, 16, 3 );
+	engine_font_manager_draw_data( go->posnX, 16, 5 );
+	engine_font_manager_draw_data( go->posnY, 16, 6 );
 }
 
 void engine_gamer_manager_update()

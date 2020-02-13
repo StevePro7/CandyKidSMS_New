@@ -1,5 +1,3 @@
-unsigned char data_bank_bar = 19;
-
 // Global state.
 unsigned char state_object_tree_type;
 unsigned char state_object_exit_type;
