@@ -53,13 +53,13 @@ void screen_play_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
-	//struct_enemy_object *eo;
+	struct_enemy_object *eo;
 	unsigned char gamer_direction = direction_type_none;
 	unsigned char enemy_direction = direction_type_none;
 
 	unsigned char proceed;
 	////unsigned char input;
-	//unsigned char enemy;
+	unsigned char enemy;
 	unsigned int frame;
 	frame = fo->frame_count;
 
@@ -138,51 +138,58 @@ void screen_play_screen_update( unsigned char *screen_type )
 	}
 
 
-	//
-	//// Move enemies.
-	//enemy = actor_type_pro;
-	////for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
-	//{
-	//	eo = &global_enemy_objects[ enemy ];
-	//	enemy_direction = direction_type_none;
+	// Move enemies.
+	enemy = actor_type_pro;
+	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		eo = &global_enemy_objects[ enemy ];
+		enemy_direction = direction_type_none;
 
-	//	// Move enemy.
-	//	if( direction_type_none != eo->direction && lifecycle_type_move == eo->lifecycle )
-	//	{
-	//		//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
-	//		engine_enemy_manager_update( enemy );
-	//	}
-	//	if( direction_type_none != eo->direction && lifecycle_type_idle == eo->lifecycle )
-	//	{
-	//		// Check collision.
-	//		engine_font_manager_draw_data( frame, 12, 20 );
-	//		engine_enemy_manager_stop( enemy );
+		// Move enemy.
+		if( direction_type_none != eo->direction && lifecycle_type_move == eo->lifecycle )
+		{
+			//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
+			engine_enemy_manager_update( enemy );
+		}
+		if( direction_type_none != eo->direction && lifecycle_type_idle == eo->lifecycle )
+		{
+			// Check collision.
+			engine_font_manager_draw_data( frame, 12, 20 );
+			engine_enemy_manager_stop( enemy );
 
-	//		engine_command_manager_add( frame, command_type_end_gamer, 0 );
-	//		//frame_spot = 1;
-	//	}
-	//	// For continuity we want to check if actor can move immediately after stopping.
-	//	if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
-	//	{
-	//		if( 4 == frame )
-	//		{
-	//			unsigned byte = ( enemy | ( enemy_direction << 4 ) );
-	//			engine_font_manager_draw_data( frame, 12, 18 );
-	//			// TODO map enemy to command 
-	//			//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
-	//			enemy_direction = direction_type_upxx;
-	//			engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
-	//		}
-	//		if( 36 == frame )
-	//		{
-	//			engine_font_manager_draw_data( frame, 12, 16 );
-	//			// TODO map enemy to command 
-	//			//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
-	//			enemy_direction = direction_type_upxx;
-	//			engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
-	//		}
-	//	}
-	//}
+			engine_command_manager_add( frame, command_type_end_gamer, 0 );
+			//frame_spot = 1;
+		}
+		// For continuity we want to check if actor can move immediately after stopping.
+		if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
+		{
+			if( 4 == frame )
+			{
+				unsigned byte = ( enemy | ( enemy_direction << 4 ) );
+				engine_font_manager_draw_data( frame, 12, 18 );
+				// TODO map enemy to command 
+				//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
+				enemy_direction = direction_type_upxx;
+				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+			}
+			if( 36 == frame )
+			{
+				engine_font_manager_draw_data( frame, 12, 16 );
+				// TODO map enemy to command 
+				//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
+				enemy_direction = direction_type_upxx;
+				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+			}
+			if( 68 == frame )
+			{
+				engine_font_manager_draw_data( frame, 12, 16 );
+				// TODO map enemy to command 
+				//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
+				enemy_direction = direction_type_rght;
+				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+			}
+		}
+	}
 
 
 	// Execute all commands for this frame.
