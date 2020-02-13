@@ -51,21 +51,20 @@ extern const unsigned char enemy_object_directions[] =
 
 
 // Audio Manager.
-const unsigned char *music_object_data[] =
-{
-	music_beat_psg,
-	music_over_psg,
-	music_title_psg,
-	music_game03_psg,
-
-};
-const unsigned char music_object_bank[] =
-{
-	music_beat_psg_bank,
-	music_over_psg_bank,
-	music_title_psg_bank,
-	music_game03_psg_bank,
-};
+//const unsigned char *music_object_data[] =
+//{
+//	music_beat_psg,
+//	music_over_psg,
+//	music_title_psg,
+//	music_game03_psg,
+//};
+//const unsigned char music_object_bank[] =
+//{
+//	music_beat_psg_bank,
+//	music_over_psg_bank,
+//	music_title_psg_bank,
+//	music_game03_psg_bank,
+//};
 
 const unsigned char *sound_object_data[] =
 {

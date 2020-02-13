@@ -34,9 +34,6 @@
     <Filter Include="Source Files\object">
       <UniqueIdentifier>{3b5a267f-3b92-4a97-bb93-07eda8625a3b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\output">
-      <UniqueIdentifier>{5418c51d-29b0-4f8a-be29-874e69b0265f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\screen">
       <UniqueIdentifier>{2ce0a400-a383-4102-82ef-da5fc1381201}</UniqueIdentifier>
     </Filter>
@@ -239,6 +236,9 @@
     <ClInclude Include="engine\gamer_manager.h">
       <Filter>Header Files\engine</Filter>
     </ClInclude>
+    <ClInclude Include="object\audio_object.h">
+      <Filter>Header Files\object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -426,6 +426,9 @@
     </ClCompile>
     <ClCompile Include="engine\gamer_manager.c">
       <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="object\audio_object.c">
+      <Filter>Source Files\object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

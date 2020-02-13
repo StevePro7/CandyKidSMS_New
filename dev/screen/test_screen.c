@@ -23,10 +23,12 @@ void screen_test_screen_load()
 	//devkit_SMS_mapROMBank( 2 );
 	//engine_font_manager_draw_data( bob, 10, 6 );
 	////engine_font_manager_draw_char( bob, 10, 5 );
-	engine_font_manager_draw_text( "TEST SCREEN!!!", 10, 10 );
+	engine_font_manager_draw_text( "TEST SCREEN!...!!", 10, 10 );
 
-	//engine_audio_manager_music_play( music_type_beat );
-	engine_audio_manager_music_play( music_type_over );
+	
+	engine_audio_manager_music_beat();
+	//engine_audio_manager_music_play( music_type_over );
+	//engine_audio_manager_music_play( music_type_over );
 	//engine_audio_manager_music_play( music_type_title );
 	//engine_audio_manager_music_play( music_type_game03 );
 

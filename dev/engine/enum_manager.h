@@ -155,9 +155,9 @@ typedef enum tag_enum_offset_type
 typedef enum tag_enum_music_type
 {
 	music_type_beat = 0,
-	music_type_over = 1,
-	music_type_title = 2,
-	music_type_game03 = 3,
+//	music_type_over = 1,
+//	music_type_title = 2,
+//	music_type_game03 = 3,
 
 } enum_music_type;
 
