@@ -1,6 +1,8 @@
 #include "bank2.h"
 #include "bank4.h"
 #include "bank5.h"
+#include "bank6.h"
+#include "bank7.h"
 #include "..\engine\enum_manager.h"
 
 unsigned const char foo[] =
@@ -49,6 +51,22 @@ extern const unsigned char enemy_object_directions[] =
 
 
 // Audio Manager.
+const unsigned char *music_object_data[] =
+{
+	music_beat_psg,
+	music_over_psg,
+	music_title_psg,
+	music_game03_psg,
+
+};
+const unsigned char music_object_bank[] =
+{
+	music_beat_psg_bank,
+	music_over_psg_bank,
+	music_title_psg_bank,
+	music_game03_psg_bank,
+};
+
 const unsigned char *sound_object_data[] =
 {
 	sound_accept_psg,
