@@ -26,7 +26,6 @@ void screen_test_screen_load()
 	engine_font_manager_draw_text( "TEST SCREEN!!", 10, 10 );
 
 	
-	engine_audio_manager_music_beat();
 	//engine_audio_manager_music_play( music_type_over );
 	//engine_audio_manager_music_play( music_type_over );
 	//engine_audio_manager_music_play( music_type_title );
@@ -36,6 +35,9 @@ void screen_test_screen_load()
 	engine_gamer_manager_init();
 
 	//engine_audio_manager_sound_play( sound_type_death );
+
+	// IMPORTANT play music last!!
+	engine_audio_manager_music_over();
 }
 
 void screen_test_screen_update( unsigned char *screen_type )
