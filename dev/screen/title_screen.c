@@ -8,7 +8,6 @@
 #include "..\engine\input_manager.h"
 #include "..\banks\databank.h"
 
-
 void screen_title_screen_load()
 {
 	//engine_font_manager_draw_text( "TITLE SCREEN!!!", 4, 0 );

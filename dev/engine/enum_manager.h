@@ -116,16 +116,6 @@ typedef enum tag_enum_command_type
 	command_type_gamer_speed = 3,
 	command_type_enemy_speed = 4,
 
-	//command_type_kid_mover = 1,
-	//command_type_pro_mover = 2,
-	//command_type_adi_mover = 3,
-	//command_type_suz_mover = 4,
-
-	//command_type_kid_speed = 5,
-	//command_type_pro_speed = 6,
-	//command_type_adi_speed = 7,
-	//command_type_suz_speed = 8,
-
 	command_type_end_gamer = MAX_CMD_TYPE - 1,
 
 } enum_command_type;
@@ -155,9 +145,9 @@ typedef enum tag_enum_offset_type
 typedef enum tag_enum_music_type
 {
 	music_type_beat = 0,
-//	music_type_over = 1,
-//	music_type_title = 2,
-//	music_type_game03 = 3,
+	music_type_over = 1,
+	music_type_title = 2,
+	music_type_game03 = 3,
 
 } enum_music_type;
 

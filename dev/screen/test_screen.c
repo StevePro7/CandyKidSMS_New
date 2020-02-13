@@ -23,13 +23,7 @@ void screen_test_screen_load()
 	//devkit_SMS_mapROMBank( 2 );
 	//engine_font_manager_draw_data( bob, 10, 6 );
 	////engine_font_manager_draw_char( bob, 10, 5 );
-	engine_font_manager_draw_text( "TEST SCREEN!!", 10, 10 );
-
-	
-	//engine_audio_manager_music_play( music_type_over );
-	//engine_audio_manager_music_play( music_type_over );
-	//engine_audio_manager_music_play( music_type_title );
-	//engine_audio_manager_music_play( music_type_game03 );
+	engine_font_manager_draw_text( "TEST SCREEN...!!", 10, 10 );
 
 	engine_enemy_manager_init();
 	engine_gamer_manager_init();
@@ -37,7 +31,15 @@ void screen_test_screen_load()
 	//engine_audio_manager_sound_play( sound_type_death );
 
 	// IMPORTANT play music last!!
-	engine_audio_manager_music_over();
+	//engine_audio_manager_music_beat();
+	//engine_audio_manager_music_over();
+	//engine_audio_manager_music_title();
+	//engine_audio_manager_music_game( 0 );
+
+	//engine_audio_manager_music_play_norepeat( music_type_over );
+	//engine_audio_manager_music_play( music_type_beat );
+	//engine_audio_manager_music_play( music_type_title );
+	engine_audio_manager_music_play( music_type_game03 );
 }
 
 void screen_test_screen_update( unsigned char *screen_type )
