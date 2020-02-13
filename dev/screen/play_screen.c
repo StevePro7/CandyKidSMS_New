@@ -26,17 +26,15 @@ static unsigned char frame_spot;
 void screen_play_screen_load()
 {
 	engine_command_manager_init();
-	engine_delay_manager_load( 15 );
+	engine_delay_manager_load( 5 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
 	engine_enemy_manager_init();
-	//engine_level_manager_init_board();
-	//engine_level_manager_init_exits();
 
 	// Draw functions.
-	//engine_board_manager_debugger();
-	//engine_board_manager_side_tile();
+	engine_board_manager_debugger();
+	engine_board_manager_side_tile();
 
 	engine_level_manager_load_level( 0, 0 );
 	engine_level_manager_draw_level();
@@ -44,6 +42,8 @@ void screen_play_screen_load()
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
 	//engine_font_manager_draw_text( "PLAY SCREEN..!!", 2, 10 );
+	engine_font_manager_draw_text( "PLAY", 28, 6 );
+	engine_font_manager_draw_text( "DUDE", 28, 7 );
 
 	first_time = 1;
 	frame_spot = 0;
@@ -101,8 +101,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// For continuity we want to check if actor can move immediately after stopping.
 	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
 	{
-		//gamer_direction = direction_type_left;
-		gamer_direction = direction_type_upxx;
+		gamer_direction = direction_type_left;
+		//gamer_direction = direction_type_upxx;
 		if( 0 == frame )
 		{
 			engine_font_manager_draw_data( frame, 12, 14 );

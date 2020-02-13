@@ -27,48 +27,7 @@
 //// Private helper methods.
 static void load_level( const unsigned char *data, const unsigned char size, const unsigned char bank, unsigned char mult );
 static void draw_tiles( unsigned char x, unsigned char y );
-//
-//void engine_level_manager_init_board()
-//{
-//	struct_level_object *lo = &global_level_object;
-//	unsigned char index, row, col;
-//
-//	// Initialize 14x14 maze.
-//	for( row = 0; row < MAZE_ROWS; row++ )
-//	{
-//		for( col = 0; col < MAZE_COLS; col++ )
-//		{
-//			index = row * MAZE_COLS + col;
-//
-//			lo->drawtiles_array[ index ] = tile_type_blank;
-//			lo->collision_array[ index ] = coll_type_empty;
-//			lo->direction_array[ index ] = direction_type_none;
-//		}
-//	}
-//
-//	// Calculate 12x12 outside tree border.
-//	for( col = 0; col < TREE_COLS; col++ )
-//	{
-//		index = MAZE_ROWS * 1 + (col + 1);
-//		lo->drawtiles_array[ index ] = tile_type_trees;
-//		lo->collision_array[ index ] = coll_type_block;
-//
-//		index = MAZE_ROWS * ( MAZE_ROWS - 2 ) + ( col + 1 );
-//		lo->drawtiles_array[ index ] = tile_type_trees;
-//		lo->collision_array[ index ] = coll_type_block;
-//	}
-//	for( row = 1; row < TREE_ROWS - 1; row++ )
-//	{
-//		index = ( row + 1 ) * MAZE_COLS + 1;
-//		lo->drawtiles_array[ index ] = tile_type_trees;
-//		lo->collision_array[ index ] = coll_type_block;
-//
-//		index = (row + 1) * MAZE_COLS + ( MAZE_COLS - 2 );
-//		lo->drawtiles_array[ index ] = tile_type_trees;
-//		lo->collision_array[ index ] = coll_type_block;
-//	}
-//}
-//
+
 //void engine_level_manager_init_exits()
 //{
 //	struct_board_object *bo = &global_board_object;

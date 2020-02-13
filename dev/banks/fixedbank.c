@@ -23,7 +23,7 @@ const unsigned char board_object_posnY[] =
 
 // Order:									  Pro,  Adi,  Suz,  Kid.
 const unsigned char board_object_homeX[] = { 0x0A, 0x03, 0x0A, 0x03 };
-const unsigned char board_object_homeY[] = { 0x0A, 0x0A, 0x03, 0x03 };
+const unsigned char board_object_homeY[] = { 0x0A, 0x0A, 0x03, 0x04 };
 // TODO permanently delet as don't believe necc. as will calcSpots() "Z"
 //const unsigned char board_object_homeZ[] = { 0x96, 0x8F, 0x34, 0x2D };
 
