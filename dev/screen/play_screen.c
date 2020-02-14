@@ -63,8 +63,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	frame = fo->frame_count;
 
 	// Draw sprites first.
-	engine_gamer_manager_draw();
 	engine_enemy_manager_draw();
+	engine_gamer_manager_draw();
 
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
