@@ -93,18 +93,18 @@ void screen_pass_screen_update( unsigned char *screen_type )
 	// For continuity we want to check if actor can move immediately after stopping.
 	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
 	{
-		//gamer_direction = direction_type_left;
-		//gamer_direction = direction_type_upxx;
-		//if( 0 == frame )
-		//{
-		//	engine_font_manager_draw_data( frame, 12, 14 );
-		//	engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
-		//}
-		//if( 16 == frame )
-		//{
-		//	engine_font_manager_draw_data( frame, 12, 15 );
-		//	engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
-		//}
+		gamer_direction = direction_type_left;
+		gamer_direction = direction_type_upxx;
+		if( 0 == frame )
+		{
+			engine_font_manager_draw_data( frame, 12, 14 );
+			engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+		}
+		if( 16 == frame )
+		{
+			engine_font_manager_draw_data( frame, 12, 15 );
+			engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+		}
 
 		/*if( 40 == frame )
 		{
