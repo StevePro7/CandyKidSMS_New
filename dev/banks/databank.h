@@ -7,6 +7,8 @@ extern unsigned char state_object_world_data;
 extern unsigned char state_object_round_data;
 extern unsigned char state_object_music_data;
 extern unsigned char state_object_sound_data;
+extern unsigned long state_object_high_score;
+
 
 // Actor Manager.
 extern unsigned char actor_object_posnX[];

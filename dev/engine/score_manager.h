@@ -8,6 +8,10 @@ extern struct_score_object global_score_object;
 
 void engine_score_manager_init();
 void engine_score_manager_load();
-void engine_score_manager_update();
+
+unsigned char engine_score_manager_get_total();
+
+void engine_score_manager_score_bonus( unsigned char bonus );
+void engine_score_manager_score_candy();
 
 #endif//_SCORE_MANAGER_H_

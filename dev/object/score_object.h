@@ -7,8 +7,8 @@ typedef struct tag_struct_score_object
 	unsigned char lives;
 	unsigned char boost;
 	unsigned char delay;
-	unsigned char candy;
 	unsigned char bonus;
+	unsigned char candy;
 	unsigned char total;
 
 } struct_score_object;
