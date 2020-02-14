@@ -1,5 +1,6 @@
 #include "score_manager.h"
 #include "enum_manager.h"
+#include "font_manager.h"
 #include "global_manager.h"
 #include "..\banks\databank.h"
 
@@ -26,7 +27,7 @@ unsigned char engine_score_manager_get_total()
 	return so->total;
 }
 
-void engine_score_manager_score_bonus( unsigned char index )
+void engine_score_manager_update_bonus( unsigned char index )
 {
 	struct_score_object *so = &global_score_object;
 
@@ -37,12 +38,23 @@ void engine_score_manager_score_bonus( unsigned char index )
 	calculate( bonus );
 }
 
-void engine_score_manager_score_candy()
+void engine_score_manager_update_candy()
 {
 	struct_score_object *so = &global_score_object;
 	so->candy++;
 	so->total++;
 	calculate( 1 );
+}
+
+void engine_score_manager_draw_all()
+{
+	struct_score_object *so = &global_score_object;
+
+	engine_font_manager_draw_char( '0', 31, 11 );
+	engine_font_manager_draw_long( MAX_HI_SCORE, 30, 11 );
+
+	engine_font_manager_draw_char( '0', 31, 15 );
+	engine_font_manager_draw_long( so->my_score, 30, 15 );
 }
 
 static void reset()
@@ -65,6 +77,7 @@ static void calculate( unsigned char points )
 	if( so->my_score > MAX_HI_SCORE )
 	{
 		so->my_score = MAX_HI_SCORE;
+		engine_font_manager_draw_char( '9', 31, 11 );
 	}
 	if( so->my_score > state_object_high_score )
 	{

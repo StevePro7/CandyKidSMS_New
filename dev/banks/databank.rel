@@ -1,19 +1,20 @@
 XL2
-H 9 areas 10 global symbols
+H 9 areas 11 global symbols
 M databank
 O -mz80
 S .__.ABS. Def0000
 A _CODE size 0 flags 0 addr 0
-A _DATA size B flags 0 addr 0
+A _DATA size F flags 0 addr 0
 S _state_object_exits_type Def0001
-S _level_object_candy_count Def0009
+S _level_object_candy_count Def000D
 S _state_object_music_data Def0006
+S _state_object_high_score Def0008
 S _state_object_world_data Def0004
 S _state_object_round_data Def0005
 S _state_object_sound_data Def0007
-S _level_object_bonus_count Def0008
+S _level_object_bonus_count Def000C
 S _state_object_difficulty Def0002
-S _level_object_multiplier Def000A
+S _level_object_multiplier Def000E
 S _state_object_trees_type Def0000
 S _state_object_game_speed Def0003
 A _INITIALIZED size 4C4 flags 0 addr 0
@@ -63,13 +64,17 @@ T 08 00
 R 00 00 01 00
 T 08 00
 R 00 00 01 00
-T 09 00
+T 0C 00
 R 00 00 01 00
-T 09 00
+T 0C 00
 R 00 00 01 00
-T 0A 00
+T 0D 00
 R 00 00 01 00
-T 0A 00
+T 0D 00
+R 00 00 01 00
+T 0E 00
+R 00 00 01 00
+T 0E 00
 R 00 00 01 00
 T 00 00
 R 00 00 02 00

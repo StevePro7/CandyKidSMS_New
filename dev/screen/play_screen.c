@@ -11,6 +11,7 @@
 #include "..\engine\level_manager.h"
 #include "..\engine\move_manager.h"
 //#include "..\engine\storage_manager.h"
+#include "..\engine\score_manager.h"
 #include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
 
@@ -32,6 +33,9 @@ void screen_play_screen_load()
 	engine_board_manager_init();
 	engine_gamer_manager_init();
 	engine_enemy_manager_init();
+
+	engine_score_manager_load();
+	engine_score_manager_draw_all();
 
 	// Draw functions.
 	engine_board_manager_debugger();
@@ -105,12 +109,12 @@ void screen_play_screen_update( unsigned char *screen_type )
 		if( 0 == frame )
 		{
 			engine_font_manager_draw_data( frame, 12, 14 );
-			engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+			//engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
 		}
 		if( 16 == frame )
 		{
 			engine_font_manager_draw_data( frame, 12, 15 );
-			engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+			//engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
 		}
 
 		/*if( 40 == frame )
