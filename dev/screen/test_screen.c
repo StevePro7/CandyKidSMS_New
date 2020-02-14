@@ -6,6 +6,7 @@
 #include "..\engine\gamer_manager.h"
 #include "..\engine\global_manager.h"
 #include "..\engine\input_manager.h"
+#include "..\engine\locale_manager.h"
 #include "..\engine\sprite_manager.h"
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
@@ -23,7 +24,7 @@ void screen_test_screen_load()
 	//devkit_SMS_mapROMBank( 2 );
 	//engine_font_manager_draw_data( bob, 10, 6 );
 	////engine_font_manager_draw_char( bob, 10, 5 );
-	engine_font_manager_draw_text( "TEST SCREEN!!", 10, 10 );
+	engine_font_manager_draw_text( LOCALE_SELECT_DIFF, 4, 10 );
 
 	engine_enemy_manager_init();
 	engine_gamer_manager_init();
