@@ -9,6 +9,84 @@
 // Private helper methods.
 static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction );
 
+unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY )
+{
+	unsigned char deltaX;
+	unsigned char deltaY;
+	unsigned char plusX;
+	unsigned char minusY;
+	//unsigned char index;
+
+	unsigned char sort;
+	unsigned char half;
+	unsigned char full;
+	unsigned char byte;
+
+	//index = 0;
+	plusX = 0;
+	minusY = 0;
+
+	// Determine which directions...
+	deltaX = 0;
+	if( srceX > destX )
+	{
+		deltaX = srceX - destX;
+	}
+	else if( srceX < destX )
+	{
+		deltaX = destX - srceX;
+		plusX = 1;
+	}
+
+	deltaY = 0;
+	if( srceY > destY )
+	{
+		deltaY = srceY - destY;
+		minusY = 1;
+	}
+	else if( srceY < destY )
+	{
+		deltaY = destY - srceY;
+	}
+
+
+	// Determine which direction index to use.
+	if( deltaX > deltaY )
+	{
+		if( plusX )
+		{
+			//index = minusY ? 0 : 1;
+			sort = 0;
+		}
+		else
+		{
+			//index = minusY ? 2 : 3;
+			sort = 1;
+		}
+	}
+	else
+	{
+		if( plusX )
+		{
+			//index = minusY ? 4 : 5;
+			sort = 2;
+		}
+		else
+		{
+			//index = minusY ? 6 : 7;
+			sort = 3;
+		}
+	}
+
+	half = minusY ? 0 : 1;
+
+	// Upper nibble sets sort index.
+	// Lower nibble sets half value.
+	byte = ( half | ( sort << 4 ) );
+	full = ( half | ( sort << 4 ) );
+	return full;
+}
+
 unsigned char engine_move_manager_test_direction( unsigned char row, unsigned char col )
 {
 	unsigned char direction_type = direction_type_none;
