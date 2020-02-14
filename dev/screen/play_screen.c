@@ -9,6 +9,7 @@
 #include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
+#include "..\engine\move_manager.h"
 //#include "..\engine\storage_manager.h"
 #include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
@@ -42,8 +43,6 @@ void screen_play_screen_load()
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
 	//engine_font_manager_draw_text( "PLAY SCREEN..!!", 2, 10 );
-	engine_font_manager_draw_text( "PLAY", 28, 6 );
-	engine_font_manager_draw_text( "DUDE", 28, 7 );
 
 	first_time = 1;
 	frame_spot = 0;
@@ -141,7 +140,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 
 	// Move enemies.
-	enemy = actor_type_pro;
+	enemy = actor_type_adi;
 	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		eo = &global_enemy_objects[ enemy ];
@@ -165,31 +164,33 @@ void screen_play_screen_update( unsigned char *screen_type )
 		// For continuity we want to check if actor can move immediately after stopping.
 		if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
 		{
-			if( 4 == frame )
+			if( 0 == frame )
 			{
-				unsigned byte = ( enemy | ( enemy_direction << 4 ) );
+				// TODO still need to calculate the direction from the "FindDirection()" method...
+				//unsigned byte = ( enemy | ( enemy_direction << 4 ) );
+				unsigned byte = engine_move_manager_find_direction( eo->tileX, eo->tileY, go->tileX, go->tileY );
 				engine_font_manager_draw_data( frame, 12, 18 );
 				// TODO map enemy to command 
 				//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
 				enemy_direction = direction_type_upxx;
 				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
 			}
-			if( 36 == frame )
-			{
-				engine_font_manager_draw_data( frame, 12, 16 );
-				// TODO map enemy to command 
-				//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
-				enemy_direction = direction_type_upxx;
-				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
-			}
-			if( 68 == frame )
-			{
-				engine_font_manager_draw_data( frame, 12, 16 );
-				// TODO map enemy to command 
-				//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
-				enemy_direction = direction_type_rght;
-				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
-			}
+			//if( 36 == frame )
+			//{
+			//	engine_font_manager_draw_data( frame, 12, 16 );
+			//	// TODO map enemy to command 
+			//	//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
+			//	enemy_direction = direction_type_upxx;
+			//	engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+			//}
+			//if( 68 == frame )
+			//{
+			//	engine_font_manager_draw_data( frame, 12, 16 );
+			//	// TODO map enemy to command 
+			//	//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
+			//	enemy_direction = direction_type_rght;
+			//	engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+			//}
 		}
 	}
 
