@@ -1,5 +1,6 @@
 #include "move_manager.h"
 #include "enum_manager.h"
+#include "function_manager.h"
 #include "global_manager.h"
 #include "mask_manager.h"
 #include "..\banks\databank.h"
@@ -11,23 +12,16 @@ static unsigned char test_direction( unsigned char x, unsigned char y, unsigned 
 
 unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY )
 {
-	unsigned char deltaX;
-	unsigned char deltaY;
-	unsigned char plusX;
-	unsigned char minusY;
-	//unsigned char index;
+	unsigned char deltaX = 0;
+	unsigned char deltaY = 0;
+	unsigned char minusY = 0;
+	unsigned char plusX = 0;
 
-	unsigned char sort;
-	unsigned char half;
-	unsigned char full;
-	unsigned char byte;
-
-	//index = 0;
-	plusX = 0;
-	minusY = 0;
+	unsigned char list = 0;
+	unsigned char half = 0;
+	unsigned char byte = 0;
 
 	// Determine which directions...
-	deltaX = 0;
 	if( srceX > destX )
 	{
 		deltaX = srceX - destX;
@@ -38,7 +32,6 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 		plusX = 1;
 	}
 
-	deltaY = 0;
 	if( srceY > destY )
 	{
 		deltaY = srceY - destY;
@@ -49,42 +42,36 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 		deltaY = destY - srceY;
 	}
 
-
 	// Determine which direction index to use.
 	if( deltaX > deltaY )
 	{
 		if( plusX )
 		{
-			//index = minusY ? 0 : 1;
-			sort = 0;
+			list = 0;
 		}
 		else
 		{
-			//index = minusY ? 2 : 3;
-			sort = 1;
+			list = 1;
 		}
 	}
 	else
 	{
 		if( plusX )
 		{
-			//index = minusY ? 4 : 5;
-			sort = 2;
+			list = 2;
 		}
 		else
 		{
-			//index = minusY ? 6 : 7;
-			sort = 3;
+			list = 3;
 		}
 	}
 
 	half = minusY ? 0 : 1;
 
-	// Upper nibble sets sort index.
+	// Upper nibble sets list index.
 	// Lower nibble sets half value.
-	byte = ( half | ( sort << 4 ) );
-	full = ( half | ( sort << 4 ) );
-	return full;
+	engine_function_manager_convertNibblesToByte( list, half, &byte );
+	return byte;
 }
 
 unsigned char engine_move_manager_test_direction( unsigned char row, unsigned char col )
