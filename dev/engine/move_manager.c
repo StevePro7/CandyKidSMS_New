@@ -3,6 +3,8 @@
 #include "global_manager.h"
 #include "mask_manager.h"
 #include "..\banks\databank.h"
+#include "..\banks\fixedbank.h"
+#include <stdlib.h>
 
 // Private helper methods.
 static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction );
@@ -42,6 +44,51 @@ unsigned char engine_move_manager_test_direction( unsigned char row, unsigned ch
 	return direction_type;
 }
 
+unsigned char engine_move_manager_actor_direction( unsigned char direction )
+{
+	unsigned char loop;
+	unsigned char time;
+
+	// If actor already traveling in direction then return that direction,
+	if( direction_type_none != direction )
+	{
+		return direction;
+	}
+
+	// Otherwise calculate random direction for further game code function.
+	direction = 1;
+	time = rand() % 4;
+
+	// Algorithm will give 1, 2, 4, 8	that is : Up / Down / Left / Right.
+	for( loop = 0; loop < time; loop++ )
+	{
+		direction *= 2;
+	}
+
+	return direction;
+}
+
+unsigned char engine_move_manager_opposite_direction( unsigned char direction )
+{
+	if( direction_type_left == direction )
+	{
+		return direction_type_rght;
+	}
+	else if( direction_type_rght == direction )
+	{
+		return direction_type_left;
+	}
+	else if( direction_type_upxx == direction )
+	{
+		return direction_type_down;
+	}
+	else if( direction_type_down == direction )
+	{
+		return direction_type_upxx;
+	}
+
+	return direction_type_none;
+}
 
 static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction )
 {
