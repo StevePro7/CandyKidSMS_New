@@ -28,7 +28,7 @@ static unsigned char prevs_direction;
 void screen_dead_screen_load()
 {
 	//engine_command_manager_init();
-	//state_object_sound_on();
+	//state_object_sound_data();
 	engine_delay_manager_load( 10 );
 
 	engine_board_manager_init();

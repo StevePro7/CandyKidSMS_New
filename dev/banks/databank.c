@@ -1,12 +1,14 @@
 #include "bank6.h"
 
 // Global state.
-unsigned char state_object_tree_type;
-unsigned char state_object_exit_type;
-unsigned char state_object_world_no;
-unsigned char state_object_round_no;
-unsigned char state_object_music_on;
-unsigned char state_object_sound_on;
+unsigned char state_object_trees_type;
+unsigned char state_object_exits_type;
+unsigned char state_object_difficulty;
+unsigned char state_object_game_speed;
+unsigned char state_object_world_data;
+unsigned char state_object_round_data;
+unsigned char state_object_music_data;
+unsigned char state_object_sound_data;
 
 
 // Command Manager.

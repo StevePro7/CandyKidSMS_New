@@ -52,4 +52,9 @@
 #define NUM_ENTITY_IMAGE		2
 #define NUM_ENTITY_FRAME		2
 
+#define MAX_HI_SCORE			99999
+#define DEF_HI_SCORE			10000
+#define MAX_BOOSTERX			100
+#define NUMBER_LIVES			4
+
 #endif//_GLOBAL_MANAGER_H_

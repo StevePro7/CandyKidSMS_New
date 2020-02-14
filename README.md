@@ -13,3 +13,19 @@ score mgr	boost, lives, score, hiscore
 NB: allow long for HI into storage mgr
 sprites and alter ego	i.e. alternative sprites
 beat screen						DONE
+
+
+
+Difficulty
+easy
+lives	4
+boost	slow
+
+hard
+lives	3
+boost	fast depletion
+
+
+Game speed
+CK
+CM

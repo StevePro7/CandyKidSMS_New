@@ -15,7 +15,7 @@ void screen_record_screen_load()
 	//unsigned char test;
 
 	//engine_command_manager_init();
-	//state_object_sound_on();
+	//state_object_sound_data();
 	engine_delay_manager_load( 0 );
 
 	engine_font_manager_draw_text( "RECORD SCREEN!!", 4, 0 );

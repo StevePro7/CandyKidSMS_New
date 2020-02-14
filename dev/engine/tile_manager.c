@@ -84,7 +84,7 @@ void engine_tile_manager_draw_tile( unsigned char tile, unsigned char multiplier
 
 	if( tile_type_trees == tile_type )
 	{
-		engine_tile_manager_draw_trees( state_object_tree_type, x, y );
+		engine_tile_manager_draw_trees( state_object_trees_type, x, y );
 	}
 	else if( tile_type >= tile_type_bonusA  && tile_type <= tile_type_bonusD )
 	{

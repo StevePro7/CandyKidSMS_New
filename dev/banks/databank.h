@@ -1,11 +1,12 @@
 // Global state.
-extern unsigned char state_object_tree_type;
-extern unsigned char state_object_exit_type;
-extern unsigned char state_object_world_no;
-extern unsigned char state_object_round_no;
-extern unsigned char state_object_music_on;
-extern unsigned char state_object_sound_on;
-
+extern unsigned char state_object_trees_type;
+extern unsigned char state_object_exits_type;
+extern unsigned char state_object_difficulty;
+extern unsigned char state_object_game_speed;
+extern unsigned char state_object_world_data;
+extern unsigned char state_object_round_data;
+extern unsigned char state_object_music_data;
+extern unsigned char state_object_sound_data;
 
 // Actor Manager.
 extern unsigned char actor_object_posnX[];

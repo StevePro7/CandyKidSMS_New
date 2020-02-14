@@ -24,6 +24,20 @@ typedef enum tag_enum_screen_type
 
 } enum_screen_type;
 
+typedef enum tag_enum_diff_type
+{
+	diff_type_easy = 0,
+	diff_type_hard = 1,
+
+} enum_diff_type;
+
+typedef enum tag_enum_pace_type
+{
+	pace_type_slow = 0,
+	pace_type_fast = 1,
+
+} enum_pace_type;
+
 typedef enum tag_enum_input_type
 {
 	input_type_up    = 0x01,

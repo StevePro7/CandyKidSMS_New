@@ -18,7 +18,7 @@ void engine_audio_manager_music_play( unsigned char index )
 	const unsigned char *music;
 	unsigned char bank;
 
-	if( !state_object_music_on )
+	if( !state_object_music_data )
 	{
 		return;
 	}
@@ -35,7 +35,7 @@ void engine_audio_manager_music_play_norepeat( unsigned char index )
 	const unsigned char *music;
 	unsigned char bank;
 
-	if( !state_object_music_on )
+	if( !state_object_music_data )
 	{
 		return;
 	}
@@ -57,7 +57,7 @@ void engine_audio_manager_sound_play( unsigned char index )
 	unsigned char bank;
 
 	// If sound effects are  disabled then return.
-	if( !state_object_sound_on )
+	if( !state_object_sound_data )
 	{
 		return;
 	}

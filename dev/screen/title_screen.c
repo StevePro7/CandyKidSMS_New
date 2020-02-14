@@ -31,7 +31,7 @@ void screen_title_screen_update( unsigned char *screen_type )
 	input = engine_input_manager_hold( input_type_fire1 );
 	if( input )
 	{
-		state_object_exit_type = 1 - state_object_exit_type;
+		state_object_exits_type = 1 - state_object_exits_type;
 		engine_board_manager_draw_exit();
 	}
 

@@ -135,7 +135,7 @@ void engine_board_manager_side_tile()
 void engine_board_manager_debugger()
 {
 	//struct_board_object *bo = &global_board_object;
-	unsigned char type = state_object_tree_type;
+	unsigned char type = state_object_trees_type;
 
 	unsigned char spot[] = { 1, 2, 4, 7, 9, 10 };
 	unsigned char loop;
@@ -154,7 +154,7 @@ void engine_board_manager_debugger()
 static void draw_side( unsigned char wide, unsigned char right )
 {
 	//struct_board_object *bo = &global_board_object;
-	unsigned char type = state_object_tree_type;
+	unsigned char type = state_object_trees_type;
 	unsigned char loop;
 
 	for( loop = 0; loop < wide; loop++ )
@@ -171,9 +171,9 @@ static void draw_side( unsigned char wide, unsigned char right )
 static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right )
 {
 	//struct_board_object *bo = &global_board_object;
-	unsigned char type = state_object_tree_type;
+	unsigned char type = state_object_trees_type;
 
-	if( exit_type_closed == state_object_exit_type )
+	if( exit_type_closed == state_object_exits_type )
 	{
 		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + left, TOP_SIDE_Y );
 		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + midd, TOP_SIDE_Y );

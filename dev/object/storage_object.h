@@ -11,6 +11,7 @@ typedef struct tag_struct_storage_object
 	unsigned char save_exit_type;
 	unsigned char save_world_no;
 	unsigned char save_level_no;
+	unsigned long save_hi_score;
 	unsigned char terminal;
 
 } struct_storage_object;
