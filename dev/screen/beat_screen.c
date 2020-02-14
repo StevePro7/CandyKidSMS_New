@@ -1,4 +1,5 @@
 #include "beat_screen.h"
+#include "..\banks\bank6.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\command_manager.h"
 #include "..\engine\delay_manager.h"
@@ -21,6 +22,10 @@ unsigned char walking_move[] = { 7, 7, 7, 7 };
 
 void screen_beat_screen_load()
 {
+	const unsigned char *data = beats0000_txt;
+	const unsigned char size = beats0000_txt_size;
+	const unsigned char bank = beats0000_txt_bank;
+
 	engine_board_manager_init();
 
 	engine_command_manager_init();
@@ -29,9 +34,11 @@ void screen_beat_screen_load()
 	engine_delay_manager_load( 0 );
 
 	engine_board_manager_draw_full();
-	engine_level_manager_load_level( 0, 1 );
+	engine_board_manager_draw_exit();
+	engine_level_manager_beat_level( data, size, bank );
 	engine_level_manager_draw_level();
-	engine_font_manager_draw_text( "BEAT SCREEN..!!", 4, 2 );
+	//engine_font_manager_draw_text( "BEAT SCREEN..!!", 4, 2 );
+
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
 

@@ -116,6 +116,12 @@ void engine_level_manager_draw_level()
 		}
 	}
 }
+
+void engine_level_manager_beat_level( const unsigned char *data, const unsigned char size, const unsigned char bank )
+{
+	load_level( data, size, bank, 1 );
+}
+
 //
 //unsigned char engine_level_manager_get_tile_type( unsigned char x, unsigned char y )
 //{
