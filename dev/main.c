@@ -22,7 +22,8 @@ void main (void)
 	engine_hack_manager_init();
 	engine_hack_manager_invert();
 
-	open_screen_type = screen_type_test;
+	open_screen_type = screen_type_splash;
+	//open_screen_type = screen_type_test;
 	//open_screen_type = screen_type_over;
 	//open_screen_type = screen_type_pass;
 	//open_screen_type = screen_type_play;
