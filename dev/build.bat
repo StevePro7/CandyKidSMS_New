@@ -46,13 +46,15 @@ cd object
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 enemy_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 frame_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 gamer_object.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 score_object.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 storage_object.c
 cd ..
 
 cd screen
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 none_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 splash_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 title_screen.c
-::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 intro_screen.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 intro_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 load_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 demo_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 play_screen.c
@@ -108,8 +110,8 @@ engine\move_manager.rel ^
 engine\screen_manager.rel ^
 engine\sprite_manager.rel ^
 engine\tile_manager.rel ^
-object\audio_object.rel ^
 object\delay_object.rel object\frame_object.rel ^
+object\score_object.rel object\storage_object.rel ^
 screen\none_screen.rel screen\splash_screen.rel screen\title_screen.rel screen\intro_screen.rel screen\load_screen.rel ^
 screen\demo_screen.rel screen\play_screen.rel 	screen\record_screen.rel screen\save_screen.rel screen\pass_screen.rel ^
 screen\dead_screen.rel screen\cont_screen.rel 	screen\over_screen.rel 	screen\beat_screen.rel 	screen\test_screen.rel ^
@@ -143,6 +145,6 @@ if exist "*.lst" del "*.lst" > nul; if exist "*.noi" del "*.noi" > nul; if exist
 
 
 :: Run
-java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
+::java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
 ::C:\SEGA\meka\mekaw.exe output.sms
-::output.sms
+output.sms
