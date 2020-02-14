@@ -245,6 +245,15 @@
     <ClInclude Include="object\storage_object.h">
       <Filter>Header Files\object</Filter>
     </ClInclude>
+    <ClInclude Include="engine\collision_manager.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\score_manager.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\storage_manager.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -441,6 +450,15 @@
     </ClCompile>
     <ClCompile Include="object\storage_object.c">
       <Filter>Source Files\object</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\storage_manager.c">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\score_manager.c">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\collision_manager.c">
+      <Filter>Source Files\engine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

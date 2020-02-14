@@ -44,6 +44,7 @@
     <ClInclude Include="engine\asm_manager.h" />
     <ClInclude Include="engine\audio_manager.h" />
     <ClInclude Include="engine\board_manager.h" />
+    <ClInclude Include="engine\collision_manager.h" />
     <ClInclude Include="engine\command_manager.h" />
     <ClInclude Include="engine\content_manager.h" />
     <ClInclude Include="engine\delay_manager.h" />
@@ -60,8 +61,10 @@
     <ClInclude Include="engine\locale_manager.h" />
     <ClInclude Include="engine\mask_manager.h" />
     <ClInclude Include="engine\move_manager.h" />
+    <ClInclude Include="engine\score_manager.h" />
     <ClInclude Include="engine\screen_manager.h" />
     <ClInclude Include="engine\sprite_manager.h" />
+    <ClInclude Include="engine\storage_manager.h" />
     <ClInclude Include="engine\tile_manager.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="main.h" />
@@ -111,6 +114,7 @@
     <ClCompile Include="engine\asm_manager.c" />
     <ClCompile Include="engine\audio_manager.c" />
     <ClCompile Include="engine\board_manager.c" />
+    <ClCompile Include="engine\collision_manager.c" />
     <ClCompile Include="engine\command_manager.c" />
     <ClCompile Include="engine\content_manager.c" />
     <ClCompile Include="engine\delay_manager.c" />
@@ -127,8 +131,10 @@
     <ClCompile Include="engine\locale_manager.c" />
     <ClCompile Include="engine\mask_manager.c" />
     <ClCompile Include="engine\move_manager.c" />
+    <ClCompile Include="engine\score_manager.c" />
     <ClCompile Include="engine\screen_manager.c" />
     <ClCompile Include="engine\sprite_manager.c" />
+    <ClCompile Include="engine\storage_manager.c" />
     <ClCompile Include="engine\tile_manager.c" />
     <ClCompile Include="game.c" />
     <ClCompile Include="main.c" />

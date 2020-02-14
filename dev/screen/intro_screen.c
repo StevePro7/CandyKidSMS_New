@@ -71,7 +71,7 @@ void screen_intro_screen_load()
 	//engine_enemy_manager_init();
 
 	//byte = 127;
-	engine_font_manager_draw_text( "INTRO SCREEN.....!!", 2, 10 );
+	engine_font_manager_draw_text( "INTRO SCREEN!!", 2, 10 );
 
 	//nibble1 = byte & 0x0f;
 	//nibble2 = ( byte >> 4 ) & 0x0f;
