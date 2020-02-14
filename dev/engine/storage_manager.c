@@ -7,11 +7,11 @@
 #define MAGIC			0xACE0B004
 
 // Global variable.
-struct_savegame_object global_savegame_object;
+struct_storage_object global_savegame_object;
 
 unsigned char engine_storage_manager_available()
 {
-	struct_savegame_object *savegame = ( struct_savegame_object* ) ( devkit_SMS_SRAM() );
+	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
 	unsigned char foundMagic;
 
 	devkit_SMS_enableSRAM();
@@ -22,7 +22,7 @@ unsigned char engine_storage_manager_available()
 
 void engine_storage_manager_read()
 {
-	struct_savegame_object *savegame = ( struct_savegame_object* ) ( devkit_SMS_SRAM() );
+	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
 	unsigned char world_no;
 	unsigned char level_no;
 	//unsigned char padding[ 8 ];
@@ -45,7 +45,7 @@ void engine_storage_manager_read()
 
 void engine_storage_manager_write()
 {
-	struct_savegame_object *savegame = ( struct_savegame_object* ) ( devkit_SMS_SRAM() );
+	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
 	//struct_board_object *bo = &global_board_object;
 	//struct_command_object *co = &global_command_object;
 	//unsigned int idx;
