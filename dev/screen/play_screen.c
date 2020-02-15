@@ -170,7 +170,6 @@ static unsigned char get_gamer_direction()
 		collision = engine_level_manager_get_tile_type( go->tileX, go->tileY, gamer_direction, offset_type_one );
 		if( coll_type_block == collision )
 		{
-			engine_font_manager_draw_data( collision, 7, 7 );
 			gamer_direction = direction_type_none;
 		}
 	}
