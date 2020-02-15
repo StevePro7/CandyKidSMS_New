@@ -23,7 +23,7 @@ void engine_gamer_manager_init()
 	struct_gamer_object *go = &global_gamer_object;
 
 	// Kid images.
-	unsigned char images[ NUM_ENTITY_IMAGE * NUM_ENTITY_FRAME ] = { 0, 2, 4, 12 };
+	unsigned char images[ NUM_ENTITY_IMAGE * NUM_ENTITY_FRAME + 2 ] = { 0, 2, 4, 12, 14, 16 };		// Allow extra image for death.
 	//unsigned char homeX;
 	//unsigned char homeY;
 
@@ -49,12 +49,14 @@ void engine_gamer_manager_init()
 	go->direction = direction_type_none;
 	go->lifecycle = lifecycle_type_idle;
 
-	go->image = 0;
+	go->image = 2;
 	go->frame = frame_type_stance;
 	go->images[ 0 ][ 0 ] = images[ 0 ];
 	go->images[ 0 ][ 1 ] = images[ 1 ];
 	go->images[ 1 ][ 0 ] = images[ 2 ];
 	go->images[ 1 ][ 1 ] = images[ 3 ];
+	go->images[ 2 ][ 0 ] = images[ 4 ];
+	go->images[ 2 ][ 1 ] = images[ 5 ];
 
 	calcd_frame();
 
@@ -192,6 +194,11 @@ void engine_gamer_manager_stop()
 	}
 
 	// TODO calc possible tiles actor can move in to.
+}
+
+void engine_gamer_manager_dead()
+{
+
 }
 
 unsigned char engine_gamer_manager_input_direction()

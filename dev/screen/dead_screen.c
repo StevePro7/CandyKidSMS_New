@@ -32,7 +32,7 @@ void screen_dead_screen_load()
 	//engine_delay_manager_load( 10 );
 
 	//engine_board_manager_init();
-	//engine_gamer_manager_init();
+	engine_gamer_manager_init();
 	//engine_enemy_manager_init();
 
 	// Draw functions.

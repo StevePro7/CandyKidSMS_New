@@ -27,7 +27,8 @@ typedef struct tag_struct_gamer_object
 	unsigned char image;
 	unsigned char frame;
 	unsigned int calcd;
-	unsigned char images[ NUM_ENTITY_IMAGE ][ NUM_ENTITY_FRAME ];
+	// Allow extra image for death.
+	unsigned char images[ NUM_ENTITY_IMAGE + 1 ][ NUM_ENTITY_FRAME ];
 
 } struct_gamer_object;
 

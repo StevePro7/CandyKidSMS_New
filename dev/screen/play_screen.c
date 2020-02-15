@@ -111,7 +111,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 		// Check collision.
 		//engine_font_manager_draw_data( frame, 12, 16 );
 		engine_gamer_manager_stop();
-		gamer_collision = get_gamer_collision();
+		//gamer_collision = get_gamer_collision();
 	}
 	// For continuity we want to check if actor can move immediately after stopping.
 	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
@@ -172,8 +172,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 static unsigned char get_gamer_direction()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	//unsigned char gamer_direction = engine_gamer_manager_input_direction();
-	unsigned char gamer_direction = direction_type_rght;
+	unsigned char gamer_direction = engine_gamer_manager_input_direction();
+	//unsigned char gamer_direction = direction_type_rght;
 	//unsigned char gamer_direction = direction_type_left;
 	unsigned char collision;
 	if( direction_type_none == gamer_direction )
@@ -212,5 +212,6 @@ static unsigned char get_gamer_direction()
 
 static unsigned char get_gamer_collision()
 {
-	return coll_type_block;
+	return 0;
+	//return coll_type_block;
 }
