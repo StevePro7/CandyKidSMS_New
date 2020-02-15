@@ -183,6 +183,10 @@ static unsigned char get_gamer_direction()
 				gamer_direction = direction_type_none;
 			}
 		}
+		else
+		{
+			gamer_direction = direction_type_none;
+		}
 	}
 	
 

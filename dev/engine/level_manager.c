@@ -301,6 +301,18 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 		}
 	}
 
+	// TODO Ensure no trees over exits!
+	//if( exit_type_public == state_object_exits_type )
+	//{
+	//	for( row = 0; row < MAX_ROWS; row++ )
+	//	{
+	//		for( col = 0; col < MAX_COLS; col++ )
+	//		{
+	//			index = ( row + 2 ) * MAZE_COLS + ( col + 2 );
+	//		}
+	//	}
+	//}
+
 	// Set each tile directions available.
 	for( row = 0; row < MAX_ROWS; row++ )
 	{
