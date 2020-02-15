@@ -51,8 +51,10 @@ void engine_hack_manager_invert()
 	// Exits.
 	state_object_exits_type = exit_type_closed == state_object_exits_type ? exit_type_closed : exit_type_public;
 
-	// stevepro delte
+	// stevepro delete
 	//state_object_exits_type = exit_type_closed;
+	state_object_trees_type = tree_type_death;
+	// stevepro delete
 
 	// World.
 	if( 0 != state_object_world_data )

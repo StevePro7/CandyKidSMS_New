@@ -42,6 +42,8 @@ void main (void)
 		devkit_SMS_waitForVBlank();
 		devkit_SMS_copySpritestoSAT();
 
+		// TODO if want to play music while game plays then would need to ROM bank before PSG frame
+		devkit_SMS_mapROMBank( 7 );
 		devkit_PSGFrame();
 		devkit_PSGSFXFrame();
 	}

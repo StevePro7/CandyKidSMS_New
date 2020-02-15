@@ -1,4 +1,5 @@
 #include "play_screen.h"
+#include "..\engine\audio_manager.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\command_manager.h"
 #include "..\engine\delay_manager.h"
@@ -49,9 +50,10 @@ void screen_play_screen_load()
 	engine_level_manager_load_level( 0, 0 );
 	engine_level_manager_draw_level();
 
-	engine_frame_manager_draw();
-	engine_delay_manager_draw();
+//	engine_frame_manager_draw();
+//	engine_delay_manager_draw();
 
+	engine_audio_manager_music_play( 3 );
 	first_time = 1;
 	frame_spot = 0;
 }
@@ -74,8 +76,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
-	engine_frame_manager_draw();
-	engine_delay_manager_draw();
+	//engine_frame_manager_draw();
+	//engine_delay_manager_draw();
 	if( !first_time )
 	{
 		proceed = engine_delay_manager_update();

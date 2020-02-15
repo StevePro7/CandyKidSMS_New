@@ -179,8 +179,8 @@ void engine_gamer_manager_stop()
 	calcd_frame();
 
 	// TODO delete
-	engine_font_manager_draw_data( go->tileX, 12, 8 );
-	engine_font_manager_draw_data( go->tileY, 12, 9 );
+	//engine_font_manager_draw_data( go->tileX, 12, 8 );
+	//engine_font_manager_draw_data( go->tileY, 12, 9 );
 	// TODO delete
 
 	// Check if in exit then move in previous direction [and wrap game board as necessary].
