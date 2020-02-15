@@ -103,7 +103,6 @@ static void reset()
 	so->candy = 0;
 	so->total = 0;
 }
-
 static void update( unsigned char points )
 {
 	struct_score_object *so = &global_score_object;
@@ -112,7 +111,6 @@ static void update( unsigned char points )
 	if( so->score > MAX_HI_SCORE )
 	{
 		so->score = MAX_HI_SCORE;
-		engine_font_manager_draw_char( '9', 31, 11 );
 	}
 	if( so->score > state_object_high_score )
 	{

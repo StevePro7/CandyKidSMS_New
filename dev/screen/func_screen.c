@@ -64,6 +64,12 @@ void screen_func_screen_update( unsigned char *screen_type )
 		engine_score_manager_update_bonus( tile_type_bonusD );
 	}
 
+	input = engine_input_manager_hold( input_type_fire1 );
+	if( input )
+	{
+		engine_score_manager_update_candy();
+	}
+
 	first_time = 0;
 	*screen_type = screen_type_func;
 }

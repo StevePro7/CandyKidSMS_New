@@ -31,6 +31,8 @@ don't go outside or hit border by comparing tile X+Y rather than
 check the coll_type with trees on the border
 
 
+TODO
+simple - add state Mgr that sets the default hi score if none saved before
 
 Difficulty
 easy
