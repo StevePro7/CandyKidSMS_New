@@ -5,6 +5,13 @@
 
 #define LOCALE_BUILD_VERSION		"V1.0"
 
+#define LOCALE_HIGHS_TEXT		"HIGH"
+#define LOCALE_SCORE_TEXT		"SCORE"
+#define LOCALE_BONUS_TEXT		"BONUS"
+#define LOCALE_CANDY_TEXT		"CANDY"
+#define LOCALE_WORLD_TEXT		"WORLD"
+#define LOCALE_ROUND_TEXT		"ROUND"
+
 #define LOCALE_BLANK_WIDTH		"                                "
 #define LOCALE_BLANK_SIZE10		"          "
 #define LOCALE_BLANK_SIZE17		"                 "
@@ -35,8 +42,8 @@
 #define LOCALE_PACE_FAST		"FAST"
 
 #define LOCALE_SELECT_LEVEL		"SELECT LEVEL"
-#define LOCALE_SELECT_WORLD		" WORLD    "
-#define LOCALE_SELECT_ROUND		" ROUND    "
+#define LOCALE_SELECT_WORLD		"WORLD"
+#define LOCALE_SELECT_ROUND		"ROUND"
 
 #define LOCALE_RESET_MESSAGE1	"  RESET:  "
 #define LOCALE_RESET_MESSAGE2	"  PLAYER   "

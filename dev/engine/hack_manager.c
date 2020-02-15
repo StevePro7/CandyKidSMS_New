@@ -53,7 +53,7 @@ void engine_hack_manager_invert()
 
 	// stevepro delete
 	//state_object_exits_type = exit_type_closed;
-	state_object_trees_type = tree_type_death;
+	//state_object_trees_type = tree_type_death;
 	// stevepro delete
 
 	// World.

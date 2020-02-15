@@ -3,7 +3,7 @@
 
 typedef struct tag_struct_score_object
 {
-	unsigned long my_score;
+	unsigned long score;
 	unsigned char lives;
 	unsigned char boost;
 	unsigned char delay;

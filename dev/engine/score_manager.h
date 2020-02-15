@@ -15,5 +15,8 @@ void engine_score_manager_update_bonus( unsigned char bonus );
 void engine_score_manager_update_candy();
 
 void engine_score_manager_draw_all();
+void engine_score_manager_draw_text();
+//void engine_score_manager_draw_bonus();
+//void engine_score_manager_draw_candy();
 
 #endif//_SCORE_MANAGER_H_
