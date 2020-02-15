@@ -1,6 +1,8 @@
 #include "bank6.h"
 
 // Global state.
+unsigned char state_object_mydebugger;
+unsigned char state_object_invincibie;
 unsigned char state_object_trees_type;
 unsigned char state_object_exits_type;
 unsigned char state_object_difficulty;

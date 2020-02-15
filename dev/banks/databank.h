@@ -1,4 +1,6 @@
 // Global state.
+extern unsigned char state_object_mydebugger;
+extern unsigned char state_object_invincibie;
 extern unsigned char state_object_trees_type;
 extern unsigned char state_object_exits_type;
 extern unsigned char state_object_difficulty;

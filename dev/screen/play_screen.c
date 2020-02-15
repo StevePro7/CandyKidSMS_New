@@ -46,7 +46,6 @@ void screen_play_screen_load()
 
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
-	//engine_font_manager_draw_text( "PLAY SCREEN..!!", 2, 10 );
 
 	first_time = 1;
 	frame_spot = 0;

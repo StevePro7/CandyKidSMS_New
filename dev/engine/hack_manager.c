@@ -10,6 +10,9 @@
 
 void engine_hack_manager_init()
 {
+	state_object_mydebugger = 0;
+	state_object_invincibie = 0;
+
 	state_object_trees_type = 0;
 	state_object_exits_type = 0;
 	state_object_difficulty = 0;
@@ -21,6 +24,9 @@ void engine_hack_manager_init()
 	state_object_sound_data = 0;
 
 #ifndef _CONSOLE
+
+	//state_object_mydebugger = PEEK( HACKER_START - 2 );			// 0x004E		// Set my debugging from zero-based value.
+	//state_object_invincibie = PEEK( HACKER_START - 1 );			// 0x004F		// Set invincibility for zero-based value.
 
 	state_object_trees_type = PEEK( HACKER_START + 0 );			// 0x0050		// Set start treeType to zero-based value.
 	state_object_exits_type = PEEK( HACKER_START + 1 );			// 0x0051		// Set start exitType to zero-based value.
