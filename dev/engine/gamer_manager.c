@@ -201,7 +201,6 @@ unsigned char engine_gamer_manager_input_direction()
 	unsigned char direction = direction_type_none;
 
 	unsigned char input;
-
 	input = engine_input_manager_move( input_type_up );
 	if( input )
 	{

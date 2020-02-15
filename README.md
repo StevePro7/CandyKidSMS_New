@@ -15,6 +15,12 @@ sprites and alter ego	i.e. alternative sprites
 beat screen						DONE
 
 
+15/02/2020
+load screen	regression test all the levels
+score mgr implement
+title screen ressurrect from graphics test
+refactor the delay / frame mgr in game play to debug mgr??
+
 
 Difficulty
 easy

@@ -25,20 +25,24 @@
 static unsigned char first_time;
 static unsigned char frame_spot;
 
+static unsigned char get_gamer_direction();
+
 void screen_play_screen_load()
 {
 	engine_command_manager_init();
-	engine_delay_manager_load( 5 );
+	engine_delay_manager_load( 0 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
 	engine_enemy_manager_init();
 
 	engine_score_manager_load();
-	engine_score_manager_draw_all();
+	//sengine_score_manager_draw_all();
 
 	// Draw functions.
-	engine_board_manager_debugger();
+	//engine_board_manager_debugger();
+	engine_board_manager_draw_full();
+	engine_board_manager_draw_exit();
 	engine_board_manager_side_tile();
 
 	engine_level_manager_load_level( 0, 0 );
@@ -103,42 +107,11 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// For continuity we want to check if actor can move immediately after stopping.
 	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
 	{
-		gamer_direction = direction_type_left;
-		//gamer_direction = direction_type_upxx;
-		if( 0 == frame )
+		gamer_direction = get_gamer_direction();
+		if( direction_type_none != gamer_direction )
 		{
-			engine_font_manager_draw_data( frame, 12, 14 );
-			//engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+			engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
 		}
-		if( 16 == frame )
-		{
-			engine_font_manager_draw_data( frame, 12, 15 );
-			//engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
-		}
-
-		/*if( 40 == frame )
-		{
-		engine_command_manager_add( frame, command_type_end_gamer, 15 );
-		}*/
-		//input = engine_input_manager_hold_fire1();
-		//if( input )
-		//{
-		//	engine_font_manager_draw_text( "END!", 17, 14 );
-		//	engine_command_manager_add( frame, command_type_end_gamer, 15 );
-		//	frame_spot = 1;
-		//}
-		//else
-		//{
-		//	gamer_direction = engine_gamer_manager_input_direction();
-		//	if( direction_type_none != gamer_direction )
-		//	{
-		//		engine_font_manager_draw_data( gamer_direction, 10, 15 );
-		//		//engine_font_manager_draw_data( frame_spot++, 27, 15 );
-		//		engine_font_manager_draw_data( frame, 17, 17 );
-
-		//		engine_command_manager_add( frame, command_type_kid_mover, gamer_direction );
-		//	}
-		//}
 	}
 
 
@@ -167,33 +140,6 @@ void screen_play_screen_update( unsigned char *screen_type )
 		// For continuity we want to check if actor can move immediately after stopping.
 		if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
 		{
-			if( 0 == frame )
-			{
-				// TODO still need to calculate the direction from the "FindDirection()" method...
-				//unsigned byte = ( enemy | ( enemy_direction << 4 ) );
-				unsigned byte = engine_move_manager_find_direction( eo->tileX, eo->tileY, go->tileX, go->tileY );
-				engine_font_manager_draw_data( frame, 12, 18 );
-				// TODO map enemy to command 
-				//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
-				enemy_direction = direction_type_upxx;
-				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
-			}
-			//if( 36 == frame )
-			//{
-			//	engine_font_manager_draw_data( frame, 12, 16 );
-			//	// TODO map enemy to command 
-			//	//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
-			//	enemy_direction = direction_type_upxx;
-			//	engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
-			//}
-			//if( 68 == frame )
-			//{
-			//	engine_font_manager_draw_data( frame, 12, 16 );
-			//	// TODO map enemy to command 
-			//	//unsigned char command_type = engine_enemy_manager_get_mover( enemy );
-			//	enemy_direction = direction_type_rght;
-			//	engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
-			//}
 		}
 	}
 
@@ -201,29 +147,17 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// Execute all commands for this frame.
 	engine_command_manager_execute( frame );
 
-
-	///*gamer_direction = engine_gamer_manager_input_direction();
-	//if( direction_type_none != gamer_direction )
-	//{
-	//	engine_font_manager_draw_text( "RIGHT", 10, 15 );
-	//	go->posnX++;
-	//}*/
-
 	first_time = 0;
-	//if( frame_spot )
-	//{
-	//	engine_frame_manager_draw();
-	//	engine_delay_manager_draw();
-
-	//	engine_font_manager_draw_text( "SAVING", 20, 12 );
-	//	engine_command_manager_save();
-	//	//engine_storage_manager_write();
-	//	engine_font_manager_draw_text( "SAVED!!!!", 20, 13 );
-
-	//	*screen_type = screen_type_intro;
-	//	//*screen_type = screen_type_demo;
-	//	return;
-	//}
-
 	*screen_type = screen_type_play;
+}
+
+static unsigned char get_gamer_direction()
+{
+	unsigned char gamer_direction = engine_gamer_manager_input_direction();
+	if( direction_type_none == gamer_direction )
+	{
+		return direction_type_none;
+	}
+	
+	return gamer_direction;
 }
