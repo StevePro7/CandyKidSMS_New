@@ -31,7 +31,7 @@ static unsigned char get_gamer_direction();
 void screen_play_screen_load()
 {
 	engine_command_manager_init();
-	engine_delay_manager_load( 10 );
+	engine_delay_manager_load( 0 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
@@ -102,7 +102,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
 	{
 		// Check collision.
-		engine_font_manager_draw_data( frame, 12, 16 );
+		//engine_font_manager_draw_data( frame, 12, 16 );
 		engine_gamer_manager_stop();
 	}
 	// For continuity we want to check if actor can move immediately after stopping.
@@ -155,24 +155,36 @@ void screen_play_screen_update( unsigned char *screen_type )
 static unsigned char get_gamer_direction()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	//unsigned char gamer_direction = engine_gamer_manager_input_direction();
+	unsigned char gamer_direction = engine_gamer_manager_input_direction();
 	//unsigned char gamer_direction = direction_type_rght;
-	unsigned char gamer_direction = direction_type_left;
+	//unsigned char gamer_direction = direction_type_left;
 	unsigned char collision;
 	if( direction_type_none == gamer_direction )
 	{
-		return direction_type_none;
+		return gamer_direction;
 	}
 
-	if( state_object_trees_type == tree_type_avoid )
+	// Death trees don't need to check...
+	if( state_object_trees_type == tree_type_death )
 	{
-		//collision = engine_level_manager_get_collision( go->tileX, go->tileY, gamer_direction, offset_type_one );
-		collision = engine_level_manager_get_tile_type( go->tileX, go->tileY, gamer_direction, offset_type_one );
-		if( coll_type_block == collision )
+		return gamer_direction;
+	}
+
+	// Avoid trees need to check first.
+	collision = engine_level_manager_get_tile_type( go->tileX, go->tileY, gamer_direction, offset_type_one );
+	if( coll_type_block == collision )
+	{
+		// Edge case for exits public and edge of maze.
+		if( exit_type_public == state_object_exits_type )
 		{
-			gamer_direction = direction_type_none;
+			collision = engine_board_manager_near_exit( go->tileX, go->tileY, gamer_direction );
+			if( coll_type_block == collision )
+			{
+				gamer_direction = direction_type_none;
+			}
 		}
 	}
+	
 
 	return gamer_direction;
 }
