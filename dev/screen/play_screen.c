@@ -28,6 +28,7 @@ static unsigned char first_time;
 static unsigned char frame_spot;
 
 static unsigned char get_gamer_direction();
+static unsigned char get_gamer_collision();
 
 void screen_play_screen_load()
 {
@@ -53,7 +54,9 @@ void screen_play_screen_load()
 //	engine_frame_manager_draw();
 //	engine_delay_manager_draw();
 
-	engine_audio_manager_music_play( 3 );
+	engine_font_manager_draw_text( "PLAY SCREEN!", 4, 10 );
+
+	//engine_audio_manager_music_play( 3 );
 	first_time = 1;
 	frame_spot = 0;
 }
@@ -65,6 +68,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	struct_enemy_object *eo;
 	unsigned char gamer_direction = direction_type_none;
 	unsigned char enemy_direction = direction_type_none;
+	unsigned char gamer_collision = coll_type_empty;
+	unsigned char gamer_collactor = actor_type_kid;
 
 	unsigned char proceed;
 	////unsigned char input;
@@ -106,14 +111,18 @@ void screen_play_screen_update( unsigned char *screen_type )
 		// Check collision.
 		//engine_font_manager_draw_data( frame, 12, 16 );
 		engine_gamer_manager_stop();
+		gamer_collision = get_gamer_collision();
 	}
 	// For continuity we want to check if actor can move immediately after stopping.
 	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
 	{
-		gamer_direction = get_gamer_direction();
-		if( direction_type_none != gamer_direction )
+		if( coll_type_empty == gamer_collision )
 		{
-			engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+			gamer_direction = get_gamer_direction();
+			if( direction_type_none != gamer_direction )
+			{
+				engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+			}
 		}
 	}
 
@@ -149,16 +158,22 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Execute all commands for this frame.
 	engine_command_manager_execute( frame );
-
 	first_time = 0;
+
+	if( coll_type_block == gamer_collision )
+	{
+		*screen_type = screen_type_dead;
+		return;
+	}
+	
 	*screen_type = screen_type_play;
 }
 
 static unsigned char get_gamer_direction()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	unsigned char gamer_direction = engine_gamer_manager_input_direction();
-	//unsigned char gamer_direction = direction_type_rght;
+	//unsigned char gamer_direction = engine_gamer_manager_input_direction();
+	unsigned char gamer_direction = direction_type_rght;
 	//unsigned char gamer_direction = direction_type_left;
 	unsigned char collision;
 	if( direction_type_none == gamer_direction )
@@ -193,4 +208,9 @@ static unsigned char get_gamer_direction()
 	
 
 	return gamer_direction;
+}
+
+static unsigned char get_gamer_collision()
+{
+	return coll_type_block;
 }

@@ -25,6 +25,7 @@ void main (void)
 	//open_screen_type = screen_type_intro;
 	//open_screen_type = screen_type_test;
 	//open_screen_type = screen_type_beat;
+	//open_screen_type = screen_type_dead;
 	//open_screen_type = screen_type_over;
 	//open_screen_type = screen_type_pass;
 	open_screen_type = screen_type_play;
@@ -43,7 +44,7 @@ void main (void)
 		devkit_SMS_copySpritestoSAT();
 
 		// TODO if want to play music while game plays then would need to ROM bank before PSG frame
-		devkit_SMS_mapROMBank( 7 );
+		//devkit_SMS_mapROMBank( 7 );
 		devkit_PSGFrame();
 		devkit_PSGSFXFrame();
 	}
