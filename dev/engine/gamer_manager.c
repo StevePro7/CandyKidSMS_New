@@ -175,16 +175,17 @@ void engine_gamer_manager_stop()
 	struct_gamer_object *go = &global_gamer_object;
 	go->prev_move = go->direction;
 	go->direction = direction_type_none;
-	go->frame = 0;
+	go->frame = frame_type_stance;
 	calcd_frame();
 
+	
+
+	// TODO delete
+	//engine_font_manager_draw_data( go->tileX, 12, 8 );
+	//engine_font_manager_draw_data( go->tileY, 12, 9 );
+	// TODO delete
+
 	// Check if in exit then move in previous direction [and wrap game board as necessary].
-
-	// TODO delete
-	engine_font_manager_draw_data( go->tileX, 12, 8 );
-	engine_font_manager_draw_data( go->tileY, 12, 9 );
-	// TODO delete
-
 	if( go->tileX <= 1 || go->tileY <= 1 || go->tileX >= ( MAZE_COLS - 2 ) || go->tileY >= ( MAZE_ROWS - 2 ) )
 	{
 		engine_gamer_manager_wrap( go->prev_move );
@@ -241,7 +242,7 @@ unsigned char engine_gamer_manager_mover_direction()
 	unsigned char loop;
 	unsigned char time;
 
-	// If gamer already travelling in direction return that direction,
+	// If gamer already traveling in direction return that direction,
 	if( direction_type_none != go->direction )
 	{
 		return go->direction;

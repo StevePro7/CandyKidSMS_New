@@ -135,32 +135,74 @@ void engine_level_manager_beat_level( const unsigned char *data, const unsigned 
 //}
 ////unsigned char engine_level_manager_get_collision( unsigned char x, unsigned char y, unsigned char direction ) {}
 //
-//unsigned char engine_level_manager_get_next_tile( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset )
-//{
-//	struct_level_object *lo = &global_level_object;
-//	unsigned char tile;
-//
-//	// Note: x and y can never go out-of-bounds: if gamer in exits then there will be no collision checks.
-//	if( direction_type_upxx == direction )
-//	{
-//		y -= offset;
-//	}
-//	else if( direction_type_down == direction )
-//	{
-//		y += offset;
-//	}
-//	else if( direction_type_left == direction )
-//	{
-//		x -= offset;
-//	}
-//	else if( direction_type_rght == direction )
-//	{
-//		x += offset;
-//	}
-//
-//	engine_board_manager_calc_tileSpot( x, y, &tile );
-//	return tile;
-//}
+
+unsigned char engine_level_manager_get_collision( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset )
+{
+	// Returns collision type for next (x, y) tile offset from direction.
+	unsigned char collision;
+	unsigned char upper_nibble;
+	unsigned char lower_nibble;
+
+	unsigned char tile = engine_level_manager_get_next_tile( x, y, direction, offset );
+	engine_function_manager_convertByteToNibbles( tile, &upper_nibble, &lower_nibble );
+
+	collision = COLL_TYPE_MASK == ( tile & COLL_TYPE_MASK );
+	return collision;
+}
+unsigned char engine_level_manager_get_direction( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset )
+{
+	// Returns all directions for next (x, y) tile offset from direction.
+	unsigned char upper_nibble;
+	unsigned char lower_nibble;
+
+	unsigned char tile = engine_level_manager_get_next_tile( x, y, direction, offset );
+	engine_function_manager_convertByteToNibbles( tile, &upper_nibble, &lower_nibble );
+
+	return upper_nibble;
+}
+unsigned char engine_level_manager_get_tile_type( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset )
+{
+	// Returns draw tile type for next (x, y) tile offset from direction.
+	unsigned char tile_type;
+	unsigned char upper_nibble;
+	unsigned char lower_nibble;
+
+	unsigned char tile = engine_level_manager_get_next_tile( x, y, direction, offset );
+	engine_function_manager_convertByteToNibbles( tile, &upper_nibble, &lower_nibble );
+
+	tile_type = lower_nibble;
+	if( COLL_TYPE_MASK == ( tile_type & COLL_TYPE_MASK ) )
+	{
+		tile_type = lower_nibble ^ COLL_TYPE_MASK;
+	}
+
+	return tile_type;
+}
+unsigned char engine_level_manager_get_next_tile( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset )
+{
+	unsigned char index;
+
+	// Note: x and y can never go out-of-bounds: if gamer in exits then there will be no collision checks.
+	if( direction_type_upxx == direction )
+	{
+		y -= offset;
+	}
+	else if( direction_type_down == direction )
+	{
+		y += offset;
+	}
+	else if( direction_type_left == direction )
+	{
+		x -= offset;
+	}
+	else if( direction_type_rght == direction )
+	{
+		x += offset;
+	}
+
+	engine_function_manager_convertXYtoZ( MAZE_ROWS, x, y, &index );
+	return level_object_tiles_array[ index ];
+}
 //
 //unsigned char engine_level_manager_get_next_coll( unsigned char x, unsigned char y, unsigned char direction )
 //{

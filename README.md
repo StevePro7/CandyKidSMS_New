@@ -21,6 +21,16 @@ score mgr implement
 title screen ressurrect from graphics test
 refactor the delay / frame mgr in game play to debug mgr??
 
+IMPORTANT
+I need to change the coll_type for trees if there are death trees
+because if CK hits one and dies then tree [in maze] will disappear
+AND now the CMs can navigate to this tile because coll_type = 0
+
+Therefore, will have to put check in place for CMs to ensure they
+don't go outside or hit border by comparing tile X+Y rather than
+check the coll_type with trees on the border
+
+
 
 Difficulty
 easy

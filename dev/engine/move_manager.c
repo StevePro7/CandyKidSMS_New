@@ -158,15 +158,15 @@ unsigned char engine_move_manager_opposite_direction( unsigned char direction )
 static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction )
 {
 	unsigned char index;
-	unsigned char tiles;
-	unsigned char colls;
+	unsigned char tile;
+	unsigned char coll;
 	unsigned char test_type = direction_type_none;
 
 	index = y * MAZE_COLS + x;
-	tiles = level_object_tiles_array[ index ];
+	tile = level_object_tiles_array[ index ];
 
-	colls = COLL_TYPE_MASK == ( tiles & COLL_TYPE_MASK );
-	if( coll_type_empty == colls )
+	coll = COLL_TYPE_MASK == ( tile & COLL_TYPE_MASK );
+	if( coll_type_empty == coll )
 	{
 		test_type = input_direction;
 	}

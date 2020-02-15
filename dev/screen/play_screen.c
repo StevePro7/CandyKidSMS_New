@@ -14,6 +14,7 @@
 #include "..\engine\score_manager.h"
 #include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
+#include "..\banks\databank.h"
 
 // IMPORTANT disable compiler warning 110
 #ifdef _CONSOLE
@@ -153,11 +154,26 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 static unsigned char get_gamer_direction()
 {
-	unsigned char gamer_direction = engine_gamer_manager_input_direction();
+	struct_gamer_object *go = &global_gamer_object;
+	//unsigned char gamer_direction = engine_gamer_manager_input_direction();
+	unsigned char gamer_direction = direction_type_rght;
+	//unsigned char gamer_direction = direction_type_upxx;
+	unsigned char collision;
 	if( direction_type_none == gamer_direction )
 	{
 		return direction_type_none;
 	}
-	
+
+	if( state_object_trees_type == tree_type_avoid )
+	{
+		//collision = engine_level_manager_get_collision( go->tileX, go->tileY, gamer_direction, offset_type_one );
+		collision = engine_level_manager_get_tile_type( go->tileX, go->tileY, gamer_direction, offset_type_one );
+		if( coll_type_block == collision )
+		{
+			engine_font_manager_draw_data( collision, 7, 7 );
+			gamer_direction = direction_type_none;
+		}
+	}
+
 	return gamer_direction;
 }
