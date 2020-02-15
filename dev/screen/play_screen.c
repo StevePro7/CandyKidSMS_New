@@ -31,7 +31,7 @@ static unsigned char get_gamer_direction();
 void screen_play_screen_load()
 {
 	engine_command_manager_init();
-	engine_delay_manager_load( 0 );
+	engine_delay_manager_load( 10 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
@@ -156,8 +156,8 @@ static unsigned char get_gamer_direction()
 {
 	struct_gamer_object *go = &global_gamer_object;
 	//unsigned char gamer_direction = engine_gamer_manager_input_direction();
-	unsigned char gamer_direction = direction_type_rght;
-	//unsigned char gamer_direction = direction_type_upxx;
+	//unsigned char gamer_direction = direction_type_rght;
+	unsigned char gamer_direction = direction_type_left;
 	unsigned char collision;
 	if( direction_type_none == gamer_direction )
 	{

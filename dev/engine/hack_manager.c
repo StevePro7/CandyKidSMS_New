@@ -25,8 +25,8 @@ void engine_hack_manager_init()
 
 #ifndef _CONSOLE
 
-	//state_object_mydebugger = PEEK( HACKER_START - 2 );			// 0x004E		// Set my debugging from zero-based value.
-	//state_object_invincibie = PEEK( HACKER_START - 1 );			// 0x004F		// Set invincibility for zero-based value.
+	state_object_mydebugger = PEEK( HACKER_START - 2 );			// 0x004E		// Set my debugging from zero-based value.
+	state_object_invincibie = PEEK( HACKER_START - 1 );			// 0x004F		// Set invincibility for zero-based value.
 
 	state_object_trees_type = PEEK( HACKER_START + 0 );			// 0x0050		// Set start treeType to zero-based value.
 	state_object_exits_type = PEEK( HACKER_START + 1 );			// 0x0051		// Set start exitType to zero-based value.
@@ -49,7 +49,7 @@ void engine_hack_manager_invert()
 	state_object_trees_type = tree_type_death == state_object_trees_type ? tree_type_death : tree_type_avoid;
 
 	// Exits.
-	state_object_exits_type = exit_type_closed == state_object_trees_type ? exit_type_closed : exit_type_public;
+	state_object_exits_type = exit_type_closed == state_object_exits_type ? exit_type_closed : exit_type_public;
 
 	// World.
 	if( 0 != state_object_world_data )
