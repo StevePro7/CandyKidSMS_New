@@ -55,6 +55,7 @@ void screen_play_screen_load()
 //	engine_delay_manager_draw();
 
 	engine_font_manager_draw_text( "PLAY SCREEN!", 4, 10 );
+	engine_font_manager_draw_data( level_object_candy_count, 14, 11 );
 
 	//engine_audio_manager_music_play( 3 );
 	first_time = 1;
@@ -78,7 +79,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	frame = fo->frame_count;
 
 	// Draw sprites first.
-	engine_enemy_manager_draw();
+	//engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
 	//engine_frame_manager_draw();
@@ -160,11 +161,12 @@ void screen_play_screen_update( unsigned char *screen_type )
 	engine_command_manager_execute( frame );
 	first_time = 0;
 
-	if( coll_type_block == gamer_collision )
-	{
-		*screen_type = screen_type_dead;
-		return;
-	}
+	// TODO implement
+	//if( coll_type_block == gamer_collision )
+	//{
+	//	*screen_type = screen_type_dead;
+	//	return;
+	//}
 	
 	*screen_type = screen_type_play;
 }

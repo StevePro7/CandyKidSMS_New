@@ -80,6 +80,13 @@ void engine_enemy_manager_init()
 		*/
 		calcd_frame( enemy );
 		calcd_spots( enemy );
+
+
+		// TODO delete
+		if( 0 == enemy )
+		{
+			eo->mover = 0;
+		}
 	}
 }
 
