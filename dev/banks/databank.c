@@ -2,16 +2,20 @@
 
 // Global state.
 unsigned char state_object_mydebugger;
+unsigned char state_object_full_boost;
 unsigned char state_object_invincibie;
+unsigned long state_object_high_score;
+
 unsigned char state_object_trees_type;
 unsigned char state_object_exits_type;
 unsigned char state_object_difficulty;
 unsigned char state_object_game_speed;
+
 unsigned char state_object_world_data;
 unsigned char state_object_round_data;
 unsigned char state_object_music_data;
 unsigned char state_object_sound_data;
-unsigned long state_object_high_score;
+
 
 
 // Command Manager.
