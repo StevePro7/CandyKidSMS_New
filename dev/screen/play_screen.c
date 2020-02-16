@@ -33,7 +33,7 @@ static unsigned char get_gamer_collision();
 void screen_play_screen_load()
 {
 	engine_command_manager_init();
-	engine_delay_manager_load( 0 );
+	engine_delay_manager_load( 5 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
@@ -51,8 +51,8 @@ void screen_play_screen_load()
 	engine_level_manager_load_level( 0, 0 );
 	engine_level_manager_draw_level();
 
-//	engine_frame_manager_draw();
-//	engine_delay_manager_draw();
+	engine_frame_manager_draw();
+	engine_delay_manager_draw();
 
 	//engine_font_manager_draw_text( "PLAY SCREEN!", 4, 10 );
 	//engine_font_manager_draw_data( level_object_candy_count, 14, 11 );
@@ -81,8 +81,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
-	//engine_frame_manager_draw();
-	//engine_delay_manager_draw();
+	engine_frame_manager_draw();
+	engine_delay_manager_draw();
 	if( !first_time )
 	{
 		proceed = engine_delay_manager_update();
@@ -128,33 +128,42 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 
 	// Move enemies.
-	enemy = actor_type_adi;
-	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	//enemy = actor_type_adi;
+	for( enemy = 0; enemy < 2; enemy++ )
 	{
-		eo = &global_enemy_objects[ enemy ];
-		enemy_direction = direction_type_none;
+		//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+		{
+			eo = &global_enemy_objects[ enemy ];
+			enemy_direction = direction_type_upxx;
 
-		// Move enemy.
-		if( direction_type_none != eo->direction && lifecycle_type_move == eo->lifecycle )
-		{
-			//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
-			//engine_enemy_manager_update( enemy );
-		}
-		if( direction_type_none != eo->direction && lifecycle_type_idle == eo->lifecycle )
-		{
-			// Check collision.
-			engine_font_manager_draw_data( frame, 12, 20 );
-			engine_enemy_manager_stop( enemy );
+			// Move enemy.
+			if( direction_type_none != eo->direction && lifecycle_type_move == eo->lifecycle )
+			{
+				//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
+				engine_enemy_manager_update( enemy );
+			}
+			if( direction_type_none != eo->direction && lifecycle_type_idle == eo->lifecycle )
+			{
+				// Check collision.
+				engine_font_manager_draw_data( frame, 12, 20 );
+				engine_enemy_manager_stop( enemy );
 
-			engine_command_manager_add( frame, command_type_end_gamer, 0 );
-			//frame_spot = 1;
-		}
-		// For continuity we want to check if actor can move immediately after stopping.
-		if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
-		{
+				//engine_command_manager_add( frame, command_type_end_gamer, 0 );
+				//frame_spot = 1;
+			}
+			// For continuity we want to check if actor can move immediately after stopping.
+			if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
+			{
+				if( eo->mover )
+				{
+					if( 0 == frame || 16 == frame || 32 == frame || 64 == frame )
+					{
+						engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+					}
+				}
+			}
 		}
 	}
-
 
 	// Execute all commands for this frame.
 	engine_command_manager_execute( frame );

@@ -47,3 +47,8 @@ boost	fast depletion
 Game speed
 CK
 CM
+
+
+16/02/2020
+Today did the storage manager
+don't forget to put in a cheat that will allow you to reset / erase the store object
