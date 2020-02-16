@@ -281,10 +281,6 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 				engine_tile_manager_load_tile( &tile_type, tile_data );
 				index = ( row + 2 ) * MAZE_COLS + ( col + 2 );
 
-				if( 150 == index )
-				{
-					int bob = 7;
-				}
 				if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
 				{
 					level_object_bonus_count++;
@@ -359,9 +355,6 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 		}
 	}
 
-	test_type = level_object_tiles_array[ 150 ];
-
-	
 	// TODO - update if there is free man candy on this level
 }
 

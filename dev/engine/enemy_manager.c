@@ -80,25 +80,8 @@ void engine_enemy_manager_init()
 		*/
 		calcd_frame( enemy );
 		calcd_spots( enemy );
-
-
-		// TODO delete
-		if( 0 == enemy )
-		{
-			eo->mover = 0;
-		}
 	}
 }
-
-//void engine_enemy_manager_load()
-//{
-//	// TODO hardcoded - inject!
-//	struct_enemy_object *eo = &global_enemy_objects[ actor_type_pro ];
-//	eo->posnX = 144;
-//	eo->posnY = 144;
-//	eo->tileX = 9;
-//	eo->tileY = 9;
-//}
 
 void engine_enemy_manager_update( unsigned char enemy )
 {
