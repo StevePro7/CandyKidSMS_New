@@ -34,9 +34,9 @@ void engine_storage_manager_read()
 	state_object_game_speed = savegame->save_game_speed;
 
 	state_object_world_data = savegame->save_world_data;
-	state_object_exits_type = savegame->save_round_data;
-	state_object_difficulty = savegame->save_music_data;
-	state_object_game_speed = savegame->save_sound_data;
+	state_object_round_data = savegame->save_round_data;
+	state_object_music_data = savegame->save_music_data;
+	state_object_sound_data = savegame->save_sound_data;
 	devkit_SMS_disableSRAM();
 }
 
@@ -49,6 +49,7 @@ void engine_storage_manager_write()
 
 	devkit_SMS_enableSRAM();
 	savegame->Magic = MAGIC;
+	savegame->save_high_score = state_object_high_score;
 
 	savegame->save_trees_type = state_object_trees_type;
 	savegame->save_exits_type = state_object_exits_type;
@@ -56,9 +57,9 @@ void engine_storage_manager_write()
 	savegame->save_game_speed = state_object_game_speed;
 
 	savegame->save_world_data = state_object_world_data;
-	savegame->save_round_data = state_object_exits_type;
-	savegame->save_music_data = state_object_difficulty;
-	savegame->save_sound_data = state_object_game_speed;
+	savegame->save_round_data = state_object_round_data;
+	savegame->save_music_data = state_object_music_data;
+	savegame->save_sound_data = state_object_sound_data;
 
 	savegame->terminal = 0xFD;
 	devkit_SMS_disableSRAM();
