@@ -5,12 +5,15 @@
 #include "locale_manager.h"
 #include "..\banks\databank.h"
 
+#define TEXT_X		SCREEN_TILE_LEFT + 25
+#define DATA_X		SCREEN_TILE_LEFT + 28
+
 #define HIGHS_Y		2
-#define SCORE_Y		6
-#define LIVES_Y		12
-#define LEVEL_Y		12
-#define WORLD_Y		12
-#define ROUNT_Y		16
+#define SCORE_Y		5
+#define LIVES_Y		8
+#define LEVEL_Y		11
+#define WORLD_Y		14
+#define ROUNT_Y		18
 
 // Global variable.
 struct_score_object global_score_object;
@@ -21,6 +24,11 @@ static void update( unsigned char points );
 unsigned char calc_level();
 static void draw_highs();
 static void draw_score();
+static void draw_lives();
+static void draw_level();
+static void draw_world();
+static void draw_round();
+static void draw_zero( unsigned char x, unsigned char y );
 
 void engine_score_manager_init()
 {
@@ -61,10 +69,10 @@ void engine_score_manager_draw_all()
 {
 	struct_score_object *so = &global_score_object;
 
-	engine_font_manager_draw_char( '0', 31, HIGHS_Y + 1 );
-	engine_font_manager_draw_char( '0', 31, SCORE_Y + 1 );
+	draw_zero( DATA_X + 1, HIGHS_Y + 1 );
+	draw_zero( DATA_X + 1, SCORE_Y + 1 );
 
-	//engine_font_manager_draw_char( '0', 31, 11 );
+	
 	//engine_font_manager_draw_long( MAX_HI_SCORE, 30, 11 );
 
 	//engine_font_manager_draw_char( '0', 31, 15 );
@@ -72,16 +80,17 @@ void engine_score_manager_draw_all()
 
 	draw_highs();
 	draw_score();
+	draw_lives();
 }
 
 void engine_score_manager_draw_text()
 {
-	engine_font_manager_draw_text( LOCALE_HIGHS_TEXT, 28, HIGHS_Y + 0 );
-	engine_font_manager_draw_text( LOCALE_SCORE_TEXT, 27, SCORE_Y + 0 );
-	engine_font_manager_draw_text( LOCALE_LIVES_TEXT, 27, 8 );
-	engine_font_manager_draw_text( LOCALE_LEVEL_TEXT, 27, 12 );
-	engine_font_manager_draw_text( LOCALE_WORLD_TEXT, 27, WORLD_Y + 0 );
-	engine_font_manager_draw_text( LOCALE_ROUND_TEXT, 27, ROUNT_Y + 0 );
+	engine_font_manager_draw_text( LOCALE_HIGHS_TEXT, TEXT_X, HIGHS_Y + 0 );
+	engine_font_manager_draw_text( LOCALE_SCORE_TEXT, TEXT_X, SCORE_Y + 0 );
+	engine_font_manager_draw_text( LOCALE_LIVES_TEXT, TEXT_X, LIVES_Y + 0 );
+	//engine_font_manager_draw_text( LOCALE_LEVEL_TEXT, TEXT_X, 12 );
+	engine_font_manager_draw_text( LOCALE_WORLD_TEXT, TEXT_X, WORLD_Y + 0 );
+	engine_font_manager_draw_text( LOCALE_ROUND_TEXT, TEXT_X, ROUNT_Y + 0 );
 }
 
 //void engine_score_manager_draw_boost()
@@ -131,10 +140,38 @@ unsigned char calc_level()
 static void draw_highs()
 {
 	struct_score_object *so = &global_score_object;
-	engine_font_manager_draw_long( state_object_high_score, 30, HIGHS_Y + 1 );
+	engine_font_manager_draw_long( state_object_high_score, DATA_X + 0, HIGHS_Y + 1 );
 }
 static void draw_score()
 {
 	struct_score_object *so = &global_score_object;
-	engine_font_manager_draw_long( so->score, 30, SCORE_Y + 1 );
+	engine_font_manager_draw_long( so->score, DATA_X + 0, SCORE_Y + 1 );
+}
+static void draw_lives()
+{
+	struct_score_object *so = &global_score_object;
+	engine_font_manager_draw_long( so->lives, DATA_X + 1, LIVES_Y + 1 );
+	if( so->lives < 10 )
+	{
+		draw_zero( DATA_X + 0, LIVES_Y + 1 );
+	}
+}
+
+// TODO complete these 3x like draw lives
+static void draw_level()
+{
+
+}
+static void draw_world()
+{
+
+}
+static void draw_round()
+{
+
+}
+
+static void draw_zero( unsigned char x, unsigned char y )
+{
+	engine_font_manager_draw_char( '0', x, y );
 }
