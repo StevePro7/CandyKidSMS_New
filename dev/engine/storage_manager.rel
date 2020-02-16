@@ -1,5 +1,5 @@
 XL2
-H 9 areas 11 global symbols
+H 9 areas 12 global symbols
 M storage_manager
 O -mz80
 S _state_object_exits_type Ref0000
@@ -15,7 +15,8 @@ S _state_object_difficulty Ref0000
 S _devkit_SMS_enableSRAM Ref0000
 S _state_object_trees_type Ref0000
 S _state_object_game_speed Ref0000
-A _CODE size 120 flags 0 addr 0
+A _CODE size 17C flags 0 addr 0
+S _engine_storage_manager_erase Def0120
 S _engine_storage_manager_read Def002F
 S _engine_storage_manager_available Def0000
 S _engine_storage_manager_write Def00A7
@@ -88,3 +89,19 @@ T 08 01 0E 00 09 3A 00 00 77 21 0F 00 09 3A 00 00
 R 00 00 00 00 02 06 02 00 02 0E 06 00
 T 16 01 77 21 10 00 09 36 FD C3 00 00
 R 00 00 00 00 02 0A 07 00
+T 20 01
+R 00 00 00 00
+T 20 01 CD 00 00 E5 CD 00 00 C1 69 60 36 04 23 36
+R 00 00 00 00 02 03 01 00 02 07 0A 00
+T 2E 01 B0 23 36 E0 23 36 AC 21 04 00 09 36 10 23
+R 00 00 00 00
+T 3C 01 36 27 23 AF 77 23 77 21 08 00 09 36 00 21
+R 00 00 00 00
+T 4A 01 09 00 09 36 00 21 0A 00 09 36 00 21 0B 00
+R 00 00 00 00
+T 58 01 09 36 00 21 0C 00 09 36 00 21 0D 00 09 36
+R 00 00 00 00
+T 66 01 00 21 0E 00 09 36 00 21 0F 00 09 36 00 21
+R 00 00 00 00
+T 74 01 10 00 09 36 FD C3 00 00
+R 00 00 00 00 02 08 07 00

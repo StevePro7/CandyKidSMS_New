@@ -36,6 +36,10 @@ void screen_record_screen_load()
 		engine_font_manager_draw_data( state_object_music_data, 22, 10 );
 		engine_font_manager_draw_data( state_object_sound_data, 22, 11 );
 	}
+	else
+	{
+		engine_storage_manager_erase();
+	}
 
 	engine_font_manager_draw_data( test, 22, 15 );
 	//my_command = 1;
@@ -65,6 +69,14 @@ void screen_record_screen_update( unsigned char *screen_type )
 
 
 		engine_font_manager_draw_text( "SAVED..!!", 4, 4 );
+	}
+
+	input = engine_input_manager_hold( input_type_fire2 );
+	if( input )
+	{
+		engine_font_manager_draw_text( "ERASING...", 4, 3 );
+		engine_storage_manager_erase();
+		engine_font_manager_draw_text( "ERASED..!!", 4, 4 );
 	}
 	//first_time = 0;
 
