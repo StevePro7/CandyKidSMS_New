@@ -5,11 +5,12 @@ typedef struct tag_struct_score_object
 {
 	unsigned long score;
 	unsigned char lives;
-	unsigned char boost;
-	unsigned char delay;
+	unsigned char level;
 	unsigned char bonus;
 	unsigned char candy;
 	unsigned char total;
+	unsigned char boost;
+	unsigned char delay;
 
 } struct_score_object;
 

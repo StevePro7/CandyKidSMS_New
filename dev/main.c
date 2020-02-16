@@ -23,12 +23,12 @@ void main (void)
 	engine_hack_manager_invert();
 
 	//open_screen_type = screen_type_intro;
-	//open_screen_type = screen_type_func;
+	open_screen_type = screen_type_func;
 	//open_screen_type = screen_type_beat;
 	//open_screen_type = screen_type_dead;
 	//open_screen_type = screen_type_over;
 	//open_screen_type = screen_type_pass;
-	open_screen_type = screen_type_play;
+	//open_screen_type = screen_type_play;
 
 	engine_screen_manager_init( open_screen_type );
 	devkit_SMS_displayOn();
