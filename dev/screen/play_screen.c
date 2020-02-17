@@ -27,13 +27,16 @@
 static unsigned char first_time;
 static unsigned char frame_spot;
 
+// TODO put into the gmaer Mgr
 static unsigned char get_gamer_direction();
 static unsigned char get_gamer_collision();
+
+static void print( unsigned char dir );
 
 void screen_play_screen_load()
 {
 	engine_command_manager_init();
-	engine_delay_manager_load( 10 );
+	engine_delay_manager_load( 0 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
@@ -154,12 +157,13 @@ void screen_play_screen_update( unsigned char *screen_type )
 			// For continuity we want to check if actor can move immediately after stopping.
 			if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
 			{
-				if( 0 == frame )
+				//if( 0 == frame )
 				{
-					engine_font_manager_draw_text( "BEFORE....!!", 10, 12 );
+					engine_font_manager_draw_text( "DIRECTION!!", 10, 12 );
 					enemy_direction = engine_enemy_manager_find_direction( enemy, go->tileX, go->tileY );
 					//enemy_direction = direction_type_left;
-					engine_font_manager_draw_data( enemy_direction, 10, 10 );
+					//engine_font_manager_draw_data( enemy_direction, 10, 13 );
+					print( enemy_direction );
 					if( direction_type_none != enemy_direction )
 					{
 						engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
@@ -237,4 +241,28 @@ static unsigned char get_gamer_collision()
 {
 	return 0;
 	//return coll_type_block;
+}
+
+static void print( unsigned char dir )
+{
+	if( 0 == dir )
+	{
+		engine_font_manager_draw_text( "NONE", 10, 13 );
+	}
+	if( 1 == dir )
+	{
+		engine_font_manager_draw_text( "UPXX", 10, 13 );
+	}
+	if( 2 == dir )
+	{
+		engine_font_manager_draw_text( "DOWN", 10, 13 );
+	}
+	if( 4 == dir )
+	{
+		engine_font_manager_draw_text( "LEFT", 10, 13 );
+	}
+	if( 8 == dir )
+	{
+		engine_font_manager_draw_text( "RGHT", 10, 13 );
+	}
 }

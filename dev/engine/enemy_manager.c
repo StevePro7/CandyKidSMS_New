@@ -220,7 +220,7 @@ unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned
 	// ATTACK.
 	if( actor_type_pro == enemy )
 	{
-		enemy_direction = engine_move_manager_find_direction( eo->tileX, eo->tileY, gamerX, gamerY, eo->direction );
+		enemy_direction = engine_move_manager_find_direction( eo->tileX, eo->tileY, gamerX, gamerY, eo->prev_move );
 		//engine_font_manager_draw_text( "AFTER.....!!", 10, 13 );
 		//engine_font_manager_draw_data( enemy_direction, 10, 14 );
 	}
