@@ -39,6 +39,8 @@ void screen_test_screen_load()
 	engine_board_manager_init();
 	engine_enemy_manager_init();
 
+	engine_level_manager_load_level( 0, 0 );
+
 	// xDist = 0;	List = 3; Half = 1;		Byte = 49.
 	//byte = engine_move_manager_find_direction( 18, 14, 18, 23 );
 	//engine_function_manager_convertByteToNibbles( byte, &upper_nibble, &lower_nibble );
@@ -90,32 +92,32 @@ void screen_test_screen_load()
 
 	eo = &global_enemy_objects[ actor_type_pro ];
 	//enemy_direction = engine_move_manager_actor_direction( eo->direction );
-	//enemy_direction = direction_type_rght;
+	enemy_direction = direction_type_rght;
 	enemy_direction = engine_move_manager_find_direction( srceX, srceY, destX, destY, enemy_direction );
 
 	// Print out results.
-	engine_font_manager_draw_data( upper_nibble, 20, 8 );
-	engine_font_manager_draw_data( lower_nibble, 20, 9 );
+	//engine_font_manager_draw_data( upper_nibble, 20, 8 );
+	//engine_font_manager_draw_data( lower_nibble, 20, 9 );
 
 	//engine_font_manager_draw_data( directions[ 0 ], 20, 11 );
 	//engine_font_manager_draw_data( directions[ 1 ], 20, 12 );
 	//engine_font_manager_draw_data( directions[ 2 ], 20, 13 );
 	//engine_font_manager_draw_data( directions[ 3 ], 20, 14 );
 
-	list = upper_nibble;
-	half = lower_nibble;
+	//list = upper_nibble;
+	//half = lower_nibble;
 
-	index = list * 2 * NUM_DIRECTIONS + half * NUM_DIRECTIONS;
-	devkit_SMS_mapROMBank( FIXED_BANK );
-	directions[ 0 ] = enemy_object_directions[ index + 0 ];
-	directions[ 1 ] = enemy_object_directions[ index + 1 ];
-	directions[ 2 ] = enemy_object_directions[ index + 2 ];
-	directions[ 3 ] = enemy_object_directions[ index + 3 ];
+	//index = list * 2 * NUM_DIRECTIONS + half * NUM_DIRECTIONS;
+	//devkit_SMS_mapROMBank( FIXED_BANK );
+	//directions[ 0 ] = enemy_object_directions[ index + 0 ];
+	//directions[ 1 ] = enemy_object_directions[ index + 1 ];
+	//directions[ 2 ] = enemy_object_directions[ index + 2 ];
+	//directions[ 3 ] = enemy_object_directions[ index + 3 ];
 
-	engine_font_manager_draw_data( directions[ 0 ], 20, 11 );
-	engine_font_manager_draw_data( directions[ 1 ], 20, 12 );
-	engine_font_manager_draw_data( directions[ 2 ], 20, 13 );
-	engine_font_manager_draw_data( directions[ 3 ], 20, 14 );
+	//engine_font_manager_draw_data( directions[ 0 ], 20, 11 );
+	//engine_font_manager_draw_data( directions[ 1 ], 20, 12 );
+	//engine_font_manager_draw_data( directions[ 2 ], 20, 13 );
+	//engine_font_manager_draw_data( directions[ 3 ], 20, 14 );
 
 	//engine_font_manager_draw_data( directions[ 0 ], 20, 16 );
 	//engine_font_manager_draw_data( directions[ 1 ], 20, 17 );

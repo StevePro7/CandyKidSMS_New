@@ -1,5 +1,6 @@
 #include "move_manager.h"
 #include "enum_manager.h"
+#include "font_manager.h"
 #include "function_manager.h"
 #include "global_manager.h"
 #include "level_manager.h"
@@ -16,6 +17,7 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 	unsigned char directions[ NUM_DIRECTIONS ] = { direction_type_none, direction_type_none, direction_type_none, direction_type_none };
 	unsigned char move_direction = direction_type_none;
 	unsigned char oppX_direction = direction_type_none;
+	unsigned char test_direction = direction_type_none;
 	unsigned char collision = direction_type_none;
 	unsigned char index = 0;
 	//unsigned char byte = 0;
@@ -27,6 +29,8 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 	engine_move_manager_get_directions( srceX, srceY, destX, destY, &list, &half );
 	//engine_function_manager_convertByteToNibbles( byte, &list, &half );
 
+	engine_font_manager_draw_data( list, 12, 12 );
+	engine_font_manager_draw_data( half, 12, 14 );
 	// TODO randomly flip the half = 1 - half
 
 	index = list * 2 * NUM_DIRECTIONS + half * NUM_DIRECTIONS;
@@ -38,14 +42,25 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 	oppX_direction = engine_move_manager_opposite_direction( enemy_direction );
 	for( index = 0; index < NUM_DIRECTIONS; index++ )
 	{
-		move_direction = directions[ index ];
-		if( oppX_direction != move_direction )
+		test_direction = directions[ index ];
+		if( oppX_direction != test_direction )
 		{
-			collision = engine_level_manager_get_collision( srceX, srceY, move_direction, offset_type_one );
+			collision = engine_level_manager_get_collision( srceX, srceY, test_direction, offset_type_one );
 			if( coll_type_empty == collision )
 			{
+				move_direction = test_direction;
 				break;
 			}
+		}
+	}
+
+	// Enemy in cul de sac so must be able to go in opposite direction; exception to the rule.
+	if( direction_type_none == move_direction )
+	{
+		collision = engine_level_manager_get_collision( srceX, srceY, oppX_direction, offset_type_one );
+		if( coll_type_empty == collision )
+		{
+			move_direction = test_direction;
 		}
 	}
 

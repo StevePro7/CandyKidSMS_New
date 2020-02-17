@@ -4,6 +4,7 @@
 #include "enum_manager.h"
 #include "font_manager.h"
 #include "function_manager.h"
+#include "level_manager.h"
 #include "mask_manager.h"
 #include "tile_manager.h"
 #include "..\banks\databank.h"
