@@ -21,9 +21,17 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 	//unsigned char byte = 0;
 	unsigned char list = 0;
 	unsigned char half = 0;
+	unsigned char flip = 0;
 
 	// Get the list of 4x possible directions in the order depending on tiles.
 	engine_move_manager_get_directions( srceX, srceY, destX, destY, &list, &half );
+
+	// TODO randomly flip the half = 1 - half??
+	//flip = rand() % 2;
+	//if( flip )
+	//{
+	//	half = 1 - half;
+	//}
 	// TODO randomly flip the half = 1 - half??
 
 	index = list * 2 * NUM_DIRECTIONS + half * NUM_DIRECTIONS;
@@ -55,13 +63,13 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 		}
 	}
 
-	// Enemy in cul de sac so must be able to go in opposite direction; exception to the rule.
+	// Enemy in cul de sac so must be able to go in opposite direction!
 	if( direction_type_none == move_direction )
 	{
 		collision = engine_level_manager_get_collision( srceX, srceY, oppX_direction, offset_type_one );
 		if( coll_type_empty == collision )
 		{
-			move_direction = test_direction;
+			move_direction = oppX_direction;
 		}
 	}
 

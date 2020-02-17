@@ -51,7 +51,7 @@ void screen_play_screen_load()
 	engine_board_manager_draw_exit();
 	engine_board_manager_side_tile();
 
-	engine_level_manager_load_level( 0, 0 );
+	engine_level_manager_load_level( 5, 5 );
 	engine_level_manager_draw_level();
 
 	engine_frame_manager_draw();
