@@ -33,7 +33,7 @@ static unsigned char get_gamer_collision();
 void screen_play_screen_load()
 {
 	engine_command_manager_init();
-	engine_delay_manager_load( 5 );
+	engine_delay_manager_load( 10 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
@@ -129,12 +129,12 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Move enemies.
 	//enemy = actor_type_adi;
-	for( enemy = 0; enemy < 2; enemy++ )
+	for( enemy = 0; enemy < 1; enemy++ )
 	{
 		//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 		{
 			eo = &global_enemy_objects[ enemy ];
-			enemy_direction = direction_type_upxx;
+			//enemy_direction = direction_type_upxx;
 
 			// Move enemy.
 			if( direction_type_none != eo->direction && lifecycle_type_move == eo->lifecycle )
@@ -154,13 +154,26 @@ void screen_play_screen_update( unsigned char *screen_type )
 			// For continuity we want to check if actor can move immediately after stopping.
 			if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
 			{
-				if( eo->mover )
+				if( 0 == frame )
 				{
-					if( 0 == frame || 16 == frame || 32 == frame || 64 == frame )
+					engine_font_manager_draw_text( "BEFORE....!!", 10, 12 );
+					enemy_direction = engine_enemy_manager_find_direction( enemy, go->tileX, go->tileY );
+					//enemy_direction = direction_type_left;
+					engine_font_manager_draw_data( enemy_direction, 10, 10 );
+					if( direction_type_none != enemy_direction )
 					{
 						engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
 					}
 				}
+
+				//if( eo->mover )
+				//{
+				//	enemy_direction = engine_move_manager_find_direction( eo->tileX, eo->tileY, go->tileX, go->tileY, eo->direction );
+				//	//if( 0 == frame || 16 == frame || 32 == frame || 64 == frame )
+				//	//{
+				//	//	engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+				//	//}
+				//}
 			}
 		}
 	}

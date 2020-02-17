@@ -7,10 +7,8 @@
 #include "mask_manager.h"
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
+#include "..\devkit\_sms_manager.h"
 #include <stdlib.h>
-
-// Private helper methods.
-//static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction );
 
 unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY, unsigned char enemy_direction )
 {
@@ -25,19 +23,22 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 	unsigned char half = 0;
 
 	// Get the list of 4x possible directions in the order depending on tiles.
-	//byte = engine_move_manager_get_directions( srceX, srceY, destX, destY );
 	engine_move_manager_get_directions( srceX, srceY, destX, destY, &list, &half );
-	//engine_function_manager_convertByteToNibbles( byte, &list, &half );
-
-	engine_font_manager_draw_data( list, 12, 12 );
-	engine_font_manager_draw_data( half, 12, 14 );
-	// TODO randomly flip the half = 1 - half
+	// TODO randomly flip the half = 1 - half??
 
 	index = list * 2 * NUM_DIRECTIONS + half * NUM_DIRECTIONS;
+
+	// TODO fixed bank - change to databank!!
+	devkit_SMS_mapROMBank( FIXED_BANK );
 	directions[ 0 ] = enemy_object_directions[ index + 0 ];
 	directions[ 1 ] = enemy_object_directions[ index + 1 ];
 	directions[ 2 ] = enemy_object_directions[ index + 2 ];
 	directions[ 3 ] = enemy_object_directions[ index + 3 ];
+
+	//engine_font_manager_draw_data( directions[ 0 ], 10, 13 );
+	//engine_font_manager_draw_data( directions[ 1 ], 10, 14 );
+	//engine_font_manager_draw_data( directions[ 2 ], 10, 15 );
+	//engine_font_manager_draw_data( directions[ 3 ], 10, 16 );
 
 	oppX_direction = engine_move_manager_opposite_direction( enemy_direction );
 	for( index = 0; index < NUM_DIRECTIONS; index++ )
@@ -73,10 +74,6 @@ void engine_move_manager_get_directions( unsigned char srceX, unsigned char srce
 	unsigned char deltaY = 0;
 	unsigned char minusY = 0;
 	unsigned char plusX = 0;
-
-	//unsigned char list = 0;
-	//unsigned char half = 0;
-	//unsigned char byte = 0;
 
 	// Determine which directions...
 	if( srceX > destX )
@@ -124,47 +121,7 @@ void engine_move_manager_get_directions( unsigned char srceX, unsigned char srce
 	}
 
 	*half = minusY ? 0 : 1;
-
-	// Upper nibble sets list index.
-	// Lower nibble sets half value.
-	//engine_function_manager_convertNibblesToByte( list, half, &byte );
-	//return byte;
 }
-
-//unsigned char engine_move_manager_test_direction( unsigned char row, unsigned char col )
-//{
-//	unsigned char direction_type = direction_type_none;
-//
-//	// Check UP.
-//	if( 0 != row )
-//	{
-//		unsigned char test_type = test_direction( ( col + 0 ), ( row - 1 ), direction_type_upxx );
-//		direction_type |= test_type;
-//	}
-//
-//	// Check DOWN.
-//	if( MAZE_ROWS - 1 != row )
-//	{
-//		unsigned char test_type = test_direction( ( col + 0 ), ( row + 1 ), direction_type_down );
-//		direction_type |= test_type;
-//	}
-//
-//	// Check LEFT.
-//	if( 0 != col )
-//	{
-//		unsigned char test_type = test_direction( ( col - 1 ), ( row + 0 ), direction_type_left );
-//		direction_type |= test_type;
-//	}
-//
-//	// Check RIGHT.
-//	if( MAZE_COLS - 1 != col )
-//	{
-//		unsigned char test_type = test_direction( ( col + 1 ), ( row + 0 ), direction_type_rght );
-//		direction_type |= test_type;
-//	}
-//
-//	return direction_type;
-//}
 
 unsigned char engine_move_manager_actor_direction( unsigned char direction )
 {
@@ -211,22 +168,3 @@ unsigned char engine_move_manager_opposite_direction( unsigned char direction )
 
 	return direction_type_none;
 }
-
-//static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction )
-//{
-//	unsigned char index;
-//	unsigned char tile;
-//	unsigned char coll;
-//	unsigned char test_type = direction_type_none;
-//
-//	index = y * MAZE_COLS + x;
-//	tile = level_object_tiles_array[ index ];
-//
-//	coll = COLL_TYPE_MASK == ( tile & COLL_TYPE_MASK );
-//	if( coll_type_empty == coll )
-//	{
-//		test_type = input_direction;
-//	}
-//
-//	return test_type;
-//}

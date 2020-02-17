@@ -7,6 +7,7 @@
 #include "..\engine\gamer_manager.h"
 #include "..\engine\global_manager.h"
 #include "..\engine\input_manager.h"
+#include "..\engine\level_manager.h"
 #include "..\engine\move_manager.h"
 #include "..\engine\sprite_manager.h"
 #include "..\banks\databank.h"
@@ -92,7 +93,7 @@ void screen_test_screen_load()
 
 	eo = &global_enemy_objects[ actor_type_pro ];
 	//enemy_direction = engine_move_manager_actor_direction( eo->direction );
-	enemy_direction = direction_type_rght;
+	//enemy_direction = direction_type_rght;
 	enemy_direction = engine_move_manager_find_direction( srceX, srceY, destX, destY, enemy_direction );
 
 	// Print out results.

@@ -1,9 +1,10 @@
 #include "enemy_manager.h"
 #include "board_manager.h"
 #include "enum_manager.h"
-//#include "font_manager.h"
+#include "font_manager.h"
 #include "function_manager.h"
 #include "global_manager.h"
+#include "move_manager.h"
 #include "sprite_manager.h"
 #include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
@@ -87,7 +88,7 @@ void engine_enemy_manager_init()
 		{
 			eo->delay = 1;		// TODO hardcoded - inject!
 			eo->speed = 1;		// 1=move 0=stay.
-			eo->mover = 0;
+			//eo->mover = 0;
 		}
 		if( 1 == enemy )
 		{
@@ -202,6 +203,29 @@ void engine_enemy_manager_stop( unsigned char enemy )
 	eo->direction = direction_type_none;
 	eo->frame = 0;
 	calcd_frame( enemy );
+}
+
+unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned char gamerX, unsigned char gamerY )
+{
+	unsigned char enemy_direction = direction_type_none;
+
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	if( !eo->mover )
+	{
+		return enemy_direction;
+	}
+
+	// TODO decide whether scatter or attack...!
+
+	// ATTACK.
+	if( actor_type_pro == enemy )
+	{
+		enemy_direction = engine_move_manager_find_direction( eo->tileX, eo->tileY, gamerX, gamerY, eo->direction );
+		//engine_font_manager_draw_text( "AFTER.....!!", 10, 13 );
+		//engine_font_manager_draw_data( enemy_direction, 10, 14 );
+	}
+
+	return enemy_direction;
 }
 
 static void calcd_frame( unsigned char enemy )
