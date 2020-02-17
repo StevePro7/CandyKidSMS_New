@@ -19,6 +19,15 @@ void screen_test_screen_load()
 	unsigned char enemy_direction = direction_type_none;
 	struct_enemy_object *eo;
 
+	// srce = enemy
+	// dest = gamer
+	int srceX = 10;
+	int srceY = 10;
+	int destX = 3;
+	int destY = 3;
+	// srce = enemy
+	// dest = gamer
+
 	unsigned char index = 0;
 	unsigned char byte = 0;
 	unsigned char list = 0;
@@ -73,14 +82,16 @@ void screen_test_screen_load()
 	//engine_function_manager_convertByteToNibbles( byte, &upper_nibble, &lower_nibble );
 
 	// Index = 7;	List = 3; Half = 1;		Byte = 49.
-	byte = engine_move_manager_get_directions( 18, 11, 13, 23 );
-	engine_function_manager_convertByteToNibbles( byte, &upper_nibble, &lower_nibble );
+	//byte = engine_move_manager_get_directions( 18, 11, 13, 23 );
+	//engine_function_manager_convertByteToNibbles( byte, &upper_nibble, &lower_nibble );
+
+
 
 
 	eo = &global_enemy_objects[ actor_type_pro ];
 	//enemy_direction = engine_move_manager_actor_direction( eo->direction );
 	//enemy_direction = direction_type_rght;
-	enemy_direction = engine_move_manager_find_direction( 18, 11, 13, 23, enemy_direction );
+	enemy_direction = engine_move_manager_find_direction( srceX, srceY, destX, destY, enemy_direction );
 
 	// Print out results.
 	engine_font_manager_draw_data( upper_nibble, 20, 8 );

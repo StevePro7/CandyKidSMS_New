@@ -18,13 +18,14 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 	unsigned char oppX_direction = direction_type_none;
 	unsigned char collision = direction_type_none;
 	unsigned char index = 0;
-	unsigned char byte = 0;
+	//unsigned char byte = 0;
 	unsigned char list = 0;
 	unsigned char half = 0;
 
 	// Get the list of 4x possible directions in the order depending on tiles.
-	byte = engine_move_manager_get_directions( srceX, srceY, destX, destY );
-	engine_function_manager_convertByteToNibbles( byte, &list, &half );
+	//byte = engine_move_manager_get_directions( srceX, srceY, destX, destY );
+	engine_move_manager_get_directions( srceX, srceY, destX, destY, &list, &half );
+	//engine_function_manager_convertByteToNibbles( byte, &list, &half );
 
 	// TODO randomly flip the half = 1 - half
 
@@ -51,16 +52,16 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 	return move_direction;
 }
 
-unsigned char engine_move_manager_get_directions( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY )
+void engine_move_manager_get_directions( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY, unsigned char *list, unsigned char *half )
 {
 	unsigned char deltaX = 0;
 	unsigned char deltaY = 0;
 	unsigned char minusY = 0;
 	unsigned char plusX = 0;
 
-	unsigned char list = 0;
-	unsigned char half = 0;
-	unsigned char byte = 0;
+	//unsigned char list = 0;
+	//unsigned char half = 0;
+	//unsigned char byte = 0;
 
 	// Determine which directions...
 	if( srceX > destX )
@@ -88,31 +89,31 @@ unsigned char engine_move_manager_get_directions( unsigned char srceX, unsigned 
 	{
 		if( plusX )
 		{
-			list = 0;
+			*list = 0;
 		}
 		else
 		{
-			list = 1;
+			*list = 1;
 		}
 	}
 	else
 	{
 		if( plusX )
 		{
-			list = 2;
+			*list = 2;
 		}
 		else
 		{
-			list = 3;
+			*list = 3;
 		}
 	}
 
-	half = minusY ? 0 : 1;
+	*half = minusY ? 0 : 1;
 
 	// Upper nibble sets list index.
 	// Lower nibble sets half value.
-	engine_function_manager_convertNibblesToByte( list, half, &byte );
-	return byte;
+	//engine_function_manager_convertNibblesToByte( list, half, &byte );
+	//return byte;
 }
 
 //unsigned char engine_move_manager_test_direction( unsigned char row, unsigned char col )
