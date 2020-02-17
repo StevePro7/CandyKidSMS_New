@@ -10,7 +10,41 @@
 // Private helper methods.
 static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction );
 
-unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY )
+unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY, unsigned char enemy_direction )
+{
+	unsigned char directions[ NUM_DIRECTIONS ] = { direction_type_none, direction_type_none, direction_type_none, direction_type_none };
+	unsigned char move_direction = direction_type_none;
+	unsigned char oppX_direction = direction_type_none;
+	unsigned char index = 0;
+	unsigned char loop = 0;
+	unsigned char byte = 0;
+	unsigned char list = 0;
+	unsigned char half = 0;
+
+	// Get the list of 4x possible directions in the order depending on tiles.
+	byte = engine_move_manager_get_directions( srceX, srceY, destX, destY );
+	engine_function_manager_convertByteToNibbles( byte, &list, &half );
+
+	// TODO randomly flip the half = 1 - half
+
+	index = list * 2 * NUM_DIRECTIONS + half * NUM_DIRECTIONS;
+	directions[ 0 ] = enemy_object_directions[ index + 0 ];
+	directions[ 1 ] = enemy_object_directions[ index + 1 ];
+	directions[ 2 ] = enemy_object_directions[ index + 2 ];
+	directions[ 3 ] = enemy_object_directions[ index + 3 ];
+
+	oppX_direction = engine_move_manager_opposite_direction( enemy_direction );
+	for( loop = 0; loop < NUM_DIRECTIONS; loop++ )
+	{
+		// TODO must move these functions out of the level_manager as there is cyclical dependency
+		//engine_level_manager_get_collision
+		// TODO must move these functions out of the level_manager as there is cyclical dependency
+	}
+
+	return move_direction;
+}
+
+unsigned char engine_move_manager_get_directions( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY )
 {
 	unsigned char deltaX = 0;
 	unsigned char deltaY = 0;
