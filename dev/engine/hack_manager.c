@@ -49,7 +49,7 @@ void engine_hack_manager_invert()
 {
 	// Trees.
 	state_object_trees_type = tree_type_death == state_object_trees_type ? tree_type_death : tree_type_avoid;
-
+	state_object_trees_type = 1;
 	// Exits.
 	state_object_exits_type = exit_type_closed == state_object_exits_type ? exit_type_closed : exit_type_public;
 

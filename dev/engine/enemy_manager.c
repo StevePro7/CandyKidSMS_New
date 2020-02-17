@@ -207,9 +207,11 @@ void engine_enemy_manager_stop( unsigned char enemy )
 
 unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned char gamerX, unsigned char gamerY )
 {
-	unsigned char enemy_direction = direction_type_none;
-
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	unsigned char enemy_direction = direction_type_none;
+	unsigned char targetX;
+	unsigned char targetY;
+	
 	if( !eo->mover )
 	{
 		return enemy_direction;
@@ -220,7 +222,13 @@ unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned
 	// ATTACK.
 	if( actor_type_pro == enemy )
 	{
-		enemy_direction = engine_move_manager_find_direction( eo->tileX, eo->tileY, gamerX, gamerY, eo->prev_move );
+		targetX = gamerX;
+		targetY = gamerY;
+		enemy_direction = engine_move_manager_find_direction( eo->tileX, eo->tileY, targetX, targetY, eo->prev_move );
+
+		// TODO  stevepro adriana actually put this method in the enemy manager
+		//enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY, eo->prev_move );
+
 		//engine_font_manager_draw_text( "AFTER.....!!", 10, 13 );
 		//engine_font_manager_draw_data( enemy_direction, 10, 14 );
 	}

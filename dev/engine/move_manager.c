@@ -27,8 +27,8 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 	engine_move_manager_get_directions( srceX, srceY, destX, destY, &list, &half );
 
 	// TODO randomly flip the half = 1 - half??
-	//flip = rand() % 2;
-	//if( flip )
+	//flip = rand() % 2;	// 0 or 1
+	//if( 0 == flip )
 	//{
 	//	half = 1 - half;
 	//}
