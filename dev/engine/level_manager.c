@@ -1,71 +1,28 @@
 #include "level_manager.h"
-//#include "board_manager.h"
 #include "global_manager.h"
 #include "enemy_manager.h"
 #include "enum_manager.h"
 #include "font_manager.h"
 #include "function_manager.h"
 #include "mask_manager.h"
-#include "move_manager.h"
 #include "tile_manager.h"
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
 //#include <stdlib.h>
 
-#include "..\banks\fixedbank.h"
-//
 //// TODO calculate based on levels
 #define MULTIPLIER_LEVEL	70
-//
-//// Global variable.
-////struct_level_object global_level_object;
-//
+
 #define CRLF	2				// char
 #define CR		'\r'			// 0x0d
 #define LF		'\n'			// 0x0a
-//
+
 //// Private helper methods.
 static void load_level( const unsigned char *data, const unsigned char size, const unsigned char bank, unsigned char mult );
 static void draw_tiles( unsigned char x, unsigned char y );
+static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction );
 
-//void engine_level_manager_init_exits()
-//{
-//	struct_board_object *bo = &global_board_object;
-//	struct_level_object *lo = &global_level_object;
-//	unsigned char loop;
-//	unsigned char tmpX;
-//	unsigned char tmpY;
-//	unsigned char index;
-//
-//	// TODO test this still draws correct trees!!
-//	// Want to leave coll type to block for all border trees
-//	unsigned char tile_type;
-//	tile_type = exit_type_public != bo->save_exit_type ? tile_type_trees : tile_type_blank;
-//	//unsigned char coll_type;
-//	//if( exit_type_public != bo->save_exit_type )
-//	//{
-//	//	tile_type = tile_type_trees;
-//	//	//coll_type = coll_type_block;
-//	//}
-//	//else
-//	//{
-//	//	tile_type = tile_type_blank;
-//	//	//coll_type = coll_type_empty;
-//	//}
-//
-//	index = 0;
-//	for( loop = 0; loop < MAX_EXITS_PUBLIC; loop++ )
-//	{
-//		tmpX = board_exitX[ loop ];
-//		tmpY = board_exitY[ loop ];
-//
-//		index = tmpY * MAZE_ROWS + tmpX;
-//		lo->drawtiles_array[ index ] = tile_type;
-//		//lo->collision_array[ index ] = coll_type;
-//	}
-//}
-//
 void engine_level_manager_load_level( const unsigned char world, const unsigned char round )
 {
 	unsigned char halve;
@@ -122,20 +79,6 @@ void engine_level_manager_beat_level( const unsigned char *data, const unsigned 
 {
 	load_level( data, size, bank, 1 );
 }
-
-//
-//unsigned char engine_level_manager_get_tile_type( unsigned char x, unsigned char y )
-//{
-//	struct_level_object *lo = &global_level_object;
-//	unsigned char tile;
-//	unsigned char type;
-//
-//	engine_board_manager_calc_tileSpot( x, y, &tile );
-//	type = lo->drawtiles_array[ tile ];
-//	return type;
-//}
-////unsigned char engine_level_manager_get_collision( unsigned char x, unsigned char y, unsigned char direction ) {}
-//
 
 unsigned char engine_level_manager_get_collision( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset )
 {
@@ -204,44 +147,43 @@ unsigned char engine_level_manager_get_next_tile( unsigned char x, unsigned char
 	engine_function_manager_convertXYtoZ( MAZE_ROWS, x, y, &index );
 	return level_object_tiles_array[ index ];
 }
-//
-//unsigned char engine_level_manager_get_next_coll( unsigned char x, unsigned char y, unsigned char direction )
-//{
-//	struct_level_object *lo = &global_level_object;
-//	unsigned char tile;
-//	unsigned char type;
-//
-//	tile = engine_level_manager_get_next_tile( x, y, direction, offset_type_one );
-//	type = lo->collision_array[ tile ];
-//	return type;
-//
-//	//struct_level_object *lo = &global_level_object;
-//	//unsigned char tile;
-//	//unsigned char type;
-//
-//	//// Note: x and y can never go out-of-bounds as if gamer in exits then there will be no collision checks.
-//	//if( direction_type_upxx == direction )
-//	//{
-//	//	y--;
-//	//}
-//	//else 	if( direction_type_down == direction )
-//	//{
-//	//	y++;
-//	//}
-//	//else if( direction_type_left == direction )
-//	//{
-//	//	x--;
-//	//}
-//	//else if( direction_type_rght == direction )
-//	//{
-//	//	x++;
-//	//}
-//
-//	//engine_board_manager_calc_tileSpot( x, y, &tile );
-//	//type = lo->collision_array[ tile ];
-//	//return type;
-//}
-//
+
+
+unsigned char engine_level_manager_test_direction( unsigned char row, unsigned char col )
+{
+	unsigned char direction_type = direction_type_none;
+
+	// Check UP.
+	if( 0 != row )
+	{
+		unsigned char test_type = test_direction( ( col + 0 ), ( row - 1 ), direction_type_upxx );
+		direction_type |= test_type;
+	}
+
+	// Check DOWN.
+	if( MAZE_ROWS - 1 != row )
+	{
+		unsigned char test_type = test_direction( ( col + 0 ), ( row + 1 ), direction_type_down );
+		direction_type |= test_type;
+	}
+
+	// Check LEFT.
+	if( 0 != col )
+	{
+		unsigned char test_type = test_direction( ( col - 1 ), ( row + 0 ), direction_type_left );
+		direction_type |= test_type;
+	}
+
+	// Check RIGHT.
+	if( MAZE_COLS - 1 != col )
+	{
+		unsigned char test_type = test_direction( ( col + 1 ), ( row + 0 ), direction_type_rght );
+		direction_type |= test_type;
+	}
+
+	return direction_type;
+}
+
 // Private helper methods.
 static void load_level( const unsigned char *data, const unsigned char size, const unsigned char bank, unsigned char mult )
 {
@@ -345,7 +287,7 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 	{
 		for( col = 0; col < MAX_COLS; col++ )
 		{
-			direction = engine_move_manager_test_direction( ( row + 2 ), ( col + 2 ) );
+			direction = engine_level_manager_test_direction( ( row + 2 ), ( col + 2 ) );
 
 			index = ( row + 2 ) * MAZE_COLS + ( col + 2 );
 			test_type = level_object_tiles_array[ index ];
@@ -366,4 +308,23 @@ static void draw_tiles( unsigned char x, unsigned char y )
 	index = ( y + 2 ) * MAZE_COLS + ( x + 2 );
 	tile = level_object_tiles_array[ index ];
 	engine_tile_manager_draw_tile( tile, level_object_multiplier, SCREEN_TILE_LEFT + ( x + 1 ) * 2, ( y + 1 ) * 2 );
+}
+
+static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction )
+{
+	unsigned char index;
+	unsigned char tile;
+	unsigned char coll;
+	unsigned char test_type = direction_type_none;
+
+	index = y * MAZE_COLS + x;
+	tile = level_object_tiles_array[ index ];
+
+	coll = COLL_TYPE_MASK == ( tile & COLL_TYPE_MASK );
+	if( coll_type_empty == coll )
+	{
+		test_type = input_direction;
+	}
+
+	return test_type;
 }

@@ -3,8 +3,8 @@
 #include "font_manager.h"
 #include "function_manager.h"
 #include "global_manager.h"
+#include "level_manager.h"
 #include "mask_manager.h"
-#include "move_manager.h"
 #include "tile_manager.h"
 #include "..\banks\databank.h"
 #include "..\devkit\_sms_manager.h"
@@ -76,7 +76,7 @@ void engine_board_manager_init()
 		row = borders[ loop ];
 		for( col = 0; col < MAZE_COLS; col++ )
 		{
-			direction = engine_move_manager_test_direction( row, col );
+			direction = engine_level_manager_test_direction( row, col );
 
 			index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
 			test_type = level_object_tiles_array[ index ];
@@ -92,7 +92,7 @@ void engine_board_manager_init()
 		col = borders[ loop ];
 		for( row = 2; row < MAZE_ROWS - 2; row++ )
 		{
-			direction = engine_move_manager_test_direction( row, col );
+			direction = engine_level_manager_test_direction( row, col );
 
 			index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
 			test_type = level_object_tiles_array[ index ];

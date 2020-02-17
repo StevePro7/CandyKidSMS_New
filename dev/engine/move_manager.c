@@ -2,21 +2,22 @@
 #include "enum_manager.h"
 #include "function_manager.h"
 #include "global_manager.h"
+#include "level_manager.h"
 #include "mask_manager.h"
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 #include <stdlib.h>
 
 // Private helper methods.
-static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction );
+//static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction );
 
 unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY, unsigned char enemy_direction )
 {
 	unsigned char directions[ NUM_DIRECTIONS ] = { direction_type_none, direction_type_none, direction_type_none, direction_type_none };
 	unsigned char move_direction = direction_type_none;
 	unsigned char oppX_direction = direction_type_none;
+	unsigned char collision = direction_type_none;
 	unsigned char index = 0;
-	unsigned char loop = 0;
 	unsigned char byte = 0;
 	unsigned char list = 0;
 	unsigned char half = 0;
@@ -34,11 +35,17 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 	directions[ 3 ] = enemy_object_directions[ index + 3 ];
 
 	oppX_direction = engine_move_manager_opposite_direction( enemy_direction );
-	for( loop = 0; loop < NUM_DIRECTIONS; loop++ )
+	for( index = 0; index < NUM_DIRECTIONS; index++ )
 	{
-		// TODO must move these functions out of the level_manager as there is cyclical dependency
-		//engine_level_manager_get_collision
-		// TODO must move these functions out of the level_manager as there is cyclical dependency
+		move_direction = directions[ index ];
+		if( oppX_direction != move_direction )
+		{
+			collision = engine_level_manager_get_collision( srceX, srceY, move_direction, offset_type_one );
+			if( coll_type_empty == collision )
+			{
+				break;
+			}
+		}
 	}
 
 	return move_direction;
@@ -108,40 +115,40 @@ unsigned char engine_move_manager_get_directions( unsigned char srceX, unsigned 
 	return byte;
 }
 
-unsigned char engine_move_manager_test_direction( unsigned char row, unsigned char col )
-{
-	unsigned char direction_type = direction_type_none;
-
-	// Check UP.
-	if( 0 != row )
-	{
-		unsigned char test_type = test_direction( ( col + 0 ), ( row - 1 ), direction_type_upxx );
-		direction_type |= test_type;
-	}
-
-	// Check DOWN.
-	if( MAZE_ROWS - 1 != row )
-	{
-		unsigned char test_type = test_direction( ( col + 0 ), ( row + 1 ), direction_type_down );
-		direction_type |= test_type;
-	}
-
-	// Check LEFT.
-	if( 0 != col )
-	{
-		unsigned char test_type = test_direction( ( col - 1 ), ( row + 0 ), direction_type_left );
-		direction_type |= test_type;
-	}
-
-	// Check RIGHT.
-	if( MAZE_COLS - 1 != col )
-	{
-		unsigned char test_type = test_direction( ( col + 1 ), ( row + 0 ), direction_type_rght );
-		direction_type |= test_type;
-	}
-
-	return direction_type;
-}
+//unsigned char engine_move_manager_test_direction( unsigned char row, unsigned char col )
+//{
+//	unsigned char direction_type = direction_type_none;
+//
+//	// Check UP.
+//	if( 0 != row )
+//	{
+//		unsigned char test_type = test_direction( ( col + 0 ), ( row - 1 ), direction_type_upxx );
+//		direction_type |= test_type;
+//	}
+//
+//	// Check DOWN.
+//	if( MAZE_ROWS - 1 != row )
+//	{
+//		unsigned char test_type = test_direction( ( col + 0 ), ( row + 1 ), direction_type_down );
+//		direction_type |= test_type;
+//	}
+//
+//	// Check LEFT.
+//	if( 0 != col )
+//	{
+//		unsigned char test_type = test_direction( ( col - 1 ), ( row + 0 ), direction_type_left );
+//		direction_type |= test_type;
+//	}
+//
+//	// Check RIGHT.
+//	if( MAZE_COLS - 1 != col )
+//	{
+//		unsigned char test_type = test_direction( ( col + 1 ), ( row + 0 ), direction_type_rght );
+//		direction_type |= test_type;
+//	}
+//
+//	return direction_type;
+//}
 
 unsigned char engine_move_manager_actor_direction( unsigned char direction )
 {
@@ -189,21 +196,21 @@ unsigned char engine_move_manager_opposite_direction( unsigned char direction )
 	return direction_type_none;
 }
 
-static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction )
-{
-	unsigned char index;
-	unsigned char tile;
-	unsigned char coll;
-	unsigned char test_type = direction_type_none;
-
-	index = y * MAZE_COLS + x;
-	tile = level_object_tiles_array[ index ];
-
-	coll = COLL_TYPE_MASK == ( tile & COLL_TYPE_MASK );
-	if( coll_type_empty == coll )
-	{
-		test_type = input_direction;
-	}
-
-	return test_type;
-}
+//static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction )
+//{
+//	unsigned char index;
+//	unsigned char tile;
+//	unsigned char coll;
+//	unsigned char test_type = direction_type_none;
+//
+//	index = y * MAZE_COLS + x;
+//	tile = level_object_tiles_array[ index ];
+//
+//	coll = COLL_TYPE_MASK == ( tile & COLL_TYPE_MASK );
+//	if( coll_type_empty == coll )
+//	{
+//		test_type = input_direction;
+//	}
+//
+//	return test_type;
+//}
