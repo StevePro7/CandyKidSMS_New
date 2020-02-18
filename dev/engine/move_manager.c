@@ -10,6 +10,7 @@
 #include "..\devkit\_sms_manager.h"
 #include <stdlib.h>
 
+//unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY, unsigned char enemy_direction, unsigned char dir_fours )
 unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY, unsigned char enemy_direction )
 {
 	unsigned char directions[ NUM_DIRECTIONS ] = { direction_type_none, direction_type_none, direction_type_none, direction_type_none };
@@ -27,6 +28,11 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 	engine_move_manager_get_directions( srceX, srceY, destX, destY, &list, &half );
 
 	// TODO randomly flip the half = 1 - half??
+	//if( 15 == dir_fours )
+	//{
+	//	list = rand() % NUM_DIRECTIONS;	// 0 or 1
+	//	//half = 1 - half;
+	//}
 	//flip = rand() % 2;	// 0 or 1
 	//if( 0 == flip )
 	//{
@@ -36,7 +42,7 @@ unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned 
 
 	index = list * 2 * NUM_DIRECTIONS + half * NUM_DIRECTIONS;
 
-	// TODO fixed bank - change to databank!!
+	// TODO fixed bank - change to data bank!!
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	directions[ 0 ] = enemy_object_directions[ index + 0 ];
 	directions[ 1 ] = enemy_object_directions[ index + 1 ];

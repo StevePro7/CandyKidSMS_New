@@ -19,9 +19,11 @@ typedef struct tag_struct_enemy_object
 	unsigned char total;
 	unsigned char speed;
 	unsigned char mover;
+	unsigned char lifecycle;
 	unsigned char prev_move;	// Previous direction moved.
 	unsigned char direction;	// Current  direction moved.
-	unsigned char lifecycle;
+	unsigned char dir_fours;
+	unsigned char dir_count;
 	unsigned char image;
 	unsigned char frame;
 	unsigned int calcd;

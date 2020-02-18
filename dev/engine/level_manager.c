@@ -4,7 +4,6 @@
 #include "enum_manager.h"
 #include "font_manager.h"
 #include "function_manager.h"
-#include "level_manager.h"
 #include "mask_manager.h"
 #include "tile_manager.h"
 #include "..\banks\databank.h"
@@ -246,6 +245,7 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 		}
 	}
 
+	// TODO stevepro adriana - put this in the enemy mgr
 	// Update if enemy not move and candy on home tile.
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
