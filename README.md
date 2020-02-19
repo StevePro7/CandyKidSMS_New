@@ -60,3 +60,12 @@ remove the code that determines all the tiles that can be moved to from this til
 In theory, this is now no longer required because I use the collision type to determine this
 In fact - I don't need to set the collision type because I can just check if the tile = '1'
 i.e. is a tree then an actor should not go into that tile...
+
+20/02/2020
+01.
+If invincible and death trees then allow to go on border but not wrap around
+esp. if exits are closed - must only wrap around when exits public and in the exits
+
+02.
+Adi and Suz need to calc 2x tiles in front of CK - must ensure that these do not go outside
+boundary of [0-13]

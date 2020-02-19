@@ -47,7 +47,7 @@ void engine_enemy_manager_init()
 		//engine_board_manager_calc_tileSpot( eo->homeX, eo->homeY, &eo->homeZ );
 		eo->tileX = board_object_homeX[ enemy ];
 		eo->tileY = board_object_homeY[ enemy ];
-		eo->delay = 2;		// TODO hardcoded - inject!
+		eo->delay = 1;		// TODO hardcoded - inject!
 		eo->timer = 0;
 		eo->delta = 0;
 		eo->total = 0;
@@ -92,7 +92,7 @@ void engine_enemy_manager_init()
 		{
 			eo->delay = 1;		// TODO hardcoded - inject!
 			eo->speed = 1;		// 1=move 0=stay.
-			eo->mover = 0;
+			//eo->mover = 0;
 		}
 		//if( 1 == enemy )
 		//{

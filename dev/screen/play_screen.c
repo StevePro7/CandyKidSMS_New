@@ -141,7 +141,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Move enemies.
 	//enemy = actor_type_adi;
-	for( enemy = 0; enemy < 1; enemy++ )
+	for( enemy = 0; enemy < 2; enemy++ )
 	{
 		//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 		{
