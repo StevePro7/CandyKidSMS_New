@@ -189,9 +189,10 @@ void engine_gamer_manager_stop()
 	// Check if in exit then move in previous direction [and wrap game board as necessary].
 	if( go->tileX <= 1 || go->tileY <= 1 || go->tileX >= ( MAZE_COLS - 2 ) || go->tileY >= ( MAZE_ROWS - 2 ) )
 	{
-		engine_gamer_manager_wrap( go->prev_move );
-		engine_gamer_manager_move( go->prev_move );
-		return;
+		// TODO stevepro adriana revert exits move!
+		//engine_gamer_manager_wrap( go->prev_move );
+		//engine_gamer_manager_move( go->prev_move );
+		//return;
 	}
 
 	// TODO calc possible tiles actor can move in to.

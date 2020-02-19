@@ -69,3 +69,25 @@ esp. if exits are closed - must only wrap around when exits public and in the ex
 02.
 Adi and Suz need to calc 2x tiles in front of CK - must ensure that these do not go outside
 boundary of [0-13]
+
+
+
+Tree rules
+Avoid
+Invincible or not
+tree will block CK unless at exit and exits public he can go thru
+
+Death
+normal
+he can go on any death tree and will die on stop
+if exits and hes at public exit then can go thru like avoid
+
+invincible
+he can go thru all death trees in maze
+however he will be blocked on border trees as they cannot kill him
+have to do it this way otherwise the exits will not work as normal
+
+
+IMPORTANT
+I forgot about the gamer move + coll code in play screen that should be gamer Mgr
+I forgot about the gamer move + coll code in play screen that should be gamer Mgr
