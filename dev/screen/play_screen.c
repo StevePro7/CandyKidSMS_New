@@ -32,12 +32,12 @@ static unsigned char get_gamer_direction();
 static unsigned char get_gamer_collision();
 
 static void print( unsigned char dir );
-static void get_enemy_data( unsigned char *mover, unsigned char *tileZ );
+static void get_actor_data( unsigned char *mover, unsigned char *tileZ );
 
 void screen_play_screen_load()
 {
-	unsigned char enemy_mover[ MAX_ENEMIES ];
-	unsigned char enemy_tileZ[ MAX_ENEMIES ];
+	unsigned char actor_mover[ MAX_ACTORS ];
+	unsigned char actor_tileZ[ MAX_ACTORS ];
 	unsigned char round = 4;
 
 	engine_command_manager_init();
@@ -46,7 +46,7 @@ void screen_play_screen_load()
 	engine_board_manager_init();
 	engine_gamer_manager_init();
 	engine_enemy_manager_init();
-	get_enemy_data( enemy_mover, enemy_tileZ );
+	get_actor_data( actor_mover, actor_tileZ );
 	
 	engine_score_manager_load();
 	//sengine_score_manager_draw_all();
@@ -58,7 +58,7 @@ void screen_play_screen_load()
 	engine_board_manager_side_tile();
 
 	engine_level_manager_load_level( 5, round );
-	engine_level_manager_update_level( round, enemy_mover, enemy_tileZ );
+	engine_level_manager_update_level( round, actor_mover, actor_tileZ );
 	engine_level_manager_draw_level();
 
 	engine_frame_manager_draw();
@@ -70,7 +70,7 @@ void screen_play_screen_load()
 	first_time = 1;
 	frame_spot = 0;
 
-	engine_font_manager_draw_data( enemy_mover[ 0 ], 10, 10 );
+	engine_font_manager_draw_data( actor_mover[ 0 ], 10, 10 );
 }
 
 void screen_play_screen_update( unsigned char *screen_type )
@@ -90,8 +90,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	frame = fo->frame_count;
 
 	// Draw sprites first.
-	//engine_enemy_manager_draw();
-	//engine_gamer_manager_draw();
+	engine_enemy_manager_draw();
+	engine_gamer_manager_draw();
 
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
@@ -276,14 +276,20 @@ static void print( unsigned char dir )
 	}
 }
 
-static void get_enemy_data( unsigned char *mover, unsigned char *tileZ )
+static void get_actor_data( unsigned char *mover, unsigned char *tileZ )
 {
+	struct_gamer_object *go = &global_gamer_object;
 	struct_enemy_object *eo;
 	unsigned char enemy;
+	unsigned char index;
+
+	mover[ 0 ] = 1;
+	tileZ[ 0 ] = go->tileZ;
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		eo = &global_enemy_objects[ enemy ];
-		mover[ enemy ] = eo->mover;
-		tileZ[ enemy ] = eo->tileZ;
+		index = enemy + 1;
+		mover[ index ] = eo->mover;
+		tileZ[ index ] = eo->tileZ;
 	}
 }

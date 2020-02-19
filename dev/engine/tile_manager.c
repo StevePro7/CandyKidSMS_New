@@ -106,7 +106,7 @@ void engine_tile_manager_draw_tile( unsigned char tile, unsigned char multiplier
 	}
 	else if( tile_type_oneup == tile_type )
 	{
-		//engine_tile_manager_draw_candy( tile_type, x, y );
+		engine_tile_manager_draw_oneup( x, y );
 	}
 }
 

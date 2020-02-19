@@ -92,7 +92,7 @@ void engine_enemy_manager_init()
 		//{
 			eo->delay = 1;		// TODO hardcoded - inject!
 			eo->speed = 1;		// 1=move 0=stay.
-			eo->mover = 0;
+			eo->mover = 1;
 		//}
 		//if( 1 == enemy )
 		//{

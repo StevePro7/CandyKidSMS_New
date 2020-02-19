@@ -60,9 +60,9 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 	}
 }
 
-void engine_level_manager_update_level( const unsigned char round, unsigned char *enemy_mover, unsigned char *enemy_tileZ )
+void engine_level_manager_update_level( const unsigned char round, unsigned char *actor_mover, unsigned char *actor_tileZ )
 {
-	unsigned char enemy;
+	unsigned char actor;
 	unsigned char mover;
 	unsigned char index;
 	unsigned char tiles;
@@ -70,10 +70,10 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 
 	// Count all available home tiles: Kid, Pro, Adi, Suz
 	// Kid always moves so means that will be at least 1x.
-	tiles = 1;
-	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	tiles = 0;
+	for( actor = 0; actor < MAX_ACTORS; actor++ )
 	{
-		mover = enemy_mover[ enemy ];
+		mover = actor_mover[ actor ];
 		if( mover )
 		{
 			tiles++;
@@ -81,7 +81,7 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 		}
 
 		// Enemy is idle this level so blank out tile
-		index = enemy_tileZ[ enemy ];
+		index = actor_tileZ[ actor ];
 		tile_type = level_object_tiles_array[ index ];
 
 		if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
@@ -103,7 +103,7 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 	}
 
 	mover = rand() % tiles;
-	index = enemy_tileZ[ mover ];
+	index = actor_tileZ[ mover ];
 	tile_type = level_object_tiles_array[ index ];
 
 	if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
