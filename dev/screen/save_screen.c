@@ -59,7 +59,8 @@ static void draw_items()
 	engine_tile_manager_draw_bonus( tile_type_bonusC, 2, 18, 8 );
 	engine_tile_manager_draw_bonus( tile_type_bonusD, 2, 22, 8 );
 
-	engine_tile_manager_draw_gamer( 16, 16 );
+	engine_tile_manager_draw_oneup( 16, 16 );
+	engine_tile_manager_draw_cross( 0, 18, 16 );
 
 	for( idx = 0; idx < MAX_BLOCK_TILES; idx++ )
 	{

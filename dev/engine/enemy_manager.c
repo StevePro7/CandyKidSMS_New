@@ -88,18 +88,18 @@ void engine_enemy_manager_init()
 
 
 		// TODO delete
-		if( 0 == enemy )
-		{
+		//if( 0 == enemy )
+		//{
 			eo->delay = 1;		// TODO hardcoded - inject!
 			eo->speed = 1;		// 1=move 0=stay.
-			//eo->mover = 0;
-		}
-		if( 1 == enemy )
-		{
-			eo->delay = 2;		// TODO hardcoded - inject!
-			eo->speed = 2;		// 1=move 0=stay.
 			eo->mover = 0;
-		}
+		//}
+		//if( 1 == enemy )
+		//{
+		//	eo->delay = 2;		// TODO hardcoded - inject!
+		//	eo->speed = 2;		// 1=move 0=stay.
+		//	eo->mover = 0;
+		//}
 		// TODO delete
 	}
 }

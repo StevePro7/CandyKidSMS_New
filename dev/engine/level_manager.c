@@ -102,7 +102,6 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 		return;
 	}
 
-
 	mover = rand() % tiles;
 	index = enemy_tileZ[ mover ];
 	tile_type = level_object_tiles_array[ index ];

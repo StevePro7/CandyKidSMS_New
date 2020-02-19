@@ -104,6 +104,10 @@ void engine_tile_manager_draw_tile( unsigned char tile, unsigned char multiplier
 
 		engine_tile_manager_draw_candy( type, x, y );
 	}
+	else if( tile_type_oneup == tile_type )
+	{
+		//engine_tile_manager_draw_candy( tile_type, x, y );
+	}
 }
 
 void engine_tile_manager_draw_blank( unsigned char x, unsigned char y )
@@ -131,15 +135,15 @@ void engine_tile_manager_draw_bonus( unsigned char type, unsigned char multiplie
 	draw_tile( offset, x, y );
 }
 
-void engine_tile_manager_draw_death( unsigned char type, unsigned char x, unsigned char y )
+void engine_tile_manager_draw_oneup( unsigned char x, unsigned char y )
 {
-	unsigned char offset = type * 2 + BASE_DEATH_OFFSET;
+	unsigned char offset = BASE_GAMER_OFFSET;
 	draw_tile( offset, x, y );
 }
 
-void engine_tile_manager_draw_gamer( unsigned char x, unsigned char y )
+void engine_tile_manager_draw_cross( unsigned char type, unsigned char x, unsigned char y )
 {
-	unsigned char offset = BASE_GAMER_OFFSET;
+	unsigned char offset = type * 2 + BASE_DEATH_OFFSET;
 	draw_tile( offset, x, y );
 }
 
