@@ -4,6 +4,7 @@
 #include "font_manager.h"
 #include "function_manager.h"
 #include "global_manager.h"
+#include "level_manager.h"
 #include "move_manager.h"
 #include "sprite_manager.h"
 #include "..\banks\fixedbank.h"
@@ -218,16 +219,15 @@ void engine_enemy_manager_stop( unsigned char enemy )
 	}
 }
 
-unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned char gamerX, unsigned char gamerY )
+unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	unsigned char enemy_direction = direction_type_none;
-	unsigned char targetX;
-	unsigned char targetY;
 	
+	// This enemy does not move!
 	if( !eo->mover )
 	{
-		return enemy_direction;
+		return direction_type_none;
 	}
 
 	// TODO decide whether scatter or attack...!
@@ -235,13 +235,11 @@ unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned
 	// ATTACK.
 	if( actor_type_pro == enemy )
 	{
-		targetX = gamerX;
-		targetY = gamerY;
 		//enemy_direction = engine_move_manager_find_direction( eo->tileX, eo->tileY, targetX, targetY, eo->prev_move );
-		enemy_direction = engine_move_manager_find_direction( eo->tileX, eo->tileY, targetX, targetY, eo->prev_move );// , eo->dir_fours );
+		//enemy_direction = engine_move_manager_find_direction( eo->tileX, eo->tileY, targetX, targetY, eo->prev_move );// , eo->dir_fours );
 
 		// TODO  stevepro adriana actually put this method in the enemy manager
-		//enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY, eo->prev_move );
+		enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
 
 		//engine_font_manager_draw_text( "AFTER.....!!", 10, 13 );
 		//engine_font_manager_draw_data( enemy_direction, 10, 14 );
@@ -250,71 +248,80 @@ unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned
 	return enemy_direction;
 }
 
-//unsigned char engine_enemy_manager_what_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY, unsigned char enemy_direction )
-//{
-//	unsigned char directions[ NUM_DIRECTIONS ] = { direction_type_none, direction_type_none, direction_type_none, direction_type_none };
-//	unsigned char move_direction = direction_type_none;
-//	unsigned char oppX_direction = direction_type_none;
-//	unsigned char test_direction = direction_type_none;
-//	unsigned char collision = direction_type_none;
-//	unsigned char index = 0;
-//	//unsigned char byte = 0;
-//	unsigned char list = 0;
-//	unsigned char half = 0;
-//	unsigned char flip = 0;
-//
-//	// Get the list of 4x possible directions in the order depending on tiles.
-//	engine_move_manager_get_directions( srceX, srceY, destX, destY, &list, &half );
-//
-//	// TODO randomly flip the half = 1 - half??
-//	//flip = rand() % 2;	// 0 or 1
-//	//if( 0 == flip )
-//	//{
-//	//	half = 1 - half;
-//	//}
-//	// TODO randomly flip the half = 1 - half??
-//
-//	index = list * 2 * NUM_DIRECTIONS + half * NUM_DIRECTIONS;
-//
-//	// TODO fixed bank - change to data bank!!
-//	devkit_SMS_mapROMBank( FIXED_BANK );
-//	directions[ 0 ] = enemy_object_directions[ index + 0 ];
-//	directions[ 1 ] = enemy_object_directions[ index + 1 ];
-//	directions[ 2 ] = enemy_object_directions[ index + 2 ];
-//	directions[ 3 ] = enemy_object_directions[ index + 3 ];
-//
-//	//engine_font_manager_draw_data( directions[ 0 ], 10, 13 );
-//	//engine_font_manager_draw_data( directions[ 1 ], 10, 14 );
-//	//engine_font_manager_draw_data( directions[ 2 ], 10, 15 );
-//	//engine_font_manager_draw_data( directions[ 3 ], 10, 16 );
-//
-//	oppX_direction = engine_move_manager_opposite_direction( enemy_direction );
-//	for( index = 0; index < NUM_DIRECTIONS; index++ )
-//	{
-//		test_direction = directions[ index ];
-//		if( oppX_direction != test_direction )
-//		{
-//			collision = engine_level_manager_get_collision( srceX, srceY, test_direction, offset_type_one );
-//			if( coll_type_empty == collision )
-//			{
-//				move_direction = test_direction;
-//				break;
-//			}
-//		}
-//	}
-//
-//	// Enemy in cul de sac so must be able to go in opposite direction!
-//	if( direction_type_none == move_direction )
-//	{
-//		collision = engine_level_manager_get_collision( srceX, srceY, oppX_direction, offset_type_one );
-//		if( coll_type_empty == collision )
-//		{
-//			move_direction = oppX_direction;
-//		}
-//	}
-//
-//	return move_direction;
-//}
+unsigned char engine_enemy_manager_what_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY )
+{
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	unsigned char directions[ NUM_DIRECTIONS ] = { direction_type_none, direction_type_none, direction_type_none, direction_type_none };
+	unsigned char move_direction = direction_type_none;
+	unsigned char oppX_direction = direction_type_none;
+	unsigned char test_direction = direction_type_none;
+	unsigned char collision = direction_type_none;
+
+	unsigned char sourceX = eo->tileX;
+	unsigned char sourceY = eo->tileY;
+	unsigned char index = 0;
+	//unsigned char byte = 0;
+	unsigned char list = 0;
+	unsigned char half = 0;
+	unsigned char flip = 0;
+
+	// Get the list of 4x possible directions in the order depending on tiles.
+	engine_move_manager_get_directions( sourceX, sourceY, targetX, targetY, &list, &half );
+
+	// TODO randomly flip the half = 1 - half??
+	//if( 15 == dir_fours )
+	//{
+	//	list = rand() % NUM_DIRECTIONS;	// 0 or 1
+	//	//half = 1 - half;
+	//}
+	//flip = rand() % 2;	// 0 or 1
+	//if( 0 == flip )
+	//{
+	//	half = 1 - half;
+	//}
+	// TODO randomly flip the half = 1 - half??
+
+	index = list * 2 * NUM_DIRECTIONS + half * NUM_DIRECTIONS;
+
+	// TODO fixed bank - change to data bank!!
+	devkit_SMS_mapROMBank( FIXED_BANK );
+	directions[ 0 ] = enemy_object_directions[ index + 0 ];
+	directions[ 1 ] = enemy_object_directions[ index + 1 ];
+	directions[ 2 ] = enemy_object_directions[ index + 2 ];
+	directions[ 3 ] = enemy_object_directions[ index + 3 ];
+
+	//engine_font_manager_draw_data( directions[ 0 ], 10, 13 );
+	//engine_font_manager_draw_data( directions[ 1 ], 10, 14 );
+	//engine_font_manager_draw_data( directions[ 2 ], 10, 15 );
+	//engine_font_manager_draw_data( directions[ 3 ], 10, 16 );
+
+	oppX_direction = engine_move_manager_opposite_direction( eo->prev_move );
+	for( index = 0; index < NUM_DIRECTIONS; index++ )
+	{
+		test_direction = directions[ index ];
+		if( oppX_direction != test_direction )
+		{
+			collision = engine_level_manager_get_collision( sourceX, sourceY, test_direction, offset_type_one );
+			if( coll_type_empty == collision )
+			{
+				move_direction = test_direction;
+				break;
+			}
+		}
+	}
+
+	// Enemy in cul de sac so must be able to go in opposite direction!
+	if( direction_type_none == move_direction )
+	{
+		collision = engine_level_manager_get_collision( sourceX, sourceY, oppX_direction, offset_type_one );
+		if( coll_type_empty == collision )
+		{
+			move_direction = oppX_direction;
+		}
+	}
+
+	return move_direction;
+}
 
 static void calcd_frame( unsigned char enemy )
 {

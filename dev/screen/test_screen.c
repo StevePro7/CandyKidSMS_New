@@ -29,6 +29,7 @@ void screen_test_screen_load()
 	// srce = enemy
 	// dest = gamer
 
+	unsigned char enemy;
 	unsigned char index = 0;
 	unsigned char byte = 0;
 	unsigned char list = 0;
@@ -90,11 +91,11 @@ void screen_test_screen_load()
 
 
 
-
-	eo = &global_enemy_objects[ actor_type_pro ];
+	enemy = -actor_type_pro;
+	eo = &global_enemy_objects[ enemy ];
 	//enemy_direction = engine_move_manager_actor_direction( eo->direction );
 	//enemy_direction = direction_type_rght;
-	enemy_direction = engine_move_manager_find_direction( srceX, srceY, destX, destY, enemy_direction );
+	enemy_direction = engine_enemy_manager_find_direction( enemy, destX, destY );
 
 	// Print out results.
 	//engine_font_manager_draw_data( upper_nibble, 20, 8 );
