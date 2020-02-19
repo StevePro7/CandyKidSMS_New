@@ -206,6 +206,32 @@ unsigned char engine_level_manager_get_next_tile( unsigned char x, unsigned char
 	return level_object_tiles_array[ index ];
 }
 
+void engine_level_manager_get_next_index( unsigned char *x, unsigned char *y, unsigned char direction, unsigned char offset )
+{
+	//unsigned char index;
+
+	// Note: x and y can never go out-of-bounds: if gamer in exits then there will be no collision checks.
+	if( direction_type_upxx == direction )
+	{
+		*y -= offset;
+	}
+	else if( direction_type_down == direction )
+	{
+		*y += offset;
+	}
+	else if( direction_type_left == direction )
+	{
+		*x -= offset;
+	}
+	else if( direction_type_rght == direction )
+	{
+		*x += offset;
+	}
+
+	//engine_function_manager_convertXYtoZ( MAZE_ROWS, x, y, &index );
+	//return index;
+}
+
 
 unsigned char engine_level_manager_test_direction( unsigned char row, unsigned char col )
 {
