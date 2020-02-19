@@ -93,8 +93,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
-	engine_frame_manager_draw();
-	engine_delay_manager_draw();
+	//engine_frame_manager_draw();
+	//engine_delay_manager_draw();
 	if( !first_time )
 	{
 		proceed = engine_delay_manager_update();
@@ -172,7 +172,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 					enemy_direction = engine_enemy_manager_find_direction( enemy, go->tileX, go->tileY, go->direction );
 					//enemy_direction = direction_type_left;
 					//engine_font_manager_draw_data( enemy_direction, 10, 13 );
-					print( enemy_direction );
+					//print( enemy_direction );
 					if( direction_type_none != enemy_direction )
 					{
 						engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );

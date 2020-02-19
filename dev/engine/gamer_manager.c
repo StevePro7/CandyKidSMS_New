@@ -1,11 +1,12 @@
 #include "gamer_manager.h"
-//#include "board_manager.h"
 #include "enum_manager.h"
 #include "font_manager.h"
 #include "function_manager.h"
 #include "global_manager.h"
 #include "input_manager.h"
+//#include "move_manager.h"
 #include "sprite_manager.h"
+#include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
 #include <stdlib.h>
