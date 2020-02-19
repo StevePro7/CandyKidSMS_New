@@ -59,10 +59,10 @@ void screen_test_screen_load()
 
 	// yDist = 0;	List = 0; Half = 1;		Byte = 1.
 	srceX = 9;	srceY = 11;
-	destX = 6;	destY = 5;
+	destX = 1;	destY = 5;
 	gamer_direction = direction_type_none;
 	//direction = engine_move_manager_actor_direction( gamer_direction );
-	direction = direction_type_rght;
+	direction = direction_type_left;
 	engine_level_manager_get_next_index( &destX, &destY, direction, offset_type_two );
 	engine_move_manager_get_directions( srceX, srceY, destX, destY, &list, &half );
 	enemy = 1;
