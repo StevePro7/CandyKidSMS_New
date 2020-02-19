@@ -88,12 +88,12 @@ void engine_enemy_manager_init()
 
 
 		// TODO delete
-		//if( 0 == enemy )
-		//{
+		if( 0 == enemy )
+		{
 			eo->delay = 1;		// TODO hardcoded - inject!
 			eo->speed = 1;		// 1=move 0=stay.
-			eo->mover = 1;
-		//}
+			eo->mover = 0;
+		}
 		//if( 1 == enemy )
 		//{
 		//	eo->delay = 2;		// TODO hardcoded - inject!
@@ -219,7 +219,7 @@ void engine_enemy_manager_stop( unsigned char enemy )
 	}
 }
 
-unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY )
+unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY, unsigned char gamer_direction )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	unsigned char enemy_direction = direction_type_none;
@@ -243,6 +243,15 @@ unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned
 
 		//engine_font_manager_draw_text( "AFTER.....!!", 10, 13 );
 		//engine_font_manager_draw_data( enemy_direction, 10, 14 );
+	}
+	else if( actor_type_adi == enemy )
+	{
+		//gamer_direction = direction_type_none;
+		gamer_direction = engine_move_manager_actor_direction( gamer_direction );
+		
+		// Look two tiles in front on Candy Kid.
+		engine_level_manager_get_next_index( &targetX, &targetY, gamer_direction, offset_type_two );
+		enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
 	}
 
 	return enemy_direction;

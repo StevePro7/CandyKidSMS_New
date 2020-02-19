@@ -14,7 +14,7 @@ void engine_enemy_manager_draw();
 void engine_enemy_manager_move( unsigned char enemy, unsigned char direction );
 void engine_enemy_manager_stop( unsigned char enemy );
 
-unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY );
+unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY, unsigned char gamer_direction );
 unsigned char engine_enemy_manager_what_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY );
 
 #endif//_ENEMY_MANAGER_H_

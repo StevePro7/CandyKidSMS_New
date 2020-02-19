@@ -169,7 +169,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 				//if( 0 == frame )
 				{
 					engine_font_manager_draw_text( "DIRECTION!!", 10, 12 );
-					enemy_direction = engine_enemy_manager_find_direction( enemy, go->tileX, go->tileY );
+					enemy_direction = engine_enemy_manager_find_direction( enemy, go->tileX, go->tileY, go->direction );
 					//enemy_direction = direction_type_left;
 					//engine_font_manager_draw_data( enemy_direction, 10, 13 );
 					print( enemy_direction );

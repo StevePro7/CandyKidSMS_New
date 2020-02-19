@@ -96,7 +96,11 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 		level_object_tiles_array[ index ] = tile_type_blank;
 	}
 
-	// Every fifth level award freeman tile
+	// Every fifth level award freeman tile.
+	if( state_object_invincibie )
+	{
+		return;
+	}
 	if( 0 != ( round + 1 ) % 5 )
 	{
 		return;

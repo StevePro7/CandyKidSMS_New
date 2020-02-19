@@ -17,8 +17,8 @@
 void screen_test_screen_load()
 {
 	unsigned char directions[ NUM_DIRECTIONS ] = { direction_type_none, direction_type_none, direction_type_none, direction_type_none };
-	//unsigned char enemy_direction = direction_type_none;
-	//struct_enemy_object *eo;
+	unsigned char enemy_direction = direction_type_none;
+	struct_enemy_object *eo;
 
 	// srce = enemy
 	// dest = gamer
@@ -29,7 +29,7 @@ void screen_test_screen_load()
 	// srce = enemy
 	// dest = gamer
 
-	//unsigned char enemy;
+	unsigned char enemy;
 	unsigned char index = 0;
 	unsigned char byte = 0;
 	unsigned char list = 0;
@@ -59,13 +59,20 @@ void screen_test_screen_load()
 
 	// yDist = 0;	List = 0; Half = 1;		Byte = 1.
 	srceX = 9;	srceY = 11;
-	destX = 13;	destY = 23;
+	destX = 6;	destY = 5;
 	gamer_direction = direction_type_none;
-	direction = engine_move_manager_actor_direction( gamer_direction );
+	//direction = engine_move_manager_actor_direction( gamer_direction );
 	direction = direction_type_rght;
-	engine_level_manager_get_next_index( &srceX, &srceY, direction, offset_type_two );
+	engine_level_manager_get_next_index( &destX, &destY, direction, offset_type_two );
 	engine_move_manager_get_directions( srceX, srceY, destX, destY, &list, &half );
-
+	enemy = 1;
+	eo = &global_enemy_objects[ enemy ];
+	eo->tileX = srceX;
+	eo->tileY = srceY;
+	enemy_direction = engine_enemy_manager_what_direction( enemy, destX, destY );
+	//enemy_direction = engine_move_manager_actor_direction( eo->direction );
+	//enemy_direction = direction_type_rght;
+	//enemy_direction = engine_enemy_manager_find_direction( enemy, destX, destY );
 
 	// Index = 0;	List = 0; Half = 0;		Byte = 0.
 	//byte = engine_move_manager_find_direction( 18, 11, 27, 7 );
