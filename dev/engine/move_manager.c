@@ -10,6 +10,11 @@
 #include "..\devkit\_sms_manager.h"
 #include <stdlib.h>
 
+#define EXIT_SPOT1		2
+#define EXIT_SPOT2		4
+#define EXIT_SPOT3		9
+#define EXIT_SPOT4		11
+
 //unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY, unsigned char enemy_direction, unsigned char dir_fours )
 //unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY, unsigned char enemy_direction )
 //{
@@ -159,6 +164,35 @@ unsigned char engine_move_manager_actor_direction( unsigned char direction )
 	}
 
 	return direction;
+}
+
+unsigned char engine_move_manager_near_exit( unsigned char tileX, unsigned char tileY, unsigned char direction )
+{
+	unsigned char collision = coll_type_block;
+	if( exit_type_closed == state_object_exits_type )
+	{
+		return collision;
+	}
+
+	// Vertical.
+	if( EXIT_SPOT2 == tileX || EXIT_SPOT3 == tileX )
+	{
+		if( ( EXIT_SPOT1 == tileY && direction_type_upxx == direction ) || ( EXIT_SPOT4 == tileY && direction_type_down == direction ) )
+		{
+			collision = coll_type_empty;
+		}
+	}
+
+	// Horizontal.
+	if( EXIT_SPOT2 == tileY || EXIT_SPOT3 == tileY )
+	{
+		if( ( EXIT_SPOT1 == tileX && direction_type_left == direction ) || ( EXIT_SPOT4 == tileX && direction_type_rght == direction ) )
+		{
+			collision = coll_type_empty;
+		}
+	}
+
+	return collision;
 }
 
 unsigned char engine_move_manager_opposite_direction( unsigned char direction )

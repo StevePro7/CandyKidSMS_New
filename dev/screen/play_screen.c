@@ -230,7 +230,8 @@ static unsigned char get_gamer_direction()
 		// Edge case for exits public and edge of maze.
 		if( exit_type_public == state_object_exits_type )
 		{
-			collision = engine_board_manager_near_exit( go->tileX, go->tileY, gamer_direction );
+			//collision = engine_board_manager_near_exit( go->tileX, go->tileY, gamer_direction );
+			collision = engine_move_manager_near_exit( go->tileX, go->tileY, gamer_direction );
 			if( coll_type_block == collision )
 			{
 				gamer_direction = direction_type_none;
