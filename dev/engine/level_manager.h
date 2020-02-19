@@ -2,6 +2,7 @@
 #define _LEVEL_MANAGER_H_
 
 void engine_level_manager_load_level( const unsigned char world, const unsigned char round );
+void engine_level_manager_update_level( const unsigned char round, unsigned char *enemy_mover, unsigned char *enemy_tileZ );
 void engine_level_manager_beat_level( const unsigned char *data, const unsigned char size, const unsigned char bank );
 void engine_level_manager_draw_level();
 //

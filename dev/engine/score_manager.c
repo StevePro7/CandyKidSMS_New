@@ -20,7 +20,8 @@ struct_score_object global_score_object;
 
 static unsigned char bonuses[] = { 10, 20, 40, 80 };
 static void reset();
-static void update( unsigned char points );
+static void update_score( unsigned char points );
+static void update_lives( signed char value );
 unsigned char calc_level();
 static void draw_highs();
 static void draw_score();
@@ -54,7 +55,7 @@ void engine_score_manager_update_bonus( unsigned char index )
 	unsigned char bonus = bonuses[ index - 3 ];
 	so->bonus++;
 	so->total++;
-	update( bonus );
+	update_score( bonus );
 }
 
 void engine_score_manager_update_candy()
@@ -62,7 +63,19 @@ void engine_score_manager_update_candy()
 	struct_score_object *so = &global_score_object;
 	so->candy++;
 	so->total++;
-	update( 1 );
+	update_score( 1 );
+}
+
+void engine_score_manager_update_oneup()
+{
+	struct_score_object *so = &global_score_object;
+	so->total++;
+	update_lives( 1 );
+}
+
+void engine_score_manager_update_lives( signed char value )
+{
+	update_lives( value );
 }
 
 void engine_score_manager_draw_all()
@@ -116,7 +129,7 @@ static void reset()
 	so->candy = 0;
 	so->total = 0;
 }
-static void update( unsigned char points )
+static void update_score( unsigned char points )
 {
 	struct_score_object *so = &global_score_object;
 	so->score += points;
@@ -132,6 +145,17 @@ static void update( unsigned char points )
 	}
 
 	draw_score();
+}
+static void update_lives( signed char value )
+{
+	struct_score_object *so = &global_score_object;
+	if( 0 == so->lives && value < 0 )
+	{
+		return;
+	}
+
+	so->lives += value;
+	draw_lives();
 }
 unsigned char calc_level()
 {

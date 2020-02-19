@@ -1,6 +1,6 @@
 #include "level_manager.h"
 #include "global_manager.h"
-#include "enemy_manager.h"
+//#include "enemy_manager.h"
 #include "enum_manager.h"
 #include "font_manager.h"
 #include "function_manager.h"
@@ -9,7 +9,7 @@
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
-//#include <stdlib.h>
+#include <stdlib.h>
 
 //// TODO calculate based on levels
 #define MULTIPLIER_LEVEL	70
@@ -60,7 +60,66 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 		load_level( data, size, bank, mult );
 	}
 }
-//
+
+void engine_level_manager_update_level( const unsigned char round, unsigned char *enemy_mover, unsigned char *enemy_tileZ )
+{
+	unsigned char enemy;
+	unsigned char mover;
+	unsigned char index;
+	unsigned char tiles;
+	unsigned char tile_type;
+
+	// Count all available home tiles: Kid, Pro, Adi, Suz
+	// Kid always moves so means that will be at least 1x.
+	tiles = 1;
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		mover = enemy_mover[ enemy ];
+		if( mover )
+		{
+			tiles++;
+			continue;
+		}
+
+		// Enemy is idle this level so blank out tile
+		index = enemy_tileZ[ enemy ];
+		tile_type = level_object_tiles_array[ index ];
+
+		if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
+		{
+			level_object_bonus_count--;
+		}
+		if( tile_type_candy == tile_type )
+		{
+			level_object_candy_count--;
+		}
+
+		level_object_tiles_array[ index ] = tile_type_blank;
+	}
+
+	// Every fifth level award freeman tile
+	if( 0 != ( round + 1 ) % 5 )
+	{
+		return;
+	}
+
+
+	mover = rand() % tiles;
+	index = enemy_tileZ[ mover ];
+	tile_type = level_object_tiles_array[ index ];
+
+	if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
+	{
+		level_object_bonus_count--;
+	}
+	if( tile_type_candy == tile_type )
+	{
+		level_object_candy_count--;
+	}
+
+	level_object_tiles_array[ index ] = tile_type_oneup;
+}
+
 void engine_level_manager_draw_level()
 {
 	//struct_level_object *lo = &global_level_object;
@@ -189,17 +248,16 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 {
 	//unsigned char directions[] = { direction_type_upxx, direction_type_down, direction_type_left, direction_type_rght };
 	//struct_level_object *lo = &global_level_object;
-	struct_enemy_object *eo;
 
 	const unsigned char *o = data;
-	unsigned char row, col, enemy;
+	unsigned char row, col;
 	unsigned char tile_data;
 
 	unsigned int index;
 	unsigned char tile_type;
 	unsigned char coll_type;
-	unsigned char test_type;
-	unsigned char direction;
+	//unsigned char test_type;
+	//unsigned char direction;
 
 	unsigned char load_cols;
 	unsigned char draw_cols;
@@ -247,29 +305,29 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 
 	// TODO stevepro adriana - put this in the enemy mgr
 	// Update if enemy not move and candy on home tile.
-	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
-	{
-		eo = &global_enemy_objects[ enemy ];
-		if( eo->mover )
-		{
-			continue;
-		}
+	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	//{
+	//	eo = &global_enemy_objects[ enemy ];
+	//	if( eo->mover )
+	//	{
+	//		continue;
+	//	}
 
-		// Enemy is idle this level so blank out tile
-		index = eo->tileZ;
-		tile_type = level_object_tiles_array[ index ];
+	//	// Enemy is idle this level so blank out tile
+	//	index = eo->tileZ;
+	//	tile_type = level_object_tiles_array[ index ];
 
-		if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
-		{
-			level_object_bonus_count--;
-		}
-		if( tile_type_candy == tile_type )
-		{
-			level_object_candy_count--;
-		}
+	//	if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
+	//	{
+	//		level_object_bonus_count--;
+	//	}
+	//	if( tile_type_candy == tile_type )
+	//	{
+	//		level_object_candy_count--;
+	//	}
 
-		level_object_tiles_array[ index ] = tile_type_blank;
-	}
+	//	level_object_tiles_array[ index ] = tile_type_blank;
+	//}
 
 	// TODO Ensure no trees over exits!
 	//if( exit_type_public == state_object_exits_type )
@@ -283,20 +341,25 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 	//	}
 	//}
 
+	
+	// TODO - do I want to remove this altogether...??
+	// Don't think that I need to store all prossible directions if I can used the collision type
+	// to check whether an actor can move to another tile
+
 	// Set each tile directions available.
-	for( row = 0; row < MAX_ROWS; row++ )
-	{
-		for( col = 0; col < MAX_COLS; col++ )
-		{
-			direction = engine_level_manager_test_direction( ( row + 2 ), ( col + 2 ) );
+	//for( row = 0; row < MAX_ROWS; row++ )
+	//{
+	//	for( col = 0; col < MAX_COLS; col++ )
+	//	{
+	//		direction = engine_level_manager_test_direction( ( row + 2 ), ( col + 2 ) );
 
-			index = ( row + 2 ) * MAZE_COLS + ( col + 2 );
-			test_type = level_object_tiles_array[ index ];
+	//		index = ( row + 2 ) * MAZE_COLS + ( col + 2 );
+	//		test_type = level_object_tiles_array[ index ];
 
-			engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
-			level_object_tiles_array[ index ] = test_type;
-		}
-	}
+	//		engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
+	//		level_object_tiles_array[ index ] = test_type;
+	//	}
+	//}
 
 	// TODO - update if there is free man candy on this level
 }

@@ -32,16 +32,22 @@ static unsigned char get_gamer_direction();
 static unsigned char get_gamer_collision();
 
 static void print( unsigned char dir );
+static void get_enemy_data( unsigned char *mover, unsigned char *tileZ );
 
 void screen_play_screen_load()
 {
+	unsigned char enemy_mover[ MAX_ENEMIES ];
+	unsigned char enemy_tileZ[ MAX_ENEMIES ];
+	unsigned char round = 4;
+
 	engine_command_manager_init();
 	engine_delay_manager_load( 0 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
 	engine_enemy_manager_init();
-
+	get_enemy_data( enemy_mover, enemy_tileZ );
+	
 	engine_score_manager_load();
 	//sengine_score_manager_draw_all();
 
@@ -51,7 +57,8 @@ void screen_play_screen_load()
 	engine_board_manager_draw_exit();
 	engine_board_manager_side_tile();
 
-	engine_level_manager_load_level( 5, 5 );
+	engine_level_manager_load_level( 5, round );
+	engine_level_manager_update_level( round, enemy_mover, enemy_tileZ );
 	engine_level_manager_draw_level();
 
 	engine_frame_manager_draw();
@@ -62,6 +69,8 @@ void screen_play_screen_load()
 	//engine_audio_manager_music_play( 3 );
 	first_time = 1;
 	frame_spot = 0;
+
+	engine_font_manager_draw_data( enemy_mover[ 0 ], 10, 10 );
 }
 
 void screen_play_screen_update( unsigned char *screen_type )
@@ -264,5 +273,17 @@ static void print( unsigned char dir )
 	if( 8 == dir )
 	{
 		engine_font_manager_draw_text( "RGHT", 10, 13 );
+	}
+}
+
+static void get_enemy_data( unsigned char *mover, unsigned char *tileZ )
+{
+	struct_enemy_object *eo;
+	unsigned char enemy;
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		eo = &global_enemy_objects[ enemy ];
+		mover[ enemy ] = eo->mover;
+		tileZ[ enemy ] = eo->tileZ;
 	}
 }

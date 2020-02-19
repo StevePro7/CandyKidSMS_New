@@ -52,3 +52,11 @@ CM
 16/02/2020
 Today did the storage manager
 don't forget to put in a cheat that will allow you to reset / erase the store object
+
+
+19/02/2020
+TODO
+remove the code that determines all the tiles that can be moved to from this tile
+In theory, this is now no longer required because I use the collision type to determine this
+In fact - I don't need to set the collision type because I can just check if the tile = '1'
+i.e. is a tree then an actor should not go into that tile...
