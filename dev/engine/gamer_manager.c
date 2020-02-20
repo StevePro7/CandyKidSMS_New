@@ -177,6 +177,11 @@ void engine_gamer_manager_wrap( unsigned char direction )
 void engine_gamer_manager_stop()
 {
 	struct_gamer_object *go = &global_gamer_object;
+	if( lifecycle_type_dead == go->lifecycle )
+	{
+		return;
+	}
+
 	go->prev_move = go->direction;
 	go->direction = direction_type_none;
 	go->frame = frame_type_stance;
@@ -200,6 +205,12 @@ void engine_gamer_manager_stop()
 
 void engine_gamer_manager_dead()
 {
+	struct_gamer_object *go = &global_gamer_object;
+	go->lifecycle = lifecycle_type_dead;
+	go->prev_move = go->direction;
+	go->direction = direction_type_none;
+	go->frame = frame_type_stance;
+	calcd_frame();
 }
 
 unsigned char engine_gamer_manager_find_direction()
@@ -209,9 +220,52 @@ unsigned char engine_gamer_manager_find_direction()
 	//unsigned char direction = direction_type_rght;
 	//unsigned char direction = direction_type_left;
 	unsigned char collision;
-	//unsigned char near_exit;
-	direction = direction_type_left;
+	if( direction_type_none == direction )
+	{
+		return direction;
+	}
 
+	// Death trees don't need to check...
+	if( state_object_trees_type == tree_type_death )
+	{
+		return direction;
+	}
+
+	// Avoid trees need to check first.
+	collision = engine_level_manager_get_tile_type( go->tileX, go->tileY, direction, offset_type_one );
+	if( coll_type_block == collision )
+	{
+		// Edge case for exits public and edge of maze.
+		if( exit_type_public == state_object_exits_type )
+		{
+			//collision = engine_board_manager_near_exit( go->tileX, go->tileY, direction );
+			collision = engine_move_manager_near_exit( go->tileX, go->tileY, direction );
+			if( coll_type_block == collision )
+			{
+				direction = direction_type_none;
+			}
+		}
+		else
+		{
+			direction = direction_type_none;
+		}
+	}
+
+	return direction;
+}
+
+// TODO this is the work in progress!!
+unsigned char engine_gamer_manager_find_direction2()
+{
+	struct_gamer_object *go = &global_gamer_object;
+	unsigned char direction = engine_gamer_manager_input_direction();
+	//unsigned char direction = direction_type_rght;
+	//unsigned char direction = direction_type_left;
+	unsigned char collision;
+	//unsigned char near_exit;
+
+	//direction = direction_type_left;
+	//direction = direction_type_upxx;
 	engine_font_manager_draw_data( direction, 15, 15 );
 
 	if( direction_type_none == direction )
@@ -226,11 +280,13 @@ unsigned char engine_gamer_manager_find_direction()
 		return direction;
 	}
 
-	// else
-	direction = direction_type_none;
+	// Second, Kid now trying to go into blocking tile [tree] but could be at an exit or death tree.
+	collision = engine_move_manager_near_exit( go->tileX, go->tileY, direction );
+	if( coll_type_block == collision )
+	{
+		direction = direction_type_none;
+	}
 
-	// Second, Kid now trying to go into blocking tile;
-	
 
 	// Death trees don't need to check...
 	//if( state_object_trees_type == tree_type_death )

@@ -31,9 +31,9 @@ void screen_dead_screen_load()
 	//state_object_sound_data();
 	//engine_delay_manager_load( 10 );
 
-	//engine_board_manager_init();
+	engine_board_manager_init();
 	engine_gamer_manager_init();
-	//engine_enemy_manager_init();
+	engine_enemy_manager_init();
 
 	// Draw functions.
 	//engine_board_manager_debugger();

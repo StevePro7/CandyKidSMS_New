@@ -121,6 +121,12 @@ void screen_play_screen_update( unsigned char *screen_type )
 	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
 	{
 		// Check collision.
+		if( state_object_trees_type == tree_type_death )
+		{
+			// TODO implement this properly!!
+			//gamer_collactor = actor_type_tree;
+		}
+
 		//engine_font_manager_draw_data( frame, 12, 16 );
 		engine_gamer_manager_stop();
 		//gamer_collision = get_gamer_collision();
@@ -198,12 +204,13 @@ void screen_play_screen_update( unsigned char *screen_type )
 	first_time = 0;
 
 	// TODO implement
-	//if( coll_type_block == gamer_collision )
+	// TODO make gamer_collactor a global variable...!!
+	//if( actor_type_kid != gamer_collactor )
 	//{
 	//	*screen_type = screen_type_dead;
 	//	return;
 	//}
-	
+
 	*screen_type = screen_type_play;
 }
 
