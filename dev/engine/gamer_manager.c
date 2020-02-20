@@ -190,8 +190,8 @@ void engine_gamer_manager_stop()
 	// Check if in exit then move in previous direction [and wrap game board as necessary].
 	if( go->tileX <= 1 || go->tileY <= 1 || go->tileX >= ( MAZE_COLS - 2 ) || go->tileY >= ( MAZE_ROWS - 2 ) )
 	{
-		//engine_gamer_manager_wrap( go->prev_move );
-		//engine_gamer_manager_move( go->prev_move );
+		engine_gamer_manager_wrap( go->prev_move );
+		engine_gamer_manager_move( go->prev_move );
 		return;
 	}
 
@@ -209,36 +209,58 @@ unsigned char engine_gamer_manager_find_direction()
 	//unsigned char direction = direction_type_rght;
 	//unsigned char direction = direction_type_left;
 	unsigned char collision;
+	//unsigned char near_exit;
+	direction = direction_type_left;
+
+	engine_font_manager_draw_data( direction, 15, 15 );
+
 	if( direction_type_none == direction )
 	{
 		return direction;
 	}
 
-	// Death trees don't need to check...
-	if( state_object_trees_type == tree_type_death )
+	// First, ensure that if tile Kid wants to go into is empty then simply return that direction.
+	collision = engine_level_manager_get_collision( go->tileX, go->tileY, direction, offset_type_one );
+	if( coll_type_empty == collision )
 	{
 		return direction;
 	}
 
-	// Avoid trees need to check first.
-	collision = engine_level_manager_get_tile_type( go->tileX, go->tileY, direction, offset_type_one );
-	if( coll_type_block == collision )
-	{
-		// Edge case for exits public and edge of maze.
-		if( exit_type_public == state_object_exits_type )
-		{
-			//collision = engine_board_manager_near_exit( go->tileX, go->tileY, direction );
-			collision = engine_move_manager_near_exit( go->tileX, go->tileY, direction );
-			if( coll_type_block == collision )
-			{
-				direction = direction_type_none;
-			}
-		}
-		else
-		{
-			direction = direction_type_none;
-		}
-	}
+	// else
+	direction = direction_type_none;
+
+	// Second, Kid now trying to go into blocking tile;
+	
+
+	// Death trees don't need to check...
+	//if( state_object_trees_type == tree_type_death )
+	//{
+	//	collision = engine_move_manager_near_exit( go->tileX, go->tileY, direction );
+	//	if( coll_type_block == collision )
+	//	{
+	//		direction = direction_type_none;
+	//	}
+	//}
+
+	//// Avoid trees need to check first.
+	//collision = engine_level_manager_get_tile_type( go->tileX, go->tileY, direction, offset_type_one );
+	//if( coll_type_block == collision )
+	//{
+	//	// Edge case for exits public and edge of maze OR invincible then cannot go thru border trees!
+	//	//if( exit_type_public == state_object_exits_type )
+	//	if( exit_type_public == state_object_exits_type || state_object_invincibie )
+	//	{
+	//		collision = engine_move_manager_near_exit( go->tileX, go->tileY, direction );
+	//		if( coll_type_block == collision )
+	//		{
+	//			direction = direction_type_none;
+	//		}
+	//	}
+	//	else
+	//	{
+	//		direction = direction_type_none;
+	//	}
+	//}
 
 	return direction;
 }

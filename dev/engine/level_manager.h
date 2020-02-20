@@ -7,7 +7,7 @@ void engine_level_manager_beat_level( const unsigned char *data, const unsigned 
 void engine_level_manager_draw_level();
 //
 unsigned char engine_level_manager_get_collision( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset );
-unsigned char engine_level_manager_get_direction( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset );
+unsigned char engine_level_manager_get_direction( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset );	// TODO could go - not used...!
 unsigned char engine_level_manager_get_tile_type( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset );
 unsigned char engine_level_manager_get_next_tile( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset );
 // TODO - refactor code here and method above

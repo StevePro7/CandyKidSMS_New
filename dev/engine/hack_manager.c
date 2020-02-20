@@ -8,6 +8,13 @@
 
 #define HACKER_START		0x0050
 
+// TODO delete this - set only during debugging / play testsing
+#ifdef _CONSOLE
+#else
+#pragma disable_warning 110
+#pragma disable_warning 126
+#endif
+
 void engine_hack_manager_init()
 {
 	state_object_mydebugger = 0;
@@ -51,9 +58,9 @@ void engine_hack_manager_invert()
 	state_object_trees_type = tree_type_death == state_object_trees_type ? tree_type_death : tree_type_avoid;
 
 	// TODO delete this hardcoded
-	state_object_trees_type = 1;
-	state_object_exits_type = 0;
-	state_object_invincibie = 1;
+	//state_object_trees_type = 1;
+	//state_object_exits_type = 0;
+	//state_object_invincibie = 1;
 	// TODO delete this hardcoded
 
 	// Exits.

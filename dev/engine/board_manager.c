@@ -134,35 +134,6 @@ void engine_board_manager_side_tile()
 	engine_tile_manager_draw_sides( TREE_COLS * 2 + SCREEN_TILE_LEFT, TOP_EXIT_Y );
 }
 
-//unsigned char engine_board_manager_near_exit( unsigned char tileX, unsigned char tileY, unsigned char direction )
-//{
-//	unsigned char collision = coll_type_block;
-//	if( exit_type_closed == state_object_exits_type )
-//	{
-//		return collision;
-//	}
-//
-//	// Vertical.
-//	if( EXIT_SPOT2 == tileX || EXIT_SPOT3 == tileX )
-//	{
-//		if( ( EXIT_SPOT1 == tileY && direction_type_upxx == direction ) || ( EXIT_SPOT4 == tileY && direction_type_down == direction ) )
-//		{
-//			collision = coll_type_empty;
-//		}
-//	}
-//
-//	// Horizontal.
-//	if( EXIT_SPOT2 == tileY || EXIT_SPOT3 == tileY )
-//	{
-//		if( ( EXIT_SPOT1 == tileX && direction_type_left == direction ) || ( EXIT_SPOT4 == tileX && direction_type_rght == direction ) )
-//		{
-//			collision = coll_type_empty;
-//		}
-//	}
-//
-//	return collision;
-//}
-
 // TODO - delete!!
 void engine_board_manager_debugger()
 {
