@@ -4,7 +4,8 @@
 #include "function_manager.h"
 #include "global_manager.h"
 #include "input_manager.h"
-//#include "move_manager.h"
+#include "level_manager.h"
+#include "move_manager.h"
 #include "sprite_manager.h"
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
@@ -182,17 +183,16 @@ void engine_gamer_manager_stop()
 	calcd_frame();
 
 	// TODO delete
-	//engine_font_manager_draw_data( go->tileX, 12, 8 );
-	//engine_font_manager_draw_data( go->tileY, 12, 9 );
+	engine_font_manager_draw_data( go->tileX, 12, 8 );
+	engine_font_manager_draw_data( go->tileY, 12, 9 );
 	// TODO delete
 
 	// Check if in exit then move in previous direction [and wrap game board as necessary].
 	if( go->tileX <= 1 || go->tileY <= 1 || go->tileX >= ( MAZE_COLS - 2 ) || go->tileY >= ( MAZE_ROWS - 2 ) )
 	{
-		// TODO stevepro adriana revert exits move!
 		//engine_gamer_manager_wrap( go->prev_move );
 		//engine_gamer_manager_move( go->prev_move );
-		//return;
+		return;
 	}
 
 	// TODO calc possible tiles actor can move in to.
@@ -200,7 +200,47 @@ void engine_gamer_manager_stop()
 
 void engine_gamer_manager_dead()
 {
+}
 
+unsigned char engine_gamer_manager_find_direction()
+{
+	struct_gamer_object *go = &global_gamer_object;
+	unsigned char direction = engine_gamer_manager_input_direction();
+	//unsigned char direction = direction_type_rght;
+	//unsigned char direction = direction_type_left;
+	unsigned char collision;
+	if( direction_type_none == direction )
+	{
+		return direction;
+	}
+
+	// Death trees don't need to check...
+	if( state_object_trees_type == tree_type_death )
+	{
+		return direction;
+	}
+
+	// Avoid trees need to check first.
+	collision = engine_level_manager_get_tile_type( go->tileX, go->tileY, direction, offset_type_one );
+	if( coll_type_block == collision )
+	{
+		// Edge case for exits public and edge of maze.
+		if( exit_type_public == state_object_exits_type )
+		{
+			//collision = engine_board_manager_near_exit( go->tileX, go->tileY, direction );
+			collision = engine_move_manager_near_exit( go->tileX, go->tileY, direction );
+			if( coll_type_block == collision )
+			{
+				direction = direction_type_none;
+			}
+		}
+		else
+		{
+			direction = direction_type_none;
+		}
+	}
+
+	return direction;
 }
 
 unsigned char engine_gamer_manager_input_direction()
