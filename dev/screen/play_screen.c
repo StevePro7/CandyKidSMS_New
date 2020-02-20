@@ -27,8 +27,8 @@
 static unsigned char first_time;
 static unsigned char frame_spot;
 
-// TODO put into the gmaer Mgr
-static unsigned char get_gamer_direction();
+// TODO delete as this is now in the gmaer Mgr
+//static unsigned char get_gamer_direction();
 static unsigned char get_gamer_collision();
 
 static void print( unsigned char dir );
@@ -130,7 +130,9 @@ void screen_play_screen_update( unsigned char *screen_type )
 	{
 		if( coll_type_empty == gamer_collision )
 		{
-			gamer_direction = get_gamer_direction();
+			//gamer_direction = get_gamer_direction();
+			gamer_direction = engine_gamer_manager_find_direction();
+			
 			if( direction_type_none != gamer_direction )
 			{
 				engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
@@ -205,47 +207,48 @@ void screen_play_screen_update( unsigned char *screen_type )
 	*screen_type = screen_type_play;
 }
 
-static unsigned char get_gamer_direction()
-{
-	struct_gamer_object *go = &global_gamer_object;
-	unsigned char gamer_direction = engine_gamer_manager_input_direction();
-	//unsigned char gamer_direction = direction_type_rght;
-	//unsigned char gamer_direction = direction_type_left;
-	unsigned char collision;
-	if( direction_type_none == gamer_direction )
-	{
-		return gamer_direction;
-	}
-
-	// Death trees don't need to check...
-	if( state_object_trees_type == tree_type_death )
-	{
-		return gamer_direction;
-	}
-
-	// Avoid trees need to check first.
-	collision = engine_level_manager_get_tile_type( go->tileX, go->tileY, gamer_direction, offset_type_one );
-	if( coll_type_block == collision )
-	{
-		// Edge case for exits public and edge of maze.
-		if( exit_type_public == state_object_exits_type )
-		{
-			//collision = engine_board_manager_near_exit( go->tileX, go->tileY, gamer_direction );
-			collision = engine_move_manager_near_exit( go->tileX, go->tileY, gamer_direction );
-			if( coll_type_block == collision )
-			{
-				gamer_direction = direction_type_none;
-			}
-		}
-		else
-		{
-			gamer_direction = direction_type_none;
-		}
-	}
-	
-
-	return gamer_direction;
-}
+// TODO delete as this is now in the gmaer Mgr
+//static unsigned char get_gamer_direction()
+//{
+//	struct_gamer_object *go = &global_gamer_object;
+//	unsigned char gamer_direction = engine_gamer_manager_input_direction();
+//	//unsigned char gamer_direction = direction_type_rght;
+//	//unsigned char gamer_direction = direction_type_left;
+//	unsigned char collision;
+//	if( direction_type_none == gamer_direction )
+//	{
+//		return gamer_direction;
+//	}
+//
+//	// Death trees don't need to check...
+//	if( state_object_trees_type == tree_type_death )
+//	{
+//		return gamer_direction;
+//	}
+//
+//	// Avoid trees need to check first.
+//	collision = engine_level_manager_get_tile_type( go->tileX, go->tileY, gamer_direction, offset_type_one );
+//	if( coll_type_block == collision )
+//	{
+//		// Edge case for exits public and edge of maze.
+//		if( exit_type_public == state_object_exits_type )
+//		{
+//			//collision = engine_board_manager_near_exit( go->tileX, go->tileY, gamer_direction );
+//			collision = engine_move_manager_near_exit( go->tileX, go->tileY, gamer_direction );
+//			if( coll_type_block == collision )
+//			{
+//				gamer_direction = direction_type_none;
+//			}
+//		}
+//		else
+//		{
+//			gamer_direction = direction_type_none;
+//		}
+//	}
+//	
+//
+//	return gamer_direction;
+//}
 
 static unsigned char get_gamer_collision()
 {
@@ -253,6 +256,7 @@ static unsigned char get_gamer_collision()
 	//return coll_type_block;
 }
 
+// TODO delete or put in debugger??
 static void print( unsigned char dir )
 {
 	if( 0 == dir )

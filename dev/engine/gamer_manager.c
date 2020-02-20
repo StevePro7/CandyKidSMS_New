@@ -282,31 +282,6 @@ unsigned char engine_gamer_manager_input_direction()
 	return direction;
 }
 
-// TODO delete
-//unsigned char engine_gamer_manager_mover_direction()
-//{
-//	struct_gamer_object *go = &global_gamer_object;
-//	unsigned char dirX;
-//	unsigned char loop;
-//	unsigned char time;
-//
-//	// If gamer already traveling in direction return that direction,
-//	if( direction_type_none != go->direction )
-//	{
-//		return go->direction;
-//	}
-//
-//	// Otherwise calculate random direction for enemy to target.
-//	dirX = 1;
-//	time = rand() % 4;
-//	for( loop = 0; loop < time; loop++ )
-//	{
-//		dirX *= 2;
-//	}
-//
-//	return dirX;
-//}
-
 static void calcd_frame()
 {
 	struct_gamer_object *go = &global_gamer_object;

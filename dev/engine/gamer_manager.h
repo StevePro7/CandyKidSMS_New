@@ -16,7 +16,5 @@ void engine_gamer_manager_stop();
 void engine_gamer_manager_dead();
 unsigned char engine_gamer_manager_find_direction();
 unsigned char engine_gamer_manager_input_direction();
-// TODO delete
-//unsigned char engine_gamer_manager_mover_direction();
 
 #endif//_GAMER_MANAGER_H_
