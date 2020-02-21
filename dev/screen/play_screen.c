@@ -242,7 +242,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 //		if( exit_type_public == state_object_exits_type )
 //		{
 //			//collision = engine_board_manager_near_exit( go->tileX, go->tileY, gamer_direction );
-//			collision = engine_move_manager_near_exit( go->tileX, go->tileY, gamer_direction );
+//			collision = engine_move_manager_gothru_exit( go->tileX, go->tileY, gamer_direction );
 //			if( coll_type_block == collision )
 //			{
 //				gamer_direction = direction_type_none;

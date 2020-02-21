@@ -9,6 +9,7 @@
 #include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
+#include "..\engine\move_manager.h"
 
 static unsigned char command_index;
 static unsigned char command_count;
@@ -16,14 +17,15 @@ static unsigned char walking_delta;
 static unsigned char walking_count;
 static unsigned char first_time;
 
-unsigned char cont_walking_cmds[] = { direction_type_upxx, direction_type_upxx };// direction_type_upxx };
-//unsigned char cont_walking_cmds[] = { direction_type_upxx, direction_type_upxx };
+//unsigned char cont_walking_cmds[] = { direction_type_upxx, direction_type_rght, direction_type_upxx };
+//unsigned char cont_walking_cmds[] = { direction_type_upxx, direction_type_upxx, direction_type_upxx };
+unsigned char cont_walking_cmds[] = { direction_type_rght, direction_type_rght, direction_type_down };
 //unsigned char cont_walking_move[] = { 7, 7, 7, 7 };
-unsigned char cont_walking_move[] = { 1, 1 };
+unsigned char cont_walking_move[] = { 1, 1, 1 };
 
 void screen_cont_screen_load()
 {
-	command_count = 2;
+	command_count = 3;
 
 
 	engine_board_manager_init();
@@ -31,10 +33,12 @@ void screen_cont_screen_load()
 	engine_command_manager_init();
 	engine_gamer_manager_init();
 
-	engine_delay_manager_load( 2 );
+	engine_delay_manager_load( 0 );
 
 	engine_board_manager_draw_full();
 	engine_board_manager_draw_exit();
+	engine_board_manager_side_tile();
+
 	engine_level_manager_load_level( 0, 0 );
 	engine_level_manager_draw_level();
 
@@ -96,8 +100,13 @@ void screen_cont_screen_update( unsigned char *screen_type )
 			collision = engine_level_manager_get_collision( go->tileX, go->tileY, go->direction, offset_type_none );
 			if( coll_type_block == collision )
 			{
-				*screen_type = screen_type_dead;
-				return;
+				// Edge case : vulnerable Kid inside open exit with death trees
+				collision = engine_move_manager_inside_exit( go->tileX, go->tileY );
+				if( coll_type_block == collision )
+				{
+					*screen_type = screen_type_dead;
+					return;
+				}
 			}
 		}
 
@@ -126,6 +135,7 @@ void screen_cont_screen_update( unsigned char *screen_type )
 			}
 
 			gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
+			engine_font_manager_draw_data( gamer_direction, 15, 20 );
 			if( direction_type_none != gamer_direction )
 			{
 				engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );

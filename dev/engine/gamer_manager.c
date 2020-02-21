@@ -220,40 +220,107 @@ unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction
 	//unsigned char direction = direction_type_rght;
 	//unsigned char direction = direction_type_left;
 	//unsigned char direction = direction_type_none;
-	unsigned char direction = gamer_direction;
+	//unsigned char direction = gamer_direction;
 	unsigned char collision;
-	if( direction_type_none == direction )
+	unsigned char thru_exit;
+	if( direction_type_none == gamer_direction )
 	{
-		return direction;
+		return direction_type_none;
 	}
 
-	// Death trees don't need to check...
-	if( state_object_trees_type == tree_type_death )
-	{
-		return direction;
-	}
+	// First, ensure that if tile Kid wants to go into is empty then simply return that direction.
 
-	// Avoid trees need to check first.
-	collision = engine_level_manager_get_tile_type( go->tileX, go->tileY, direction, offset_type_one );
-	if( coll_type_block == collision )
+	// Avoid trees.
+	if( state_object_trees_type == tree_type_avoid )
 	{
-		// Edge case for exits public and edge of maze.
+		collision = engine_level_manager_get_collision( go->tileX, go->tileY, gamer_direction, offset_type_one );
+		if( coll_type_empty == collision )
+		{
+			return gamer_direction;
+		}
+
+		if( exit_type_closed == state_object_exits_type )
+		{
+			return direction_type_none;
+		}
+
 		if( exit_type_public == state_object_exits_type )
 		{
-			//collision = engine_board_manager_near_exit( go->tileX, go->tileY, direction );
-			collision = engine_move_manager_near_exit( go->tileX, go->tileY, direction );
-			if( coll_type_block == collision )
+			thru_exit = engine_move_manager_gothru_exit( go->tileX, go->tileY, gamer_direction );
+			if( thru_exit )
 			{
-				direction = direction_type_none;
+				return gamer_direction;
 			}
-		}
-		else
-		{
-			direction = direction_type_none;
+			//return coll_type_block == near_exit ? gamer_direction : direction_type_none;
+			//return direction_type_none ? coll_type_block == collision : gamer_direction;
+
+			//if( coll_type_block == collision )
+			//{
+			//	return direction_type_none;
+			//}
 		}
 	}
+	else
+	{
+	}
 
-	return direction;
+	// Avoid trees.
+	//if( state_object_trees_type == tree_type_avoid )
+	//{
+	//	collision = engine_level_manager_get_collision( go->tileX, go->tileY, direction, offset_type_one );
+	//	if( coll_type_block == collision )
+	//	{
+	//		// Check if Kid at open enxit.
+	//		if( exit_type_public == state_object_exits_type )
+	//		{
+	//			collision = engine_move_manager_gothru_exit( go->tileX, go->tileY, direction );
+	//			if( coll_type_block == collision )
+	//			{
+	//				direction = direction_type_none;
+	//			}
+	//		}
+	//	}
+	//}
+	//else
+	//{
+	//}
+
+
+	// Second, Kid now trying to go into blocking tile [tree] but could be at an exit or death tree.
+	//collision = engine_move_manager_gothru_exit( go->tileX, go->tileY, direction );
+	//if( coll_type_block == collision )
+	//{
+	//	direction = direction_type_none;
+	//}
+
+
+	// Death trees don't need to check...
+	//if( state_object_trees_type == tree_type_death )
+	//{
+	//	return direction;
+	//}
+
+	//// Avoid trees need to check first.
+	//collision = engine_level_manager_get_tile_type( go->tileX, go->tileY, direction, offset_type_one );
+	//if( coll_type_block == collision )
+	//{
+	//	// Edge case for exits public and edge of maze.
+	//	if( exit_type_public == state_object_exits_type )
+	//	{
+	//		//collision = engine_board_manager_near_exit( go->tileX, go->tileY, direction );
+	//		collision = engine_move_manager_gothru_exit( go->tileX, go->tileY, direction );
+	//		if( coll_type_block == collision )
+	//		{
+	//			direction = direction_type_none;
+	//		}
+	//	}
+	//	else
+	//	{
+	//		direction = direction_type_none;
+	//	}
+	//}
+
+	return direction_type_none;
 }
 
 unsigned char engine_gamer_manager_find_direction3( unsigned char gamer_direction )
@@ -284,7 +351,7 @@ unsigned char engine_gamer_manager_find_direction3( unsigned char gamer_directio
 		if( exit_type_public == state_object_exits_type )
 		{
 			//collision = engine_board_manager_near_exit( go->tileX, go->tileY, direction );
-			collision = engine_move_manager_near_exit( go->tileX, go->tileY, direction );
+			collision = engine_move_manager_gothru_exit( go->tileX, go->tileY, direction );
 			if( coll_type_block == collision )
 			{
 				direction = direction_type_none;
@@ -312,7 +379,6 @@ unsigned char engine_gamer_manager_find_direction2()
 	//direction = direction_type_left;
 	//direction = direction_type_upxx;
 	engine_font_manager_draw_data( direction, 15, 15 );
-
 	if( direction_type_none == direction )
 	{
 		return direction;
@@ -326,7 +392,7 @@ unsigned char engine_gamer_manager_find_direction2()
 	}
 
 	// Second, Kid now trying to go into blocking tile [tree] but could be at an exit or death tree.
-	collision = engine_move_manager_near_exit( go->tileX, go->tileY, direction );
+	collision = engine_move_manager_gothru_exit( go->tileX, go->tileY, direction );
 	if( coll_type_block == collision )
 	{
 		direction = direction_type_none;
@@ -336,7 +402,7 @@ unsigned char engine_gamer_manager_find_direction2()
 	// Death trees don't need to check...
 	//if( state_object_trees_type == tree_type_death )
 	//{
-	//	collision = engine_move_manager_near_exit( go->tileX, go->tileY, direction );
+	//	collision = engine_move_manager_gothru_exit( go->tileX, go->tileY, direction );
 	//	if( coll_type_block == collision )
 	//	{
 	//		direction = direction_type_none;
@@ -351,7 +417,7 @@ unsigned char engine_gamer_manager_find_direction2()
 	//	//if( exit_type_public == state_object_exits_type )
 	//	if( exit_type_public == state_object_exits_type || state_object_invincibie )
 	//	{
-	//		collision = engine_move_manager_near_exit( go->tileX, go->tileY, direction );
+	//		collision = engine_move_manager_gothru_exit( go->tileX, go->tileY, direction );
 	//		if( coll_type_block == collision )
 	//		{
 	//			direction = direction_type_none;

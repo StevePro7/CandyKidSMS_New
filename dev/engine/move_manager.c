@@ -166,7 +166,37 @@ unsigned char engine_move_manager_actor_direction( unsigned char direction )
 	return direction;
 }
 
-unsigned char engine_move_manager_near_exit( unsigned char tileX, unsigned char tileY, unsigned char direction )
+unsigned char engine_move_manager_gothru_exit( unsigned char tileX, unsigned char tileY, unsigned char direction )
+{
+	unsigned char can_go_thru_exit = coll_type_empty;
+	//if( exit_type_closed == state_object_exits_type )
+	//{
+	//	return collision;
+	//}
+
+	// Vertical.
+	if( EXIT_SPOT2 == tileX || EXIT_SPOT3 == tileX )
+	{
+		if( ( EXIT_SPOT1 == tileY && direction_type_upxx == direction ) || ( EXIT_SPOT4 == tileY && direction_type_down == direction ) )
+		{
+			can_go_thru_exit = exit_type_closed == state_object_exits_type ? coll_type_empty : coll_type_block;
+		}
+	}
+
+	// Horizontal.
+	if( EXIT_SPOT2 == tileY || EXIT_SPOT3 == tileY )
+	{
+		if( ( EXIT_SPOT1 == tileX && direction_type_left == direction ) || ( EXIT_SPOT4 == tileX && direction_type_rght == direction ) )
+		{
+			can_go_thru_exit = exit_type_closed == state_object_exits_type ? coll_type_empty : coll_type_block;
+			//collision = coll_type_empty;
+		}
+	}
+
+	return can_go_thru_exit;
+}
+
+unsigned char engine_move_manager_inside_exit( unsigned char tileX, unsigned char tileY )
 {
 	unsigned char collision = coll_type_block;
 	if( exit_type_closed == state_object_exits_type )
@@ -177,7 +207,7 @@ unsigned char engine_move_manager_near_exit( unsigned char tileX, unsigned char 
 	// Vertical.
 	if( EXIT_SPOT2 == tileX || EXIT_SPOT3 == tileX )
 	{
-		if( ( EXIT_SPOT1 == tileY && direction_type_upxx == direction ) || ( EXIT_SPOT4 == tileY && direction_type_down == direction ) )
+		if( ( ( EXIT_SPOT1 - 1 ) == tileY ) || ( ( EXIT_SPOT4 + 1 ) == tileY ) )
 		{
 			collision = coll_type_empty;
 		}
@@ -186,7 +216,7 @@ unsigned char engine_move_manager_near_exit( unsigned char tileX, unsigned char 
 	// Horizontal.
 	if( EXIT_SPOT2 == tileY || EXIT_SPOT3 == tileY )
 	{
-		if( ( EXIT_SPOT1 == tileX && direction_type_left == direction ) || ( EXIT_SPOT4 == tileX && direction_type_rght == direction ) )
+		if( ( ( EXIT_SPOT1 - 1 ) == tileX ) || ( ( EXIT_SPOT4 + 1 ) == tileX ) )
 		{
 			collision = coll_type_empty;
 		}
