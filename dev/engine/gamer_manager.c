@@ -268,8 +268,14 @@ unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction
 			thru_exit = engine_move_manager_border_exit( go->tileX, go->tileY, gamer_direction );
 			if( thru_exit )
 			{
-				if( exit_type_closed == state_object_exits_type )
+				if( exit_type_public == state_object_exits_type )
 				{
+					thru_exit = engine_move_manager_gothru_exit( go->tileX, go->tileY, gamer_direction );
+					if( thru_exit )
+					{
+						return gamer_direction;
+					}
+
 					return direction_type_none;
 				}
 			}
