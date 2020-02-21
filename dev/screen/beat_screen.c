@@ -16,9 +16,9 @@ static unsigned char walking_delta;
 static unsigned char walking_count;
 static unsigned char first_time;
 
-unsigned char walking_cmds[] = { direction_type_rght, direction_type_down, direction_type_left, direction_type_upxx };
-unsigned char walking_move[] = { 7, 7, 7, 7 };
-//unsigned char walking_move[] = { 1, 1, 1, 1 };
+unsigned char beat_walking_cmds[] = { direction_type_rght, direction_type_down, direction_type_left, direction_type_upxx };
+unsigned char beat_walking_move[] = { 7, 7, 7, 7 };
+//unsigned char beat_walking_move[] = { 1, 1, 1, 1 };
 
 void screen_beat_screen_load()
 {
@@ -102,8 +102,8 @@ void screen_beat_screen_update( unsigned char *screen_type )
 			command_index = 0;
 		}
 		
-		the_direction = walking_cmds[ command_index ];
-		walking_count = walking_move[ command_index ];
+		the_direction = beat_walking_cmds[ command_index ];
+		walking_count = beat_walking_move[ command_index ];
 
 		walking_delta++;
 		if( walking_delta >= walking_count )

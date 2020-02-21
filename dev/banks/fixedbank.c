@@ -18,7 +18,7 @@ const unsigned char board_object_posnY[] =
 }; 
 
 // Order:									  Pro,  Adi,  Suz,  Kid.
-const unsigned char board_object_homeX[] = { 0x0A, 0x03, 0x0A, 0x06 };
+const unsigned char board_object_homeX[] = { 0x0A, 0x03, 0x0A, 0x03 };
 const unsigned char board_object_homeY[] = { 0x0A, 0x0A, 0x03, 0x03 };
 //const unsigned char board_object_homeX[] = { 0x08, 0x03, 0x0A, 0x0A };
 //const unsigned char board_object_homeY[] = { 0x0A, 0x0A, 0x03, 0x0A };

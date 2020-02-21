@@ -137,7 +137,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 		if( coll_type_empty == gamer_collision )
 		{
 			//gamer_direction = get_gamer_direction();
-			gamer_direction = engine_gamer_manager_find_direction();
+			gamer_direction = engine_gamer_manager_input_direction();
+			gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
 			
 			if( direction_type_none != gamer_direction )
 			{

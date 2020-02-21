@@ -213,12 +213,14 @@ void engine_gamer_manager_dead()
 	calcd_frame();
 }
 
-unsigned char engine_gamer_manager_find_direction()
+unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction )
 {
 	struct_gamer_object *go = &global_gamer_object;
-	unsigned char direction = engine_gamer_manager_input_direction();
+	//unsigned char direction = engine_gamer_manager_input_direction();
 	//unsigned char direction = direction_type_rght;
 	//unsigned char direction = direction_type_left;
+	//unsigned char direction = direction_type_none;
+	unsigned char direction = gamer_direction;
 	unsigned char collision;
 	if( direction_type_none == direction )
 	{
