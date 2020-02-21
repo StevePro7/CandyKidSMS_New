@@ -17,9 +17,9 @@ static unsigned char walking_delta;
 static unsigned char walking_count;
 static unsigned char first_time;
 
-//unsigned char cont_walking_cmds[] = { direction_type_upxx, direction_type_rght, direction_type_upxx };
+unsigned char cont_walking_cmds[] = { direction_type_upxx, direction_type_rght, direction_type_upxx };
 //unsigned char cont_walking_cmds[] = { direction_type_upxx, direction_type_upxx, direction_type_upxx };
-unsigned char cont_walking_cmds[] = { direction_type_rght, direction_type_rght, direction_type_down };
+//unsigned char cont_walking_cmds[] = { direction_type_rght, direction_type_rght, direction_type_rght };
 //unsigned char cont_walking_move[] = { 7, 7, 7, 7 };
 unsigned char cont_walking_move[] = { 1, 1, 1 };
 
