@@ -1,4 +1,5 @@
 #include "cont_screen.h"
+#include "..\banks\databank.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\command_manager.h"
 #include "..\engine\delay_manager.h"
@@ -15,7 +16,7 @@ static unsigned char walking_delta;
 static unsigned char walking_count;
 static unsigned char first_time;
 
-unsigned char cont_walking_cmds[] = { direction_type_none, direction_type_rght };// direction_type_upxx };
+unsigned char cont_walking_cmds[] = { direction_type_upxx, direction_type_upxx };// direction_type_upxx };
 //unsigned char cont_walking_cmds[] = { direction_type_upxx, direction_type_upxx };
 //unsigned char cont_walking_move[] = { 7, 7, 7, 7 };
 unsigned char cont_walking_move[] = { 1, 1 };
@@ -30,7 +31,7 @@ void screen_cont_screen_load()
 	engine_command_manager_init();
 	engine_gamer_manager_init();
 
-	engine_delay_manager_load( 0 );
+	engine_delay_manager_load( 2 );
 
 	engine_board_manager_draw_full();
 	engine_board_manager_draw_exit();
@@ -50,7 +51,9 @@ void screen_cont_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
-	unsigned char the_direction;
+	unsigned char gamer_direction;
+	//unsigned char gamer_collactor = actor_type_kid;
+	unsigned char collision;
 	unsigned char proceed;
 	////unsigned char input;
 	unsigned int frame = fo->frame_count;
@@ -86,12 +89,24 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	{
 		// Check collision.
 		engine_font_manager_draw_data( frame, 12, 16 );
+
+		// Check collision with death tree.
+		if( !state_object_invincibie && state_object_trees_type == tree_type_death )
+		{
+			collision = engine_level_manager_get_collision( go->tileX, go->tileY, go->direction, offset_type_none );
+			if( coll_type_block == collision )
+			{
+				*screen_type = screen_type_dead;
+				return;
+			}
+		}
+
 		engine_gamer_manager_stop();
 	}
 	// For continuity we want to check if actor can move immediately after stopping.
 	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
 	{
-		the_direction = direction_type_none;
+		gamer_direction = direction_type_none;
 		walking_count = 0;
 
 		if( command_index >= command_count )
@@ -100,7 +115,7 @@ void screen_cont_screen_update( unsigned char *screen_type )
 		}
 		else
 		{
-			the_direction = cont_walking_cmds[ command_index ];
+			gamer_direction = cont_walking_cmds[ command_index ];
 			walking_count = cont_walking_move[ command_index ];
 
 			walking_delta++;
@@ -110,11 +125,10 @@ void screen_cont_screen_update( unsigned char *screen_type )
 				walking_delta = 0;
 			}
 
-			the_direction = engine_gamer_manager_find_direction( the_direction );
-			engine_font_manager_draw_data( the_direction, 20, 20 );
-			if( direction_type_none != the_direction )
+			gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
+			if( direction_type_none != gamer_direction )
 			{
-				engine_command_manager_add( frame, command_type_gamer_mover, the_direction );
+				engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
 			}
 		}
 	}
@@ -124,6 +138,5 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	engine_command_manager_execute( frame );
 
 	first_time = 0;
-
 	*screen_type = screen_type_cont;
 }

@@ -20,10 +20,9 @@
 #pragma disable_warning 110
 #endif
 
-// PLAY screen - is the main command add + execute driver
-static unsigned char first_time;
-static unsigned char frame_spot;
-static unsigned char prevs_direction;
+//static unsigned char first_time;
+//static unsigned char frame_spot;
+//static unsigned char prevs_direction;
 
 void screen_dead_screen_load()
 {
@@ -31,9 +30,9 @@ void screen_dead_screen_load()
 	//state_object_sound_data();
 	//engine_delay_manager_load( 10 );
 
-	engine_board_manager_init();
-	engine_gamer_manager_init();
-	engine_enemy_manager_init();
+	//engine_board_manager_init();
+	//engine_gamer_manager_init();
+	//engine_enemy_manager_init();
 
 	// Draw functions.
 	//engine_board_manager_debugger();
@@ -46,17 +45,17 @@ void screen_dead_screen_load()
 
 	//	engine_frame_manager_draw();
 	//	engine_delay_manager_draw();
-	engine_font_manager_draw_text( "DEAD SCREEN!", 4, 10 );
+	//engine_font_manager_draw_text( "DEAD SCREEN!", 4, 10 );
 
-	first_time = 1;
-	frame_spot = 0;
-	prevs_direction = direction_type_none;
+	//first_time = 1;
+	//frame_spot = 0;
+	//prevs_direction = direction_type_none;
 }
 
 void screen_dead_screen_update( unsigned char *screen_type )
 {
 	// Draw sprites first.
-	engine_enemy_manager_draw();
+	//engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
 
