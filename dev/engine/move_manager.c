@@ -189,8 +189,26 @@ unsigned char engine_move_manager_gothru_exit( unsigned char tileX, unsigned cha
 		if( ( EXIT_SPOT1 == tileX && direction_type_left == direction ) || ( EXIT_SPOT4 == tileX && direction_type_rght == direction ) )
 		{
 			can_go_thru_exit = exit_type_closed == state_object_exits_type ? coll_type_empty : coll_type_block;
-			//collision = coll_type_empty;
 		}
+	}
+
+	return can_go_thru_exit;
+}
+
+unsigned char engine_move_manager_border_exit( unsigned char tileX, unsigned char tileY, unsigned char direction )
+{
+	unsigned char can_go_thru_exit = coll_type_empty;
+
+	// Vertical.
+	if( ( EXIT_SPOT1 == tileY && direction_type_upxx == direction ) || ( EXIT_SPOT4 == tileY && direction_type_down == direction ) )
+	{
+		can_go_thru_exit = coll_type_block;
+	}
+
+	// Horizontal.
+	if( ( EXIT_SPOT1 == tileX && direction_type_left == direction ) || ( EXIT_SPOT4 == tileX && direction_type_rght == direction ) )
+	{
+		can_go_thru_exit = coll_type_block;
 	}
 
 	return can_go_thru_exit;

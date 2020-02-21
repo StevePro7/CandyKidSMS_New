@@ -257,14 +257,26 @@ unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction
 	// Death trees.
 	else
 	{
-		// Invincible.
+		// Vulnerable.
 		if( !state_object_invincibie )
 		{
 			return gamer_direction;
 		}
 		else
 		{
-			// Vulnerable.
+			// Invincible.
+			thru_exit = engine_move_manager_border_exit( go->tileX, go->tileY, gamer_direction );
+			if( thru_exit )
+			{
+				if( exit_type_closed == state_object_exits_type )
+				{
+					return direction_type_none;
+				}
+			}
+			else
+			{
+				return gamer_direction;
+			}
 		}
 	}
 

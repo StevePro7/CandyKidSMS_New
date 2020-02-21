@@ -9,6 +9,7 @@ void engine_move_manager_get_directions( unsigned char srceX, unsigned char srce
 //unsigned char engine_move_manager_test_direction( unsigned char row, unsigned char col );
 unsigned char engine_move_manager_actor_direction( unsigned char direction );
 unsigned char engine_move_manager_gothru_exit( unsigned char tileX, unsigned char tileY, unsigned char direction );
+unsigned char engine_move_manager_border_exit( unsigned char tileX, unsigned char tileY, unsigned char direction );
 unsigned char engine_move_manager_inside_exit( unsigned char tileX, unsigned char tileY );
 unsigned char engine_move_manager_opposite_direction( unsigned char direction );
 

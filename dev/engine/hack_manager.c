@@ -60,7 +60,7 @@ void engine_hack_manager_invert()
 	// TODO delete this hardcoded
 	state_object_trees_type = 1;
 	state_object_exits_type = 1;
-	state_object_invincibie = 0;
+	state_object_invincibie = 1;
 	// TODO delete this hardcoded
 
 	// Exits.
