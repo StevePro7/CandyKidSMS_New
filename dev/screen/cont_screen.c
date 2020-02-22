@@ -23,6 +23,8 @@ unsigned char cont_walking_cmds3[] = { direction_type_rght, direction_type_rght,
 //unsigned char cont_walking_move[] = { 7, 7, 7, 7 };
 unsigned char cont_walking_move[] = { 1, 1, 1 };
 
+static unsigned char process_collision( unsigned char tile_type );
+
 void screen_cont_screen_load()
 {
 	command_count = 3;
@@ -60,6 +62,7 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	unsigned char gamer_direction;
 	unsigned char enemy_direction = direction_type_none;
 	unsigned char gamer_collision = coll_type_empty;
+	unsigned char gamer_tile_type = tile_type_blank;
 	//unsigned char gamer_collactor = actor_type_kid;
 	
 	//unsigned char gamer_collision;
@@ -103,19 +106,32 @@ void screen_cont_screen_update( unsigned char *screen_type )
 		engine_font_manager_draw_data( frame, 12, 16 );
 
 		// Check gamer collision with death tree.
-		if( !state_object_invincibie && state_object_trees_type == tree_type_death )
+		//if( !state_object_invincibie && state_object_trees_type == tree_type_death )
+		//{
+		//	//gamer_collision = foo();
+		//	if( coll_type_block == gamer_collision )
+		//	{
+		//		engine_gamer_manager_dead();
+		//		state_object_actor_kill = actor_type_tree;
+		//	}
+		//}
+
+		// Check gamer collision with death tree.
+		//gamer_collision = foo();
+		//if( coll_type_block == gamer_collision )
+		//{
+		//	state_object_actor_kill = actor_type_tree;
+		//}
+
+		gamer_tile_type = engine_level_manager_get_tile_type( go->tileX, go->tileY, go->direction, offset_type_none );
+		if( tile_type_blank != gamer_tile_type )
 		{
-			gamer_collision = engine_level_manager_get_collision( go->tileX, go->tileY, go->direction, offset_type_none );
+			// Collide with [death] tree, candy, bonus, one up therefore process...
+			gamer_collision = process_collision( gamer_tile_type );
 			if( coll_type_block == gamer_collision )
 			{
-				// Edge case : vulnerable Kid inside open exit with death trees
-				gamer_collision = engine_move_manager_inside_exit( go->tileX, go->tileY );
-				if( coll_type_block == gamer_collision )
-				{
-					state_object_actor_kill = actor_type_tree;
-					//*screen_type = screen_type_dead;
-					//return;
-				}
+				engine_gamer_manager_dead();
+				state_object_actor_kill = actor_type_tree;
 			}
 		}
 
@@ -168,4 +184,31 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	}
 
 	*screen_type = screen_type_cont;
+}
+
+
+static unsigned char process_collision( unsigned char tile_type )
+{
+	struct_gamer_object *go = &global_gamer_object;
+	unsigned char gamer_collision = coll_type_empty;
+
+	// Check gamer collision with candy.
+	
+	// Check gamer collision with bonus.
+
+	// Check gamer collision with death tree.
+	if( tile_type_trees == tile_type )
+	{
+		if( !state_object_invincibie && state_object_trees_type == tree_type_death )
+		{
+			gamer_collision = engine_level_manager_get_collision( go->tileX, go->tileY, go->direction, offset_type_none );
+			if( coll_type_block == gamer_collision )
+			{
+				// Edge case : vulnerable Kid inside open exit with death trees
+				gamer_collision = engine_move_manager_inside_exit( go->tileX, go->tileY );
+			}
+		}
+	}
+
+	return gamer_collision;
 }

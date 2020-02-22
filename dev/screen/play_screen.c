@@ -29,6 +29,7 @@ static unsigned char frame_spot;
 
 // TODO delete as this is now in the gmaer Mgr
 //static unsigned char get_gamer_collision();
+static unsigned char process_collision( unsigned char tile_type );
 
 static void print( unsigned char dir );
 static void get_actor_data( unsigned char *mover, unsigned char *tileZ );
@@ -216,12 +217,9 @@ void screen_play_screen_update( unsigned char *screen_type )
 	*screen_type = screen_type_play;
 }
 
-// TODO delete this method.
-//static unsigned char get_gamer_collision()
-//{
-//	return 0;
-//	//return coll_type_block;
-//}
+static unsigned char process_collision( unsigned char tile_type )
+{
+}
 
 // TODO delete or put in debugger??
 static void print( unsigned char dir )

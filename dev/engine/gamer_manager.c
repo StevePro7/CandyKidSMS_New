@@ -199,8 +199,6 @@ void engine_gamer_manager_stop()
 		engine_gamer_manager_move( go->prev_move );
 		return;
 	}
-
-	// TODO calc possible tiles actor can move in to.
 }
 
 void engine_gamer_manager_dead()
