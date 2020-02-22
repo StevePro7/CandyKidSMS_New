@@ -1,12 +1,7 @@
 #ifndef _MOVE_MANAGER_H_
 #define _MOVE_MANAGER_H_
-//TODO delete
-//unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY, unsigned char enemy_direction );
-//unsigned char engine_move_manager_find_direction( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY, unsigned char enemy_direction, unsigned char dir_fours );
-//TODO delete
-void engine_move_manager_get_directions( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY, unsigned char *list, unsigned char *half );
 
-//unsigned char engine_move_manager_test_direction( unsigned char row, unsigned char col );
+void engine_move_manager_get_directions( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY, unsigned char *list, unsigned char *half );
 unsigned char engine_move_manager_actor_direction( unsigned char direction );
 unsigned char engine_move_manager_gothru_exit( unsigned char tileX, unsigned char tileY, unsigned char direction );
 unsigned char engine_move_manager_border_exit( unsigned char tileX, unsigned char tileY, unsigned char direction );
