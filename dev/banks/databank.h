@@ -14,6 +14,8 @@ extern unsigned char state_object_round_data;
 extern unsigned char state_object_music_data;
 extern unsigned char state_object_sound_data;
 
+extern unsigned char state_object_actor_kill;
+
 
 // Actor Manager.
 extern unsigned char actor_object_posnX[];

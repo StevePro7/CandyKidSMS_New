@@ -16,7 +16,7 @@ unsigned char state_object_round_data;
 unsigned char state_object_music_data;
 unsigned char state_object_sound_data;
 
-
+unsigned char state_object_actor_kill;
 
 // Command Manager.
 unsigned int command_object_frames[] =

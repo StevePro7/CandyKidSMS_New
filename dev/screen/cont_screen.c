@@ -58,11 +58,17 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
 	unsigned char gamer_direction;
+	unsigned char enemy_direction = direction_type_none;
+	unsigned char gamer_collision = coll_type_empty;
 	//unsigned char gamer_collactor = actor_type_kid;
-	unsigned char collision;
+	
+	//unsigned char gamer_collision;
+
 	unsigned char proceed;
 	////unsigned char input;
 	unsigned int frame = fo->frame_count;
+
+	state_object_actor_kill = actor_type_kid;
 
 	// Draw sprites first.
 	engine_gamer_manager_draw();
@@ -93,21 +99,22 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	}
 	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
 	{
-		// Check collision.
+		// Check gamer collision.
 		engine_font_manager_draw_data( frame, 12, 16 );
 
-		// Check collision with death tree.
+		// Check gamer collision with death tree.
 		if( !state_object_invincibie && state_object_trees_type == tree_type_death )
 		{
-			collision = engine_level_manager_get_collision( go->tileX, go->tileY, go->direction, offset_type_none );
-			if( coll_type_block == collision )
+			gamer_collision = engine_level_manager_get_collision( go->tileX, go->tileY, go->direction, offset_type_none );
+			if( coll_type_block == gamer_collision )
 			{
 				// Edge case : vulnerable Kid inside open exit with death trees
-				collision = engine_move_manager_inside_exit( go->tileX, go->tileY );
-				if( coll_type_block == collision )
+				gamer_collision = engine_move_manager_inside_exit( go->tileX, go->tileY );
+				if( coll_type_block == gamer_collision )
 				{
-					*screen_type = screen_type_dead;
-					return;
+					state_object_actor_kill = actor_type_tree;
+					//*screen_type = screen_type_dead;
+					//return;
 				}
 			}
 		}
@@ -117,30 +124,33 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	// For continuity we want to check if actor can move immediately after stopping.
 	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
 	{
-		gamer_direction = direction_type_none;
-		walking_count = 0;
-
-		if( command_index >= command_count )
+		if( coll_type_empty == gamer_collision )
 		{
-			//command_index = 0;
-		}
-		else
-		{
-			gamer_direction = cont_walking_cmds[ command_index ];
-			walking_count = cont_walking_move[ command_index ];
+			gamer_direction = direction_type_none;
+			walking_count = 0;
 
-			walking_delta++;
-			if( walking_delta >= walking_count )
+			if( command_index >= command_count )
 			{
-				command_index++;
-				walking_delta = 0;
+				//command_index = 0;
 			}
-
-			gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
-			engine_font_manager_draw_data( gamer_direction, 15, 20 );
-			if( direction_type_none != gamer_direction )
+			else
 			{
-				engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+				gamer_direction = cont_walking_cmds[ command_index ];
+				walking_count = cont_walking_move[ command_index ];
+
+				walking_delta++;
+				if( walking_delta >= walking_count )
+				{
+					command_index++;
+					walking_delta = 0;
+				}
+
+				gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
+				engine_font_manager_draw_data( gamer_direction, 15, 20 );
+				if( direction_type_none != gamer_direction )
+				{
+					engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+				}
 			}
 		}
 	}
@@ -150,5 +160,12 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	engine_command_manager_execute( frame );
 
 	first_time = 0;
+
+	if( actor_type_kid != state_object_actor_kill )
+	{
+		*screen_type = screen_type_dead;
+		return;
+	}
+
 	*screen_type = screen_type_cont;
 }
