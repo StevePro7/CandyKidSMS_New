@@ -58,8 +58,8 @@ void screen_test_screen_load()
 
 
 	// yDist = 0;	List = 0; Half = 1;		Byte = 1.
-	srceX = 9;	srceY = 11;
-	destX = 1;	destY = 5;
+	srceX = 18;	srceY = 11;
+	destX = 8;	destY = 5;
 	gamer_direction = direction_type_none;
 	//direction = engine_move_manager_actor_direction( gamer_direction );
 	direction = direction_type_left;

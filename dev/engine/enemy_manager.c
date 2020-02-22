@@ -222,8 +222,11 @@ void engine_enemy_manager_stop( unsigned char enemy )
 unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY, unsigned char gamer_direction )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	struct_enemy_object *eo0;
+
 	unsigned char enemy_direction = direction_type_none;
-	
+	signed char deltaX, deltaY;
+
 	// This enemy does not move!
 	if( !eo->mover )
 	{
@@ -239,6 +242,7 @@ unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned
 		//enemy_direction = engine_move_manager_find_direction( eo->tileX, eo->tileY, targetX, targetY, eo->prev_move );// , eo->dir_fours );
 
 		// TODO  stevepro adriana actually put this method in the enemy manager
+		// Like Blinky
 		enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
 
 		//engine_font_manager_draw_text( "AFTER.....!!", 10, 13 );
@@ -246,11 +250,65 @@ unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned
 	}
 	else if( actor_type_adi == enemy )
 	{
-		//gamer_direction = direction_type_none;
+		// Like Pinky
 		gamer_direction = engine_move_manager_actor_direction( gamer_direction );
 		
 		// Look two tiles in front on Candy Kid.
 		engine_level_manager_get_next_index( &targetX, &targetY, gamer_direction, offset_type_two );
+		enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
+	}
+	else if( actor_type_suz == enemy )
+	{
+		// COP OUT algorithm - works but Suz ALWAYS goes away from Kid.
+		//enemy_direction = engine_enemy_manager_what_direction( enemy, ( MAZE_ROWS - 1 ) - targetX, ( MAZE_ROWS - 1 ) - targetY );
+
+		//// Try Pacman algorithm based off Blinky [Pro]
+		//eo0 = &global_enemy_objects[ actor_type_pro ];
+		//gamer_direction = engine_move_manager_actor_direction( gamer_direction );
+
+		//// Look two tiles in front on Candy Kid.
+		//engine_level_manager_get_next_index( &targetX, &targetY, gamer_direction, offset_type_two );
+
+		//deltaX = eo0->tileX - targetX;
+		//deltaY = eo0->tileY - targetY;
+
+		//engine_font_manager_draw_data( deltaX, 31, 2 );
+		//engine_font_manager_draw_data( deltaX, 31, 3 );
+
+		//deltaX /= 2;
+		//deltaX /= 2;
+		//engine_font_manager_draw_data( deltaX, 31, 5 );
+		//engine_font_manager_draw_data( deltaX, 31, 6 );
+
+		////if( targetX < eo0->tileX )
+		////{
+		////	deltaX = eo0->tileX - targetX;
+		////}
+		////else
+		////{
+		////	deltaX = targetX - eo0->tileX;
+		////}
+
+		////if( targetY < eo0->tileY )
+		////{
+		////	deltaY = eo0->tileY - targetY;
+		////}
+		////else
+		////{
+		////	deltaY = targetY - eo0->tileY;
+		////}
+
+		////deltaX *= 2;
+		////deltaY *= 2;
+		//targetX = eo->tileX + deltaX;
+		//targetY = eo->tileY + deltaY;
+
+		//enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
+
+		gamer_direction = engine_move_manager_actor_direction( gamer_direction );
+
+		// Look two tiles in front on Candy Kid.
+		engine_level_manager_get_next_index( &targetX, &targetY, gamer_direction, 4 );
 		enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
 	}
 

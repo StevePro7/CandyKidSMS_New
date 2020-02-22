@@ -36,7 +36,7 @@ void screen_play_screen_load()
 {
 	unsigned char actor_mover[ MAX_ACTORS ];
 	unsigned char actor_tileZ[ MAX_ACTORS ];
-	unsigned char round = 4;
+	unsigned char round = 1;
 
 	engine_command_manager_init();
 	engine_delay_manager_load( 0 );
@@ -55,7 +55,7 @@ void screen_play_screen_load()
 	engine_board_manager_draw_exit();
 	engine_board_manager_side_tile();
 
-	engine_level_manager_load_level( 5, round );
+	engine_level_manager_load_level( 0, round );
 	engine_level_manager_update_level( round, actor_mover, actor_tileZ );
 	engine_level_manager_draw_level();
 
@@ -150,7 +150,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Move enemies.
 	//enemy = actor_type_adi;
-	for( enemy = 0; enemy < 2; enemy++ )
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 		{
