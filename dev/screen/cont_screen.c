@@ -59,16 +59,13 @@ void screen_cont_screen_update( unsigned char *screen_type )
 
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
-	unsigned char gamer_direction;
+	unsigned char gamer_direction = direction_type_none;
 	unsigned char enemy_direction = direction_type_none;
 	unsigned char gamer_collision = coll_type_empty;
 	unsigned char gamer_tile_type = tile_type_blank;
-	//unsigned char gamer_collactor = actor_type_kid;
 	
-	//unsigned char gamer_collision;
 
 	unsigned char proceed;
-	////unsigned char input;
 	unsigned int frame = fo->frame_count;
 
 	state_object_actor_kill = actor_type_kid;
@@ -105,28 +102,11 @@ void screen_cont_screen_update( unsigned char *screen_type )
 		// Check gamer collision.
 		engine_font_manager_draw_data( frame, 12, 16 );
 
-		// Check gamer collision with death tree.
-		//if( !state_object_invincibie && state_object_trees_type == tree_type_death )
-		//{
-		//	//gamer_collision = foo();
-		//	if( coll_type_block == gamer_collision )
-		//	{
-		//		engine_gamer_manager_dead();
-		//		state_object_actor_kill = actor_type_tree;
-		//	}
-		//}
-
-		// Check gamer collision with death tree.
-		//gamer_collision = foo();
-		//if( coll_type_block == gamer_collision )
-		//{
-		//	state_object_actor_kill = actor_type_tree;
-		//}
 
 		gamer_tile_type = engine_level_manager_get_tile_type( go->tileX, go->tileY, go->direction, offset_type_none );
 		if( tile_type_blank != gamer_tile_type )
 		{
-			// Collide with [death] tree, candy, bonus, one up therefore process...
+			// Collide with [death] tree, candy, bonus or one up therefore process tile accordingly...
 			gamer_collision = process_collision( gamer_tile_type );
 			if( coll_type_block == gamer_collision )
 			{
