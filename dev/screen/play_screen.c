@@ -64,7 +64,7 @@ void screen_play_screen_load()
 
 	//engine_font_manager_draw_text( "PLAY SCREEN!", 4, 10 );
 	//engine_font_manager_draw_data( level_object_candy_count, 14, 11 );
-	engine_audio_manager_music_play( 3 );
+	//engine_audio_manager_music_play( 3 );
 	first_time = 1;
 	//frame_spot = 0;
 }
@@ -150,7 +150,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Move enemies.
 	//enemy = actor_type_adi;
-	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	for( enemy = 0; enemy < 2; enemy++ )
 	{
 		//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 		{
@@ -177,7 +177,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 			{
 				//if( 0 == frame )
 				{
-					engine_font_manager_draw_text( "DIRECTION!!", 10, 12 );
+					//engine_font_manager_draw_text( "DIRECTION!!", 10, 12 );
 					enemy_direction = engine_enemy_manager_find_direction( enemy, go->tileX, go->tileY, go->direction );
 					//enemy_direction = direction_type_left;
 					//engine_font_manager_draw_data( enemy_direction, 10, 13 );
