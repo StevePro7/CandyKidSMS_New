@@ -25,10 +25,8 @@
 
 // PLAY screen - is the main command add + execute driver
 static unsigned char first_time;
-static unsigned char frame_spot;
+//static unsigned char frame_spot;
 
-// TODO delete as this is now in the gmaer Mgr
-//static unsigned char get_gamer_collision();
 static unsigned char process_collision( unsigned char tile_type );
 
 static void print( unsigned char dir );
@@ -68,7 +66,7 @@ void screen_play_screen_load()
 	//engine_font_manager_draw_data( level_object_candy_count, 14, 11 );
 	//engine_audio_manager_music_play( 3 );
 	first_time = 1;
-	frame_spot = 0;
+	//frame_spot = 0;
 
 	engine_font_manager_draw_data( actor_mover[ 0 ], 10, 10 );
 }
@@ -81,15 +79,11 @@ void screen_play_screen_update( unsigned char *screen_type )
 	unsigned char gamer_direction = direction_type_none;
 	unsigned char enemy_direction = direction_type_none;
 	unsigned char gamer_collision = coll_type_empty;
-	//unsigned char gamer_collactor = actor_type_kid;
-	
+	unsigned char gamer_tile_type = tile_type_blank;
 
 	unsigned char proceed;
-	////unsigned char input;
 	unsigned char enemy;
-	unsigned int frame;
-	frame = fo->frame_count;
-
+	unsigned int frame = fo->frame_count;
 	state_object_actor_kill = actor_type_kid;
 
 	// Draw sprites first.
@@ -113,7 +107,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Continue...
 	frame = fo->frame_count;
-	frame_spot = 0;
+	//frame_spot = 0;
 
 	// Move gamer.
 	if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
@@ -123,16 +117,22 @@ void screen_play_screen_update( unsigned char *screen_type )
 	}
 	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
 	{
-		// Check collision.
-		if( state_object_trees_type == tree_type_death )
+		// Check gamer collision.
+		engine_font_manager_draw_data( frame, 12, 16 );
+
+		gamer_tile_type = engine_level_manager_get_tile_type( go->tileX, go->tileY, go->direction, offset_type_none );
+		if( tile_type_blank != gamer_tile_type )
 		{
-			// TODO implement this properly!!
-			//gamer_collactor = actor_type_tree;
+			// Collide with [death] tree, candy, bonus or one up therefore process tile accordingly...
+			gamer_collision = process_collision( gamer_tile_type );
+			if( coll_type_block == gamer_collision )
+			{
+				engine_gamer_manager_dead();
+				state_object_actor_kill = actor_type_tree;
+			}
 		}
 
-		//engine_font_manager_draw_data( frame, 12, 16 );
 		engine_gamer_manager_stop();
-		//gamer_collision = get_gamer_collision();
 	}
 	// For continuity we want to check if actor can move immediately after stopping.
 	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
@@ -152,7 +152,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Move enemies.
 	//enemy = actor_type_adi;
-	for( enemy = 0; enemy < 2; enemy++ )
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 		{
@@ -206,19 +206,39 @@ void screen_play_screen_update( unsigned char *screen_type )
 	engine_command_manager_execute( frame );
 	first_time = 0;
 
-	// TODO implement
-	// TODO make gamer_collactor a global variable...!!
-	//if( actor_type_kid != gamer_collactor )
-	//{
-	//	*screen_type = screen_type_dead;
-	//	return;
-	//}
+	if( actor_type_kid != state_object_actor_kill )
+	{
+		*screen_type = screen_type_dead;
+		return;
+	}
 
 	*screen_type = screen_type_play;
 }
 
 static unsigned char process_collision( unsigned char tile_type )
 {
+	struct_gamer_object *go = &global_gamer_object;
+	unsigned char gamer_collision = coll_type_empty;
+
+	// Check gamer collision with candy.
+
+	// Check gamer collision with bonus.
+
+	// Check gamer collision with death tree.
+	if( tile_type_trees == tile_type )
+	{
+		if( !state_object_invincibie && state_object_trees_type == tree_type_death )
+		{
+			gamer_collision = engine_level_manager_get_collision( go->tileX, go->tileY, go->direction, offset_type_none );
+			if( coll_type_block == gamer_collision )
+			{
+				// Edge case : vulnerable Kid inside open exit with death trees
+				gamer_collision = engine_move_manager_inside_exit( go->tileX, go->tileY );
+			}
+		}
+	}
+
+	return gamer_collision;
 }
 
 // TODO delete or put in debugger??

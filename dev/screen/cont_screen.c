@@ -63,15 +63,14 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	unsigned char enemy_direction = direction_type_none;
 	unsigned char gamer_collision = coll_type_empty;
 	unsigned char gamer_tile_type = tile_type_blank;
-	
 
 	unsigned char proceed;
 	unsigned int frame = fo->frame_count;
-
 	state_object_actor_kill = actor_type_kid;
 
 	// Draw sprites first.
 	engine_gamer_manager_draw();
+	//engine_gamer_manager_draw();
 
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
@@ -101,7 +100,6 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	{
 		// Check gamer collision.
 		engine_font_manager_draw_data( frame, 12, 16 );
-
 
 		gamer_tile_type = engine_level_manager_get_tile_type( go->tileX, go->tileY, go->direction, offset_type_none );
 		if( tile_type_blank != gamer_tile_type )
@@ -154,7 +152,6 @@ void screen_cont_screen_update( unsigned char *screen_type )
 
 	//// Execute all commands for this frame.
 	engine_command_manager_execute( frame );
-
 	first_time = 0;
 
 	if( actor_type_kid != state_object_actor_kill )
