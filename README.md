@@ -91,3 +91,11 @@ have to do it this way otherwise the exits will not work as normal
 IMPORTANT
 I forgot about the gamer move + coll code in play screen that should be gamer Mgr
 I forgot about the gamer move + coll code in play screen that should be gamer Mgr
+
+
+22/02/2020
+I updated all the move to Kid in cont screen and port to play screen
+Just to check the performance I play the music and was slowing down on the stop() function
+I thought this was because I implemented the basic collision checks there but
+it was the code was printing out text onto the screen 3x
+So just to bear this in mind when I integrate score this could potentially slow down the music...

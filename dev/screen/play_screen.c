@@ -64,11 +64,9 @@ void screen_play_screen_load()
 
 	//engine_font_manager_draw_text( "PLAY SCREEN!", 4, 10 );
 	//engine_font_manager_draw_data( level_object_candy_count, 14, 11 );
-	//engine_audio_manager_music_play( 3 );
+	engine_audio_manager_music_play( 3 );
 	first_time = 1;
 	//frame_spot = 0;
-
-	engine_font_manager_draw_data( actor_mover[ 0 ], 10, 10 );
 }
 
 void screen_play_screen_update( unsigned char *screen_type )
@@ -118,7 +116,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
 	{
 		// Check gamer collision.
-		engine_font_manager_draw_data( frame, 12, 16 );
+		//engine_font_manager_draw_data( frame, 11, 16 );
 
 		gamer_tile_type = engine_level_manager_get_tile_type( go->tileX, go->tileY, go->direction, offset_type_none );
 		if( tile_type_blank != gamer_tile_type )
@@ -168,7 +166,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 			if( direction_type_none != eo->direction && lifecycle_type_idle == eo->lifecycle )
 			{
 				// Check collision.
-				engine_font_manager_draw_data( frame, 12, 20 );
+				//engine_font_manager_draw_data( frame, 12, 20 );
 				engine_enemy_manager_stop( enemy );
 
 				//engine_command_manager_add( frame, command_type_end_gamer, 0 );
