@@ -88,7 +88,7 @@ void engine_enemy_manager_init()
 
 
 		// TODO delete
-		eo->mover = 1;
+		eo->mover = 0;
 		eo->delay = 2;
 		if( 2 == enemy )
 		{
@@ -270,6 +270,8 @@ unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned
 
 		// Try Pacman algorithm based off Blinky [Pro]
 		eo0 = &global_enemy_objects[ coin ];
+		
+		// TODO while loop if Pro not moving then don't add AND if Adi not moving then don't add
 		if( 2 != coin )
 		{
 			targetX = eo0->tileX;

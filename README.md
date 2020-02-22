@@ -99,3 +99,9 @@ Just to check the performance I play the music and was slowing down on the stop(
 I thought this was because I implemented the basic collision checks there but
 it was the code was printing out text onto the screen 3x
 So just to bear this in mind when I integrate score this could potentially slow down the music...
+
+TODO
+Existing Suz attack algorithmn needs to factor in that Pro or Adi may not be moving
+if that is the case then only use Kid as a guide OR
+if Pro moving only then Kid or Pro OR
+if Adi moving only then Kid or Adi
