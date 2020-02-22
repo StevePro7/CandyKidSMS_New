@@ -209,7 +209,7 @@ unsigned char engine_level_manager_get_next_tile( unsigned char x, unsigned char
 	return level_object_tiles_array[ index ];
 }
 
-void engine_level_manager_get_next_index( unsigned char *x, unsigned char *y, unsigned char direction, unsigned char offset )
+void engine_level_manager_get_next_index( unsigned char *x, unsigned char *y, unsigned char direction, signed char offset )
 {
 	//unsigned char index;
 

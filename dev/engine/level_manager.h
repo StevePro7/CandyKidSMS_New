@@ -11,7 +11,7 @@ unsigned char engine_level_manager_get_direction( unsigned char x, unsigned char
 unsigned char engine_level_manager_get_tile_type( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset );
 unsigned char engine_level_manager_get_next_tile( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset );
 // TODO - refactor code here and method above
-void engine_level_manager_get_next_index( unsigned char *x, unsigned char *y, unsigned char direction, unsigned char offset );
+void engine_level_manager_get_next_index( unsigned char *x, unsigned char *y, unsigned char direction, signed char offset );
 
 unsigned char engine_level_manager_test_direction( unsigned char row, unsigned char col );
 //unsigned char engine_level_manager_get_next_coll( unsigned char x, unsigned char y, unsigned char direction );
