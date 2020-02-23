@@ -44,6 +44,7 @@ void screen_play_screen_load()
 	engine_board_manager_init();
 	engine_gamer_manager_init();
 	engine_enemy_manager_init();
+	engine_enemy_manager_load();
 	get_actor_data( actor_mover, actor_tileZ );
 	
 	engine_score_manager_load();

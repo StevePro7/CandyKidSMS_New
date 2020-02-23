@@ -24,7 +24,7 @@ void main (void)
 
 	//open_screen_type = screen_type_intro;
 	//open_screen_type = screen_type_func;
-	open_screen_type = screen_type_test;
+	//open_screen_type = screen_type_test;
 	//open_screen_type = screen_type_dead;
 	//open_screen_type = screen_type_over;
 	//open_screen_type = screen_type_cont;
@@ -32,7 +32,7 @@ void main (void)
 
 	engine_screen_manager_init( open_screen_type );
 	devkit_SMS_displayOn();
-	for( ;;)
+	for( ;; )
 	{
 		devkit_SMS_initSprites();
 		engine_input_manager_update();

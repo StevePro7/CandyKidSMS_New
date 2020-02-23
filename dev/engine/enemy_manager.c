@@ -6,6 +6,7 @@
 #include "level_manager.h"
 #include "move_manager.h"
 #include "sprite_manager.h"
+#include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
 #include <stdlib.h>
@@ -38,7 +39,7 @@ void engine_enemy_manager_init()
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		eo = &global_enemy_objects[ enemy ];
-
+		eo->actor = enemy;
 		//homeX = board_homeX[ enemy ];
 		//homeY = board_homeY[ enemy ];
 
@@ -105,15 +106,70 @@ void engine_enemy_manager_init()
 		}
 		// Easy scatter option tiles = Pro, Adi, Suz
 		// Hard scatter option tiles = Pro, Adi, Suz, Kid
-		if( 0 == enemy )
-		{
-			eo->scatter[ 0 ] = actor_type_suz;
-			//eo->scatter[ 1 ] = actor_type_adi;
-			eo->scatter[ 1 ] = actor_type_pro;
-			eo->scatter[ 2 ] = actor_type_suz;
-			eo->scatter[ 3 ] = actor_type_adi;
-		}
+		//if( 0 == enemy )
+		//{
+		//	eo->scatter[ 0 ] = actor_type_suz;
+		//	//eo->scatter[ 1 ] = actor_type_adi;
+		//	eo->scatter[ 1 ] = actor_type_pro;
+		//	eo->scatter[ 2 ] = actor_type_suz;
+		//	eo->scatter[ 3 ] = actor_type_adi;
+		//}
 		// TODO delete
+	}
+}
+
+void engine_enemy_manager_load()
+{
+	struct_enemy_object *eo;
+	unsigned char enemy;
+	unsigned char actor;
+	unsigned char check;
+	unsigned char index;
+	unsigned char count = MAX_ENEMIES + state_object_difficulty;
+
+	devkit_SMS_mapROMBank( FIXED_BANK );
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		eo = &global_enemy_objects[ enemy ];
+		eo->scatter[ 0 ] = enemy; eo->scatter[ 1 ] = enemy; eo->scatter[ 2 ] = enemy; eo->scatter[ 3 ] = enemy;
+		check = enemy;
+
+		for( index = 0; index < NUM_DIRECTIONS; index++ )
+		{
+			while( 1 )
+			{
+				actor = rand() % count;
+				//actor = actor_type_kid;
+				//actor = enemy;
+				if( 0 == index )
+				{
+					if( actor == enemy || actor_type_kid == actor )
+					{
+						continue;
+					}
+
+					eo->scatter[ index ] = actor;
+					check = actor;
+					break;
+				}
+				else
+				{
+					if( check == actor )
+					{
+						continue;
+					}
+
+					eo->scatter[ index ] = actor;
+					check = actor;
+					break;
+				}
+			}
+		}
+	}
+
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		eo = &global_enemy_objects[ enemy ];
 	}
 }
 

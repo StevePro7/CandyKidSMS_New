@@ -5,6 +5,7 @@
 
 typedef struct tag_struct_enemy_object
 {
+	unsigned char actor;
 	unsigned char posnX;		// PositionX during movement.
 	unsigned char posnY;		// PositionY during movement.
 	//unsigned char homeX;		// Home tileX on all restart.
