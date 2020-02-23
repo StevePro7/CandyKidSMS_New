@@ -94,7 +94,7 @@ void engine_enemy_manager_init()
 
 
 		// TODO delete
-		eo->mover = 1;
+		eo->mover = 0;
 		eo->delay = 1;
 		eo->scatter[ 0 ] = enemy; eo->scatter[ 1 ] = enemy; eo->scatter[ 2 ] = enemy; eo->scatter[ 3 ] = enemy;
 		if( 2 == enemy )

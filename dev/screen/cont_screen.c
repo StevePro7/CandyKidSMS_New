@@ -30,12 +30,14 @@ void screen_cont_screen_load()
 	command_count = 3;
 
 
-	engine_board_manager_init();
 
 	engine_command_manager_init();
+	engine_delay_manager_load( 0 );
+
+	engine_board_manager_init();
 	engine_gamer_manager_init();
 
-	engine_delay_manager_load( 0 );
+	
 
 	engine_board_manager_draw_full();
 	engine_board_manager_draw_exit();
@@ -99,7 +101,7 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
 	{
 		// Check gamer collision.
-		engine_font_manager_draw_data( frame, 12, 16 );
+		//engine_font_manager_draw_data( frame, 12, 16 );
 
 		gamer_tile_type = engine_level_manager_get_tile_type( go->tileX, go->tileY, go->direction, offset_type_none );
 		if( tile_type_blank != gamer_tile_type )

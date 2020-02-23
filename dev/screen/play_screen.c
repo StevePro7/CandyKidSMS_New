@@ -47,7 +47,8 @@ void screen_play_screen_load()
 	get_actor_data( actor_mover, actor_tileZ );
 	
 	engine_score_manager_load();
-	//sengine_score_manager_draw_all();
+	engine_score_manager_draw_text();
+	engine_score_manager_draw_all();
 
 	// Draw functions.
 	//engine_board_manager_debugger();
@@ -55,16 +56,16 @@ void screen_play_screen_load()
 	engine_board_manager_draw_exit();
 	engine_board_manager_side_tile();
 
-	engine_level_manager_load_level( 0, 1 );
+	engine_level_manager_load_level( 0, 0 );
 	engine_level_manager_update_level( round, actor_mover, actor_tileZ );
 	engine_level_manager_draw_level();
 
-	engine_frame_manager_draw();
-	engine_delay_manager_draw();
+	//engine_frame_manager_draw();
+	//engine_delay_manager_draw();
 
 	//engine_font_manager_draw_text( "PLAY SCREEN!", 4, 10 );
 	//engine_font_manager_draw_data( level_object_candy_count, 14, 11 );
-	engine_audio_manager_music_play( 3 );
+	//engine_audio_manager_music_play( 3 );
 	first_time = 1;
 	frame_spot = 0;
 }

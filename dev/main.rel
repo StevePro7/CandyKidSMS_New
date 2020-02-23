@@ -1,5 +1,5 @@
 XL2
-H 9 areas 1A global symbols
+H 9 areas 19 global symbols
 M main
 O -mz80
 S _engine_input_manager_update Ref0000
@@ -26,8 +26,7 @@ S _devkit_SMS_waitForVBlank Ref0000
 S _devkit_SMS_initSprites Ref0000
 S _engine_hack_manager_invert Ref0000
 S _engine_content_manager_load_tiles_font Ref0000
-S _devkit_SMS_mapROMBank Ref0000
-A _CODE size 5A flags 0 addr 0
+A _CODE size 52 flags 0 addr 0
 S _main Def0000
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
@@ -53,7 +52,7 @@ T 38 00
 R 00 00 00 00
 T 38 00 CD 00 00 CD 00 00 CD 00 00 CD
 R 00 00 00 00 02 03 15 00 02 06 00 00 02 09 07 00
-T 42 00 00 00 CD 00 00 CD 00 00 3E 07 F5 33 CD
+T 42 00 00 00 CD 00 00 CD 00 00 CD
 R 00 00 00 00 02 02 09 00 02 05 14 00 02 08 02 00
-T 4F 00 00 00 33 CD 00 00 CD 00 00 18 DE
-R 00 00 00 00 02 02 18 00 02 06 0C 00 02 09 06 00
+T 4B 00 00 00 CD 00 00 18 E6
+R 00 00 00 00 02 02 0C 00 02 05 06 00
