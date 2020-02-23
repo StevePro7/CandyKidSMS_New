@@ -139,18 +139,12 @@ void engine_enemy_manager_load()
 			while( 1 )
 			{
 				actor = rand() % count;
-				//actor = actor_type_kid;
-				//actor = enemy;
 				if( 0 == index )
 				{
 					if( actor == enemy || actor_type_kid == actor )
 					{
 						continue;
 					}
-
-					eo->scatter[ index ] = actor;
-					check = actor;
-					break;
 				}
 				else
 				{
@@ -158,11 +152,11 @@ void engine_enemy_manager_load()
 					{
 						continue;
 					}
-
-					eo->scatter[ index ] = actor;
-					check = actor;
-					break;
 				}
+
+				eo->scatter[ index ] = actor;
+				check = actor;
+				break;
 			}
 		}
 	}
