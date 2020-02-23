@@ -105,3 +105,30 @@ Existing Suz attack algorithmn needs to factor in that Pro or Adi may not be mov
 if that is the case then only use Kid as a guide OR
 if Pro moving only then Kid or Pro OR
 if Adi moving only then Kid or Adi
+
+
+23/02/2020
+Easy scatter option tiles = Pro, Adi, Suz
+Hard scatter option tiles = Pro, Adi, Suz, Kid
+
+Scatter rules:
+enemy first scatter tile cannot be itself
+i.e.
+pro->scatter[0] != 0
+adi->scatter[0] != 1
+suz->scatter[0] != 2
+
+TODO : test this point as *maybe* it might all be OK??
+I don't believe that I want to have the same index for different Mamas to have the same target
+i.e.
+pro->scatter[1]	= 2
+adi->scatter[1]	= 2
+
+and finally the Mama previous scatter tile cannot be the same as the next one
+including [0] and [3]
+
+On Hard, Kid is a scatter tile option but let's not make it the first one...!
+Also, am I going to have a wait option
+wait,		// Warm up
+tour,		// Scatter,
+kill,		// Attack

@@ -47,6 +47,7 @@ void engine_enemy_manager_init()
 		//engine_board_manager_calc_tileSpot( eo->homeX, eo->homeY, &eo->homeZ );
 		eo->tileX = board_object_homeX[ enemy ];
 		eo->tileY = board_object_homeY[ enemy ];
+		eo->paths = 0;
 		eo->delay = 1;		// TODO hardcoded - inject!
 		eo->timer = 0;
 		eo->delta = 0;
@@ -95,18 +96,23 @@ void engine_enemy_manager_init()
 		// TODO delete
 		eo->mover = 1;
 		eo->delay = 1;
-		if( 1 != enemy )
+		eo->scatter[ 0 ] = enemy; eo->scatter[ 1 ] = enemy; eo->scatter[ 2 ] = enemy; eo->scatter[ 3 ] = enemy;
+		if( 2 == enemy )
 		{
 			eo->delay = 2;		// TODO hardcoded - inject!
 			eo->speed = 1;		// 1=move 0=stay.
 			eo->mover = 0;
 		}
-		//if( 1 == enemy )
-		//{
-		//	eo->delay = 2;		// TODO hardcoded - inject!
-		//	eo->speed = 2;		// 1=move 0=stay.
-		//	eo->mover = 0;
-		//}
+		// Easy scatter option tiles = Pro, Adi, Suz
+		// Hard scatter option tiles = Pro, Adi, Suz, Kid
+		if( 0 == enemy )
+		{
+			eo->scatter[ 0 ] = actor_type_suz;
+			//eo->scatter[ 1 ] = actor_type_adi;
+			eo->scatter[ 1 ] = actor_type_pro;
+			eo->scatter[ 2 ] = actor_type_suz;
+			eo->scatter[ 3 ] = actor_type_adi;
+		}
 		// TODO delete
 	}
 }
@@ -236,22 +242,33 @@ unsigned char engine_enemy_manager_scatter_direction( unsigned char enemy )
 	unsigned char enemy_direction = direction_type_none;
 	unsigned char targetX;
 	unsigned char targetY;
-	
+	unsigned char actor;
+
 	// This enemy does not move!
 	if( !eo->mover )
 	{
 		return direction_type_none;
 	}
 
-	// SCATTER
-	if( actor_type_adi == enemy )
+	// SCATTER.
+	actor = eo->scatter[ eo->paths ];
+	targetX = board_object_homeX[ actor ];
+	targetY = board_object_homeY[ actor ];
+
+	if( targetX == eo->tileX && targetY == eo->tileY )
 	{
-		// Like Pinky
-		targetX = board_object_homeX[ 0 ];
-		targetY = board_object_homeY[ 0 ];
-		enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
+		eo->paths++;
+		if( eo->paths >= NUM_DIRECTIONS )
+		{
+			eo->paths = 0;
+		}
 	}
 
+	actor = eo->scatter[ eo->paths ];
+	targetX = board_object_homeX[ actor ];
+	targetY = board_object_homeY[ actor ];
+
+	enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
 	return enemy_direction;
 }
 

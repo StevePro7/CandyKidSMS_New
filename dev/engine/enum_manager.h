@@ -77,6 +77,14 @@ typedef enum tag_enum_lifecycle_type
 
 } enum_lifecycle_type;
 
+typedef enum tag_enum_enemymove_type
+{
+	enemymove_type_wait = 0,		// Warm up
+	enemymove_type_tour = 1,		// Scatter,
+	enemymove_type_kill = 2,		// Attack.
+
+} enemymove_type;
+
 typedef enum tag_enum_tile_type
 {
 	tile_type_blank = 0,

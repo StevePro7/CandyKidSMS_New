@@ -13,6 +13,8 @@ typedef struct tag_struct_enemy_object
 	unsigned char tileX;		// Posn tileX on enemy stops. 
 	unsigned char tileY;		// Posn tileY on enemy stops.
 	unsigned char tileZ;		// Posn tileY on enemy stops.
+	unsigned char scatter[ NUM_DIRECTIONS ];
+	unsigned char paths;
 	unsigned char delay;
 	unsigned char timer;
 	unsigned char delta;
