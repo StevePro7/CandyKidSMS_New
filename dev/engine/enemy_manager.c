@@ -55,8 +55,13 @@ void engine_enemy_manager_init()
 		eo->mover = 1;		// 1=move 0=stay.
 		eo->lifecycle = lifecycle_type_idle;
 		eo->prev_move = direction_type_none;
+		//eo->prev_move[ 0 ] = direction_type_none;
+		//eo->prev_move[ 1 ] = direction_type_none;
+		//eo->prev_move[ 2 ] = direction_type_none;
+		//eo->prev_move[ 3 ] = direction_type_none;
+
 		eo->direction = direction_type_none;
-		eo->dir_fours = direction_type_none;
+		//eo->dir_fours = direction_type_none;
 		//eo->dir_half2 = direction_type_none;
 		eo->dir_count = 0;
 
@@ -88,13 +93,13 @@ void engine_enemy_manager_init()
 
 
 		// TODO delete
-		eo->mover = 0;
-		eo->delay = 2;
-		if( 2 == enemy )
+		eo->mover = 1;
+		eo->delay = 1;
+		if( 0 != enemy )
 		{
 			eo->delay = 2;		// TODO hardcoded - inject!
 			eo->speed = 1;		// 1=move 0=stay.
-			eo->mover = 1;
+			eo->mover = 0;
 		}
 		//if( 1 == enemy )
 		//{
@@ -205,6 +210,10 @@ void engine_enemy_manager_move( unsigned char enemy, unsigned char direction )
 void engine_enemy_manager_stop( unsigned char enemy )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	//eo->prev_move[ 3 ] = eo->prev_move[ 2 ];
+	//eo->prev_move[ 2 ] = eo->prev_move[ 1 ];
+	//eo->prev_move[ 1 ] = eo->prev_move[ 0 ];
+	//eo->prev_move[ 0 ] = eo->direction;
 	eo->prev_move = eo->direction;
 	eo->direction = direction_type_none;
 	eo->frame = 0;
@@ -212,13 +221,13 @@ void engine_enemy_manager_stop( unsigned char enemy )
 
 	// Every 4x moves check if enemy moved any combination of: U, D, L, R
 	// e.g. if U + D + L + R = 15 then is caught in endless loop so change
-	eo->dir_fours |= eo->prev_move;
-	eo->dir_count++;
-	if( eo->dir_count > NUM_DIRECTIONS )
-	{
-		eo->dir_count = 0;
-		eo->dir_fours = eo->prev_move;
-	}
+	//eo->dir_fours |= eo->prev_move;
+	//eo->dir_count++;
+	//if( eo->dir_count > NUM_DIRECTIONS )
+	//{
+	//	eo->dir_count = 0;
+	//	eo->dir_fours = eo->prev_move;
+	//}
 }
 
 unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY, unsigned char gamer_direction )
@@ -281,6 +290,7 @@ unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned
 
 		// Look two tiles in front on Candy Kid.
 		// TODO - maybe make value 2 variable for Eash vs. Hard?
+		//engine_level_manager_get_next_index( &targetX, &targetY, eo0->prev_move[0], 0 );
 		engine_level_manager_get_next_index( &targetX, &targetY, eo0->prev_move, 0 );
 		//enemy_direction = engine_enemy_manager_what_direction( enemy, ( MAZE_ROWS - 1 ) - targetX, ( MAZE_ROWS - 1 ) - targetY );
 		enemy_direction = engine_enemy_manager_what_direction( enemy, ( 4 - 1 ) - targetX, ( 4 - 1 ) - targetY );
@@ -357,6 +367,7 @@ unsigned char engine_enemy_manager_what_direction( unsigned char enemy, unsigned
 	unsigned char directions[ NUM_DIRECTIONS ] = { direction_type_none, direction_type_none, direction_type_none, direction_type_none };
 	unsigned char move_direction = direction_type_none;
 	unsigned char oppX_direction = direction_type_none;
+	//unsigned char prev_direction = direction_type_none;
 	unsigned char test_direction = direction_type_none;
 	unsigned char collision = direction_type_none;
 
@@ -398,18 +409,23 @@ unsigned char engine_enemy_manager_what_direction( unsigned char enemy, unsigned
 	//engine_font_manager_draw_data( directions[ 2 ], 10, 15 );
 	//engine_font_manager_draw_data( directions[ 3 ], 10, 16 );
 
+	//prev_direction = eo->prev_move[ 3 ];
+	//oppX_direction = engine_move_manager_opposite_direction( eo->prev_move[ 0 ] );
 	oppX_direction = engine_move_manager_opposite_direction( eo->prev_move );
 	for( index = 0; index < NUM_DIRECTIONS; index++ )
 	{
 		test_direction = directions[ index ];
 		if( oppX_direction != test_direction )
 		{
-			collision = engine_level_manager_get_collision( sourceX, sourceY, test_direction, offset_type_one );
-			if( coll_type_empty == collision )
-			{
-				move_direction = test_direction;
-				break;
-			}
+			//if( prev_direction != test_direction )
+			//{
+				collision = engine_level_manager_get_collision( sourceX, sourceY, test_direction, offset_type_one );
+				if( coll_type_empty == collision )
+				{
+					move_direction = test_direction;
+					break;
+				}
+			//}
 		}
 	}
 
