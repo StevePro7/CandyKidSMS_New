@@ -64,7 +64,7 @@ void screen_play_screen_load()
 
 	//engine_font_manager_draw_text( "PLAY SCREEN!", 4, 10 );
 	//engine_font_manager_draw_data( level_object_candy_count, 14, 11 );
-	//engine_audio_manager_music_play( 3 );
+	engine_audio_manager_music_play( 3 );
 	first_time = 1;
 	frame_spot = 0;
 }

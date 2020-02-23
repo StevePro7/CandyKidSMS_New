@@ -155,3 +155,8 @@ Select screen
 
 Complete screen
 and I going to have Undo / Redo on complete?
+
+
+IMPORTANT
+watch out for print information to screen during game play
+as was causing issues with the enemy movement?  WTF?
