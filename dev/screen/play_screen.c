@@ -66,7 +66,7 @@ void screen_play_screen_load()
 	//engine_frame_manager_draw();
 	//engine_delay_manager_draw();
 
-	//engine_font_manager_draw_text( "PLAY SCREEN!", 4, 10 );
+	engine_font_manager_draw_text( "SCATTR", 26, 21 );
 	//engine_font_manager_draw_data( level_object_candy_count, 14, 11 );
 	//engine_audio_manager_music_play( 3 );
 	first_time = 1;
@@ -85,6 +85,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	unsigned char proceed;
 	unsigned char enemy;
+	unsigned char input;
 	unsigned int frame = fo->frame_count;
 	state_object_actor_kill = actor_type_kid;
 
@@ -109,8 +110,21 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Continue...
 	frame = fo->frame_count;
-	frame_spot = 0;
 
+	input = engine_input_manager_hold( input_type_fire1 );
+	if( input )
+	{
+		frame_spot = 1 - frame_spot;
+		if( 0 == frame_spot )
+		{
+			engine_font_manager_draw_text( "SCATTR", 26, 21 );
+		}
+		else
+		{
+			engine_font_manager_draw_text( "ATTACK", 26, 21 );
+		}
+	}
+	
 	// Move gamer.
 	if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
 	{
@@ -172,10 +186,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 			{
 				// Check collision.
 				engine_enemy_manager_stop( enemy );
-				frame_spot = 1;
 
-				//frame_spot = 1;
-				//engine_font_manager_draw_data( frame, 11, 6 );
 				//engine_font_manager_draw_data( frame, 11, 6 );
 			}
 			// For continuity we want to check if actor can move immediately after stopping.
@@ -186,13 +197,14 @@ void screen_play_screen_update( unsigned char *screen_type )
 					//engine_font_manager_draw_text( "DIRECTION!!", 10, 12 );
 					//enemy_direction = engine_enemy_manager_find_direction( enemy, go->tileX, go->tileY, go->direction );
 					//if( frame < 288 )
-					//{
-					//	enemy_direction = engine_enemy_manager_scatter_direction( enemy );
-					//}
-					//else
-					//{
+					if( 0 == frame_spot )
+					{
+						enemy_direction = engine_enemy_manager_scatter_direction( enemy );
+					}
+					else if (1 == frame_spot )
+					{
 						enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
-					//}
+					}
 
 					//enemy_direction = direction_type_left;
 					//engine_font_manager_draw_data( enemy_direction, 10, 13 );
@@ -216,11 +228,11 @@ void screen_play_screen_update( unsigned char *screen_type )
 		return;
 	}
 
-	if( frame_spot )
-	{
-		//engine_font_manager_draw_data( frame, 11, 6 );
-		frame_spot = 0;
-	}
+	//if( frame_spot )
+	//{
+	//	//engine_font_manager_draw_data( frame, 11, 6 );
+	//	frame_spot = 0;
+	//}
 	*screen_type = screen_type_play;
 }
 
