@@ -57,7 +57,7 @@ void screen_play_screen_load()
 	engine_board_manager_draw_exit();
 	engine_board_manager_side_tile();
 
-	engine_level_manager_load_level( 0, 0 );
+	engine_level_manager_load_level( 0, 1 );
 	engine_level_manager_update_level( round, actor_mover, actor_tileZ );
 	engine_level_manager_draw_level();
 
@@ -169,13 +169,12 @@ void screen_play_screen_update( unsigned char *screen_type )
 			if( direction_type_none != eo->direction && lifecycle_type_idle == eo->lifecycle )
 			{
 				// Check collision.
-				
 				engine_enemy_manager_stop( enemy );
 				frame_spot = 1;
-				//engine_command_manager_add( frame, command_type_end_gamer, 0 );
 
 				//frame_spot = 1;
 				//engine_font_manager_draw_data( frame, 11, 6 );
+				engine_font_manager_draw_data( frame, 11, 6 );
 			}
 			// For continuity we want to check if actor can move immediately after stopping.
 			if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
@@ -184,14 +183,14 @@ void screen_play_screen_update( unsigned char *screen_type )
 				{
 					//engine_font_manager_draw_text( "DIRECTION!!", 10, 12 );
 					//enemy_direction = engine_enemy_manager_find_direction( enemy, go->tileX, go->tileY, go->direction );
-					if( frame < 288 )
-					{
+					//if( frame < 288 )
+					//{
 						enemy_direction = engine_enemy_manager_scatter_direction( enemy );
-					}
-					else
-					{
-						enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
-					}
+					//}
+					//else
+					//{
+					//	enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
+					//}
 
 					//enemy_direction = direction_type_left;
 					//engine_font_manager_draw_data( enemy_direction, 10, 13 );
@@ -217,7 +216,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	if( frame_spot )
 	{
-		engine_font_manager_draw_data( frame, 11, 6 );
+		//engine_font_manager_draw_data( frame, 11, 6 );
 		frame_spot = 0;
 	}
 	*screen_type = screen_type_play;

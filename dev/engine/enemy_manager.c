@@ -95,10 +95,10 @@ void engine_enemy_manager_init()
 
 
 		// TODO delete
-		eo->mover = 0;
+		eo->mover = 1;
 		eo->delay = 1;
 		eo->scatter[ 0 ] = enemy; eo->scatter[ 1 ] = enemy; eo->scatter[ 2 ] = enemy; eo->scatter[ 3 ] = enemy;
-		if( 2 == enemy )
+		if( 0 != enemy )
 		{
 			eo->delay = 2;		// TODO hardcoded - inject!
 			eo->speed = 1;		// 1=move 0=stay.
@@ -302,6 +302,7 @@ unsigned char engine_enemy_manager_scatter_direction( unsigned char enemy )
 
 	// SCATTER.
 	actor = eo->scatter[ eo->paths ];
+	devkit_SMS_mapROMBank( FIXED_BANK );
 	targetX = board_object_homeX[ actor ];
 	targetY = board_object_homeY[ actor ];
 
