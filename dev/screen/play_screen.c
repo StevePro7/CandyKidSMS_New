@@ -58,6 +58,8 @@ void screen_play_screen_load()
 	engine_board_manager_side_tile();
 
 	engine_level_manager_load_level( 0, 1 );
+	//engine_level_manager_load_level( 8, 7 );
+	engine_level_manager_load_level( 9, 4 );
 	engine_level_manager_update_level( round, actor_mover, actor_tileZ );
 	engine_level_manager_draw_level();
 
@@ -152,8 +154,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Move enemies.
 	//enemy = actor_type_adi;
-	for( enemy = 0; enemy < 1; enemy++ )
-	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	//for( enemy = 0; enemy < 1; enemy++ )
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 		{
@@ -174,7 +176,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 				//frame_spot = 1;
 				//engine_font_manager_draw_data( frame, 11, 6 );
-				engine_font_manager_draw_data( frame, 11, 6 );
+				//engine_font_manager_draw_data( frame, 11, 6 );
 			}
 			// For continuity we want to check if actor can move immediately after stopping.
 			if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
@@ -185,11 +187,11 @@ void screen_play_screen_update( unsigned char *screen_type )
 					//enemy_direction = engine_enemy_manager_find_direction( enemy, go->tileX, go->tileY, go->direction );
 					//if( frame < 288 )
 					//{
-						enemy_direction = engine_enemy_manager_scatter_direction( enemy );
+					//	enemy_direction = engine_enemy_manager_scatter_direction( enemy );
 					//}
 					//else
 					//{
-					//	enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
+						enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
 					//}
 
 					//enemy_direction = direction_type_left;

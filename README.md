@@ -160,3 +160,19 @@ and I going to have Undo / Redo on complete?
 IMPORTANT
 watch out for print information to screen during game play
 as was causing issues with the enemy movement?  WTF?
+
+
+23/02/2020
+Printing while music plays seems to have "slight" noticeable effect during play
+Therefore, thought of potential optimization:
+when score >= hiscore then hiscore = score
+could call override on font_manager that takes 2x Y values and prints the same score tiles at the same time
+rather than call the same method 2x individual times with the same score being displayed to the screen
+
+IMPORTANT
+This evening I was watching the scatter code on 10, 10 and Adi does infinite loop because
+logic cannot reach Pro which is the first scatter tile
+First, I need to see how many other levels this is an issue
+and if it is really prevalent then I may need to resurrect the dirX fours code
+to see if the direction chosen is the same as the one 4x moves prior
+i.e. trying to detect if Mama is stuck in infinite loop...!

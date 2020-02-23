@@ -98,12 +98,13 @@ void engine_enemy_manager_init()
 		eo->mover = 1;
 		eo->delay = 1;
 		eo->scatter[ 0 ] = enemy; eo->scatter[ 1 ] = enemy; eo->scatter[ 2 ] = enemy; eo->scatter[ 3 ] = enemy;
-		if( 0 != enemy )
-		{
-			eo->delay = 2;		// TODO hardcoded - inject!
-			eo->speed = 1;		// 1=move 0=stay.
-			eo->mover = 0;
-		}
+		//if( 1 != enemy )
+		//{
+		//	eo->delay = 2;		// TODO hardcoded - inject!
+		//	eo->speed = 1;		// 1=move 0=stay.
+		//	eo->mover = 0;
+		//}
+
 		// Easy scatter option tiles = Pro, Adi, Suz
 		// Hard scatter option tiles = Pro, Adi, Suz, Kid
 		//if( 0 == enemy )
@@ -161,10 +162,12 @@ void engine_enemy_manager_load()
 		}
 	}
 
-	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
-	{
-		eo = &global_enemy_objects[ enemy ];
-	}
+	// TODO delete!!
+	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	//{
+		//eo = &global_enemy_objects[ 1 ];
+		///eo->scatter[ 1 ] = 2;
+	//}
 }
 
 void engine_enemy_manager_update( unsigned char enemy )
@@ -313,11 +316,11 @@ unsigned char engine_enemy_manager_scatter_direction( unsigned char enemy )
 		{
 			eo->paths = 0;
 		}
-	}
 
-	actor = eo->scatter[ eo->paths ];
-	targetX = board_object_homeX[ actor ];
-	targetY = board_object_homeY[ actor ];
+		actor = eo->scatter[ eo->paths ];
+		targetX = board_object_homeX[ actor ];
+		targetY = board_object_homeY[ actor ];
+	}
 
 	enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
 	return enemy_direction;

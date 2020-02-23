@@ -58,10 +58,10 @@ void engine_hack_manager_invert()
 	state_object_trees_type = tree_type_death == state_object_trees_type ? tree_type_death : tree_type_avoid;
 
 	// TODO delete this hardcoded
-	state_object_trees_type = 0;
-	state_object_exits_type = 0;
+	state_object_trees_type = 1;
+	state_object_exits_type = 1;
 	state_object_invincibie = 1;
-	state_object_difficulty = 0;
+	state_object_difficulty = 1;
 	// TODO delete this hardcoded
 
 	// Exits.
