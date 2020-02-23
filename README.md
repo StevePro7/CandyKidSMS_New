@@ -132,3 +132,26 @@ Also, am I going to have a wait option
 wait,		// Warm up
 tour,		// Scatter,
 kill,		// Attack
+
+
+TODO
+Scatter algorithmn x3
+Wamr up count and transition
+Perfect Suz attack algorithmn?
+
+Speed up - two speeds
+
+Candy Kid faster but smooth animation??
+
+Implement collision + scores
+
+Sprite collision
+Boss screen
+Dead screen
+Cont screen
+Over screen
+Beat screen	integration
+Select screen
+
+Complete screen
+and I going to have Undo / Redo on complete?

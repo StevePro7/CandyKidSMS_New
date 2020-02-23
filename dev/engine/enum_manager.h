@@ -79,9 +79,9 @@ typedef enum tag_enum_lifecycle_type
 
 typedef enum tag_enum_enemymove_type
 {
-	enemymove_type_wait = 0,		// Warm up
-	enemymove_type_tour = 1,		// Scatter,
-	enemymove_type_kill = 2,		// Attack.
+	enemymove_type_tour = 0,		// Scatter,
+	enemymove_type_kill = 1,		// Attacks.
+	enemymove_type_wait = 2,		// Warm up.
 
 } enemymove_type;
 
