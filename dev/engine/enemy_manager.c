@@ -95,7 +95,7 @@ void engine_enemy_manager_init()
 		// TODO delete
 		eo->mover = 1;
 		eo->delay = 1;
-		if( 0 != enemy )
+		if( 1 != enemy )
 		{
 			eo->delay = 2;		// TODO hardcoded - inject!
 			eo->speed = 1;		// 1=move 0=stay.
@@ -230,7 +230,32 @@ void engine_enemy_manager_stop( unsigned char enemy )
 	//}
 }
 
-unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY, unsigned char gamer_direction )
+unsigned char engine_enemy_manager_scatter_direction( unsigned char enemy )
+{
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	unsigned char enemy_direction = direction_type_none;
+	unsigned char targetX;
+	unsigned char targetY;
+	
+	// This enemy does not move!
+	if( !eo->mover )
+	{
+		return direction_type_none;
+	}
+
+	// SCATTER
+	if( actor_type_adi == enemy )
+	{
+		// Like Pinky
+		targetX = board_object_homeX[ 0 ];
+		targetY = board_object_homeY[ 0 ];
+		enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
+	}
+
+	return enemy_direction;
+}
+
+unsigned char engine_enemy_manager_attack_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY, unsigned char gamer_direction )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	struct_enemy_object *eo0;
@@ -268,7 +293,7 @@ unsigned char engine_enemy_manager_find_direction( unsigned char enemy, unsigned
 		gamer_direction = engine_move_manager_actor_direction( gamer_direction );
 		
 		// Look two tiles in front on Candy Kid.
-		engine_level_manager_get_next_index( &targetX, &targetY, gamer_direction, 4 );
+		engine_level_manager_get_next_index( &targetX, &targetY, gamer_direction, 2 );
 		enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
 	}
 	else if( actor_type_suz == enemy )

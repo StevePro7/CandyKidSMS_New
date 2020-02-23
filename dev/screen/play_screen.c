@@ -55,7 +55,7 @@ void screen_play_screen_load()
 	engine_board_manager_draw_exit();
 	engine_board_manager_side_tile();
 
-	engine_level_manager_load_level( 5, round );
+	engine_level_manager_load_level( 0, 1 );
 	engine_level_manager_update_level( round, actor_mover, actor_tileZ );
 	engine_level_manager_draw_level();
 
@@ -150,8 +150,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Move enemies.
 	//enemy = actor_type_adi;
-	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
-	for( enemy = 0; enemy < 1; enemy++ )
+	//for( enemy = 0; enemy < 1; enemy++ )
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 		{
@@ -176,10 +176,13 @@ void screen_play_screen_update( unsigned char *screen_type )
 			// For continuity we want to check if actor can move immediately after stopping.
 			if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
 			{
-				//if( 0 == frame )
+				if( eo->mover )
 				{
 					//engine_font_manager_draw_text( "DIRECTION!!", 10, 12 );
-					enemy_direction = engine_enemy_manager_find_direction( enemy, go->tileX, go->tileY, go->direction );
+					//enemy_direction = engine_enemy_manager_find_direction( enemy, go->tileX, go->tileY, go->direction );
+					//enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
+					enemy_direction = engine_enemy_manager_scatter_direction( enemy );
+
 					//enemy_direction = direction_type_left;
 					//engine_font_manager_draw_data( enemy_direction, 10, 13 );
 					//print( enemy_direction );
@@ -188,15 +191,6 @@ void screen_play_screen_update( unsigned char *screen_type )
 						engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
 					}
 				}
-
-				//if( eo->mover )
-				//{
-				//	enemy_direction = engine_move_manager_find_direction( eo->tileX, eo->tileY, go->tileX, go->tileY, eo->direction );
-				//	//if( 0 == frame || 16 == frame || 32 == frame || 64 == frame )
-				//	//{
-				//	//	engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
-				//	//}
-				//}
 			}
 		}
 	}
