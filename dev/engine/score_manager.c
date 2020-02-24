@@ -34,7 +34,7 @@ static void draw_level();
 static void draw_boost();
 static void draw_world();
 static void draw_round();
-static unsigned char calc_level();
+//static unsigned char calc_level();
 static void draw_zero( unsigned char x, unsigned char y );
 
 void engine_score_manager_init()
@@ -121,10 +121,24 @@ void engine_score_manager_draw_text()
 	//engine_font_manager_draw_text( LOCALE_ROUND_TEXT, TEXT_X, ROUNT_Y + 0 );
 }
 
+// TODO delete this - used for debugging!
+void engine_score_manager_update_level()
+{
+	struct_score_object *so = &global_score_object;
+	//unsigned char level = calc_level();
+	// Weird = not sure why giving garbage value when call calc_level()??
+	so->level = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
+	//so->level = level;
+	//so->level = calc_level();
+	draw_level();
+	draw_world();
+	draw_round();
+}
+
 static void reset()
 {
 	struct_score_object *so = &global_score_object;
-	unsigned level = calc_level();
+	//unsigned char level = calc_level();
 	so->score = 0;
 	so->lives = NUMBER_LIVES - state_object_difficulty;
 	//engine_font_manager_draw_data( state_object_world_data, DATA_X + 1, LEVEL_Y + 3 );
@@ -132,8 +146,11 @@ static void reset()
 	//engine_font_manager_draw_data( state_object_round_data, DATA_X + 1, LEVEL_Y + 5 );
 	//engine_font_manager_draw_data( level, DATA_X + 1, LEVEL_Y + 6 );
 
-	//so->level = state_object_world_data * MAX_WORLDS + state_object_round_data + 1; //calc_level();
-	so->level = level;
+	// Weird = not sure why giving garbage value when call calc_level()??
+	so->level = state_object_world_data * MAX_WORLDS + state_object_round_data + 1; //calc_level();
+	//so->level = calc_level();
+	//so->level = level;
+
 	so->bonus = 0;
 	so->candy = 0;
 	so->total = 0;
@@ -226,10 +243,10 @@ static void draw_round()
 	}
 }
 
-static unsigned char calc_level()
-{
-	return state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
-}
+//static unsigned char calc_level()
+//{
+//	return state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
+//}
 
 static void draw_zero( unsigned char x, unsigned char y )
 {
