@@ -101,6 +101,8 @@ void engine_score_manager_draw_all()
 	draw_lives();
 	draw_level();
 	draw_boost();
+	draw_world();
+	draw_round();
 }
 
 void engine_score_manager_draw_text()
@@ -113,17 +115,11 @@ void engine_score_manager_draw_text()
 	engine_font_manager_draw_text( LOCALE_LEVEL_TEXT, TEXT_X, LEVEL_Y + 0 );
 	engine_font_manager_draw_text( LOCALE_BOOST_TEXT, TEXT_X, BOOST_Y + 0 );
 
-	engine_font_manager_draw_text( LOCALE_PLAY1_TEXT, TEXT_X, TEXTS_Y + 0 );
-	engine_font_manager_draw_text( LOCALE_MODES_TEXT, TEXT_X, TEXTS_Y + 1 );
+	//engine_font_manager_draw_text( LOCALE_PLAY1_TEXT, TEXT_X, TEXTS_Y + 0 );
+	//engine_font_manager_draw_text( LOCALE_MODES_TEXT, TEXT_X, TEXTS_Y + 1 );
 	//engine_font_manager_draw_text( LOCALE_WORLD_TEXT, TEXT_X, WORLD_Y + 0 );
 	//engine_font_manager_draw_text( LOCALE_ROUND_TEXT, TEXT_X, ROUNT_Y + 0 );
 }
-
-void engine_score_manager_draw_level()
-{
-
-}
-
 
 static void reset()
 {
@@ -213,11 +209,21 @@ static void draw_boost()
 }
 static void draw_world()
 {
-	
+	unsigned char world = state_object_world_data + 1;
+	engine_font_manager_draw_data( world, DATA_X + 1, 22 );
+	if( world < 10 )
+	{
+		draw_zero( DATA_X + 0, 22 );
+	}
 }
 static void draw_round()
 {
-
+	unsigned char round = state_object_round_data + 1;
+	engine_font_manager_draw_data( round, DATA_X + 1, 23 );
+	if( round < 10 )
+	{
+		draw_zero( DATA_X + 0, 23 );
+	}
 }
 
 static unsigned char calc_level()
