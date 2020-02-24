@@ -22,6 +22,8 @@ typedef struct tag_struct_enemy_object
 	unsigned char total;
 	unsigned char speed;
 	unsigned char mover;
+	unsigned char hands;
+	unsigned char swaps;
 	unsigned char lifecycle;
 	//unsigned char prev_move[ 4 ];	// Previous direction moved.
 	unsigned char prev_move;	// Previous direction moved.

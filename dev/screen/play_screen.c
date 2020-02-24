@@ -174,14 +174,16 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 
 	// Move enemies.
-	//enemy = actor_type_adi;
-	for( enemy = 0; enemy < 1; enemy++ )
-	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	//for( enemy = 0; enemy < 1; enemy++ )
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 		{
 			eo = &global_enemy_objects[ enemy ];
-			//enemy_direction = direction_type_upxx;
+			if( eo->mover && lifecycle_type_dead != eo->lifecycle )
+			{
+				engine_enemy_manager_dohand( enemy );
+			}
 
 			// Move enemy.
 			if( direction_type_none != eo->direction && lifecycle_type_move == eo->lifecycle )
@@ -214,9 +216,6 @@ void screen_play_screen_update( unsigned char *screen_type )
 						//enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
 					}
 
-					//enemy_direction = direction_type_left;
-					//engine_font_manager_draw_data( enemy_direction, 10, 13 );
-					//print( enemy_direction );
 					if( direction_type_none != enemy_direction )
 					{
 						engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );

@@ -160,7 +160,12 @@ void engine_enemy_manager_load()
 				break;
 			}
 		}
+
+		// TODO look up frame swaps from array in data bank that gets faster as the levels progress...!
+		eo->hands = 0;
+		eo->swaps = 50;
 	}
+
 
 	// TODO delete!!
 	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
@@ -168,6 +173,20 @@ void engine_enemy_manager_load()
 		//eo = &global_enemy_objects[ 1 ];
 		///eo->scatter[ 1 ] = 2;
 	//}
+}
+
+void engine_enemy_manager_dohand( unsigned char enemy )
+{
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	eo->hands++;
+	if( eo->hands < eo->swaps )
+	{
+		return;
+	}
+
+	eo->hands = 0;
+	eo->frame = 1 - eo->frame;
+	calcd_frame( enemy );
 }
 
 void engine_enemy_manager_update( unsigned char enemy )
@@ -233,13 +252,13 @@ void engine_enemy_manager_update( unsigned char enemy )
 		eo->total = 0;
 	}
 
-	if( eo->delta > TILE_HALF )
-	{
-		// TODO do the enemy hands.
-		eo->frame = 1 - eo->frame;
-		eo->delta = 0;
-		calcd_frame( enemy );
-	}
+	//if( eo->delta > TILE_HALF )
+	//{
+	//	// TODO do the enemy hands.
+	//	eo->frame = 1 - eo->frame;
+	//	eo->delta = 0;
+	//	calcd_frame( enemy );
+	//}
 }
 
 void engine_enemy_manager_draw()
@@ -262,8 +281,8 @@ void engine_enemy_manager_move( unsigned char enemy, unsigned char direction )
 	eo->lifecycle = lifecycle_type_move;
 
 	// TODO do the enemy hands.
-	eo->frame = frame_type_toggle;
-	calcd_frame( enemy );
+	//eo->frame = frame_type_toggle;
+	//calcd_frame( enemy );
 }
 
 void engine_enemy_manager_stop( unsigned char enemy )
@@ -275,7 +294,7 @@ void engine_enemy_manager_stop( unsigned char enemy )
 	//eo->prev_move[ 0 ] = eo->direction;
 	eo->prev_move = eo->direction;
 	eo->direction = direction_type_none;
-	eo->frame = 0;
+	//eo->frame = 0;		// TODO remove as this is done in gohands()
 	calcd_frame( enemy );
 
 	// Every 4x moves check if enemy moved any combination of: U, D, L, R
