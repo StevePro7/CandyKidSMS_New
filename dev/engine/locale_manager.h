@@ -16,6 +16,9 @@
 #define LOCALE_WORLD_TEXT		"WORLD"
 #define LOCALE_ROUND_TEXT		"ROUND"
 
+#define LOCALE_PLAY1_TEXT		"PLAY"
+#define LOCALE_MODES_TEXT		"MODE"
+
 #define LOCALE_BLANK_WIDTH		"                                "
 #define LOCALE_BLANK_SIZE10		"          "
 #define LOCALE_BLANK_SIZE17		"                 "

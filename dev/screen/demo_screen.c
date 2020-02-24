@@ -54,7 +54,7 @@ void screen_demo_screen_load()
 	//}
 
 	//engine_font_manager_draw_data( test, 22, 7 );
-	engine_font_manager_draw_text( "DEMO SCREEN", 10, 23 );
+	//engine_font_manager_draw_text( "DEMO SCREEN", 10, 23 );
 }
 
 void screen_demo_screen_update( unsigned char *screen_type )

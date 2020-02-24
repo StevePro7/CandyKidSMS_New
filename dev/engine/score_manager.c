@@ -14,8 +14,9 @@
 #define HIGHS_Y		4
 #define SCORE_Y		8
 #define LIVES_Y		12
-#define LEVEL_Y		16
-#define BOOST_Y		20
+#define LEVEL_Y		15
+#define BOOST_Y		18
+#define TEXTS_Y		22
 //#define WORLD_Y		14
 //#define ROUNT_Y		18
 
@@ -111,6 +112,9 @@ void engine_score_manager_draw_text()
 	engine_font_manager_draw_text( LOCALE_LIVES_TEXT, TEXT_X, LIVES_Y + 0 );
 	engine_font_manager_draw_text( LOCALE_LEVEL_TEXT, TEXT_X, LEVEL_Y + 0 );
 	engine_font_manager_draw_text( LOCALE_BOOST_TEXT, TEXT_X, BOOST_Y + 0 );
+
+	engine_font_manager_draw_text( LOCALE_PLAY1_TEXT, TEXT_X, TEXTS_Y + 0 );
+	engine_font_manager_draw_text( LOCALE_MODES_TEXT, TEXT_X, TEXTS_Y + 1 );
 	//engine_font_manager_draw_text( LOCALE_WORLD_TEXT, TEXT_X, WORLD_Y + 0 );
 	//engine_font_manager_draw_text( LOCALE_ROUND_TEXT, TEXT_X, ROUNT_Y + 0 );
 }
