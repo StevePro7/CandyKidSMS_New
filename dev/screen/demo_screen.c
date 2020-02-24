@@ -9,7 +9,7 @@
 //#include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
-//#include "..\engine\storage_manager.h"
+#include "..\engine\score_manager.h"
 
 // DEMO screen - was prototyping command playback but FUNC is better. 
 static unsigned char first_time;
@@ -26,8 +26,16 @@ void screen_demo_screen_load()
 	//engine_gamer_manager_init();
 	//engine_enemy_manager_init();
 
-	engine_frame_manager_draw();
-	engine_delay_manager_draw();
+	engine_score_manager_load();
+	engine_score_manager_draw_text();
+	engine_score_manager_draw_all();
+
+	engine_board_manager_draw_full();
+	engine_board_manager_draw_exit();
+	engine_board_manager_side_tile();
+
+	//engine_frame_manager_draw();
+	//engine_delay_manager_draw();
 
 	//engine_board_manager_debugger();
 	//engine_board_manager_side_tile();
@@ -46,7 +54,7 @@ void screen_demo_screen_load()
 	//}
 
 	//engine_font_manager_draw_data( test, 22, 7 );
-	engine_font_manager_draw_text( "DEMO SCREEN", 2, 10 );
+	engine_font_manager_draw_text( "DEMO SCREEN", 10, 23 );
 }
 
 void screen_demo_screen_update( unsigned char *screen_type )

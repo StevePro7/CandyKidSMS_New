@@ -1,18 +1,22 @@
 XL2
-H 9 areas A global symbols
+H 9 areas E global symbols
 M demo_screen
 O -mz80
-S _engine_frame_manager_draw Ref0000
+S _engine_board_manager_side_tile Ref0000
 S _engine_board_manager_init Ref0000
-S _engine_delay_manager_draw Ref0000
+S _engine_score_manager_load Ref0000
 S _engine_level_manager_draw_level Ref0000
+S _engine_board_manager_draw_full Ref0000
 S _engine_font_manager_draw_text Ref0000
+S _engine_board_manager_draw_exit Ref0000
 S .__.ABS. Def0000
+S _engine_score_manager_draw_all Ref0000
+S _engine_score_manager_draw_text Ref0000
 S _engine_delay_manager_load Ref0000
 S _engine_level_manager_load_level Ref0000
-A _CODE size 42 flags 0 addr 0
+A _CODE size 4E flags 0 addr 0
 S _screen_demo_screen_load Def0000
-S _screen_demo_screen_update Def003B
+S _screen_demo_screen_update Def0047
 A _DATA size 1 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -28,18 +32,20 @@ R 00 00 01 00
 T 00 00
 R 00 00 00 00
 T 00 00 21 00 00 E5 CD 00 00 F1 CD 00 00 CD 00 00
-R 00 00 00 00 02 07 06 00 02 0B 01 00 02 0E 00 00
-T 0E 00 CD 00 00 21 00 00 E5 CD 00 00 F1 CD 00 00
-R 00 00 00 00 02 03 02 00 02 0A 07 00 02 0E 03 00
-T 1C 00 21 00 00 36 01 21 02 0A E5 21 2F 00 E5 CD
-R 00 00 00 00 00 03 01 00 00 0C 00 00
-T 2A 00 00 00 F1 F1 C9
-R 00 00 00 00 02 02 04 00
-T 2F 00
-R 00 00 00 00
-T 2F 00 44 45 4D 4F 20 53 43 52 45 45 4E 00
-R 00 00 00 00
+R 00 00 00 00 02 07 0A 00 02 0B 01 00 02 0E 02 00
+T 0E 00 CD 00 00 CD 00 00 CD 00 00 CD
+R 00 00 00 00 02 03 09 00 02 06 08 00 02 09 04 00
+T 18 00 00 00 CD 00 00 21 00 00 E5 CD 00 00 F1 CD
+R 00 00 00 00 02 02 06 00 02 05 00 00 02 0C 0B 00
+T 26 00 00 00 21 00 00 36 01 21 0A 17 E5 21 3B 00
+R 00 00 00 00 02 02 03 00 00 05 01 00 00 0E 00 00
+T 34 00 E5 CD 00 00 F1 F1 C9
+R 00 00 00 00 02 04 05 00
 T 3B 00
 R 00 00 00 00
-T 3B 00 C1 E1 E5 C5 36 05 C9
+T 3B 00 44 45 4D 4F 20 53 43 52 45 45 4E 00
+R 00 00 00 00
+T 47 00
+R 00 00 00 00
+T 47 00 C1 E1 E5 C5 36 05 C9
 R 00 00 00 00

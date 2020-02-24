@@ -10,7 +10,7 @@ typedef struct tag_struct_score_object
 	unsigned char candy;
 	unsigned char total;
 	unsigned char boost;
-	unsigned char delay;
+	unsigned char delay;		// Boost delay
 
 } struct_score_object;
 
