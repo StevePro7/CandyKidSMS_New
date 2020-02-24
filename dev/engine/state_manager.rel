@@ -1,0 +1,30 @@
+XL2
+H 9 areas 7 global symbols
+M state_manager
+O -mz80
+S _engine_hack_manager_init Ref0000
+S _engine_storage_manager_read Ref0000
+S .__.ABS. Def0000
+S _engine_storage_manager_available Ref0000
+S _engine_hack_manager_invert Ref0000
+A _CODE size 12 flags 0 addr 0
+S _engine_state_manager_read Def0000
+S _engine_state_manager_write Def0011
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00 CD 00 00 CD 00 00 7D B7 CA 00 00 CD
+R 00 00 00 00 02 03 00 00 02 06 03 00 02 0B 04 00
+T 0C 00 00 00 C3 00 00
+R 00 00 00 00 02 02 01 00 02 05 04 00
+T 11 00
+R 00 00 00 00
+T 11 00 C9
+R 00 00 00 00

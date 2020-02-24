@@ -30,7 +30,10 @@ void engine_hack_manager_init()
 	state_object_round_data = 0;
 	state_object_music_data = 0;
 	state_object_sound_data = 0;
+}
 
+void engine_hack_manager_load()
+{
 #ifndef _CONSOLE
 
 	state_object_mydebugger = PEEK( HACKER_START - 3 );			// 0x004D		// Set my debugging from zero-based value.
@@ -48,29 +51,24 @@ void engine_hack_manager_init()
 	state_object_sound_data = PEEK( HACKER_START + 7 );			// 0x0057		// Set 0=sound to play otherwise disabled.
 
 #endif
-
 }
 
 
 void engine_hack_manager_invert()
 {
-	// Trees.
-	state_object_trees_type = tree_type_death == state_object_trees_type ? tree_type_death : tree_type_avoid;
-
-	// TODO delete this hardcoded
+	// TODO delete this hard coded
 	state_object_trees_type = 1;
 	state_object_exits_type = 0;
 	state_object_invincibie = 1;
 	state_object_difficulty = 0;
-	// TODO delete this hardcoded
+	// TODO delete this hard coded
+
+	// Trees.
+	state_object_trees_type = tree_type_death == state_object_trees_type ? tree_type_death : tree_type_avoid;
 
 	// Exits.
 	state_object_exits_type = exit_type_closed == state_object_exits_type ? exit_type_closed : exit_type_public;
 
-	// stevepro delete
-	//state_object_exits_type = exit_type_closed;
-	//state_object_trees_type = tree_type_death;
-	// stevepro delete
 
 	// World.
 	if( 0 != state_object_world_data )
@@ -100,7 +98,8 @@ void engine_hack_manager_invert()
 	state_object_music_data = !state_object_music_data;
 	state_object_sound_data = !state_object_sound_data;
 
-
-	state_object_world_data = 7-1;
-	state_object_round_data = 9-1;
+	// TODO delete this hard coded
+	//state_object_world_data = 7-1;
+	//state_object_round_data = 9-1;
+	// TODO delete this hard coded
 }

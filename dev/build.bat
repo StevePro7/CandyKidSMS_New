@@ -40,6 +40,7 @@ sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 hack_mana
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 score_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 screen_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 sprite_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 state_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 storage_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 tile_manager.c
 cd ..
@@ -110,8 +111,8 @@ engine\gamer_manager.rel ^
 engine\hack_manager.rel engine\input_manager.rel ^
 engine\level_manager.rel ^
 engine\move_manager.rel ^
-engine\score_manager.rel engine\screen_manager.rel ^
-engine\sprite_manager.rel engine\storage_manager.rel engine\tile_manager.rel ^
+engine\score_manager.rel engine\screen_manager.rel engine\sprite_manager.rel  engine\state_manager.rel ^
+engine\storage_manager.rel engine\tile_manager.rel ^
 object\delay_object.rel object\frame_object.rel ^
 object\score_object.rel object\storage_object.rel ^
 screen\none_screen.rel screen\splash_screen.rel screen\title_screen.rel screen\intro_screen.rel screen\load_screen.rel ^
