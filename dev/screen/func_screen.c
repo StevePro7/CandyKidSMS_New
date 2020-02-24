@@ -22,22 +22,28 @@ void screen_func_screen_load()
 	//engine_command_manager_init();
 	//engine_delay_manager_load( 0 );
 
-	engine_board_manager_init();
+	//engine_board_manager_init();
 	//engine_gamer_manager_init();
 	//engine_enemy_manager_init();
 
 	engine_score_manager_load();
+	engine_score_manager_draw_text();
+	engine_score_manager_draw_all();
 
-	// Draw functions.
-	//engine_board_manager_debugger();
 	//engine_board_manager_draw_full();
-	engine_board_manager_debugger();
 	//engine_board_manager_draw_exit();
+	//engine_board_manager_side_tile();
+
+	//// Draw functions.
+	////engine_board_manager_debugger();
+	////engine_board_manager_draw_full();
+	//engine_board_manager_debugger();
+	////engine_board_manager_draw_exit();
 
 	//engine_font_manager_draw_text( "FUNC SCREEN!!", 4, 10 );
-	engine_score_manager_draw_all();
-	engine_score_manager_draw_text();
-	first_time = 1;
+	//engine_score_manager_draw_all();
+	//engine_score_manager_draw_text();
+	//first_time = 1;
 }
 
 void screen_func_screen_update( unsigned char *screen_type )
@@ -46,30 +52,36 @@ void screen_func_screen_update( unsigned char *screen_type )
 	input = engine_input_manager_hold( input_type_up );
 	if( input )
 	{
-		engine_score_manager_update_bonus( tile_type_bonusA );
+		//engine_score_manager_update_bonus( tile_type_bonusA );
+		engine_score_manager_update_oneup();
 	}
 	input = engine_input_manager_hold( input_type_down );
 	if( input )
 	{
-		engine_score_manager_update_bonus( tile_type_bonusB );
+		//engine_score_manager_update_bonus( tile_type_bonusB );
+		engine_score_manager_update_lives( -1 );
+		
 	}
 	input = engine_input_manager_hold( input_type_left );
 	if( input )
 	{
-		engine_score_manager_update_bonus( tile_type_bonusC );
+		engine_font_manager_draw_text( "THERE", 10, 10 );
+		engine_score_manager_update_candy();
 	}
 	input = engine_input_manager_hold( input_type_right );
 	if( input )
 	{
+		
 		engine_score_manager_update_bonus( tile_type_bonusD );
+		//engine_score_manager_update_bonus( tile_type_bonusD );
 	}
 
 	input = engine_input_manager_hold( input_type_fire1 );
 	if( input )
 	{
-		engine_score_manager_update_candy();
+		//engine_score_manager_update_candy();
 	}
 
-	first_time = 0;
+	//first_time = 0;
 	*screen_type = screen_type_func;
 }

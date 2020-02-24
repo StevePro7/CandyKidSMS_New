@@ -17,8 +17,8 @@
 #define LEVEL_Y		15
 #define BOOST_Y		18
 #define TEXTS_Y		22
-//#define WORLD_Y		14
-//#define ROUNT_Y		18
+#define WORLD_Y		22
+#define ROUNT_Y		23
 
 // Global variable.
 struct_score_object global_score_object;
@@ -188,7 +188,6 @@ static void update_lives( signed char value )
 
 static void draw_highs()
 {
-	struct_score_object *so = &global_score_object;
 	engine_font_manager_draw_long( state_object_high_score, DATA_X + 0, HIGHS_Y + 1 );
 }
 static void draw_score()
