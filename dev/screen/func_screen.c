@@ -49,11 +49,12 @@ void screen_func_screen_load()
 void screen_func_screen_update( unsigned char *screen_type )
 {
 	unsigned char input;
+
 	input = engine_input_manager_hold( input_type_up );
 	if( input )
 	{
 		//engine_score_manager_update_bonus( tile_type_bonusA );
-		engine_score_manager_update_oneup();
+		engine_score_manager_update_boost();
 	}
 	input = engine_input_manager_hold( input_type_down );
 	if( input )

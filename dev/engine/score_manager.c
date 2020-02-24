@@ -84,6 +84,24 @@ void engine_score_manager_update_lives( signed char value )
 	update_lives( value );
 }
 
+void engine_score_manager_update_boost()
+{
+	struct_score_object *so = &global_score_object;
+	if( 0 == so->boost )
+	{
+		return;
+	}
+
+	so->timer++;
+	if( so->timer <= so->delay )
+	{
+		return;
+	}
+
+	so->timer = 0;
+	so->boost--;
+	draw_boost();
+}
 void engine_score_manager_draw_all()
 {
 	struct_score_object *so = &global_score_object;
@@ -155,7 +173,8 @@ static void reset()
 	so->candy = 0;
 	so->total = 0;
 	so->boost = MAX_BOOSTERX;
-	so->delay = state_object_difficulty + 1;
+	so->delay = 1 - state_object_difficulty;
+	so->timer = 0;
 }
 static void update_score( unsigned char points )
 {
