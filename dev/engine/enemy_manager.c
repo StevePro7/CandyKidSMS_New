@@ -98,12 +98,12 @@ void engine_enemy_manager_init()
 		eo->mover = 1;
 		eo->delay = 1;
 		eo->scatter[ 0 ] = enemy; eo->scatter[ 1 ] = enemy; eo->scatter[ 2 ] = enemy; eo->scatter[ 3 ] = enemy;
-		//if( 1 != enemy )
-		//{
-		//	eo->delay = 2;		// TODO hardcoded - inject!
-		//	eo->speed = 1;		// 1=move 0=stay.
-		//	eo->mover = 0;
-		//}
+		if( 0 != enemy )
+		{
+			eo->delay = 2;		// TODO hardcoded - inject!
+			eo->speed = 1;		// 1=move 0=stay.
+			eo->mover = 0;
+		}
 
 		// Easy scatter option tiles = Pro, Adi, Suz
 		// Hard scatter option tiles = Pro, Adi, Suz, Kid
@@ -320,6 +320,35 @@ unsigned char engine_enemy_manager_scatter_direction( unsigned char enemy )
 		actor = eo->scatter[ eo->paths ];
 		targetX = board_object_homeX[ actor ];
 		targetY = board_object_homeY[ actor ];
+	}
+
+	enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
+	return enemy_direction;
+}
+
+unsigned char engine_enemy_manager_gohome_direction( unsigned char enemy )
+{
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	unsigned char enemy_direction = direction_type_none;
+
+	unsigned char targetX;
+	unsigned char targetY;
+
+	// This enemy does not move!
+	if( !eo->mover )
+	{
+		return direction_type_none;
+	}
+
+	// GO HOME.
+	devkit_SMS_mapROMBank( FIXED_BANK );
+	targetX = board_object_homeX[ enemy ];
+	targetY = board_object_homeY[ enemy ];
+
+	// If enemy at home tile then just stop.
+	if( targetX == eo->tileX && targetY == eo->tileY )
+	{
+		return direction_type_none;
 	}
 
 	enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );

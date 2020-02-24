@@ -34,6 +34,7 @@ static void get_actor_data( unsigned char *mover, unsigned char *tileZ );
 
 void screen_play_screen_load()
 {
+	struct_enemy_object *eo;
 	unsigned char actor_mover[ MAX_ACTORS ];
 	unsigned char actor_tileZ[ MAX_ACTORS ];
 	unsigned char round = 1;
@@ -59,10 +60,15 @@ void screen_play_screen_load()
 
 	engine_level_manager_load_level( 0, 1 );
 	//engine_level_manager_load_level( 8, 7 );
-	engine_level_manager_load_level( 9, 4 );
+	//engine_level_manager_load_level( 9, 4 );
 	engine_level_manager_update_level( round, actor_mover, actor_tileZ );
 	engine_level_manager_draw_level();
 
+	eo = &global_enemy_objects[ 0 ];
+	engine_font_manager_draw_data( eo->scatter[ 0 ], 31, 16 );
+	engine_font_manager_draw_data( eo->scatter[ 1 ], 31, 17 );
+	engine_font_manager_draw_data( eo->scatter[ 2 ], 31, 18 );
+	engine_font_manager_draw_data( eo->scatter[ 3 ], 31, 19 );
 	//engine_frame_manager_draw();
 	//engine_delay_manager_draw();
 
@@ -121,7 +127,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 		}
 		else
 		{
-			engine_font_manager_draw_text( "ATTACK", 26, 21 );
+			//engine_font_manager_draw_text( "ATTACK", 26, 21 );
+			engine_font_manager_draw_text( "GOHOME", 26, 21 );
 		}
 	}
 	
@@ -168,8 +175,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Move enemies.
 	//enemy = actor_type_adi;
-	//for( enemy = 0; enemy < 1; enemy++ )
-	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	for( enemy = 0; enemy < 1; enemy++ )
+	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 		{
@@ -203,7 +210,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 					}
 					else if (1 == frame_spot )
 					{
-						enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
+						enemy_direction = engine_enemy_manager_gohome_direction( enemy );
+						//enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
 					}
 
 					//enemy_direction = direction_type_left;

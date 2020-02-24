@@ -16,6 +16,7 @@ void engine_enemy_manager_move( unsigned char enemy, unsigned char direction );
 void engine_enemy_manager_stop( unsigned char enemy );
 
 unsigned char engine_enemy_manager_scatter_direction( unsigned char enemy );
+unsigned char engine_enemy_manager_gohome_direction( unsigned char enemy );
 unsigned char engine_enemy_manager_attack_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY, unsigned char gamer_direction );
 unsigned char engine_enemy_manager_what_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY );
 
