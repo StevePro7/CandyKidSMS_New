@@ -270,29 +270,29 @@ static unsigned char process_collision( unsigned char tile_type )
 }
 
 // TODO delete or put in debugger??
-static void print( unsigned char dir )
-{
-	if( 0 == dir )
-	{
-		engine_font_manager_draw_text( "NONE", 10, 13 );
-	}
-	if( 1 == dir )
-	{
-		engine_font_manager_draw_text( "UPXX", 10, 13 );
-	}
-	if( 2 == dir )
-	{
-		engine_font_manager_draw_text( "DOWN", 10, 13 );
-	}
-	if( 4 == dir )
-	{
-		engine_font_manager_draw_text( "LEFT", 10, 13 );
-	}
-	if( 8 == dir )
-	{
-		engine_font_manager_draw_text( "RGHT", 10, 13 );
-	}
-}
+//static void print( unsigned char dir )
+//{
+//	if( 0 == dir )
+//	{
+//		engine_font_manager_draw_text( "NONE", 10, 13 );
+//	}
+//	if( 1 == dir )
+//	{
+//		engine_font_manager_draw_text( "UPXX", 10, 13 );
+//	}
+//	if( 2 == dir )
+//	{
+//		engine_font_manager_draw_text( "DOWN", 10, 13 );
+//	}
+//	if( 4 == dir )
+//	{
+//		engine_font_manager_draw_text( "LEFT", 10, 13 );
+//	}
+//	if( 8 == dir )
+//	{
+//		engine_font_manager_draw_text( "RGHT", 10, 13 );
+//	}
+//}
 
 static void get_actor_data( unsigned char *mover, unsigned char *tileZ )
 {

@@ -104,6 +104,7 @@ typedef enum tag_enum_coll_type
 {
 	coll_type_empty = 0,
 	coll_type_block = 1,
+	coll_type_candy = 2,
 
 } enum_coll_type;
 
