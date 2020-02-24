@@ -10,6 +10,7 @@
 #include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
 #include "..\engine\move_manager.h"
+#include "..\engine\score_manager.h"
 
 static unsigned char command_index;
 static unsigned char command_count;
@@ -20,6 +21,7 @@ static unsigned char first_time;
 unsigned char cont_walking_cmds1[] = { direction_type_upxx, direction_type_rght, direction_type_upxx };
 unsigned char cont_walking_cmds2[] = { direction_type_upxx, direction_type_upxx, direction_type_upxx };
 unsigned char cont_walking_cmds3[] = { direction_type_rght, direction_type_rght, direction_type_rght };
+unsigned char cont_walking_cmds4[] = { direction_type_upxx, direction_type_left, direction_type_none };
 //unsigned char cont_walking_move[] = { 7, 7, 7, 7 };
 unsigned char cont_walking_move[] = { 1, 1, 1 };
 
@@ -30,20 +32,25 @@ void screen_cont_screen_load()
 	command_count = 3;
 
 
-
 	engine_command_manager_init();
 	engine_delay_manager_load( 0 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
+	//engine_enemy_manager_init();
+	//engine_enemy_manager_load();
+	//get_actor_data( actor_mover, actor_tileZ );
 
-	
+	engine_score_manager_load();
+	engine_score_manager_draw_text();
+	engine_score_manager_draw_all();
 
 	engine_board_manager_draw_full();
 	engine_board_manager_draw_exit();
 	engine_board_manager_side_tile();
 
 	engine_level_manager_load_level( 0, 0 );
+	//engine_level_manager_update_level( round, actor_mover, actor_tileZ );
 	engine_level_manager_draw_level();
 
 	engine_frame_manager_draw();
@@ -57,7 +64,7 @@ void screen_cont_screen_load()
 
 void screen_cont_screen_update( unsigned char *screen_type )
 {
-	unsigned char *cont_walking_cmds = cont_walking_cmds1;
+	unsigned char *cont_walking_cmds = cont_walking_cmds4;
 
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
@@ -152,7 +159,7 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	}
 
 
-	//// Execute all commands for this frame.
+	// Execute all commands for this frame.
 	engine_command_manager_execute( frame );
 	first_time = 0;
 
@@ -175,7 +182,7 @@ static unsigned char process_collision( unsigned char tile_type )
 	
 	// Check gamer collision with bonus.
 
-	// Check gamer collision with death tree.
+	// Check gamer collision with trees.
 	if( tile_type_trees == tile_type )
 	{
 		if( !state_object_invincibie && state_object_trees_type == tree_type_death )

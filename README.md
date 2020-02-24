@@ -176,3 +176,8 @@ First, I need to see how many other levels this is an issue
 and if it is really prevalent then I may need to resurrect the dirX fours code
 to see if the direction chosen is the same as the one 4x moves prior
 i.e. trying to detect if Mama is stuck in infinite loop...!
+
+
+24/02/2020
+All the background tiles adhere to the SCREEN_LEFT but the sprites do NOT
+so in theory I should update this...!!
