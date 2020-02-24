@@ -159,15 +159,15 @@ typedef enum tag_enum_frame_type
 
 } enum_frame_type;
 
-//typedef enum tag_enum_score_type
-//{
-//	score_type_lives = 0,
-//	score_type_level = 1,
-//	score_type_boost = 2,
-//	score_type_world = 3,
-//	score_type_round = 4,
-//
-//} enum_score_type;
+typedef enum tag_enum_score_type
+{
+	score_type_lives = 0,
+	score_type_level = 1,
+	score_type_boost = 2,
+	score_type_world = 3,
+	score_type_round = 4,
+
+} enum_score_type;
 
 typedef enum tag_enum_offset_type
 {

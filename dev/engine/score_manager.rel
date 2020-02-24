@@ -25,12 +25,12 @@ S _engine_score_manager_update_bonus Def000B
 S _engine_score_manager_draw_text Def00B0
 A _DATA size C flags 0 addr 0
 S _global_score_object Def0000
-A _INITIALIZED size 4 flags 0 addr 0
+A _INITIALIZED size 9 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _INITIALIZER size 4 flags 0 addr 0
+A _INITIALIZER size 9 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
 R 00 00 01 00
@@ -39,6 +39,10 @@ R 00 00 01 00
 T 00 00
 R 00 00 02 00
 T 00 00
+R 00 00 02 00
+T 05 00
+R 00 00 02 00
+T 05 00
 R 00 00 02 00
 T 00 00
 R 00 00 00 00
@@ -56,7 +60,7 @@ T 0B 00
 R 00 00 00 00
 T 0B 00 DD E5 DD 21 00 00 DD 39 DD 7E 04 C6 FD 4F
 R 00 00 00 00
-T 19 00 21 00 00 06 00 09 46 11 06 00 1A 3C 12 11
+T 19 00 21 05 00 06 00 09 46 11 06 00 1A 3C 12 11
 R 00 00 00 00 00 03 02 00 00 0A 01 00
 T 27 00 08 00 1A 3C 12 C5 33 CD 9C 01 33 DD E1 C9
 R 00 00 00 00 00 02 01 00 00 0A 00 00
@@ -260,5 +264,9 @@ T 1E 03 D5 CD 00 00 F1 33 C9
 R 00 00 00 00 02 04 08 00
 T 00 00
 R 00 00 07 00
-T 00 00 0A 14 28 50
+T 00 00 0D 10 13 16 17
+R 00 00 07 00
+T 05 00
+R 00 00 07 00
+T 05 00 0A 14 28 50
 R 00 00 07 00

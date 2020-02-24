@@ -23,10 +23,13 @@
 // Global variable.
 struct_score_object global_score_object;
 
+static unsigned char y[] = { LIVES_Y + 1, LEVEL_Y + 1, BOOST_Y + 1, 22, 23 };
 static unsigned char bonuses[] = { 10, 20, 40, 80 };
 static void reset();
 static void update_score( unsigned char points );
 static void update_lives( signed char value );
+
+//static void draw_value( unsigned char index );
 static void draw_highs();
 static void draw_score();
 static void draw_lives();
@@ -260,6 +263,19 @@ static void draw_round()
 		draw_zero( DATA_X + 0, 23 );
 	}
 }
+
+//static void draw_value( unsigned char index )
+//{
+//	struct_score_object *so = &global_score_object;
+//	unsigned char value = so->values[ index ];
+//	unsigned char y_val = y[ index ];
+//
+//	engine_font_manager_draw_data( value, DATA_X + 1, y_val );
+//	if( value < 10 )
+//	{
+//		draw_zero( DATA_X + 0, y_val );
+//	}
+//}
 
 //static unsigned char calc_level()
 //{

@@ -53,8 +53,9 @@ void screen_func_screen_update( unsigned char *screen_type )
 	input = engine_input_manager_hold( input_type_up );
 	if( input )
 	{
+		engine_score_manager_update_oneup();
 		//engine_score_manager_update_bonus( tile_type_bonusA );
-		engine_score_manager_update_boost();
+		
 	}
 	input = engine_input_manager_hold( input_type_down );
 	if( input )
@@ -80,6 +81,7 @@ void screen_func_screen_update( unsigned char *screen_type )
 	input = engine_input_manager_hold( input_type_fire1 );
 	if( input )
 	{
+		engine_score_manager_update_boost();
 		//engine_score_manager_update_candy();
 	}
 
