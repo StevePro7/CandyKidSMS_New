@@ -34,7 +34,7 @@ static void get_actor_data( unsigned char *mover, unsigned char *tileZ );
 
 void screen_play_screen_load()
 {
-	struct_enemy_object *eo;
+	//struct_enemy_object *eo;
 	unsigned char actor_mover[ MAX_ACTORS ];
 	unsigned char actor_tileZ[ MAX_ACTORS ];
 	unsigned char round = 1;
@@ -72,14 +72,6 @@ void screen_play_screen_load()
 
 	//engine_frame_manager_draw();
 	//engine_delay_manager_draw();
-
-	eo = &global_enemy_objects[ 2 ];
-
-
-	engine_font_manager_draw_data( eo->scatter[ 0 ], 24, 18 );
-	engine_font_manager_draw_data( eo->scatter[ 1 ], 24, 19 );
-	engine_font_manager_draw_data( eo->scatter[ 2 ], 24, 20 );
-	engine_font_manager_draw_data( eo->scatter[ 3 ], 24, 21 );
 
 	engine_font_manager_draw_text( "SCATTX", 26, 21 );
 	//engine_font_manager_draw_data( level_object_candy_count, 14, 11 );

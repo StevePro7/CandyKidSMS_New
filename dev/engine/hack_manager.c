@@ -62,8 +62,8 @@ void engine_hack_manager_invert()
 	state_object_invincibie = 1;
 	state_object_difficulty = 0;
 
-	state_object_enemy_move[ actor_type_pro ] = 0;
-	state_object_enemy_move[ actor_type_adi ] = 0;
+	state_object_enemy_move[ actor_type_pro ] = 1;
+	state_object_enemy_move[ actor_type_adi ] = 1;
 	state_object_enemy_move[ actor_type_suz ] = 1;
 	// TODO delete this hard coded
 
