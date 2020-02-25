@@ -19,7 +19,7 @@ static unsigned char walking_delta;
 static unsigned char walking_count;
 static unsigned char first_time;
 
-unsigned char cont_walking_cmds1[] = { direction_type_upxx, direction_type_rght, direction_type_upxx };
+unsigned char cont_walking_cmds1[] = { direction_type_upxx, direction_type_rght, direction_type_none };
 unsigned char cont_walking_cmds2[] = { direction_type_down, direction_type_left, direction_type_none };
 unsigned char cont_walking_cmds3[] = { direction_type_rght, direction_type_rght, direction_type_rght };
 unsigned char cont_walking_cmds4[] = { direction_type_down, direction_type_rght, direction_type_rght };
@@ -46,7 +46,7 @@ void screen_cont_screen_load()
 	engine_score_manager_load();
 	engine_score_manager_draw_text();
 	engine_score_manager_draw_all();
-	//engine_score_manager_update_level();
+	engine_score_manager_update_level();
 
 	engine_board_manager_draw_full();
 	engine_board_manager_draw_exit();
@@ -67,7 +67,7 @@ void screen_cont_screen_load()
 
 void screen_cont_screen_update( unsigned char *screen_type )
 {
-	unsigned char *cont_walking_cmds = cont_walking_cmds5;
+	unsigned char *cont_walking_cmds = cont_walking_cmds1;
 
 
 	struct_frame_object *fo = &global_frame_object;
@@ -203,10 +203,8 @@ static unsigned char process_collision( unsigned char tile_type )
 		gamer_collision = coll_type_candy;
 	}
 
-	// Check gamer collision with bonus.
-
 	// Check gamer collision with trees.
-	if( tile_type_trees == tile_type )
+	else if( tile_type_trees == tile_type )
 	{
 		if( !state_object_invincibie && state_object_trees_type == tree_type_death )
 		{
@@ -219,5 +217,13 @@ static unsigned char process_collision( unsigned char tile_type )
 		}
 	}
 
+	// Check gamer collision with bonus.
+	else if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
+	{
+		engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + ( go->tileX - 1 ) * 2, ( go->tileY - 1 ) * 2 );
+		//engine_tile_manager_main_trees( 0, SCREEN_TILE_LEFT + (x - 1) * 2, ( y - 1 ) * 2 );
+
+		engine_score_manager_update_bonus( tile_type );
+	}
 	return gamer_collision;
 }

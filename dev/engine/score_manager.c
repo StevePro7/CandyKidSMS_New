@@ -62,6 +62,7 @@ void engine_score_manager_update_bonus( unsigned char index )
 
 	// The bonus tile enum is 3x values off.
 	unsigned char bonus = bonuses[ index - 3 ];
+	bonus *= so->multi;
 	so->bonus++;
 	so->total++;
 	update_score( bonus );
