@@ -34,7 +34,7 @@ static void get_actor_data( unsigned char *mover, unsigned char *tileZ );
 
 void screen_play_screen_load()
 {
-	//struct_enemy_object *eo;
+	struct_enemy_object *eo;
 	unsigned char actor_mover[ MAX_ACTORS ];
 	unsigned char actor_tileZ[ MAX_ACTORS ];
 	unsigned char round = 1;
@@ -73,7 +73,15 @@ void screen_play_screen_load()
 	//engine_frame_manager_draw();
 	//engine_delay_manager_draw();
 
-	engine_font_manager_draw_text( "SCATTR", 26, 21 );
+	eo = &global_enemy_objects[ 2 ];
+
+
+	engine_font_manager_draw_data( eo->scatter[ 0 ], 24, 18 );
+	engine_font_manager_draw_data( eo->scatter[ 1 ], 24, 19 );
+	engine_font_manager_draw_data( eo->scatter[ 2 ], 24, 20 );
+	engine_font_manager_draw_data( eo->scatter[ 3 ], 24, 21 );
+
+	engine_font_manager_draw_text( "SCATTX", 26, 21 );
 	//engine_font_manager_draw_data( level_object_candy_count, 14, 11 );
 	//engine_audio_manager_music_play( 3 );
 	first_time = 1;
@@ -178,51 +186,54 @@ void screen_play_screen_update( unsigned char *screen_type )
 	//for( enemy = 0; enemy < 1; enemy++ )
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
-		//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+		eo = &global_enemy_objects[ enemy ];
+
+		// Swap hands first if enemy moving and not dead.
+		if( eo->mover && lifecycle_type_dead != eo->lifecycle )
 		{
-			eo = &global_enemy_objects[ enemy ];
-			if( eo->mover && lifecycle_type_dead != eo->lifecycle )
+			engine_enemy_manager_dohand( enemy );
+		}
+
+		// If enemy not moving then skip all movement code.
+		if( !eo->mover )
+		{
+			continue;
+		}
+
+		// Move enemy.
+		if( direction_type_none != eo->direction && lifecycle_type_move == eo->lifecycle )
+		{
+			//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
+			engine_enemy_manager_update( enemy );
+		}
+		if( direction_type_none != eo->direction && lifecycle_type_idle == eo->lifecycle )
+		{
+			// Check collision.
+			engine_enemy_manager_stop( enemy );
+
+			//engine_font_manager_draw_data( frame, 11, 6 );
+		}
+		// For continuity we want to check if actor can move immediately after stopping.
+		if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
+		{
+			//engine_font_manager_draw_text( "DIRECTION!!", 10, 12 );
+			//enemy_direction = engine_enemy_manager_find_direction( enemy, go->tileX, go->tileY, go->direction );
+			//if( frame < 288 )
+			if( 0 == frame_spot )
 			{
-				engine_enemy_manager_dohand( enemy );
+				enemy_direction = engine_enemy_manager_scatter_direction( enemy );
+			}
+			else if( 1 == frame_spot )
+			{
+				//enemy_direction = engine_enemy_manager_gohome_direction( enemy );
+				enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
 			}
 
-			// Move enemy.
-			if( direction_type_none != eo->direction && lifecycle_type_move == eo->lifecycle )
+			if( direction_type_none != enemy_direction )
 			{
-				//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
-				engine_enemy_manager_update( enemy );
+				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
 			}
-			if( direction_type_none != eo->direction && lifecycle_type_idle == eo->lifecycle )
-			{
-				// Check collision.
-				engine_enemy_manager_stop( enemy );
 
-				//engine_font_manager_draw_data( frame, 11, 6 );
-			}
-			// For continuity we want to check if actor can move immediately after stopping.
-			if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
-			{
-				if( eo->mover )
-				{
-					//engine_font_manager_draw_text( "DIRECTION!!", 10, 12 );
-					//enemy_direction = engine_enemy_manager_find_direction( enemy, go->tileX, go->tileY, go->direction );
-					//if( frame < 288 )
-					if( 0 == frame_spot )
-					{
-						enemy_direction = engine_enemy_manager_scatter_direction( enemy );
-					}
-					else if (1 == frame_spot )
-					{
-						//enemy_direction = engine_enemy_manager_gohome_direction( enemy );
-						enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
-					}
-
-					if( direction_type_none != enemy_direction )
-					{
-						engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
-					}
-				}
-			}
 		}
 	}
 

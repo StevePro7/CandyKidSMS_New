@@ -132,9 +132,12 @@ void engine_enemy_manager_load()
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		eo = &global_enemy_objects[ enemy ];
-		eo->scatter[ 0 ] = enemy; eo->scatter[ 1 ] = enemy; eo->scatter[ 2 ] = enemy; eo->scatter[ 3 ] = enemy;
-		check = enemy;
+		if( !eo->mover )
+		{
+			continue;
+		}
 
+		check = enemy;
 		for( index = 0; index < NUM_DIRECTIONS; index++ )
 		{
 			while( 1 )
@@ -532,6 +535,7 @@ unsigned char engine_enemy_manager_what_direction( unsigned char enemy, unsigned
 	//	list = rand() % NUM_DIRECTIONS;	// 0 or 1
 	//	//half = 1 - half;
 	//}
+	// IMPORTANT - this will never trigger		//flip = rand() % 0
 	//flip = rand() % 2;	// 0 or 1
 	//if( 0 == flip )
 	//{
