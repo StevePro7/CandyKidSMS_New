@@ -22,6 +22,7 @@ unsigned char cont_walking_cmds1[] = { direction_type_upxx, direction_type_rght,
 unsigned char cont_walking_cmds2[] = { direction_type_upxx, direction_type_upxx, direction_type_upxx };
 unsigned char cont_walking_cmds3[] = { direction_type_rght, direction_type_rght, direction_type_rght };
 unsigned char cont_walking_cmds4[] = { direction_type_down, direction_type_rght, direction_type_rght };
+unsigned char cont_walking_cmds5[] = { direction_type_none, direction_type_none, direction_type_none };
 //unsigned char cont_walking_move[] = { 7, 7, 7, 7 };
 unsigned char cont_walking_move[] = { 1, 1, 1 };
 
@@ -64,7 +65,8 @@ void screen_cont_screen_load()
 
 void screen_cont_screen_update( unsigned char *screen_type )
 {
-	unsigned char *cont_walking_cmds = cont_walking_cmds4;
+	unsigned char *cont_walking_cmds = cont_walking_cmds5;
+
 
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
