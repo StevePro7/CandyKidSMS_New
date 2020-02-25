@@ -228,7 +228,7 @@ static unsigned char process_collision( unsigned char tile_type )
 	{
 		engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + ( go->tileX - 1 ) * 2, ( go->tileY - 1 ) * 2 );
 		//engine_tile_manager_main_trees( 0, SCREEN_TILE_LEFT + (x - 1) * 2, ( y - 1 ) * 2 );
-
+		// TODO sound effect...
 		engine_score_manager_update_bonus( tile_type );
 	}
 	return gamer_collision;
