@@ -61,6 +61,10 @@ void engine_hack_manager_invert()
 	state_object_exits_type = 0;
 	state_object_invincibie = 1;
 	state_object_difficulty = 1;
+
+	state_object_enemy_move[ actor_type_pro ] = 0;
+	state_object_enemy_move[ actor_type_adi ] = 0;
+	state_object_enemy_move[ actor_type_suz ] = 0;
 	// TODO delete this hard coded
 
 	// Trees.
