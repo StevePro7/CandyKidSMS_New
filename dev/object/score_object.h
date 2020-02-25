@@ -13,7 +13,6 @@ typedef struct tag_struct_score_object
 	//unsigned char boost;
 	unsigned char delay;		// Boost delay
 	unsigned char timer;		// Boost timer
-	unsigned char multi;
 
 } struct_score_object;
 

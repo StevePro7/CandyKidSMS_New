@@ -62,7 +62,7 @@ void engine_score_manager_update_bonus( unsigned char index )
 
 	// The bonus tile enum is 3x values off.
 	unsigned char bonus = bonuses[ index - 3 ];
-	bonus *= so->multi;
+	bonus *= level_object_multiplier;
 	so->bonus++;
 	so->total++;
 	update_score( bonus );
@@ -157,15 +157,12 @@ void engine_score_manager_draw_text()
 void engine_score_manager_update_level()
 {
 	struct_score_object *so = &global_score_object;
-	unsigned char level;
 
 	//unsigned char level = calc_level();
 	// Weird = not sure why giving garbage value when call calc_level()??
 	//so->level = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
 	so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
 
-	level = so->values[ score_type_level ] - 1;
-	so->multi = ( level >= MULTIPLIER_LEVEL ) + 1;
 	//so->level = level;
 	//so->level = calc_level();
 
@@ -206,7 +203,6 @@ static void reset()
 	so->values[ score_type_boost ] = MAX_BOOSTERX;
 	so->delay = 1 - state_object_difficulty;
 	so->timer = 0;
-	so->multi = 1;
 }
 
 static void update_score( unsigned char points )
