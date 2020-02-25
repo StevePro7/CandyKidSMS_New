@@ -44,7 +44,7 @@ void engine_gamer_manager_init()
 	go->timer = 0;
 	go->delta = 0;
 	go->total = 0;
-	go->speed = 1;
+	go->speed = 2;
 	// Speed:	1, 2, 4, 8
 
 	go->prev_move = direction_type_none;

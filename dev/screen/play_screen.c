@@ -11,7 +11,6 @@
 #include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
 #include "..\engine\move_manager.h"
-//#include "..\engine\storage_manager.h"
 #include "..\engine\score_manager.h"
 #include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"

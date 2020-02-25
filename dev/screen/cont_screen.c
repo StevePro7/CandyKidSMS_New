@@ -21,7 +21,7 @@ static unsigned char first_time;
 unsigned char cont_walking_cmds1[] = { direction_type_upxx, direction_type_rght, direction_type_upxx };
 unsigned char cont_walking_cmds2[] = { direction_type_upxx, direction_type_upxx, direction_type_upxx };
 unsigned char cont_walking_cmds3[] = { direction_type_rght, direction_type_rght, direction_type_rght };
-unsigned char cont_walking_cmds4[] = { direction_type_upxx, direction_type_left, direction_type_none };
+unsigned char cont_walking_cmds4[] = { direction_type_down, direction_type_rght, direction_type_rght };
 //unsigned char cont_walking_move[] = { 7, 7, 7, 7 };
 unsigned char cont_walking_move[] = { 1, 1, 1 };
 
