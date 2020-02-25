@@ -14,7 +14,7 @@
 
 void screen_over_screen_load()
 {
-	engine_font_manager_draw_text( LOCALE_SELECT_DIFF, 4, 10 );
+	//engine_font_manager_draw_text( LOCALE_SELECT_DIFF, 4, 10 );
 
 	engine_enemy_manager_init();
 	engine_gamer_manager_init();

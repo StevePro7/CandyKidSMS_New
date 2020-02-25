@@ -77,7 +77,9 @@ void engine_tile_manager_draw_tile( unsigned char tile, unsigned char multiplier
 	unsigned char lower_nibble;
 	unsigned char tile_type;
 
-	engine_tile_manager_draw_blank( x, y );
+	// TODO delete - was using for level select screen...
+	//engine_tile_manager_draw_blank( x, y );
+	// TODO delete
 
 	engine_function_manager_convertByteToNibbles( tile, &upper_nibble, &lower_nibble );
 	tile_type = lower_nibble & TILE_TYPE_MASK;

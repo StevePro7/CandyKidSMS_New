@@ -11,6 +11,7 @@
 #include "..\engine\level_manager.h"
 #include "..\engine\move_manager.h"
 #include "..\engine\score_manager.h"
+#include "..\engine\tile_manager.h"
 
 static unsigned char command_index;
 static unsigned char command_count;
@@ -19,10 +20,10 @@ static unsigned char walking_count;
 static unsigned char first_time;
 
 unsigned char cont_walking_cmds1[] = { direction_type_upxx, direction_type_rght, direction_type_upxx };
-unsigned char cont_walking_cmds2[] = { direction_type_upxx, direction_type_upxx, direction_type_upxx };
+unsigned char cont_walking_cmds2[] = { direction_type_down, direction_type_left, direction_type_none };
 unsigned char cont_walking_cmds3[] = { direction_type_rght, direction_type_rght, direction_type_rght };
 unsigned char cont_walking_cmds4[] = { direction_type_down, direction_type_rght, direction_type_rght };
-unsigned char cont_walking_cmds5[] = { direction_type_none, direction_type_none, direction_type_none };
+unsigned char cont_walking_cmds5[] = { direction_type_left, direction_type_down, direction_type_none };
 //unsigned char cont_walking_move[] = { 7, 7, 7, 7 };
 unsigned char cont_walking_move[] = { 1, 1, 1 };
 
@@ -45,6 +46,7 @@ void screen_cont_screen_load()
 	engine_score_manager_load();
 	engine_score_manager_draw_text();
 	engine_score_manager_draw_all();
+	//engine_score_manager_update_level();
 
 	engine_board_manager_draw_full();
 	engine_board_manager_draw_exit();
@@ -165,6 +167,12 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	engine_command_manager_execute( frame );
 	first_time = 0;
 
+	// Check candy collision before sprite collision as we want to test if all candy eaten = level complete
+	if( coll_type_candy == gamer_collision )
+	{
+		engine_font_manager_draw_text( "CANDY", 10, 10 );
+	}
+
 	if( actor_type_kid != state_object_actor_kill )
 	{
 		*screen_type = screen_type_dead;
@@ -179,9 +187,22 @@ static unsigned char process_collision( unsigned char tile_type )
 {
 	struct_gamer_object *go = &global_gamer_object;
 	unsigned char gamer_collision = coll_type_empty;
-
+	//unsigned char x, y;
 	// Check gamer collision with candy.
-	
+	if( tile_type_candy == tile_type )
+	{
+		//x = go->tileX;
+		//y = go->tileY;
+
+		//engine_tile_manager_draw_blank( go->tileX, go->tileY );
+		engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + ( go->tileX - 1 ) * 2, ( go->tileY - 1 ) * 2 );
+		//engine_tile_manager_main_trees( 0, SCREEN_TILE_LEFT + (x - 1) * 2, ( y - 1 ) * 2 );
+
+		engine_score_manager_update_candy();
+		// TODO sound effect...
+		gamer_collision = coll_type_candy;
+	}
+
 	// Check gamer collision with bonus.
 
 	// Check gamer collision with trees.

@@ -9,7 +9,7 @@ extern struct_score_object global_score_object;
 void engine_score_manager_init();
 void engine_score_manager_load();
 
-unsigned char engine_score_manager_get_total();
+unsigned char engine_score_manager_get_candy();
 
 void engine_score_manager_update_bonus( unsigned char bonus );
 void engine_score_manager_update_candy();

@@ -44,7 +44,7 @@ void engine_gamer_manager_init()
 	go->timer = 0;
 	go->delta = 0;
 	go->total = 0;
-	go->speed = 2;
+	go->speed = 1;
 	// Speed:	1, 2, 4, 8
 
 	go->prev_move = direction_type_none;
@@ -188,8 +188,8 @@ void engine_gamer_manager_stop()
 	calcd_frame();
 
 	// TODO delete
-	//engine_font_manager_draw_data( go->tileX, 13, 6 );
-	//engine_font_manager_draw_data( go->tileY, 13, 7 );
+	engine_font_manager_draw_data( go->tileX, 13, 6 );
+	engine_font_manager_draw_data( go->tileY, 13, 7 );
 	// TODO delete
 
 	// Check if in exit then move in previous direction [and wrap game board as necessary].

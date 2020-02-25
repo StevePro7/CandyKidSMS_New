@@ -11,7 +11,7 @@
 #include <stdlib.h>
 
 //// TODO calculate based on levels
-#define MULTIPLIER_LEVEL	70
+//#define MULTIPLIER_LEVEL	70
 
 #define CRLF	2				// char
 #define CR		'\r'			// 0x0d

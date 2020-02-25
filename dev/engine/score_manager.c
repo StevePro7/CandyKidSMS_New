@@ -50,10 +50,10 @@ void engine_score_manager_load()
 	reset();
 }
 
-unsigned char engine_score_manager_get_total()
+unsigned char engine_score_manager_get_candy()
 {
 	struct_score_object *so = &global_score_object;
-	return so->total;
+	return so->candy;
 }
 
 void engine_score_manager_update_bonus( unsigned char index )
@@ -152,20 +152,28 @@ void engine_score_manager_draw_text()
 	//engine_font_manager_draw_text( LOCALE_ROUND_TEXT, TEXT_X, ROUNT_Y + 0 );
 }
 
-// TODO delete this - used for debugging!
+// Call this function on ro load level.
 void engine_score_manager_update_level()
 {
 	struct_score_object *so = &global_score_object;
+	unsigned char level;
+
 	//unsigned char level = calc_level();
 	// Weird = not sure why giving garbage value when call calc_level()??
 	//so->level = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
 	so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
+
+	level = so->values[ score_type_level ] - 1;
+	so->multi = ( level >= MULTIPLIER_LEVEL ) + 1;
 	//so->level = level;
 	//so->level = calc_level();
 
 	draw_value( score_type_level );
+
+	// TODO delete this - used for debugging!
 	draw_value( score_type_world );
 	draw_value( score_type_round );
+	// TODO delete this - used for debugging!
 	//draw_level();
 	//draw_world();
 	//draw_round();
@@ -197,7 +205,9 @@ static void reset()
 	so->values[ score_type_boost ] = MAX_BOOSTERX;
 	so->delay = 1 - state_object_difficulty;
 	so->timer = 0;
+	so->multi = 1;
 }
+
 static void update_score( unsigned char points )
 {
 	struct_score_object *so = &global_score_object;

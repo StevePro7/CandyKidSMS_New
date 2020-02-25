@@ -13,6 +13,7 @@
 #define TOT_WORLDS				20
 #define MAX_WORLDS				10
 #define MAX_ROUNDS				10
+#define MULTIPLIER_LEVEL		70
 
 #define MAX_ROWS				10
 #define MAX_COLS				10
