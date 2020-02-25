@@ -15,6 +15,7 @@
 #include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\banks\databank.h"
+#include "..\devkit\_sms_manager.h"
 
 // IMPORTANT disable compiler warning 110
 #ifdef _CONSOLE
@@ -131,7 +132,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 			//engine_font_manager_draw_text( "GOHOME", 26, 21 );
 		}
 	}
-	
+
 	// Move gamer.
 	if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
 	{
@@ -164,13 +165,15 @@ void screen_play_screen_update( unsigned char *screen_type )
 		{
 			gamer_direction = engine_gamer_manager_input_direction();
 			gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
-			
+
 			if( direction_type_none != gamer_direction )
 			{
 				engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
 			}
 		}
 	}
+
+
 
 
 	// Move enemies.
@@ -202,12 +205,12 @@ void screen_play_screen_update( unsigned char *screen_type )
 			// Check collision.
 			engine_enemy_manager_stop( enemy );
 
-			engine_font_manager_draw_data( frame, 11, 6 );
+			//engine_font_manager_draw_data( frame, 11, 6 );
 		}
 		// For continuity we want to check if actor can move immediately after stopping.
 		if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
 		{
-			engine_font_manager_draw_data( eo->action, 30, 21 );
+			//engine_font_manager_draw_data( eo->action, 30, 21 );
 			if( enemymove_type_wait == eo->action )
 			{
 				if( frame >= eo->waiter )
@@ -219,7 +222,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 			if( enemymove_type_tour == eo->action )
 			{
 				enemy_direction = engine_enemy_manager_scatter_direction( enemy );
-				eo->action = enemymove_type_kill;
+				//eo->action = enemymove_type_kill;
 			}
 			else if( enemymove_type_kill == eo->action )
 			{
@@ -244,7 +247,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 			//	enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
 			//}
 
-			
+
 
 		}
 	}
@@ -252,6 +255,15 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// Execute all commands for this frame.
 	engine_command_manager_execute( frame );
 	first_time = 0;
+
+
+	// TODO tidy up this temp sprite collision
+	gamer_collision = devkit_isCollisionDetected();
+	//engine_font_manager_draw_data( gamer_collision, 16, 12 );
+	//if( 0 != gamer_collision )
+
+	// TODO tidy up this temp sprite collision
+
 
 	if( actor_type_kid != state_object_actor_kill )
 	{

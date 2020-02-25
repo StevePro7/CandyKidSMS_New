@@ -169,6 +169,7 @@ void engine_enemy_manager_load()
 		eo->hands = 0;
 		eo->swaps = 50;			//// 50 frames
 
+		//eo->waiter = 64;		// 50 frames
 		eo->waiter = 0;		// 50 frames
 		eo->toggle = 25;
 		eo->action = enemymove_type_wait;
