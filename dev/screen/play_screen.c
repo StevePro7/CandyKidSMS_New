@@ -70,10 +70,10 @@ void screen_play_screen_load()
 	//engine_font_manager_draw_data( eo->scatter[ 2 ], 31, 18 );
 	//engine_font_manager_draw_data( eo->scatter[ 3 ], 31, 19 );
 
-	//engine_frame_manager_draw();
-	//engine_delay_manager_draw();
+	engine_frame_manager_draw();
+	engine_delay_manager_draw();
 
-	engine_font_manager_draw_text( "SCATTX", 26, 21 );
+	engine_font_manager_draw_text( "SCATTR", 26, 21 );
 	//engine_font_manager_draw_data( level_object_candy_count, 14, 11 );
 	//engine_audio_manager_music_play( 3 );
 	first_time = 1;
@@ -100,8 +100,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
-	//engine_frame_manager_draw();
-	//engine_delay_manager_draw();
+	engine_frame_manager_draw();
+	engine_delay_manager_draw();
 	if( !first_time )
 	{
 		proceed = engine_delay_manager_update();
@@ -203,28 +203,49 @@ void screen_play_screen_update( unsigned char *screen_type )
 			// Check collision.
 			engine_enemy_manager_stop( enemy );
 
-			//engine_font_manager_draw_data( frame, 11, 6 );
+			engine_font_manager_draw_data( frame, 11, 6 );
 		}
 		// For continuity we want to check if actor can move immediately after stopping.
 		if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
 		{
-			//engine_font_manager_draw_text( "DIRECTION!!", 10, 12 );
-			//enemy_direction = engine_enemy_manager_find_direction( enemy, go->tileX, go->tileY, go->direction );
-			//if( frame < 288 )
-			if( 0 == frame_spot )
+			engine_font_manager_draw_data( eo->action, 30, 21 );
+			if( enemymove_type_wait == eo->action )
+			{
+				if( frame >= eo->waiter )
+				{
+					eo->action = enemymove_type_tour;
+				}
+			}
+
+			if( enemymove_type_tour == eo->action )
 			{
 				enemy_direction = engine_enemy_manager_scatter_direction( enemy );
+				eo->action = enemymove_type_kill;
 			}
-			else if( 1 == frame_spot )
+			else if( enemymove_type_kill == eo->action )
 			{
-				//enemy_direction = engine_enemy_manager_gohome_direction( enemy );
 				enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
+				//eo->action = enemymove_type_home;
 			}
 
 			if( direction_type_none != enemy_direction )
 			{
 				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
 			}
+
+			//enemy_direction = engine_enemy_manager_find_direction( enemy, go->tileX, go->tileY, go->direction );
+			//if( frame < 288 )
+			//if( 0 == frame_spot )
+			//{
+			//	enemy_direction = engine_enemy_manager_scatter_direction( enemy );
+			//}
+			//else if( 1 == frame_spot )
+			//{
+			//	//enemy_direction = engine_enemy_manager_gohome_direction( enemy );
+			//	enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
+			//}
+
+			
 
 		}
 	}

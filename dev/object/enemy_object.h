@@ -13,7 +13,10 @@ typedef struct tag_struct_enemy_object
 	//unsigned char homeZ;		// Home tile stored as R x C.
 	unsigned char tileX;		// Posn tileX on enemy stops. 
 	unsigned char tileY;		// Posn tileY on enemy stops.
-	unsigned char tileZ;		// Posn tileY on enemy stops.
+	unsigned char tileZ;		// Posn tile stored as R x C.
+	unsigned char waiter;
+	unsigned char toggle;
+	unsigned char action;
 	unsigned char scatter[ NUM_DIRECTIONS ];
 	unsigned char paths;
 	unsigned char delay;

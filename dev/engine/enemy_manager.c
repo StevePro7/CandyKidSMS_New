@@ -48,6 +48,7 @@ void engine_enemy_manager_init()
 		//engine_board_manager_calc_tileSpot( eo->homeX, eo->homeY, &eo->homeZ );
 		eo->tileX = board_object_homeX[ enemy ];
 		eo->tileY = board_object_homeY[ enemy ];
+		eo->action = enemymove_type_wait;
 		eo->paths = 0;
 		eo->delay = 1;		// TODO hardcoded - inject!
 		eo->timer = 0;
@@ -166,7 +167,11 @@ void engine_enemy_manager_load()
 
 		// TODO look up frame swaps from array in data bank that gets faster as the levels progress...!
 		eo->hands = 0;
-		eo->swaps = 50;
+		eo->swaps = 50;			//// 50 frames
+
+		eo->waiter = 0;		// 50 frames
+		eo->toggle = 25;
+		eo->action = enemymove_type_wait;
 	}
 
 
