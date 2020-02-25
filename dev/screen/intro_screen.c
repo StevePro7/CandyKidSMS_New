@@ -14,6 +14,7 @@
 #include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\banks\databank.h"
+#include "..\devkit\_sms_manager.h"
 
 // IMPORTANT disable compiler warning 110
 #ifdef _CONSOLE
@@ -27,16 +28,17 @@ static unsigned char first_time;
 
 void screen_intro_screen_load()
 {
+	struct_gamer_object *go = &global_gamer_object;
 	engine_command_manager_init();
 	engine_delay_manager_load( 0 );
 
 	engine_board_manager_init();
 	engine_gamer_manager_init();
 	engine_enemy_manager_init();
-	//engine_enemy_manager_load();
-	//get_actor_data( actor_mover, actor_tileZ );
 
-	engine_font_manager_draw_text( "INTRO SCREEN...!!", 2, 10 );
+	engine_font_manager_draw_text( "INTRO SCREEN...!!", 4, 0 );
+
+	go->posnX = 136;
 	first_time = 1;
 }
 
@@ -44,30 +46,30 @@ void screen_intro_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
+	struct_enemy_object *eo;
 	//struct_enemy_object *eo;
 	unsigned char gamer_direction = direction_type_none;
-	//unsigned char enemy_direction = direction_type_none;
-	//unsigned char gamer_collision = coll_type_empty;
-	//unsigned char gamer_tile_type = tile_type_blank;
+	unsigned char gamer_collision = coll_type_empty;
 
 	unsigned char proceed;
-	//unsigned char enemy;
-	//unsigned char input;
 	unsigned int frame = fo->frame_count;
-	//state_object_actor_kill = actor_type_kid;
+
+	unsigned char sx, sy;
+	unsigned char dx, dy;
+	unsigned char cx, cy;
 
 	// Draw sprites first.
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
-	engine_frame_manager_draw();
-	engine_delay_manager_draw();
+	//engine_frame_manager_draw();
+	//engine_delay_manager_draw();
 	if( !first_time )
 	{
 		proceed = engine_delay_manager_update();
 		if( !proceed )
 		{
-			*screen_type = screen_type_play;
+			*screen_type = screen_type_intro;
 			return;
 		}
 
@@ -79,49 +81,65 @@ void screen_intro_screen_update( unsigned char *screen_type )
 	frame = fo->frame_count;
 
 	// Move gamer.
-	if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
+	gamer_direction = engine_gamer_manager_input_direction2();
+	gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
+
+	if( direction_type_upxx == gamer_direction )
 	{
-		//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
-		engine_gamer_manager_update();
+		go->posnY--;
 	}
-	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
+	if( direction_type_down == gamer_direction )
 	{
-		// Check gamer collision.
-		//engine_font_manager_draw_data( frame, 11, 16 );
-
-		//gamer_tile_type = engine_level_manager_get_tile_type( go->tileX, go->tileY, go->direction, offset_type_none );
-		//if( tile_type_blank != gamer_tile_type )
-		//{
-		//	// Collide with [death] tree, candy, bonus or one up therefore process tile accordingly...
-		//	gamer_collision = process_collision( gamer_tile_type );
-		//	if( coll_type_block == gamer_collision )
-		//	{
-		//		engine_gamer_manager_dead();
-		//		state_object_actor_kill = actor_type_tree;
-		//	}
-		//}
-
-		engine_gamer_manager_stop();
+		go->posnY++;
 	}
-	// For continuity we want to check if actor can move immediately after stopping.
-	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
+	if( direction_type_left == gamer_direction )
 	{
-		//if( coll_type_empty == gamer_collision )
-		//{
-			gamer_direction = engine_gamer_manager_input_direction();
-			gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
-
-			if( direction_type_none != gamer_direction )
-			{
-				engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
-			}
-		//}
+		go->posnX--;
+	}
+	if( direction_type_rght == gamer_direction )
+	{
+		go->posnX++;
 	}
 
-	// Execute all commands for this frame.
-	engine_command_manager_execute( frame );
+	engine_font_manager_draw_text( "       ", 10, 10 );
+	gamer_collision = devkit_isCollisionDetected();
+	if( coll_type_empty != gamer_collision )
+	{
+		engine_font_manager_draw_text( "COLLIDE", 10, 10 );
+	}
+
+	eo = &global_enemy_objects[ actor_type_suz ];
+	sx = go->posnX;
+	sy = go->posnY;
+	dx = eo->posnX;
+	dy = eo->posnY;
+
+	if( dx > sx )
+	{
+		cx = dx - sx;
+	}
+	else
+	{
+		cx = sx - dx;
+	}
+
+	if( dy > sy )
+	{
+		cy = dy - sy;
+	}
+	else
+	{
+		cy = sy - dy;
+	}
+
+	engine_font_manager_draw_data( cx, 30, 2 );
+	engine_font_manager_draw_data( dx, 20, 2 );
+	engine_font_manager_draw_data( sx, 10, 2 );
+
+	engine_font_manager_draw_data( cy, 30, 3 );
+	engine_font_manager_draw_data( dy, 20, 3 );
+	engine_font_manager_draw_data( sy, 10, 3 );
+
 	first_time = 0;
-
-
 	*screen_type = screen_type_intro;
 }
