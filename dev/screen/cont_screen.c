@@ -19,7 +19,7 @@ static unsigned char walking_delta;
 static unsigned char walking_count;
 static unsigned char first_time;
 
-unsigned char cont_walking_cmds1[] = { direction_type_upxx, direction_type_rght, direction_type_none };
+unsigned char cont_walking_cmds1[] = { direction_type_upxx, direction_type_rght, direction_type_rght };
 unsigned char cont_walking_cmds2[] = { direction_type_down, direction_type_left, direction_type_none };
 unsigned char cont_walking_cmds3[] = { direction_type_rght, direction_type_rght, direction_type_rght };
 unsigned char cont_walking_cmds4[] = { direction_type_down, direction_type_rght, direction_type_rght };
@@ -170,7 +170,13 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	// Check candy collision before sprite collision as we want to test if all candy eaten = level complete
 	if( coll_type_candy == gamer_collision )
 	{
-		engine_font_manager_draw_text( "CANDY", 10, 10 );
+		// TODO update correct screen.
+		unsigned char candy_count = engine_score_manager_get_candy();
+		if( level_object_candy_count == candy_count )
+		{
+			*screen_type = screen_type_over;
+			return;
+		}
 	}
 
 	if( actor_type_kid != state_object_actor_kill )
