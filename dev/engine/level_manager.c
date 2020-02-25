@@ -399,7 +399,7 @@ static void draw_tiles( unsigned char x, unsigned char y )
 
 	index = ( y + 2 ) * MAZE_COLS + ( x + 2 );
 	tile = level_object_tiles_array[ index ];
-	engine_tile_manager_draw_tile( tile, level_object_multiplier, SCREEN_TILE_LEFT + ( x + 1 ) * 2, ( y + 1 ) * 2 );
+	engine_tile_manager_draw_tile( tile, SCREEN_TILE_LEFT + ( x + 1 ) * 2, ( y + 1 ) * 2 );
 }
 
 static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction )

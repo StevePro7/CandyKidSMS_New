@@ -49,15 +49,15 @@ static void draw_items()
 	engine_tile_manager_draw_trees( tree_type_avoid, 4, 4 );
 	engine_tile_manager_draw_trees( tree_type_death, 6, 4 );
 
-	engine_tile_manager_draw_bonus( tile_type_bonusA, 1, 10, 6 );
-	engine_tile_manager_draw_bonus( tile_type_bonusB, 1, 14, 6 );
-	engine_tile_manager_draw_bonus( tile_type_bonusC, 1, 18, 6 );
-	engine_tile_manager_draw_bonus( tile_type_bonusD, 1, 22, 6 );
+	engine_tile_manager_draw_bonus( tile_type_bonusA, 10, 6 );
+	engine_tile_manager_draw_bonus( tile_type_bonusB, 14, 6 );
+	engine_tile_manager_draw_bonus( tile_type_bonusC, 18, 6 );
+	engine_tile_manager_draw_bonus( tile_type_bonusD, 22, 6 );
 
-	engine_tile_manager_draw_bonus( tile_type_bonusA, 2, 10, 8 );
-	engine_tile_manager_draw_bonus( tile_type_bonusB, 2, 14, 8 );
-	engine_tile_manager_draw_bonus( tile_type_bonusC, 2, 18, 8 );
-	engine_tile_manager_draw_bonus( tile_type_bonusD, 2, 22, 8 );
+	engine_tile_manager_draw_bonus( tile_type_bonusA, 10, 8 );
+	engine_tile_manager_draw_bonus( tile_type_bonusB, 14, 8 );
+	engine_tile_manager_draw_bonus( tile_type_bonusC, 18, 8 );
+	engine_tile_manager_draw_bonus( tile_type_bonusD, 22, 8 );
 
 	engine_tile_manager_draw_oneup( 16, 16 );
 	engine_tile_manager_draw_cross( 0, 18, 16 );
