@@ -140,21 +140,21 @@ void engine_score_manager_draw_all()
 
 void engine_score_manager_draw_text()
 {
-	//unsigned char *text;
-	//unsigned char index;
-	//for( index = 0; index < 7; index++ )
-	//{
-	//	devkit_SMS_mapROMBank( FIXED_BANK );
-	//	text = ( unsigned char * )score_object_titles[ index ];
-	//	engine_font_manager_draw_text( text, TEXT_X, title_Y[ index ] );
-	//}
-	engine_font_manager_draw_text( LOCALE_TITLE1_TEXT, TEXT_X, TITLE_Y + 0 );
-	engine_font_manager_draw_text( LOCALE_TITLE2_TEXT, TEXT_X, TITLE_Y + 1 );
-	engine_font_manager_draw_text( LOCALE_HIGHS_TEXT, TEXT_X, HIGHS_Y + 0 );
-	engine_font_manager_draw_text( LOCALE_SCORE_TEXT, TEXT_X, SCORE_Y + 0 );
-	engine_font_manager_draw_text( LOCALE_LIVES_TEXT, TEXT_X, LIVES_Y + 0 );
-	engine_font_manager_draw_text( LOCALE_LEVEL_TEXT, TEXT_X, LEVEL_Y + 0 );
-	engine_font_manager_draw_text( LOCALE_BOOST_TEXT, TEXT_X, BOOST_Y + 0 );
+	unsigned char *text;
+	unsigned char index;
+	devkit_SMS_mapROMBank( FIXED_BANK );
+	for( index = 0; index < 7; index++ )
+	{
+		text = ( unsigned char * ) score_object_titles[ index ];
+		engine_font_manager_draw_text( text, TEXT_X, title_Y[ index ] );
+	}
+	//engine_font_manager_draw_text( LOCALE_TITLE1_TEXT, TEXT_X, TITLE_Y + 0 );
+	//engine_font_manager_draw_text( LOCALE_TITLE2_TEXT, TEXT_X, TITLE_Y + 1 );
+	//engine_font_manager_draw_text( LOCALE_HIGHS_TEXT, TEXT_X, HIGHS_Y + 0 );
+	//engine_font_manager_draw_text( LOCALE_SCORE_TEXT, TEXT_X, SCORE_Y + 0 );
+	//engine_font_manager_draw_text( LOCALE_LIVES_TEXT, TEXT_X, LIVES_Y + 0 );
+	//engine_font_manager_draw_text( LOCALE_LEVEL_TEXT, TEXT_X, LEVEL_Y + 0 );
+	//engine_font_manager_draw_text( LOCALE_BOOST_TEXT, TEXT_X, BOOST_Y + 0 );
 
 	//engine_font_manager_draw_text( LOCALE_PLAY1_TEXT, TEXT_X, TEXTS_Y + 0 );
 	//engine_font_manager_draw_text( LOCALE_MODES_TEXT, TEXT_X, TEXTS_Y + 1 );
