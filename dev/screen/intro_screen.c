@@ -58,6 +58,8 @@ void screen_intro_screen_update( unsigned char *screen_type )
 	unsigned char dx, dy;
 	unsigned char cx, cy;
 
+	int res;
+
 	// Draw sprites first.
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
@@ -101,12 +103,8 @@ void screen_intro_screen_update( unsigned char *screen_type )
 		go->posnX++;
 	}
 
+	res = 0;
 	engine_font_manager_draw_text( "       ", 10, 10 );
-	gamer_collision = devkit_isCollisionDetected();
-	if( coll_type_empty != gamer_collision )
-	{
-		engine_font_manager_draw_text( "COLLIDE", 10, 10 );
-	}
 
 	eo = &global_enemy_objects[ actor_type_suz ];
 	sx = go->posnX;
@@ -132,14 +130,22 @@ void screen_intro_screen_update( unsigned char *screen_type )
 		cy = sy - dy;
 	}
 
+	gamer_collision = devkit_isCollisionDetected();
+	if( coll_type_empty != gamer_collision )
+	{
+		res = cx * cx + cy * cy;
+		engine_font_manager_draw_text( "COLLIDE", 10, 10 );
+	}
+
 	engine_font_manager_draw_data( cx, 30, 2 );
-	engine_font_manager_draw_data( dx, 20, 2 );
-	engine_font_manager_draw_data( sx, 10, 2 );
+	//engine_font_manager_draw_data( dx, 20, 2 );
+	//engine_font_manager_draw_data( sx, 10, 2 );
 
 	engine_font_manager_draw_data( cy, 30, 3 );
-	engine_font_manager_draw_data( dy, 20, 3 );
-	engine_font_manager_draw_data( sy, 10, 3 );
+	//engine_font_manager_draw_data( dy, 20, 3 );
+	//engine_font_manager_draw_data( sy, 10, 3 );
 
+	engine_font_manager_draw_data( res, 30, 12 );
 	first_time = 0;
 	*screen_type = screen_type_intro;
 }

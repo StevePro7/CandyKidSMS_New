@@ -1,5 +1,5 @@
 XL2
-H A areas E2 global symbols
+H A areas E3 global symbols
 M fixedbank
 O -mz80
 S _level2008_txt Ref0000
@@ -215,7 +215,8 @@ S _level0207_txt Ref0000
 S _level0108_txt Ref0000
 A _CODE size 0 flags 0 addr 0
 A _DATA size 0 flags 0 addr 0
-A _INITIALIZED size 1A4 flags 0 addr 0
+A _INITIALIZED size 1B2 flags 0 addr 0
+S _score_object_titles Def01A4
 S _level_object_AAdata Def0014
 S _level_object_BBdata Def00DC
 S _music_object_data Def0000
@@ -224,7 +225,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _BANK15 size 1DE flags 0 addr 0
+A _BANK15 size 208 flags 0 addr 0
 S _level_object_AAbank Def00B2
 S _level_object_BBbank Def017A
 S _music_object_bank Def0044
@@ -236,7 +237,7 @@ S _level_object_AAsize Def004E
 S _level_object_BBsize Def0116
 S _board_object_posnX Def0000
 S _board_object_posnY Def000E
-A _INITIALIZER size 1A4 flags 0 addr 0
+A _INITIALIZER size 1B2 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
 R 00 00 02 00
@@ -253,6 +254,10 @@ R 00 00 02 00
 T DC 00
 R 00 00 02 00
 T DC 00
+R 00 00 02 00
+T A4 01
+R 00 00 02 00
+T A4 01
 R 00 00 02 00
 T 00 00
 R 00 00 07 00
@@ -357,6 +362,34 @@ R 00 00 07 00
 T CE 01 05 05 05 05 05 05 05 05 05 05 05 05 05 05
 R 00 00 07 00
 T DC 01 05 05
+R 00 00 07 00
+T DE 01
+R 00 00 07 00
+T DE 01 43 41 4E 44 59 00
+R 00 00 07 00
+T E4 01
+R 00 00 07 00
+T E4 01 20 4B 49 44 20 00
+R 00 00 07 00
+T EA 01
+R 00 00 07 00
+T EA 01 20 48 49 47 48 00
+R 00 00 07 00
+T F0 01
+R 00 00 07 00
+T F0 01 53 43 4F 52 45 00
+R 00 00 07 00
+T F6 01
+R 00 00 07 00
+T F6 01 4C 49 56 45 53 00
+R 00 00 07 00
+T FC 01
+R 00 00 07 00
+T FC 01 4C 45 56 45 4C 00
+R 00 00 07 00
+T 02 02
+R 00 00 07 00
+T 02 02 42 4F 4F 53 54 00
 R 00 00 07 00
 T 00 00
 R 00 00 08 00
@@ -510,3 +543,11 @@ T 9C 01 00 00 00 00 00 00
 R 00 00 08 00 02 02 C0 00 02 04 00 00 02 06 16 00
 T A2 01 00 00
 R 00 00 08 00 02 02 76 00
+T A4 01
+R 00 00 08 00
+T A4 01 DE 01 E4 01 EA 01
+R 00 00 08 00 00 02 07 00 00 04 07 00 00 06 07 00
+T AA 01 F0 01 F6 01 FC 01
+R 00 00 08 00 00 02 07 00 00 04 07 00 00 06 07 00
+T B0 01 02 02
+R 00 00 08 00 00 02 07 00

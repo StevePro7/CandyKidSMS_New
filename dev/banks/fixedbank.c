@@ -4,6 +4,7 @@
 #include "bank6.h"
 #include "bank7.h"
 #include "..\engine\enum_manager.h"
+#include "..\engine\locale_manager.h"
 
 
 // Board Manager.
@@ -700,4 +701,17 @@ extern const unsigned char level_object_BBbank[] =
 	level2008_txt_bank,
 	level2009_txt_bank,
 	level2010_txt_bank,
+};
+
+
+// Score Manager.
+extern const char *score_object_titles[] =
+{
+	LOCALE_TITLE1_TEXT,
+	LOCALE_TITLE2_TEXT,
+	LOCALE_HIGHS_TEXT,
+	LOCALE_SCORE_TEXT,
+	LOCALE_LIVES_TEXT,
+	LOCALE_LEVEL_TEXT,
+	LOCALE_BOOST_TEXT,
 };

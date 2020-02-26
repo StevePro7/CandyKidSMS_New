@@ -4,8 +4,8 @@
 #include "global_manager.h"
 #include "locale_manager.h"
 #include "..\banks\databank.h"
-//#include "..\banks\fixedbank.h"
-//#include "..\devkit\_sms_manager.h"
+#include "..\banks\fixedbank.h"
+#include "..\devkit\_sms_manager.h"
 
 #define TEXT_X		SCREEN_TILE_LEFT + 25
 #define DATA_X		SCREEN_TILE_LEFT + 28
@@ -24,6 +24,7 @@
 struct_score_object global_score_object;
 
 static unsigned char y[] = { LIVES_Y + 1, LEVEL_Y + 1, BOOST_Y + 1, 22, 23 };
+static unsigned char title_Y[] = { TITLE_Y, TITLE_Y + 1, HIGHS_Y, SCORE_Y, LIVES_Y, LEVEL_Y, BOOST_Y, };
 static unsigned char bonuses[] = { 10, 20, 40, 80 };
 static void reset();
 static void update_score( unsigned char points );
@@ -139,6 +140,14 @@ void engine_score_manager_draw_all()
 
 void engine_score_manager_draw_text()
 {
+	//unsigned char *text;
+	//unsigned char index;
+	//for( index = 0; index < 7; index++ )
+	//{
+	//	devkit_SMS_mapROMBank( FIXED_BANK );
+	//	text = ( unsigned char * )score_object_titles[ index ];
+	//	engine_font_manager_draw_text( text, TEXT_X, title_Y[ index ] );
+	//}
 	engine_font_manager_draw_text( LOCALE_TITLE1_TEXT, TEXT_X, TITLE_Y + 0 );
 	engine_font_manager_draw_text( LOCALE_TITLE2_TEXT, TEXT_X, TITLE_Y + 1 );
 	engine_font_manager_draw_text( LOCALE_HIGHS_TEXT, TEXT_X, HIGHS_Y + 0 );

@@ -190,3 +190,12 @@ Easy	Slow	Mamas move slow and never toggle slow / fast
 Easy	Fast	Mamas move slow but wills toggle slow / fast
 Hard	Slow	Mamas move fast and never toggle slow / fast
 Hard	Fast	Mamas move fast but wills toggle slow / fast
+
+
+Collision test
+Intro screen
+X	14 min collision	Abs(sx - dx) >= 14 = collision
+Y	15 min collision	Abs(sy - dy) >= 15 = collision
+
+Hard					Abs(sx - dx) <= 10
+Easy					Abs(sx - dx) <= 08
