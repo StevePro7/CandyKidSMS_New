@@ -73,7 +73,7 @@ void screen_play_screen_load()
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
 
-	engine_font_manager_draw_text( "SCATTR", 26, 21 );
+	//engine_font_manager_draw_text( "SCATTR", 26, 21 );
 	//engine_font_manager_draw_data( level_object_candy_count, 14, 11 );
 	//engine_audio_manager_music_play( 3 );
 	first_time = 1;
@@ -92,7 +92,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	unsigned char proceed;
 	unsigned char enemy;
-	unsigned char input;
+	//unsigned char input;
 	unsigned int frame = fo->frame_count;
 	state_object_actor_kill = actor_type_kid;
 
@@ -118,20 +118,21 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// Continue...
 	frame = fo->frame_count;
 
-	input = engine_input_manager_hold( input_type_fire1 );
-	if( input )
-	{
-		frame_spot = 1 - frame_spot;
-		if( 0 == frame_spot )
-		{
-			engine_font_manager_draw_text( "SCATTR", 26, 21 );
-		}
-		else
-		{
-			engine_font_manager_draw_text( "ATTACK", 26, 21 );
-			//engine_font_manager_draw_text( "GOHOME", 26, 21 );
-		}
-	}
+	// TODO delete
+	//input = engine_input_manager_hold( input_type_fire1 );
+	//if( input )
+	//{
+	//	frame_spot = 1 - frame_spot;
+	//	if( 0 == frame_spot )
+	//	{
+	//		engine_font_manager_draw_text( "SCATTR", 26, 21 );
+	//	}
+	//	else
+	//	{
+	//		engine_font_manager_draw_text( "ATTACK", 26, 21 );
+	//		//engine_font_manager_draw_text( "GOHOME", 26, 21 );
+	//	}
+	//}
 
 	// Move gamer.
 	if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
@@ -205,7 +206,19 @@ void screen_play_screen_update( unsigned char *screen_type )
 			// Check collision.
 			engine_enemy_manager_stop( enemy );
 
-			//engine_font_manager_draw_data( frame, 11, 6 );
+			//engine_font_manager_draw_data( frame, 19, 6 );
+			engine_font_manager_draw_data( eo->action, 19, 7 );
+			engine_font_manager_draw_data( eo->ticker, 19, 8 );
+
+			if( 0 == eo->action )
+			{
+				engine_font_manager_draw_text( "SCATTR", 26, 21 );
+			}
+			if( 1 == eo->action )
+			{
+				engine_font_manager_draw_text( "ATTACK", 26, 21 );
+			}
+			
 		}
 		// For continuity we want to check if actor can move immediately after stopping.
 		if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
@@ -246,9 +259,6 @@ void screen_play_screen_update( unsigned char *screen_type )
 			//	//enemy_direction = engine_enemy_manager_gohome_direction( enemy );
 			//	enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
 			//}
-
-
-
 		}
 	}
 

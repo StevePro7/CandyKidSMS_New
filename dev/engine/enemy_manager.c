@@ -167,11 +167,13 @@ void engine_enemy_manager_load()
 
 		// TODO look up frame swaps from array in data bank that gets faster as the levels progress...!
 		eo->hands = 0;
-		eo->swaps = 50;			//// 50 frames
+		eo->swaps = 250;			//// 50 frames
 
 		//eo->waiter = 64;		// 50 frames
-		eo->waiter = 0;		// 50 frames
-		eo->toggle = 25;
+		eo->waiter = 80;		// 50 frames
+		eo->toggle[ 0 ] = 64;
+		eo->toggle[ 1 ] = 128;
+		eo->ticker = 0;
 		eo->action = enemymove_type_wait;
 	}
 
@@ -297,6 +299,7 @@ void engine_enemy_manager_move( unsigned char enemy, unsigned char direction )
 void engine_enemy_manager_stop( unsigned char enemy )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	unsigned char toggle;
 	//eo->prev_move[ 3 ] = eo->prev_move[ 2 ];
 	//eo->prev_move[ 2 ] = eo->prev_move[ 1 ];
 	//eo->prev_move[ 1 ] = eo->prev_move[ 0 ];
@@ -305,6 +308,15 @@ void engine_enemy_manager_stop( unsigned char enemy )
 	eo->direction = direction_type_none;
 	//eo->frame = 0;		// TODO remove as this is done in gohands()
 	calcd_frame( enemy );
+
+	// Detect to swap scatter to attack and vice versa.
+	toggle = eo->toggle[ eo->action ];
+	eo->ticker++;
+	if( eo->ticker >= toggle )
+	{
+		eo->action = 1 - eo->action;
+		eo->ticker = 0;
+	}
 
 	// Every 4x moves check if enemy moved any combination of: U, D, L, R
 	// e.g. if U + D + L + R = 15 then is caught in endless loop so change

@@ -15,7 +15,8 @@ typedef struct tag_struct_enemy_object
 	unsigned char tileY;		// Posn tileY on enemy stops.
 	unsigned char tileZ;		// Posn tile stored as R x C.
 	unsigned char waiter;
-	unsigned char toggle;
+	unsigned char toggle[ 2 ];
+	unsigned char ticker;
 	unsigned char action;
 	unsigned char scatter[ NUM_DIRECTIONS ];
 	unsigned char paths;

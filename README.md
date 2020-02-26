@@ -181,3 +181,12 @@ i.e. trying to detect if Mama is stuck in infinite loop...!
 24/02/2020
 All the background tiles adhere to the SCREEN_LEFT but the sprites do NOT
 so in theory I should update this...!!
+
+
+26/02/2020
+document differences between Easy + Hard and Slow + Fast
+there are 4x combinations:
+Easy	Slow	Mamas move slow and never toggle slow / fast
+Easy	Fast	Mamas move slow but wills toggle slow / fast
+Hard	Slow	Mamas move fast and never toggle slow / fast
+Hard	Fast	Mamas move fast but wills toggle slow / fast

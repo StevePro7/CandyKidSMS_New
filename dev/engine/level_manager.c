@@ -71,30 +71,30 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 	// Count all available home tiles: Kid, Pro, Adi, Suz
 	// Kid always moves so means that will be at least 1x.
 	tiles = 0;
-	//for( actor = 0; actor < MAX_ACTORS; actor++ )
-	//{
-	//	mover = actor_mover[ actor ];
-	//	if( mover )
-	//	{
-	//		tiles++;
-	//		continue;
-	//	}
+	for( actor = 0; actor < MAX_ACTORS; actor++ )
+	{
+		mover = actor_mover[ actor ];
+		if( mover )
+		{
+			tiles++;
+			continue;
+		}
 
-	//	// Enemy is idle this level so blank out tile
-	//	index = actor_tileZ[ actor ];
-	//	tile_type = level_object_tiles_array[ index ];
+		// Enemy is idle this level so blank out tile
+		index = actor_tileZ[ actor ];
+		tile_type = level_object_tiles_array[ index ];
 
-	//	if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
-	//	{
-	//		level_object_bonus_count--;
-	//	}
-	//	if( tile_type_candy == tile_type )
-	//	{
-	//		level_object_candy_count--;
-	//	}
+		if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
+		{
+			level_object_bonus_count--;
+		}
+		if( tile_type_candy == tile_type )
+		{
+			level_object_candy_count--;
+		}
 
-	//	level_object_tiles_array[ index ] = tile_type_blank;
-	//}
+		level_object_tiles_array[ index ] = tile_type_blank;
+	}
 
 	// Every fifth level award freeman tile.
 	if( state_object_invincibie )
@@ -103,12 +103,11 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 	}
 	if( 0 != ( round + 1 ) % 5 )
 	{
-		//return;
+		return;
 	}
 
-	//mover = rand() % tiles;
-	//index = actor_tileZ[ mover ];
-	index = 31;
+	mover = rand() % tiles;
+	index = actor_tileZ[ mover ];
 	tile_type = level_object_tiles_array[ index ];
 
 	if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
