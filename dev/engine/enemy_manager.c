@@ -345,7 +345,7 @@ unsigned char engine_enemy_manager_scatter_direction( unsigned char enemy )
 
 	// SCATTER.
 	actor = eo->scatter[ eo->paths ];
-	devkit_SMS_mapROMBank( FIXED_BANK );
+	//devkit_SMS_mapROMBank( FIXED_BANK );
 	targetX = board_object_homeX[ actor ];
 	targetY = board_object_homeY[ actor ];
 
@@ -381,7 +381,7 @@ unsigned char engine_enemy_manager_gohome_direction( unsigned char enemy )
 	}
 
 	// GO HOME.
-	devkit_SMS_mapROMBank( FIXED_BANK );
+	//devkit_SMS_mapROMBank( FIXED_BANK );
 	targetX = board_object_homeX[ enemy ];
 	targetY = board_object_homeY[ enemy ];
 
@@ -619,7 +619,7 @@ static void calcd_spots( unsigned char enemy )
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	//struct_board_object *bo = &global_board_object;
 
-	devkit_SMS_mapROMBank( FIXED_BANK );
+	//devkit_SMS_mapROMBank( FIXED_BANK );
 	eo->posnX = board_object_posnX[ eo->tileX ];
 	eo->posnY = board_object_posnY[ eo->tileY ];
 	// Calculate exact tile as 1x byte.

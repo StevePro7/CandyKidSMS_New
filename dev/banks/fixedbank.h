@@ -1,15 +1,6 @@
 // Fixed  bank.
 #define FIXED_BANK	15
 
-// Board Manager.
-extern const unsigned char board_object_posnX[];
-extern const unsigned char board_object_posnY[];
-
-extern const unsigned char board_object_homeX[];
-extern const unsigned char board_object_homeY[];
-// TODO permanently delet as don't believe necc. as will calcSpots() "Z"
-//extern const unsigned char board_object_homeZ[];
-
 
 // Enemy Manager.
 extern const unsigned char enemy_object_directions[];

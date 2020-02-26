@@ -35,7 +35,7 @@ void engine_gamer_manager_init()
 	//go->homeX = homeX;
 	//go->homeY = homeY;
 	//engine_board_manager_calc_tileSpot( go->homeX, go->homeY, &go->homeZ );
-	devkit_SMS_mapROMBank( FIXED_BANK );
+	//devkit_SMS_mapROMBank( FIXED_BANK );
 	go->tileX = board_object_homeX[ actor_type_kid ];
 	go->tileY = board_object_homeY[ actor_type_kid ];
 
@@ -368,7 +368,7 @@ static void calcd_spots()
 {
 	struct_gamer_object *go = &global_gamer_object;
 	//struct_board_object *bo = &global_board_object;
-	devkit_SMS_mapROMBank( FIXED_BANK );
+	//devkit_SMS_mapROMBank( FIXED_BANK );
 	go->posnX = board_object_posnX[ go->tileX ];
 	go->posnY = board_object_posnY[ go->tileY ];
 	// Calculate exact tile as 1x byte.

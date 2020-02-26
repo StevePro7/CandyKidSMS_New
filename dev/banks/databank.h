@@ -17,11 +17,12 @@ extern unsigned char state_object_sound_data;
 extern unsigned char state_object_actor_kill;
 extern unsigned char state_object_enemy_move[];		// TODO delete
 
-// Actor Manager.
-extern unsigned char actor_object_posnX[];
-extern unsigned char actor_object_posnY[];
-extern unsigned char actor_object_tileX[];
-extern unsigned char actor_object_tileY[];
+
+// Board Manager.
+extern const unsigned char board_object_posnX[];
+extern const unsigned char board_object_posnY[];
+extern const unsigned char board_object_homeX[];
+extern const unsigned char board_object_homeY[];
 
 // Command Manager.
 extern unsigned int command_object_frames[];

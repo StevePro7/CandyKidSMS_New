@@ -1,9 +1,13 @@
 XL2
-H 9 areas 16 global symbols
+H 9 areas 1A global symbols
 M databank
 O -mz80
 S .__.ABS. Def0000
-A _CODE size 0 flags 0 addr 0
+A _CODE size 24 flags 0 addr 0
+S _board_object_homeX Def001C
+S _board_object_homeY Def0020
+S _board_object_posnX Def0000
+S _board_object_posnY Def000E
 A _DATA size 13 flags 0 addr 0
 S _state_object_exits_type Def0008
 S _level_object_candy_count Def0011
@@ -117,6 +121,22 @@ T 03 04
 R 00 00 02 00
 T 03 04
 R 00 00 02 00
+T 00 00
+R 00 00 00 00
+T 00 00 00 10 20 30 40 50 60 70 80 90 A0 B0 C0 D0
+R 00 00 00 00
+T 0E 00
+R 00 00 00 00
+T 0E 00 F0 00 10 20 30 40 50 60 70 80 90 A0 B0 C0
+R 00 00 00 00
+T 1C 00
+R 00 00 00 00
+T 1C 00 0A 03 0A 03
+R 00 00 00 00
+T 20 00
+R 00 00 00 00
+T 20 00 0A 0A 03 03
+R 00 00 00 00
 T 00 00
 R 00 00 07 00
 T 00 00 01 01 01
