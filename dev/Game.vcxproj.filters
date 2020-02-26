@@ -43,6 +43,12 @@
     <Filter Include="Source Files\devkit">
       <UniqueIdentifier>{49fa0b36-7c64-48b2-9f10-28b87c3006ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\output">
+      <UniqueIdentifier>{200fe8d2-d42c-476c-af8e-cda57e10f787}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\output">
+      <UniqueIdentifier>{3b778f98-d842-4ff0-aaa8-fa253dabe103}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="build.bat">
@@ -257,6 +263,9 @@
     <ClInclude Include="engine\state_manager.h">
       <Filter>Header Files\engine</Filter>
     </ClInclude>
+    <ClInclude Include="gfx.h">
+      <Filter>Header Files\output</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -465,6 +474,9 @@
     </ClCompile>
     <ClCompile Include="engine\state_manager.c">
       <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="gfx.c">
+      <Filter>Source Files\output</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
