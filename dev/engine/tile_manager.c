@@ -77,14 +77,14 @@ void engine_tile_manager_draw_tile( unsigned char tile, unsigned char x, unsigne
 	unsigned char lower_nibble;
 	unsigned char tile_type;
 
-	// TODO delete - was using for level select screen...
-	engine_tile_manager_draw_blank( x, y );
-	// TODO delete
-
 	engine_function_manager_convertByteToNibbles( tile, &upper_nibble, &lower_nibble );
 	tile_type = lower_nibble & TILE_TYPE_MASK;
 
-	if( tile_type_trees == tile_type )
+	if( tile_type_blank == tile_type )
+	{
+		engine_tile_manager_draw_blank( x, y );
+	}
+	else if( tile_type_trees == tile_type )
 	{
 		engine_tile_manager_draw_trees( state_object_trees_type, x, y );
 	}
