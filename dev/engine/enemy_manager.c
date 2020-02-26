@@ -170,7 +170,8 @@ void engine_enemy_manager_load()
 		eo->swaps = 250;			//// 50 frames
 
 		//eo->waiter = 64;		// 50 frames
-		eo->waiter = 80;		// 50 frames
+		//eo->waiter = 80;		// 50 frames
+		eo->waiter = 10;		// 50 frames
 		eo->toggle[ 0 ] = 64;
 		eo->toggle[ 1 ] = 128;
 		eo->ticker = 0;
@@ -564,7 +565,7 @@ unsigned char engine_enemy_manager_what_direction( unsigned char enemy, unsigned
 	index = list * 2 * NUM_DIRECTIONS + half * NUM_DIRECTIONS;
 
 	// TODO fixed bank - change to data bank!!
-	devkit_SMS_mapROMBank( FIXED_BANK );
+	//devkit_SMS_mapROMBank( FIXED_BANK );
 	directions[ 0 ] = enemy_object_directions[ index + 0 ];
 	directions[ 1 ] = enemy_object_directions[ index + 1 ];
 	directions[ 2 ] = enemy_object_directions[ index + 2 ];

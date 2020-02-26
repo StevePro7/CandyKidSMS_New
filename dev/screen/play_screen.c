@@ -100,8 +100,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
-	engine_frame_manager_draw();
-	engine_delay_manager_draw();
+	//engine_frame_manager_draw();
+	//engine_delay_manager_draw();
 	if( !first_time )
 	{
 		proceed = engine_delay_manager_update();
@@ -207,17 +207,17 @@ void screen_play_screen_update( unsigned char *screen_type )
 			engine_enemy_manager_stop( enemy );
 
 			//engine_font_manager_draw_data( frame, 19, 6 );
-			engine_font_manager_draw_data( eo->action, 19, 7 );
-			engine_font_manager_draw_data( eo->ticker, 19, 8 );
+			//engine_font_manager_draw_data( eo->action, 19, 7 );
+			//engine_font_manager_draw_data( eo->ticker, 19, 8 );
 
-			if( 0 == eo->action )
-			{
-				engine_font_manager_draw_text( "SCATTR", 26, 21 );
-			}
-			if( 1 == eo->action )
-			{
-				engine_font_manager_draw_text( "ATTACK", 26, 21 );
-			}
+			//if( 0 == eo->action )
+			//{
+			//	engine_font_manager_draw_text( "SCATTR", 26, 21 );
+			//}
+			//if( 1 == eo->action )
+			//{
+			//	engine_font_manager_draw_text( "ATTACK", 26, 21 );
+			//}
 			
 		}
 		// For continuity we want to check if actor can move immediately after stopping.

@@ -29,6 +29,9 @@ extern unsigned int command_object_frames[];
 extern unsigned char command_object_cmds[];
 extern unsigned char command_object_args[];
 
+// Enemy Manager.
+extern const unsigned char enemy_object_directions[];
+
 // Level Manager.
 extern unsigned char level_object_tiles_array[];
 extern unsigned char level_object_bonus_count;

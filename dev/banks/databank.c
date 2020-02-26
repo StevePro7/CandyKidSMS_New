@@ -1,4 +1,5 @@
 #include "bank6.h"
+#include "..\engine\enum_manager.h"
 
 // Global state.
 unsigned char state_object_mydebugger;
@@ -96,6 +97,19 @@ unsigned char command_object_args[] =
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+};
+
+// Enemy Manager.
+extern const unsigned char enemy_object_directions[] =
+{
+	direction_type_rght, direction_type_upxx, direction_type_down, direction_type_left,
+	direction_type_rght, direction_type_down, direction_type_upxx, direction_type_left,
+	direction_type_left, direction_type_upxx, direction_type_down, direction_type_rght,
+	direction_type_left, direction_type_down, direction_type_upxx, direction_type_rght,
+	direction_type_upxx, direction_type_rght, direction_type_left, direction_type_down,
+	direction_type_down, direction_type_rght, direction_type_left, direction_type_upxx,
+	direction_type_upxx, direction_type_left, direction_type_rght, direction_type_down,
+	direction_type_down, direction_type_left, direction_type_rght, direction_type_upxx,
 };
 
 // Level Manager.

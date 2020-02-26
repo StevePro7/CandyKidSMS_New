@@ -3,7 +3,7 @@
 
 
 // Enemy Manager.
-extern const unsigned char enemy_object_directions[];
+//extern const unsigned char enemy_object_directions[];
 
 // Audio Manager.
 extern const unsigned char *music_object_data[];
