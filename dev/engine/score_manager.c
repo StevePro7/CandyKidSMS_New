@@ -59,7 +59,7 @@ void engine_score_manager_update_bonus( unsigned char index )
 	unsigned char bonus = bonuses[ index - 3 ];
 	bonus *= level_object_multiplier;
 	so->bonus++;
-	so->total++;
+	//so->total++;
 	update_score( bonus );
 }
 
@@ -67,14 +67,14 @@ void engine_score_manager_update_candy()
 {
 	struct_score_object *so = &global_score_object;
 	so->candy++;
-	so->total++;
+	//so->total++;
 	update_score( 1 );
 }
 
 void engine_score_manager_update_oneup()
 {
 	struct_score_object *so = &global_score_object;
-	so->total++;
+	//so->total++;
 	update_lives( 1 );
 }
 
@@ -122,7 +122,7 @@ void engine_score_manager_draw_text()
 {
 	unsigned char *text;
 	unsigned char index;
-	devkit_SMS_mapROMBank( FIXED_BANK );
+	//devkit_SMS_mapROMBank( FIXED_BANK );
 	for( index = 0; index < 7; index++ )
 	{
 		text = ( unsigned char * ) score_object_titles[ index ];
@@ -153,7 +153,7 @@ static void reset()
 
 	so->bonus = 0;
 	so->candy = 0;
-	so->total = 0;
+	//so->total = 0;
 	so->values[ score_type_boost ] = MAX_BOOSTERX;
 	so->delay = 1 - state_object_difficulty;
 	so->timer = 0;

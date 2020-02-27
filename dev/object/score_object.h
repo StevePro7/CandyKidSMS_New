@@ -5,12 +5,9 @@ typedef struct tag_struct_score_object
 {
 	unsigned long score;
 	unsigned char values[ 5 ];
-	//unsigned char lives;
-	//unsigned char level;
 	unsigned char bonus;
 	unsigned char candy;
-	unsigned char total;
-	//unsigned char boost;
+	//unsigned char total;		// TODO delete as don't believe we need as can calc complete vs. perfect!
 	unsigned char delay;		// Boost delay
 	unsigned char timer;		// Boost timer
 
