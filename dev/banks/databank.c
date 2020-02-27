@@ -18,6 +18,7 @@ unsigned char state_object_music_data;
 unsigned char state_object_sound_data;
 
 unsigned char state_object_actor_kill;
+unsigned char state_object_delay_test;						// TODO delete - used for testing...!!
 unsigned char state_object_enemy_move[] = { 1, 1, 1 };		// TODO delete
 
 

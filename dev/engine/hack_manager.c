@@ -30,6 +30,9 @@ void engine_hack_manager_init()
 	state_object_round_data = 0;
 	state_object_music_data = 0;
 	state_object_sound_data = 0;
+
+	// TODO delete - used for testing...!!
+	state_object_delay_test = 0;
 }
 
 void engine_hack_manager_load()
@@ -50,6 +53,9 @@ void engine_hack_manager_load()
 	state_object_music_data = PEEK( HACKER_START + 6 );			// 0x0056		// Set 0=music to play otherwise disabled.
 	state_object_sound_data = PEEK( HACKER_START + 7 );			// 0x0057		// Set 0=sound to play otherwise disabled.
 
+	// TODO delete - used for testing...!!
+	state_object_delay_test = PEEK( HACKER_START + 8 );			// 0x0058		// Set 0 enables all delays otherwise off.
+
 #endif
 }
 
@@ -65,6 +71,8 @@ void engine_hack_manager_invert()
 	state_object_enemy_move[ actor_type_pro ] = 1;
 	state_object_enemy_move[ actor_type_adi ] = 1;
 	state_object_enemy_move[ actor_type_suz ] = 1;
+
+	state_object_delay_test = 0;
 	// TODO delete this hard coded
 
 	// Trees.

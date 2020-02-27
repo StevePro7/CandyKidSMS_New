@@ -12,7 +12,6 @@
 void engine_content_manager_load_tiles_font()
 {
 	// Font tiles.
-	//devkit_SMS_mapROMBank( font_tiles__tiles__psgcompr_bank );
 	devkit_SMS_loadPSGaidencompressedTiles( font_tiles__tiles__psgcompr, FONT_TILES );
 	devkit_SMS_loadBGPalette( ( void * ) font_tiles__palette__bin );
 }
@@ -46,7 +45,6 @@ void engine_content_manager_load_tiles_splash()
 void engine_content_manager_load_sprites_game()
 {
 	// Sprite tiles.
-	//devkit_SMS_mapROMBank( sprites__tiles__psgcompr_bank );
 	devkit_SMS_loadPSGaidencompressedTiles( sprites__tiles__psgcompr, SPRITE_TILES );
 	devkit_SMS_loadSpritePalette( ( void * ) sprites__palette__bin );
 }
