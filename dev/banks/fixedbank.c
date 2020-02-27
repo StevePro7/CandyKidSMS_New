@@ -3,6 +3,7 @@
 #include "bank5.h"
 #include "bank6.h"
 #include "bank7.h"
+#include "bank8.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\locale_manager.h"
 
@@ -14,6 +15,7 @@ const unsigned char *music_object_data[] =
 	music_over_psg,
 	music_title_psg,
 	music_game03_psg,
+	music_flicky_psg,
 };
 const unsigned char music_object_bank[] =
 {
@@ -21,6 +23,7 @@ const unsigned char music_object_bank[] =
 	music_over_psg_bank,
 	music_title_psg_bank,
 	music_game03_psg_bank,
+	music_flicky_psg_bank,
 };
 
 const unsigned char *sound_object_data[] =

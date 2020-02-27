@@ -1,4 +1,4 @@
-extern const unsigned char	Flicky_psg[];
-#define				Flicky_psg_size 1826
-#define				Flicky_psg_bank 8
+extern const unsigned char	music_flicky_psg[];
+#define				music_flicky_psg_size 1826
+#define				music_flicky_psg_bank 8
 

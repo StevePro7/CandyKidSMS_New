@@ -186,6 +186,7 @@ typedef enum tag_enum_music_type
 	music_type_over = 1,
 	music_type_title = 2,
 	music_type_game03 = 3,
+	music_type_flicky = 4,
 
 } enum_music_type;
 
