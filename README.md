@@ -199,3 +199,25 @@ Y	15 min collision	Abs(sy - dy) >= 15 = collision
 
 Hard					Abs(sx - dx) <= 10
 Easy					Abs(sx - dx) <= 08
+
+Also thought of a thing where I have a running total of the enemy direction
+and every 4, 8, 12, 16 enemy moves I check if the total is a multiple of 15
+why 15?
+Up		 1
+Down	 2
+Left	 4
+Right	 8
+Total	15
+
+if this happens then I could choos some random X, Y tile and that is the target tile
+OR choose tile completely opposite to the direction in which Mama can't go
+
+
+27/02/2020
+Mapping out screen layout
+Load
+Ready		reset actor positions
+Play
+Dead / Cont	if easy then reset enemy scatter else hard leave as is
+Over
+NB: during death sequence can hold down and hold fire2 for 5s to quit out game
