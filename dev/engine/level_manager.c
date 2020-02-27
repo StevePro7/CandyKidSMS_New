@@ -122,48 +122,14 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 
 void engine_level_manager_draw_level()
 {
-	//unsigned char sr, er, sc, ec;
-	//unsigned char row, col;
-
-	//sr = 0;
-	//er = MAX_ROWS;
-	//sc = 0;
-	//ec = MAX_COLS;
-
-	//for( row = 0; row < MAX_ROWS; row++ )
-	//{
-	//	for( col = 0; col < MAX_COLS; col++ )
-	//	{
-	//		draw_tiles( col, row );
-	//	}
-	//}
-
 	draw_level( 0, MAX_ROWS, 0, MAX_COLS );
 }
-
 void engine_level_manager_draw_middle()
 {
-	//unsigned char sr, er, sc, ec;
-	//unsigned char row, col;
-
-	//sr = 3;
-	//er = 7;
-	//sc = 2;
-	//ec = 8;
-
-	//for( row = 3; row < 7; row++ )
-	//{
-	//	for( col = 2; col < 8; col++ )
-	//	{
-	//		draw_tiles( col, row );
-	//	}
-	//}
-
-	// TODO define 
+	// TODO define...!!
 	// beg_row, unsigned char end_row, unsigned char beg_col, unsigned char end_col
 	draw_level( 3, 7, 2, 8 );
 }
-
 static void draw_level( unsigned char beg_row, unsigned char end_row, unsigned char beg_col, unsigned char end_col )
 {
 	unsigned char row, col;
@@ -318,6 +284,8 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 	unsigned int index;
 	unsigned char tile_type;
 	unsigned char coll_type;
+	unsigned char test_type;
+	unsigned char direction;
 
 	unsigned char load_cols;
 	unsigned char draw_cols;
@@ -359,6 +327,21 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 			}
 
 			o++;
+		}
+	}
+
+	// Set each tile directions available.
+	for( row = 0; row < MAX_ROWS; row++ )
+	{
+		for( col = 0; col < MAX_COLS; col++ )
+		{
+			direction = engine_level_manager_test_direction( ( row + 2 ), ( col + 2 ) );
+
+			index = ( row + 2 ) * MAZE_COLS + ( col + 2 );
+			test_type = level_object_tiles_array[ index ];
+
+			engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
+			level_object_tiles_array[ index ] = test_type;
 		}
 	}
 }
