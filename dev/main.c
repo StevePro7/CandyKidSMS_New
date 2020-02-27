@@ -19,6 +19,7 @@ void main (void)
 	//engine_content_manager_load_tiles_main();
 	engine_content_manager_load_sprites_game();
 
+	//engine_state_manager_init();
 	engine_state_manager_read();
 
 	//open_screen_type = screen_type_intro;
@@ -28,9 +29,10 @@ void main (void)
 	//open_screen_type = screen_type_dead;
 	//open_screen_type = screen_type_over;
 	//open_screen_type = screen_type_demo;
-	//open_screen_type = screen_type_cont;
-	open_screen_type = screen_type_play;
+	open_screen_type = screen_type_cont;
+	//open_screen_type = screen_type_play;
 	//open_screen_type = screen_type_intro;
+	//open_screen_type = screen_type_title;
 
 	engine_screen_manager_init( open_screen_type );
 	devkit_SMS_displayOn();
@@ -44,8 +46,6 @@ void main (void)
 		devkit_SMS_waitForVBlank();
 		devkit_SMS_copySpritestoSAT();
 
-		// TODO if want to play music while game plays then would need to ROM bank before PSG frame
-		//devkit_SMS_mapROMBank( 7 );
 		devkit_PSGFrame();
 		devkit_PSGSFXFrame();
 	}

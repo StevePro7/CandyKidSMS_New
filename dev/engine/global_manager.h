@@ -1,8 +1,8 @@
 #ifndef _GLOBAL_MANAGER_H_
 #define _GLOBAL_MANAGER_H_
 
+#define MAX_SCREEENS			19
 #define CONTENT_BANK			2
-#define MAX_SCREEENS			16
 
 #define MAX_ENEMIES				3
 #define MAX_ACTORS				MAX_ENEMIES + 1

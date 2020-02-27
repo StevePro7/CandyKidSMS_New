@@ -266,14 +266,14 @@
     <ClInclude Include="gfx.h">
       <Filter>Header Files\output</Filter>
     </ClInclude>
-    <ClInclude Include="screen\init_screen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="screen\reset_screen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\screen</Filter>
     </ClInclude>
     <ClInclude Include="screen\ready_screen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\screen</Filter>
+    </ClInclude>
+    <ClInclude Include="screen\init_screen.h">
+      <Filter>Header Files\screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -488,13 +488,13 @@
       <Filter>Source Files\output</Filter>
     </ClCompile>
     <ClCompile Include="screen\init_screen.c">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\screen</Filter>
     </ClCompile>
     <ClCompile Include="screen\reset_screen.c">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\screen</Filter>
     </ClCompile>
     <ClCompile Include="screen\ready_screen.c">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\screen</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -6,6 +6,7 @@
 #include "..\devkit\_sms_manager.h"
 
 #define MAGIC			0xACE0B004
+#define FINAL			0xFE
 
 // Global variable.
 struct_storage_object global_savegame_object;
@@ -58,7 +59,7 @@ void engine_storage_manager_write()
 	savegame->save_music_data = state_object_music_data;
 	savegame->save_sound_data = state_object_sound_data;
 
-	savegame->terminal = 0xFD;
+	savegame->terminal = FINAL;
 	devkit_SMS_disableSRAM();
 }
 
@@ -80,6 +81,6 @@ void engine_storage_manager_erase()
 	savegame->save_music_data = 0;
 	savegame->save_sound_data = 0;
 
-	savegame->terminal = 0xFD;
+	savegame->terminal = FINAL;
 	devkit_SMS_disableSRAM();
 }

@@ -37,7 +37,7 @@ void screen_cont_screen_load()
 	engine_command_manager_init();
 	engine_delay_manager_load( 0 );
 
-	engine_board_manager_init();
+	//engine_board_manager_init();
 	engine_gamer_manager_init();
 	//engine_enemy_manager_init();
 	//engine_enemy_manager_load();
