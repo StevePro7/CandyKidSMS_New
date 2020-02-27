@@ -15,6 +15,8 @@ void engine_state_manager_init()
 	engine_command_manager_init();
 	engine_gamer_manager_init();
 	engine_enemy_manager_init();
+
+	level_object_multiplier = 1;
 }
 
 void engine_state_manager_read()

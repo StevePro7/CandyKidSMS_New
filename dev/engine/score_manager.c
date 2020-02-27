@@ -86,7 +86,6 @@ void engine_score_manager_update_lives( signed char value )
 void engine_score_manager_update_boost()
 {
 	struct_score_object *so = &global_score_object;
-	//if( 0 == so->boost )
 	if( 0 == so->values[ score_type_boost ] )
 	{
 		return;
