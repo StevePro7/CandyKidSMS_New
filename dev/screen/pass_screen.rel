@@ -1,19 +1,11 @@
 XL2
-H 9 areas B global symbols
+H 9 areas 3 global symbols
 M pass_screen
 O -mz80
-S _engine_board_manager_side_tile Ref0000
-S _engine_level_manager_draw_level Ref0000
-S _engine_board_manager_draw_full Ref0000
-S _engine_board_manager_midd_text Ref0000
-S _engine_board_manager_draw_exit Ref0000
 S .__.ABS. Def0000
-S _engine_level_manager_draw_middle Ref0000
-S _engine_input_manager_hold Ref0000
-S _engine_level_manager_load_level Ref0000
-A _CODE size 40 flags 0 addr 0
+A _CODE size 8 flags 0 addr 0
 S _screen_pass_screen_load Def0000
-S _screen_pass_screen_update Def001B
+S _screen_pass_screen_update Def0001
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -24,23 +16,9 @@ A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
 R 00 00 00 00
-T 00 00 CD 00 00 CD 00 00 CD 00 00 21 00 01 E5 CD
-R 00 00 00 00 02 03 02 00 02 06 04 00 02 09 00 00
-T 0E 00 00 00 21 07 04 E3 CD 00 00 F1 C3 00 00
-R 00 00 00 00 02 02 08 00 02 09 08 00 02 0D 01 00
-T 1B 00
+T 00 00 C9
 R 00 00 00 00
-T 1B 00 3E 10 F5 33 CD 00 00 33 7D B7 28 03 CD
-R 00 00 00 00 02 07 07 00
-T 28 00 00 00
-R 00 00 00 00 02 02 03 00
-T 2A 00
+T 01 00
 R 00 00 00 00
-T 2A 00 3E 20 F5 33 CD 00 00 33 7D B7 28 03 CD
-R 00 00 00 00 02 07 07 00
-T 37 00 00 00
-R 00 00 00 00 02 02 06 00
-T 39 00
-R 00 00 00 00
-T 39 00 C1 E1 E5 C5 36 09 C9
+T 01 00 C1 E1 E5 C5 36 09 C9
 R 00 00 00 00

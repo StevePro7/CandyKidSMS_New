@@ -15,28 +15,29 @@
 
 void screen_pass_screen_load()
 {
-	engine_board_manager_draw_full();
-	engine_board_manager_draw_exit();
-	engine_board_manager_side_tile();
+	//engine_board_manager_draw_full();
+	//engine_board_manager_draw_exit();
+	//engine_board_manager_side_tile();
 
-	engine_level_manager_load_level( 0, 1 );
-	engine_level_manager_load_level( 7, 4 );
-	engine_level_manager_draw_level();
+	//engine_level_manager_load_level( 0, 1 );
+	////engine_level_manager_load_level( 7, 4 );
+	//engine_level_manager_draw_level();
 }
 
 void screen_pass_screen_update( unsigned char *screen_type )
 {
-	unsigned char input;
-	input = engine_input_manager_hold( input_type_fire1 );
-	if( input )
-	{
-		engine_board_manager_midd_text();
-	}
+	//unsigned char input;
+	//input = engine_input_manager_hold( input_type_fire1 );
+	//if( input )
+	//{
+	//	engine_board_manager_midd_text();
+	//}
 
-	input = engine_input_manager_hold( input_type_fire2 );
-	if( input )
-	{
-		engine_level_manager_draw_middle();
-	}
+	//input = engine_input_manager_hold( input_type_fire2 );
+	//if( input )
+	//{
+	//	engine_level_manager_draw_middle();
+	//}
+
 	*screen_type = screen_type_pass;
 }
