@@ -29,11 +29,6 @@
 static unsigned char first_time;
 static unsigned char frame_spot;
 
-//static unsigned char process_collision( unsigned char tile_type );
-
-//static void print( unsigned char dir );
-//static void get_actor_data( unsigned char *mover, unsigned char *tileZ );
-
 void screen_play_screen_load()
 {
 	//struct_enemy_object *eo;
@@ -302,21 +297,3 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	*screen_type = screen_type_play;
 }
-
-//static void get_actor_data( unsigned char *mover, unsigned char *tileZ )
-//{
-//	struct_gamer_object *go = &global_gamer_object;
-//	struct_enemy_object *eo;
-//	unsigned char enemy;
-//	unsigned char index;
-//
-//	mover[ 0 ] = 1;
-//	tileZ[ 0 ] = go->tileZ;
-//	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
-//	{
-//		eo = &global_enemy_objects[ enemy ];
-//		index = enemy + 1;
-//		mover[ index ] = eo->mover;
-//		tileZ[ index ] = eo->tileZ;
-//	}
-//}
