@@ -67,9 +67,9 @@ void screen_play_screen_load()
 
 	engine_font_manager_draw_text( "SCATTR", 26, 21 );
 	//engine_font_manager_draw_data( level_object_candy_count, 14, 11 );
-	//engine_audio_manager_music_play( music_type_game03 );
+	engine_audio_manager_music_play( music_type_game03 );
 	//engine_audio_manager_music_play( music_type_candykid );
-	engine_audio_manager_music_play( music_type_beatgame );
+	//engine_audio_manager_music_play( music_type_beatgame );
 	first_time = 1;
 	frame_spot = 0;
 }

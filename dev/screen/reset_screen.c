@@ -24,9 +24,9 @@ static unsigned char first_time;
 unsigned char cont_walking_cmds1[] = { direction_type_upxx, direction_type_rght, direction_type_upxx };
 unsigned char cont_walking_cmds2[] = { direction_type_upxx, direction_type_rght, direction_type_rght };
 unsigned char cont_walking_cmds3[] = { direction_type_rght, direction_type_rght, direction_type_rght };
-unsigned char cont_walking_cmds4[] = { direction_type_down, direction_type_rght, direction_type_rght };
+unsigned char cont_walking_cmds4[] = { direction_type_down, direction_type_rght, direction_type_left };
 unsigned char cont_walking_cmds5[] = { direction_type_upxx, direction_type_upxx, direction_type_upxx };
-unsigned char cont_walking_move[] = { 1, 7, 1 };
+unsigned char cont_walking_move[] = { 1, 4, 1 };
 
 //static unsigned char process_collision( unsigned char tile_type );
 

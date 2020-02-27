@@ -2,6 +2,7 @@
 #include "audio_manager.h"
 #include "board_manager.h"
 #include "enum_manager.h"
+#include "function_manager.h"
 #include "gamer_manager.h"
 #include "level_manager.h"
 #include "move_manager.h"
@@ -58,6 +59,7 @@ unsigned char engine_collision_manager_tile_collision( unsigned char tile_type )
 
 	if( erase )
 	{
+		engine_level_manager_blank_tile( go->tileZ );
 		engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + ( go->tileX - 1 ) * 2, ( go->tileY - 1 ) * 2 );
 	}
 

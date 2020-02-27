@@ -156,6 +156,19 @@ void engine_level_manager_beat_level( const unsigned char *data, const unsigned 
 	load_level( data, size, bank, 1 );
 }
 
+void engine_level_manager_blank_tile( unsigned char index )
+{
+	unsigned char upper_nibble;
+	unsigned char lower_nibble;
+
+	unsigned char tile_type = level_object_tiles_array[ index ];
+
+	engine_function_manager_convertByteToNibbles( tile_type, &upper_nibble, &lower_nibble );
+	lower_nibble = tile_type_blank;
+	engine_function_manager_convertNibblesToByte( upper_nibble, lower_nibble, &tile_type );
+	level_object_tiles_array[ index ] = tile_type;
+}
+
 unsigned char engine_level_manager_get_collision( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset )
 {
 	// Returns collision type for next (x, y) tile offset from direction.
