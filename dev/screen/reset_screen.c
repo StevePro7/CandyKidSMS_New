@@ -21,12 +21,11 @@ static unsigned char walking_count;
 static unsigned char first_time;
 
 unsigned char cont_walking_cmds1[] = { direction_type_upxx, direction_type_rght, direction_type_upxx };
-unsigned char cont_walking_cmds2[] = { direction_type_down, direction_type_left, direction_type_none };
+unsigned char cont_walking_cmds2[] = { direction_type_upxx, direction_type_rght, direction_type_rght };
 unsigned char cont_walking_cmds3[] = { direction_type_rght, direction_type_rght, direction_type_rght };
 unsigned char cont_walking_cmds4[] = { direction_type_down, direction_type_rght, direction_type_rght };
-unsigned char cont_walking_cmds5[] = { direction_type_left, direction_type_down, direction_type_none };
-//unsigned char cont_walking_move[] = { 7, 7, 7, 7 };
-unsigned char cont_walking_move[] = { 1, 1, 1 };
+unsigned char cont_walking_cmds5[] = { direction_type_upxx, direction_type_upxx, direction_type_upxx };
+unsigned char cont_walking_move[] = { 1, 7, 1 };
 
 static unsigned char process_collision( unsigned char tile_type );
 
@@ -37,8 +36,6 @@ void screen_reset_screen_load()
 
 	engine_command_manager_load();
 	engine_delay_manager_load( 0 );
-
-	//engine_enemy_manager_init();
 	//engine_enemy_manager_load();
 	//get_actor_data( actor_mover, actor_tileZ );
 
@@ -66,7 +63,7 @@ void screen_reset_screen_load()
 
 void screen_reset_screen_update( unsigned char *screen_type )
 {
-	unsigned char *cont_walking_cmds = cont_walking_cmds1;
+	unsigned char *cont_walking_cmds = cont_walking_cmds4;
 
 
 	struct_frame_object *fo = &global_frame_object;
@@ -111,8 +108,6 @@ void screen_reset_screen_update( unsigned char *screen_type )
 	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
 	{
 		// Check gamer collision.
-		//engine_font_manager_draw_data( frame, 12, 16 );
-
 		gamer_tile_type = engine_level_manager_get_tile_type( go->tileX, go->tileY, go->direction, offset_type_none );
 		if( tile_type_blank != gamer_tile_type )
 		{
@@ -152,7 +147,6 @@ void screen_reset_screen_update( unsigned char *screen_type )
 				}
 
 				gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
-				engine_font_manager_draw_data( gamer_direction, 15, 20 );
 				if( direction_type_none != gamer_direction )
 				{
 					engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
@@ -173,7 +167,7 @@ void screen_reset_screen_update( unsigned char *screen_type )
 		unsigned char candy_count = engine_score_manager_get_candy();
 		if( level_object_candy_count == candy_count )
 		{
-			*screen_type = screen_type_over;
+			*screen_type = screen_type_pass;
 			return;
 		}
 	}
@@ -191,16 +185,13 @@ static unsigned char process_collision( unsigned char tile_type )
 {
 	struct_gamer_object *go = &global_gamer_object;
 	unsigned char gamer_collision = coll_type_empty;
+	unsigned char erase = 1;			// TODO - use better enum
 
 	// Check gamer collision with candy.
 	if( tile_type_candy == tile_type )
 	{
-		//engine_tile_manager_draw_blank( go->tileX, go->tileY );
-		engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + ( go->tileX - 1 ) * 2, ( go->tileY - 1 ) * 2 );
-		//engine_tile_manager_main_trees( 0, SCREEN_TILE_LEFT + (x - 1) * 2, ( y - 1 ) * 2 );
-
-		engine_score_manager_update_candy();
 		// TODO sound effect...
+		engine_score_manager_update_candy();
 		gamer_collision = coll_type_candy;
 	}
 
@@ -212,16 +203,20 @@ static unsigned char process_collision( unsigned char tile_type )
 			gamer_collision = engine_level_manager_get_collision( go->tileX, go->tileY, go->direction, offset_type_none );
 			if( coll_type_block == gamer_collision )
 			{
-				// Edge case : vulnerable Kid inside open exit with death trees
+				// Edge case : vulnerable Kid inside open exit with death trees...
 				gamer_collision = engine_move_manager_inside_exit( go->tileX, go->tileY );
+				erase = gamer_collision;
 			}
+		}
+		else
+		{
+			erase = 0;
 		}
 	}
 
-	// Check gamer collision with oneup.
+	// Check gamer collision with one up.
 	else if( tile_type_oneup == tile_type )
 	{
-		engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + ( go->tileX - 1 ) * 2, ( go->tileY - 1 ) * 2 );
 		// TODO sound effect...
 		engine_score_manager_update_lives( 1 );
 	}
@@ -229,10 +224,13 @@ static unsigned char process_collision( unsigned char tile_type )
 	// Check gamer collision with bonus.
 	else if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
 	{
-		engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + ( go->tileX - 1 ) * 2, ( go->tileY - 1 ) * 2 );
-		//engine_tile_manager_main_trees( 0, SCREEN_TILE_LEFT + (x - 1) * 2, ( y - 1 ) * 2 );
 		// TODO sound effect...
 		engine_score_manager_update_bonus( tile_type );
+	}
+
+	if( erase )
+	{
+		engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + ( go->tileX - 1 ) * 2, ( go->tileY - 1 ) * 2 );
 	}
 
 	return gamer_collision;

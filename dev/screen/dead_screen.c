@@ -28,7 +28,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 {
 	// Draw sprites first.
 	engine_enemy_manager_draw();
-	engine_gamer_manager_draw();
+	//engine_gamer_manager_draw();
 
 	*screen_type = screen_type_dead;
 }
