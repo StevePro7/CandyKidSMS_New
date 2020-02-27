@@ -19,7 +19,7 @@ static unsigned char walking_delta;
 static unsigned char walking_count;
 static unsigned char first_time;
 
-unsigned char cont_walking_cmds1[] = { direction_type_upxx, direction_type_upxx, direction_type_upxx };
+unsigned char cont_walking_cmds1[] = { direction_type_upxx, direction_type_rght, direction_type_upxx };
 unsigned char cont_walking_cmds2[] = { direction_type_down, direction_type_left, direction_type_none };
 unsigned char cont_walking_cmds3[] = { direction_type_rght, direction_type_rght, direction_type_rght };
 unsigned char cont_walking_cmds4[] = { direction_type_down, direction_type_rght, direction_type_rght };
@@ -38,7 +38,7 @@ void screen_cont_screen_load()
 	engine_delay_manager_load( 0 );
 
 	//engine_board_manager_init();
-	engine_gamer_manager_init();
+	//engine_gamer_manager_init();
 	//engine_enemy_manager_init();
 	//engine_enemy_manager_load();
 	//get_actor_data( actor_mover, actor_tileZ );

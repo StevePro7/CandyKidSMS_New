@@ -26,16 +26,7 @@ void engine_gamer_manager_init()
 
 	// Kid images.
 	unsigned char images[ NUM_ENTITY_IMAGE * NUM_ENTITY_FRAME + 2 ] = { 0, 2, 4, 12, 14, 16 };		// Allow extra image for death.
-	//unsigned char homeX;
-	//unsigned char homeY;
-
-	//homeX = board_homeX[ actor_type_kid ];
-	//homeY = board_homeY[ actor_type_kid ];
-
-	//go->homeX = homeX;
-	//go->homeY = homeY;
-	//engine_board_manager_calc_tileSpot( go->homeX, go->homeY, &go->homeZ );
-	//devkit_SMS_mapROMBank( FIXED_BANK );
+	
 	go->tileX = board_object_homeX[ actor_type_kid ];
 	go->tileY = board_object_homeY[ actor_type_kid ];
 
@@ -61,15 +52,7 @@ void engine_gamer_manager_init()
 	go->images[ 2 ][ 1 ] = images[ 5 ];
 
 	calcd_frame();
-
-	calcd_frame();
 	calcd_spots();
-
-	//TODO delete
-	//engine_font_manager_draw_data( go->tileX, 16, 2 );
-	//engine_font_manager_draw_data( go->tileY, 16, 3 );
-	//engine_font_manager_draw_data( go->posnX, 16, 5 );
-	//engine_font_manager_draw_data( go->posnY, 16, 6 );
 }
 
 void engine_gamer_manager_update()
@@ -358,6 +341,7 @@ unsigned char engine_gamer_manager_input_direction2()
 
 	return direction;
 }
+// TODO delete - used for debugging
 
 static void calcd_frame()
 {
@@ -367,10 +351,7 @@ static void calcd_frame()
 static void calcd_spots()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	//struct_board_object *bo = &global_board_object;
-	//devkit_SMS_mapROMBank( FIXED_BANK );
 	go->posnX = board_object_posnX[ go->tileX ];
 	go->posnY = board_object_posnY[ go->tileY ];
-	// Calculate exact tile as 1x byte.
 	engine_function_manager_convertXYtoZ( MAZE_ROWS, go->tileX, go->tileY, &go->tileZ );
 }

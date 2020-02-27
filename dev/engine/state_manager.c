@@ -1,6 +1,7 @@
 #include "state_manager.h"
 #include "board_manager.h"
 #include "enum_manager.h"
+#include "gamer_manager.h"
 #include "global_manager.h"
 #include "hack_manager.h"
 #include "storage_manager.h"
@@ -9,6 +10,7 @@
 void engine_state_manager_init()
 {
 	engine_board_manager_init();
+	engine_gamer_manager_init();
 }
 
 void engine_state_manager_read()
