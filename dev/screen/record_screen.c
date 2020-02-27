@@ -7,9 +7,6 @@
 #include "..\engine\input_manager.h"
 #include "..\engine\storage_manager.h"
 
-//static unsigned char first_time;
-//static unsigned char my_command;
-
 void screen_record_screen_load()
 {
 	unsigned char test;
@@ -17,7 +14,6 @@ void screen_record_screen_load()
 	engine_font_manager_draw_text( "RECORD SCREEN...!!", 4, 0 );
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
-	//first_time = 1;
 
 	test = engine_storage_manager_available();
 	if( test )
@@ -42,7 +38,6 @@ void screen_record_screen_load()
 	}
 
 	engine_font_manager_draw_data( test, 22, 15 );
-	//my_command = 1;
 }
 
 void screen_record_screen_update( unsigned char *screen_type )
@@ -78,7 +73,6 @@ void screen_record_screen_update( unsigned char *screen_type )
 		engine_storage_manager_erase();
 		engine_font_manager_draw_text( "ERASED..!!", 4, 4 );
 	}
-	//first_time = 0;
 
 	*screen_type = screen_type_record;
 }
