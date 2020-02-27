@@ -19,7 +19,7 @@ void main (void)
 	//engine_content_manager_load_tiles_main();
 	engine_content_manager_load_sprites_game();
 
-	//engine_state_manager_init();
+	engine_state_manager_init();
 	engine_state_manager_read();
 
 	//open_screen_type = screen_type_intro;
