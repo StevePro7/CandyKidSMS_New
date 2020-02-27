@@ -4,6 +4,7 @@
 #include "function_manager.h"
 #include "global_manager.h"
 #include "level_manager.h"
+#include "locale_manager.h"
 #include "mask_manager.h"
 #include "tile_manager.h"
 #include "..\banks\databank.h"
@@ -123,6 +124,28 @@ void engine_board_manager_side_tile()
 
 	engine_tile_manager_draw_sides( TREE_COLS * 2 + SCREEN_TILE_LEFT, BOT_EXIT_Y );
 	engine_tile_manager_draw_sides( TREE_COLS * 2 + SCREEN_TILE_LEFT, TOP_EXIT_Y );
+}
+
+void engine_board_manager_midd_text()
+{
+	unsigned char type = state_object_trees_type;
+	unsigned char loop;
+
+	for( loop = 0; loop < 6; loop++ )
+	{
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + 6 + loop * 2, TOP_SIDE_Y + 8 );
+		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + 6 + loop * 2, TOP_SIDE_Y + 14 );
+	}
+
+	engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + 6, TOP_SIDE_Y + 10 );
+	engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + 6, TOP_SIDE_Y + 12 );
+	engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + 16, TOP_SIDE_Y + 10 );
+	engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + 16, TOP_SIDE_Y + 12 );
+
+	for( loop = 0; loop < 4; loop++ )
+	{
+		engine_font_manager_draw_text( LOCALE_BLANK_SIZE8, SCREEN_TILE_LEFT + LFT_SIDE_X + 8, TOP_SIDE_Y + 10 + loop );
+	}
 }
 
 // TODO - delete!!
