@@ -39,15 +39,12 @@ void screen_play_screen_load()
 	unsigned char actor_tileZ[ MAX_ACTORS ];
 	unsigned char round = 1;
 
-	//engine_command_manager_init();
 	engine_delay_manager_load( 0 );
 
-	//engine_board_manager_init();
-	//engine_gamer_manager_init();
-	//engine_enemy_manager_init();
 	engine_enemy_manager_load();
 	get_actor_data( actor_mover, actor_tileZ );
 	
+	// Put in init screen
 	engine_score_manager_load();
 	engine_score_manager_draw_text();
 	engine_score_manager_draw_all();
@@ -64,16 +61,10 @@ void screen_play_screen_load()
 	engine_level_manager_update_level( round, actor_mover, actor_tileZ );
 	engine_level_manager_draw_level();
 
-	//eo = &global_enemy_objects[ 0 ];
-	//engine_font_manager_draw_data( eo->scatter[ 0 ], 31, 16 );
-	//engine_font_manager_draw_data( eo->scatter[ 1 ], 31, 17 );
-	//engine_font_manager_draw_data( eo->scatter[ 2 ], 31, 18 );
-	//engine_font_manager_draw_data( eo->scatter[ 3 ], 31, 19 );
-
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
 
-	//engine_font_manager_draw_text( "SCATTR", 26, 21 );
+	engine_font_manager_draw_text( "SCATTR", 26, 21 );
 	//engine_font_manager_draw_data( level_object_candy_count, 14, 11 );
 	engine_audio_manager_music_play( 3 );
 	first_time = 1;
@@ -314,31 +305,6 @@ static unsigned char process_collision( unsigned char tile_type )
 
 	return gamer_collision;
 }
-
-// TODO delete or put in debugger??
-//static void print( unsigned char dir )
-//{
-//	if( 0 == dir )
-//	{
-//		engine_font_manager_draw_text( "NONE", 10, 13 );
-//	}
-//	if( 1 == dir )
-//	{
-//		engine_font_manager_draw_text( "UPXX", 10, 13 );
-//	}
-//	if( 2 == dir )
-//	{
-//		engine_font_manager_draw_text( "DOWN", 10, 13 );
-//	}
-//	if( 4 == dir )
-//	{
-//		engine_font_manager_draw_text( "LEFT", 10, 13 );
-//	}
-//	if( 8 == dir )
-//	{
-//		engine_font_manager_draw_text( "RGHT", 10, 13 );
-//	}
-//}
 
 static void get_actor_data( unsigned char *mover, unsigned char *tileZ )
 {

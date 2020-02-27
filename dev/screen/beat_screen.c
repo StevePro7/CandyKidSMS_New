@@ -18,7 +18,6 @@ static unsigned char first_time;
 
 unsigned char beat_walking_cmds[] = { direction_type_rght, direction_type_down, direction_type_left, direction_type_upxx };
 unsigned char beat_walking_move[] = { 7, 7, 7, 7 };
-//unsigned char beat_walking_move[] = { 1, 1, 1, 1 };
 
 void screen_beat_screen_load()
 {
@@ -26,10 +25,9 @@ void screen_beat_screen_load()
 	const unsigned char size = beats0000_txt_size;
 	const unsigned char bank = beats0000_txt_bank;
 
-	engine_board_manager_init();
-
-	engine_command_manager_init();
-	engine_gamer_manager_init();
+	//engine_board_manager_init();
+	//engine_command_manager_init();
+	//engine_gamer_manager_init();
 
 	engine_delay_manager_load( 0 );
 
@@ -37,10 +35,10 @@ void screen_beat_screen_load()
 	engine_board_manager_draw_exit();
 	engine_level_manager_beat_level( data, size, bank );
 	engine_level_manager_draw_level();
-	//engine_font_manager_draw_text( "BEAT SCREEN..!!", 4, 2 );
 
-	engine_frame_manager_draw();
-	engine_delay_manager_draw();
+	// TODO delete
+	//engine_frame_manager_draw();
+	//engine_delay_manager_draw();
 
 	command_index = 0;
 	command_count = 4;
@@ -61,8 +59,9 @@ void screen_beat_screen_update( unsigned char *screen_type )
 	// Draw sprites first.
 	engine_gamer_manager_draw();
 
-	engine_frame_manager_draw();
-	engine_delay_manager_draw();
+	// TODO delete
+	//engine_frame_manager_draw();
+	//engine_delay_manager_draw();
 	if( !first_time )
 	{
 		proceed = engine_delay_manager_update();
@@ -88,7 +87,6 @@ void screen_beat_screen_update( unsigned char *screen_type )
 	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
 	{
 		// Check collision.
-		engine_font_manager_draw_data( frame, 12, 16 );
 		engine_gamer_manager_stop();
 	}
 	// For continuity we want to check if actor can move immediately after stopping.

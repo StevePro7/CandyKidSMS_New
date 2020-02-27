@@ -5,3 +5,21 @@ TODO
 01.
 Storage Manager
 confirm that the last byte write / erase is 0xFE
+
+
+02.
+Separate out from play screen code to load screen
+and move into the load screen accordingly
+
+
+03.
+check looping esp. in scatter mode e.g. level 90 something
+we know that can loop indefinitely in attack mode so think
+about the "algorithm" that I had to "break" the endlessness
+
+
+04.
+complete beat screen
+detect for input to quit back title screen
+OR when the timer runs out
+also integrate the beat screen song

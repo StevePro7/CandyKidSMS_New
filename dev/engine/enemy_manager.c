@@ -101,7 +101,7 @@ void engine_enemy_manager_load()
 	unsigned char index;
 	unsigned char count = MAX_ENEMIES + state_object_difficulty;
 
-	devkit_SMS_mapROMBank( FIXED_BANK );
+	//devkit_SMS_mapROMBank( FIXED_BANK );
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		eo = &global_enemy_objects[ enemy ];
@@ -143,9 +143,9 @@ void engine_enemy_manager_load()
 
 		//eo->waiter = 64;		// 50 frames
 		//eo->waiter = 80;		// 50 frames
-		eo->waiter = 10;		// 50 frames
-		eo->toggle[ 0 ] = 64;
-		eo->toggle[ 1 ] = 128;
+		eo->waiter = 80;		// 50 frames
+		eo->toggle[ 0 ] = 16;
+		eo->toggle[ 1 ] = 32;
 		eo->ticker = 0;
 		eo->action = enemymove_type_wait;
 	}

@@ -33,12 +33,6 @@ static void update_lives( signed char value );
 static void draw_value( unsigned char index );
 static void draw_highs();
 static void draw_score();
-//static void draw_lives();
-//static void draw_level();
-//static void draw_boost();
-//static void draw_world();
-//static void draw_round();
-//static unsigned char calc_level();
 static void draw_zero( unsigned char x, unsigned char y );
 
 void engine_score_manager_init()
@@ -107,8 +101,6 @@ void engine_score_manager_update_boost()
 	so->timer = 0;
 	so->values[ score_type_boost ]--;
 	draw_value( score_type_boost );
-	//so->boost--;
-	//draw_boost();
 }
 void engine_score_manager_draw_all()
 {
@@ -116,11 +108,6 @@ void engine_score_manager_draw_all()
 
 	draw_zero( DATA_X + 1, HIGHS_Y + 1 );
 	draw_zero( DATA_X + 1, SCORE_Y + 1 );
-
-	//engine_font_manager_draw_long( MAX_HI_SCORE, 30, 11 );
-
-	//engine_font_manager_draw_char( '0', 31, 15 );
-	//engine_font_manager_draw_long( so->score, 30, 15 );
 
 	draw_highs();
 	draw_score();
@@ -130,12 +117,6 @@ void engine_score_manager_draw_all()
 	draw_value( score_type_boost );
 	draw_value( score_type_world );
 	draw_value( score_type_round );
-
-	//draw_lives();
-	//draw_level();
-	//draw_boost();
-	//draw_world();
-	//draw_round();
 }
 
 void engine_score_manager_draw_text()
@@ -148,32 +129,13 @@ void engine_score_manager_draw_text()
 		text = ( unsigned char * ) score_object_titles[ index ];
 		engine_font_manager_draw_text( text, TEXT_X, title_Y[ index ] );
 	}
-	//engine_font_manager_draw_text( LOCALE_TITLE1_TEXT, TEXT_X, TITLE_Y + 0 );
-	//engine_font_manager_draw_text( LOCALE_TITLE2_TEXT, TEXT_X, TITLE_Y + 1 );
-	//engine_font_manager_draw_text( LOCALE_HIGHS_TEXT, TEXT_X, HIGHS_Y + 0 );
-	//engine_font_manager_draw_text( LOCALE_SCORE_TEXT, TEXT_X, SCORE_Y + 0 );
-	//engine_font_manager_draw_text( LOCALE_LIVES_TEXT, TEXT_X, LIVES_Y + 0 );
-	//engine_font_manager_draw_text( LOCALE_LEVEL_TEXT, TEXT_X, LEVEL_Y + 0 );
-	//engine_font_manager_draw_text( LOCALE_BOOST_TEXT, TEXT_X, BOOST_Y + 0 );
-
-	//engine_font_manager_draw_text( LOCALE_PLAY1_TEXT, TEXT_X, TEXTS_Y + 0 );
-	//engine_font_manager_draw_text( LOCALE_MODES_TEXT, TEXT_X, TEXTS_Y + 1 );
-	//engine_font_manager_draw_text( LOCALE_WORLD_TEXT, TEXT_X, WORLD_Y + 0 );
-	//engine_font_manager_draw_text( LOCALE_ROUND_TEXT, TEXT_X, ROUNT_Y + 0 );
 }
 
 // Call this function on ro load level.
 void engine_score_manager_update_level()
 {
 	struct_score_object *so = &global_score_object;
-
-	//unsigned char level = calc_level();
-	// Weird = not sure why giving garbage value when call calc_level()??
-	//so->level = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
 	so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
-
-	//so->level = level;
-	//so->level = calc_level();
 
 	draw_value( score_type_level );
 
@@ -181,34 +143,18 @@ void engine_score_manager_update_level()
 	draw_value( score_type_world );
 	draw_value( score_type_round );
 	// TODO delete this - used for debugging!
-	//draw_level();
-	//draw_world();
-	//draw_round();
 }
 
 static void reset()
 {
 	struct_score_object *so = &global_score_object;
-	//unsigned char level = calc_level();
 	so->score = 0;
-	//so->lives = NUMBER_LIVES - state_object_difficulty;
 	so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
-
-	//engine_font_manager_draw_data( state_object_world_data, DATA_X + 1, LEVEL_Y + 3 );
-	//engine_font_manager_draw_data( MAX_WORLDS, DATA_X + 1, LEVEL_Y + 4 );
-	//engine_font_manager_draw_data( state_object_round_data, DATA_X + 1, LEVEL_Y + 5 );
-	//engine_font_manager_draw_data( level, DATA_X + 1, LEVEL_Y + 6 );
-
-	// Weird = not sure why giving garbage value when call calc_level()??
-	//so->level = state_object_world_data * MAX_WORLDS + state_object_round_data + 1; //calc_level();
 	so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
-	//so->level = calc_level();
-	//so->level = level;
 
 	so->bonus = 0;
 	so->candy = 0;
 	so->total = 0;
-	//so->boost = MAX_BOOSTERX;
 	so->values[ score_type_boost ] = MAX_BOOSTERX;
 	so->delay = 1 - state_object_difficulty;
 	so->timer = 0;
@@ -234,7 +180,6 @@ static void update_score( unsigned char points )
 static void update_lives( signed char value )
 {
 	struct_score_object *so = &global_score_object;
-	//if( 0 == so->lives && value < 0 )
 	if( 0 == so->values[ score_type_lives ] && value < 0 )
 	{
 		return;
@@ -242,8 +187,6 @@ static void update_lives( signed char value )
 
 	so->values[ score_type_lives ] += value;
 	draw_value( score_type_lives );
-	//so->lives += value;
-	//draw_lives();
 }
 
 static void draw_highs()
@@ -255,52 +198,6 @@ static void draw_score()
 	struct_score_object *so = &global_score_object;
 	engine_font_manager_draw_long( so->score, DATA_X + 0, SCORE_Y + 1 );
 }
-
-//static void draw_lives()
-//{
-//	struct_score_object *so = &global_score_object;
-//	engine_font_manager_draw_data( so->lives, DATA_X + 1, LIVES_Y + 1 );
-//	if( so->lives < 10 )
-//	{
-//		draw_zero( DATA_X + 0, LIVES_Y + 1 );
-//	}
-//}
-//static void draw_level()
-//{
-//	struct_score_object *so = &global_score_object;
-//	engine_font_manager_draw_data( so->level, DATA_X + 1, LEVEL_Y + 1 );
-//	if( so->level < 10 )
-//	{
-//		draw_zero( DATA_X + 0, LEVEL_Y + 1 );
-//	}
-//}
-//static void draw_boost()
-//{
-//	struct_score_object *so = &global_score_object;
-//	engine_font_manager_draw_data( so->boost, DATA_X + 1, BOOST_Y + 1 );
-//	if( so->boost < 10 )
-//	{
-//		draw_zero( DATA_X + 0, BOOST_Y + 1 );
-//	}
-//}
-//static void draw_world()
-//{
-//	unsigned char world = state_object_world_data + 1;
-//	engine_font_manager_draw_data( world, DATA_X + 1, 22 );
-//	if( world < 10 )
-//	{
-//		draw_zero( DATA_X + 0, 22 );
-//	}
-//}
-//static void draw_round()
-//{
-//	unsigned char round = state_object_round_data + 1;
-//	engine_font_manager_draw_data( round, DATA_X + 1, 23 );
-//	if( round < 10 )
-//	{
-//		draw_zero( DATA_X + 0, 23 );
-//	}
-//}
 
 static void draw_value( unsigned char index )
 {
@@ -327,11 +224,6 @@ static void draw_value( unsigned char index )
 		draw_zero( DATA_X + 0, y_val );
 	}
 }
-
-//static unsigned char calc_level()
-//{
-//	return state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
-//}
 
 static void draw_zero( unsigned char x, unsigned char y )
 {
