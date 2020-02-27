@@ -5,7 +5,8 @@
 unsigned char state_object_mydebugger;
 unsigned char state_object_full_boost;
 unsigned char state_object_invincibie;
-unsigned long state_object_high_score;
+//unsigned long state_object_high_score;
+unsigned int state_object_high_score;
 
 unsigned char state_object_trees_type;
 unsigned char state_object_exits_type;

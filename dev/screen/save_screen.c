@@ -20,7 +20,8 @@ void screen_save_screen_load()
 	{
 		engine_storage_manager_read();
 
-		engine_font_manager_draw_long( state_object_high_score, 22, 1 );
+		//engine_font_manager_draw_long( state_object_high_score, 22, 1 );
+		engine_font_manager_draw_data( state_object_high_score, 22, 1 );
 
 		engine_font_manager_draw_data( state_object_trees_type, 22, 3 );
 		engine_font_manager_draw_data( state_object_exits_type, 22, 4 );
