@@ -34,11 +34,9 @@ void screen_cont_screen_load()
 	command_count = 3;
 
 
-	engine_command_manager_init();
+	engine_command_manager_load();
 	engine_delay_manager_load( 0 );
 
-	//engine_board_manager_init();
-	//engine_gamer_manager_init();
 	//engine_enemy_manager_init();
 	//engine_enemy_manager_load();
 	//get_actor_data( actor_mover, actor_tileZ );
@@ -53,7 +51,7 @@ void screen_cont_screen_load()
 	engine_board_manager_side_tile();
 
 	engine_level_manager_load_level( 0, 0 );
-	engine_level_manager_update_level( 0, 0, 0);
+	//engine_level_manager_update_level( 0, 0, 0);
 	engine_level_manager_draw_level();
 
 	engine_frame_manager_draw();

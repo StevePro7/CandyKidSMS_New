@@ -2,9 +2,6 @@
 #define FIXED_BANK	15
 
 
-// Enemy Manager.
-//extern const unsigned char enemy_object_directions[];
-
 // Audio Manager.
 extern const unsigned char *music_object_data[];
 extern const unsigned char music_object_bank[];

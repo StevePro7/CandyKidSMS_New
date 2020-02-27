@@ -31,21 +31,13 @@ void engine_enemy_manager_init()
 	};
 
 	unsigned char frame;
-	//unsigned char homeX;
-	//unsigned char homeY;
-
 	unsigned char enemy;
-	devkit_SMS_mapROMBank( FIXED_BANK );
+
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		eo = &global_enemy_objects[ enemy ];
 		eo->actor = enemy;
-		//homeX = board_homeX[ enemy ];
-		//homeY = board_homeY[ enemy ];
 
-		//eo->homeX = homeX;
-		//eo->homeY = homeY;
-		//engine_board_manager_calc_tileSpot( eo->homeX, eo->homeY, &eo->homeZ );
 		eo->tileX = board_object_homeX[ enemy ];
 		eo->tileY = board_object_homeY[ enemy ];
 		eo->action = enemymove_type_wait;
@@ -58,14 +50,7 @@ void engine_enemy_manager_init()
 		eo->mover = 1;		// 1=move 0=stay.
 		eo->lifecycle = lifecycle_type_idle;
 		eo->prev_move = direction_type_none;
-		//eo->prev_move[ 0 ] = direction_type_none;
-		//eo->prev_move[ 1 ] = direction_type_none;
-		//eo->prev_move[ 2 ] = direction_type_none;
-		//eo->prev_move[ 3 ] = direction_type_none;
-
 		eo->direction = direction_type_none;
-		//eo->dir_fours = direction_type_none;
-		//eo->dir_half2 = direction_type_none;
 		eo->dir_count = 0;
 
 		eo->image = frame_type_stance;
@@ -78,19 +63,6 @@ void engine_enemy_manager_init()
 		eo->images[ 1 ][ 0 ] = images[ frame + 2 ];
 		eo->images[ 1 ][ 1 ] = images[ frame + 3 ];
 
-		/*
-		image = images[ frame + 0 ];
-		eo->images[ 0 ][ 0 ] = image;
-
-		image = images[ frame + 1 ];
-		eo->images[ 0 ][ 1 ] = image;
-
-		image = images[ frame + 2 ];
-		eo->images[ 1 ][ 0 ] = image;
-
-		image = images[ frame + 3 ];
-		eo->images[ 1 ][ 1 ] = image;
-		*/
 		calcd_frame( enemy );
 		calcd_spots( enemy );
 

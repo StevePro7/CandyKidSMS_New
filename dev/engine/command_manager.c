@@ -21,14 +21,6 @@ static void undo_command_end_gamer( unsigned char args );
 
 void engine_command_manager_init()
 {
-	unsigned int index;
-	for( index = 0; index < MAX_COMMANDS; index++ )
-	{
-		command_object_frames[ index ] = 0;
-		command_object_cmds[ index ] = 0;
-		command_object_args[ index ] = 0;
-	}
-
 	// IMPORTANT execute + undo must be same order!!
 	execute[ command_type_all_empty ] = exec_command_all_empty;
 	execute[ command_type_gamer_mover ] = engine_actor_manager_exec_gamer_mover;
@@ -43,6 +35,17 @@ void engine_command_manager_init()
 	undo[ command_type_gamer_speed ] = engine_actor_manager_exec_gamer_speed;
 	undo[ command_type_enemy_speed ] = engine_actor_manager_exec_enemy_speed;
 	undo[ command_type_end_gamer ] = undo_command_end_gamer;
+}
+
+void engine_command_manager_load()
+{
+	unsigned int index;
+	for( index = 0; index < MAX_COMMANDS; index++ )
+	{
+		command_object_frames[ index ] = 0;
+		command_object_cmds[ index ] = 0;
+		command_object_args[ index ] = 0;
+	}
 
 	command_index = 0;
 	add_index = 0;
@@ -189,7 +192,7 @@ void engine_command_manager_play( unsigned int frame )
 	}
 }
 
-void engine_command_manager_load( unsigned int* frames, unsigned char* commands, unsigned char* args )
+void engine_command_manager_demo( unsigned int* frames, unsigned char* commands, unsigned char* args )
 {
 	unsigned int index;
 	for( index = 0; index < MAX_COMMANDS; index++ )

@@ -29,8 +29,8 @@ void main (void)
 	//open_screen_type = screen_type_dead;
 	//open_screen_type = screen_type_over;
 	//open_screen_type = screen_type_demo;
-	open_screen_type = screen_type_cont;
-	//open_screen_type = screen_type_play;
+	//open_screen_type = screen_type_cont;
+	open_screen_type = screen_type_play;
 	//open_screen_type = screen_type_intro;
 	//open_screen_type = screen_type_title;
 

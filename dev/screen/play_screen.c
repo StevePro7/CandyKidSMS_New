@@ -39,12 +39,12 @@ void screen_play_screen_load()
 	unsigned char actor_tileZ[ MAX_ACTORS ];
 	unsigned char round = 1;
 
-	engine_command_manager_init();
+	//engine_command_manager_init();
 	engine_delay_manager_load( 0 );
 
-	engine_board_manager_init();
-	engine_gamer_manager_init();
-	engine_enemy_manager_init();
+	//engine_board_manager_init();
+	//engine_gamer_manager_init();
+	//engine_enemy_manager_init();
 	engine_enemy_manager_load();
 	get_actor_data( actor_mover, actor_tileZ );
 	
