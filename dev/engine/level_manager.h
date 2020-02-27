@@ -5,7 +5,8 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 void engine_level_manager_update_level( const unsigned char round, unsigned char *actor_mover, unsigned char *actor_tileZ );
 void engine_level_manager_beat_level( const unsigned char *data, const unsigned char size, const unsigned char bank );
 void engine_level_manager_draw_level();
-//
+void engine_level_manager_draw_middle();
+
 unsigned char engine_level_manager_get_collision( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset );
 unsigned char engine_level_manager_get_direction( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset );	// TODO could go - not used...!
 unsigned char engine_level_manager_get_tile_type( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset );

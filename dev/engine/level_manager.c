@@ -10,15 +10,13 @@
 #include "..\devkit\_sms_manager.h"
 #include <stdlib.h>
 
-//// TODO calculate based on levels
-//#define MULTIPLIER_LEVEL	70
-
 #define CRLF	2				// char
 #define CR		'\r'			// 0x0d
 #define LF		'\n'			// 0x0a
 
-//// Private helper methods.
+// Private helper methods.
 static void load_level( const unsigned char *data, const unsigned char size, const unsigned char bank, unsigned char mult );
+static void draw_level( unsigned char beg_row, unsigned char end_row, unsigned char beg_col, unsigned char end_col );
 static void draw_tiles( unsigned char x, unsigned char y );
 static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction );
 
@@ -124,17 +122,60 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 
 void engine_level_manager_draw_level()
 {
-	//struct_level_object *lo = &global_level_object;
-	unsigned char row, col;
+	//unsigned char sr, er, sc, ec;
+	//unsigned char row, col;
 
-	for( row = 0; row < MAX_ROWS; row++ )
+	//sr = 0;
+	//er = MAX_ROWS;
+	//sc = 0;
+	//ec = MAX_COLS;
+
+	//for( row = 0; row < MAX_ROWS; row++ )
+	//{
+	//	for( col = 0; col < MAX_COLS; col++ )
+	//	{
+	//		draw_tiles( col, row );
+	//	}
+	//}
+
+	draw_level( 0, MAX_ROWS, 0, MAX_COLS );
+}
+
+void engine_level_manager_draw_middle()
+{
+	//unsigned char sr, er, sc, ec;
+	//unsigned char row, col;
+
+	//sr = 3;
+	//er = 7;
+	//sc = 2;
+	//ec = 8;
+
+	//for( row = 3; row < 7; row++ )
+	//{
+	//	for( col = 2; col < 8; col++ )
+	//	{
+	//		draw_tiles( col, row );
+	//	}
+	//}
+
+	// TODO define 
+	// beg_row, unsigned char end_row, unsigned char beg_col, unsigned char end_col
+	draw_level( 3, 7, 2, 8 );
+}
+
+static void draw_level( unsigned char beg_row, unsigned char end_row, unsigned char beg_col, unsigned char end_col )
+{
+	unsigned char row, col;
+	for( row = beg_row; row < end_row; row++ )
 	{
-		for( col = 0; col < MAX_COLS; col++ )
+		for( col = beg_col; col < end_col; col++ )
 		{
 			draw_tiles( col, row );
 		}
 	}
 }
+
 
 void engine_level_manager_beat_level( const unsigned char *data, const unsigned char size, const unsigned char bank )
 {
@@ -211,8 +252,6 @@ unsigned char engine_level_manager_get_next_tile( unsigned char x, unsigned char
 
 void engine_level_manager_get_next_index( unsigned char *x, unsigned char *y, unsigned char direction, signed char offset )
 {
-	//unsigned char index;
-
 	// Note: x and y can never go out-of-bounds: if gamer in exits then there will be no collision checks.
 	if( direction_type_upxx == direction )
 	{
@@ -230,12 +269,10 @@ void engine_level_manager_get_next_index( unsigned char *x, unsigned char *y, un
 	{
 		*x += offset;
 	}
-
-	//engine_function_manager_convertXYtoZ( MAZE_ROWS, x, y, &index );
-	//return index;
 }
 
 
+// TODO don't believe this will be needed so could delete at the end...
 unsigned char engine_level_manager_test_direction( unsigned char row, unsigned char col )
 {
 	unsigned char direction_type = direction_type_none;
@@ -274,9 +311,6 @@ unsigned char engine_level_manager_test_direction( unsigned char row, unsigned c
 // Private helper methods.
 static void load_level( const unsigned char *data, const unsigned char size, const unsigned char bank, unsigned char mult )
 {
-	//unsigned char directions[] = { direction_type_upxx, direction_type_down, direction_type_left, direction_type_rght };
-	//struct_level_object *lo = &global_level_object;
-
 	const unsigned char *o = data;
 	unsigned char row, col;
 	unsigned char tile_data;
@@ -284,8 +318,6 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 	unsigned int index;
 	unsigned char tile_type;
 	unsigned char coll_type;
-	//unsigned char test_type;
-	//unsigned char direction;
 
 	unsigned char load_cols;
 	unsigned char draw_cols;
@@ -300,7 +332,6 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 	devkit_SMS_mapROMBank( bank );
 	for( row = 0; row < MAX_ROWS; row++ )
 	{
-		//for( col = 0; col < lo->load_cols; col++ )
 		for( col = 0; col < load_cols; col++ )
 		{
 			tile_data = *o;
@@ -330,66 +361,6 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 			o++;
 		}
 	}
-
-	// TODO stevepro adriana - put this in the enemy mgr
-	// Update if enemy not move and candy on home tile.
-	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
-	//{
-	//	eo = &global_enemy_objects[ enemy ];
-	//	if( eo->mover )
-	//	{
-	//		continue;
-	//	}
-
-	//	// Enemy is idle this level so blank out tile
-	//	index = eo->tileZ;
-	//	tile_type = level_object_tiles_array[ index ];
-
-	//	if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
-	//	{
-	//		level_object_bonus_count--;
-	//	}
-	//	if( tile_type_candy == tile_type )
-	//	{
-	//		level_object_candy_count--;
-	//	}
-
-	//	level_object_tiles_array[ index ] = tile_type_blank;
-	//}
-
-	// TODO Ensure no trees over exits!
-	//if( exit_type_public == state_object_exits_type )
-	//{
-	//	for( row = 0; row < MAX_ROWS; row++ )
-	//	{
-	//		for( col = 0; col < MAX_COLS; col++ )
-	//		{
-	//			index = ( row + 2 ) * MAZE_COLS + ( col + 2 );
-	//		}
-	//	}
-	//}
-
-	
-	// TODO - do I want to remove this altogether...??
-	// Don't think that I need to store all prossible directions if I can used the collision type
-	// to check whether an actor can move to another tile
-
-	// Set each tile directions available.
-	//for( row = 0; row < MAX_ROWS; row++ )
-	//{
-	//	for( col = 0; col < MAX_COLS; col++ )
-	//	{
-	//		direction = engine_level_manager_test_direction( ( row + 2 ), ( col + 2 ) );
-
-	//		index = ( row + 2 ) * MAZE_COLS + ( col + 2 );
-	//		test_type = level_object_tiles_array[ index ];
-
-	//		engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
-	//		level_object_tiles_array[ index ] = test_type;
-	//	}
-	//}
-
-	// TODO - update if there is free man candy on this level
 }
 
 static void draw_tiles( unsigned char x, unsigned char y )

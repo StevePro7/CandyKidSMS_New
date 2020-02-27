@@ -128,8 +128,7 @@ void engine_board_manager_side_tile()
 
 void engine_board_manager_midd_text()
 {
-	//unsigned char type = state_object_trees_type;
-	unsigned char type = 1;
+	unsigned char type = state_object_trees_type;
 	unsigned char loop;
 
 	for( loop = 0; loop < 6; loop++ )
