@@ -124,8 +124,8 @@ void engine_enemy_manager_load()
 		//eo->waiter = 64;		// 50 frames
 		//eo->waiter = 80;		// 50 frames
 		eo->waiter = 0;		// 50 frames
-		eo->toggle[ 0 ] = 24;
-		eo->toggle[ 1 ] = 24;
+		eo->toggle[ 0 ] = 32;
+		eo->toggle[ 1 ] = 32;
 		eo->ticker = 0;
 		eo->action = enemymove_type_wait;
 	}
@@ -336,6 +336,64 @@ unsigned char engine_enemy_manager_gohome_direction( unsigned char enemy )
 }
 
 unsigned char engine_enemy_manager_attack_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY, unsigned char gamer_direction )
+{
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	struct_enemy_object *eo0;
+
+	unsigned char enemy_direction = direction_type_none;
+
+	//// This enemy does not move!
+	////if( !eo->mover )
+	////{
+	////	return direction_type_none;
+	////}
+
+	//// TODO decide whether scatter or attack...!
+
+	//// ATTACK.
+	if( actor_type_pro == enemy )
+	{
+		enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
+	}
+	//else 
+	if( actor_type_adi == enemy )
+	{
+		// Like Pinky
+		gamer_direction = engine_move_manager_actor_direction( gamer_direction );
+
+		// Look two tiles in front on Candy Kid.
+		engine_level_manager_get_next_index( &targetX, &targetY, gamer_direction, offset_type_two );
+		enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
+	}
+	//else
+	if( actor_type_suz == enemy )
+	{
+		//enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
+		//unsigned char coin = rand() % 3;
+		////unsigned char coin = 2;
+
+		//// Try Pacman algorithm based off Blinky [Pro]
+		eo0 = &global_enemy_objects[ actor_type_pro ];
+
+		//// TODO while loop if Pro not moving then don't add AND if Adi not moving then don't add
+		//if( 2 != coin )
+		//{
+			targetX = eo0->tileX;
+			targetY = eo0->tileY;
+		//}
+
+		//// Look two tiles in front on Candy Kid.
+		//// TODO - maybe make value 2 variable for Eash vs. Hard?
+		////engine_level_manager_get_next_index( &targetX, &targetY, eo0->prev_move[0], 0 );
+		engine_level_manager_get_next_index( &targetX, &targetY, direction_type_none, offset_type_none );
+		//enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
+		enemy_direction = engine_enemy_manager_what_direction( enemy, ( offset_type_four - 1 ) - targetX, ( offset_type_four - 1 ) - targetY );
+	}
+
+	return enemy_direction;
+}
+
+unsigned char engine_enemy_manager_attack_direction2( unsigned char enemy, unsigned char targetX, unsigned char targetY, unsigned char gamer_direction )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	struct_enemy_object *eo0;
