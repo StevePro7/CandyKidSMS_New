@@ -23,20 +23,5 @@ void screen_title_screen_load()
 
 void screen_title_screen_update( unsigned char *screen_type )
 {
-	//unsigned char input;
-	//input = engine_input_manager_hold( input_type_fire1 );
-	//if( input )
-	//{
-	//	state_object_trees_type = 1 - state_object_trees_type;
-	//	engine_board_manager_main_full();
-	//	engine_board_manager_main_exit();
-	//}
-	//input = engine_input_manager_hold( input_type_fire2 );
-	//if( input )
-	//{
-	//	state_object_exits_type = 1 - state_object_exits_type;
-	//	engine_board_manager_main_exit();
-	//}
-
 	*screen_type = screen_type_title;
 }
