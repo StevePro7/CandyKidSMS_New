@@ -64,7 +64,7 @@ void screen_reset_screen_load()
 
 void screen_reset_screen_update( unsigned char *screen_type )
 {
-	unsigned char *cont_walking_cmds = cont_walking_cmds1;
+	unsigned char *cont_walking_cmds = cont_walking_cmds2;
 
 
 	struct_frame_object *fo = &global_frame_object;

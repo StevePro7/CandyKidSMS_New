@@ -31,6 +31,42 @@ void engine_font_manager_draw_text( unsigned char *text, unsigned char x, unsign
 	}
 }
 
+//void engine_font_manager_draw_data( unsigned int data, unsigned char x, unsigned char y )
+//{
+//	const unsigned char *pnt = font_tiles__tilemap__bin;
+//
+//	unsigned char idx;
+//	unsigned char tile;
+//
+//	unsigned int quotient = 0;
+//	unsigned char remainder = 0;
+//
+//	//char hold[DATA_LONG];
+//	engine_font_manager_draw_text( "     ", x - 4, y );
+//	//engine_font_manager_draw_text( "ABCDE", x - 4, y );
+//
+//	for( idx = 0; idx < DATA_LONG; ++idx )
+//	{
+//		quotient = data / UNIT_ROOT;
+//		remainder = data % UNIT_ROOT;
+//
+//		//hold[idx] = remainder;
+//		data /= UNIT_ROOT;
+//
+//		//tile = hold[idx] + DATA_ROOT;
+//		tile = remainder + DATA_ROOT;
+//		if( 0 == quotient && 0 == remainder && idx > 0 )
+//		{
+//			// Replace with space!
+//			//tile = 0;
+//			break;
+//		}
+//
+//		devkit_SMS_setNextTileatXY( x--, y );
+//		devkit_SMS_setTile( *pnt + tile );
+//	}
+//}
+
 void engine_font_manager_draw_data( unsigned int data, unsigned char x, unsigned char y )
 {
 	const unsigned char *pnt = font_tiles__tilemap__bin;
@@ -41,16 +77,16 @@ void engine_font_manager_draw_data( unsigned int data, unsigned char x, unsigned
 	unsigned int quotient = 0;
 	unsigned char remainder = 0;
 
-	char hold[DATA_LONG];
+	char hold[ DATA_LONG ];
 	for( idx = 0; idx < DATA_LONG; ++idx )
 	{
 		quotient = data / UNIT_ROOT;
 		remainder = data % UNIT_ROOT;
 
-		hold[idx] = remainder;
+		hold[ idx ] = remainder;
 		data /= UNIT_ROOT;
 
-		tile = hold[idx] + DATA_ROOT;
+		tile = hold[ idx ] + DATA_ROOT;
 		if( 0 == quotient && 0 == remainder && idx > 0 )
 		{
 			// Replace with space!
@@ -61,6 +97,43 @@ void engine_font_manager_draw_data( unsigned int data, unsigned char x, unsigned
 		devkit_SMS_setTile( *pnt + tile );
 	}
 }
+
+//void engine_font_manager_draw_long( unsigned long data, unsigned char x, unsigned char y )
+//{
+//	const unsigned char *pnt = font_tiles__tilemap__bin;
+//
+//	unsigned char idx;
+//	unsigned char tile;
+//
+//	unsigned long quotient = 0;
+//	unsigned char remainder = 0;
+//
+//	//char hold[DATA_LONG];
+//	engine_font_manager_draw_text( "     ", x - 4, y );
+//	//engine_font_manager_draw_text( "ABCDE", x - 4, y );
+//
+//	//char hold[ DATA_LONG ];
+//	for( idx = 0; idx < DATA_LONG; ++idx )
+//	{
+//		quotient = data / UNIT_ROOT;
+//		remainder = data % UNIT_ROOT;
+//
+//		//hold[ idx ] = remainder;
+//		data /= UNIT_ROOT;
+//
+//		//tile = hold[ idx ] + DATA_ROOT;
+//		tile = remainder + DATA_ROOT;
+//		if( 0 == quotient && 0 == remainder && idx > 0 )
+//		{
+//			// Replace with space!
+//			//tile = 0;
+//			break;
+//		}
+//
+//		devkit_SMS_setNextTileatXY( x--, y );
+//		devkit_SMS_setTile( *pnt + tile );
+//	}
+//}
 
 //void engine_font_manager_draw_long( unsigned long data, unsigned char x, unsigned char y )
 //{

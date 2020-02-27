@@ -8,7 +8,7 @@
 
 #define HACKER_START		0x0050
 
-// TODO delete this - set only during debugging / play testsing
+// TODO delete this - set only during debugging / play testing
 #ifdef _CONSOLE
 #else
 #pragma disable_warning 110
@@ -65,7 +65,7 @@ void engine_hack_manager_invert()
 	// TODO delete this hard coded
 	state_object_trees_type = 0;
 	state_object_exits_type = 0;
-	state_object_difficulty = 0;
+	state_object_difficulty = 1;
 	state_object_invincibie = 0;
 
 	state_object_enemy_move[ actor_type_pro ] = 1;

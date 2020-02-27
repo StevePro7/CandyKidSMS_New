@@ -23,7 +23,7 @@ void main (void)
 	engine_state_manager_read();
 
 	//open_screen_type = screen_type_intro;
-	//open_screen_type = screen_type_func;
+	open_screen_type = screen_type_func;
 	//open_screen_type = screen_type_load;
 	//open_screen_type = screen_type_demo;
 	//open_screen_type = screen_type_test;
@@ -31,7 +31,7 @@ void main (void)
 	//open_screen_type = screen_type_over;
 	//open_screen_type = screen_type_demo;
 	//open_screen_type = screen_type_save;
-	open_screen_type = screen_type_reset;
+	//open_screen_type = screen_type_reset;
 	open_screen_type = screen_type_play;
 	//open_screen_type = screen_type_pass;
 	//open_screen_type = screen_type_title;
