@@ -19,18 +19,12 @@
 #define TOP_EXIT_Y		6
 #define BOT_EXIT_Y		16
 
-//#define EXIT_SPOT1		2
-//#define EXIT_SPOT2		4
-//#define EXIT_SPOT3		9
-//#define EXIT_SPOT4		11
-
 static void draw_side( unsigned char wide, unsigned char right );
 static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right );
-//
+
 // Methods.
 void engine_board_manager_init()
 {
-	//struct_board_object *bo = &global_board_object;
 	unsigned char borders[] = { 0, 1, MAZE_ROWS - 2, MAZE_ROWS - 1 };
 	unsigned char row, col;
 	unsigned char test_type;
@@ -105,12 +99,10 @@ void engine_board_manager_init()
 
 void engine_board_manager_draw_full()
 {
-	//struct_board_object *bo = &global_board_object;
 	draw_side( TREE_COLS, MID_SIDE_X );
 }
 void engine_board_manager_draw_exit()
 {
-	//struct_board_object *bo = &global_board_object;
 	draw_gaps( TOP_EXIT_Y, BOT_EXIT_Y, MID_SIDE_X );
 }
 
@@ -120,7 +112,6 @@ void engine_board_manager_main_full()
 }
 void engine_board_manager_main_exit()
 {
-	//struct_board_object *bo = &global_board_object;
 	draw_gaps( 8, 20, RGT_SIDE_X );
 }
 
@@ -137,7 +128,6 @@ void engine_board_manager_side_tile()
 // TODO - delete!!
 void engine_board_manager_debugger()
 {
-	//struct_board_object *bo = &global_board_object;
 	unsigned char type = state_object_trees_type;
 
 	unsigned char spot[] = { 1, 2, 4, 7, 9, 10 };
@@ -156,7 +146,6 @@ void engine_board_manager_debugger()
 
 static void draw_side( unsigned char wide, unsigned char right )
 {
-	//struct_board_object *bo = &global_board_object;
 	unsigned char type = state_object_trees_type;
 	unsigned char loop;
 
@@ -173,9 +162,7 @@ static void draw_side( unsigned char wide, unsigned char right )
 }
 static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right )
 {
-	//struct_board_object *bo = &global_board_object;
 	unsigned char type = state_object_trees_type;
-
 	if( exit_type_closed == state_object_exits_type )
 	{
 		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + left, TOP_SIDE_Y );

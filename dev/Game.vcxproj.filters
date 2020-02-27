@@ -51,11 +51,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="build.bat">
-      <Filter>Resource Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -496,5 +491,10 @@
     <ClCompile Include="screen\ready_screen.c">
       <Filter>Source Files\screen</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="build.bat">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

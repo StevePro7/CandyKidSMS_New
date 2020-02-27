@@ -36,6 +36,7 @@ void engine_state_manager_read()
 	}
 
 	// Invert any hack overrides...
+	engine_hack_manager_load();
 	engine_hack_manager_invert();
 }
 

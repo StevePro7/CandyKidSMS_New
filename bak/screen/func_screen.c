@@ -13,37 +13,15 @@
 #include "..\engine\score_manager.h"
 #include "..\engine\tile_manager.h"
 
-// FUNC screen - is the main command playback driver
-// Assumes that commands have already been saved to SRAM
 static unsigned char first_time;
 
 void screen_func_screen_load()
 {
-	//engine_command_manager_init();
-	//engine_delay_manager_load( 0 );
-
-	//engine_board_manager_init();
-	//engine_gamer_manager_init();
-	//engine_enemy_manager_init();
-
 	engine_score_manager_load();
 	engine_score_manager_draw_text();
 	engine_score_manager_draw_all();
 
-	//engine_board_manager_draw_full();
-	//engine_board_manager_draw_exit();
-	//engine_board_manager_side_tile();
-
-	//// Draw functions.
-	////engine_board_manager_debugger();
-	////engine_board_manager_draw_full();
-	//engine_board_manager_debugger();
-	////engine_board_manager_draw_exit();
-
-	//engine_font_manager_draw_text( "FUNC SCREEN!!", 4, 10 );
-	//engine_score_manager_draw_all();
-	//engine_score_manager_draw_text();
-	//first_time = 1;
+	engine_font_manager_draw_text( "FUNC SCREEN", 10, 2 );
 }
 
 void screen_func_screen_update( unsigned char *screen_type )
@@ -67,18 +45,16 @@ void screen_func_screen_update( unsigned char *screen_type )
 	input = engine_input_manager_hold( input_type_left );
 	if( input )
 	{
-		engine_font_manager_draw_text( "THERE", 10, 10 );
 		engine_score_manager_update_candy();
 	}
 	input = engine_input_manager_hold( input_type_right );
 	if( input )
 	{
-		
 		engine_score_manager_update_bonus( tile_type_bonusD );
 		//engine_score_manager_update_bonus( tile_type_bonusD );
 	}
 
-	input = engine_input_manager_hold( input_type_fire1 );
+	input = engine_input_manager_move( input_type_fire1 );
 	if( input )
 	{
 		engine_score_manager_update_boost();

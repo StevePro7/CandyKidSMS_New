@@ -14,13 +14,7 @@
 
 void screen_over_screen_load()
 {
-	//engine_font_manager_draw_text( LOCALE_SELECT_DIFF, 4, 10 );
-
-	//engine_enemy_manager_init();
-	//engine_gamer_manager_init();
-
 	engine_font_manager_draw_text( "OVER SCREEN!!", 4, 11 );
-	//engine_audio_manager_music_play_norepeat( music_type_over );
 }
 
 void screen_over_screen_update( unsigned char *screen_type )
