@@ -122,7 +122,8 @@ void engine_score_manager_draw_text()
 {
 	unsigned char *text;
 	unsigned char index;
-	//devkit_SMS_mapROMBank( FIXED_BANK );
+	// IMPORTANT need to ROM bank text.
+	devkit_SMS_mapROMBank( FIXED_BANK );
 	for( index = 0; index < 7; index++ )
 	{
 		text = ( unsigned char * ) score_object_titles[ index ];
