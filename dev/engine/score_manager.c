@@ -26,6 +26,7 @@ struct_score_object global_score_object;
 static unsigned char y[] = { LIVES_Y + 1, LEVEL_Y + 1, BOOST_Y + 1, 22, 23 };
 static unsigned char title_Y[] = { TITLE_Y, TITLE_Y + 1, HIGHS_Y, SCORE_Y, LIVES_Y, LEVEL_Y, BOOST_Y, };
 static unsigned char bonuses[] = { 10, 20, 40, 80 };
+// TODO need to split the reset functionality.
 static void reset();
 static void update_score( unsigned char points );
 static void update_lives( signed char value );

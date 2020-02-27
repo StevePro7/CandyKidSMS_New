@@ -41,7 +41,6 @@ void screen_play_screen_load()
 	//unsigned char actor_tileX[ MAX_ACTORS ];
 	//unsigned char actor_tileY[ MAX_ACTORS ];
 	unsigned char actor_tileZ[ MAX_ACTORS ];
-	unsigned char round = 4;
 
 	engine_delay_manager_load( 0 );
 
@@ -50,9 +49,8 @@ void screen_play_screen_load()
 	engine_actor_manager_get_data( actor_mover, actor_tileZ );
 
 	// Put in init screen
-	engine_score_manager_load();
-	engine_score_manager_draw_text();
-	engine_score_manager_draw_all();
+	engine_score_manager_draw_text();		// this is just static text!!
+	// Put in init screen
 
 	// Draw functions.
 	//engine_board_manager_debugger();
@@ -61,11 +59,15 @@ void screen_play_screen_load()
 	engine_board_manager_side_tile();
 
 	//engine_level_manager_load_level( 0, 0 );
-	engine_level_manager_load_level( 0, round );
+	state_object_round_data = 1;
+	engine_level_manager_load_level( 0, state_object_round_data );
 	//engine_level_manager_load_level( 8, 7 );
 	//engine_level_manager_load_level( 9, 4 );
-	engine_level_manager_update_level( round, actor_mover, actor_tileZ );
+	engine_level_manager_update_level( state_object_round_data, actor_mover, actor_tileZ );
 	engine_level_manager_draw_level();
+
+	engine_score_manager_load();
+	engine_score_manager_draw_all();
 
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
