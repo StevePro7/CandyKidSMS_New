@@ -196,7 +196,7 @@ static void draw_highs()
 static void draw_score()
 {
 	struct_score_object *so = &global_score_object;
-	//engine_font_manager_draw_long( so->score, DATA_X + 0, SCORE_Y + 1 );
+	engine_font_manager_draw_long( so->score, DATA_X + 0, SCORE_Y + 1 );
 }
 
 static void draw_value( unsigned char index )
