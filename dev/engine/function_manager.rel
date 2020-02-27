@@ -1,18 +1,16 @@
 XL2
-H 9 areas 9 global symbols
+H 9 areas 7 global symbols
 M function_manager
 O -mz80
 S __moduchar Ref0000
 S __divuchar Ref0000
 S .__.ABS. Def0000
-A _CODE size 9E flags 0 addr 0
-S _engine_function_manager_convertNibblesToByte Def0085
-S _engine_function_manager_convertByteToNibbles Def0060
-S _engine_function_manager_convertZtoXY Def002B
-S _engine_function_manager_convertXYtoZ Def0001
-S _engine_function_manager_foo Def0000
-A _DATA size 1 flags 0 addr 0
-S _lastbank Def0000
+A _CODE size 9D flags 0 addr 0
+S _engine_function_manager_convertNibblesToByte Def0084
+S _engine_function_manager_convertByteToNibbles Def005F
+S _engine_function_manager_convertZtoXY Def002A
+S _engine_function_manager_convertXYtoZ Def0000
+A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
@@ -21,48 +19,40 @@ A _GSFINAL size 0 flags 0 addr 0
 A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
-R 00 00 01 00
-T 00 00
-R 00 00 01 00
-T 00 00
 R 00 00 00 00
-T 00 00 C9
+T 00 00 21 05 00 39 4E 23 46 C5 21 04 00 39 5E FD
 R 00 00 00 00
-T 01 00
+T 0E 00 21 06 00 FD 39 FD 66 00 2E 00 55 06 08
 R 00 00 00 00
-T 01 00 21 05 00 39 4E 23 46 C5 21 04 00 39 5E FD
+T 1B 00
 R 00 00 00 00
-T 0F 00 21 06 00 FD 39 FD 66 00 2E 00 55 06 08
+T 1B 00 29 30 01 19
 R 00 00 00 00
-T 1C 00
+T 1F 00
 R 00 00 00 00
-T 1C 00 29 30 01 19
+T 1F 00 10 FA C1 7D 21 03 00 39 86 02 C9
 R 00 00 00 00
-T 20 00
+T 2A 00
 R 00 00 00 00
-T 20 00 10 FA C1 7D 21 03 00 39 86 02 C9
+T 2A 00 DD E5 DD 21 00 00 DD 39 DD 4E 06 DD 46 07
 R 00 00 00 00
-T 2B 00
-R 00 00 00 00
-T 2B 00 DD E5 DD 21 00 00 DD 39 DD 4E 06 DD 46 07
-R 00 00 00 00
-T 39 00 C5 DD 66 04 DD 6E 05 E5 CD 00 00 F1 7D C1
+T 38 00 C5 DD 66 04 DD 6E 05 E5 CD 00 00 F1 7D C1
 R 00 00 00 00 02 0B 00 00
-T 47 00 02 DD 4E 08 DD 46 09 C5 DD 66 04 DD 6E 05
+T 46 00 02 DD 4E 08 DD 46 09 C5 DD 66 04 DD 6E 05
 R 00 00 00 00
-T 55 00 E5 CD 00 00 F1 7D C1 02 DD E1 C9
+T 54 00 E5 CD 00 00 F1 7D C1 02 DD E1 C9
 R 00 00 00 00 02 04 01 00
-T 60 00
+T 5F 00
 R 00 00 00 00
-T 60 00 21 03 00 39 4E 23 46 21 02 00 39 7E 07 07
+T 5F 00 21 03 00 39 4E 23 46 21 02 00 39 7E 07 07
 R 00 00 00 00
-T 6E 00 07 07 E6 0F E6 0F 02 21 05 00 39 4E 23 46
+T 6D 00 07 07 E6 0F E6 0F 02 21 05 00 39 4E 23 46
 R 00 00 00 00
-T 7C 00 21 02 00 39 7E E6 0F 02 C9
+T 7B 00 21 02 00 39 7E E6 0F 02 C9
 R 00 00 00 00
-T 85 00
+T 84 00
 R 00 00 00 00
-T 85 00 21 04 00 39 4E 23 46 21 02 00 39 7E 07 07
+T 84 00 21 04 00 39 4E 23 46 21 02 00 39 7E 07 07
 R 00 00 00 00
-T 93 00 07 07 E6 F0 21 03 00 39 B6 02 C9
+T 92 00 07 07 E6 F0 21 03 00 39 B6 02 C9
 R 00 00 00 00

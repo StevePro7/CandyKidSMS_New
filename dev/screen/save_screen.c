@@ -37,9 +37,8 @@ void screen_save_screen_load()
 		engine_storage_manager_erase();
 	}
 
+	engine_font_manager_draw_text( "SAVE SCREEN...!!", 4, 0l );
 	engine_font_manager_draw_data( test, 22, 15 );
-
-	engine_font_manager_draw_text( "SAVE SCREEN...!!", 4, 1 );
 }
 
 void screen_save_screen_update( unsigned char *screen_type )
