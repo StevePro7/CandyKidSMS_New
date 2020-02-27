@@ -177,6 +177,7 @@ typedef enum tag_enum_offset_type
 	offset_type_none = 0,
 	offset_type_one = 1,
 	offset_type_two = 2,
+	offset_type_four = 4,
 
 } enum_offset_type;
 

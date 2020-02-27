@@ -1,5 +1,5 @@
 #include "pass_screen.h"
-#include "..\banks\databank.h"
+#include "..\engine\audio_manager.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\command_manager.h"
 #include "..\engine\delay_manager.h"
@@ -12,6 +12,7 @@
 #include "..\engine\move_manager.h"
 #include "..\engine\score_manager.h"
 #include "..\engine\tile_manager.h"
+#include "..\banks\databank.h"
 
 void screen_pass_screen_load()
 {
@@ -22,8 +23,8 @@ void screen_pass_screen_load()
 	//engine_level_manager_load_level( 0, 1 );
 	////engine_level_manager_load_level( 7, 4 );
 	//engine_level_manager_draw_level();
-
 	engine_font_manager_draw_text( "PASS SCREEN!", 4, 10 );
+	engine_audio_manager_music_play( 3 );
 }
 
 void screen_pass_screen_update( unsigned char *screen_type )
