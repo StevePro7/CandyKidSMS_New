@@ -65,6 +65,8 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 	unsigned char index;
 	unsigned char tiles;
 	unsigned char tile_type;
+	unsigned char upper_nibble;
+	unsigned char lower_nibble;
 
 	// Count all available home tiles: Kid, Pro, Adi, Suz
 	// Kid always moves so means that will be at least 1x.
@@ -91,7 +93,10 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 			level_object_candy_count--;
 		}
 
-		level_object_tiles_array[ index ] = tile_type_blank;
+		engine_function_manager_convertByteToNibbles( tile_type, &upper_nibble, &lower_nibble );
+		lower_nibble = tile_type_blank;
+		engine_function_manager_convertNibblesToByte( upper_nibble, lower_nibble, &tile_type );
+		level_object_tiles_array[ index ] = tile_type;
 	}
 
 	// Every fifth level award freeman tile.
@@ -117,7 +122,10 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 		level_object_candy_count--;
 	}
 
-	level_object_tiles_array[ index ] = tile_type_oneup;
+	engine_function_manager_convertByteToNibbles( tile_type, &upper_nibble, &lower_nibble );
+	lower_nibble = tile_type_oneup;
+	engine_function_manager_convertNibblesToByte( upper_nibble, lower_nibble, &tile_type );
+	level_object_tiles_array[ index ] = tile_type;
 }
 
 void engine_level_manager_draw_level()

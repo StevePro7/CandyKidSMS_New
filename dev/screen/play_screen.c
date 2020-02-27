@@ -38,7 +38,7 @@ void screen_play_screen_load()
 	//struct_enemy_object *eo;
 	unsigned char actor_mover[ MAX_ACTORS ];
 	unsigned char actor_tileZ[ MAX_ACTORS ];
-	unsigned char round = 1;
+	unsigned char round = 4;
 
 	engine_delay_manager_load( 0 );
 
@@ -56,7 +56,7 @@ void screen_play_screen_load()
 	engine_board_manager_draw_exit();
 	engine_board_manager_side_tile();
 
-	engine_level_manager_load_level( 0, 1 );
+	engine_level_manager_load_level( 0, round );
 	//engine_level_manager_load_level( 8, 7 );
 	//engine_level_manager_load_level( 9, 4 );
 	engine_level_manager_update_level( round, actor_mover, actor_tileZ );
