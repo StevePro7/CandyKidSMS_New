@@ -1,5 +1,4 @@
 #include "audio_manager.h"
-#include "font_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\devkit\_snd_manager.h"
 #include "..\banks\databank.h"
@@ -47,7 +46,14 @@ void engine_audio_manager_music_play_norepeat( unsigned char index )
 	devkit_SMS_mapROMBank( bank );
 	devkit_PSGPlayNoRepeat( ( unsigned char* ) music );
 }
-
+void engine_audio_manager_music_resume()
+{
+	devkit_PSGResume();
+}
+void engine_audio_manager_music_stop()
+{
+	devkit_PSGStop();
+}
 
 // Sound.
 void engine_audio_manager_sound_play( unsigned char index )

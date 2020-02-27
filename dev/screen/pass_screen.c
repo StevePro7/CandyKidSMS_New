@@ -24,7 +24,7 @@ void screen_pass_screen_load()
 	////engine_level_manager_load_level( 7, 4 );
 	//engine_level_manager_draw_level();
 	engine_font_manager_draw_text( "PASS SCREEN!", 4, 10 );
-	//engine_audio_manager_music_play( 3 );
+	engine_audio_manager_music_stop();
 }
 
 void screen_pass_screen_update( unsigned char *screen_type )

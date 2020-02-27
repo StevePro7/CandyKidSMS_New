@@ -4,6 +4,8 @@
 // Music.
 void engine_audio_manager_music_play( unsigned char index );
 void engine_audio_manager_music_play_norepeat( unsigned char index );
+void engine_audio_manager_music_resume();
+void engine_audio_manager_music_stop();
 
 // Sound.
 void engine_audio_manager_sound_play( unsigned char index );

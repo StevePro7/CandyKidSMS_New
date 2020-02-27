@@ -262,12 +262,17 @@ void screen_play_screen_update( unsigned char *screen_type )
 	first_time = 0;
 
 
-	// TODO tidy up this temp sprite collision
-	gamer_collision = devkit_isCollisionDetected();
-	//engine_font_manager_draw_data( gamer_collision, 16, 12 );
-	//if( 0 != gamer_collision )
-
-	// TODO tidy up this temp sprite collision
+	// Check candy collision before sprite collision as we want to test if all candy eaten = level complete
+	if( coll_type_candy == gamer_collision )
+	{
+		// TODO update correct screen.
+		unsigned char candy_count = engine_score_manager_get_candy();
+		if( level_object_candy_count == candy_count )
+		{
+			*screen_type = screen_type_pass;
+			return;
+		}
+	}
 
 
 	if( actor_type_kid != state_object_actor_kill )
@@ -281,6 +286,14 @@ void screen_play_screen_update( unsigned char *screen_type )
 	//	//engine_font_manager_draw_data( frame, 11, 6 );
 	//	frame_spot = 0;
 	//}
+
+	// TODO tidy up this temp sprite collision
+	gamer_collision = devkit_isCollisionDetected();
+	//engine_font_manager_draw_data( gamer_collision, 16, 12 );
+	//if( 0 != gamer_collision )
+
+	// TODO tidy up this temp sprite collision
+
 	*screen_type = screen_type_play;
 }
 
