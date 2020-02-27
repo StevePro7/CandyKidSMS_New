@@ -1,4 +1,5 @@
 #include "play_screen.h"
+#include "..\engine\actor_manager.h"
 #include "..\engine\audio_manager.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\collision_manager.h"
@@ -31,20 +32,23 @@ static unsigned char frame_spot;
 //static unsigned char process_collision( unsigned char tile_type );
 
 //static void print( unsigned char dir );
-static void get_actor_data( unsigned char *mover, unsigned char *tileZ );
+//static void get_actor_data( unsigned char *mover, unsigned char *tileZ );
 
 void screen_play_screen_load()
 {
 	//struct_enemy_object *eo;
 	unsigned char actor_mover[ MAX_ACTORS ];
+	//unsigned char actor_tileX[ MAX_ACTORS ];
+	//unsigned char actor_tileY[ MAX_ACTORS ];
 	unsigned char actor_tileZ[ MAX_ACTORS ];
 	unsigned char round = 4;
 
 	engine_delay_manager_load( 0 );
 
 	engine_enemy_manager_load();
-	get_actor_data( actor_mover, actor_tileZ );
-	
+	//get_actor_data( actor_mover, actor_tileZ );
+	engine_actor_manager_get_data( actor_mover, actor_tileZ );
+
 	// Put in init screen
 	engine_score_manager_load();
 	engine_score_manager_draw_text();
@@ -56,8 +60,8 @@ void screen_play_screen_load()
 	engine_board_manager_draw_exit();
 	engine_board_manager_side_tile();
 
-	engine_level_manager_load_level( 0, 0 );
-	//engine_level_manager_load_level( 0, round );
+	//engine_level_manager_load_level( 0, 0 );
+	engine_level_manager_load_level( 0, round );
 	//engine_level_manager_load_level( 8, 7 );
 	//engine_level_manager_load_level( 9, 4 );
 	engine_level_manager_update_level( round, actor_mover, actor_tileZ );
@@ -297,20 +301,20 @@ void screen_play_screen_update( unsigned char *screen_type )
 	*screen_type = screen_type_play;
 }
 
-static void get_actor_data( unsigned char *mover, unsigned char *tileZ )
-{
-	struct_gamer_object *go = &global_gamer_object;
-	struct_enemy_object *eo;
-	unsigned char enemy;
-	unsigned char index;
-
-	mover[ 0 ] = 1;
-	tileZ[ 0 ] = go->tileZ;
-	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
-	{
-		eo = &global_enemy_objects[ enemy ];
-		index = enemy + 1;
-		mover[ index ] = eo->mover;
-		tileZ[ index ] = eo->tileZ;
-	}
-}
+//static void get_actor_data( unsigned char *mover, unsigned char *tileZ )
+//{
+//	struct_gamer_object *go = &global_gamer_object;
+//	struct_enemy_object *eo;
+//	unsigned char enemy;
+//	unsigned char index;
+//
+//	mover[ 0 ] = 1;
+//	tileZ[ 0 ] = go->tileZ;
+//	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+//	{
+//		eo = &global_enemy_objects[ enemy ];
+//		index = enemy + 1;
+//		mover[ index ] = eo->mover;
+//		tileZ[ index ] = eo->tileZ;
+//	}
+//}

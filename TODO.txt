@@ -33,7 +33,9 @@ Kid tile collision is not resetting the level_object_tiles to <blank>
 07.
 TESTING collisions after changing the tile_type to include directions
 
-check when mama goes into cul de sac still works
+
+Gamer collides with tile - check that draw blank works AND tile updates to blank OK
+in all casese but still leaving the directions value as should be from before...
 
 
 
@@ -49,3 +51,7 @@ Storage Manager
 confirm that the last byte write / erase is 0xFE
 
 
+
+
+DONE
+check when mama goes into cul de sac still works
