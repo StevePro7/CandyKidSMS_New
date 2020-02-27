@@ -13,6 +13,7 @@
 #include "..\engine\score_manager.h"
 #include "..\engine\tile_manager.h"
 
+// RESET screen is used for automated testing - this was in the cont screen before
 static unsigned char command_index;
 static unsigned char command_count;
 static unsigned char walking_delta;
