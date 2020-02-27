@@ -42,7 +42,7 @@ void engine_enemy_manager_init()
 		eo->tileY = board_object_homeY[ enemy ];
 		eo->action = enemymove_type_wait;
 		eo->paths = 0;
-		eo->delay = 1;		// TODO hardcoded - inject!
+		eo->delay = 2;		// TODO hardcoded - inject!
 		eo->timer = 0;
 		eo->delta = 0;
 		eo->total = 0;
