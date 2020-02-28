@@ -11,8 +11,8 @@
 #include "..\engine\tile_manager.h"
 #include "..\banks\databank.h"
 
-#define DEATH_SCREEN_DELAY		5
-#define FLASH_SCREEN_DELAY		1
+#define DEATH_SCREEN_DELAY		150
+#define FLASH_SCREEN_DELAY		20
 
 static unsigned char death_frame;
 static unsigned char event_stage;
@@ -61,7 +61,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 		{
 			flash_count++;
 			death_frame = 1 - death_frame;
-			if( flash_count >= 5 )
+			if( flash_count >= 7 )
 			{
 				reset_death();
 				*screen_type = screen_type_pass;
@@ -129,18 +129,15 @@ void screen_dead_screen_update( unsigned char *screen_type )
 static void reset_death()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	//if( !state_object_invincibie && state_object_trees_type == tree_type_death )
-	//{
-	//	if( actor_type_tree == state_object_actor_kill )
-	//	{
-	//		if( 1 == go->tileX || 1 == go->tileY || ( MAX_COLS - 2 ) == go->tileX || ( MAX_ROWS - 2 ) == go->tileY )
-	//		{
-	//			// Kid collided with death tree on border so redraw.
-	//			engine_tile_manager_draw_trees( state_object_trees_type, go->tileX, go->tileY ));
-	//			//engine_tile_manager_draw_trees( 0, go->tileX, go->tileY );
-	//		}
-	//	}
-	//}
-
-	engine_tile_manager_draw_trees( 0, go->tileX, go->tileY );
+	if( !state_object_invincibie && state_object_trees_type == tree_type_death )
+	{
+		if( actor_type_tree == state_object_actor_kill )
+		{
+			if( 1 == go->tileX || 1 == go->tileY || ( MAZE_COLS - 2 ) == go->tileX || ( MAZE_ROWS - 2 ) == go->tileY )
+			{
+				// Kid collided with death tree on border so redraw.
+				engine_tile_manager_draw_trees( state_object_trees_type, SCREEN_TILE_LEFT + ( go->tileX - 1 ) * 2, ( go->tileY - 1 ) * 2 );
+			}
+		}
+	}
 }
