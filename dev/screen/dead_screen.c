@@ -8,14 +8,11 @@
 #include "..\engine\font_manager.h"
 #include "..\engine\frame_manager.h"
 #include "..\engine\gamer_manager.h"
-#include "..\engine\input_manager.h"
-#include "..\engine\level_manager.h"
-#include "..\engine\move_manager.h"
-#include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
+#include "..\banks\databank.h"
 
-#define DEATH_SCREEN_DELAY		50
-#define FLASH_SCREEN_DELAY		5
+#define DEATH_SCREEN_DELAY		5
+#define FLASH_SCREEN_DELAY		1
 
 static unsigned char death_frame;
 static unsigned char event_stage;
@@ -72,13 +69,6 @@ void screen_dead_screen_update( unsigned char *screen_type )
 			}
 		}
 	}
-	//input = engine_input_manager_hold( input_type_fire1 );
-	//if( input )
-	//{
-	//	death_frame = 1 - death_frame;
-	//}
-
-	
 
 
 	// Move enemies.
@@ -112,7 +102,6 @@ void screen_dead_screen_update( unsigned char *screen_type )
 		if( direction_type_none == eo->direction && lifecycle_type_idle == eo->lifecycle )
 		{
 			enemy_direction = engine_enemy_manager_gohome_direction( enemy );
-			enemy_direction = direction_type_none;
 			if( direction_type_none != enemy_direction )
 			{
 				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
@@ -139,4 +128,19 @@ void screen_dead_screen_update( unsigned char *screen_type )
 
 static void reset_death()
 {
+	struct_gamer_object *go = &global_gamer_object;
+	//if( !state_object_invincibie && state_object_trees_type == tree_type_death )
+	//{
+	//	if( actor_type_tree == state_object_actor_kill )
+	//	{
+	//		if( 1 == go->tileX || 1 == go->tileY || ( MAX_COLS - 2 ) == go->tileX || ( MAX_ROWS - 2 ) == go->tileY )
+	//		{
+	//			// Kid collided with death tree on border so redraw.
+	//			engine_tile_manager_draw_trees( state_object_trees_type, go->tileX, go->tileY ));
+	//			//engine_tile_manager_draw_trees( 0, go->tileX, go->tileY );
+	//		}
+	//	}
+	//}
+
+	engine_tile_manager_draw_trees( 0, go->tileX, go->tileY );
 }

@@ -4,6 +4,7 @@
 #include "..\engine\command_manager.h"
 #include "..\engine\delay_manager.h"
 #include "..\engine\enum_manager.h"
+#include "..\engine\enemy_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\frame_manager.h"
 #include "..\engine\gamer_manager.h"
@@ -41,6 +42,10 @@ void screen_pass_screen_update( unsigned char *screen_type )
 	//{
 	//	engine_level_manager_draw_middle();
 	//}
+
+	// Draw sprites first.
+	engine_enemy_manager_draw();
+	engine_gamer_manager_draw();
 
 	*screen_type = screen_type_pass;
 }
