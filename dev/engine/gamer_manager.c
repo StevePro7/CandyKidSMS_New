@@ -133,6 +133,14 @@ void engine_gamer_manager_draw()
 	engine_sprite_manager_draw_entity( go->posnX, go->posnY, go->calcd );
 }
 
+void engine_gamer_manager_draw_death( unsigned char frame )
+{
+	struct_gamer_object *go = &global_gamer_object;
+	unsigned char death = 2;
+	unsigned char calcd = SPRITE_TILES_GAMER + go->images[ death ][ frame ];
+	engine_sprite_manager_draw_entity( go->posnX, go->posnY, calcd );
+}
+
 void engine_gamer_manager_move( unsigned char direction )
 {
 	struct_gamer_object *go = &global_gamer_object;
@@ -171,8 +179,8 @@ void engine_gamer_manager_stop()
 	calcd_frame();
 
 	// TODO delete
-	//engine_font_manager_draw_data( go->tileX, 13, 6 );
-	//engine_font_manager_draw_data( go->tileY, 13, 7 );
+	engine_font_manager_draw_data( go->tileX, 13, 6 );
+	engine_font_manager_draw_data( go->tileY, 13, 7 );
 	// TODO delete
 
 	// Check if in exit then move in previous direction [and wrap game board as necessary].
