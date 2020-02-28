@@ -204,4 +204,11 @@ typedef enum tag_enum_sound_type
 
 } enum_sound_type;
 
+typedef enum tag_enum_stage_type
+{
+	event_stage_start = 0,
+	event_stage_pause = 1,
+
+} enum_stage_type;
+
 #endif//_ENUM_MANAGER_H_

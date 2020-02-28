@@ -59,7 +59,6 @@ void engine_hack_manager_load()
 #endif
 }
 
-
 void engine_hack_manager_invert()
 {
 	// TODO delete this hard coded
