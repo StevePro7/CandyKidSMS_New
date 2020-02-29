@@ -1,17 +1,17 @@
 #include "func_screen.h"
 #include "..\engine\board_manager.h"
 //#include "..\engine\command_manager.h"
-#include "..\engine\delay_manager.h"
+//#include "..\engine\delay_manager.h"
 #include "..\engine\enum_manager.h"
 //#include "..\engine\enemy_manager.h"
 #include "..\engine\font_manager.h"
-#include "..\engine\frame_manager.h"
 //#include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
 //#include "..\engine\storage_manager.h"
 #include "..\engine\score_manager.h"
 #include "..\engine\tile_manager.h"
+#include "..\engine\timer_manager.h"
 
 static unsigned char first_time;
 

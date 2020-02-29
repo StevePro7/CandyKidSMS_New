@@ -174,9 +174,6 @@
     <ClInclude Include="engine\delay_manager.h">
       <Filter>Header Files\engine</Filter>
     </ClInclude>
-    <ClInclude Include="engine\frame_manager.h">
-      <Filter>Header Files\engine</Filter>
-    </ClInclude>
     <ClInclude Include="screen\beat_screen.h">
       <Filter>Header Files\screen</Filter>
     </ClInclude>
@@ -271,6 +268,12 @@
       <Filter>Header Files\screen</Filter>
     </ClInclude>
     <ClInclude Include="engine\memo_manager.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="object\reset_object.h">
+      <Filter>Header Files\object</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\timer_manager.h">
       <Filter>Header Files\engine</Filter>
     </ClInclude>
   </ItemGroup>
@@ -392,12 +395,6 @@
     <ClCompile Include="object\delay_object.c">
       <Filter>Source Files\object</Filter>
     </ClCompile>
-    <ClCompile Include="object\frame_object.c">
-      <Filter>Source Files\object</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\frame_manager.c">
-      <Filter>Source Files\engine</Filter>
-    </ClCompile>
     <ClCompile Include="engine\delay_manager.c">
       <Filter>Source Files\engine</Filter>
     </ClCompile>
@@ -496,6 +493,15 @@
     </ClCompile>
     <ClCompile Include="engine\memo_manager.c">
       <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="object\reset_object.c">
+      <Filter>Source Files\object</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\timer_manager.c">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="object\frame_object.c">
+      <Filter>Source Files\object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

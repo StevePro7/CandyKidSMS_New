@@ -51,7 +51,7 @@
     <ClInclude Include="engine\enemy_manager.h" />
     <ClInclude Include="engine\enum_manager.h" />
     <ClInclude Include="engine\font_manager.h" />
-    <ClInclude Include="engine\frame_manager.h" />
+    <ClInclude Include="engine\timer_manager.h" />
     <ClInclude Include="engine\function_manager.h" />
     <ClInclude Include="engine\gamer_manager.h" />
     <ClInclude Include="engine\global_manager.h" />
@@ -75,6 +75,7 @@
     <ClInclude Include="object\enemy_object.h" />
     <ClInclude Include="object\frame_object.h" />
     <ClInclude Include="object\gamer_object.h" />
+    <ClInclude Include="object\reset_object.h" />
     <ClInclude Include="object\storage_object.h" />
     <ClInclude Include="object\score_object.h" />
     <ClInclude Include="screen\beat_screen.h" />
@@ -127,7 +128,7 @@
     <ClCompile Include="engine\enemy_manager.c" />
     <ClCompile Include="engine\enum_manager.c" />
     <ClCompile Include="engine\font_manager.c" />
-    <ClCompile Include="engine\frame_manager.c" />
+    <ClCompile Include="engine\timer_manager.c" />
     <ClCompile Include="engine\function_manager.c" />
     <ClCompile Include="engine\gamer_manager.c" />
     <ClCompile Include="engine\global_manager.c" />
@@ -151,6 +152,7 @@
     <ClCompile Include="object\enemy_object.c" />
     <ClCompile Include="object\frame_object.c" />
     <ClCompile Include="object\gamer_object.c" />
+    <ClCompile Include="object\reset_object.c" />
     <ClCompile Include="object\storage_object.c" />
     <ClCompile Include="object\score_object.c" />
     <ClCompile Include="screen\beat_screen.c" />

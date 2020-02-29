@@ -2,16 +2,16 @@
 #include "..\engine\audio_manager.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\command_manager.h"
-#include "..\engine\delay_manager.h"
+//#include "..\engine\delay_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\enemy_manager.h"
 #include "..\engine\font_manager.h"
-#include "..\engine\frame_manager.h"
 #include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\score_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\banks\databank.h"
+#include "..\engine\timer_manager.h"
 
 #define DEATH_SCREEN_DELAY		150
 #define FLASH_SCREEN_DELAY		20

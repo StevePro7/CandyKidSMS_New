@@ -1,15 +1,14 @@
 #include "demo_screen.h"
 #include "..\engine\board_manager.h"
 //#include "..\engine\command_manager.h"
-#include "..\engine\delay_manager.h"
 //#include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
-#include "..\engine\frame_manager.h"
 //#include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
 #include "..\engine\score_manager.h"
+#include "..\engine\timer_manager.h"
 
 // DEMO screen - was prototyping command playback but FUNC is better. 
 static unsigned char first_time;

@@ -3,16 +3,15 @@
 #include "..\engine\board_manager.h"
 #include "..\engine\collision_manager.h"
 #include "..\engine\command_manager.h"
-#include "..\engine\delay_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
-#include "..\engine\frame_manager.h"
 #include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
 #include "..\engine\move_manager.h"
 #include "..\engine\score_manager.h"
 #include "..\engine\tile_manager.h"
+#include "..\engine\timer_manager.h"
 
 // RESET screen is used for automated testing - this was in the cont screen before
 static unsigned char command_index;

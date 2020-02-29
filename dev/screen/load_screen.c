@@ -1,6 +1,5 @@
 #include "load_screen.h"
 #include "..\engine\board_manager.h"
-#include "..\engine\delay_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\input_manager.h"
@@ -8,6 +7,7 @@
 #include "..\engine\score_manager.h"
 #include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
+#include "..\engine\timer_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\databank.h"
 
