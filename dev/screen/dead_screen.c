@@ -18,7 +18,7 @@
 #define RESET_SCREEN_DELAY		75
 
 //#define DEATH_SCREEN_DELAY		15
-//#define FLASH_SCREEN_DELAY		2
+//#define FLASH_SCREEN_DELAY		5
 
 static unsigned char death_frame;
 static unsigned char event_stage;
@@ -48,6 +48,8 @@ void screen_dead_screen_load()
 
 	engine_score_manager_update_lives( -1 );
 	screen = ( 0 == engine_score_manager_get_lives() ) ? screen_type_cont : screen_type_ready;
+	//screen = screen_type_cont;
+	//screen = screen_type_ready;
 }
 
 void screen_dead_screen_update( unsigned char *screen_type )
@@ -116,7 +118,11 @@ void screen_dead_screen_update( unsigned char *screen_type )
 
 			if( flash_count >= 7 )
 			{
-				reset_death();
+				if( screen_type_ready == screen )
+				{
+					reset_death();
+				}
+
 				*screen_type = screen;
 				return;
 			}
@@ -182,6 +188,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 static void reset_death()
 {
 	struct_gamer_object *go = &global_gamer_object;
+	//unsigned char enemy;
 
 	// Kid collided with death tree on border so redraw.
 	if( !state_object_invincibie && state_object_trees_type == tree_type_death )
@@ -197,8 +204,11 @@ static void reset_death()
 	}
 
 	// If Kid collided with Mama then will be reset from dead to idle below...
-
 	// Reset all enemies back to scatter mode.
-	engine_enemy_manager_reset_all( enemymove_type_tour );
-	engine_gamer_manager_reset();
+	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	//{
+	//	engine_enemy_manager_reset( enemy, enemymove_type_tour );
+	//}
+
+	//engine_gamer_manager_reset();
 }

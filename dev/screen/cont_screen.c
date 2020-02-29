@@ -9,7 +9,7 @@
 
 void screen_cont_screen_load()
 {
-	engine_font_manager_draw_text( "CONT SCREEN", 4, 0 );
+	//engine_font_manager_draw_text( "CONT SCREEN", 4, 0 );
 	//engine_board_manager_midd_text();
 
 	engine_memo_manager_draw( LOCALE_CONT_MESSAGE, LOCALE_CONT_YESORNO );
@@ -19,7 +19,7 @@ void screen_cont_screen_update( unsigned char *screen_type )
 {
 	// Draw sprites first.
 	engine_enemy_manager_draw();
-	engine_gamer_manager_draw();
+	engine_gamer_manager_draw_death( 0 );
 
 	*screen_type = screen_type_cont;
 }

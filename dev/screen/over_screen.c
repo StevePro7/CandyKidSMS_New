@@ -19,8 +19,9 @@ void screen_over_screen_load()
 
 void screen_over_screen_update( unsigned char *screen_type )
 {
-	//engine_enemy_manager_draw();
-	engine_gamer_manager_draw();
+	// Draw sprites first.
+	engine_enemy_manager_draw();
+	engine_gamer_manager_draw_death( 0 );
 
 	*screen_type = screen_type_over;
 }

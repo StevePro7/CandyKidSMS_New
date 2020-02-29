@@ -11,8 +11,8 @@ void screen_ready_screen_load()
 	// TODO reset all ghosts to their home positions
 
 	// TODO delete
-	//engine_enemy_manager_reset_all( enemymove_type_wait );
-	//engine_gamer_manager_reset();
+	engine_enemy_manager_reset_home();
+	engine_gamer_manager_reset();
 }
 
 void screen_ready_screen_update( unsigned char *screen_type )
