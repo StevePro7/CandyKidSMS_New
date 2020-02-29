@@ -22,7 +22,6 @@ void engine_delay_manager_load( unsigned int delay )
 		dObj->delay_value = 0;
 	}
 }
-
 unsigned char engine_delay_manager_update()
 {
 	struct_delay_object *dObj = &global_delay_object;
@@ -37,7 +36,6 @@ unsigned char engine_delay_manager_update()
 	dObj->delay_timer++;
 	return proceed;
 }
-
 void engine_delay_manager_draw()
 {
 	struct_delay_object *dObj = &global_delay_object;
@@ -51,7 +49,6 @@ void engine_frame_manager_load()
 	struct_frame_object *fo = &global_frame_object;
 	fo->frame_count = 0;
 }
-
 void engine_frame_manager_update()
 {
 	struct_frame_object *fo = &global_frame_object;
@@ -61,7 +58,6 @@ void engine_frame_manager_update()
 		fo->frame_count = 0;
 	}
 }
-
 void engine_frame_manager_draw()
 {
 	struct_frame_object *fo = &global_frame_object;

@@ -46,13 +46,14 @@ sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 timer_man
 cd ..
 
 cd object
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 delay_object.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 delay_object.c
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 enemy_object.c
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 frame_object.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 frame_object.c
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 gamer_object.c
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 reset_object.c
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 score_object.c
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 storage_object.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 timer_object.c
 cd ..
 
 cd screen
@@ -114,8 +115,7 @@ engine\gamer_manager.rel engine\hack_manager.rel engine\input_manager.rel ^
 engine\level_manager.rel engine\memo_manager.rel engine\move_manager.rel ^
 engine\score_manager.rel engine\screen_manager.rel engine\sprite_manager.rel  engine\state_manager.rel ^
 engine\storage_manager.rel engine\tile_manager.rel engine\timer_manager.rel ^
-object\delay_object.rel object\frame_object.rel object\reset_object.rel ^
-object\score_object.rel object\storage_object.rel ^
+object\score_object.rel object\storage_object.rel object\timer_object.rel ^
 screen\none_screen.rel screen\splash_screen.rel screen\intro_screen.rel screen\title_screen.rel screen\demo_screen.rel ^
 screen\init_screen.rel screen\load_screen.rel screen\ready_screen.rel screen\play_screen.rel screen\pass_screen.rel ^
 screen\reset_screen.rel screen\dead_screen.rel screen\cont_screen.rel screen\over_screen.rel screen\beat_screen.rel ^

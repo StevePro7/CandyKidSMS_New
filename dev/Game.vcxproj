@@ -47,7 +47,6 @@
     <ClInclude Include="engine\collision_manager.h" />
     <ClInclude Include="engine\command_manager.h" />
     <ClInclude Include="engine\content_manager.h" />
-    <ClInclude Include="engine\delay_manager.h" />
     <ClInclude Include="engine\enemy_manager.h" />
     <ClInclude Include="engine\enum_manager.h" />
     <ClInclude Include="engine\font_manager.h" />
@@ -71,9 +70,8 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="gfx.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="object\delay_object.h" />
     <ClInclude Include="object\enemy_object.h" />
-    <ClInclude Include="object\frame_object.h" />
+    <ClInclude Include="object\timer_object.h" />
     <ClInclude Include="object\gamer_object.h" />
     <ClInclude Include="object\reset_object.h" />
     <ClInclude Include="object\storage_object.h" />
@@ -124,7 +122,6 @@
     <ClCompile Include="engine\collision_manager.c" />
     <ClCompile Include="engine\command_manager.c" />
     <ClCompile Include="engine\content_manager.c" />
-    <ClCompile Include="engine\delay_manager.c" />
     <ClCompile Include="engine\enemy_manager.c" />
     <ClCompile Include="engine\enum_manager.c" />
     <ClCompile Include="engine\font_manager.c" />
@@ -148,9 +145,8 @@
     <ClCompile Include="game.c" />
     <ClCompile Include="gfx.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="object\delay_object.c" />
     <ClCompile Include="object\enemy_object.c" />
-    <ClCompile Include="object\frame_object.c" />
+    <ClCompile Include="object\timer_object.c" />
     <ClCompile Include="object\gamer_object.c" />
     <ClCompile Include="object\reset_object.c" />
     <ClCompile Include="object\storage_object.c" />
