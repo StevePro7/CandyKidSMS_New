@@ -283,9 +283,7 @@ void engine_enemy_manager_dead( unsigned char enemy )
 
 void engine_enemy_manager_reset_all( unsigned char mode )
 {
-	struct_enemy_object *eo;
 	unsigned char enemy;
-
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		engine_enemy_manager_reset( enemy, mode );
@@ -297,6 +295,12 @@ void engine_enemy_manager_reset( unsigned char enemy, unsigned char mode )
 	// TODO test!!
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	eo = &global_enemy_objects[ enemy ];
+
+	if( !eo->mover )
+	{
+		return;
+	}
+
 	eo->lifecycle = lifecycle_type_idle;
 	eo->direction = direction_type_none;
 	eo->action = mode;

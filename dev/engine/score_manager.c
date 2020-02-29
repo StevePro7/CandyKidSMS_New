@@ -52,6 +52,12 @@ unsigned char engine_score_manager_get_candy()
 	return so->candy;
 }
 
+unsigned char engine_score_manager_get_lives()
+{
+	struct_score_object *so = &global_score_object;
+	return so->values[ score_type_lives ];
+}
+
 void engine_score_manager_update_bonus( unsigned char index )
 {
 	struct_score_object *so = &global_score_object;

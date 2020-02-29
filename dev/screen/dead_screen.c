@@ -40,6 +40,7 @@ void screen_dead_screen_load()
 	if( state_object_mydebugger )
 	{
 		engine_enemy_manager_load();
+		engine_score_manager_load();
 	}
 }
 
@@ -49,6 +50,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	struct_enemy_object *eo;
 	unsigned char enemy_direction = direction_type_none;
 	//unsigned char input;
+	unsigned char screen;
 	unsigned char enemy;
 	unsigned char delay;
 	unsigned int frame = fo->frame_count;
@@ -59,8 +61,8 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	engine_gamer_manager_draw_death( death_frame );
 
 
-	engine_frame_manager_draw();
-	engine_delay_manager_draw();
+	//engine_frame_manager_draw();
+	//engine_delay_manager_draw();
 
 	engine_frame_manager_update();
 	if( event_stage_pause == event_stage )
@@ -73,7 +75,8 @@ void screen_dead_screen_update( unsigned char *screen_type )
 			if( flash_count >= 7 )
 			{
 				reset_death();
-				*screen_type = screen_type_ready;
+				screen = ( 0 == engine_score_manager_get_lives() ) ? screen_type_cont : screen_type_ready;
+				*screen_type = screen;
 				return;
 			}
 		}
