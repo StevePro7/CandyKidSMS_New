@@ -12,8 +12,11 @@
 #include "..\engine\tile_manager.h"
 #include "..\banks\databank.h"
 
-#define DEATH_SCREEN_DELAY		150
-#define FLASH_SCREEN_DELAY		20
+//#define DEATH_SCREEN_DELAY		150
+//#define FLASH_SCREEN_DELAY		20
+
+#define DEATH_SCREEN_DELAY		15
+#define FLASH_SCREEN_DELAY		2
 
 static unsigned char death_frame;
 static unsigned char event_stage;
@@ -135,8 +138,6 @@ void screen_dead_screen_update( unsigned char *screen_type )
 static void reset_death()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	struct_enemy_object *eo;
-	unsigned char enemy;
 
 	// Kid collided with death tree on border so redraw.
 	if( !state_object_invincibie && state_object_trees_type == tree_type_death )
@@ -154,9 +155,5 @@ static void reset_death()
 	// If Kid collided with Mama then will be reset from dead to idle below...
 
 	// Reset all enemies back to scatter mode.
-	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
-	{
-		eo = &global_enemy_objects[ enemy ];
-		engine_enemy_manager_reset( enemy, enemymove_type_tour );
-	}
+	engine_enemy_manager_reset_all( enemymove_type_tour );
 }

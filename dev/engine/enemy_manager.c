@@ -281,13 +281,30 @@ void engine_enemy_manager_dead( unsigned char enemy )
 	calcd_frame( enemy );
 }
 
+void engine_enemy_manager_reset_all( unsigned char mode )
+{
+	struct_enemy_object *eo;
+	unsigned char enemy;
+
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		engine_enemy_manager_reset( enemy, mode );
+	}
+}
+
 void engine_enemy_manager_reset( unsigned char enemy, unsigned char mode )
 {
 	// TODO test!!
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	eo = &global_enemy_objects[ enemy ];
 	eo->lifecycle = lifecycle_type_idle;
+	eo->direction = direction_type_none;
 	eo->action = mode;
+
+	// Reset at home.
+	eo->tileX = board_object_homeX[ enemy ];
+	eo->tileY = board_object_homeY[ enemy ];
+	calcd_spots( enemy );
 }
 
 unsigned char engine_enemy_manager_scatter_direction( unsigned char enemy )
