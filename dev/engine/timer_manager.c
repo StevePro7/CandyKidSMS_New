@@ -26,16 +26,16 @@ void engine_delay_manager_load( unsigned int delay )
 unsigned char engine_delay_manager_update()
 {
 	struct_delay_object *dObj = &global_delay_object;
-	unsigned char proceed;
+	unsigned char test;
 
-	proceed = dObj->delay_timer >= dObj->delay_value;
-	if( proceed )
+	dObj->delay_timer++;
+	test = dObj->delay_timer >= dObj->delay_value;
+	if( test )
 	{
 		dObj->delay_timer = 0;
 	}
 
-	dObj->delay_timer++;
-	return proceed;
+	return test;
 }
 void engine_delay_manager_draw()
 {
@@ -67,30 +67,28 @@ void engine_frame_manager_draw()
 
 
 // Reset Manager.
-void engine_reset_manager_load( unsigned char frame )
+void engine_reset_manager_load( unsigned char delay )
 {
 	struct_reset_object *ro = &global_reset_object;
-	ro->reset_frame = frame;
+	ro->reset_value = delay;
 	engine_reset_manager_reset();
 }
-
-void engine_reset_manager_reset()
-{
-	struct_reset_object *ro = &global_reset_object;
-	ro->reset_timer = 0;
-}
-
 unsigned char engine_reset_manager_update()
 {
 	struct_reset_object *ro = &global_reset_object;
 	unsigned char test;
 
 	ro->reset_timer++;
-	test = ro->reset_timer >= ro->reset_frame;
+	test = ro->reset_timer >= ro->reset_value;
 	if( test )
 	{
 		ro->reset_timer = 0;
 	}
 
 	return test;
+}
+void engine_reset_manager_reset()
+{
+	struct_reset_object *ro = &global_reset_object;
+	ro->reset_timer = 0;
 }

@@ -23,7 +23,7 @@ void engine_frame_manager_draw();
 
 // Reset Manager.
 void engine_reset_manager_load( unsigned char frame );
-void engine_reset_manager_reset();
 unsigned char engine_reset_manager_update();
+void engine_reset_manager_reset();
 
 #endif//_TIMER_MANAGER_H_`
