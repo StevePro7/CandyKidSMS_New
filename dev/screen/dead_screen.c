@@ -25,6 +25,7 @@ static unsigned char event_stage;
 static unsigned char flash_count;
 
 static void reset_death();
+static unsigned char screen;
 
 void screen_dead_screen_load()
 {
@@ -46,6 +47,7 @@ void screen_dead_screen_load()
 	}
 
 	engine_score_manager_update_lives( -1 );
+	screen = ( 0 == engine_score_manager_get_lives() ) ? screen_type_cont : screen_type_ready;
 }
 
 void screen_dead_screen_update( unsigned char *screen_type )
@@ -54,7 +56,6 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	struct_enemy_object *eo;
 
 	unsigned char enemy_direction = direction_type_none;
-	unsigned char screen;
 	unsigned char input;
 	unsigned char enemy;
 	unsigned char delay;
@@ -89,8 +90,11 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	input = engine_input_manager_hold( input_type_fire1 );
 	if( input )
 	{
-		reset_death();
-		screen = ( 0 == engine_score_manager_get_lives() ) ? screen_type_cont : screen_type_ready;
+		if( screen_type_ready == screen )
+		{
+			reset_death();
+		}
+
 		*screen_type = screen;
 		return;
 	}
@@ -105,11 +109,14 @@ void screen_dead_screen_update( unsigned char *screen_type )
 		if( delay )
 		{
 			flash_count++;
-			death_frame = 1 - death_frame;
+			if( screen_type_ready == screen )
+			{
+				death_frame = 1 - death_frame;
+			}
+
 			if( flash_count >= 7 )
 			{
 				reset_death();
-				screen = ( 0 == engine_score_manager_get_lives() ) ? screen_type_cont : screen_type_ready;
 				*screen_type = screen;
 				return;
 			}

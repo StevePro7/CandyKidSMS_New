@@ -53,8 +53,8 @@ void engine_enemy_manager_init()
 		eo->direction = direction_type_none;
 		eo->dir_count = 0;
 
-		eo->image = 0;
-		eo->frame = frame_type_stance;		// TODO REVERT!!
+		eo->image = 0;					// TODO select may change this!
+		eo->frame = frame_type_stance;
 
 		frame = enemy * NUM_ENTITY_IMAGE * NUM_ENTITY_FRAME + 0;
 		eo->images[ 0 ][ 0 ] = images[ frame + 0 ];

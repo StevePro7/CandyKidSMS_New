@@ -38,11 +38,11 @@ void engine_gamer_manager_init()
 	go->speed = 1;
 	// Speed:	1, 2, 4, 8
 
-	go->prev_move = direction_type_none;
-	go->direction = direction_type_none;
 	go->lifecycle = lifecycle_type_idle;
+	go->direction = direction_type_none;
+	go->prev_move = direction_type_none;
 
-	go->image = 0;
+	go->image = 0;					// TODO select may change this!
 	go->frame = frame_type_stance;
 	go->images[ 0 ][ 0 ] = images[ 0 ];
 	go->images[ 0 ][ 1 ] = images[ 1 ];
