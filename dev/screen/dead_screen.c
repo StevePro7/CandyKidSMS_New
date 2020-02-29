@@ -15,6 +15,7 @@
 
 #define DEATH_SCREEN_DELAY		150
 #define FLASH_SCREEN_DELAY		20
+#define RESET_SCREEN_DELAY		75
 
 //#define DEATH_SCREEN_DELAY		15
 //#define FLASH_SCREEN_DELAY		2
@@ -32,6 +33,7 @@ void screen_dead_screen_load()
 
 	// TODO play death sound FX
 	engine_delay_manager_load( DEATH_SCREEN_DELAY );
+	engine_reset_manager_load( RESET_SCREEN_DELAY );
 
 	event_stage = event_stage_start;
 	//event_stage = event_stage_pause;
@@ -57,6 +59,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	unsigned char input;
 	unsigned char enemy;
 	unsigned char delay;
+	unsigned char reset;
 	unsigned int frame = fo->frame_count;
 
 
@@ -64,6 +67,27 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw_death( death_frame );
 
+	// Check if want to quit out.
+	input = engine_input_manager_move( input_type_fire2 );
+	if( input )
+	{
+		engine_font_manager_draw_text( "FIRE2", 10, 16 );
+		reset = engine_reset_manager_update();
+		if( reset )
+		{
+			engine_font_manager_draw_text( "RESET", 10, 17 );
+			// TODO enable sound FX
+			//engine_audio_manager_sound_reset();
+			*screen_type = screen_type_over;
+			return;
+		}
+	}
+	else
+	{
+		engine_reset_manager_reset();
+	}
+
+	// Check if Kid want to advance.
 	input = engine_input_manager_hold( input_type_fire1 );
 	if( input )
 	{
