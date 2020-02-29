@@ -183,8 +183,6 @@ void screen_play_screen_update( unsigned char *screen_type )
 	}
 
 
-
-
 	// Move enemies.
 	//for( enemy = 0; enemy < 1; enemy++ )
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
@@ -288,25 +286,34 @@ void screen_play_screen_update( unsigned char *screen_type )
 		}
 	}
 
-
-	if( actor_type_kid != state_object_actor_kill )
+	// Kid invincible thus don't check for death collisions.
+	if( state_object_invincibie )
 	{
-		*screen_type = screen_type_dead;
+		*screen_type = screen_type_play;
 		return;
 	}
 
-	//if( frame_spot )
-	//{
-	//	//engine_font_manager_draw_data( frame, 11, 6 );
-	//	frame_spot = 0;
-	//}
+	// Kid collide with death tree?
+	if( state_object_trees_type == tree_type_death )
+	{
+		if( actor_type_kid != state_object_actor_kill )
+		{
+			*screen_type = screen_type_dead;
+			return;
+		}
+	}
 
-	// TODO tidy up this temp sprite collision
+	// Kid collide with Candy Mama?
 	gamer_collision = devkit_isCollisionDetected();
-	//engine_font_manager_draw_data( gamer_collision, 16, 12 );
-	//if( 0 != gamer_collision )
-
-	// TODO tidy up this temp sprite collision
+	if( 0 != gamer_collision )
+	{
+		state_object_actor_kill = engine_collision_manager_sprite_collision();
+		if( actor_type_kid != state_object_actor_kill )
+		{
+			*screen_type = screen_type_dead;
+			return;
+		}
+	}
 
 	*screen_type = screen_type_play;
 }

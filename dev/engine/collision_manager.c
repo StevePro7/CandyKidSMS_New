@@ -1,14 +1,60 @@
 #include "collision_manager.h"
 #include "audio_manager.h"
 #include "board_manager.h"
+#include "enemy_manager.h"
 #include "enum_manager.h"
 #include "function_manager.h"
 #include "gamer_manager.h"
 #include "level_manager.h"
 #include "move_manager.h"
 #include "score_manager.h"
-#include "tile_manager.h"
+#include "tile_manager.h"	
 #include "..\banks\databank.h"
+
+#define DISTNACE_EASY		8
+#define DISTNACE_HARD		10
+static unsigned char collision_distance[] = { DISTNACE_EASY, DISTNACE_HARD };
+
+unsigned char engine_collision_manager_sprite_collision()
+{
+	struct_gamer_object *go = &global_gamer_object;
+	struct_enemy_object *eo;
+	unsigned char gamer_collision = actor_type_kid;
+	
+	unsigned char distance = collision_distance[ state_object_difficulty ];
+	unsigned char enemy;
+	unsigned char dx, dy;
+
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		eo = &global_enemy_objects[ enemy ];
+		if( go->posnX > eo->posnX )
+		{
+			dx = go->posnX - eo->posnX;
+		}
+		else
+		{
+			dx = eo->posnX - go->posnX;
+		}
+
+		if( go->posnY > eo->posnY )
+		{
+			dy = go->posnY - eo->posnY;
+		}
+		else
+		{
+			dy = eo->posnY - go->posnY;
+		}
+
+		if( dx <= distance && dy <= distance )
+		{
+			gamer_collision = enemy;
+			break;
+		}
+	}
+
+	return gamer_collision;
+}
 
 unsigned char engine_collision_manager_tile_collision( unsigned char tile_type )
 {

@@ -6,7 +6,7 @@
 
 void screen_ready_screen_load()
 {
-	engine_font_manager_draw_text( "READY SCREEN!!", 2, 10 );
+	engine_font_manager_draw_text( "READY SCREEN!!", SCREEN_TILE_LEFT + 2, 10 );
 
 	// TODO reset all ghosts to their home positions
 

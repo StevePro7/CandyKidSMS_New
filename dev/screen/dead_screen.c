@@ -2,7 +2,6 @@
 #include "..\engine\audio_manager.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\command_manager.h"
-//#include "..\engine\delay_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\enemy_manager.h"
 #include "..\engine\font_manager.h"
@@ -50,6 +49,9 @@ void screen_dead_screen_load()
 	screen = ( 0 == engine_score_manager_get_lives() ) ? screen_type_cont : screen_type_ready;
 	//screen = screen_type_cont;
 	//screen = screen_type_ready;
+
+	// TODO delete
+	engine_font_manager_draw_text( "DEATH SCREEN!!", SCREEN_TILE_LEFT + 2, 10 );
 }
 
 void screen_dead_screen_update( unsigned char *screen_type )

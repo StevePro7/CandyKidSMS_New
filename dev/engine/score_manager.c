@@ -23,7 +23,7 @@
 // Global variable.
 struct_score_object global_score_object;
 
-static unsigned char y[] = { LIVES_Y + 1, LEVEL_Y + 1, BOOST_Y + 1, 22, 23 };
+static unsigned char value_y[] = { LIVES_Y + 1, LEVEL_Y + 1, BOOST_Y + 1, 22, 23 };
 static unsigned char title_Y[] = { TITLE_Y, TITLE_Y + 1, HIGHS_Y, SCORE_Y, LIVES_Y, LEVEL_Y, BOOST_Y, };
 static unsigned char bonuses[] = { 10, 20, 40, 80 };
 // TODO need to split the reset functionality.
@@ -223,7 +223,7 @@ static void draw_score()
 static void draw_value( unsigned char index )
 {
 	struct_score_object *so = &global_score_object;
-	unsigned char y_val = y[ index ];
+	unsigned char y_val = value_y[ index ];
 	unsigned char value = 0;
 	
 	if( index < score_type_world )

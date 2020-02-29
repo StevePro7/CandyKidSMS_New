@@ -42,11 +42,11 @@ void engine_enemy_manager_init()
 		eo->tileY = board_object_homeY[ enemy ];
 		eo->action = enemymove_type_wait;
 		eo->paths = 0;
-		eo->delay = 2;		// TODO hardcoded - inject!
+		eo->delay = 1;		// TODO hardcoded - inject!
 		eo->timer = 0;
 		eo->delta = 0;
 		eo->total = 0;
-		eo->speed = 1;		// TODO hardcoded - inject!
+		eo->speed = 3;		// TODO hardcoded - inject!
 		eo->mover = 1;		// 1=move 0=stay.
 		eo->lifecycle = lifecycle_type_idle;
 		eo->prev_move = direction_type_none;
@@ -72,7 +72,7 @@ void engine_enemy_manager_load()
 {
 	struct_enemy_object *eo;
 	unsigned char enemy;
-	unsigned char actor;
+	//unsigned char actor;
 	unsigned char check;
 	unsigned char index;
 	unsigned char count = MAX_ENEMIES + state_object_difficulty;
@@ -93,28 +93,31 @@ void engine_enemy_manager_load()
 		check = enemy;
 		for( index = 0; index < NUM_DIRECTIONS; index++ )
 		{
-			while( 1 )
-			{
-				actor = rand() % count;
-				if( 0 == index )
-				{
-					if( actor == enemy || actor_type_kid == actor )
-					{
-						continue;
-					}
-				}
-				else
-				{
-					if( check == actor )
-					{
-						continue;
-					}
-				}
+			//while( 1 )
+			//{
+			//	actor = rand() % count;
+			//	if( 0 == index )
+			//	{
+			//		if( actor == enemy || actor_type_kid == actor )
+			//		{
+			//			continue;
+			//		}
+			//	}
+			//	else
+			//	{
+			//		if( check == actor )
+			//		{
+			//			continue;
+			//		}
+			//	}
 
-				eo->scatter[ index ] = actor;
-				check = actor;
-				break;
-			}
+			//	eo->scatter[ index ] = actor;
+			//	check = actor;
+			//	break;
+			//}
+
+			// TODO delete
+			eo->scatter[ index ] = actor_type_kid;
 		}
 
 		// TODO look up frame swaps from array in data bank that gets faster as the levels progress...!
