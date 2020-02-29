@@ -310,6 +310,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 		state_object_actor_kill = engine_collision_manager_sprite_collision();
 		if( actor_type_kid != state_object_actor_kill )
 		{
+			engine_enemy_manager_dead( state_object_actor_kill );
 			*screen_type = screen_type_dead;
 			return;
 		}

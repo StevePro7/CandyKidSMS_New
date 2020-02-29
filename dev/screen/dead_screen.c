@@ -39,11 +39,11 @@ void screen_dead_screen_load()
 	death_frame = 0;
 	flash_count = 0;
 
-	if( state_object_mydebugger )
-	{
-		engine_enemy_manager_load();
-		engine_score_manager_load();
-	}
+	//if( state_object_mydebugger )
+	//{
+	//	engine_enemy_manager_load();
+	//	engine_score_manager_load();
+	//}
 
 	engine_score_manager_update_lives( -1 );
 	screen = ( 0 == engine_score_manager_get_lives() ) ? screen_type_cont : screen_type_ready;

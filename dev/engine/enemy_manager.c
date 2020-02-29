@@ -227,8 +227,8 @@ void engine_enemy_manager_draw()
 void engine_enemy_manager_move( unsigned char enemy, unsigned char direction )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
-	eo->direction = direction;
 	eo->lifecycle = lifecycle_type_move;
+	eo->direction = direction;
 }
 
 void engine_enemy_manager_stop( unsigned char enemy )
