@@ -72,6 +72,7 @@ void engine_hack_manager_invert()
 	state_object_enemy_move[ actor_type_suz ] = 1;
 
 	state_object_delay_test = 0;
+	state_object_mydebugger = 1;
 	// TODO delete this hard coded
 
 	// Trees.

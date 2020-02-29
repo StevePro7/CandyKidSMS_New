@@ -8,6 +8,7 @@
 #include "..\engine\font_manager.h"
 #include "..\engine\frame_manager.h"
 #include "..\engine\gamer_manager.h"
+#include "..\engine\score_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\banks\databank.h"
 
@@ -32,6 +33,11 @@ void screen_dead_screen_load()
 	//event_stage = event_stage_pause;
 	death_frame = 0;
 	flash_count = 0;
+
+	if( state_object_mydebugger )
+	{
+		engine_enemy_manager_load();
+	}
 }
 
 void screen_dead_screen_update( unsigned char *screen_type )
@@ -64,7 +70,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 			if( flash_count >= 7 )
 			{
 				reset_death();
-				*screen_type = screen_type_pass;
+				*screen_type = screen_type_ready;
 				return;
 			}
 		}
@@ -129,15 +135,28 @@ void screen_dead_screen_update( unsigned char *screen_type )
 static void reset_death()
 {
 	struct_gamer_object *go = &global_gamer_object;
+	struct_enemy_object *eo;
+	unsigned char enemy;
+
+	// Kid collided with death tree on border so redraw.
 	if( !state_object_invincibie && state_object_trees_type == tree_type_death )
 	{
 		if( actor_type_tree == state_object_actor_kill )
 		{
 			if( 1 == go->tileX || 1 == go->tileY || ( MAZE_COLS - 2 ) == go->tileX || ( MAZE_ROWS - 2 ) == go->tileY )
 			{
-				// Kid collided with death tree on border so redraw.
+				
 				engine_tile_manager_draw_trees( state_object_trees_type, SCREEN_TILE_LEFT + ( go->tileX - 1 ) * 2, ( go->tileY - 1 ) * 2 );
 			}
 		}
+	}
+
+	// If Kid collided with Mama then will be reset from dead to idle below...
+
+	// Reset all enemies back to scatter mode.
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		eo = &global_enemy_objects[ enemy ];
+		engine_enemy_manager_reset( enemy, enemymove_type_tour );
 	}
 }

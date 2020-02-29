@@ -224,7 +224,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 			{
 				if( frame >= eo->waiter )
 				{
-					eo->action = enemymove_type_tour;
+					engine_enemy_manager_reset( enemy, enemymove_type_tour );
+					//eo->action = enemymove_type_tour;
 				}
 			}
 

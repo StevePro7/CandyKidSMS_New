@@ -271,6 +271,25 @@ void engine_enemy_manager_stop( unsigned char enemy )
 	//}
 }
 
+void engine_enemy_manager_dead( unsigned char enemy )
+{
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	eo->lifecycle = lifecycle_type_dead;
+	eo->prev_move = eo->direction;
+	eo->direction = direction_type_none;
+	eo->frame = frame_type_stance;
+	calcd_frame( enemy );
+}
+
+void engine_enemy_manager_reset( unsigned char enemy, unsigned char mode )
+{
+	// TODO test!!
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	eo = &global_enemy_objects[ enemy ];
+	eo->lifecycle = lifecycle_type_idle;
+	eo->action = mode;
+}
+
 unsigned char engine_enemy_manager_scatter_direction( unsigned char enemy )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
