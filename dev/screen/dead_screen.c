@@ -36,7 +36,6 @@ void screen_dead_screen_load()
 	engine_reset_manager_load( RESET_SCREEN_DELAY );
 
 	event_stage = event_stage_start;
-	//event_stage = event_stage_pause;
 	death_frame = 0;
 	flash_count = 0;
 
@@ -71,11 +70,9 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	input = engine_input_manager_move( input_type_fire2 );
 	if( input )
 	{
-		engine_font_manager_draw_text( "FIRE2", 10, 16 );
 		reset = engine_reset_manager_update();
 		if( reset )
 		{
-			engine_font_manager_draw_text( "RESET", 10, 17 );
 			// TODO enable sound FX
 			//engine_audio_manager_sound_reset();
 			*screen_type = screen_type_over;
