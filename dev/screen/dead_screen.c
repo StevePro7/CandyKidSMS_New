@@ -8,15 +8,16 @@
 #include "..\engine\font_manager.h"
 #include "..\engine\frame_manager.h"
 #include "..\engine\gamer_manager.h"
+#include "..\engine\input_manager.h"
 #include "..\engine\score_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\banks\databank.h"
 
-//#define DEATH_SCREEN_DELAY		150
-//#define FLASH_SCREEN_DELAY		20
+#define DEATH_SCREEN_DELAY		150
+#define FLASH_SCREEN_DELAY		20
 
-#define DEATH_SCREEN_DELAY		15
-#define FLASH_SCREEN_DELAY		2
+//#define DEATH_SCREEN_DELAY		15
+//#define FLASH_SCREEN_DELAY		2
 
 static unsigned char death_frame;
 static unsigned char event_stage;
@@ -50,9 +51,10 @@ void screen_dead_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
 	struct_enemy_object *eo;
+
 	unsigned char enemy_direction = direction_type_none;
-	//unsigned char input;
 	unsigned char screen;
+	unsigned char input;
 	unsigned char enemy;
 	unsigned char delay;
 	unsigned int frame = fo->frame_count;
@@ -62,6 +64,14 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw_death( death_frame );
 
+	input = engine_input_manager_hold( input_type_fire1 );
+	if( input )
+	{
+		reset_death();
+		screen = ( 0 == engine_score_manager_get_lives() ) ? screen_type_cont : screen_type_ready;
+		*screen_type = screen;
+		return;
+	}
 
 	//engine_frame_manager_draw();
 	//engine_delay_manager_draw();

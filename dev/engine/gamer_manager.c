@@ -205,12 +205,16 @@ void engine_gamer_manager_dead()
 void engine_gamer_manager_reset()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	go->lifecycle = lifecycle_type_idle;
-	go->direction = direction_type_none;
 
 	// Reset at home.
 	go->tileX = board_object_homeX[ actor_type_kid ];
 	go->tileY = board_object_homeY[ actor_type_kid ];
+
+	go->lifecycle = lifecycle_type_idle;
+	go->direction = direction_type_none;
+	go->frame = frame_type_stance;
+
+	calcd_frame();
 	calcd_spots();
 }
 

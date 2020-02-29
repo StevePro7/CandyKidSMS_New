@@ -53,8 +53,8 @@ void engine_enemy_manager_init()
 		eo->direction = direction_type_none;
 		eo->dir_count = 0;
 
-		eo->image = frame_type_stance;
-		eo->frame = 0;
+		eo->image = 0;
+		eo->frame = frame_type_stance;		// TODO REVERT!!
 
 		frame = enemy * NUM_ENTITY_IMAGE * NUM_ENTITY_FRAME + 0;
 		eo->images[ 0 ][ 0 ] = images[ frame + 0 ];
@@ -295,19 +295,21 @@ void engine_enemy_manager_reset( unsigned char enemy, unsigned char mode )
 	// TODO test!!
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	eo = &global_enemy_objects[ enemy ];
-
 	if( !eo->mover )
 	{
 		return;
 	}
 
-	eo->lifecycle = lifecycle_type_idle;
-	eo->direction = direction_type_none;
-	eo->action = mode;
-
 	// Reset at home.
 	eo->tileX = board_object_homeX[ enemy ];
 	eo->tileY = board_object_homeY[ enemy ];
+
+	eo->lifecycle = lifecycle_type_idle;
+	eo->direction = direction_type_none;
+	eo->action = mode;
+	eo->frame = frame_type_stance;
+
+	calcd_frame( enemy );
 	calcd_spots( enemy );
 }
 
