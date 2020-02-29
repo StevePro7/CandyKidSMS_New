@@ -9,6 +9,7 @@ void screen_init_screen_load()
 	engine_font_manager_draw_text( "INIT SCREEN!!", 2, 10 );
 
 	engine_enemy_manager_reset_all( enemymove_type_wait );
+	engine_gamer_manager_reset();
 }
 
 void screen_init_screen_update( unsigned char *screen_type )

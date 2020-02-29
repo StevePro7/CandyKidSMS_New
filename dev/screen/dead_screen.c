@@ -156,4 +156,5 @@ static void reset_death()
 
 	// Reset all enemies back to scatter mode.
 	engine_enemy_manager_reset_all( enemymove_type_tour );
+	engine_gamer_manager_reset();
 }
