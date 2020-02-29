@@ -58,4 +58,7 @@
 #define MAX_BOOSTERX			100
 #define NUMBER_LIVES			4
 
+#define TOP_SIDE_Y				0
+#define LFT_SIDE_X				0
+
 #endif//_GLOBAL_MANAGER_H_

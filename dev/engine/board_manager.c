@@ -10,10 +10,7 @@
 #include "..\banks\databank.h"
 #include "..\devkit\_sms_manager.h"
 
-#define TOP_SIDE_Y		0
 #define BOT_SIDE_Y		22
-
-#define LFT_SIDE_X		0
 #define MID_SIDE_X		22
 #define RGT_SIDE_X		28
 
