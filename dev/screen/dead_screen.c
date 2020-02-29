@@ -78,7 +78,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 		{
 			// TODO enable sound FX
 			//engine_audio_manager_sound_reset();
-			reset_death();
+			//reset_death();
 			*screen_type = screen_type_over;
 			return;
 		}
