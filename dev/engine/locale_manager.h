@@ -19,7 +19,8 @@
 #define LOCALE_PLAY1_TEXT		"PLAY"
 #define LOCALE_MODES_TEXT		"MODE"
 
-#define LOCALE_BLANK_WIDTH		"                                "
+#define LOCALE_BLANK_WIDTH		"                          "
+//#define LOCALE_BLANK_WIDTH		"12345678901234567890123456"
 #define LOCALE_BLANK_SIZE8		"        "
 #define XYZCALE_BLANK_SIZE8		"12345678"
 #define LOCALE_BLANK_SIZE17		"                 "
@@ -68,7 +69,7 @@
 #define LOCALE_GAME_MESSAGE1	"  GAME  "
 #define LOCALE_GAME_MESSAGE2	"  OVER  "
 
-#define LOCALE_BEAT_MESSAGE1	" CONGLATURATION! "
-#define LOCALE_BEAT_MESSAGE2	" A WINNER IS YOU "
+#define LOCALE_BEAT_MESSAGE1	"CANDYKID"
+#define LOCALE_BEAT_MESSAGE2	"  WINS  "
 
 #endif//_LOCALE_MANAGER_H_

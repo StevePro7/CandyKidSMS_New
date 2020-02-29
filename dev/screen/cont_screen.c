@@ -1,5 +1,5 @@
 #include "cont_screen.h"
-#include "..\engine\board_manager.h"
+//#include "..\engine\board_manager.h"
 #include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
@@ -34,7 +34,7 @@ void screen_cont_screen_load()
 
 void screen_cont_screen_update( unsigned char *screen_type )
 {
-	unsigned char test[ 3 ] = { 0, 0, 0 };
+	unsigned char input[ 3 ] = { 0, 0, 0 };
 	unsigned char delay;
 
 	// Draw sprites first.
@@ -65,16 +65,16 @@ void screen_cont_screen_update( unsigned char *screen_type )
 		}
 	}
 
-	test[ 0 ] = engine_input_manager_hold( input_type_left );
-	test[ 1 ] = engine_input_manager_hold( input_type_right );
-	if( test[ 0 ] || test[ 1 ] )
+	input[ 0 ] = engine_input_manager_hold( input_type_left );
+	input[ 1 ] = engine_input_manager_hold( input_type_right );
+	if( input[ 0 ] || input[ 1 ] )
 	{
 		cursor = 1 - cursor;
 		display_cursor();
 	}
 
-	test[ 2 ] = engine_input_manager_hold( input_type_fire1 );
-	if( test[ 2 ] )
+	input[ 2 ] = engine_input_manager_hold( input_type_fire1 );
+	if( input[ 2 ] )
 	{
 		// TODO play sound FX
 		//engine_audio_manager_sound_accept();
