@@ -143,7 +143,6 @@ void engine_score_manager_update_level()
 {
 	struct_score_object *so = &global_score_object;
 	so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
-
 	draw_value( score_type_level );
 
 	// TODO delete this - used for debugging!
@@ -156,11 +155,13 @@ void engine_score_manager_reset_lives()
 {
 	struct_score_object *so = &global_score_object;
 	so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
+	draw_value( score_type_lives );
 }
 void engine_score_manager_reset_boost()
 {
 	struct_score_object *so = &global_score_object;
 	so->values[ score_type_boost ] = MAX_BOOSTERX;
+	draw_value( score_type_boost );
 }
 
 static void reset()

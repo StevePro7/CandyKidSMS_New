@@ -7,6 +7,7 @@
 #include "..\engine\input_manager.h"
 #include "..\engine\locale_manager.h"
 #include "..\engine\memo_manager.h"
+#include "..\engine\score_manager.h"
 #include "..\engine\timer_manager.h"
 
 #define CONT_SCREEN_DELAY	50
@@ -26,20 +27,43 @@ void screen_cont_screen_load()
 	engine_delay_manager_load( CONT_SCREEN_DELAY );
 	engine_memo_manager_draw( LOCALE_CONT_MESSAGE, LOCALE_CONT_YESORNO );
 
-	cursor = 0;
-
 	display_cursor();
 	event_stage = event_stage_start;
+	cursor = 0;
 }
 
 void screen_cont_screen_update( unsigned char *screen_type )
 {
 	unsigned char test[ 3 ] = { 0, 0, 0 };
-	//unsigned char delay;
+	unsigned char delay;
 
 	// Draw sprites first.
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw_death( 0 );
+
+	if( event_stage_pause == event_stage )
+	{
+		delay = engine_delay_manager_update();
+		if( delay )
+		{
+			if( 0 == cursor )
+			{
+				engine_score_manager_reset_lives();
+				*screen_type = screen_type_ready;
+				return;
+			}
+			else
+			{
+				*screen_type = screen_type_over;
+				return;
+			}
+		}
+		else
+		{
+			*screen_type = screen_type_cont;
+			return;
+		}
+	}
 
 	test[ 0 ] = engine_input_manager_hold( input_type_left );
 	test[ 1 ] = engine_input_manager_hold( input_type_right );
@@ -52,8 +76,9 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	test[ 2 ] = engine_input_manager_hold( input_type_fire1 );
 	if( test[ 2 ] )
 	{
+		// TODO play sound FX
 		//engine_audio_manager_sound_accept();
-		//event_stage = event_stage_pause;
+		event_stage = event_stage_pause;
 		return;
 	}
 
