@@ -72,7 +72,7 @@ void engine_enemy_manager_load()
 {
 	struct_enemy_object *eo;
 	unsigned char enemy;
-	//unsigned char actor;
+	unsigned char actor;
 	unsigned char check;
 	unsigned char index;
 	unsigned char count = MAX_ENEMIES + state_object_difficulty;
@@ -93,31 +93,28 @@ void engine_enemy_manager_load()
 		check = enemy;
 		for( index = 0; index < NUM_DIRECTIONS; index++ )
 		{
-			//while( 1 )
-			//{
-			//	actor = rand() % count;
-			//	if( 0 == index )
-			//	{
-			//		if( actor == enemy || actor_type_kid == actor )
-			//		{
-			//			continue;
-			//		}
-			//	}
-			//	else
-			//	{
-			//		if( check == actor )
-			//		{
-			//			continue;
-			//		}
-			//	}
+			while( 1 )
+			{
+				actor = rand() % count;
+				if( 0 == index )
+				{
+					if( actor == enemy || actor_type_kid == actor )
+					{
+						continue;
+					}
+				}
+				else
+				{
+					if( check == actor )
+					{
+						continue;
+					}
+				}
 
-			//	eo->scatter[ index ] = actor;
-			//	check = actor;
-			//	break;
-			//}
-
-			// TODO delete
-			eo->scatter[ index ] = actor_type_kid;
+				eo->scatter[ index ] = actor;
+				check = actor;
+				break;
+			}
 		}
 
 		// TODO look up frame swaps from array in data bank that gets faster as the levels progress...!
