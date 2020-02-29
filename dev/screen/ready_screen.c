@@ -21,5 +21,6 @@ void screen_ready_screen_update( unsigned char *screen_type )
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
+	//*screen_type = screen_type_play;
 	*screen_type = screen_type_ready;
 }

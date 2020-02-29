@@ -87,7 +87,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	unsigned char proceed;
 	unsigned char enemy;
-	unsigned char input;
+	//unsigned char input;
 	unsigned int frame = fo->frame_count;
 	state_object_actor_kill = actor_type_kid;
 
@@ -113,17 +113,18 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// Continue...
 	frame = fo->frame_count;
 
-	input = engine_input_manager_move( input_type_fire1 );
-	if( input )
-	{
-		engine_font_manager_draw_text( "DEAD TREE", 9, 9 );
-		//state_object_actor_kill = actor_type_tree;
+	// TODO delete
+	//input = engine_input_manager_move( input_type_fire1 );
+	//if( input )
+	//{
+	//	engine_font_manager_draw_text( "DEAD TREE", 9, 9 );
+	//	//state_object_actor_kill = actor_type_tree;
 
-		engine_enemy_manager_dead( actor_type_pro );
-		state_object_actor_kill = actor_type_pro;
-		*screen_type = screen_type_dead;
-		return;
-	}
+	//	engine_enemy_manager_dead( actor_type_pro );
+	//	state_object_actor_kill = actor_type_pro;
+	//	*screen_type = screen_type_dead;
+	//	return;
+	//}
 
 	// TODO delete
 	//input = engine_input_manager_hold( input_type_fire1 );

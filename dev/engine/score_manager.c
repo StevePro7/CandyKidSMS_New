@@ -152,6 +152,17 @@ void engine_score_manager_update_level()
 	// TODO delete this - used for debugging!
 }
 
+void engine_score_manager_reset_lives()
+{
+	struct_score_object *so = &global_score_object;
+	so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
+}
+void engine_score_manager_reset_boost()
+{
+	struct_score_object *so = &global_score_object;
+	so->values[ score_type_boost ] = MAX_BOOSTERX;
+}
+
 static void reset()
 {
 	struct_score_object *so = &global_score_object;

@@ -203,6 +203,9 @@ static void reset_death()
 		}
 	}
 
+	// TODO test book reset...
+	engine_score_manager_reset_boost();
+
 	// If Kid collided with Mama then will be reset from dead to idle below...
 	// Reset all enemies back to scatter mode.
 	//for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )

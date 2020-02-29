@@ -20,6 +20,9 @@ void engine_score_manager_update_boost();
 // TODO delete this - used for debugging!
 void engine_score_manager_update_level();
 
+void engine_score_manager_reset_lives();
+void engine_score_manager_reset_boost();
+
 void engine_score_manager_draw_all();
 void engine_score_manager_draw_text();
 
