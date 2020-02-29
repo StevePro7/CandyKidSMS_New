@@ -42,6 +42,8 @@ void screen_dead_screen_load()
 		engine_enemy_manager_load();
 		engine_score_manager_load();
 	}
+
+	engine_score_manager_update_lives( -1 );
 }
 
 void screen_dead_screen_update( unsigned char *screen_type )
