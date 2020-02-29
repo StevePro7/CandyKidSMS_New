@@ -12,7 +12,7 @@ void screen_ready_screen_load()
 
 	// TODO delete
 	//engine_enemy_manager_reset_all( enemymove_type_wait );
-	engine_gamer_manager_reset();
+	//engine_gamer_manager_reset();
 }
 
 void screen_ready_screen_update( unsigned char *screen_type )
