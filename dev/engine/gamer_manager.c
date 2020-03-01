@@ -6,6 +6,7 @@
 #include "input_manager.h"
 #include "level_manager.h"
 #include "move_manager.h"
+#include "score_manager.h"
 #include "sprite_manager.h"
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
@@ -358,6 +359,43 @@ unsigned char engine_gamer_manager_input_direction()
 	}
 
 	return direction;
+}
+
+unsigned char engine_gamer_manager_input_boost()
+{
+	struct_gamer_object *go = &global_gamer_object;
+	unsigned char boost;
+	//unsigned char boost = pace_type_none;
+	unsigned char input;
+	input = engine_input_manager_move( input_type_fire1 );
+
+	// If not press boost still have to see if revert old boost.
+	if( !input )
+	{
+		if( go->prev_boost != go->curr_boost )
+		{
+			go->curr_boost = go->prev_boost;
+			return go->curr_boost;
+		}
+		else
+		{
+			return pace_type_none;
+		}
+	}
+
+	if( input )
+	{
+		if( !state_object_full_boost )
+		{
+			boost = engine_score_manager_get_value( score_type_boost );
+			if( boost <= 0 )
+			{
+				return pace_type_none;
+			}
+		}
+	}
+
+	return boost;
 }
 
 // TODO delete - used for debugging

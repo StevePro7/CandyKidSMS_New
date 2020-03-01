@@ -81,6 +81,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
 	struct_enemy_object *eo;
+	unsigned char gamer_boost = pace_type_none;
 	unsigned char gamer_direction = direction_type_none;
 	unsigned char enemy_direction = direction_type_none;
 	unsigned char gamer_collision = coll_type_empty;
@@ -173,6 +174,14 @@ void screen_play_screen_update( unsigned char *screen_type )
 	{
 		if( coll_type_empty == gamer_collision )
 		{
+			//gamer_boost = engine_score_manager_get_value( score_type_boost );
+			//gamer_boost = engine_gamer_manager_input_boost( gamer_boost );
+			gamer_boost = engine_gamer_manager_input_boost();
+			if( pace_type_none != gamer_boost )
+			{
+				engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
+			}
+
 			gamer_direction = engine_gamer_manager_input_direction();
 			gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
 

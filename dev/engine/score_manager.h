@@ -10,7 +10,9 @@ void engine_score_manager_init();
 void engine_score_manager_load();
 
 unsigned char engine_score_manager_get_candy();
-unsigned char engine_score_manager_get_lives();
+unsigned char engine_score_manager_get_value( unsigned char index );
+//unsigned char engine_score_manager_get_lives();
+//unsigned char engine_score_manager_get_boost();
 
 void engine_score_manager_update_bonus( unsigned char bonus );
 void engine_score_manager_update_candy();

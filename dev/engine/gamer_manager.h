@@ -22,6 +22,9 @@ void engine_gamer_manager_reset();
 unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction );
 unsigned char engine_gamer_manager_input_direction();
 //unsigned char engine_gamer_manager_input_direction2();		// TODO delete
-unsigned char engine_gamer_manager_input_direction();
+//unsigned char engine_gamer_manager_input_direction();
+
+unsigned char engine_gamer_manager_input_boost();
+//unsigned char engine_gamer_manager_input_boost( unsigned char gamer_boost );
 
 #endif//_GAMER_MANAGER_H_

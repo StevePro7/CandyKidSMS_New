@@ -28,6 +28,7 @@ static unsigned char screen;
 
 void screen_dead_screen_load()
 {
+	unsigned char lives;
 	engine_audio_manager_music_stop();
 	engine_command_manager_load();
 
@@ -46,7 +47,9 @@ void screen_dead_screen_load()
 	//}
 
 	engine_score_manager_update_lives( -1 );
-	screen = ( 0 == engine_score_manager_get_lives() ) ? screen_type_cont : screen_type_ready;
+	lives = engine_score_manager_get_value( score_type_lives );			// TODO test the
+	//screen = ( 0 == engine_score_manager_get_lives() ) ? screen_type_cont : screen_type_ready;
+	screen = ( 0 == lives ) ? screen_type_cont : screen_type_ready;
 	//screen = screen_type_cont;
 	//screen = screen_type_ready;
 
