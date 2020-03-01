@@ -82,7 +82,8 @@ void screen_intro_screen_update( unsigned char *screen_type )
 	frame = fo->frame_count;
 
 	// Move gamer.
-	gamer_direction = engine_gamer_manager_input_direction2();
+	//gamer_direction = engine_gamer_manager_input_direction2();
+	gamer_direction = engine_gamer_manager_input_direction();
 	gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
 
 	if( direction_type_upxx == gamer_direction )

@@ -25,6 +25,10 @@ extern const unsigned char board_object_posnY[];
 extern const unsigned char board_object_homeX[];
 extern const unsigned char board_object_homeY[];
 
+// Boost Manager.
+extern const unsigned char boost_object_speed[];
+extern const unsigned char boost_object_delay[];
+
 // Command Manager.
 extern unsigned int command_object_frames[];
 extern unsigned char command_object_cmds[];

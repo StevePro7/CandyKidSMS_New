@@ -41,12 +41,13 @@ void engine_enemy_manager_init()
 		eo->tileX = board_object_homeX[ enemy ];
 		eo->tileY = board_object_homeY[ enemy ];
 		eo->action = enemymove_type_wait;
+
+		eo->speed = 1;		// TODO hardcoded - inject!
+		eo->delay = 4;		// TODO hardcoded - inject!
 		eo->paths = 0;
-		eo->delay = 1;		// TODO hardcoded - inject!
 		eo->timer = 0;
 		eo->delta = 0;
 		eo->total = 0;
-		eo->speed = 3;		// TODO hardcoded - inject!
 		eo->mover = 1;		// 1=move 0=stay.
 		eo->lifecycle = lifecycle_type_idle;
 		eo->prev_move = direction_type_none;

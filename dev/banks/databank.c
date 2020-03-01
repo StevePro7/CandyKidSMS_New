@@ -41,6 +41,16 @@ const unsigned char board_object_homeY[] = { 0x0A, 0x0A, 0x03, 0x03 };
 //const unsigned char board_object_homeY[] = { 0x0A, 0x0A, 0x03, 0x0A };
 
 
+// Boost Manager.
+// Total frames taken from  slow to fast : {48,32,24,18,16,12, 8, 6 };
+const unsigned char boost_object_speed[] = { 1, 1, 2, 3, 1, 3, 2, 3 };
+const unsigned char boost_object_delay[] = { 3, 2, 3, 3, 1, 2, 1, 1 };
+
+// Total frames taken from  slow to fast : {64,48,32,24,18,16,12, 8, 6, 4 };
+//const unsigned char boost_object_speed[] = { 1, 1, 1, 2, 3, 1, 3, 2, 3, 4 };
+//const unsigned char boost_object_delay[] = { 4, 3, 2, 3, 3, 1, 2, 1, 1, 1 };
+
+
 // Command Manager.
 unsigned int command_object_frames[] =
 {

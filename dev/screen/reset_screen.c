@@ -20,18 +20,18 @@ static unsigned char walking_delta;
 static unsigned char walking_count;
 static unsigned char first_time;
 
-unsigned char cont_walking_cmds1[] = { direction_type_upxx, direction_type_rght, direction_type_down };
-unsigned char cont_walking_cmds2[] = { direction_type_upxx, direction_type_rght, direction_type_rght };
+unsigned char cont_walking_cmds1[] = { direction_type_down, direction_type_none, direction_type_none };
+unsigned char cont_walking_cmds2[] = { direction_type_upxx, direction_type_left, direction_type_down };
 unsigned char cont_walking_cmds3[] = { direction_type_rght, direction_type_rght, direction_type_rght };
 unsigned char cont_walking_cmds4[] = { direction_type_down, direction_type_rght, direction_type_left };
 unsigned char cont_walking_cmds5[] = { direction_type_upxx, direction_type_upxx, direction_type_upxx };
-unsigned char cont_walking_move[] = { 1, 4, 1 };
+unsigned char cont_walking_move[] = { 1, 1, 1 };
 
 //static unsigned char process_collision( unsigned char tile_type );
 
 void screen_reset_screen_load()
 {
-	command_count = 3;
+	command_count = 1;
 
 
 	engine_command_manager_load();
@@ -63,7 +63,7 @@ void screen_reset_screen_load()
 
 void screen_reset_screen_update( unsigned char *screen_type )
 {
-	unsigned char *cont_walking_cmds = cont_walking_cmds1;
+	unsigned char *cont_walking_cmds = cont_walking_cmds2;
 
 
 	struct_frame_object *fo = &global_frame_object;
@@ -133,6 +133,13 @@ void screen_reset_screen_update( unsigned char *screen_type )
 			if( command_index >= command_count )
 			{
 				//command_index = 0;
+				engine_font_manager_draw_data( frame, 12, 12 );
+
+				engine_frame_manager_draw();
+				engine_delay_manager_draw();
+
+				*screen_type = screen_type_pass;
+				return;
 			}
 			else
 			{
