@@ -1,12 +1,14 @@
 XL2
-H 9 areas 1C global symbols
+H 9 areas 1E global symbols
 M databank
 O -mz80
 S .__.ABS. Def0000
-A _CODE size 44 flags 0 addr 0
+A _CODE size 54 flags 0 addr 0
+S _boost_object_delay Def002C
+S _boost_object_speed Def0024
 S _board_object_homeX Def001C
 S _board_object_homeY Def0020
-S _enemy_object_directions Def0024
+S _enemy_object_directions Def0034
 S _board_object_posnX Def0000
 S _board_object_posnY Def000E
 A _DATA size 12 flags 0 addr 0
@@ -145,11 +147,19 @@ T 20 00 0A 0A 03 03
 R 00 00 00 00
 T 24 00
 R 00 00 00 00
-T 24 00 08 01 02 04 08 02 01 04 04 01 02 08 04 02
+T 24 00 01 01 02 03 01 03 02 03
 R 00 00 00 00
-T 32 00 01 08 01 08 04 02 02 08 04 01 01 04 08 02
+T 2C 00
 R 00 00 00 00
-T 40 00 02 04 08 01
+T 2C 00 03 02 03 03 01 02 01 01
+R 00 00 00 00
+T 34 00
+R 00 00 00 00
+T 34 00 08 01 02 04 08 02 01 04 04 01 02 08 04 02
+R 00 00 00 00
+T 42 00 01 08 01 08 04 02 02 08 04 01 01 04 08 02
+R 00 00 00 00
+T 50 00 02 04 08 01
 R 00 00 00 00
 T 00 00
 R 00 00 07 00

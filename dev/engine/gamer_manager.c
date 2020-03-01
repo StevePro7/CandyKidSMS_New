@@ -60,8 +60,8 @@ void engine_gamer_manager_load()
 {
 	struct_gamer_object *go = &global_gamer_object;
 
-	go->speed = 4;
-	go->delay = 2;
+	go->speed = 1;
+	go->delay = 4;
 }
 
 void engine_gamer_manager_update()

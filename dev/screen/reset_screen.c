@@ -33,6 +33,7 @@ void screen_reset_screen_load()
 {
 	command_count = 1;
 
+	engine_gamer_manager_load();
 
 	engine_command_manager_load();
 	engine_delay_manager_load( 0 );
