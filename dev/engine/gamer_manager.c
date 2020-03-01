@@ -56,6 +56,14 @@ void engine_gamer_manager_init()
 	calcd_spots();
 }
 
+void engine_gamer_manager_load()
+{
+	struct_gamer_object *go = &global_gamer_object;
+
+	go->speed = 4;
+	go->delay = 2;
+}
+
 void engine_gamer_manager_update()
 {
 	struct_gamer_object *go = &global_gamer_object;

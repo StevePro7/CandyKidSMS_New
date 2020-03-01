@@ -8,25 +8,24 @@ typedef struct tag_struct_enemy_object
 	unsigned char actor;
 	unsigned char posnX;		// PositionX during movement.
 	unsigned char posnY;		// PositionY during movement.
-	//unsigned char homeX;		// Home tileX on all restart.
-	//unsigned char homeY;		// Home tileY on all restart.
-	//unsigned char homeZ;		// Home tile stored as R x C.
 	unsigned char tileX;		// Posn tileX on enemy stops. 
 	unsigned char tileY;		// Posn tileY on enemy stops.
 	unsigned char tileZ;		// Posn tile stored as R x C.
-	unsigned char waiter;
-	unsigned char toggle[ 2 ];
-	unsigned char ticker;
-	unsigned char action;
+	unsigned char waiter;		// Wait time when level load.
+	unsigned char toggle[ 2 ];	// Track scatter mode attack.
+	unsigned char ticker;		// Count no. moves when swap.
+	unsigned char action;		// Current action: W / T / K.
 	unsigned char scatter[ NUM_DIRECTIONS ];
-	unsigned char paths;
+	unsigned char paths;		// Track enemy scatter paths.
+	unsigned char velocity[ 2 ];
+	unsigned char boost;
+	unsigned char speed;
 	unsigned char delay;
 	unsigned char timer;
-	unsigned char delta;
+	unsigned char delta;		
 	unsigned char total;
-	unsigned char speed;
-	unsigned char mover;
-	unsigned char hands;
+	unsigned char mover;		// Flag when enemy can moves.
+	unsigned char hands;		// Delay when swap hand over.
 	unsigned char swaps;
 	unsigned char lifecycle;
 	//unsigned char prev_move[ 4 ];	// Previous direction moved.

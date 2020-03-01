@@ -8,6 +8,7 @@ extern struct_gamer_object global_gamer_object;
 
 // Methods.
 void engine_gamer_manager_init();
+void engine_gamer_manager_load();
 void engine_gamer_manager_update();
 void engine_gamer_manager_draw();
 void engine_gamer_manager_draw_death( unsigned char frame );

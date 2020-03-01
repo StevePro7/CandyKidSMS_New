@@ -38,6 +38,7 @@ void screen_play_screen_load()
 
 	engine_delay_manager_load( 0 );
 
+	engine_gamer_manager_load();
 	engine_enemy_manager_load();
 	//get_actor_data( actor_mover, actor_tileZ );
 	engine_actor_manager_get_data( actor_mover, actor_tileZ );
