@@ -24,19 +24,22 @@ static unsigned char walking_delta;
 static unsigned char walking_count;
 static unsigned char first_time;
 
-unsigned char test_walking_cmds1[] = { command_type_gamer_mover };
-unsigned char test_walking_args1[] = { direction_type_down };
+unsigned char test_walking_cmds1[] = { command_type_gamer_mover, command_type_gamer_speed, command_type_gamer_mover, command_type_gamer_speed, command_type_gamer_mover };
+unsigned char test_walking_args1[] = { direction_type_down,		pace_type_fast,		direction_type_rght,	pace_type_slow, direction_type_down };
+
+//unsigned char test_walking_cmds1[] = { command_type_gamer_speed, command_type_gamer_mover };
+//unsigned char test_walking_args1[] = { pace_type_fast, direction_type_rght };
 
 //unsigned char cont_walking_cmds1[] = { command_type_gamer_speed, command_type_gamer_mover };
 //unsigned char cont_walking_args1[] = { pace_type_fast, direction_type_down };
-unsigned char test_walking_move[] = { 1 };
+unsigned char test_walking_move[] = { 1, 0, 2, 0, 3 };
 
 void screen_test_screen_load()
 {
-	command_count = 1;
+	command_count = 5;
 
 	engine_command_manager_load();
-	engine_delay_manager_load( 20 );
+	engine_delay_manager_load( 0 );
 
 	engine_gamer_manager_load();
 	engine_enemy_manager_load();
@@ -154,19 +157,29 @@ void screen_test_screen_update( unsigned char *screen_type )
 			{
 				actor_cmds = test_walking_cmds[ command_index ];
 				actor_args = test_walking_args[ command_index ];
-				walking_count = test_walking_move[ command_index ];
-
-				walking_delta++;
-				if( walking_delta >= walking_count )
-				{
-					command_index++;
-					walking_delta = 0;
-				}
-
-				actor_args = engine_gamer_manager_find_direction( actor_args );
-				if( direction_type_none != actor_args )
+				if( command_type_gamer_speed == actor_cmds )
 				{
 					engine_command_manager_add( frame, actor_cmds, actor_args );
+					command_index++;
+				}
+
+				actor_cmds = test_walking_cmds[ command_index ];
+				actor_args = test_walking_args[ command_index ];
+				if( command_type_gamer_mover == actor_cmds )
+				{
+					walking_count = test_walking_move[ command_index ];
+					walking_delta++;
+					if( walking_delta >= walking_count )
+					{
+						command_index++;
+						walking_delta = 0;
+					}
+
+					actor_args = engine_gamer_manager_find_direction( actor_args );
+					if( direction_type_none != actor_args )
+					{
+						engine_command_manager_add( frame, actor_cmds, actor_args );
+					}
 				}
 			}
 		}
