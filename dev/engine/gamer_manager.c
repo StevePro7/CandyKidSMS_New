@@ -34,7 +34,7 @@ void engine_gamer_manager_init()
 	// Speed:	1, 2, 4, 8
 	// Delay:	1, 2, 4, 8
 	go->speeds[ 0 ] = 1;
-	go->delays[ 0 ] = 4;
+	go->delays[ 0 ] = 2;
 	go->speeds[ 1 ] = 1;
 	go->delays[ 1 ] = 1;
 	//go->boost = pace_type_slow;
