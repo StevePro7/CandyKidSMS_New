@@ -203,6 +203,10 @@ static void update_lives( signed char value )
 	{
 		return;
 	}
+	if( 99 == so->values[ score_type_lives ] && value > 0 )
+	{
+		return;
+	}
 
 	so->values[ score_type_lives ] += value;
 	draw_value( score_type_lives );
