@@ -17,6 +17,7 @@
 #include "..\engine\timer_manager.h"
 #include "..\banks\databank.h"
 #include "..\devkit\_sms_manager.h"
+//#include <stdbool.h>
 
 // IMPORTANT disable compiler warning 110
 #ifdef _CONSOLE
@@ -85,7 +86,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
 	struct_enemy_object *eo;
-	unsigned char gamer_boost = pace_type_none;
+	unsigned char process_boost = 0;
 	unsigned char gamer_direction = direction_type_none;
 	unsigned char enemy_direction = direction_type_none;
 	unsigned char gamer_collision = coll_type_empty;
@@ -180,24 +181,48 @@ void screen_play_screen_update( unsigned char *screen_type )
 		{
 			//gamer_boost = engine_score_manager_get_value( score_type_boost );
 			//gamer_boost = engine_gamer_manager_input_boost( gamer_boost );
-			gamer_boost = engine_gamer_manager_input_boost();
-			if( pace_type_slow == gamer_boost )
-			{
-				engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
-			}
+			//gamer_boost = engine_gamer_manager_input_boost();
+			
+			//if( pace_type_none != gamer_boost )
+			//{
+			//	//engine_font_manager_draw_text( "BOOST", 15, 15 );
+			//	engine_font_manager_draw_data( gamer_boost, 15, 15 );
+			//}
+
+			//if( pace_type_slow == gamer_boost )
+			//{
+			//	engine_font_manager_draw_text( "SLOW", 15, 17 );
+			//	engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
+			//}
 
 			gamer_direction = engine_gamer_manager_input_direction();
 			gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
+
+			process_boost = engine_gamer_manager_input_boost( gamer_direction );
+			if( pace_type_none != process_boost )
+			{
+				engine_command_manager_add( frame, command_type_gamer_speed, process_boost );
+			}
 			if( direction_type_none != gamer_direction )
 			{
-				if( pace_type_fast == gamer_boost )
-				{
-					engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
-					engine_score_manager_update_boost();
-				}
+				//if( go->prev_boost != go->curr_boost )
+				//{
+				//	engine_font_manager_draw_text( "FAST", 15, 16 );
+				//	engine_command_manager_add( frame, command_type_gamer_speed, go->curr_boost );
+				//}
+
 
 				engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+
 			}
+			//else
+			//{
+			//	if( go->prev_boost != go->curr_boost )
+			//	{
+			//		engine_font_manager_draw_text( "FAST", 15, 16 );
+			//		engine_command_manager_add( frame, command_type_gamer_speed, go->curr_boost );
+			//	}
+			//}
 		}
 	}
 
@@ -291,6 +316,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// Execute all commands for this frame.
 	engine_command_manager_execute( frame );
 	first_time = 0;
+
 
 
 	// Check candy collision before sprite collision as we want to test if all candy eaten = level complete

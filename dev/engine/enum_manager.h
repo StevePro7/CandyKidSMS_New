@@ -39,6 +39,7 @@ typedef enum tag_enum_pace_type
 	pace_type_slow = 0,
 	pace_type_fast = 1,
 	pace_type_none = 2,
+	//pace_type_cont = 2,
 
 } enum_pace_type;
 
