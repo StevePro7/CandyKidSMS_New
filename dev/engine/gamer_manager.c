@@ -32,7 +32,7 @@ void engine_gamer_manager_init()
 
 	// Speed:	1, 2, 4, 8
 	// Delay:	1, 2, 4, 8
-	go->speed = 1;
+	go->speed = 4;
 	go->delay = 1;
 	go->timer = 0;
 	go->delta = 0;
@@ -59,9 +59,10 @@ void engine_gamer_manager_init()
 void engine_gamer_manager_load()
 {
 	struct_gamer_object *go = &global_gamer_object;
-
-	go->speed = 1;
-	go->delay = 4;
+	go->velocity[ 0 ] = 4;
+	go->velocity[ 1 ] = 6;
+	go->boost = pace_type_slow;
+	engine_gamer_manager_pace( go->boost );
 }
 
 void engine_gamer_manager_update()
@@ -172,6 +173,15 @@ void engine_gamer_manager_wrap( unsigned char direction )
 	}
 
 	calcd_spots();
+}
+
+void engine_gamer_manager_pace( unsigned char boost )
+{
+	struct_gamer_object *go = &global_gamer_object;
+	unsigned char index = go->velocity[ boost ];
+	go->boost = boost;
+	go->speed = boost_object_speed[ index ];
+	go->delay = boost_object_delay[ index ];
 }
 
 void engine_gamer_manager_stop()
