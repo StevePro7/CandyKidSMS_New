@@ -47,6 +47,11 @@ void screen_play_screen_load()
 	engine_score_manager_draw_text();		// this is just static text!!
 	// Put in init screen
 
+	// Must draw score first for Level which is currently 5x characaters.
+	state_object_round_data = 1;
+	engine_score_manager_load();
+	engine_score_manager_draw_all();
+
 	// Draw functions.
 	//engine_board_manager_debugger();
 	engine_board_manager_draw_full();
@@ -54,15 +59,14 @@ void screen_play_screen_load()
 	engine_board_manager_side_tile();
 
 	//engine_level_manager_load_level( 0, 0 );
-	state_object_round_data = 1;
-	engine_level_manager_load_level( 0, state_object_round_data );
+	
+	engine_level_manager_load_level( state_object_world_data, state_object_round_data );
 	//engine_level_manager_load_level( 8, 7 );
 	//engine_level_manager_load_level( 9, 4 );
 	engine_level_manager_update_level( state_object_round_data, actor_mover, actor_tileZ );
 	engine_level_manager_draw_level();
 
-	engine_score_manager_load();
-	engine_score_manager_draw_all();
+
 
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
@@ -176,11 +180,11 @@ void screen_play_screen_update( unsigned char *screen_type )
 		{
 			//gamer_boost = engine_score_manager_get_value( score_type_boost );
 			//gamer_boost = engine_gamer_manager_input_boost( gamer_boost );
-			gamer_boost = engine_gamer_manager_input_boost();
-			if( pace_type_none != gamer_boost )
-			{
-				engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
-			}
+			//gamer_boost = engine_gamer_manager_input_boost();
+			//if( pace_type_none != gamer_boost )
+			//{
+			//	engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
+			//}
 
 			gamer_direction = engine_gamer_manager_input_direction();
 			gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
