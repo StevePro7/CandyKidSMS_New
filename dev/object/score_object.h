@@ -9,8 +9,8 @@ typedef struct tag_struct_score_object
 	unsigned char bonus;
 	unsigned char candy;
 	//unsigned char total;		// TODO delete as don't believe we need as can calc complete vs. perfect!
-	unsigned char delay;		// Boost delay
-	unsigned char timer;		// Boost timer
+	//unsigned char delay;		// Boost delay
+	//unsigned char timer;		// Boost timer
 
 } struct_score_object;
 

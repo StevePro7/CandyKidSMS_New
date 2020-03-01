@@ -55,7 +55,7 @@
 
 #define MAX_HI_SCORE			50000	//99999
 #define DEF_HI_SCORE			5000
-#define MAX_BOOSTERX			10//100
+#define MAX_BOOSTERX			100
 #define NUMBER_LIVES			4
 
 #define TOP_SIDE_Y				0

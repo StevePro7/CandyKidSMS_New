@@ -126,13 +126,13 @@ void engine_enemy_manager_load()
 		//eo->waiter = 80;		// 50 frames
 		eo->waiter = 0;		// 50 frames
 		eo->toggle[ 0 ] = 32;
-		eo->toggle[ 1 ] = 32;
+		eo->toggle[ 1 ] = 48;
 		eo->ticker = 0;
 		eo->action = enemymove_type_wait;
 
 
-		//eo->speed = 4;
-		//eo->delay = 1;
+		eo->speed = 4;
+		eo->delay = 1;
 	}
 }
 

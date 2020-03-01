@@ -112,15 +112,19 @@ void engine_score_manager_update_boost()
 		return;
 	}
 
-	so->timer++;
-	if( so->timer <= so->delay )
-	{
-		return;
-	}
+	//so->timer++;
+	//if( so->timer <= so->delay )
+	//{
+	//	return;
+	//}
 
-	so->timer = 0;
+	//so->timer = 0;
 	so->values[ score_type_boost ]--;
-	draw_value( score_type_boost );
+
+	//if( 0 == so->values[ score_type_boost ] % 5 )
+	//{
+		draw_value( score_type_boost );
+	//}
 }
 void engine_score_manager_draw_all()
 {
@@ -189,8 +193,8 @@ static void reset()
 	so->candy = 0;
 	//so->total = 0;
 	so->values[ score_type_boost ] = MAX_BOOSTERX;
-	so->delay = 1 - state_object_difficulty;
-	so->timer = 0;
+	//so->delay = 1 - state_object_difficulty;
+	//so->timer = 0;
 }
 
 static void update_score( unsigned char points )
