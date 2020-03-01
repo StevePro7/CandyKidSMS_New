@@ -1,5 +1,4 @@
 #include "reset_screen.h"
-#include "..\banks\databank.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\collision_manager.h"
 #include "..\engine\command_manager.h"
@@ -12,6 +11,7 @@
 #include "..\engine\score_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
+#include "..\banks\databank.h"
 
 // RESET screen is used for automated testing - this was in the cont screen before
 static unsigned char command_index;
