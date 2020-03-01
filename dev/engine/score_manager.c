@@ -121,10 +121,12 @@ void engine_score_manager_update_boost()
 	//so->timer = 0;
 	so->values[ score_type_boost ]--;
 
-	//if( 0 == so->values[ score_type_boost ] % 5 )
-	//{
+	// TODO set enum or #define for this magic no.
+	// TODO Easy = 200  Hard = 100 boost value!
+	if( 0 == so->values[ score_type_boost ] % 10 )
+	{
 		draw_value( score_type_boost );
-	//}
+	}
 }
 void engine_score_manager_draw_all()
 {
