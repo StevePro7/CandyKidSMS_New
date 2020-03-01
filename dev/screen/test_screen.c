@@ -14,6 +14,9 @@
 #include "..\engine\timer_manager.h"
 #include "..\banks\databank.h"
 
+static unsigned char curr_screen = screen_type_test;
+static unsigned char next_screen = screen_type_pass;
+
 // TEST screen is used for automated testing - this was in the cont screen before
 static unsigned char command_index;
 static unsigned char command_count;
@@ -33,8 +36,11 @@ void screen_test_screen_load()
 	command_count = 1;
 
 	engine_command_manager_load();
-	engine_delay_manager_load( 0 );
-	//engine_enemy_manager_load();
+	engine_delay_manager_load( 20 );
+
+	engine_gamer_manager_load();
+	engine_enemy_manager_load();
+
 	//get_actor_data( actor_mover, actor_tileZ );
 
 	engine_score_manager_load();
@@ -58,7 +64,7 @@ void screen_test_screen_load()
 	walking_count = 0;
 	first_time = 1;
 
-	engine_font_manager_draw_text( "TEST SCREEN!!", 10, 12 );
+	engine_font_manager_draw_text( "TEST SCREEN!!", 10, 14 );
 }
 
 void screen_test_screen_update( unsigned char *screen_type )
@@ -91,7 +97,7 @@ void screen_test_screen_update( unsigned char *screen_type )
 		proceed = engine_delay_manager_update();
 		if( !proceed )
 		{
-			*screen_type = screen_type_reset;
+			*screen_type = curr_screen;
 			return;
 		}
 
@@ -141,7 +147,7 @@ void screen_test_screen_update( unsigned char *screen_type )
 				engine_frame_manager_draw();
 				engine_delay_manager_draw();
 
-				*screen_type = screen_type_pass;
+				*screen_type = next_screen;
 				return;
 			}
 			else
@@ -171,5 +177,5 @@ void screen_test_screen_update( unsigned char *screen_type )
 	engine_command_manager_execute( frame );
 	first_time = 0;
 
-	*screen_type = screen_type_test;
+	*screen_type = curr_screen;
 }

@@ -36,9 +36,12 @@ void engine_gamer_manager_init()
 	go->delays[ 0 ] = 4;
 	go->speeds[ 1 ] = 2;
 	go->delays[ 1 ] = 1;
+	go->prev_boost = pace_type_slow;
+	go->curr_boost = pace_type_slow;
+	engine_gamer_manager_pace( go->curr_boost );
+	//go->speed = 1;
+	//go->delay = 1;
 
-	go->speed = 1;
-	go->delay = 1;
 	go->timer = 0;
 	go->delta = 0;
 	go->total = 0;
@@ -194,6 +197,9 @@ void engine_gamer_manager_pace( unsigned char boost )
 	// TODO test this new version
 	go->speed = go->speeds[ boost ];
 	go->delay = go->delays[ boost ];
+
+	go->speed = 1;
+	go->delay = 1;
 }
 
 void engine_gamer_manager_stop()

@@ -51,8 +51,8 @@ Area                                    Addr        Size        Decimal Bytes (A
      00000200  s__CODE                         
      00000220  l__BANK8                        
      00000287  l__DATA                         
-     000006BC  l__INITIALIZED                  
-     000006BC  l__INITIALIZER                  
+     000006BE  l__INITIALIZED                  
+     000006BE  l__INITIALIZER                  
      000016F8  l__BANK2                        
      0000189D  l__BANK9                        
      000026D4  l__BANK7                        
@@ -69,11 +69,11 @@ Area                                    Addr        Size        Decimal Bytes (A
      00002EE0  l__BANK4                        
      00002EE0  l__BANK5                        
      000034F4  l__BANK3                        
-     0000606E  l__CODE                         
-     0000626E  s__HOME                         
-     0000626E  s__INITIALIZER                  
-     0000692A  s__GSINIT                       
-     00006939  s__GSFINAL                      
+     000061CD  l__CODE                         
+     000063CD  s__HOME                         
+     000063CD  s__INITIALIZER                  
+     00006A8B  s__GSINIT                       
+     00006A9A  s__GSFINAL                      
      00008000  _SMS_SRAM                          SMSlib_PSGaiden
      00008000  s__BANK10                       
      00008000  s__BANK11                       
@@ -91,9 +91,9 @@ Area                                    Addr        Size        Decimal Bytes (A
      00008000  s__BANK9                        
      0000C000  s__DATA                         
      0000C287  s__INITIALIZED                  
-     0000C943  s__BSEG                         
-     0000C943  s__BSS                          
-     0000C943  s__HEAP                         
+     0000C945  s__BSEG                         
+     0000C945  s__BSS                          
+     0000C945  s__HEAP                         
      0000FFFC  _SRAM_bank_to_be_mapped_on_slot2   SMSlib_PSGaiden
      0000FFFF  _ROM_bank_to_be_mapped_on_slot2    SMSlib_PSGaiden
 
@@ -102,7 +102,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000606E =       24686. bytes (REL,CON)
+_CODE                               00000200    000061CD =       25037. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -161,7 +161,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000606E =       24686. bytes (REL,CON)
+_CODE                               00000200    000061CD =       25037. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -221,7 +221,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000606E =       24686. bytes (REL,CON)
+_CODE                               00000200    000061CD =       25037. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -268,228 +268,228 @@ _CODE                               00000200    0000606E =       24686. bytes (R
      000020D8  _engine_function_manager_convert   function_manager
      000020FD  _engine_function_manager_convert   function_manager
      00002116  _engine_gamer_manager_init         gamer_manager
-     000021F3  _engine_gamer_manager_load         gamer_manager
-     00002211  _engine_gamer_manager_update       gamer_manager
-     000022F7  _engine_gamer_manager_draw         gamer_manager
-     00002316  _engine_gamer_manager_draw_death   gamer_manager
-     00002344  _engine_gamer_manager_move         gamer_manager
-     0000235E  _engine_gamer_manager_wrap         gamer_manager
-     0000239C  _engine_gamer_manager_pace         gamer_manager
-     000023D1  _engine_gamer_manager_stop         gamer_manager
+     000021FE  _engine_gamer_manager_load         gamer_manager
+     0000221A  _engine_gamer_manager_update       gamer_manager
+     00002300  _engine_gamer_manager_draw         gamer_manager
+     0000231F  _engine_gamer_manager_draw_death   gamer_manager
+     0000234D  _engine_gamer_manager_move         gamer_manager
+     00002367  _engine_gamer_manager_wrap         gamer_manager
+     000023A5  _engine_gamer_manager_pace         gamer_manager
+     000023DA  _engine_gamer_manager_stop         gamer_manager
 ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000606E =       24686. bytes (REL,CON)
+_CODE                               00000200    000061CD =       25037. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     0000241F  _engine_gamer_manager_dead         gamer_manager
-     00002436  _engine_gamer_manager_reset        gamer_manager
-     00002459  _engine_gamer_manager_find_direc   gamer_manager
-     0000250D  _engine_gamer_manager_input_dire   gamer_manager
-     000025AF  _engine_hack_manager_init          hack_manager
-     000025EC  _engine_hack_manager_load          hack_manager
-     00002635  _engine_hack_manager_invert        hack_manager
-     000026B3  _engine_input_manager_update       input_manager
-     000026C0  _engine_input_manager_hold         input_manager
-     000026ED  _engine_input_manager_move         input_manager
-     000026F8  _engine_level_manager_load_level   level_manager
-     00002798  _engine_level_manager_update_lev   level_manager
-     00002951  _engine_level_manager_draw_level   level_manager
-     0000295E  _engine_level_manager_draw_middl   level_manager
-     00002996  _engine_level_manager_beat_level   level_manager
-     000029B7  _engine_level_manager_blank_tile   level_manager
-     00002A13  _engine_level_manager_get_collis   level_manager
-     00002A57  _engine_level_manager_get_direct   level_manager
-     00002A8F  _engine_level_manager_get_tile_t   level_manager
-     00002AD2  _engine_level_manager_get_next_t   level_manager
-     00002B44  _engine_level_manager_get_next_i   level_manager
-     00002B9C  _engine_level_manager_test_direc   level_manager
-     00002E10  _engine_memo_manager_draw          memo_manager
-     00002E56  _engine_move_manager_get_directi   move_manager
-     00002EE8  _engine_move_manager_actor_direc   move_manager
-     00002F1F  _engine_move_manager_gothru_exit   move_manager
-     00002F95  _engine_move_manager_border_exit   move_manager
-     00002FDD  _engine_move_manager_inside_exit   move_manager
-     0000302F  _engine_move_manager_opposite_di   move_manager
-     00003061  _engine_score_manager_init         score_manager
-     00003064  _engine_score_manager_load         score_manager
-     00003067  _engine_score_manager_get_candy    score_manager
-     0000306C  _engine_score_manager_get_lives    score_manager
-     00003071  _engine_score_manager_update_bon   score_manager
-     000030A5  _engine_score_manager_update_can   score_manager
-     000030B4  _engine_score_manager_update_one   score_manager
-     000030BD  _engine_score_manager_update_liv   score_manager
-     000030C9  _engine_score_manager_update_boo   score_manager
-     000030F6  _engine_score_manager_draw_all     score_manager
-     00003133  _engine_score_manager_draw_text    score_manager
-     00003164  _engine_score_manager_update_lev   score_manager
-     00003193  _engine_score_manager_reset_live   score_manager
-     000031A5  _engine_score_manager_reset_boos   score_manager
-     00003315  _engine_screen_manager_init        screen_manager
-     00003407  _engine_screen_manager_update      screen_manager
-     0000344A  _engine_sprite_manager_draw_enti   sprite_manager
-     000034BB  _engine_state_manager_init         state_manager
-     000034CD  _engine_state_manager_read         state_manager
-     000034F9  _engine_state_manager_write        state_manager
-     000034FA  _engine_storage_manager_availabl   storage_manager
-     00003529  _engine_storage_manager_read       storage_manager
+     00002428  _engine_gamer_manager_dead         gamer_manager
+     0000243F  _engine_gamer_manager_reset        gamer_manager
+     00002462  _engine_gamer_manager_find_direc   gamer_manager
+     00002516  _engine_gamer_manager_input_dire   gamer_manager
+     000025B8  _engine_hack_manager_init          hack_manager
+     000025F5  _engine_hack_manager_load          hack_manager
+     0000263E  _engine_hack_manager_invert        hack_manager
+     000026BC  _engine_input_manager_update       input_manager
+     000026C9  _engine_input_manager_hold         input_manager
+     000026F6  _engine_input_manager_move         input_manager
+     00002701  _engine_level_manager_load_level   level_manager
+     000027A1  _engine_level_manager_update_lev   level_manager
+     0000295A  _engine_level_manager_draw_level   level_manager
+     00002967  _engine_level_manager_draw_middl   level_manager
+     0000299F  _engine_level_manager_beat_level   level_manager
+     000029C0  _engine_level_manager_blank_tile   level_manager
+     00002A1C  _engine_level_manager_get_collis   level_manager
+     00002A60  _engine_level_manager_get_direct   level_manager
+     00002A98  _engine_level_manager_get_tile_t   level_manager
+     00002ADB  _engine_level_manager_get_next_t   level_manager
+     00002B4D  _engine_level_manager_get_next_i   level_manager
+     00002BA5  _engine_level_manager_test_direc   level_manager
+     00002E19  _engine_memo_manager_draw          memo_manager
+     00002E5F  _engine_move_manager_get_directi   move_manager
+     00002EF1  _engine_move_manager_actor_direc   move_manager
+     00002F28  _engine_move_manager_gothru_exit   move_manager
+     00002F9E  _engine_move_manager_border_exit   move_manager
+     00002FE6  _engine_move_manager_inside_exit   move_manager
+     00003038  _engine_move_manager_opposite_di   move_manager
+     0000306A  _engine_score_manager_init         score_manager
+     0000306D  _engine_score_manager_load         score_manager
+     00003070  _engine_score_manager_get_candy    score_manager
+     00003075  _engine_score_manager_get_lives    score_manager
+     0000307A  _engine_score_manager_update_bon   score_manager
+     000030AE  _engine_score_manager_update_can   score_manager
+     000030BD  _engine_score_manager_update_one   score_manager
+     000030C6  _engine_score_manager_update_liv   score_manager
+     000030D2  _engine_score_manager_update_boo   score_manager
+     000030FF  _engine_score_manager_draw_all     score_manager
+     0000313C  _engine_score_manager_draw_text    score_manager
+     0000316D  _engine_score_manager_update_lev   score_manager
+     0000319C  _engine_score_manager_reset_live   score_manager
+     000031AE  _engine_score_manager_reset_boos   score_manager
+     0000331E  _engine_screen_manager_init        screen_manager
+     00003410  _engine_screen_manager_update      screen_manager
+     00003453  _engine_sprite_manager_draw_enti   sprite_manager
+     000034C4  _engine_state_manager_init         state_manager
+     000034D6  _engine_state_manager_read         state_manager
+     00003502  _engine_state_manager_write        state_manager
+     00003503  _engine_storage_manager_availabl   storage_manager
+     00003532  _engine_storage_manager_read       storage_manager
 ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000606E =       24686. bytes (REL,CON)
+_CODE                               00000200    000061CD =       25037. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     000035A1  _engine_storage_manager_write      storage_manager
-     0000361A  _engine_storage_manager_erase      storage_manager
-     00003676  _engine_tile_manager_load_tile     tile_manager
-     000036CB  _engine_tile_manager_load_coll     tile_manager
-     000036E2  _engine_tile_manager_draw_tile     tile_manager
-     00003781  _engine_tile_manager_draw_blank    tile_manager
-     000037B4  _engine_tile_manager_draw_trees    tile_manager
-     000037D1  _engine_tile_manager_draw_candy    tile_manager
-     000037F0  _engine_tile_manager_draw_bonus    tile_manager
-     00003823  _engine_tile_manager_draw_oneup    tile_manager
-     00003838  _engine_tile_manager_draw_cross    tile_manager
-     00003857  _engine_tile_manager_draw_sides    tile_manager
-     0000386C  _engine_tile_manager_main_title    tile_manager
-     000038F1  _engine_tile_manager_main_trees    tile_manager
-     0000390E  _engine_tile_manager_main_candy    tile_manager
-     0000392D  _engine_tile_manager_main_bonus    tile_manager
-     0000394B  _engine_tile_manager_main_gamer    tile_manager
-     00003A96  _engine_delay_manager_load         timer_manager
-     00003AB9  _engine_delay_manager_update       timer_manager
-     00003ADB  _engine_delay_manager_draw         timer_manager
-     00003AE9  _engine_frame_manager_load         timer_manager
-     00003AF0  _engine_frame_manager_update       timer_manager
-     00003B07  _engine_frame_manager_draw         timer_manager
-     00003B15  _engine_reset_manager_load         timer_manager
-     00003B25  _engine_reset_manager_update       timer_manager
-     00003B40  _engine_reset_manager_reset        timer_manager
-     00003B46  _screen_none_screen_load           none_screen
-     00003B47  _screen_none_screen_update         none_screen
-     00003B4E  _screen_splash_screen_load         splash_screen
-     00003B5F  _screen_splash_screen_update       splash_screen
-     00003B7F  _screen_intro_screen_load          intro_screen
-     00003BBD  _screen_intro_screen_update        intro_screen
-     00003D53  _screen_title_screen_load          title_screen
-     00003D9E  _screen_title_screen_update        title_screen
-     00003DA5  _screen_demo_screen_load           demo_screen
-     00003DBF  _screen_demo_screen_update         demo_screen
-     00003DC6  _screen_init_screen_load           init_screen
-     00003DEB  _screen_init_screen_update         init_screen
-     00003DF8  _screen_load_screen_load           load_screen
-     00003E23  _screen_load_screen_update         load_screen
-     00003ED0  _screen_ready_screen_load          ready_screen
-     00003EF2  _screen_ready_screen_update        ready_screen
-     00003EFF  _screen_play_screen_load           play_screen
-     00003F99  _screen_play_screen_update         play_screen
-     00004216  _screen_pass_screen_load           pass_screen
-     00004233  _screen_pass_screen_update         pass_screen
-     00004240  _screen_reset_screen_load          reset_screen
-     0000428E  _screen_reset_screen_update        reset_screen
-     00004429  _screen_dead_screen_load           dead_screen
-     00004483  _screen_dead_screen_update         dead_screen
-     0000467D  _screen_cont_screen_load           cont_screen
+     000035AA  _engine_storage_manager_write      storage_manager
+     00003623  _engine_storage_manager_erase      storage_manager
+     0000367F  _engine_tile_manager_load_tile     tile_manager
+     000036D4  _engine_tile_manager_load_coll     tile_manager
+     000036EB  _engine_tile_manager_draw_tile     tile_manager
+     0000378A  _engine_tile_manager_draw_blank    tile_manager
+     000037BD  _engine_tile_manager_draw_trees    tile_manager
+     000037DA  _engine_tile_manager_draw_candy    tile_manager
+     000037F9  _engine_tile_manager_draw_bonus    tile_manager
+     0000382C  _engine_tile_manager_draw_oneup    tile_manager
+     00003841  _engine_tile_manager_draw_cross    tile_manager
+     00003860  _engine_tile_manager_draw_sides    tile_manager
+     00003875  _engine_tile_manager_main_title    tile_manager
+     000038FA  _engine_tile_manager_main_trees    tile_manager
+     00003917  _engine_tile_manager_main_candy    tile_manager
+     00003936  _engine_tile_manager_main_bonus    tile_manager
+     00003954  _engine_tile_manager_main_gamer    tile_manager
+     00003A9F  _engine_delay_manager_load         timer_manager
+     00003AC2  _engine_delay_manager_update       timer_manager
+     00003AE4  _engine_delay_manager_draw         timer_manager
+     00003AF2  _engine_frame_manager_load         timer_manager
+     00003AF9  _engine_frame_manager_update       timer_manager
+     00003B10  _engine_frame_manager_draw         timer_manager
+     00003B1E  _engine_reset_manager_load         timer_manager
+     00003B2E  _engine_reset_manager_update       timer_manager
+     00003B49  _engine_reset_manager_reset        timer_manager
+     00003B4F  _screen_none_screen_load           none_screen
+     00003B50  _screen_none_screen_update         none_screen
+     00003B57  _screen_splash_screen_load         splash_screen
+     00003B68  _screen_splash_screen_update       splash_screen
+     00003B88  _screen_intro_screen_load          intro_screen
+     00003BC6  _screen_intro_screen_update        intro_screen
+     00003D5C  _screen_title_screen_load          title_screen
+     00003DA7  _screen_title_screen_update        title_screen
+     00003DAE  _screen_demo_screen_load           demo_screen
+     00003DC8  _screen_demo_screen_update         demo_screen
+     00003DCF  _screen_init_screen_load           init_screen
+     00003DF4  _screen_init_screen_update         init_screen
+     00003E01  _screen_load_screen_load           load_screen
+     00003E2C  _screen_load_screen_update         load_screen
+     00003ED9  _screen_ready_screen_load          ready_screen
+     00003EFB  _screen_ready_screen_update        ready_screen
+     00003F08  _screen_play_screen_load           play_screen
+     00003FA2  _screen_play_screen_update         play_screen
+     0000421F  _screen_pass_screen_load           pass_screen
+     0000423C  _screen_pass_screen_update         pass_screen
+     00004249  _screen_reset_screen_load          reset_screen
+     00004297  _screen_reset_screen_update        reset_screen
+     00004432  _screen_dead_screen_load           dead_screen
+     0000448C  _screen_dead_screen_update         dead_screen
+     00004686  _screen_cont_screen_load           cont_screen
 ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000606E =       24686. bytes (REL,CON)
+_CODE                               00000200    000061CD =       25037. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     000046B1  _screen_cont_screen_update         cont_screen
-     0000479B  _screen_over_screen_load           over_screen
-     000047C2  _screen_over_screen_update         over_screen
-     000047F4  _screen_beat_screen_load           beat_screen
-     0000482C  _screen_beat_screen_update         beat_screen
-     00004936  _screen_record_screen_load         record_screen
-     00004957  _screen_record_screen_update       record_screen
-     0000495E  _screen_save_screen_load           save_screen
-     00004A3C  _screen_save_screen_update         save_screen
-     00004AFB  _screen_test_screen_load           test_screen
-     00004B61  _screen_test_screen_update         test_screen
-     00004B97  _screen_func_screen_load           func_screen
-     00004BBA  _screen_func_screen_update         func_screen
-     00004C16  _font_tiles__palette__bin          gfx
-     00004C26  _font_tiles__tilemap__bin          gfx
-     00004CA6  _font_tiles__tiles__psgcompr       gfx
-     00004F3D  _game_tiles__palette__bin          gfx
-     00004F4D  _game_tiles__tilemap__bin          gfx
-     0000501D  _game_tiles__tiles__psgcompr       gfx
-     0000557D  _sprites__palette__bin             gfx
-     0000558D  _sprites__tiles__psgcompr          gfx
-     00005ACF  __divuint                          
-     00005AD7  __divuchar                         
-     00005ADE  __divu8                            
-     00005AE1  __divu16                           
-     00005B10  _UNSAFE_SMS_copySpritestoSAT       SMSlib_UNSAFE
-     00005B28  _UNSAFE_SMS_VRAMmemcpy32           SMSlib_UNSAFE
-     00005B45  _UNSAFE_SMS_VRAMmemcpy64           SMSlib_UNSAFE
-     00005B62  _UNSAFE_SMS_VRAMmemcpy128          SMSlib_UNSAFE
-     00005B7F  _SMS_init                          SMSlib
-     00005BD3  _VDPReg_init                       SMSlib
-     00005BDE  _SMS_VDPType                       SMSlib
-     00005BE6  _SMS_VDPturnOnFeature              SMSlib
-     00005BFD  _SMS_VDPturnOffFeature             SMSlib
-     00005C16  _SMS_setBGScrollX                  SMSlib
-     00005C20  _SMS_setBGScrollY                  SMSlib
-     00005C2A  _SMS_setBackdropColor              SMSlib
-     00005C34  _SMS_useFirstHalfTilesforSprites   SMSlib
-     00005C48  _SMS_setSpriteMode                 SMSlib
-     00005C8D  _SMS_setBGPaletteColor             SMSlib
-     00005CA1  _SMS_setSpritePaletteColor         SMSlib
-     00005CB5  _SMS_loadBGPalette                 SMSlib
-     00005CC9  _SMS_loadSpritePalette             SMSlib
-     00005CDD  _SMS_setColor                      SMSlib
-     00005CE1  _SMS_initSprites                   SMSlib
-     00005CE7  _SMS_addSprite                     SMSlib
-     00005D3C  _SMS_finalizeSprites               SMSlib
-     00005D4E  _SMS_copySpritestoSAT              SMSlib
-     00005D77  _SMS_waitForVBlank                 SMSlib
-     00005D84  _SMS_getKeysStatus                 SMSlib
-     00005D88  _SMS_getKeysPressed                SMSlib
+     000046BA  _screen_cont_screen_update         cont_screen
+     000047A4  _screen_over_screen_load           over_screen
+     000047CB  _screen_over_screen_update         over_screen
+     000047FD  _screen_beat_screen_load           beat_screen
+     00004835  _screen_beat_screen_update         beat_screen
+     0000493F  _screen_record_screen_load         record_screen
+     00004960  _screen_record_screen_update       record_screen
+     00004967  _screen_save_screen_load           save_screen
+     00004A45  _screen_save_screen_update         save_screen
+     00004B04  _screen_test_screen_load           test_screen
+     00004B70  _screen_test_screen_update         test_screen
+     00004CF6  _screen_func_screen_load           func_screen
+     00004D19  _screen_func_screen_update         func_screen
+     00004D75  _font_tiles__palette__bin          gfx
+     00004D85  _font_tiles__tilemap__bin          gfx
+     00004E05  _font_tiles__tiles__psgcompr       gfx
+     0000509C  _game_tiles__palette__bin          gfx
+     000050AC  _game_tiles__tilemap__bin          gfx
+     0000517C  _game_tiles__tiles__psgcompr       gfx
+     000056DC  _sprites__palette__bin             gfx
+     000056EC  _sprites__tiles__psgcompr          gfx
+     00005C2E  __divuint                          
+     00005C36  __divuchar                         
+     00005C3D  __divu8                            
+     00005C40  __divu16                           
+     00005C6F  _UNSAFE_SMS_copySpritestoSAT       SMSlib_UNSAFE
+     00005C87  _UNSAFE_SMS_VRAMmemcpy32           SMSlib_UNSAFE
+     00005CA4  _UNSAFE_SMS_VRAMmemcpy64           SMSlib_UNSAFE
+     00005CC1  _UNSAFE_SMS_VRAMmemcpy128          SMSlib_UNSAFE
+     00005CDE  _SMS_init                          SMSlib
+     00005D32  _VDPReg_init                       SMSlib
+     00005D3D  _SMS_VDPType                       SMSlib
+     00005D45  _SMS_VDPturnOnFeature              SMSlib
+     00005D5C  _SMS_VDPturnOffFeature             SMSlib
+     00005D75  _SMS_setBGScrollX                  SMSlib
+     00005D7F  _SMS_setBGScrollY                  SMSlib
+     00005D89  _SMS_setBackdropColor              SMSlib
+     00005D93  _SMS_useFirstHalfTilesforSprites   SMSlib
+     00005DA7  _SMS_setSpriteMode                 SMSlib
+     00005DEC  _SMS_setBGPaletteColor             SMSlib
+     00005E00  _SMS_setSpritePaletteColor         SMSlib
+     00005E14  _SMS_loadBGPalette                 SMSlib
+     00005E28  _SMS_loadSpritePalette             SMSlib
+     00005E3C  _SMS_setColor                      SMSlib
+     00005E40  _SMS_initSprites                   SMSlib
+     00005E46  _SMS_addSprite                     SMSlib
+     00005E9B  _SMS_finalizeSprites               SMSlib
+     00005EAD  _SMS_copySpritestoSAT              SMSlib
+     00005ED6  _SMS_waitForVBlank                 SMSlib
+     00005EE3  _SMS_getKeysStatus                 SMSlib
+     00005EE7  _SMS_getKeysPressed                SMSlib
 ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000606E =       24686. bytes (REL,CON)
+_CODE                               00000200    000061CD =       25037. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00005DA5  _SMS_getKeysHeld                   SMSlib
-     00005DBC  _SMS_getKeysReleased               SMSlib
-     00005DD9  _SMS_queryPauseRequested           SMSlib
-     00005DE1  _SMS_resetPauseRequest             SMSlib
-     00005DE7  _SMS_setLineInterruptHandler       SMSlib
-     00005DF8  _SMS_setLineCounter                SMSlib
-     00005E07  _SMS_getVCount                     SMSlib
-     00005E0B  _SMS_getHCount                     SMSlib
-     00005E0F  _SMS_isr                           SMSlib
-     00005E45  _SMS_nmi_isr                       SMSlib
-     00005E58  _rand                              rand
-     00005F14  _srand                             rand
-     00005F32  __moduchar                         
-     00005F3E  __moduint                          
-     00005F49  _SMS_loadSTMcompressedTileMapAre   SMSlib_STMcomp
-     0000612A  ___sdcc_call_hl                    
-     0000612B  _SMS_loadPSGaidencompressedTiles   SMSlib_PSGaiden
-     0000620D  __modschar                         
-     0000621A  __modsint                          
-     00006226  __divsint                          
-     0000622F  __divschar                         
-     00006236  __div8                             
-     0000623A  __div_signexte                     
-     0000623E  __div16                            
-     00006264  __get_remainder                    
+     00005F04  _SMS_getKeysHeld                   SMSlib
+     00005F1B  _SMS_getKeysReleased               SMSlib
+     00005F38  _SMS_queryPauseRequested           SMSlib
+     00005F40  _SMS_resetPauseRequest             SMSlib
+     00005F46  _SMS_setLineInterruptHandler       SMSlib
+     00005F57  _SMS_setLineCounter                SMSlib
+     00005F66  _SMS_getVCount                     SMSlib
+     00005F6A  _SMS_getHCount                     SMSlib
+     00005F6E  _SMS_isr                           SMSlib
+     00005FA4  _SMS_nmi_isr                       SMSlib
+     00005FB7  _rand                              rand
+     00006073  _srand                             rand
+     00006091  __moduchar                         
+     0000609D  __moduint                          
+     000060A8  _SMS_loadSTMcompressedTileMapAre   SMSlib_STMcomp
+     00006289  ___sdcc_call_hl                    
+     0000628A  _SMS_loadPSGaidencompressedTiles   SMSlib_PSGaiden
+     0000636C  __modschar                         
+     00006379  __modsint                          
+     00006385  __divsint                          
+     0000638E  __divschar                         
+     00006395  __div8                             
+     00006399  __div_signexte                     
+     0000639D  __div16                            
+     000063C3  __get_remainder                    
 ASxxxx Linker V03.00 + NoICE + sdld,  page 10.
 Hexadecimal  [32-Bits]
 
@@ -558,7 +558,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_INITIALIZER                        0000626E    000006BC =        1724. bytes (REL,CON)
+_INITIALIZER                        000063CD    000006BE =        1726. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -567,18 +567,18 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_GSINIT                             0000692A    0000000F =          15. bytes (REL,CON)
+_GSINIT                             00006A8B    0000000F =          15. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     0000692A  gsinit                             crt0
+     00006A8B  gsinit                             crt0
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 18.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_GSFINAL                            00006939    00000001 =           1. bytes (REL,CON)
+_GSFINAL                            00006A9A    00000001 =           1. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -670,7 +670,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_INITIALIZED                        0000C287    000006BC =        1724. bytes (REL,CON)
+_INITIALIZED                        0000C287    000006BE =        1726. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -692,12 +692,12 @@ _INITIALIZED                        0000C287    000006BC =        1724. bytes (R
      0000C92B  _cont_walking_move                 reset_screen
      0000C930  _beat_walking_cmds                 beat_screen
      0000C934  _beat_walking_move                 beat_screen
-     0000C938  _test_walking_args1                test_screen
-     0000C939  _test_walking_cmds1                test_screen
-     0000C93A  _test_walking_move                 test_screen
-     0000C93B  _VDPReg                            SMSlib
-     0000C93D  _spritesHeight                     SMSlib
-     0000C93E  _spritesWidth                      SMSlib
+     0000C93A  _test_walking_cmds1                test_screen
+     0000C93B  _test_walking_args1                test_screen
+     0000C93C  _test_walking_move                 test_screen
+     0000C93D  _VDPReg                            SMSlib
+     0000C93F  _spritesHeight                     SMSlib
+     0000C940  _spritesWidth                      SMSlib
 ASxxxx Linker V03.00 + NoICE + sdld,  page 22.
 Hexadecimal  [32-Bits]
 
