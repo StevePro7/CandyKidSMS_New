@@ -35,7 +35,7 @@ void engine_gamer_manager_init()
 	// Delay:	1, 2, 4, 8
 	go->speeds[ 0 ] = 1;
 	go->delays[ 0 ] = 2;
-	go->speeds[ 1 ] = 1;
+	go->speeds[ 1 ] = 2;
 	go->delays[ 1 ] = 1;
 	//go->boost = pace_type_slow;
 	//engine_gamer_manager_pace( go->boost );
@@ -378,9 +378,8 @@ unsigned char engine_gamer_manager_input_direction()
 unsigned char engine_gamer_manager_input_boost( unsigned char direction )
 {
 	struct_gamer_object *go = &global_gamer_object;
-	//unsigned char boost = pace_type_slow;
+	unsigned char boost;
 	unsigned char input;
-	//unsigned char boost;
 
 	input = engine_input_manager_move( input_type_fire1 );
 	if( !input )
@@ -396,48 +395,90 @@ unsigned char engine_gamer_manager_input_boost( unsigned char direction )
 	{
 		if( direction_type_none != direction )
 		{
+			if( !state_object_full_boost )
+			{
+				boost = engine_score_manager_get_value( score_type_boost );
+				if( 0 == boost )
+				{
+					// When boost exhausted then issue slow command.
+					// Subsequent attempts will result in no boosts.
+					return pace_type_fast == go->curr_boost ? pace_type_slow : pace_type_none;
+				}
+			}
+
 			if( pace_type_slow == go->curr_boost )
 			{
 				return pace_type_fast;
 			}
-			//if( go->prev_boost != go->curr_boost )
-			//{
-			//	return 0;
-			//}
-			//else if( go->prev_boost == go->curr_boost )
-			//{
-			//	go->prev_boost = go->curr_boost;		// maybe
-			//	go->curr_boost = pace_type_fast;
-			//	return 1;
-			//}
 		}
-
-		//if( !state_object_full_boost )
-		//{
-		//	boost = engine_score_manager_get_value( score_type_boost );
-		//	if( boost <= 0 )
-		//	{
-		//		go->prev_boost = go->curr_boost;
-		//		go->curr_boost = pace_type_slow;
-		//		return 1;
-		//	}
-		//	else
-		//	{
-		//		go->prev_boost = go->curr_boost;
-		//		go->curr_boost = pace_type_fast;
-		//		return;
-		//	}
-		//}
-		//else
-		//{
-		//	go->prev_boost = go->curr_boost;
-		//	go->curr_boost = pace_type_fast;
-		//	return;
-		//}
 	}
 
 	return pace_type_none;
 }
+
+//unsigned char engine_gamer_manager_input_boost2( unsigned char direction )
+//{
+//	struct_gamer_object *go = &global_gamer_object;
+//	//unsigned char boost = pace_type_slow;
+//	unsigned char input;
+//	//unsigned char boost;
+//
+//	input = engine_input_manager_move( input_type_fire1 );
+//	if( !input )
+//	{
+//		if( pace_type_fast == go->curr_boost )
+//		{
+//			return pace_type_slow;
+//		}
+//
+//		return pace_type_none;
+//	}
+//	else if( input )
+//	{
+//		if( direction_type_none != direction )
+//		{
+//			if( pace_type_slow == go->curr_boost )
+//			{
+//				return pace_type_fast;
+//			}
+//			//if( go->prev_boost != go->curr_boost )
+//			//{
+//			//	return 0;
+//			//}
+//			//else if( go->prev_boost == go->curr_boost )
+//			//{
+//			//	go->prev_boost = go->curr_boost;		// maybe
+//			//	go->curr_boost = pace_type_fast;
+//			//	return 1;
+//			//}
+//		}
+//
+//		//if( !state_object_full_boost )
+//		//{
+//		//	boost = engine_score_manager_get_value( score_type_boost );
+//		//	if( boost <= 0 )
+//		//	{
+//		//		go->prev_boost = go->curr_boost;
+//		//		go->curr_boost = pace_type_slow;
+//		//		return 1;
+//		//	}
+//		//	else
+//		//	{
+//		//		go->prev_boost = go->curr_boost;
+//		//		go->curr_boost = pace_type_fast;
+//		//		return;
+//		//	}
+//		//}
+//		//else
+//		//{
+//		//	go->prev_boost = go->curr_boost;
+//		//	go->curr_boost = pace_type_fast;
+//		//	return;
+//		//}
+//	}
+//
+//	return pace_type_none;
+//}
 
 //unsigned char engine_gamer_manager_input_boostX()
 //{
