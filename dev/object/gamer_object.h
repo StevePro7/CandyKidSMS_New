@@ -13,9 +13,10 @@ typedef struct tag_struct_gamer_object
 	unsigned char tileX;		// Posn tileX on enemy stops. 
 	unsigned char tileY;		// Posn tileY on enemy stops.
 	unsigned char tileZ;		// Posn tile stored as R x C.
-	unsigned char velocity[ 2 ];
-	unsigned char curr_boost;
-	unsigned char prev_boost;
+	//unsigned char velocity[ 2 ];
+	//unsigned char curr_boost;
+	//unsigned char prev_boost;
+	unsigned char boost;
 	unsigned char speeds[ 2 ];
 	unsigned char delays[ 2 ];
 	unsigned char speed;

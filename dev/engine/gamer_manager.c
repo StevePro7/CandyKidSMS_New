@@ -37,9 +37,12 @@ void engine_gamer_manager_init()
 	go->delays[ 0 ] = 4;
 	go->speeds[ 1 ] = 1;
 	go->delays[ 1 ] = 1;
-	go->prev_boost = pace_type_slow;
-	go->curr_boost = pace_type_slow;
-	engine_gamer_manager_pace( go->curr_boost );
+	go->boost = pace_type_slow;
+	engine_gamer_manager_pace( go->boost );
+	//go->prev_boost = pace_type_slow;
+	//go->curr_boost = pace_type_slow;
+	//engine_gamer_manager_pace( go->curr_boost );
+	
 	//go->speed = 1;
 	//go->delay = 1;
 
@@ -68,12 +71,14 @@ void engine_gamer_manager_init()
 void engine_gamer_manager_load()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	go->velocity[ 0 ] = 4;
-	go->velocity[ 1 ] = 6;
-	go->prev_boost = pace_type_slow;
-	go->curr_boost = pace_type_slow;
+	//go->velocity[ 0 ] = 4;
+	//go->velocity[ 1 ] = 6;
+	//go->prev_boost = pace_type_slow;
+	//go->curr_boost = pace_type_slow;
 	//go->curr_boost = pace_type_fast;
-	engine_gamer_manager_pace( go->curr_boost );
+	//engine_gamer_manager_pace( go->curr_boost );
+	go->boost = pace_type_slow;
+	engine_gamer_manager_pace( go->boost );
 }
 
 void engine_gamer_manager_update()
@@ -189,9 +194,10 @@ void engine_gamer_manager_wrap( unsigned char direction )
 void engine_gamer_manager_pace( unsigned char boost )
 {
 	struct_gamer_object *go = &global_gamer_object;
-	unsigned char index = go->velocity[ boost ];
-	go->prev_boost = go->curr_boost;
-	go->curr_boost = boost;
+	//unsigned char index = go->velocity[ boost ];
+	//go->prev_boost = go->curr_boost;
+	//go->curr_boost = boost;
+	go->boost = boost;
 	//go->speed = boost_object_speed[ index ];
 	//go->delay = boost_object_delay[ index ];
 
@@ -372,18 +378,21 @@ unsigned char engine_gamer_manager_input_boost()
 	// If not press boost still have to see if revert old boost.
 	if( !input )
 	{
-		if( go->prev_boost != go->curr_boost )
+		if( pace_type_fast == go->boost )
 		{
-			go->curr_boost = go->prev_boost;
-			return go->curr_boost;
+			return pace_type_slow;
 		}
-		else
-		{
-			return pace_type_none;
-		}
+		//if( go->prev_boost != go->curr_boost )
+		//{
+		//	go->curr_boost = go->prev_boost;
+		//	return go->curr_boost;
+		//}
+		//else
+		//{
+		//	return pace_type_none;
+		//}
 	}
-
-	if( input )
+	else if( input )
 	{
 		if( !state_object_full_boost )
 		{
@@ -393,9 +402,15 @@ unsigned char engine_gamer_manager_input_boost()
 				return pace_type_none;
 			}
 		}
+
+		// OK to boost.
+		if( pace_type_slow == go->boost )
+		{
+			return pace_type_fast;
+		}
 	}
 
-	return boost;
+	return pace_type_none;
 }
 
 // TODO delete - used for debugging
