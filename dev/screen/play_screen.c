@@ -47,7 +47,7 @@ void screen_play_screen_load()
 	engine_score_manager_draw_text();		// this is just static text!!
 	// Put in init screen
 
-	// Must draw score first for Level which is currently 5x characaters.
+	// Must draw score first for Level which is currently 5x characters.
 	state_object_round_data = 1;
 	engine_score_manager_load();
 	engine_score_manager_draw_all();
@@ -180,17 +180,22 @@ void screen_play_screen_update( unsigned char *screen_type )
 		{
 			//gamer_boost = engine_score_manager_get_value( score_type_boost );
 			//gamer_boost = engine_gamer_manager_input_boost( gamer_boost );
-			//gamer_boost = engine_gamer_manager_input_boost();
-			//if( pace_type_none != gamer_boost )
-			//{
-			//	engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
-			//}
+			gamer_boost = engine_gamer_manager_input_boost();
+			if( pace_type_slow == gamer_boost )
+			{
+				engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
+			}
 
 			gamer_direction = engine_gamer_manager_input_direction();
 			gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
-
 			if( direction_type_none != gamer_direction )
 			{
+				if( pace_type_fast == gamer_boost )
+				{
+					engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
+					engine_score_manager_update_boost();
+				}
+
 				engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
 			}
 		}
