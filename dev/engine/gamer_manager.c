@@ -175,9 +175,12 @@ void engine_gamer_manager_move( unsigned char direction )
 	go->frame = frame_type_toggle;
 	calcd_frame();
 
-	if( pace_type_fast == go->curr_boost )
+	if( !state_object_full_boost )
 	{
-		engine_score_manager_update_boost();
+		if( pace_type_fast == go->curr_boost )
+		{
+			engine_score_manager_update_boost();
+		}
 	}
 }
 

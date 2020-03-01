@@ -5,6 +5,14 @@ TODO
 [re-]Test the death sequence and when no. lives go to zero as I refactored this;
 should go to ready screen when >0 and con't screen when =0
 
+02.
+Move with boost
+at first when Kid went thru exit on boost I did not subtract the boost
+then I moved the code to update boost i.e. subtract boost value so works correctly
+but then as soon as I did that I wondered about only taxing on hard level
+this is easy to implement but I would have to overload the gamer move method
+and call the second one on stop to wrap / move and deduct boost only if hard
+for now it deducts boost on wrap / move for easy AND hard difficulty
 
 29/02/2020
 when Kid dead and dead screen issue command to make Mamas choose fast speed to go home

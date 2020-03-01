@@ -73,7 +73,7 @@ void engine_hack_manager_invert()
 
 	state_object_delay_test = 0;
 	state_object_mydebugger = 0;
-	state_object_full_boost = 0;
+	state_object_full_boost = 1;
 	// TODO delete this hard coded
 
 	// Trees.
