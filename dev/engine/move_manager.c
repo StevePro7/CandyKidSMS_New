@@ -8,12 +8,14 @@
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
-#include <stdlib.h>
+//#include <stdlib.h>
 
 #define EXIT_SPOT1		2
 #define EXIT_SPOT2		4
 #define EXIT_SPOT3		9
 #define EXIT_SPOT4		11
+
+static unsigned char movement[] = { direction_type_upxx, direction_type_down, direction_type_left, direction_type_rght };
 
 void engine_move_manager_get_directions( unsigned char srceX, unsigned char srceY, unsigned char destX, unsigned char destY, unsigned char *list, unsigned char *half )
 {
@@ -70,29 +72,31 @@ void engine_move_manager_get_directions( unsigned char srceX, unsigned char srce
 	*half = minusY ? 0 : 1;
 }
 
-unsigned char engine_move_manager_actor_direction( unsigned char direction )
-{
-	unsigned char loop;
-	unsigned char time;
-
-	// If actor already traveling in direction then return that direction,
-	if( direction_type_none != direction )
-	{
-		return direction;
-	}
-
-	// Otherwise calculate random direction for further game code function.
-	direction = 1;
-	time = rand() % 4;
-
-	// Algorithm will give 1, 2, 4, 8	that is : Up / Down / Left / Right.
-	for( loop = 0; loop < time; loop++ )
-	{
-		direction *= 2;
-	}
-
-	return direction;
-}
+//unsigned char engine_move_manager_actor_direction( unsigned char direction )
+//{
+//	//unsigned char loop;
+//	unsigned char index;
+//
+//	// If actor already traveling in direction then return that direction,
+//	if( direction_type_none != direction )
+//	{
+//		return direction;
+//	}
+//
+//	// Otherwise calculate random direction for further game code function.
+//	//direction = 1;
+//	//time = rand() % 4;
+//	index = rand() % 4;
+//	return  movement[ index ];
+//	// Algorithm will give 1, 2, 4, 8	that is : Up / Down / Left / Right.
+//	//for( loop = 0; loop < time; loop++ )
+//	//{
+//	//	direction *= 2;
+//	//}
+//
+//	//direction = movement[ index ];
+//	//return direction;
+//}
 
 unsigned char engine_move_manager_gothru_exit( unsigned char tileX, unsigned char tileY, unsigned char direction )
 {
