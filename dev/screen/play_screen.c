@@ -154,6 +154,14 @@ void screen_play_screen_update( unsigned char *screen_type )
 	{
 		//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
 		engine_gamer_manager_update();
+
+		// Check boost for next cycle.
+		process_boost = engine_gamer_manager_input_boost( go->direction );
+		if( pace_type_none != process_boost )
+		{
+			engine_font_manager_draw_data( process_boost, 10, 18 );
+			engine_command_manager_add( frame, command_type_gamer_speed, process_boost );
+		}
 	}
 	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
 	{
@@ -198,21 +206,28 @@ void screen_play_screen_update( unsigned char *screen_type )
 			gamer_direction = engine_gamer_manager_input_direction();
 			gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
 
-			process_boost = engine_gamer_manager_input_boost( gamer_direction );
-			if( pace_type_none != process_boost )
-			{
-				//engine_font_manager_draw_data( process_boost, 10, 17 );
-				engine_command_manager_add( frame, command_type_gamer_speed, process_boost );
-			}
+			//process_boost = engine_gamer_manager_input_boost( gamer_direction );
+			//if( pace_type_none != process_boost )
+			//{
+			//	engine_font_manager_draw_data( process_boost, 10, 17 );
+			//	engine_command_manager_add( frame, command_type_gamer_speed, process_boost );
+			//}
 			if( direction_type_none != gamer_direction )
 			{
+				engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+
+				process_boost = engine_gamer_manager_input_boost( gamer_direction );
+				if( pace_type_none != process_boost )
+				{
+					engine_font_manager_draw_data( process_boost, 10, 17 );
+					engine_command_manager_add( frame, command_type_gamer_speed, process_boost );
+				}
+
 				//if( go->prev_boost != go->curr_boost )
 				//{
 				//	engine_font_manager_draw_text( "FAST", 15, 16 );
 				//	engine_command_manager_add( frame, command_type_gamer_speed, go->curr_boost );
 				//}
-
-				engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
 			}
 			//else
 			//{

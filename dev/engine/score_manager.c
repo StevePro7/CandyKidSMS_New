@@ -131,8 +131,10 @@ void engine_score_manager_update_boost()
 	// TODO Easy = 200  Hard = 100 boost value!
 	if( 0 == so->values[ score_type_boost ] % 10 )
 	{
-		draw_value( score_type_boost );
+	//	draw_value( score_type_boost );
 	}
+
+	draw_value( score_type_boost );
 }
 void engine_score_manager_draw_all()
 {
