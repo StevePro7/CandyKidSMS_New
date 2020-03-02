@@ -159,7 +159,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 		process_boost = engine_gamer_manager_input_boost( go->direction );
 		if( pace_type_none != process_boost )
 		{
-			engine_font_manager_draw_data( process_boost, 10, 18 );
+			//engine_font_manager_draw_data( process_boost, 10, 18 );
 			engine_command_manager_add( frame, command_type_gamer_speed, process_boost );
 		}
 	}
@@ -219,7 +219,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 				process_boost = engine_gamer_manager_input_boost( gamer_direction );
 				if( pace_type_none != process_boost )
 				{
-					engine_font_manager_draw_data( process_boost, 10, 17 );
+					//engine_font_manager_draw_data( process_boost, 10, 17 );
 					engine_command_manager_add( frame, command_type_gamer_speed, process_boost );
 				}
 
