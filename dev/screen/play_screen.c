@@ -304,7 +304,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 			}
 			else if( enemymove_type_kill == eo->action )
 			{
-				enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY, go->direction );
+				enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY );
 				//eo->action = enemymove_type_home;
 			}
 

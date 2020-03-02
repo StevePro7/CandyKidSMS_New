@@ -388,7 +388,7 @@ unsigned char engine_enemy_manager_gohome_direction( unsigned char enemy )
 	return enemy_direction;
 }
 
-unsigned char engine_enemy_manager_attack_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY, unsigned char gamer_direction )
+unsigned char engine_enemy_manager_attack_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY)
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	struct_enemy_object *eo0;
