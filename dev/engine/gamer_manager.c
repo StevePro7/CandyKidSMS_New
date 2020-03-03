@@ -295,6 +295,13 @@ unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction
 			return gamer_direction;
 		}
 
+		//collision = engine_level_manager_get_direction( go->tileX, go->tileY, direction_type_none, offset_type_none );
+		//if( gamer_direction == ( collision & gamer_direction ) )
+		//{
+		//	return gamer_direction;
+		//}
+
+
 		// Closed exits.
 		if( exit_type_closed == state_object_exits_type )
 		{
