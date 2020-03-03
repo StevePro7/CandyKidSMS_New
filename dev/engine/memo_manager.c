@@ -18,14 +18,30 @@ void engine_memo_manager_draw( unsigned char *topLine, unsigned char *botLine )
 	engine_font_manager_draw_text( LOCALE_BLANK_SIZE8, x, y + 3 );
 }
 
-void engine_memo_manager_pass()
+void engine_memo_manager_pass( unsigned char perfect )
 {
 	struct_score_object *so = &global_score_object;
 	unsigned char *text = ( unsigned char * ) LOCALE_PASS_MESSAGE2;
-	if( level_object_bonus_count + level_object_candy_count == so->bonus + so->candy )
+
+	if( perfect )
 	{
 		text = ( unsigned char * ) LOCALE_PASS_MESSAGE3;
 	}
 
 	engine_memo_manager_draw( LOCALE_PASS_MESSAGE1, text );
+}
+
+void engine_memo_manager_bonus( unsigned char perfect )
+{
+	struct_score_object *so = &global_score_object;
+	unsigned char *text1 = ( unsigned char * ) LOCALE_BONUS_MESSAGE1;
+	unsigned char *text2 = ( unsigned char * ) LOCALE_BONUS_MESSAGE2;
+
+	if( perfect )
+	{
+		text1 = ( unsigned char * ) LOCALE_BONUS_MESSAGE3;
+		text2 = ( unsigned char * ) LOCALE_BONUS_MESSAGE4;
+	}
+
+	engine_memo_manager_draw( text1, text2 );
 }

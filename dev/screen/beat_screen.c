@@ -30,6 +30,9 @@ void screen_beat_screen_load()
 	const unsigned char size = beats0000_txt_size;
 	const unsigned char bank = beats0000_txt_bank;
 
+	state_object_curr_screen = screen_type_beat;
+	state_object_next_screen = screen_type_title;
+
 	engine_audio_manager_music_stop();
 	engine_delay_manager_load( BEAT_SCREEN_DELAY );
 
@@ -45,9 +48,6 @@ void screen_beat_screen_load()
 	walking_count = 0;
 	//first_time = 1;
 
-	state_object_curr_screen = screen_type_beat;
-	state_object_next_screen = screen_type_title;
-
 	engine_audio_manager_music_stop();
 	engine_audio_manager_music_play_norepeat( music_type_beatgame );
 }
@@ -62,7 +62,7 @@ void screen_beat_screen_update( unsigned char *screen_type )
 	unsigned int frame = fo->frame_count;
 
 	delay = engine_delay_manager_update();
-	input = engine_input_manager_hold( input_type_fire1 );
+	input = engine_input_manager_hold( input_type_fire2 );
 	if( delay || input )
 	{
 		engine_audio_manager_music_stop();

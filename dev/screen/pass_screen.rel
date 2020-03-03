@@ -1,16 +1,20 @@
 XL2
-H 9 areas 8 global symbols
+H 9 areas C global symbols
 M pass_screen
 O -mz80
 S _engine_gamer_manager_draw Ref0000
+S _state_object_curr_screen Ref0000
+S _state_object_next_screen Ref0000
 S _engine_enemy_manager_draw Ref0000
 S .__.ABS. Def0000
+S _engine_delay_manager_update Ref0000
+S _engine_input_manager_hold Ref0000
 S _engine_audio_manager_music_stop Ref0000
 S _engine_memo_manager_pass Ref0000
 S _engine_delay_manager_load Ref0000
-A _CODE size 1B flags 0 addr 0
+A _CODE size 49 flags 0 addr 0
 S _screen_pass_screen_load Def0000
-S _screen_pass_screen_update Def000E
+S _screen_pass_screen_update Def0018
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -21,9 +25,21 @@ A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
 R 00 00 00 00
-T 00 00 21 32 00 E5 CD 00 00 F1 CD 00 00 C3 00 00
-R 00 00 00 00 02 07 05 00 02 0B 03 00 02 0E 04 00
-T 0E 00
+T 00 00 21 00 00 36 0B 21 00 00 36 0C 21 FA 00 E5
+R 00 00 00 00 02 03 01 00 02 08 02 00
+T 0E 00 CD 00 00 F1 CD 00 00 C3 00 00
+R 00 00 00 00 02 03 09 00 02 07 07 00 02 0A 08 00
+T 18 00
 R 00 00 00 00
-T 0E 00 CD 00 00 CD 00 00 C1 E1 E5 C5 36 0B C9
-R 00 00 00 00 02 03 01 00 02 06 00 00
+T 18 00 CD 00 00 4D C5 3E 20 F5 33 CD 00 00 33 C1
+R 00 00 00 00 02 03 05 00 02 0C 06 00
+T 26 00 45 D1 E1 E5 D5 79 B7 20 03 B0 28 0A
+R 00 00 00 00
+T 32 00
+R 00 00 00 00
+T 32 00 E5 CD 00 00 E1 3A 00 00 77 C9
+R 00 00 00 00 02 04 07 00 02 08 02 00
+T 3C 00
+R 00 00 00 00
+T 3C 00 E5 CD 00 00 CD 00 00 E1 3A 00 00 77 C9
+R 00 00 00 00 02 04 03 00 02 07 00 00 02 0B 01 00
