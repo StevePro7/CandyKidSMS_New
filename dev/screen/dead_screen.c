@@ -66,7 +66,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	unsigned char input;
 	unsigned char enemy;
 	unsigned char delay;
-	unsigned char reset;
+	//unsigned char reset;
 	unsigned int frame = fo->frame_count;
 
 
