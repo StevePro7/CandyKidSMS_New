@@ -33,9 +33,9 @@ void engine_gamer_manager_init()
 
 	// Speed:	1, 2, 4, 8
 	// Delay:	1, 2, 4, 8
-	go->speeds[ 0 ] = 1;
+	go->speeds[ 0 ] = 2;
 	go->delays[ 0 ] = 1;
-	go->speeds[ 1 ] = 2;
+	go->speeds[ 1 ] = 4;
 	go->delays[ 1 ] = 1;
 	//go->boost = pace_type_slow;
 	//engine_gamer_manager_pace( go->boost );
@@ -289,19 +289,11 @@ unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction
 	// Avoid trees.
 	if( state_object_trees_type == tree_type_avoid )
 	{
-		//collision = engine_level_manager_get_tile_type( go->tileX, go->tileY, gamer_direction, offset_type_one );
-		//return direction_type_none;
 		collision = engine_level_manager_get_collision( go->tileX, go->tileY, gamer_direction, offset_type_one );
 		if( coll_type_empty == collision )
 		{
 			return gamer_direction;
 		}
-
-		//if( gamer_direction == ( collision & gamer_direction ) )
-		////{
-		////	return gamer_direction;
-		////}
-
 
 		// Closed exits.
 		if( exit_type_closed == state_object_exits_type )
