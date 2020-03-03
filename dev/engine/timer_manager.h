@@ -3,6 +3,8 @@
 
 #include "..\object\timer_object.h"
 
+#define TEXT_FLASH_DELAY	50
+
 // Global variables.
 extern struct_delay_object global_delay_object;
 extern struct_frame_object global_frame_object;

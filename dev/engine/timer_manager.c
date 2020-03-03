@@ -2,7 +2,7 @@
 #include "font_manager.h"
 #include "..\banks\databank.h"
 
-#define MAX_INT_VALUE	65535
+#define MAX_INT_VALUE		65535
 
 // Global variables.
 struct_delay_object global_delay_object;
