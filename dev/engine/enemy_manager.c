@@ -131,7 +131,7 @@ void engine_enemy_manager_load()
 		eo->action = enemymove_type_wait;
 
 
-		eo->speed = 4;
+		eo->speed = 2;
 		eo->delay = 1;
 	}
 }
