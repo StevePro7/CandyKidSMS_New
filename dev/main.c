@@ -33,9 +33,9 @@ void main (void)
 	open_screen_type = screen_type_play;
 	//open_screen_type = screen_type_dead;
 	//open_screen_type = screen_type_cont;
-	//open_screen_type = screen_type_over;
-	open_screen_type = screen_type_pass;
-	open_screen_type = screen_type_beat;
+	open_screen_type = screen_type_over;
+	//open_screen_type = screen_type_pass;
+	//open_screen_type = screen_type_beat;
 	//open_screen_type = screen_type_title;
 	//open_screen_type = screen_type_bonus;
 

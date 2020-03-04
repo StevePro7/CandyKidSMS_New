@@ -12,8 +12,36 @@
 const unsigned char *locale_object_texts[] =
 {
 	"V1.0",
+	"CANDY",
+	" KID ",
+	" HIGH",
+	"SCORE",
+	"LIVES",
+	"LEVEL",
+	"BOOST",
 	"WORLD",
-	"ROUND"
+	"ROUND",
+	">",
+	" ",
+	"INSERT COIN(S)",
+	"SELECT",
+	"EASY",
+	"HARD",
+	"SLOW",
+	"FAST",
+	"LEVEL IS",
+	"COMPLETE",
+	"PERFECT!",
+	"SORRY NO",
+	"BONUS :(",
+	"     PTS",
+	"BONUS :)",
+	"CONTINUE",
+	" YES  NO",
+	"  GAME  ",
+	"  OVER  ",
+	"CANDYKID",
+	"  WINS  ",
 };
 
 
