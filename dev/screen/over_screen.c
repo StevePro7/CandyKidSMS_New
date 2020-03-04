@@ -15,7 +15,7 @@ void screen_over_screen_load()
 {
 	// TODO play game over music.
 	engine_delay_manager_load( OVER_SCREEN_DELAY );
-	engine_memo_manager_draw( 27, 28 );
+	engine_memo_manager_draw( 24, 25 );
 }
 
 void screen_over_screen_update( unsigned char *screen_type )
