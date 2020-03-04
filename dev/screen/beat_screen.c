@@ -41,7 +41,7 @@ void screen_beat_screen_load()
 	engine_level_manager_beat_level( data, size, bank );
 	engine_level_manager_draw_level();
 	
-	//engine_memo_manager_draw( LOCALE_BEAT_MESSAGE1, LOCALE_BEAT_MESSAGE2 );
+	engine_memo_manager_draw( LOCALE_BEAT_MESSAGE1, LOCALE_BEAT_MESSAGE2 );
 	command_index = 0;
 	command_count = 4;
 	walking_delta = 0;
