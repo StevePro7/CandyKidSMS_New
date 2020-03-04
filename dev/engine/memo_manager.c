@@ -19,26 +19,27 @@ void engine_memo_manager_draw( unsigned char topIndex, unsigned char botIndex )
 
 void engine_memo_manager_pass( unsigned char perfect )
 {
-	//unsigned char *text = ( unsigned char * ) LOCALE_PASS_MESSAGE2;
+	unsigned char topIndex = 15;
+	unsigned char botIndex = 16;
 
-	//if( perfect )
-	//{
-	//	text = ( unsigned char * ) LOCALE_PASS_MESSAGE3;
-	//}
+	if( perfect )
+	{
+		botIndex = 17;
+	}
 
-	//engine_memo_manager_draw( LOCALE_PASS_MESSAGE1, text );
+	engine_memo_manager_draw( topIndex, botIndex );
 }
 
 void engine_memo_manager_bonus( unsigned char perfect )
 {
-	//unsigned char *text1 = ( unsigned char * ) LOCALE_BONUS_MESSAGE1;
-	//unsigned char *text2 = ( unsigned char * ) LOCALE_BONUS_MESSAGE2;
+	unsigned char topIndex = 18;
+	unsigned char botIndex = 19;
 
-	//if( perfect )
-	//{
-	//	text1 = ( unsigned char * ) LOCALE_BONUS_MESSAGE3;
-	//	text2 = ( unsigned char * ) LOCALE_BONUS_MESSAGE4;
-	//}
+	if( perfect )
+	{
+		topIndex = 20;
+		botIndex = 21;
+	}
 
-	//engine_memo_manager_draw( text1, text2 );
+	engine_memo_manager_draw( topIndex, botIndex );
 }

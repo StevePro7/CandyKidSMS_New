@@ -17,7 +17,8 @@
 //#define PASS_SCREEN_DELAY	50
 #define PASS_SCREEN_DELAY	250
 
-unsigned char perfect;
+static unsigned char event_stage;
+static unsigned char perfect;
 
 void screen_pass_screen_load()
 {
@@ -30,7 +31,9 @@ void screen_pass_screen_load()
 	engine_audio_manager_music_stop();
 
 	perfect = ( level_object_bonus_count + level_object_candy_count == so->bonus + so->candy );
-	engine_memo_manager_pass( perfect );
+	//engine_memo_manager_pass( perfect );
+	engine_memo_manager_bonus( 0 );
+	event_stage = event_stage_start;
 }
 
 // TODO combine pass + bonus screen

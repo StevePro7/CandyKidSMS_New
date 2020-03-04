@@ -5,8 +5,8 @@ O -mz80
 S _engine_locale_manager_draw_text Ref0000
 S _engine_board_manager_midd_text Ref0000
 S .__.ABS. Def0000
-A _CODE size 25 flags 0 addr 0
-S _engine_memo_manager_bonus Def0024
+A _CODE size 51 flags 0 addr 0
+S _engine_memo_manager_bonus Def003A
 S _engine_memo_manager_draw Def0000
 S _engine_memo_manager_pass Def0023
 A _DATA size 0 flags 0 addr 0
@@ -27,9 +27,19 @@ T 1C 00 33 CD 00 00 F1 33 C9
 R 00 00 00 00 02 04 00 00
 T 23 00
 R 00 00 00 00
-T 23 00 C9
+T 23 00 06 10 21 02 00 39 7E B7 28 02 06 11
 R 00 00 00 00
-T 24 00
+T 2F 00
 R 00 00 00 00
-T 24 00 C9
+T 2F 00 C5 33 3E 0F F5 33 CD 00 00 F1 C9
+R 00 00 00 00 00 09 00 00
+T 3A 00
 R 00 00 00 00
+T 3A 00 06 12 16 13 21 02 00 39 7E B7 28 04 06 14
+R 00 00 00 00
+T 48 00 16 15
+R 00 00 00 00
+T 4A 00
+R 00 00 00 00
+T 4A 00 58 D5 CD 00 00 F1 C9
+R 00 00 00 00 00 05 00 00
