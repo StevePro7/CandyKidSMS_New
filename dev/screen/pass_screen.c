@@ -1,14 +1,10 @@
 #include "pass_screen.h"
 #include "..\engine\audio_manager.h"
 #include "..\engine\board_manager.h"
-//#include "..\engine\command_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\enemy_manager.h"
-//#include "..\engine\font_manager.h"
 #include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
-//#include "..\engine\level_manager.h"
-//#include "..\engine\locale_manager.h"
 #include "..\engine\memo_manager.h"
 #include "..\engine\score_manager.h"
 #include "..\engine\timer_manager.h"
@@ -23,7 +19,7 @@ static unsigned char perfect;
 void screen_pass_screen_load()
 {
 	struct_score_object *so = &global_score_object;
-	
+
 	state_object_curr_screen = screen_type_pass;
 	state_object_next_screen = screen_type_ready;
 

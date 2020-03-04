@@ -15,7 +15,7 @@
 void screen_load_screen_load()
 {
 	engine_delay_manager_load( 0 );
-	
+
 	engine_score_manager_load();
 	engine_score_manager_draw_text();
 	engine_score_manager_draw_all();
