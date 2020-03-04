@@ -21,10 +21,10 @@
 #define ROUNT_Y		23
 
 // IMPORTANT disable compiler warning 196
-#ifdef _CONSOLE
-#else
-#pragma disable_warning 196
-#endif
+//#ifdef _CONSOLE
+//#else
+//#pragma disable_warning 196
+//#endif
 
 // Global variable.
 struct_score_object global_score_object;

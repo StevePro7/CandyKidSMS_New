@@ -11,8 +11,24 @@
 
 const unsigned char *locale_object_texts[] =
 {
-	"V1.0"
+	"V1.0",
+	"WORLD",
+	"ROUND"
 };
+
+
+// Score Manager.
+const unsigned char *score_object_titles[] =
+{
+	"CANDY",
+	" KID ",
+	" HIGH",
+	"SCORE",
+	"LIVES",
+	"LEVEL",
+	"BOOST",
+};
+
 
 // Audio Manager.
 const unsigned char *music_object_data[] =
@@ -679,17 +695,4 @@ extern const unsigned char level_object_BBbank[] =
 	level2008_txt_bank,
 	level2009_txt_bank,
 	level2010_txt_bank,
-};
-
-
-// Score Manager.
-extern const char *score_object_titles[] =
-{
-	LOCALE_TITLE1_TEXT,
-	LOCALE_TITLE2_TEXT,
-	LOCALE_HIGHS_TEXT,
-	LOCALE_SCORE_TEXT,
-	LOCALE_LIVES_TEXT,
-	LOCALE_LEVEL_TEXT,
-	LOCALE_BOOST_TEXT,
 };

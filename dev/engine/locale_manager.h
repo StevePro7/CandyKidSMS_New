@@ -5,14 +5,15 @@
 
 //#define LOCALE_BUILD_VERSION	"V1.0"
 
-#define LOCALE_TITLE1_TEXT		"CANDY"
-#define LOCALE_TITLE2_TEXT		" KID "
+//#define LOCALE_TITLE1_TEXT		"CANDY"
+//#define LOCALE_TITLE2_TEXT		" KID "
+//
+//#define LOCALE_HIGHS_TEXT		" HIGH"
+//#define LOCALE_SCORE_TEXT		"SCORE"
+//#define LOCALE_LIVES_TEXT		"LIVES"
+//#define LOCALE_LEVEL_TEXT		"LEVEL"
+//#define LOCALE_BOOST_TEXT		"BOOST"
 
-#define LOCALE_HIGHS_TEXT		" HIGH"
-#define LOCALE_SCORE_TEXT		"SCORE"
-#define LOCALE_LIVES_TEXT		"LIVES"
-#define LOCALE_LEVEL_TEXT		"LEVEL"
-#define LOCALE_BOOST_TEXT		"BOOST"
 #define LOCALE_WORLD_TEXT		"WORLD"
 #define LOCALE_ROUND_TEXT		"ROUND"
 
@@ -22,7 +23,7 @@
 #define LOCALE_BLANK_WIDTH		"                          "
 //#define LOCALE_BLANK_WIDTH		"12345678901234567890123456"
 #define LOCALE_BLANK_SIZE8		"        "
-#define XYZCALE_BLANK_SIZE8		"12345678"
+//#define XYZCALE_BLANK_SIZE8		"12345678"
 #define LOCALE_BLANK_SIZE17		"                 "
 #define LOCALE_BLANK_SIZE18		"                  "
 
@@ -36,9 +37,9 @@
 
 #define LOCALE_TUTORIAL_NO		"00"
 
-#define LOCALE_SELECT_ENTRY		"SELECT BEGINNING"
-#define LOCALE_ENTRY_OPT1		"TUTORIAL"
-#define LOCALE_ENTRY_OPT2		"NEW GAME"
+//#define LOCALE_SELECT_ENTRY		"SELECT BEGINNING"
+//#define LOCALE_ENTRY_OPT1		"TUTORIAL"
+//#define LOCALE_ENTRY_OPT2		"NEW GAME"
 
 #define LOCALE_SELECT_TEXT		"SELECT"
 #define LOCALE_SELECT_DIFF		"SELECT DIFFICULTY"
@@ -77,7 +78,6 @@
 #define LOCALE_BEAT_MESSAGE1	"CANDYKID"
 #define LOCALE_BEAT_MESSAGE2	"  WINS  "
 
-//void engine_locale_manager_draw_text( unsigned char *text, unsigned char x, unsigned char y );
 void engine_locale_manager_draw_text( unsigned char index, unsigned char x, unsigned char y );
 
 #endif//_LOCALE_MANAGER_H_

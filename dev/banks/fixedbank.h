@@ -2,6 +2,13 @@
 #define FIXED_BANK	15
 
 
+// Locale Manager.
+extern const unsigned char *locale_object_texts[];
+
+// Score Manager.
+extern const unsigned char *score_object_titles[];
+
+
 // Audio Manager.
 extern const unsigned char *music_object_data[];
 extern const unsigned char music_object_bank[];
@@ -17,14 +24,3 @@ extern const unsigned char level_object_AAbank[];
 extern const unsigned char *level_object_BBdata[];
 extern const unsigned char level_object_BBsize[];
 extern const unsigned char level_object_BBbank[];
-
-
-// Locale Manager.
-//#define LOCALE_BUILD_VERSION	"V1.0"
-extern const unsigned char *locale_object_texts[];
-
-// Score Manager.
-extern const char *score_object_titles[];
-
-
-// Locale Manager.
