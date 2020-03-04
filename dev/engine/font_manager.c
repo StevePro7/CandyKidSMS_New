@@ -9,7 +9,7 @@
 #define UNIT_ROOT	10		// 10 is decimal
 #define DATA_LONG	5		// 4 placeholder
 
-void engine_font_manager_draw_char( unsigned char ch, unsigned char x, unsigned char y )
+void engine_font_manager_draw_char( const unsigned char ch, unsigned char x, unsigned char y )
 {
 	const unsigned char *pnt = font_tiles__tilemap__bin;
 	unsigned char tile = ch - TEXT_ROOT;
