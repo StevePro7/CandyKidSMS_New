@@ -3,7 +3,7 @@
 #ifndef _LOCALE_MANAGER_H_
 #define _LOCALE_MANAGER_H_
 
-#define LOCALE_BUILD_VERSION	"V1.0"
+//#define LOCALE_BUILD_VERSION	"V1.0"
 
 #define LOCALE_TITLE1_TEXT		"CANDY"
 #define LOCALE_TITLE2_TEXT		" KID "
@@ -77,6 +77,7 @@
 #define LOCALE_BEAT_MESSAGE1	"CANDYKID"
 #define LOCALE_BEAT_MESSAGE2	"  WINS  "
 
-void engine_locale_manager_draw_text( unsigned char *text, unsigned char x, unsigned char y );
+//void engine_locale_manager_draw_text( unsigned char *text, unsigned char x, unsigned char y );
+void engine_locale_manager_draw_text( unsigned char index, unsigned char x, unsigned char y );
 
 #endif//_LOCALE_MANAGER_H_

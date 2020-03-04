@@ -17,7 +17,7 @@ void engine_font_manager_draw_char( unsigned char ch, unsigned char x, unsigned 
 	devkit_SMS_setTile( *pnt + tile );
 }
 
-void engine_font_manager_draw_text( unsigned char *text, unsigned char x, unsigned char y )
+void engine_font_manager_draw_text( const unsigned char *text, unsigned char x, unsigned char y )
 {
 	const unsigned char *pnt = font_tiles__tilemap__bin;
 	unsigned char idx = 0;

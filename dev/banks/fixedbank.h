@@ -19,6 +19,10 @@ extern const unsigned char level_object_BBsize[];
 extern const unsigned char level_object_BBbank[];
 
 
+// Locale Manager.
+//#define LOCALE_BUILD_VERSION	"V1.0"
+extern const unsigned char *locale_object_texts[];
+
 // Score Manager.
 extern const char *score_object_titles[];
 

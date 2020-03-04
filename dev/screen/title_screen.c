@@ -9,6 +9,7 @@
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\devkit\_sms_manager.h"
+#include "..\banks\fixedbank.h"
 
 void screen_title_screen_load()
 {
@@ -24,6 +25,9 @@ void screen_title_screen_load()
 		engine_font_manager_draw_text( LOCALE_BLANK_WIDTH, SCREEN_TILE_LEFT + 2, row );
 	}
 
+	//engine_locale_manager_draw_text( LOCALE_BUILD_VERSION, SCREEN_TILE_LEFT + 24, 21 );
+	engine_locale_manager_draw_text( 0, SCREEN_TILE_LEFT + 24, 21 );
+	//engine_font_manager_draw_text( LOCALE_BUILD_VERSION, SCREEN_TILE_LEFT + 24, 21 );
 	devkit_SMS_displayOn();
 }
 

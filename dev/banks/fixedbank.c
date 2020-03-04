@@ -9,6 +9,11 @@
 #include "..\engine\locale_manager.h"
 
 
+const unsigned char *locale_object_texts[] =
+{
+	"V1.0"
+};
+
 // Audio Manager.
 const unsigned char *music_object_data[] =
 {
