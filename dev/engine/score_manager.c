@@ -161,7 +161,7 @@ void engine_score_manager_draw_text()
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	for( index = 0; index < 7; index++ )
 	{
-		text = ( unsigned char * ) score_object_titles[ index ];
+		text = ( unsigned char * ) locale_object_texts[ index + 1 ];
 		engine_font_manager_draw_text( text, TEXT_X, title_Y[ index ] );
 	}
 }

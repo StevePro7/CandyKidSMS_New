@@ -21,9 +21,6 @@ const unsigned char *locale_object_texts[] =
 	"BOOST",
 	"WORLD",
 	"ROUND",
-	">",
-	" ",
-	"INSERT COIN(S)",
 	"SELECT",
 	"EASY",
 	"HARD",
@@ -46,16 +43,16 @@ const unsigned char *locale_object_texts[] =
 
 
 // Score Manager.
-const unsigned char *score_object_titles[] =
-{
-	"CANDY",
-	" KID ",
-	" HIGH",
-	"SCORE",
-	"LIVES",
-	"LEVEL",
-	"BOOST",
-};
+//const unsigned char *score_object_titles[] =
+//{
+//	"CANDY",
+//	" KID ",
+//	" HIGH",
+//	"SCORE",
+//	"LIVES",
+//	"LEVEL",
+//	"BOOST",
+//};
 
 
 // Audio Manager.

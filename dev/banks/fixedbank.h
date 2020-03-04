@@ -6,7 +6,7 @@
 extern const unsigned char *locale_object_texts[];
 
 // Score Manager.
-extern const unsigned char *score_object_titles[];
+//extern const unsigned char *score_object_titles[];
 
 
 // Audio Manager.
