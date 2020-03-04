@@ -21,3 +21,6 @@ extern const unsigned char level_object_BBbank[];
 
 // Score Manager.
 extern const char *score_object_titles[];
+
+
+// Locale Manager.

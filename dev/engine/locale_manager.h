@@ -77,4 +77,6 @@
 #define LOCALE_BEAT_MESSAGE1	"CANDYKID"
 #define LOCALE_BEAT_MESSAGE2	"  WINS  "
 
+void engine_locale_manager_draw_text( unsigned char *text, unsigned char x, unsigned char y );
+
 #endif//_LOCALE_MANAGER_H_

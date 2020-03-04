@@ -23,6 +23,7 @@ void screen_title_screen_load()
 	{
 		engine_font_manager_draw_text( LOCALE_BLANK_WIDTH, SCREEN_TILE_LEFT + 2, row );
 	}
+
 	devkit_SMS_displayOn();
 }
 
