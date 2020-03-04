@@ -31,7 +31,7 @@ struct_score_object global_score_object;
 
 static unsigned char value_y[] = { LIVES_Y + 1, LEVEL_Y + 1, BOOST_Y + 1, 22, 23 };
 static unsigned char title_Y[] = { TITLE_Y, TITLE_Y + 1, HIGHS_Y, SCORE_Y, LIVES_Y, LEVEL_Y, BOOST_Y, };
-static unsigned char bonuses[] = { 10, 20, 40, 80 };
+static unsigned char bonuses[] = { 10, 20, 40, 80, 200 };
 // TODO need to split the reset functionality.
 static void reset();
 static void update_score( unsigned char points );
@@ -72,6 +72,13 @@ unsigned char engine_score_manager_get_value( unsigned char index )
 //	struct_score_object *so = &global_score_object;
 //	return so->values[ score_type_boost ];
 //}
+
+void engine_score_manager_finish_bonus()
+{
+	struct_score_object *so = &global_score_object;
+	unsigned char bonus = bonuses[ 4 ];
+	update_score( bonus );
+}
 
 void engine_score_manager_update_bonus( unsigned char index )
 {

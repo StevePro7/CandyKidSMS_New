@@ -27,15 +27,11 @@ void screen_func_screen_update( unsigned char *screen_type )
 	if( input )
 	{
 		engine_score_manager_update_oneup();
-		//engine_score_manager_update_bonus( tile_type_bonusA );
-
 	}
 	input = engine_input_manager_hold( input_type_down );
 	if( input )
 	{
-		//engine_score_manager_update_bonus( tile_type_bonusB );
 		engine_score_manager_update_lives( -1 );
-
 	}
 	input = engine_input_manager_hold( input_type_left );
 	if( input )
@@ -46,7 +42,6 @@ void screen_func_screen_update( unsigned char *screen_type )
 	if( input )
 	{
 		engine_score_manager_update_bonus( tile_type_bonusD );
-		//engine_score_manager_update_bonus( tile_type_bonusD );
 	}
 
 	//input = engine_input_manager_hold( input_type_fire1 );

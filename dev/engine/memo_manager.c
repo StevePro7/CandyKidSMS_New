@@ -12,7 +12,6 @@ void engine_memo_manager_draw( unsigned char topIndex, unsigned char botIndex )
 	unsigned char x = SCREEN_TILE_LEFT + LFT_SIDE_X + 8;
 	unsigned char y = TOP_SIDE_Y + 10;
 
-	engine_board_manager_midd_text();
 	engine_locale_manager_draw_text( topIndex, x, y + 1 );
 	engine_locale_manager_draw_text( botIndex, x, y + 2 );
 }

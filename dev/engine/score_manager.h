@@ -14,6 +14,7 @@ unsigned char engine_score_manager_get_value( unsigned char index );
 //unsigned char engine_score_manager_get_lives();
 //unsigned char engine_score_manager_get_boost();
 
+void engine_score_manager_finish_bonus();
 void engine_score_manager_update_bonus( unsigned char bonus );
 void engine_score_manager_update_candy();
 void engine_score_manager_update_oneup();
