@@ -1,21 +1,23 @@
 XL2
-H 9 areas D global symbols
+H 9 areas F global symbols
 M init_screen
 O -mz80
 S _engine_board_manager_side_tile Ref0000
 S _engine_content_manager_load_sprites_game Ref0000
+S _devkit_SMS_displayOn Ref0000
 S _engine_board_manager_draw_full Ref0000
 S _engine_board_manager_draw_exit Ref0000
 S _engine_score_manager_init Ref0000
 S .__.ABS. Def0000
 S _state_object_mydebugger Ref0000
 S _engine_content_manager_load_tiles_game Ref0000
+S _devkit_SMS_displayOff Ref0000
 S _engine_asm_manager_clear_VRAM Ref0000
 S _engine_score_manager_text Ref0000
 S _engine_content_manager_load_tiles_font Ref0000
-A _CODE size 28 flags 0 addr 0
+A _CODE size 2E flags 0 addr 0
 S _screen_init_screen_load Def0000
-S _screen_init_screen_update Def0021
+S _screen_init_screen_update Def0027
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -26,17 +28,17 @@ A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
 R 00 00 00 00
-T 00 00 3A 00 00 B7 28 0C CD 00 00 CD 00 00 CD
-R 00 00 00 00 02 03 06 00 02 09 08 00 02 0C 0A 00
-T 0D 00 00 00 CD 00 00
-R 00 00 00 00 02 02 07 00 02 05 01 00
-T 12 00
+T 00 00 CD 00 00 3A 00 00 B7 28 0C CD 00 00 CD
+R 00 00 00 00 02 03 09 00 02 06 07 00 02 0C 0A 00
+T 0D 00 00 00 CD 00 00 CD 00 00
+R 00 00 00 00 02 02 0C 00 02 05 08 00 02 08 01 00
+T 15 00
 R 00 00 00 00
-T 12 00 CD 00 00 CD 00 00 CD 00 00 CD
-R 00 00 00 00 02 03 02 00 02 06 03 00 02 09 00 00
-T 1C 00 00 00 C3 00 00
-R 00 00 00 00 02 02 09 00 02 05 04 00
-T 21 00
+T 15 00 CD 00 00 CD 00 00 CD 00 00 CD
+R 00 00 00 00 02 03 03 00 02 06 04 00 02 09 00 00
+T 1F 00 00 00 CD 00 00 C3 00 00
+R 00 00 00 00 02 02 0B 00 02 05 05 00 02 08 02 00
+T 27 00
 R 00 00 00 00
-T 21 00 C1 E1 E5 C5 36 07 C9
+T 27 00 C1 E1 E5 C5 36 07 C9
 R 00 00 00 00

@@ -69,11 +69,11 @@ Area                                    Addr        Size        Decimal Bytes (A
      00002EE0  l__BANK4                        
      00002EE0  l__BANK5                        
      000034F4  l__BANK3                        
-     0000659B  l__CODE                         
-     0000679B  s__HOME                         
-     0000691D  s__INITIALIZER                  
-     00007022  s__GSINIT                       
-     00007031  s__GSFINAL                      
+     000065A1  l__CODE                         
+     000067A1  s__HOME                         
+     00006923  s__INITIALIZER                  
+     00007028  s__GSINIT                       
+     00007037  s__GSFINAL                      
      00008000  _SMS_SRAM                          SMSlib_PSGaiden
      00008000  s__BANK10                       
      00008000  s__BANK11                       
@@ -102,7 +102,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000659B =       26011. bytes (REL,CON)
+_CODE                               00000200    000065A1 =       26017. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -161,7 +161,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000659B =       26011. bytes (REL,CON)
+_CODE                               00000200    000065A1 =       26017. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -221,7 +221,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000659B =       26011. bytes (REL,CON)
+_CODE                               00000200    000065A1 =       26017. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -281,7 +281,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000659B =       26011. bytes (REL,CON)
+_CODE                               00000200    000065A1 =       26017. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -341,7 +341,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000659B =       26011. bytes (REL,CON)
+_CODE                               00000200    000065A1 =       26017. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -386,122 +386,122 @@ _CODE                               00000200    0000659B =       26011. bytes (R
      0000417C  _screen_option_screen_load         option_screen
      0000419A  _screen_option_screen_update       option_screen
      000041A1  _screen_init_screen_load           init_screen
-     000041C2  _screen_init_screen_update         init_screen
-     000041C9  _screen_load_screen_load           load_screen
-     000041DD  _screen_load_screen_update         load_screen
-     000041E4  _screen_ready_screen_load          ready_screen
-     00004206  _screen_ready_screen_update        ready_screen
-     00004213  _screen_play_screen_load           play_screen
-     000042AD  _screen_play_screen_update         play_screen
-     0000458A  _screen_pass_screen_load           pass_screen
-     000045E3  _screen_pass_screen_update         pass_screen
-     00004649  _screen_bonus_screen_load          bonus_screen
+     000041C8  _screen_init_screen_update         init_screen
+     000041CF  _screen_load_screen_load           load_screen
+     000041E3  _screen_load_screen_update         load_screen
+     000041EA  _screen_ready_screen_load          ready_screen
+     0000420C  _screen_ready_screen_update        ready_screen
+     00004219  _screen_play_screen_load           play_screen
+     000042B3  _screen_play_screen_update         play_screen
+     00004590  _screen_pass_screen_load           pass_screen
+     000045E9  _screen_pass_screen_update         pass_screen
+     0000464F  _screen_bonus_screen_load          bonus_screen
 ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000659B =       26011. bytes (REL,CON)
+_CODE                               00000200    000065A1 =       26017. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     0000464A  _screen_bonus_screen_update        bonus_screen
-     00004651  _screen_replay_screen_load         replay_screen
-     00004680  _screen_replay_screen_update       replay_screen
-     00004687  _screen_reset_screen_load          reset_screen
-     000046CF  _screen_reset_screen_update        reset_screen
-     00004867  _screen_dead_screen_load           dead_screen
-     000048C5  _screen_dead_screen_update         dead_screen
-     00004AB5  _screen_cont_screen_load           cont_screen
-     00004AD2  _screen_cont_screen_update         cont_screen
-     00004BC2  _screen_over_screen_load           over_screen
-     00004BD2  _screen_over_screen_update         over_screen
-     00004C04  _screen_beat_screen_load           beat_screen
-     00004C57  _screen_beat_screen_update         beat_screen
-     00004D6F  _screen_boss_screen_load           boss_screen
-     00004D8B  _screen_boss_screen_update         boss_screen
-     00004D92  _screen_record_screen_load         record_screen
-     00004DB3  _screen_record_screen_update       record_screen
-     00004DBA  _screen_save_screen_load           save_screen
-     00004E99  _screen_save_screen_update         save_screen
-     00004F58  _screen_test_screen_load           test_screen
-     00004FBE  _screen_test_screen_update         test_screen
-     0000518E  _screen_func_screen_load           func_screen
-     0000518F  _screen_func_screen_update         func_screen
-     00005196  _font_tiles__palette__bin          gfx
-     000051A6  _font_tiles__tilemap__bin          gfx
-     00005226  _font_tiles__tiles__psgcompr       gfx
-     000054BD  _game_tiles__palette__bin          gfx
-     000054CD  _game_tiles__tilemap__bin          gfx
-     0000559D  _game_tiles__tiles__psgcompr       gfx
-     00005AFD  _sprites__palette__bin             gfx
-     00005B0D  _sprites__tiles__psgcompr          gfx
-     0000604F  __divuint                          
-     00006057  __divuchar                         
-     0000605E  __divu8                            
-     00006061  __divu16                           
-     00006090  _UNSAFE_SMS_copySpritestoSAT       SMSlib_UNSAFE
-     000060A8  _UNSAFE_SMS_VRAMmemcpy32           SMSlib_UNSAFE
-     000060C5  _UNSAFE_SMS_VRAMmemcpy64           SMSlib_UNSAFE
-     000060E2  _UNSAFE_SMS_VRAMmemcpy128          SMSlib_UNSAFE
-     000060FF  _SMS_init                          SMSlib
-     00006153  _VDPReg_init                       SMSlib
-     0000615E  _SMS_VDPType                       SMSlib
-     00006166  _SMS_VDPturnOnFeature              SMSlib
-     0000617D  _SMS_VDPturnOffFeature             SMSlib
-     00006196  _SMS_setBGScrollX                  SMSlib
-     000061A0  _SMS_setBGScrollY                  SMSlib
-     000061AA  _SMS_setBackdropColor              SMSlib
-     000061B4  _SMS_useFirstHalfTilesforSprites   SMSlib
-     000061C8  _SMS_setSpriteMode                 SMSlib
-     0000620D  _SMS_setBGPaletteColor             SMSlib
-     00006221  _SMS_setSpritePaletteColor         SMSlib
+     00004650  _screen_bonus_screen_update        bonus_screen
+     00004657  _screen_replay_screen_load         replay_screen
+     00004686  _screen_replay_screen_update       replay_screen
+     0000468D  _screen_reset_screen_load          reset_screen
+     000046D5  _screen_reset_screen_update        reset_screen
+     0000486D  _screen_dead_screen_load           dead_screen
+     000048CB  _screen_dead_screen_update         dead_screen
+     00004ABB  _screen_cont_screen_load           cont_screen
+     00004AD8  _screen_cont_screen_update         cont_screen
+     00004BC8  _screen_over_screen_load           over_screen
+     00004BD8  _screen_over_screen_update         over_screen
+     00004C0A  _screen_beat_screen_load           beat_screen
+     00004C5D  _screen_beat_screen_update         beat_screen
+     00004D75  _screen_boss_screen_load           boss_screen
+     00004D91  _screen_boss_screen_update         boss_screen
+     00004D98  _screen_record_screen_load         record_screen
+     00004DB9  _screen_record_screen_update       record_screen
+     00004DC0  _screen_save_screen_load           save_screen
+     00004E9F  _screen_save_screen_update         save_screen
+     00004F5E  _screen_test_screen_load           test_screen
+     00004FC4  _screen_test_screen_update         test_screen
+     00005194  _screen_func_screen_load           func_screen
+     00005195  _screen_func_screen_update         func_screen
+     0000519C  _font_tiles__palette__bin          gfx
+     000051AC  _font_tiles__tilemap__bin          gfx
+     0000522C  _font_tiles__tiles__psgcompr       gfx
+     000054C3  _game_tiles__palette__bin          gfx
+     000054D3  _game_tiles__tilemap__bin          gfx
+     000055A3  _game_tiles__tiles__psgcompr       gfx
+     00005B03  _sprites__palette__bin             gfx
+     00005B13  _sprites__tiles__psgcompr          gfx
+     00006055  __divuint                          
+     0000605D  __divuchar                         
+     00006064  __divu8                            
+     00006067  __divu16                           
+     00006096  _UNSAFE_SMS_copySpritestoSAT       SMSlib_UNSAFE
+     000060AE  _UNSAFE_SMS_VRAMmemcpy32           SMSlib_UNSAFE
+     000060CB  _UNSAFE_SMS_VRAMmemcpy64           SMSlib_UNSAFE
+     000060E8  _UNSAFE_SMS_VRAMmemcpy128          SMSlib_UNSAFE
+     00006105  _SMS_init                          SMSlib
+     00006159  _VDPReg_init                       SMSlib
+     00006164  _SMS_VDPType                       SMSlib
+     0000616C  _SMS_VDPturnOnFeature              SMSlib
+     00006183  _SMS_VDPturnOffFeature             SMSlib
+     0000619C  _SMS_setBGScrollX                  SMSlib
+     000061A6  _SMS_setBGScrollY                  SMSlib
+     000061B0  _SMS_setBackdropColor              SMSlib
+     000061BA  _SMS_useFirstHalfTilesforSprites   SMSlib
+     000061CE  _SMS_setSpriteMode                 SMSlib
+     00006213  _SMS_setBGPaletteColor             SMSlib
+     00006227  _SMS_setSpritePaletteColor         SMSlib
 ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    0000659B =       26011. bytes (REL,CON)
+_CODE                               00000200    000065A1 =       26017. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00006235  _SMS_loadBGPalette                 SMSlib
-     00006249  _SMS_loadSpritePalette             SMSlib
-     0000625D  _SMS_setColor                      SMSlib
-     00006261  _SMS_initSprites                   SMSlib
-     00006267  _SMS_addSprite                     SMSlib
-     000062BC  _SMS_finalizeSprites               SMSlib
-     000062CE  _SMS_copySpritestoSAT              SMSlib
-     000062F7  _SMS_waitForVBlank                 SMSlib
-     00006304  _SMS_getKeysStatus                 SMSlib
-     00006308  _SMS_getKeysPressed                SMSlib
-     00006325  _SMS_getKeysHeld                   SMSlib
-     0000633C  _SMS_getKeysReleased               SMSlib
-     00006359  _SMS_queryPauseRequested           SMSlib
-     00006361  _SMS_resetPauseRequest             SMSlib
-     00006367  _SMS_setLineInterruptHandler       SMSlib
-     00006378  _SMS_setLineCounter                SMSlib
-     00006387  _SMS_getVCount                     SMSlib
-     0000638B  _SMS_getHCount                     SMSlib
-     0000638F  _SMS_isr                           SMSlib
-     000063C5  _SMS_nmi_isr                       SMSlib
-     000063D8  _rand                              rand
-     00006428  _srand                             rand
-     00006445  __moduchar                         
-     00006451  __moduint                          
-     0000645C  _SMS_loadSTMcompressedTileMapAre   SMSlib_STMcomp
-     0000663D  ___sdcc_call_hl                    
-     0000663E  _SMS_loadPSGaidencompressedTiles   SMSlib_PSGaiden
-     00006720  __modschar                         
-     0000672D  __modsint                          
-     00006739  __divsint                          
-     00006742  __divschar                         
-     00006749  __div8                             
-     0000674D  __div_signexte                     
-     00006751  __div16                            
-     00006777  __get_remainder                    
-     00006781  __mulint                           
-     00006787  __mul16                            
+     0000623B  _SMS_loadBGPalette                 SMSlib
+     0000624F  _SMS_loadSpritePalette             SMSlib
+     00006263  _SMS_setColor                      SMSlib
+     00006267  _SMS_initSprites                   SMSlib
+     0000626D  _SMS_addSprite                     SMSlib
+     000062C2  _SMS_finalizeSprites               SMSlib
+     000062D4  _SMS_copySpritestoSAT              SMSlib
+     000062FD  _SMS_waitForVBlank                 SMSlib
+     0000630A  _SMS_getKeysStatus                 SMSlib
+     0000630E  _SMS_getKeysPressed                SMSlib
+     0000632B  _SMS_getKeysHeld                   SMSlib
+     00006342  _SMS_getKeysReleased               SMSlib
+     0000635F  _SMS_queryPauseRequested           SMSlib
+     00006367  _SMS_resetPauseRequest             SMSlib
+     0000636D  _SMS_setLineInterruptHandler       SMSlib
+     0000637E  _SMS_setLineCounter                SMSlib
+     0000638D  _SMS_getVCount                     SMSlib
+     00006391  _SMS_getHCount                     SMSlib
+     00006395  _SMS_isr                           SMSlib
+     000063CB  _SMS_nmi_isr                       SMSlib
+     000063DE  _rand                              rand
+     0000642E  _srand                             rand
+     0000644B  __moduchar                         
+     00006457  __moduint                          
+     00006462  _SMS_loadSTMcompressedTileMapAre   SMSlib_STMcomp
+     00006643  ___sdcc_call_hl                    
+     00006644  _SMS_loadPSGaidencompressedTiles   SMSlib_PSGaiden
+     00006726  __modschar                         
+     00006733  __modsint                          
+     0000673F  __divsint                          
+     00006748  __divschar                         
+     0000674F  __div8                             
+     00006753  __div_signexte                     
+     00006757  __div16                            
+     0000677D  __get_remainder                    
+     00006787  __mulint                           
+     0000678D  __mul16                            
 ASxxxx Linker V03.00 + NoICE + sdld,  page 10.
 Hexadecimal  [32-Bits]
 
@@ -570,18 +570,18 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_HOME                               0000679B    00000182 =         386. bytes (REL,CON)
+_HOME                               000067A1    00000182 =         386. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     0000679B  __mullong                          _mullong
+     000067A1  __mullong                          _mullong
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 17.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_INITIALIZER                        0000691D    00000705 =        1797. bytes (REL,CON)
+_INITIALIZER                        00006923    00000705 =        1797. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -590,18 +590,18 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_GSINIT                             00007022    0000000F =          15. bytes (REL,CON)
+_GSINIT                             00007028    0000000F =          15. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00007022  gsinit                             crt0
+     00007028  gsinit                             crt0
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 19.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_GSFINAL                            00007031    00000001 =           1. bytes (REL,CON)
+_GSFINAL                            00007037    00000001 =           1. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
