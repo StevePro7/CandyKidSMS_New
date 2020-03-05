@@ -32,7 +32,7 @@ void engine_storage_manager_read()
 	state_object_trees_type = savegame->save_trees_type;
 	state_object_exits_type = savegame->save_exits_type;
 	state_object_difficulty = savegame->save_difficulty;
-	state_object_game_speed = savegame->save_game_speed;
+	state_object_pace_speed = savegame->save_game_speed;
 
 	state_object_world_data = savegame->save_world_data;
 	state_object_round_data = savegame->save_round_data;
@@ -52,7 +52,7 @@ void engine_storage_manager_write()
 	savegame->save_trees_type = state_object_trees_type;
 	savegame->save_exits_type = state_object_exits_type;
 	savegame->save_difficulty = state_object_difficulty;
-	savegame->save_game_speed = state_object_game_speed;
+	savegame->save_game_speed = state_object_pace_speed;
 
 	savegame->save_world_data = state_object_world_data;
 	savegame->save_round_data = state_object_round_data;

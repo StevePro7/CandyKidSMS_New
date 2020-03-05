@@ -11,10 +11,10 @@
 #include "..\engine\timer_manager.h"
 
 #define CONT_SCREEN_DELAY	50
-#define TEXT_X				10
+#define CONT_X				10
 #define TEXT_Y				11
-#define OPT1_X				TEXT_X + 0
-#define OPT2_X				TEXT_X + 5
+#define OPT1_X				CONT_X + 0
+#define OPT2_X				CONT_X + 5
 
 static unsigned char event_stage;
 
