@@ -9,5 +9,6 @@ void screen_option_screen_load()
 
 void screen_option_screen_update( unsigned char *screen_type )
 {
+	//*screen_type = screen_type_init;
 	*screen_type = screen_type_option;
 }

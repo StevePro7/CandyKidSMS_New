@@ -52,9 +52,6 @@ void screen_dead_screen_load()
 	screen = ( 0 == lives ) ? screen_type_cont : screen_type_ready;
 	//screen = screen_type_cont;
 	//screen = screen_type_ready;
-
-	// TODO delete
-	engine_font_manager_draw_text( "DEATH SCREEN!!", SCREEN_TILE_LEFT + 2, 10 );
 }
 
 void screen_dead_screen_update( unsigned char *screen_type )

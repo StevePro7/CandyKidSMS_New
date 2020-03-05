@@ -1,9 +1,13 @@
 #include "load_screen.h"
 #include "..\engine\asm_manager.h"
+#include "..\engine\actor_manager.h"
+#include "..\engine\audio_manager.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\content_manager.h"
+#include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
+#include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
 #include "..\engine\memo_manager.h"
@@ -13,13 +17,16 @@
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 
-//#define LOAD_SCREEN_DELAY	150
-#define LOAD_SCREEN_DELAY	1
+#define LOAD_SCREEN_DELAY	150
+//#define LOAD_SCREEN_DELAY	1
 
 static void print_level();
 
 void screen_load_screen_load()
 {
+	unsigned char actor_mover[ MAX_ACTORS ];
+	unsigned char actor_tileZ[ MAX_ACTORS ];
+
 	state_object_curr_screen = screen_type_load;
 	state_object_next_screen = screen_type_ready;
 
@@ -28,13 +35,20 @@ void screen_load_screen_load()
 	// Reset all score data.
 	engine_score_manager_load();
 
-	engine_level_manager_load_level( state_object_world_data, state_object_round_data );
+	// Set all actor variables.
+	engine_gamer_manager_load();
+	engine_enemy_manager_load();
+	engine_actor_manager_get_data( actor_mover, actor_tileZ );
+
 	// IMPORTANT do not display Off / On here as looks better to load level over border.
 	//devkit_SMS_displayOff();
+	engine_level_manager_load_level( state_object_world_data, state_object_round_data );
+	engine_level_manager_update_level( state_object_round_data, actor_mover, actor_tileZ );
 	engine_level_manager_draw_level();
 	//devkit_SMS_displayOn();
 
 	print_level();
+	//engine_audio_manager_music_play( music_type_game03 );
 }
 
 void screen_load_screen_update( unsigned char *screen_type )
@@ -43,10 +57,16 @@ void screen_load_screen_update( unsigned char *screen_type )
 	unsigned char delay;
 	unsigned char input;
 
+	// Draw sprites first.
+	engine_enemy_manager_draw();
+	engine_gamer_manager_draw();
+
 	delay = engine_delay_manager_update();
 	input = engine_input_manager_hold( input_type_fire1 );
 	if( delay || input )
 	{
+		engine_level_manager_draw_middle();
+		engine_audio_manager_music_play( music_type_game03 );
 		*screen_type = state_object_next_screen;
 		return;
 	}

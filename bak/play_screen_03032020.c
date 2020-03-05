@@ -11,7 +11,7 @@
 #include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
 #include "..\engine\move_manager.h"
-#include "..\engine\score_manager.h"
+//#include "..\engine\score_manager.h"
 #include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
@@ -32,22 +32,37 @@ static unsigned char frame_spot;
 void screen_play_screen_load()
 {
 	//struct_enemy_object *eo;
-	//unsigned char actor_mover[ MAX_ACTORS ];
-	//unsigned char actor_tileZ[ MAX_ACTORS ];
+	unsigned char actor_mover[ MAX_ACTORS ];
+	//unsigned char actor_tileX[ MAX_ACTORS ];
+	//unsigned char actor_tileY[ MAX_ACTORS ];
+	unsigned char actor_tileZ[ MAX_ACTORS ];
 
 	engine_delay_manager_load( 0 );
 
-
-	/* TODO delete as at load().
 	engine_gamer_manager_load();
 	engine_enemy_manager_load();
+	//get_actor_data( actor_mover, actor_tileZ );
 	engine_actor_manager_get_data( actor_mover, actor_tileZ );
+
+	// Must draw score first for Level which is currently 5x characters.
+	state_object_round_data = 1;
+	engine_score_manager_load();
+	//engine_score_manager_draw_all();
+
+	// Draw functions.
+	//engine_board_manager_debugger();
+	engine_board_manager_draw_full();
+	engine_board_manager_draw_exit();
+	engine_board_manager_side_tile();
+
+	//engine_level_manager_load_level( 0, 0 );
+	
 	engine_level_manager_load_level( state_object_world_data, state_object_round_data );
 	//engine_level_manager_load_level( 8, 7 );
 	//engine_level_manager_load_level( 9, 4 );
 	engine_level_manager_update_level( state_object_round_data, actor_mover, actor_tileZ );
 	engine_level_manager_draw_level();
-	*/
+
 
 
 	engine_frame_manager_draw();
@@ -55,7 +70,7 @@ void screen_play_screen_load()
 
 	engine_font_manager_draw_text( "SCATTR", 26, 21 );
 	//engine_font_manager_draw_data( level_object_candy_count, 14, 11 );
-	//engine_audio_manager_music_play( music_type_game03 );
+	engine_audio_manager_music_play( music_type_game03 );
 	//engine_audio_manager_music_play( music_type_beatgame );
 	//engine_audio_manager_music_play( music_type_candykid );
 	first_time = 1;
