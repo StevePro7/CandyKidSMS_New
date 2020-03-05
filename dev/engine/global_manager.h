@@ -61,4 +61,7 @@
 #define TOP_SIDE_Y				0
 #define LFT_SIDE_X				0
 
+#define TEXT_X					SCREEN_TILE_LEFT + 24
+#define DATA_X					SCREEN_TILE_LEFT + 28
+
 #endif//_GLOBAL_MANAGER_H_

@@ -32,12 +32,13 @@ void screen_init_screen_load()
 	// Reset all score data.
 	engine_score_manager_text();
 	engine_score_manager_init();
+	engine_memo_manager_option();
 
 	devkit_SMS_displayOn();
 }
 
 void screen_init_screen_update( unsigned char *screen_type )
 {
-	//*screen_type = screen_type_init;
-	*screen_type = screen_type_load;
+	*screen_type = screen_type_init;
+	//*screen_type = screen_type_load;
 }

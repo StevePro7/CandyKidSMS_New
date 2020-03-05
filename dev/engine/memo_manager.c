@@ -1,9 +1,11 @@
 #include "memo_manager.h"
 #include "board_manager.h"
+#include "enum_manager.h"
 #include "font_manager.h"
 #include "global_manager.h"
 #include "locale_manager.h"
 #include "score_manager.h"
+#include "..\devkit\_sms_manager.h"
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 
@@ -51,4 +53,25 @@ void engine_memo_manager_bonus( unsigned char perfect )
 	}
 
 	engine_memo_manager_draw( topIndex, botIndex );
+}
+
+void engine_memo_manager_option()
+{
+	const unsigned char *text;
+	const unsigned char dataY = 22;
+
+	devkit_SMS_mapROMBank( FIXED_BANK );
+
+	if( diff_type_hard == state_object_difficulty && pace_type_fast == state_object_game_speed )
+	{
+		text = locale_object_texts[ state_object_difficulty + 13 ];
+		engine_font_manager_draw_text( text, TEXT_X, dataY + 0 );
+
+		text = locale_object_texts[ state_object_game_speed + 11 ];
+		engine_font_manager_draw_text( text, TEXT_X, dataY + 1 );
+	}
+
+	
+
+	engine_font_manager_draw_text( "&", TEXT_X, dataY + 1 );
 }

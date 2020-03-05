@@ -1,18 +1,14 @@
 XL2
-H 9 areas B global symbols
+H 9 areas 7 global symbols
 M load_screen
 O -mz80
 S _engine_score_manager_load Ref0000
 S _engine_level_manager_draw_level Ref0000
-S _devkit_SMS_displayOn Ref0000
-S _state_object_world_data Ref0000
-S _state_object_round_data Ref0000
 S .__.ABS. Def0000
-S _devkit_SMS_displayOff Ref0000
 S _engine_level_manager_load_level Ref0000
 S _engine_delay_manager_load Ref0000
-A _CODE size 2C flags 0 addr 0
-S _screen_load_screen_update Def0025
+A _CODE size 20 flags 0 addr 0
+S _screen_load_screen_update Def0019
 S _screen_load_screen_load Def0000
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
@@ -24,13 +20,11 @@ A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
 R 00 00 00 00
-T 00 00 21 00 00 E5 CD 00 00 F1 CD 00 00 CD 00 00
-R 00 00 00 00 02 07 08 00 02 0B 06 00 02 0E 00 00
-T 0E 00 CD 00 00 CD 00 00 3A 00 00 F5 33 3A
-R 00 00 00 00 02 03 02 00 02 06 00 00 02 09 04 00
-T 1A 00 00 00 F5 33 CD 00 00 F1 C3 00 00
-R 00 00 00 00 02 02 03 00 02 07 07 00 02 0B 01 00
-T 25 00
+T 00 00 21 00 00 E5 CD 00 00 F1 CD 00 00 21 08 07
+R 00 00 00 00 02 07 04 00 02 0B 00 00
+T 0E 00 E5 CD 00 00 F1 CD 00 00 C3 00 00
+R 00 00 00 00 02 04 03 00 02 08 00 00 02 0B 01 00
+T 19 00
 R 00 00 00 00
-T 25 00 C1 E1 E5 C5 36 08 C9
+T 19 00 C1 E1 E5 C5 36 08 C9
 R 00 00 00 00

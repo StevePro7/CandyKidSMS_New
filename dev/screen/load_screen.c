@@ -17,23 +17,23 @@ void screen_load_screen_load()
 {
 	engine_delay_manager_load( 0 );
 
-	devkit_SMS_displayOff();
-
 	// Reset all score data.
 	engine_score_manager_load();
 
-	devkit_SMS_displayOn();
+	//engine_level_manager_load_level( state_object_world_data, state_object_round_data );
+	engine_level_manager_load_level( 8, 7 );
 
-
+	// IMPORTANT do not display Off / On here as looks better to load level over border.
+	//devkit_SMS_displayOff();
 	engine_score_manager_load();
-
-	engine_level_manager_load_level( state_object_world_data, state_object_round_data );
 	engine_level_manager_draw_level();
+
+	//devkit_SMS_displayOn();
 }
 
 void screen_load_screen_update( unsigned char *screen_type )
 {
-	
+//	engine_memo_manager_draw
 
 	*screen_type = screen_type_load;
 }

@@ -7,8 +7,8 @@
 #include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
 
-#define TEXT_X		SCREEN_TILE_LEFT + 25
-#define DATA_X		SCREEN_TILE_LEFT + 28
+//#define TEXT_X		SCREEN_TILE_LEFT + 24
+//#define DATA_X		SCREEN_TILE_LEFT + 28
 
 #define TITLE_Y		0
 #define HIGHS_Y		4
@@ -43,6 +43,20 @@ static void draw_value( unsigned char index );
 static void draw_highs();
 static void draw_score();
 static void draw_zero( unsigned char x, unsigned char y );
+
+void engine_score_manager_text()
+{
+	const unsigned char *text;
+	unsigned char index;
+
+	// IMPORTANT need to ROM bank text.
+	devkit_SMS_mapROMBank( FIXED_BANK );
+	for( index = 0; index < 7; index++ )
+	{
+		text = locale_object_texts[ index + 1 ];
+		engine_font_manager_draw_text( text, TEXT_X, title_Y[ index ] );
+	}
+}
 
 void engine_score_manager_init()
 {
@@ -186,19 +200,7 @@ void engine_score_manager_update_boost()
 //	draw_value( score_type_round );
 //}
 
-void engine_score_manager_text()
-{
-	const unsigned char *text;
-	unsigned char index;
 
-	// IMPORTANT need to ROM bank text.
-	devkit_SMS_mapROMBank( FIXED_BANK );
-	for( index = 0; index < 7; index++ )
-	{
-		text = locale_object_texts[ index + 1 ];
-		engine_font_manager_draw_text( text, TEXT_X, title_Y[ index ] );
-	}
-}
 
 void engine_score_manager_draw_init()
 {
