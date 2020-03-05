@@ -4,6 +4,7 @@
 
 // Locale Manager.
 extern const unsigned char *locale_object_texts[];
+extern const unsigned char *locale_object_width[];
 
 // Score Manager.
 //extern const unsigned char *score_object_titles[];

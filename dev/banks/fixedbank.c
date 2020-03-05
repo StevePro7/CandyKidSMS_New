@@ -14,11 +14,11 @@ const unsigned char *locale_object_texts[] =
 	"V1.0",
 	"=CANDY",
 	" =KID=",
-	"  HIGH",
-	" SCORE",
-	" LIVES",
-	" LEVEL",
-	" BOOST",
+	" HIGH",
+	"SCORE",
+	"LIVES",
+	"LEVEL",
+	"BOOST",
 	"WORLD",
 	"ROUND",
 	"SELECT",
@@ -41,6 +41,13 @@ const unsigned char *locale_object_texts[] =
 	"  WINS  ",
 };
 
+const unsigned char *locale_object_width[] =
+{
+	"                          ",
+	"        ",
+	"                 "
+	"                  "
+};
 
 // Score Manager.
 //const unsigned char *score_object_titles[] =
