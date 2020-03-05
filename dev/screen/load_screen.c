@@ -4,6 +4,7 @@
 #include "..\engine\content_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
+#include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
 #include "..\engine\memo_manager.h"
 #include "..\engine\score_manager.h"
@@ -12,13 +13,16 @@
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 
-#define LOAD_SCREEN_DELAY	250
+#define LOAD_SCREEN_DELAY	150
 
 static void print_level();
 
 void screen_load_screen_load()
 {
-	engine_delay_manager_load( 0 );
+	state_object_curr_screen = screen_type_load;
+	state_object_next_screen = screen_type_ready;
+
+	engine_delay_manager_load( LOAD_SCREEN_DELAY );
 
 	// Reset all score data.
 	engine_score_manager_load();
@@ -29,17 +33,24 @@ void screen_load_screen_load()
 	engine_level_manager_draw_level();
 	//devkit_SMS_displayOn();
 
-	//engine_board_manager_midd_text();
-	//engine_font_manager_draw_text( "HELLO", SCREEN_TILE_LEFT + 11, 10 );
-	//engine_font_manager_draw_text( "WORLD", SCREEN_TILE_LEFT + 11, 11 );
 	print_level();
 }
 
 void screen_load_screen_update( unsigned char *screen_type )
 {
 //	engine_memo_manager_draw
+	unsigned char delay;
+	unsigned char input;
 
-	*screen_type = screen_type_load;
+	delay = engine_delay_manager_update();
+	input = engine_input_manager_hold( input_type_fire1 );
+	if( delay || input )
+	{
+		*screen_type = state_object_next_screen;
+		return;
+	}
+
+	*screen_type = state_object_curr_screen;
 }
 
 static void print_level()

@@ -3,24 +3,36 @@
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\gamer_manager.h"
+#include "..\engine\timer_manager.h"
+#include "..\banks\databank.h"
+
+#define READY_SCREEN_DELAY	50
 
 void screen_ready_screen_load()
 {
-	engine_font_manager_draw_text( "READY SCREEN!!", SCREEN_TILE_LEFT + 2, 10 );
+	state_object_curr_screen = screen_type_ready;
+	state_object_next_screen = screen_type_play;
 
-	// TODO reset all ghosts to their home positions
+	engine_delay_manager_load( READY_SCREEN_DELAY );
 
-	// TODO delete
 	engine_enemy_manager_reset_home();
 	engine_gamer_manager_reset();
 }
 
 void screen_ready_screen_update( unsigned char *screen_type )
 {
+	unsigned char delay;
+
 	// Draw sprites first.
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
-	//*screen_type = screen_type_play;
-	*screen_type = screen_type_ready;
+	delay = engine_delay_manager_update();
+	if( delay )
+	{
+		*screen_type = state_object_next_screen;
+		return;
+	}
+
+	*screen_type = state_object_curr_screen;
 }
