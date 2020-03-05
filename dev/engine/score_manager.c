@@ -30,7 +30,7 @@
 struct_score_object global_score_object;
 
 static unsigned char bonuses[] = { 10, 20, 40, 80, 200 };
-static unsigned char boost_X[] = { 100, 200 };
+static unsigned char boost_X[] = { 200, 100 };
 static unsigned char value_y[] = { LIVES_Y + 1, LEVEL_Y + 1, BOOST_Y + 1, 22, 23 };
 static unsigned char title_Y[] = { TITLE_Y, TITLE_Y + 1, HIGHS_Y, SCORE_Y, LIVES_Y, LEVEL_Y, BOOST_Y, };
 

@@ -20,8 +20,7 @@ void screen_load_screen_load()
 	// Reset all score data.
 	engine_score_manager_load();
 
-	//engine_level_manager_load_level( state_object_world_data, state_object_round_data );
-	engine_level_manager_load_level( 8, 7 );
+	engine_level_manager_load_level( state_object_world_data, state_object_round_data );
 
 	// IMPORTANT do not display Off / On here as looks better to load level over border.
 	//devkit_SMS_displayOff();
