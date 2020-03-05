@@ -30,6 +30,7 @@ void screen_dead_screen_load()
 {
 	unsigned char lives;
 	engine_audio_manager_music_stop();
+
 	engine_command_manager_load();
 
 	// TODO play death sound FX
@@ -52,6 +53,8 @@ void screen_dead_screen_load()
 	screen = ( 0 == lives ) ? screen_type_cont : screen_type_ready;
 	//screen = screen_type_cont;
 	//screen = screen_type_ready;
+
+	engine_audio_manager_sound_play( 1 );
 }
 
 void screen_dead_screen_update( unsigned char *screen_type )

@@ -17,7 +17,8 @@
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 
-#define LOAD_SCREEN_DELAY	150
+//#define LOAD_SCREEN_DELAY	150
+#define LOAD_SCREEN_DELAY	15
 //#define LOAD_SCREEN_DELAY	1
 
 static void print_level();

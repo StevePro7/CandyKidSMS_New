@@ -16,7 +16,7 @@ S _state_object_enemy_move Ref0000
 S _state_object_full_boost Ref0000
 S _state_object_trees_type Ref0000
 S _state_object_pace_speed Ref0000
-A _CODE size 118 flags 0 addr 0
+A _CODE size FA flags 0 addr 0
 S _engine_hack_manager_load Def003D
 S _engine_hack_manager_init Def0000
 S _engine_hack_manager_invert Def0086
@@ -84,9 +84,5 @@ T EB 00 21 00 00 35
 R 00 00 00 00 02 03 03 00
 T EF 00
 R 00 00 00 00
-T EF 00 FD 21 00 00 FD 7E 00 D6 01 3E 00 17 FD 77
-R 00 00 00 00 02 04 01 00
-T FD 00 00 FD 21 00 00 FD 7E 00 D6 01 3E 00 17 FD
-R 00 00 00 00 02 05 05 00
-T 0B 01 77 00 21 00 00 36 07 21 00 00 36 08 C9
-R 00 00 00 00 02 05 04 00 02 0A 03 00
+T EF 00 21 00 00 36 07 21 00 00 36 08 C9
+R 00 00 00 00 02 03 04 00 02 08 03 00
