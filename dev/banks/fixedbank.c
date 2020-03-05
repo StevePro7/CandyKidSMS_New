@@ -41,12 +41,13 @@ const unsigned char *locale_object_texts[] =
 	"  WINS  ",
 };
 
-const unsigned char *locale_object_width[] =
+const unsigned char *locale_object_blank[] =
 {
+	"                                ",			// 32 wide
 	"                          ",
 	"        ",
-	"                 "
-	"                  "
+	"                 ",
+	"                  ",
 };
 
 // Score Manager.

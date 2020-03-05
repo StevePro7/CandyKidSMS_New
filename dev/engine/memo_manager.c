@@ -7,6 +7,15 @@
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 
+void engine_memo_manager_clear()
+{
+	unsigned char row;
+	for( row = 0; row < 23; row++ )
+	{
+		engine_font_manager_draw_text( LOCALE_BLANK_WIDTH, 0, row );
+	}
+}
+
 void engine_memo_manager_draw( unsigned char topIndex, unsigned char botIndex )
 {
 	unsigned char x = SCREEN_TILE_LEFT + LFT_SIDE_X + 8;

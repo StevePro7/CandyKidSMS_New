@@ -16,7 +16,6 @@ void main (void)
 
 	engine_content_manager_load_tiles_font();
 	engine_content_manager_load_tiles_game();
-	//engine_content_manager_load_tiles_main();
 	engine_content_manager_load_sprites_game();
 
 	engine_state_manager_init();
@@ -33,10 +32,11 @@ void main (void)
 	//open_screen_type = screen_type_dead;
 	//open_screen_type = screen_type_cont;
 	//open_screen_type = screen_type_over;
-	open_screen_type = screen_type_pass;
+	//open_screen_type = screen_type_pass;
 	//open_screen_type = screen_type_beat;
 	//open_screen_type = screen_type_title;
-	open_screen_type = screen_type_select;
+	open_screen_type = screen_type_init;
+	//open_screen_type = screen_type_save;
 
 	engine_screen_manager_init( open_screen_type );
 	devkit_SMS_displayOn();

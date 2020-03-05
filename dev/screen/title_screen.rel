@@ -11,8 +11,8 @@ S .__.ABS. Def0000
 S _engine_tile_manager_main_title Ref0000
 S _devkit_SMS_displayOff Ref0000
 S _engine_content_manager_load_tiles_main Ref0000
-A _CODE size 5E flags 0 addr 0
-S _screen_title_screen_update Def0057
+A _CODE size 64 flags 0 addr 0
+S _screen_title_screen_update Def005D
 S _screen_title_screen_load Def0000
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
@@ -40,9 +40,11 @@ T 3C 00
 R 00 00 00 00
 T 3C 00 20 20 20 20 20 20 20 20 20 20 20 20 20 20
 R 00 00 00 00
-T 4A 00 20 20 20 20 20 20 20 20 20 20 20 20 00
+T 4A 00 20 20 20 20 20 20 20 20 20 20 20 20 20 20
 R 00 00 00 00
-T 57 00
+T 58 00 20 20 20 20 00
 R 00 00 00 00
-T 57 00 C1 E1 E5 C5 36 03 C9
+T 5D 00
+R 00 00 00 00
+T 5D 00 C1 E1 E5 C5 36 03 C9
 R 00 00 00 00

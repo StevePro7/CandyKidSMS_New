@@ -29,9 +29,11 @@
 // Global variable.
 struct_score_object global_score_object;
 
+static unsigned char bonuses[] = { 10, 20, 40, 80, 200 };
+static unsigned char boost_X[] = { 100, 200 };
 static unsigned char value_y[] = { LIVES_Y + 1, LEVEL_Y + 1, BOOST_Y + 1, 22, 23 };
 static unsigned char title_Y[] = { TITLE_Y, TITLE_Y + 1, HIGHS_Y, SCORE_Y, LIVES_Y, LEVEL_Y, BOOST_Y, };
-static unsigned char bonuses[] = { 10, 20, 40, 80, 200 };
+
 // TODO need to split the reset functionality.
 static void reset();
 static void update_score( unsigned char points );
@@ -42,10 +44,10 @@ static void draw_highs();
 static void draw_score();
 static void draw_zero( unsigned char x, unsigned char y );
 
-void engine_score_manager_init()
-{
-	reset();
-}
+//void engine_score_manager_init()
+//{
+//	reset();
+//}
 
 void engine_score_manager_load()
 {
@@ -149,7 +151,6 @@ void engine_score_manager_draw_all()
 
 	draw_zero( DATA_X + 1, HIGHS_Y + 1 );
 	draw_zero( DATA_X + 1, SCORE_Y + 1 );
-
 	draw_highs();
 	draw_score();
 
@@ -162,13 +163,14 @@ void engine_score_manager_draw_all()
 
 void engine_score_manager_draw_text()
 {
-	unsigned char *text;
+	const unsigned char *text;
 	unsigned char index;
+
 	// IMPORTANT need to ROM bank text.
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	for( index = 0; index < 7; index++ )
 	{
-		text = ( unsigned char * ) locale_object_texts[ index + 1 ];
+		text = locale_object_texts[ index + 1 ];
 		engine_font_manager_draw_text( text, TEXT_X, title_Y[ index ] );
 	}
 }
@@ -195,7 +197,7 @@ void engine_score_manager_reset_lives()
 void engine_score_manager_reset_boost()
 {
 	struct_score_object *so = &global_score_object;
-	so->values[ score_type_boost ] = MAX_BOOSTERX;
+	so->values[ score_type_boost ] = boost_X[ state_object_difficulty ];
 	draw_value( score_type_boost );
 }
 
@@ -209,7 +211,7 @@ static void reset()
 	so->bonus = 0;
 	so->candy = 0;
 	//so->total = 0;
-	so->values[ score_type_boost ] = MAX_BOOSTERX;
+	so->values[ score_type_boost ] = boost_X[ state_object_difficulty ];
 	//so->delay = 1 - state_object_difficulty;
 	//so->timer = 0;
 }

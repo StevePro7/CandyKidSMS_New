@@ -1,22 +1,43 @@
 #include "init_screen.h"
-#include "..\engine\enemy_manager.h"
+#include "..\engine\asm_manager.h"
+#include "..\engine\board_manager.h"
+#include "..\engine\content_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
-#include "..\engine\gamer_manager.h"
+#include "..\engine\memo_manager.h"
+#include "..\engine\score_manager.h"
+#include "..\devkit\_sms_manager.h"
+#include "..\banks\databank.h"
 
 void screen_init_screen_load()
 {
-	engine_font_manager_draw_text( "INIT SCREEN!!", 2, 10 );
+	devkit_SMS_displayOff();
 
-	engine_enemy_manager_reset_all( enemymove_type_wait );
-	engine_gamer_manager_reset();
+	if( state_object_mydebugger )
+	{
+		engine_asm_manager_clear_VRAM();
+		engine_content_manager_load_tiles_font();
+		engine_content_manager_load_tiles_game();
+		engine_content_manager_load_sprites_game();
+	}
+
+	// Manually clear any text artifacts.
+	engine_memo_manager_clear();
+
+	// Draw tree border with exits.
+	engine_board_manager_draw_full();
+	engine_board_manager_draw_exit();
+	engine_board_manager_side_tile();
+
+	// Reset all score data.
+	engine_score_manager_load();
+	engine_score_manager_draw_text();
+
+	devkit_SMS_displayOn();
 }
 
 void screen_init_screen_update( unsigned char *screen_type )
 {
-	// Draw sprites first.
-	engine_enemy_manager_draw();
-	engine_gamer_manager_draw();
-
 	*screen_type = screen_type_init;
+	//*screen_type = screen_type_load;
 }

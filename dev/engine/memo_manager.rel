@@ -1,14 +1,16 @@
 XL2
-H 9 areas 6 global symbols
+H 9 areas 8 global symbols
 M memo_manager
 O -mz80
 S _engine_locale_manager_draw_text Ref0000
+S _engine_font_manager_draw_text Ref0000
 S _engine_board_manager_midd_text Ref0000
 S .__.ABS. Def0000
-A _CODE size 51 flags 0 addr 0
-S _engine_memo_manager_bonus Def003A
-S _engine_memo_manager_draw Def0000
-S _engine_memo_manager_pass Def0023
+A _CODE size 8D flags 0 addr 0
+S _engine_memo_manager_clear Def0000
+S _engine_memo_manager_bonus Def0074
+S _engine_memo_manager_draw Def003A
+S _engine_memo_manager_pass Def005D
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -19,27 +21,45 @@ A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
 R 00 00 00 00
-T 00 00 CD 00 00 21 0A 0B E5 21 04 00 39 7E F5 33
-R 00 00 00 00 02 03 01 00
-T 0E 00 CD 00 00 33 21 0A 0C E3 21 05 00 39 7E F5
-R 00 00 00 00 02 03 00 00
-T 1C 00 33 CD 00 00 F1 33 C9
-R 00 00 00 00 02 04 00 00
-T 23 00
+T 00 00 06 00
 R 00 00 00 00
-T 23 00 06 10 21 02 00 39 7E B7 28 02 06 11
+T 02 00
 R 00 00 00 00
-T 2F 00
+T 02 00 C5 C5 33 AF F5 33 21 19 00 E5 CD 00 00 F1
+R 00 00 00 00 00 09 00 00 02 0D 01 00
+T 10 00 F1 C1 04 78 D6 17 38 EA C9
 R 00 00 00 00
-T 2F 00 C5 33 3E 0F F5 33 CD 00 00 F1 C9
-R 00 00 00 00 00 09 00 00
+T 19 00
+R 00 00 00 00
+T 19 00 20 20 20 20 20 20 20 20 20 20 20 20 20 20
+R 00 00 00 00
+T 27 00 20 20 20 20 20 20 20 20 20 20 20 20 20 20
+R 00 00 00 00
+T 35 00 20 20 20 20 00
+R 00 00 00 00
 T 3A 00
 R 00 00 00 00
-T 3A 00 06 12 16 13 21 02 00 39 7E B7 28 04 06 14
+T 3A 00 CD 00 00 21 0A 0B E5 21 04 00 39 7E F5 33
+R 00 00 00 00 02 03 02 00
+T 48 00 CD 00 00 33 21 0A 0C E3 21 05 00 39 7E F5
+R 00 00 00 00 02 03 00 00
+T 56 00 33 CD 00 00 F1 33 C9
+R 00 00 00 00 02 04 00 00
+T 5D 00
 R 00 00 00 00
-T 48 00 16 15
+T 5D 00 06 10 21 02 00 39 7E B7 28 02 06 11
 R 00 00 00 00
-T 4A 00
+T 69 00
 R 00 00 00 00
-T 4A 00 58 D5 CD 00 00 F1 C9
-R 00 00 00 00 00 05 00 00
+T 69 00 C5 33 3E 0F F5 33 CD 3A 00 F1 C9
+R 00 00 00 00 00 09 00 00
+T 74 00
+R 00 00 00 00
+T 74 00 06 12 16 13 21 02 00 39 7E B7 28 04 06 14
+R 00 00 00 00
+T 82 00 16 15
+R 00 00 00 00
+T 84 00
+R 00 00 00 00
+T 84 00 D5 33 C5 33 CD 3A 00 F1 C9
+R 00 00 00 00 00 07 00 00

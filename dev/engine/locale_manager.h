@@ -20,8 +20,9 @@
 //#define LOCALE_PLAY1_TEXT		"PLAY"
 //#define LOCALE_MODES_TEXT		"MODE"
 
-#define LOCALE_BLANK_WIDTH		"                          "
-//#define LOCALE_BLANK_WIDTH		"12345678901234567890123456"
+//#define LOCALE_BLANK_WIDTH		"123456789A123456789B123456789C12"
+#define LOCALE_BLANK_WIDTH		"                                "
+//#define LOCALE_BLANK_WIDTH	"12345678901234567890123456"
 #define LOCALE_BLANK_SIZE8		"        "
 //#define XYZCALE_BLANK_SIZE8		"12345678"
 #define LOCALE_BLANK_SIZE17		"                 "
