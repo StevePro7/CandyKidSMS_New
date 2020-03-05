@@ -1,10 +1,12 @@
 #include "replay_screen.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
+#include "..\banks\databank.h"
 
 void screen_replay_screen_load()
 {
-	engine_font_manager_draw_text( "REPLAY SCREEN!!", 2, 10 );
+	engine_font_manager_draw_text( "REPLAY SCREEN...!!", 2, 10 );
+	engine_font_manager_draw_data( state_object_high_score, 20, 20);
 }
 
 void screen_replay_screen_update( unsigned char *screen_type )

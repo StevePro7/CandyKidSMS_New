@@ -294,6 +294,7 @@ static void draw_highs()
 {
 	//engine_font_manager_draw_long( state_object_high_score, DATA_X + 0, HIGHS_Y + 1 );
 	engine_font_manager_draw_data( state_object_high_score, DATA_X + 0, HIGHS_Y + 1 );
+	//engine_font_manager_draw_data( 2334, DATA_X + 0, HIGHS_Y + 1 );
 }
 static void draw_score()
 {

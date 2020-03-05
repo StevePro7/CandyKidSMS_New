@@ -22,7 +22,7 @@ void screen_init_screen_load()
 	}
 
 	// Manually clear any text artifacts.
-	engine_memo_manager_clear();
+	//engine_memo_manager_clear();
 
 	// Draw tree border with exits.
 	engine_board_manager_draw_full();
