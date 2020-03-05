@@ -6,7 +6,8 @@
 #include "..\engine\timer_manager.h"
 #include "..\banks\databank.h"
 
-#define READY_SCREEN_DELAY	50
+//#define READY_SCREEN_DELAY	50
+#define READY_SCREEN_DELAY	1
 
 void screen_ready_screen_load()
 {
