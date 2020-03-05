@@ -13,13 +13,13 @@ void screen_init_screen_load()
 {
 	devkit_SMS_displayOff();
 
-	if( state_object_mydebugger )
-	{
-		engine_asm_manager_clear_VRAM();
-		engine_content_manager_load_tiles_font();
-		engine_content_manager_load_tiles_game();
-		engine_content_manager_load_sprites_game();
-	}
+	//if( state_object_mydebugger )
+	//{
+	//	engine_asm_manager_clear_VRAM();
+	//	engine_content_manager_load_tiles_font();
+	//	engine_content_manager_load_tiles_game();
+	//	engine_content_manager_load_sprites_game();
+	//}
 
 	// Manually clear any text artifacts.
 	//engine_memo_manager_clear();
@@ -38,6 +38,6 @@ void screen_init_screen_load()
 
 void screen_init_screen_update( unsigned char *screen_type )
 {
-	*screen_type = screen_type_init;
-	//*screen_type = screen_type_load;
+	//*screen_type = screen_type_init;
+	*screen_type = screen_type_load;
 }

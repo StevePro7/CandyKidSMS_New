@@ -4,6 +4,7 @@
 #include "..\engine\content_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
+#include "..\engine\level_manager.h"
 #include "..\engine\memo_manager.h"
 #include "..\engine\score_manager.h"
 #include "..\engine\timer_manager.h"
@@ -26,8 +27,8 @@ void screen_load_screen_load()
 
 	engine_score_manager_load();
 
-	//engine_level_manager_load_level( state_object_world_data, state_object_round_data );
-	//engine_level_manager_draw_level();
+	engine_level_manager_load_level( state_object_world_data, state_object_round_data );
+	engine_level_manager_draw_level();
 }
 
 void screen_load_screen_update( unsigned char *screen_type )
