@@ -44,14 +44,10 @@ void screen_play_screen_load()
 	//get_actor_data( actor_mover, actor_tileZ );
 	engine_actor_manager_get_data( actor_mover, actor_tileZ );
 
-	// Put in init screen
-	engine_score_manager_draw_text();		// this is just static text!!
-	// Put in init screen
-
 	// Must draw score first for Level which is currently 5x characters.
 	state_object_round_data = 1;
 	engine_score_manager_load();
-	engine_score_manager_draw_all();
+	//engine_score_manager_draw_all();
 
 	// Draw functions.
 	//engine_board_manager_debugger();

@@ -6,7 +6,8 @@
 // Global variable.
 extern struct_score_object global_score_object;
 
-//void engine_score_manager_init();
+void engine_score_manager_text();
+void engine_score_manager_init();
 void engine_score_manager_load();
 
 unsigned char engine_score_manager_get_candy();
@@ -25,8 +26,5 @@ void engine_score_manager_update_level();
 
 void engine_score_manager_reset_lives();
 void engine_score_manager_reset_boost();
-
-void engine_score_manager_draw_all();
-void engine_score_manager_draw_text();
 
 #endif//_SCORE_MANAGER_H_

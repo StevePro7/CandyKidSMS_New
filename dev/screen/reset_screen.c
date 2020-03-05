@@ -41,8 +41,7 @@ void screen_reset_screen_load()
 	//get_actor_data( actor_mover, actor_tileZ );
 
 	engine_score_manager_load();
-	engine_score_manager_draw_text();
-	engine_score_manager_draw_all();
+	//engine_score_manager_draw_all();
 	engine_score_manager_update_level();
 
 	engine_board_manager_draw_full();

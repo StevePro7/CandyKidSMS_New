@@ -35,7 +35,7 @@ static unsigned char value_y[] = { LIVES_Y + 1, LEVEL_Y + 1, BOOST_Y + 1, 22, 23
 static unsigned char title_Y[] = { TITLE_Y, TITLE_Y + 1, HIGHS_Y, SCORE_Y, LIVES_Y, LEVEL_Y, BOOST_Y, };
 
 // TODO need to split the reset functionality.
-static void reset();
+//static void reset();
 static void update_score( unsigned char points );
 static void update_lives( signed char value );
 
@@ -44,14 +44,39 @@ static void draw_highs();
 static void draw_score();
 static void draw_zero( unsigned char x, unsigned char y );
 
-//void engine_score_manager_init()
-//{
-//	reset();
-//}
+void engine_score_manager_init()
+{
+	struct_score_object *so = &global_score_object;
+	so->score = 0;
+	so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
+	//so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
+	//so->bonus = 0;
+	//so->candy = 0;
+	//so->total = 0;
+	//so->values[ score_type_boost ] = boost_X[ state_object_difficulty ];
+
+	draw_zero( DATA_X + 1, HIGHS_Y + 1 );
+	draw_zero( DATA_X + 1, SCORE_Y + 1 );
+	draw_highs();
+	draw_score();
+	draw_value( score_type_lives );
+}
 
 void engine_score_manager_load()
 {
-	reset();
+	struct_score_object *so = &global_score_object;
+	//so->score = 0;
+	//so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
+	so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
+	so->bonus = 0;
+	so->candy = 0;
+	//so->total = 0;
+	so->values[ score_type_boost ] = boost_X[ state_object_difficulty ];
+	//so->delay = 1 - state_object_difficulty;
+	//so->timer = 0;
+
+	draw_value( score_type_level );
+	draw_value( score_type_boost );
 }
 
 unsigned char engine_score_manager_get_candy()
@@ -145,23 +170,23 @@ void engine_score_manager_update_boost()
 
 	draw_value( score_type_boost );
 }
-void engine_score_manager_draw_all()
-{
-	struct_score_object *so = &global_score_object;
+//void engine_score_manager_draw_all()
+//{
+//	struct_score_object *so = &global_score_object;
+//
+//	draw_zero( DATA_X + 1, HIGHS_Y + 1 );
+//	draw_zero( DATA_X + 1, SCORE_Y + 1 );
+//	draw_highs();
+//	draw_score();
+//
+//	draw_value( score_type_lives );
+//	draw_value( score_type_level );
+//	draw_value( score_type_boost );
+//	draw_value( score_type_world );
+//	draw_value( score_type_round );
+//}
 
-	draw_zero( DATA_X + 1, HIGHS_Y + 1 );
-	draw_zero( DATA_X + 1, SCORE_Y + 1 );
-	draw_highs();
-	draw_score();
-
-	draw_value( score_type_lives );
-	draw_value( score_type_level );
-	draw_value( score_type_boost );
-	draw_value( score_type_world );
-	draw_value( score_type_round );
-}
-
-void engine_score_manager_draw_text()
+void engine_score_manager_text()
 {
 	const unsigned char *text;
 	unsigned char index;
@@ -173,6 +198,22 @@ void engine_score_manager_draw_text()
 		text = locale_object_texts[ index + 1 ];
 		engine_font_manager_draw_text( text, TEXT_X, title_Y[ index ] );
 	}
+}
+
+void engine_score_manager_draw_init()
+{
+		draw_zero( DATA_X + 1, HIGHS_Y + 1 );
+		draw_zero( DATA_X + 1, SCORE_Y + 1 );
+		draw_highs();
+		draw_score();
+		draw_value( score_type_lives );
+}
+void engine_score_manager_draw_load()
+{
+		draw_value( score_type_level );
+		draw_value( score_type_boost );
+		//draw_value( score_type_world );
+		//draw_value( score_type_round );
 }
 
 // Call this function on ro load level.
@@ -201,20 +242,20 @@ void engine_score_manager_reset_boost()
 	draw_value( score_type_boost );
 }
 
-static void reset()
-{
-	struct_score_object *so = &global_score_object;
-	so->score = 0;
-	so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
-	so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
-
-	so->bonus = 0;
-	so->candy = 0;
-	//so->total = 0;
-	so->values[ score_type_boost ] = boost_X[ state_object_difficulty ];
-	//so->delay = 1 - state_object_difficulty;
-	//so->timer = 0;
-}
+//static void reset()
+//{
+//	struct_score_object *so = &global_score_object;
+//	so->score = 0;
+//	so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
+//	so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
+//
+//	so->bonus = 0;
+//	so->candy = 0;
+//	//so->total = 0;
+//	so->values[ score_type_boost ] = boost_X[ state_object_difficulty ];
+//	//so->delay = 1 - state_object_difficulty;
+//	//so->timer = 0;
+//}
 
 static void update_score( unsigned char points )
 {

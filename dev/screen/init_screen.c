@@ -30,14 +30,14 @@ void screen_init_screen_load()
 	engine_board_manager_side_tile();
 
 	// Reset all score data.
-	engine_score_manager_load();
-	engine_score_manager_draw_text();
+	engine_score_manager_text();
+	engine_score_manager_init();
+	
 
 	devkit_SMS_displayOn();
 }
 
 void screen_init_screen_update( unsigned char *screen_type )
 {
-	*screen_type = screen_type_init;
-	//*screen_type = screen_type_load;
+	*screen_type = screen_type_load;
 }

@@ -116,7 +116,7 @@ void engine_hack_manager_invert()
 	state_object_sound_data = !state_object_sound_data;
 
 	// TODO delete this hard coded
-	//state_object_world_data = 10-1;
-	//state_object_round_data = 10-1;
+	state_object_world_data = 1-1;
+	state_object_round_data = 2-1;
 	// TODO delete this hard coded
 }

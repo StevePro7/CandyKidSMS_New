@@ -4,11 +4,11 @@ M init_screen
 O -mz80
 S _engine_memo_manager_clear Ref0000
 S _engine_board_manager_side_tile Ref0000
-S _engine_score_manager_load Ref0000
 S _engine_content_manager_load_sprites_game Ref0000
 S _devkit_SMS_displayOn Ref0000
 S _engine_board_manager_draw_full Ref0000
 S _engine_board_manager_draw_exit Ref0000
+S _engine_score_manager_init Ref0000
 S .__.ABS. Def0000
 S _state_object_mydebugger Ref0000
 S _engine_content_manager_load_tiles_game Ref0000
@@ -32,16 +32,16 @@ R 00 00 00 00
 T 00 00 CD 00 00 3A 00 00 B7 28 0C CD 00 00 CD
 R 00 00 00 00 02 03 0A 00 02 06 08 00 02 0C 0B 00
 T 0D 00 00 00 CD 00 00 CD 00 00
-R 00 00 00 00 02 02 0D 00 02 05 09 00 02 08 03 00
+R 00 00 00 00 02 02 0D 00 02 05 09 00 02 08 02 00
 T 15 00
 R 00 00 00 00
 T 15 00 CD 00 00 CD 00 00 CD 00 00 CD
-R 00 00 00 00 02 03 00 00 02 06 05 00 02 09 06 00
+R 00 00 00 00 02 03 00 00 02 06 04 00 02 09 05 00
 T 1F 00 00 00 CD 00 00 CD 00 00 C3
-R 00 00 00 00 02 02 01 00 02 05 02 00 02 08 0C 00
+R 00 00 00 00 02 02 01 00 02 05 06 00 02 08 0C 00
 T 28 00 00 00
-R 00 00 00 00 02 02 04 00
+R 00 00 00 00 02 02 03 00
 T 2A 00
 R 00 00 00 00
-T 2A 00 C1 E1 E5 C5 36 07 C9
+T 2A 00 C1 E1 E5 C5 36 08 C9
 R 00 00 00 00
