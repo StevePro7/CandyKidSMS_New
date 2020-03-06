@@ -244,3 +244,8 @@ block 2 	Suz		8, 9,10,11		ES, EF, HS, HF
 
 hands + timer will be an array of 3x values each: 1 per actor
 waits + timer
+
+
+Avoid Trees block kid
+Death trees kill Kid
+Funky trees serve no purpose; they just look funky
