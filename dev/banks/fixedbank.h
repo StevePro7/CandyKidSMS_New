@@ -2,6 +2,13 @@
 #define FIXED_BANK	15
 
 
+// Enemy Manager.
+extern const unsigned char enemy_object_speed[];
+//extern const unsigned char *enemy_object_delay[];
+//extern const unsigned char *enemy_object_hands[];
+//extern const unsigned char *enemy_object_waits[];
+//extern const unsigned char *enemy_object_paths[];
+
 // Locale Manager.
 extern const unsigned char *locale_object_texts[];
 extern const unsigned char *locale_object_blank[];

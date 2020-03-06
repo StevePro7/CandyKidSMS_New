@@ -9,6 +9,17 @@
 #include "..\engine\locale_manager.h"
 
 
+// Enemy Manager.
+// Pro: ES, EF, HS, HF
+const unsigned char enemy_object_speed[] =
+{
+//Pro: ES,EF,HS,HF
+		1, 2, 3, 4,
+		5, 6, 7, 8,
+		9,10,11,12,
+};
+
+// Locale Manager.
 const unsigned char *locale_object_texts[] =
 {
 	"V1.0",

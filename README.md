@@ -1,7 +1,6 @@
 # CandyKidSMS_New
 New Candy Kid for the Sega Master System
 
-
 14/02/2020
 move manager
 storage manager integrate w/o the commands save??
@@ -221,3 +220,27 @@ Play
 Dead / Cont	if easy then reset enemy scatter else hard leave as is
 Over
 NB: during death sequence can hold down and hold fire2 for 5s to quit out game
+
+
+06/03/2020
+enemy data variables
+easy
+hard
+slow
+fast
+
+diff * 2 + pace
+0, 0 = 0		easy + slow		0 * 2 + 0 = 0
+0, 1 = 1		easy + fast		0 * 2 + 1 = 1
+1, 0 = 2		hard + slow		1 * 2 + 0 = 2
+1, 1 = 3		hard + fast		1 * 2 + 1 = 3
+
+then have 12x entries:
+3x enemies * 4x permutations [above]
+block 0 	Pro		0, 1, 2, 3		ES, EF, HS, HF
+block 1 	Adi		4, 5, 6, 7		ES, EF, HS, HF
+block 2 	Suz		8, 9,10,11		ES, EF, HS, HF
+
+
+hands + timer will be an array of 3x values each: 1 per actor
+waits + timer
