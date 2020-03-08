@@ -275,7 +275,7 @@ void engine_enemy_manager_stop( unsigned char enemy )
 		//TODO delete
 		if( 0 == eo->action )
 		{
-			engine_font_manager_draw_text( "XCATTR", 26, 21 );
+			engine_font_manager_draw_text( "SCATTR", 26, 21 );
 		}
 		if( 1 == eo->action )
 		{

@@ -70,7 +70,7 @@ void screen_load_screen_update( unsigned char *screen_type )
 	engine_gamer_manager_draw();
 
 	delay = engine_delay_manager_update();
-	input = engine_input_manager_hold( input_type_fire1 );
+	input = devkit_SMS_getKeysStatus();
 	if( delay || input )
 	{
 		engine_level_manager_draw_middle();

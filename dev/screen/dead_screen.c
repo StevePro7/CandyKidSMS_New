@@ -9,8 +9,8 @@
 #include "..\engine\input_manager.h"
 #include "..\engine\score_manager.h"
 #include "..\engine\tile_manager.h"
-#include "..\banks\databank.h"
 #include "..\engine\timer_manager.h"
+#include "..\banks\databank.h"
 
 #define DEATH_SCREEN_DELAY		150
 #define FLASH_SCREEN_DELAY		20
@@ -32,6 +32,10 @@ void screen_dead_screen_load()
 	engine_audio_manager_music_stop();
 
 	engine_command_manager_load();
+	engine_frame_manager_load();
+
+	//engine_frame_manager_draw();
+	//engine_delay_manager_draw();
 
 	// TODO play death sound FX
 	engine_delay_manager_load( DEATH_SCREEN_DELAY );

@@ -15,8 +15,8 @@
 #include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
-#include "..\banks\databank.h"
 #include "..\devkit\_sms_manager.h"
+#include "..\banks\databank.h"
 
 // IMPORTANT disable compiler warning 110
 #ifdef _CONSOLE
@@ -32,11 +32,13 @@ void screen_play_screen_load()
 {
 	engine_delay_manager_load( 0 );
 
+	engine_command_manager_load();
+	engine_frame_manager_load();
 
-	engine_frame_manager_draw();
-	engine_delay_manager_draw();
+	//engine_frame_manager_draw();
+	//engine_delay_manager_draw();
 
-	engine_font_manager_draw_text( "ZCATTR", 26, 21 );
+	engine_font_manager_draw_text( "SCATTR", 26, 21 );
 	first_time = 1;
 	frame_spot = 0;
 }
@@ -232,6 +234,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Kid collide with Candy Mama?
 	gamer_collision = devkit_isCollisionDetected();
+	engine_font_manager_draw_data( gamer_collision, 2, 0 );
 	if( 0 != gamer_collision )
 	{
 		state_object_actor_kill = engine_collision_manager_sprite_collision();
