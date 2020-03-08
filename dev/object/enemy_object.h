@@ -29,7 +29,7 @@ typedef struct tag_struct_enemy_object
 	unsigned char swaps;
 	unsigned char loops;
 	unsigned char lifecycle;
-	//unsigned char prev_move[ 4 ];	// Previous direction moved.
+	unsigned char prev_moves[ 4 ];	// Previous direction moved.
 	unsigned char prev_move;	// Previous direction moved.
 	unsigned char direction;	// Current  direction moved.
 	//unsigned char dir_fours;
