@@ -1,10 +1,10 @@
 #include "cont_screen.h"
-//#include "..\engine\board_manager.h"
 #include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
+#include "..\engine\level_manager.h"
 #include "..\engine\locale_manager.h"
 #include "..\engine\memo_manager.h"
 #include "..\engine\score_manager.h"
@@ -38,17 +38,21 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	unsigned char delay;
 
 	// Draw sprites first.
-	engine_enemy_manager_draw();
-	engine_gamer_manager_draw_death( 0 );
+	//engine_enemy_manager_draw();
+	//engine_gamer_manager_draw_death( 0 );
 
 	if( event_stage_pause == event_stage )
 	{
+		engine_enemy_manager_draw();
+		engine_gamer_manager_draw_death( 0 );
+
 		delay = engine_delay_manager_update();
 		if( delay )
 		{
 			if( 0 == cursor )
 			{
 				engine_score_manager_reset_lives();
+				engine_level_manager_draw_middle();
 				*screen_type = screen_type_ready;
 				return;
 			}
@@ -64,6 +68,10 @@ void screen_cont_screen_update( unsigned char *screen_type )
 			return;
 		}
 	}
+
+	// Draw sprites first.
+	engine_enemy_manager_draw();
+	engine_gamer_manager_draw_death( 0 );
 
 	input[ 0 ] = engine_input_manager_hold( input_type_left );
 	input[ 1 ] = engine_input_manager_hold( input_type_right );

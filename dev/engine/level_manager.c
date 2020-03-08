@@ -145,6 +145,7 @@ void engine_level_manager_draw_level()
 			{
 				continue;
 			}
+
 			draw_tiles( col, row );
 		}
 	}

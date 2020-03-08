@@ -13,15 +13,25 @@
 
 void screen_over_screen_load()
 {
+	unsigned char x = SCREEN_TILE_LEFT + LFT_SIDE_X + 8;
+	unsigned char y = TOP_SIDE_Y + 10;
+
 	// TODO play game over music.
 	engine_delay_manager_load( OVER_SCREEN_DELAY );
-	engine_memo_manager_draw( 24, 25 );
+	//engine_memo_manager_draw( 24, 25 );
+
+	engine_locale_manager_draw_text( 24, x, y + 1 );
+	engine_locale_manager_draw_text( 25, x, y + 2 );
 }
 
 void screen_over_screen_update( unsigned char *screen_type )
 {
 	unsigned char input;
 	unsigned char delay;
+
+	// Draw sprites first.
+	//engine_enemy_manager_draw();
+	//engine_gamer_manager_draw_death( 0 );
 
 	input = engine_input_manager_hold( input_type_fire1 );
 	delay = engine_delay_manager_update();
