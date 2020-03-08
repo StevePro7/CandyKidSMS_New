@@ -50,10 +50,6 @@ void engine_enemy_manager_init()
 		eo->total = 0;
 		eo->mover = 1;		// 1=move 0=stay.
 		eo->lifecycle = lifecycle_type_idle;
-		eo->prev_moves[ 0 ] = direction_type_none;
-		eo->prev_moves[ 1 ] = direction_type_none;
-		eo->prev_moves[ 2 ] = direction_type_none;
-		eo->prev_moves[ 3 ] = direction_type_none;
 		eo->prev_move = direction_type_none;
 		eo->direction = direction_type_none;
 		eo->dir_count = 0;
@@ -246,10 +242,6 @@ void engine_enemy_manager_stop( unsigned char enemy )
 	//eo->prev_move[ 2 ] = eo->prev_move[ 1 ];
 	//eo->prev_move[ 1 ] = eo->prev_move[ 0 ];
 	//eo->prev_move[ 0 ] = eo->direction;
-
-	// Complete move so increment loop.
-	eo->prev_moves[ eo->loops ] = eo->direction;
-	eo->loops++;
 	eo->prev_move = eo->direction;
 	eo->direction = direction_type_none;
 	//eo->frame = 0;		// TODO remove as this is done in gohands()
@@ -260,7 +252,7 @@ void engine_enemy_manager_stop( unsigned char enemy )
 	eo->ticker++;
 	if( eo->ticker >= toggle )
 	{
-		eo->action = 1 - eo->action;			// stevepro revert after testing
+		//eo->action = 1 - eo->action;			// stevepro revert after testing
 		eo->ticker = 0;
 
 		//TODO delete
@@ -289,8 +281,6 @@ void engine_enemy_manager_dead( unsigned char enemy )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	eo->lifecycle = lifecycle_type_dead;
-	
-	eo->prev_moves[ eo->loops ] = eo->direction;
 	eo->prev_move = eo->direction;
 	eo->direction = direction_type_none;
 	//eo->frame = frame_type_stance;
@@ -399,7 +389,7 @@ unsigned char engine_enemy_manager_gohome_direction( unsigned char enemy )
 	return enemy_direction;
 }
 
-unsigned char engine_enemy_manager_attack_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY)
+unsigned char engine_enemy_manager_attack_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	struct_enemy_object *eo0;
@@ -422,10 +412,7 @@ unsigned char engine_enemy_manager_attack_direction( unsigned char enemy, unsign
 
 		// Look two tiles in front on Candy Kid.
 		//engine_level_manager_get_next_index( &targetX, &targetY, gamer_direction, offset_type_two );
-
-		engine_level_manager_get_next_index( &targetX, &targetY, eo->prev_move, offset_type_two );			// adriana
-		//engine_level_manager_get_next_index( &targetX, &targetY, eo->prev_moves[ eo->loops ], offset_type_two );
-		
+		engine_level_manager_get_next_index( &targetX, &targetY, eo->prev_move, offset_type_two );
 		enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
 	}
 	//else
@@ -505,8 +492,8 @@ unsigned char engine_enemy_manager_attack_direction2( unsigned char enemy, unsig
 		//// TODO while loop if Pro not moving then don't add AND if Adi not moving then don't add
 		//if( 2 != coin )
 		//{
-			targetX = eo0->tileX;
-			targetY = eo0->tileY;
+		targetX = eo0->tileX;
+		targetY = eo0->tileY;
 		//}
 
 		//// Look two tiles in front on Candy Kid.
@@ -591,24 +578,7 @@ unsigned char engine_enemy_manager_what_direction( unsigned char enemy, unsigned
 	//unsigned char byte = 0;
 	unsigned char list = 0;
 	unsigned char half = 0;
-	//unsigned char flip = 0;
-
-
-	// Every 4th direction check to see if previously looped and choose random direction to prevent infinite looping!
-	if( 4 == eo->loops )
-	{
-		//eo->loops = 0;
-		if( 15 == ( eo->prev_moves[ 0 ] + eo->prev_moves[ 1 ] + eo->prev_moves[ 2 ] + eo->prev_moves[ 3 ] ) )
-		{
-			//engine_font_manager_draw_data( targetX, 30, 0 );
-			//engine_font_manager_draw_data( targetY, 30, 1 );
-			targetX = rand() % 14;
-			targetY = rand() % 14;
-			//engine_font_manager_draw_data( targetX, 30, 2 );
-			//engine_font_manager_draw_data( targetY, 30, 3 );
-		}
-	}
-
+	unsigned char flip = 0;
 
 	// Get the list of 4x possible directions in the order depending on tiles.
 	engine_move_manager_get_directions( sourceX, sourceY, targetX, targetY, &list, &half );
@@ -631,8 +601,6 @@ unsigned char engine_enemy_manager_what_direction( unsigned char enemy, unsigned
 	//}
 	// TODO randomly flip the half = 1 - half??
 
-
-
 	index = list * 2 * NUM_DIRECTIONS + half * NUM_DIRECTIONS;
 
 	// TODO fixed bank - change to data bank!!
@@ -643,56 +611,30 @@ unsigned char engine_enemy_manager_what_direction( unsigned char enemy, unsigned
 
 	//prev_direction = eo->prev_move[ 3 ];
 	//oppX_direction = engine_move_manager_opposite_direction( eo->prev_move[ 0 ] );
-
 	oppX_direction = engine_move_manager_opposite_direction( eo->prev_move );
-	//oppX_direction = engine_move_manager_opposite_direction( eo->prev_moves[ eo->loops ] );
 	available = engine_level_manager_get_direction( sourceX, sourceY, direction_type_none, offset_type_none );
 
-	// Every 4th direction take the other half to try and prevent infinite looping!
-	//if( 4 == eo->loops )
-	//{
-	//	eo->loops = 0;
-	//	while( 1 )
-	//	{
-	//		index = rand() % 4;
-	//		test_direction = directions[ index ];
-	//		if( test_direction == ( available & test_direction ) )
-	//		{
-	//			move_direction = test_direction;
-	//			break;
-	//		}
-	//	}
-
-	//	if( direction_type_none != move_direction )
-	//	{
-	//		return move_direction;
-	//	}
-	//}
-	//else
-	//{
-		for( index = 0; index < NUM_DIRECTIONS; index++ )
+	for( index = 0; index < NUM_DIRECTIONS; index++ )
+	{
+		test_direction = directions[ index ];
+		if( oppX_direction == test_direction )
 		{
-			test_direction = directions[ index ];
-			if( oppX_direction == test_direction )
-			{
-				continue;
-			}
-
-			if( test_direction == ( available & test_direction ) )
-			{
-				move_direction = test_direction;
-				break;
-			}
-
-			//collision = engine_level_manager_get_collision( sourceX, sourceY, test_direction, offset_type_one );
-			//if( coll_type_empty == collision )
-			//{
-			//	move_direction = test_direction;
-			//	break;
-			//}
+			continue;
 		}
-	//}
 
+		if( test_direction == ( available & test_direction ) )
+		{
+			move_direction = test_direction;
+			break;
+		}
+
+		//collision = engine_level_manager_get_collision( sourceX, sourceY, test_direction, offset_type_one );
+		//if( coll_type_empty == collision )
+		//{
+		//	move_direction = test_direction;
+		//	break;
+		//}
+	}
 
 	// TODO delete as back up of the code...
 	//oppX_direction = engine_move_manager_opposite_direction( eo->prev_move );
@@ -713,48 +655,16 @@ unsigned char engine_enemy_manager_what_direction( unsigned char enemy, unsigned
 	//	}
 	//}
 
-
-	// Every 4th direction check to see if previously looped and choose random direction to prevent infinite looping!
-		if( 4 == eo->loops )
-		{
-			eo->loops = 0;
-			if( 15 == ( eo->prev_moves[ 0 ] + eo->prev_moves[ 1 ] + eo->prev_moves[ 2 ] + eo->prev_moves[ 3 ] ) )
-			{
-				while( 1 )
-				{
-					index = rand() % 4;
-					test_direction = directions[ index ];
-					if( eo->prev_moves[ 0 ] == test_direction )
-					{
-						continue;
-					}
-
-					if( test_direction == ( available & test_direction ) )
-					{
-						move_direction = test_direction;
-						break;
-					}
-				}
-
-				if( direction_type_none != move_direction )
-				{
-					return move_direction;
-				}
-			}
-		}
-
-
 	// Enemy in cul de sac so must be able to go in opposite direction!
 	if( direction_type_none == move_direction )
 	{
 		//collision = engine_level_manager_get_collision( sourceX, sourceY, oppX_direction, offset_type_one );
 		//if( coll_type_empty == collision )
 		//{
-			move_direction = oppX_direction;
+		move_direction = oppX_direction;
 		//}
 	}
 
-	
 	return move_direction;
 }
 

@@ -310,7 +310,7 @@ static void draw_value( unsigned char index )
 	struct_score_object *so = &global_score_object;
 	unsigned char y_val = value_y[ index ];
 	unsigned char value = 0;
-	
+
 	if( index < score_type_world )
 	{
 		value = so->values[ index ];
@@ -324,7 +324,16 @@ static void draw_value( unsigned char index )
 		value = state_object_round_data + 1;
 	}
 
-	engine_font_manager_draw_data( value, DATA_X + 1, y_val );
+	// HACK to workaround side tile for exit.
+	if( score_type_level == index && exit_type_public == state_object_exits_type )
+	{
+		engine_font_manager_draw_data4( value, DATA_X + 1, y_val );
+	}
+	else
+	{
+		engine_font_manager_draw_data( value, DATA_X + 1, y_val );
+	}
+
 	if( value < 10 )
 	{
 		draw_zero( DATA_X + 0, y_val );
