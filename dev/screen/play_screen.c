@@ -36,7 +36,7 @@ void screen_play_screen_load()
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
 
-	engine_font_manager_draw_text( "SCATTR", 26, 21 );
+	engine_font_manager_draw_text( "ZCATTR", 26, 21 );
 	first_time = 1;
 	frame_spot = 0;
 }
@@ -174,20 +174,18 @@ void screen_play_screen_update( unsigned char *screen_type )
 			{
 				if( frame >= eo->waiter )
 				{
-					engine_enemy_manager_reset_mode( enemy, enemymove_type_tour );
-					//eo->action = enemymove_type_tour;
+					//engine_enemy_manager_reset_mode( enemy, enemymove_type_tour );
+					engine_enemy_manager_reset_mode( enemy, enemymove_type_kill );		// stevepro
 				}
 			}
 
 			if( enemymove_type_tour == eo->action )
 			{
 				enemy_direction = engine_enemy_manager_scatter_direction( enemy );
-				//eo->action = enemymove_type_kill;
 			}
 			else if( enemymove_type_kill == eo->action )
 			{
 				enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY );
-				//eo->action = enemymove_type_home;
 			}
 
 			if( direction_type_none != enemy_direction )

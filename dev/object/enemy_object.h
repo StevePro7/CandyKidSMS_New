@@ -27,6 +27,7 @@ typedef struct tag_struct_enemy_object
 	unsigned char mover;		// Flag when enemy can moves.
 	unsigned char hands;		// Delay when swap hand over.
 	unsigned char swaps;
+	unsigned char loops;
 	unsigned char lifecycle;
 	//unsigned char prev_move[ 4 ];	// Previous direction moved.
 	unsigned char prev_move;	// Previous direction moved.
