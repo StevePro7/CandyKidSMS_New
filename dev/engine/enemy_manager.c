@@ -631,6 +631,19 @@ unsigned char engine_enemy_manager_what_direction( unsigned char enemy, unsigned
 	oppX_direction = engine_move_manager_opposite_direction( eo->prev_move );
 	available = engine_level_manager_get_direction( sourceX, sourceY, direction_type_none, offset_type_none );
 
+
+	// TODO - fully regression test potential infinite looping.
+	//test_direction = eo->prev_move;
+	//if( oppX_direction != test_direction )
+	//{
+	//	if( test_direction == ( available & test_direction ) )
+	//	{
+	//		move_direction = test_direction;
+	//		return move_direction;
+	//	}
+	//}
+
+
 	for( index = 0; index < NUM_DIRECTIONS; index++ )
 	{
 		test_direction = directions[ index ];

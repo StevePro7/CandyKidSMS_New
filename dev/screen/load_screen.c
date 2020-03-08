@@ -48,6 +48,7 @@ void screen_load_screen_load()
 	//devkit_SMS_displayOff();
 	engine_level_manager_load_level( state_object_world_data, state_object_round_data );
 	engine_level_manager_update_level( state_object_round_data, actor_mover, actor_tileZ );
+	//engine_level_manager_draw_level();
 	engine_level_manager_draw_level();
 	//devkit_SMS_displayOn();
 

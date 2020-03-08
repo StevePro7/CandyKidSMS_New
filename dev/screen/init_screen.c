@@ -9,6 +9,8 @@
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\databank.h"
 
+#include "..\engine\level_manager.h"
+
 void screen_init_screen_load()
 {
 	devkit_SMS_displayOff();

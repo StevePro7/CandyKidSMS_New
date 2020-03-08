@@ -136,25 +136,52 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 
 void engine_level_manager_draw_level()
 {
-	draw_level( 0, MAX_ROWS, 0, MAX_COLS );
+	unsigned char row, col;
+	for( row = 0; row < MAX_ROWS; row++ )
+	{
+		for( col = 0; col < MAX_COLS; col++ )
+		{
+			if( row >= 3 && row < 7 && col >= 2 && col < 8 )
+			{
+				continue;
+			}
+			draw_tiles( col, row );
+		}
+	}
 }
 void engine_level_manager_draw_middle()
 {
-	// TODO define...!!
-	// beg_row, unsigned char end_row, unsigned char beg_col, unsigned char end_col
-	draw_level( 3, 7, 2, 8 );
-}
-static void draw_level( unsigned char beg_row, unsigned char end_row, unsigned char beg_col, unsigned char end_col )
-{
 	unsigned char row, col;
-	for( row = beg_row; row < end_row; row++ )
+	for( row = 3; row < 7; row++ )
 	{
-		for( col = beg_col; col < end_col; col++ )
+		for( col = 2; col < 8; col++ )
 		{
 			draw_tiles( col, row );
 		}
 	}
 }
+
+//void engine_level_manager_draw_level()
+//{
+//	draw_level( 0, MAX_ROWS, 0, MAX_COLS );
+//}
+//void engine_level_manager_draw_middle()
+//{
+//	// TODO define...!!
+//	 beg_row, unsigned char end_row, unsigned char beg_col, unsigned char end_col
+//	draw_level( 3, 7, 2, 8 );
+//}
+//static void draw_level( unsigned char beg_row, unsigned char end_row, unsigned char beg_col, unsigned char end_col )
+//{
+//	unsigned char row, col;
+//	for( row = beg_row; row < end_row; row++ )
+//	{
+//		for( col = beg_col; col < end_col; col++ )
+//		{
+//			draw_tiles( col, row );
+//		}
+//	}
+//}
 
 
 void engine_level_manager_beat_level( const unsigned char *data, const unsigned char size, const unsigned char bank )
