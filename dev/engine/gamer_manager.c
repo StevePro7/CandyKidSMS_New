@@ -292,6 +292,10 @@ void engine_gamer_manager_reset()
 	go->total = 0;
 	go->frame = frame_type_stance;
 
+	go->prev_boost = pace_type_slow;
+	go->curr_boost = pace_type_slow;
+	engine_gamer_manager_pace( go->curr_boost );
+
 	calcd_frame();
 	calcd_spots();
 }
