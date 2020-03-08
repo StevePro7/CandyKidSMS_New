@@ -11,8 +11,11 @@
 #include "..\banks\databank.h"
 
 //#define PASS_SCREEN_DELAY	50
-#define PASS_SCREEN_DELAY1	125
-#define PASS_SCREEN_DELAY2	250
+#define PASS_SCREEN_DELAY1	25
+//#define PASS_SCREEN_DELAY2	250
+#define PASS_SCREEN_DELAY2	125
+
+static void next_level();
 
 static unsigned char event_stage;
 static unsigned char perfect;
@@ -26,7 +29,7 @@ void screen_pass_screen_load()
 	engine_gamer_manager_draw();
 
 	state_object_curr_screen = screen_type_pass;
-	state_object_next_screen = screen_type_ready;
+	state_object_next_screen = screen_type_load;
 
 	engine_delay_manager_load( PASS_SCREEN_DELAY1 );
 	engine_audio_manager_music_stop();
@@ -49,7 +52,9 @@ void screen_pass_screen_update( unsigned char *screen_type )
 		input = engine_input_manager_hold( input_type_fire2 );
 		if( delay || input )
 		{
+			next_level();
 			*screen_type = state_object_next_screen;
+			return;
 		}
 		else
 		{
@@ -89,4 +94,21 @@ void screen_pass_screen_update( unsigned char *screen_type )
 	}
 
 	*screen_type = state_object_curr_screen;
+}
+
+static void next_level()
+{
+	// TODO  here is where we check to go to boss level if there are any!!
+	state_object_round_data++;
+	if( state_object_round_data >= MAX_ROUNDS )
+	{
+		state_object_round_data = 0;
+
+		state_object_world_data++;
+		if( state_object_world_data >= MAX_WORLDS )
+		{
+			state_object_world_data = 0;
+			state_object_next_screen = screen_type_beat;
+		}
+	}
 }

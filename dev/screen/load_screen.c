@@ -37,6 +37,9 @@ void screen_load_screen_load()
 	engine_score_manager_load();
 
 	// Set all actor variables.
+	engine_enemy_manager_reset_home();
+	engine_gamer_manager_reset();
+
 	engine_gamer_manager_load();
 	engine_enemy_manager_load();
 	engine_actor_manager_get_data( actor_mover, actor_tileZ );
@@ -52,6 +55,9 @@ void screen_load_screen_load()
 	//engine_audio_manager_music_play( music_type_game03 );
 }
 
+// TODO - could split this into 2x sections
+// 1st is slight pause	50
+// 2nd can move: start 100
 void screen_load_screen_update( unsigned char *screen_type )
 {
 //	engine_memo_manager_draw
@@ -96,5 +102,4 @@ static void print_level()
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	engine_font_manager_draw_text( locale_object_texts[ 8 ], SCREEN_TILE_LEFT + 8, 11 );
 	engine_font_manager_draw_text( locale_object_texts[ 9 ], SCREEN_TILE_LEFT + 8, 12 );
-
 }
