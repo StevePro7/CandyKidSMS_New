@@ -11,10 +11,10 @@
 //#define DATA_X		SCREEN_TILE_LEFT + 28
 
 #define TITLE_Y		0
-#define HIGHS_Y		4
-#define SCORE_Y		8
-#define LIVES_Y		12
-#define LEVEL_Y		15
+#define HIGHS_Y		0
+#define SCORE_Y		4
+#define LIVES_Y		9
+#define LEVEL_Y		13
 #define BOOST_Y		18
 #define TEXTS_Y		22
 #define WORLD_Y		22

@@ -38,7 +38,7 @@ void screen_play_screen_load()
 	//engine_frame_manager_draw();
 	//engine_delay_manager_draw();
 
-	engine_font_manager_draw_text( "SCATTR", 26, 21 );
+	//engine_font_manager_draw_text( "SCATTR", 26, 21 );
 	first_time = 1;
 	frame_spot = 0;
 }

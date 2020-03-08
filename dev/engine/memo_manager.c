@@ -88,5 +88,6 @@ void engine_memo_manager_option()
 		engine_font_manager_draw_text( text, TEXT_X, dataY + 1 );
 	}
 
-	engine_font_manager_draw_text( "&", TEXT_X, dataY + 1 );
+	// TODO did I want this??
+	//engine_font_manager_draw_text( "&", TEXT_X, dataY + 1 );
 }
