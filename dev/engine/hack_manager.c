@@ -69,12 +69,12 @@ void engine_hack_manager_invert()
 	state_object_invincibie = 1;
 
 	state_object_enemy_move[ actor_type_pro ] = 1;
-	//state_object_enemy_move[ actor_type_adi ] = 1;
-	//state_object_enemy_move[ actor_type_suz ] = 1;
+	state_object_enemy_move[ actor_type_adi ] = 1;
+	state_object_enemy_move[ actor_type_suz ] = 1;
 
 	//state_object_enemy_move[ actor_type_pro ] = 0;
-	state_object_enemy_move[ actor_type_adi ] = 0;
-	state_object_enemy_move[ actor_type_suz ] = 0;
+	//state_object_enemy_move[ actor_type_adi ] = 0;
+	//state_object_enemy_move[ actor_type_suz ] = 0;
 
 	state_object_mydebugger = 0;
 	state_object_full_boost = 0;
@@ -114,7 +114,7 @@ void engine_hack_manager_invert()
 
 	// Invert default values.
 	// TODO revert this code to play music + sound FX.
-	//state_object_music_data = !state_object_music_data;
+	state_object_music_data = !state_object_music_data;
 	//state_object_sound_data = !state_object_sound_data;
 	// TODO revert this code to play music + sound FX.
 
