@@ -48,7 +48,7 @@ void screen_beat_screen_load()
 	walking_count = 0;
 	//first_time = 1;
 
-	engine_audio_manager_music_stop();
+	engine_gamer_manager_reset();
 	engine_audio_manager_music_play_norepeat( music_type_beatgame );
 }
 
@@ -66,6 +66,8 @@ void screen_beat_screen_update( unsigned char *screen_type )
 	if( delay || input )
 	{
 		engine_audio_manager_music_stop();
+		state_object_world_data = 0;
+		state_object_round_data = 0;
 		*screen_type = state_object_next_screen;
 		return;
 	}
