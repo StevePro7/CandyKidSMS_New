@@ -123,9 +123,11 @@ void engine_enemy_manager_load()
 		}
 
 		// TODO look up frame swaps from array in data bank that gets faster as the levels progress...!
+		index = 4 * enemy + state_object_difficulty * 2 + state_object_pace_speed;
+
 		eo->hands = 0;
-		eo->swaps = 50;			//// 50 frames
-		
+		//eo->swaps = 50;			//// 50 frames
+		eo->swaps = enemy_object_hands[ index ];
 
 		//eo->waiter = 64;		// 50 frames
 		//eo->waiter = 80;		// 50 frames
@@ -135,9 +137,22 @@ void engine_enemy_manager_load()
 		eo->ticker = 0;
 		eo->action = enemymove_type_wait;
 
+		// stevepro:
+		// will use game speed to determine enemy speeds just like gamer [for consistency]
+		// need to wire this up in the when change scatter to attack mode [only for hard?]
+		// will need to use difficulty for wait / tour / kill durations...
 
-		eo->speed = 2;
-		eo->delay = 1;
+		//eo->speed = 2;
+		//eo->delay = 1;
+
+		index = 4 * enemy + state_object_pace_speed * 2;
+		eo->speeds[ 0 ] = enemy_object_speed[ index + 0 ];
+		eo->delays[ 0 ] = enemy_object_delay[ index + 0 ];
+		eo->speeds[ 1 ] = enemy_object_speed[ index + 1 ];
+		eo->delays[ 1 ] = enemy_object_delay[ index + 1 ];
+
+		eo->speed = eo->speeds[ 0 ];// 1;
+		eo->delay = eo->delays[ 0 ];// 8;
 	}
 }
 

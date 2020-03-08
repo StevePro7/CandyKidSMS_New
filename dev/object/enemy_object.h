@@ -17,12 +17,14 @@ typedef struct tag_struct_enemy_object
 	unsigned char action;		// Current action: W / T / K.
 	unsigned char scatter[ NUM_DIRECTIONS ];
 	unsigned char paths;		// Track enemy scatter paths.
-	unsigned char velocity[ 2 ];
-	unsigned char boost;
+	//unsigned char velocity[ 2 ];
+	//unsigned char boost;
+	unsigned char speeds[ 2 ];
+	unsigned char delays[ 2 ];
 	unsigned char speed;
 	unsigned char delay;
 	unsigned char timer;
-	unsigned char delta;		
+	unsigned char delta;
 	unsigned char total;
 	unsigned char mover;		// Flag when enemy can moves.
 	unsigned char hands;		// Delay when swap hand over.

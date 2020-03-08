@@ -14,15 +14,29 @@
 const unsigned char enemy_object_speed[] =
 {
 //Pro: ES,EF,HS,HF
-		1, 2, 3, 4,
-		5, 6, 7, 8,
-		9,10,11,12,
+		2, 3, 1, 3,
+		1, 2, 3, 1,
+		1, 1, 2, 3,
+};
+const unsigned char enemy_object_delay[] =
+{
+//Pro:  ES,EF,HS,HF
+		3, 3, 1, 2,
+		2, 3, 3, 1,
+		3, 2, 3, 3,
+};
+
+const unsigned char enemy_object_hands[] = 
+{
+	100, 90, 80, 70,
+	120, 110, 100, 90,
+	140, 130, 120, 100
 };
 
 
 // Gamer Manager.
-const unsigned char gamer_object_speed[] = { 1, 2, 2, 3 };
-const unsigned char gamer_object_delay[] = { 1, 1, 1, 1 };
+const unsigned char gamer_object_speed[] = { 1, 2, 3, 3 };
+const unsigned char gamer_object_delay[] = { 1, 1, 2, 1 };
 
 
 // Locale Manager.
