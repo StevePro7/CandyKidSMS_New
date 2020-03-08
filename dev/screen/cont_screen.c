@@ -10,7 +10,7 @@
 #include "..\engine\score_manager.h"
 #include "..\engine\timer_manager.h"
 
-#define CONT_SCREEN_DELAY	50
+#define CONT_SCREEN_DELAY	10
 #define CONT_X				10
 #define TEXT_Y				11
 #define OPT1_X				CONT_X + 0

@@ -31,6 +31,11 @@ void screen_title_screen_load()
 		engine_font_manager_draw_text( LOCALE_BLANK_WIDTH, SCREEN_TILE_LEFT + 2, row );
 	}
 
+	engine_font_manager_draw_text( " ", SCREEN_TILE_LEFT - 1, 6 );
+	engine_font_manager_draw_text( " ", SCREEN_TILE_LEFT - 1, 7 );
+	engine_font_manager_draw_text( " ", SCREEN_TILE_LEFT - 1, 16 );
+	engine_font_manager_draw_text( " ", SCREEN_TILE_LEFT - 1, 17 );
+
 	//engine_locale_manager_draw_text( LOCALE_BUILD_VERSION, SCREEN_TILE_LEFT + 24, 21 );
 	engine_locale_manager_draw_text( 0, SCREEN_TILE_LEFT + 24, 21 );
 	//engine_font_manager_draw_text( LOCALE_BUILD_VERSION, SCREEN_TILE_LEFT + 24, 21 );
