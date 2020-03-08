@@ -87,7 +87,7 @@ void engine_score_manager_load()
 	so->bonus = 0;
 	so->candy = 0;
 	//so->total = 0;
-	so->values[ score_type_boost ] = boost_X[ state_object_difficulty ];
+	so->values[ score_type_boost ] = boost_X[ state_object_pace_speed ];
 	//so->delay = 1 - state_object_difficulty;
 	//so->timer = 0;
 
@@ -179,10 +179,10 @@ void engine_score_manager_update_boost()
 
 	// TODO set enum or #define for this magic no.
 	// TODO Easy = 200  Hard = 100 boost value!
-	if( 0 == so->values[ score_type_boost ] % 10 )
-	{
+	//if( 0 == so->values[ score_type_boost ] % 10 )
+	//{
 	//	draw_value( score_type_boost );
-	}
+	//}
 
 	draw_value( score_type_boost );
 }

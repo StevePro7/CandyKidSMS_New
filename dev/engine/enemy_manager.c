@@ -44,6 +44,7 @@ void engine_enemy_manager_init()
 
 		eo->speed = 1;		// TODO hardcoded - inject!
 		eo->delay = 4;		// TODO hardcoded - inject!
+
 		eo->paths = 0;
 		eo->timer = 0;
 		eo->delta = 0;
@@ -91,6 +92,9 @@ void engine_enemy_manager_load()
 			continue;
 		}
 
+		eo->loops = 0;
+
+		// Determine scatter tiles.
 		check = enemy;
 		for( index = 0; index < NUM_DIRECTIONS; index++ )
 		{
@@ -121,7 +125,7 @@ void engine_enemy_manager_load()
 		// TODO look up frame swaps from array in data bank that gets faster as the levels progress...!
 		eo->hands = 0;
 		eo->swaps = 50;			//// 50 frames
-		eo->loops = 0;
+		
 
 		//eo->waiter = 64;		// 50 frames
 		//eo->waiter = 80;		// 50 frames

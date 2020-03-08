@@ -222,6 +222,4 @@ static void reset_death()
 	//{
 	//	engine_enemy_manager_reset( enemy, enemymove_type_tour );
 	//}
-
-	//engine_gamer_manager_reset();
 }

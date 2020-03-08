@@ -71,7 +71,7 @@ void engine_gamer_manager_init()
 void engine_gamer_manager_load()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	unsigned char index = state_object_difficulty * 2;
+	unsigned char index = state_object_pace_speed * 2;
 
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	go->speeds[ 0 ] = gamer_object_speed[ index + 0 ];
@@ -288,6 +288,8 @@ void engine_gamer_manager_reset()
 
 	go->lifecycle = lifecycle_type_idle;
 	go->direction = direction_type_none;
+	go->delta = 0;
+	go->total = 0;
 	go->frame = frame_type_stance;
 
 	calcd_frame();
