@@ -30,7 +30,7 @@
 struct_score_object global_score_object;
 
 static unsigned char bonuses[] = { 10, 20, 40, 80, 200 };
-static unsigned char boost_X[] = { 200, 100 };
+static unsigned char boost_X[] = { 100, 100 };
 static unsigned char value_y[] = { LIVES_Y + 1, LEVEL_Y + 1, BOOST_Y + 1, 22, 23 };
 static unsigned char title_Y[] = { TITLE_Y, TITLE_Y + 1, HIGHS_Y, SCORE_Y, LIVES_Y, LEVEL_Y, BOOST_Y, };
 
@@ -63,7 +63,7 @@ void engine_score_manager_init()
 	struct_score_object *so = &global_score_object;
 	so->score = 0;
 	so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
-	so->values[ score_type_lives ] = 1; // stevepro
+	//so->values[ score_type_lives ] = 1; // stevepro
 
 	//so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
 	//so->bonus = 0;
@@ -175,7 +175,7 @@ void engine_score_manager_update_boost()
 	//}
 
 	//so->timer = 0;
-	so->values[ score_type_boost ]--;
+	so->values[ score_type_boost ] -= 1 + state_object_difficulty;
 
 	// TODO set enum or #define for this magic no.
 	// TODO Easy = 200  Hard = 100 boost value!

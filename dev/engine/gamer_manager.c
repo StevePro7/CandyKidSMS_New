@@ -33,10 +33,10 @@ void engine_gamer_manager_init()
 
 	// Speed:	1, 2, 4, 8
 	// Delay:	1, 2, 4, 8
-	go->speeds[ 0 ] = 2;
-	go->delays[ 0 ] = 1;
-	go->speeds[ 1 ] = 4;
-	go->delays[ 1 ] = 1;
+	//go->speeds[ 0 ] = 2;
+	//go->delays[ 0 ] = 1;
+	//go->speeds[ 1 ] = 4;
+	//go->delays[ 1 ] = 1;
 	//go->boost = pace_type_slow;
 	//engine_gamer_manager_pace( go->boost );
 	go->prev_boost = pace_type_slow;
@@ -71,6 +71,14 @@ void engine_gamer_manager_init()
 void engine_gamer_manager_load()
 {
 	struct_gamer_object *go = &global_gamer_object;
+	unsigned char index = state_object_difficulty * 2;
+
+	devkit_SMS_mapROMBank( FIXED_BANK );
+	go->speeds[ 0 ] = gamer_object_speed[ index + 0 ];
+	go->delays[ 0 ] = gamer_object_delay[ index + 0 ];
+	go->speeds[ 1 ] = gamer_object_speed[ index + 1 ];
+	go->delays[ 1 ] = gamer_object_delay[ index + 1 ];
+
 	//go->velocity[ 0 ] = 4;
 	//go->velocity[ 1 ] = 6;
 	go->prev_boost = pace_type_slow;

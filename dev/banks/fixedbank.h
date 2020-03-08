@@ -9,6 +9,10 @@ extern const unsigned char enemy_object_speed[];
 //extern const unsigned char *enemy_object_waits[];
 //extern const unsigned char *enemy_object_paths[];
 
+// Gamer Manager.
+extern const unsigned char gamer_object_speed[];
+extern const unsigned char gamer_object_delay[];
+
 // Locale Manager.
 extern const unsigned char *locale_object_texts[];
 extern const unsigned char *locale_object_blank[];

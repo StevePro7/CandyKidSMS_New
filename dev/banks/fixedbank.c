@@ -19,6 +19,12 @@ const unsigned char enemy_object_speed[] =
 		9,10,11,12,
 };
 
+
+// Gamer Manager.
+const unsigned char gamer_object_speed[] = { 1, 2, 2, 3 };
+const unsigned char gamer_object_delay[] = { 1, 1, 1, 1 };
+
+
 // Locale Manager.
 const unsigned char *locale_object_texts[] =
 {
