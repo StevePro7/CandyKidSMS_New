@@ -249,3 +249,17 @@ waits + timer
 Avoid Trees block kid
 Death trees kill Kid
 Funky trees serve no purpose; they just look funky
+
+
+08/03/2020
+Scatter vs. Attack mode
+here is the rules
+
+if Kid collides into Mama then Kid + Mama = dead
+reset home spots on Ready screen and Mama = scatter
+
+however the other 2x Mama go home spot then resume whatever mode they were in
+i.e. do NOT reset to scatter mode
+
+the same applies to Kid collides with death tree:
+all three Mamas go home and then resume whatever mode they were in
