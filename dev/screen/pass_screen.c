@@ -98,17 +98,18 @@ void screen_pass_screen_update( unsigned char *screen_type )
 
 static void next_level()
 {
+	// Clocked game!
+	if( MAX_WORLDS - 1 == state_object_world_data  && MAX_ROUNDS - 1 == state_object_round_data )
+	{
+		state_object_next_screen = screen_type_beat;
+		return;
+	}
+
 	// TODO  here is where we check to go to boss level if there are any!!
 	state_object_round_data++;
 	if( state_object_round_data >= MAX_ROUNDS )
 	{
 		state_object_round_data = 0;
-
 		state_object_world_data++;
-		if( state_object_world_data >= MAX_WORLDS )
-		{
-			state_object_world_data = 0;
-			state_object_next_screen = screen_type_beat;
-		}
 	}
 }
