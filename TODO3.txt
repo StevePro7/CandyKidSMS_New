@@ -1,0 +1,134 @@
+TODO 03
+07/03/2020
+
+
+Sat morn and I am wait at airport for Glenn so I am going thru all the old TODO and README files and making short list of things I would like or must remember:
+
+
+
+01.
+C:\GitHub\StevePro7\CandyKidSMS
+TODO.txt
+Joe Satriani albums as world names
+very nice to have and will most likely not implement
+
+
+02.
+C:\GitHub\StevePro7\CandyKidSMS
+readme.md
+
+commands
+mover + speed
+I just realized that I have speed for Kid but I haven't implemented speed for Mamas
+I think I will just have on Hard difficulty level only with following logic
+Pro	
+Scatter		slow
+Attack		fast
+
+Adi
+scatter		fast
+attack		slow
+
+Suz
+flip coin 50/50 whether scatter or attack will be slow / fast accordinlgy
+this is set each level
+
+
+
+03.
+C:\GitHub\StevePro7\CandyKidSMS
+readme.md
+
+
+As there can be maximum frame index 65535 because is an int I need to implement a time over dead screen which is very simple
+
+play_screen
+check if frame >= 65535	MAX_INT and if so then goto time_screen
+this pops up the middle section with the text TIME OVER
+Kid loses a life and behaves just like the dead screen
+i.e. if lives > 0 then ready screen else lives == 0 then cont screen
+
+
+04.
+I need to properly implement funky trees for the middle section popup and hide any sprites in the middle rectangle
+
+
+05.
+I need to complete the following screens
+cont
+over
+pass
+
+I need to implemnt the logic for pass
+i.e. increment round and/or world
+
+I need to tweak the delays btwn these screens for smooth flow
+
+
+06.
+IMPORTANT
+I need to "prevent" Mamas from infinitely looping esp. in attack mode but I have seen in scatter mode
+I have tried this before : it is every 4th move the total will be 15 because it is some combination of
+up	01
+down	02
+left	04
+right	08
+total	15
+
+if the 5th dirX = 1st dirX and total = 15 then this will potentially be a loop so I need an algorithm to break out of this cycle
+
+maybe change the logic
+i.e. check if only 1x direction first e.g. cul de sac and go oppX first then quit
+
+
+maybe I could try this simple idea:
+count the number of moves
+assume that every 4th move will complete a cycle
+therefore instead of looping thru direction list 0, 1, 2, 3 and doing check
+could I loop backwards with the exact same check?
+i.e.
+3, 2, 1, 0 on every 4th move regardless of previous 3x moves and just assume it will be a cycle
+this will be very easy to implement and test
+
+
+07.
+common sound FX must be moved to psg
+for now I may just reuse all the music + sound from Platform Explorer
+I'm not sure if I will have time to replace
+
+
+08.
+C:\GitHub\StevePro7\CandyKidSMS_New
+readme.md
+
+Storage Manager
+after select all options then save i.e. write changes to SRAM
+
+also when quit game either thru easter egg or cont screen then write again just in case got hi score
+
+
+09.
+I think I may need to change the graphics and replace the tile manager as there is dup code there
+I could try the new borders for game play
+
+
+10.
+Do I want to have two 14x14 arrays:
+tile	14x14		foreach cell in 2D array stores the value of tile where 1 is only block tile
+move	14x14		foreach cell in 2D array this has bit mask all moves can go from tile
+
+This solution would create double the array but could remove all that upper/ lower nibble stuff
+and in theory code would be more performant
+
+This may be more work then is worth and would need to fully regression all game play = time consuming
+one thing that I could do as halfway house is at minimum pre calc the border moves in the 2D array
+and take out the code that calculates this
+
+
+11.
+C:\GitHub\StevePro7\CandyKidSMS_New
+TODO.txt
+
+I had idea to make Mama go fast speed when go home on dead screen but I think that I'll leave out
+
+
