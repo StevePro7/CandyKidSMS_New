@@ -3,6 +3,7 @@
 #include "board_manager.h"
 #include "enemy_manager.h"
 #include "enum_manager.h"
+//#include "font_manager.h"
 #include "function_manager.h"
 #include "gamer_manager.h"
 #include "level_manager.h"
@@ -24,6 +25,10 @@ unsigned char engine_collision_manager_sprite_collision()
 	unsigned char distance = collision_distance[ state_object_difficulty ];
 	unsigned char enemy;
 	unsigned char dx, dy;
+
+	// TODO delete - used for temp debugging
+	//engine_font_manager_draw_data( go->posnX, 2, 0 );
+	//engine_font_manager_draw_data( go->posnY, 2, 1 );
 
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{

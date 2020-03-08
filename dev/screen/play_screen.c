@@ -234,7 +234,6 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Kid collide with Candy Mama?
 	gamer_collision = devkit_isCollisionDetected();
-	engine_font_manager_draw_data( gamer_collision, 2, 0 );
 	if( 0 != gamer_collision )
 	{
 		state_object_actor_kill = engine_collision_manager_sprite_collision();
