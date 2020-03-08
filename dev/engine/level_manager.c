@@ -112,6 +112,15 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 	{
 		return;
 	}
+	// TODO - test this!!	stevepro
+	if( diff_type_hard == state_object_difficulty )
+	{
+		// Flip coin if can have free man candy on difficult hard.
+		if( 0 != rand() % 2 )
+		{
+			return;
+		}
+	}
 
 	mover = rand() % tiles;
 	index = actor_tileZ[ mover ];

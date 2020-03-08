@@ -350,6 +350,8 @@ void engine_enemy_manager_reset_home()
 		eo->lifecycle = lifecycle_type_idle;
 		eo->direction = direction_type_none;
 		eo->frame = frame_type_stance;
+		eo->delta = 0;
+		eo->total = 0;
 		calcd_frame( enemy );
 	}
 }
