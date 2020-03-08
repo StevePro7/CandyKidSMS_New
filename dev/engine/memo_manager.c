@@ -41,19 +41,20 @@ void engine_memo_manager_pass( unsigned char perfect )
 	engine_memo_manager_draw( topIndex, botIndex );
 }
 
-void engine_memo_manager_bonus( unsigned char perfect )
-{
-	unsigned char topIndex = 18;
-	unsigned char botIndex = 19;
-
-	if( perfect )
-	{
-		topIndex = 20;
-		botIndex = 21;
-	}
-
-	engine_memo_manager_draw( topIndex, botIndex );
-}
+// TODO maybe take out permanently as I won't use...
+//void engine_memo_manager_bonus( unsigned char perfect )
+//{
+//	unsigned char topIndex = 18;
+//	unsigned char botIndex = 19;
+//
+//	if( perfect )
+//	{
+//		topIndex = 20;
+//		botIndex = 21;
+//	}
+//
+//	engine_memo_manager_draw( topIndex, botIndex );
+//}
 
 void engine_memo_manager_option()
 {

@@ -130,14 +130,14 @@ void engine_board_manager_midd_text()
 
 	for( loop = 0; loop < 6; loop++ )
 	{
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + 6 + loop * 2, TOP_SIDE_Y + 8 );
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + 6 + loop * 2, TOP_SIDE_Y + 14 );
+		engine_tile_manager_funk_trees( SCREEN_TILE_LEFT + LFT_SIDE_X + 6 + loop * 2, TOP_SIDE_Y + 8 );
+		engine_tile_manager_funk_trees( SCREEN_TILE_LEFT + LFT_SIDE_X + 6 + loop * 2, TOP_SIDE_Y + 14 );
 	}
 
-	engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + 6, TOP_SIDE_Y + 10 );
-	engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + 6, TOP_SIDE_Y + 12 );
-	engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + 16, TOP_SIDE_Y + 10 );
-	engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + 16, TOP_SIDE_Y + 12 );
+	engine_tile_manager_funk_trees( SCREEN_TILE_LEFT + LFT_SIDE_X + 6, TOP_SIDE_Y + 10 );
+	engine_tile_manager_funk_trees( SCREEN_TILE_LEFT + LFT_SIDE_X + 6, TOP_SIDE_Y + 12 );
+	engine_tile_manager_funk_trees( SCREEN_TILE_LEFT + LFT_SIDE_X + 16, TOP_SIDE_Y + 10 );
+	engine_tile_manager_funk_trees( SCREEN_TILE_LEFT + LFT_SIDE_X + 16, TOP_SIDE_Y + 12 );
 
 	for( loop = 0; loop < 4; loop++ )
 	{

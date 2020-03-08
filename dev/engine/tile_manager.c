@@ -196,6 +196,12 @@ void engine_tile_manager_main_gamer( unsigned char x, unsigned char y )
 	draw_tile( offset, x, y );
 }
 
+void engine_tile_manager_funk_trees( unsigned char x, unsigned char y )
+{
+	unsigned char offset = 0;
+	draw_tile_priority( offset, x, y );
+}
+
 static void draw_tile( unsigned char offset, unsigned char x, unsigned char y )
 {
 	const unsigned char priority = 0;

@@ -11,6 +11,7 @@ void engine_gamer_manager_init();
 void engine_gamer_manager_load();
 void engine_gamer_manager_update();
 void engine_gamer_manager_draw();
+void engine_gamer_manager_hide();
 void engine_gamer_manager_draw_death( unsigned char frame );
 void engine_gamer_manager_move( unsigned char direction );
 void engine_gamer_manager_wrap( unsigned char direction );

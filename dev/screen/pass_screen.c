@@ -11,7 +11,8 @@
 #include "..\banks\databank.h"
 
 //#define PASS_SCREEN_DELAY	50
-#define PASS_SCREEN_DELAY	250
+#define PASS_SCREEN_DELAY1	125
+#define PASS_SCREEN_DELAY2	250
 
 static unsigned char event_stage;
 static unsigned char perfect;
@@ -20,15 +21,19 @@ void screen_pass_screen_load()
 {
 	struct_score_object *so = &global_score_object;
 
+	// Draw sprites first.
+	engine_enemy_manager_draw();
+	engine_gamer_manager_draw();
+
 	state_object_curr_screen = screen_type_pass;
 	state_object_next_screen = screen_type_ready;
 
-	engine_delay_manager_load( PASS_SCREEN_DELAY );
+	engine_delay_manager_load( PASS_SCREEN_DELAY1 );
 	engine_audio_manager_music_stop();
 
 	perfect = ( level_object_bonus_count + level_object_candy_count == so->bonus + so->candy );
-	engine_board_manager_midd_text();
-	engine_memo_manager_pass( perfect );
+	//engine_board_manager_midd_text();
+	//engine_memo_manager_pass( perfect );
 	event_stage = event_stage_start;
 }
 
@@ -45,20 +50,24 @@ void screen_pass_screen_update( unsigned char *screen_type )
 		if( delay || input )
 		{
 			*screen_type = state_object_next_screen;
-			return;
 		}
 		else
 		{
 			*screen_type = state_object_curr_screen;
-			return;
 		}
+
+		// Draw sprites first.
+		engine_enemy_manager_hide();
+		engine_gamer_manager_hide();
+		return;
 	}
 
 	delay = engine_delay_manager_update();
 	if( delay )
 	{
-		engine_delay_manager_load( PASS_SCREEN_DELAY );
-		engine_memo_manager_bonus( perfect );
+		engine_delay_manager_load( PASS_SCREEN_DELAY2 );
+		//engine_memo_manager_bonus( perfect );
+		engine_memo_manager_pass( perfect );
 		if( perfect )
 		{
 			engine_score_manager_finish_bonus();
@@ -68,8 +77,16 @@ void screen_pass_screen_update( unsigned char *screen_type )
 	}
 
 	// Draw sprites first.
-	engine_enemy_manager_draw();
-	engine_gamer_manager_draw();
+	if( event_stage_start == event_stage )
+	{
+		engine_enemy_manager_draw();
+		engine_gamer_manager_draw();
+	}
+	else
+	{
+		engine_enemy_manager_hide();
+		engine_gamer_manager_hide();
+	}
 
 	*screen_type = state_object_curr_screen;
 }

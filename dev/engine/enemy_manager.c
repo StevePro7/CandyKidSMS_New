@@ -227,6 +227,23 @@ void engine_enemy_manager_draw()
 	}
 }
 
+void engine_enemy_manager_hide()
+{
+	struct_enemy_object *eo;
+	unsigned char enemy;
+
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		eo = &global_enemy_objects[ enemy ];
+		if( eo->posnX > 60 && eo->posnX < 148 && eo->posnY >60 && eo->posnY < 116 )
+		{
+			continue;
+		}
+
+		engine_sprite_manager_draw_entity( eo->posnX, eo->posnY, eo->calcd );
+	}
+}
+
 void engine_enemy_manager_move( unsigned char enemy, unsigned char direction )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];

@@ -13,6 +13,7 @@ void engine_enemy_manager_load();
 void engine_enemy_manager_dohand( unsigned char enemy );
 void engine_enemy_manager_update( unsigned char enemy );
 void engine_enemy_manager_draw();
+void engine_enemy_manager_hide();
 void engine_enemy_manager_move( unsigned char enemy, unsigned char direction );
 void engine_enemy_manager_stop( unsigned char enemy );
 void engine_enemy_manager_dead( unsigned char enemy );
