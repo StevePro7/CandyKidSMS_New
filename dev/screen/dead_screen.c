@@ -1,6 +1,7 @@
 #include "dead_screen.h"
 #include "..\engine\audio_manager.h"
 #include "..\engine\board_manager.h"
+#include "..\engine\collision_manager.h"
 #include "..\engine\command_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\enemy_manager.h"
@@ -197,20 +198,21 @@ void screen_dead_screen_update( unsigned char *screen_type )
 
 static void reset_death()
 {
-	struct_gamer_object *go = &global_gamer_object;
-	//unsigned char enemy;
+	//struct_gamer_object *go = &global_gamer_object;
+	////unsigned char enemy;
 
 	// Kid collided with death tree on border so redraw.
-	if( !state_object_invincibie && state_object_trees_type == tree_type_death )
-	{
-		if( actor_type_tree == state_object_actor_kill )
-		{
-			if( 1 == go->tileX || 1 == go->tileY || ( MAZE_COLS - 2 ) == go->tileX || ( MAZE_ROWS - 2 ) == go->tileY )
-			{
-				engine_tile_manager_draw_trees( state_object_trees_type, SCREEN_TILE_LEFT + ( go->tileX - 1 ) * 2, ( go->tileY - 1 ) * 2 );
-			}
-		}
-	}
+	engine_collision_manager_reset_death();
+	//if( !state_object_invincibie && state_object_trees_type == tree_type_death )
+	//{
+	//	if( actor_type_tree == state_object_actor_kill )
+	//	{
+	//		if( 1 == go->tileX || 1 == go->tileY || ( MAZE_COLS - 2 ) == go->tileX || ( MAZE_ROWS - 2 ) == go->tileY )
+	//		{
+	//			engine_tile_manager_draw_trees( state_object_trees_type, SCREEN_TILE_LEFT + ( go->tileX - 1 ) * 2, ( go->tileY - 1 ) * 2 );
+	//		}
+	//	}
+	//}
 
 	// TODO test book reset...
 	engine_enemy_manager_reset_all( enemymove_type_tour );

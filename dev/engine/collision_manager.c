@@ -135,3 +135,20 @@ unsigned char engine_collision_manager_tile_collision( unsigned char tile_type )
 
 	return gamer_collision;
 }
+
+void engine_collision_manager_reset_death()
+{
+	struct_gamer_object *go = &global_gamer_object;
+
+	// Kid collided with death tree on border so redraw.
+	if( !state_object_invincibie && state_object_trees_type == tree_type_death )
+	{
+		if( actor_type_tree == state_object_actor_kill )
+		{
+			if( 1 == go->tileX || 1 == go->tileY || ( MAZE_COLS - 2 ) == go->tileX || ( MAZE_ROWS - 2 ) == go->tileY )
+			{
+				engine_tile_manager_draw_trees( state_object_trees_type, SCREEN_TILE_LEFT + ( go->tileX - 1 ) * 2, ( go->tileY - 1 ) * 2 );
+			}
+		}
+	}
+}

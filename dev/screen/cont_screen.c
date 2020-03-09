@@ -1,4 +1,5 @@
 #include "cont_screen.h"
+#include "..\engine\collision_manager.h"
 #include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
@@ -8,7 +9,9 @@
 #include "..\engine\locale_manager.h"
 #include "..\engine\memo_manager.h"
 #include "..\engine\score_manager.h"
+#include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
+#include "..\banks\databank.h"
 
 #define CONT_SCREEN_DELAY	10
 #define CONT_X				10
@@ -51,6 +54,7 @@ void screen_cont_screen_update( unsigned char *screen_type )
 		{
 			if( 0 == cursor )
 			{
+				engine_collision_manager_reset_death();
 				engine_score_manager_reset_lives();
 				engine_level_manager_draw_middle();
 				*screen_type = screen_type_ready;
