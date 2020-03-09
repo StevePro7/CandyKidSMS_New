@@ -124,7 +124,8 @@ screen\select_screen.rel screen\option_screen.rel screen\init_screen.rel screen\
 screen\play_screen.rel screen\pass_screen.rel screen\bonus_screen.rel screen\replay_screen.rel screen\reset_screen.rel ^
 screen\dead_screen.rel screen\cont_screen.rel screen\over_screen.rel screen\beat_screen.rel screen\boss_screen.rel ^
 screen\record_screen.rel screen\save_screen.rel screen\test_screen.rel screen\func_screen.rel ^
-gfx.rel
+gfx.rel ^
+psg.rel
 
 :: Execute
 ihx2sms output.ihx output.sms
