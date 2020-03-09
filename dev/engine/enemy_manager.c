@@ -153,6 +153,12 @@ void engine_enemy_manager_load()
 
 		eo->speed = eo->speeds[ 0 ];// 1;
 		eo->delay = eo->delays[ 0 ];// 8;
+
+
+		engine_font_manager_draw_data( eo->speeds[ 0 ], 10, 0 );
+		engine_font_manager_draw_data( eo->delays[ 0 ], 10, 1 );
+		engine_font_manager_draw_data( eo->speeds[ 1 ], 20, 0 );
+		engine_font_manager_draw_data( eo->delays[ 1 ], 20, 1 );
 	}
 }
 
@@ -288,7 +294,7 @@ void engine_enemy_manager_stop( unsigned char enemy )
 	eo->ticker++;
 	if( eo->ticker >= toggle )
 	{
-		eo->action = 1 - eo->action;
+		//eo->action = 1 - eo->action;		// stevepro disable for testing.
 		eo->ticker = 0;
 
 		//TODO delete
