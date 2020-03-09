@@ -71,35 +71,36 @@ void engine_font_manager_draw_text( const unsigned char *text, unsigned char x, 
 
 void engine_font_manager_draw_data( unsigned int data, unsigned char x, unsigned char y )
 {
-	draw_data( data, x, y, DATA_LONG );
-	//const unsigned char *pnt = font_tiles__tilemap__bin;
+	//draw_data( data, x, y, DATA_LONG );
 
-	//unsigned char idx;
-	//signed char tile;
+	const unsigned char *pnt = font_tiles__tilemap__bin;
 
-	//unsigned int quotient = 0;
-	//unsigned char remainder = 0;
+	unsigned char idx;
+	signed char tile;
 
-	////char hold[ DATA_LONG ];
-	//for( idx = 0; idx < DATA_LONG; ++idx )
-	//{
-	//	quotient = data / UNIT_ROOT;
-	//	remainder = data % UNIT_ROOT;
+	unsigned int quotient = 0;
+	unsigned char remainder = 0;
 
-	//	//hold[ idx ] = remainder;
-	//	data /= UNIT_ROOT;
+	//char hold[ DATA_LONG ];
+	for( idx = 0; idx < DATA_LONG; ++idx )
+	{
+		quotient = data / UNIT_ROOT;
+		remainder = data % UNIT_ROOT;
 
-	//	//tile = hold[ idx ] + DATA_ROOT;
-	//	tile = remainder + DATA_ROOT;
-	//	if( 0 == quotient && 0 == remainder && idx > 0 )
-	//	{
-	//		// Replace with space!
-	//		tile = 0;
-	//	}
+		//hold[ idx ] = remainder;
+		data /= UNIT_ROOT;
 
-	//	devkit_SMS_setNextTileatXY( x--, y );
-	//	devkit_SMS_setTile( *pnt + tile );
-	//}
+		//tile = hold[ idx ] + DATA_ROOT;
+		tile = remainder + DATA_ROOT;
+		if( 0 == quotient && 0 == remainder && idx > 0 )
+		{
+			// Replace with space!
+			tile = 0;
+		}
+
+		devkit_SMS_setNextTileatXY( x--, y );
+		devkit_SMS_setTile( *pnt + tile );
+	}
 }
 
 void engine_font_manager_draw_data4( unsigned int data, unsigned char x, unsigned char y )
