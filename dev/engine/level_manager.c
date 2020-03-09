@@ -103,7 +103,7 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 		level_object_tiles_array[ index ] = tile_type;
 	}
 
-	// Every fifth level award freeman tile.
+	// Every fifth level award freeman tile if not invincible.
 	if( state_object_invincibie )
 	{
 		return;
@@ -112,10 +112,11 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 	{
 		return;
 	}
-	// TODO - test this!!	stevepro
+
+	// However, flip coin if can have free man candy on difficult hard.
 	if( diff_type_hard == state_object_difficulty )
 	{
-		// Flip coin if can have free man candy on difficult hard.
+		
 		if( 0 != rand() % 2 )
 		{
 			return;

@@ -70,11 +70,11 @@ void engine_hack_manager_invert()
 
 	//state_object_enemy_move[ actor_type_pro ] = 1;
 	//state_object_enemy_move[ actor_type_adi ] = 1;
-	state_object_enemy_move[ actor_type_suz ] = 1;
+	//state_object_enemy_move[ actor_type_suz ] = 1;
 
 	state_object_enemy_move[ actor_type_pro ] = 0;
 	state_object_enemy_move[ actor_type_adi ] = 0;
-	//state_object_enemy_move[ actor_type_suz ] = 0;
+	state_object_enemy_move[ actor_type_suz ] = 0;
 
 	state_object_mydebugger = 0;
 	state_object_full_boost = 0;
@@ -120,7 +120,7 @@ void engine_hack_manager_invert()
 
 	// TODO delete this hard coded
 	state_object_world_data = 1 - 1;
-	state_object_round_data = 5 - 1;
+	state_object_round_data = 1 - 1;
 
 	//state_object_world_data = 8 - 1;
 	//state_object_round_data = 9 - 1;

@@ -207,7 +207,6 @@ static void reset_death()
 		{
 			if( 1 == go->tileX || 1 == go->tileY || ( MAZE_COLS - 2 ) == go->tileX || ( MAZE_ROWS - 2 ) == go->tileY )
 			{
-				
 				engine_tile_manager_draw_trees( state_object_trees_type, SCREEN_TILE_LEFT + ( go->tileX - 1 ) * 2, ( go->tileY - 1 ) * 2 );
 			}
 		}

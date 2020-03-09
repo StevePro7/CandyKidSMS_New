@@ -24,19 +24,19 @@ static unsigned char walking_delta;
 static unsigned char walking_count;
 static unsigned char first_time;
 
-unsigned char test_walking_cmds1[] = { command_type_gamer_mover, command_type_gamer_speed, command_type_gamer_mover, command_type_gamer_speed, command_type_gamer_mover };
-unsigned char test_walking_args1[] = { direction_type_down,		pace_type_fast,		direction_type_rght,	pace_type_slow, direction_type_upxx };
+//unsigned char test_walking_cmds1[] = { command_type_gamer_mover, command_type_gamer_speed, command_type_gamer_mover, command_type_gamer_speed, command_type_gamer_mover };
+//unsigned char test_walking_args1[] = { direction_type_down,		pace_type_fast,		direction_type_rght,	pace_type_slow, direction_type_upxx };
 
-//unsigned char test_walking_cmds1[] = { command_type_gamer_speed, command_type_gamer_mover };
-//unsigned char test_walking_args1[] = { pace_type_fast, direction_type_rght };
+unsigned char test_walking_cmds1[] = { command_type_gamer_mover, command_type_gamer_mover };
+unsigned char test_walking_args1[] = { direction_type_rght, direction_type_upxx };
 
 //unsigned char cont_walking_cmds1[] = { command_type_gamer_speed, command_type_gamer_mover };
 //unsigned char cont_walking_args1[] = { pace_type_fast, direction_type_down };
-unsigned char test_walking_move[] = { 1, 0, 3, 0, 1 };
+unsigned char test_walking_move[] = { 1, 0, 0, 0, 1 };
 
 void screen_test_screen_load()
 {
-	command_count = 5;
+	command_count = 2;
 
 	engine_command_manager_load();
 	engine_delay_manager_load( 0 );
