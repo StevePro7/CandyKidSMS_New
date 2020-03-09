@@ -327,14 +327,16 @@ static void draw_value( unsigned char index )
 	}
 
 	// HACK to workaround side tile for exit.
-	if( score_type_level == index && exit_type_public == state_object_exits_type )
-	{
-		engine_font_manager_draw_data4( value, DATA_X + 1, y_val );
-	}
-	else
-	{
-		engine_font_manager_draw_data( value, DATA_X + 1, y_val );
-	}
+	//if( score_type_level == index && exit_type_public == state_object_exits_type )
+	//{
+	//	engine_font_manager_draw_data4( value, DATA_X + 1, y_val );
+	//}
+	//else
+	//{
+	//	engine_font_manager_draw_data( value, DATA_X + 1, y_val );
+	//}
+
+	engine_font_manager_draw_data( value, DATA_X + 1, y_val );
 
 	if( value < 10 )
 	{
