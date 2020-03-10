@@ -35,8 +35,8 @@ void screen_play_screen_load()
 	engine_command_manager_load();
 	engine_frame_manager_load();
 
-	//engine_frame_manager_draw();
-	//engine_delay_manager_draw();
+	engine_frame_manager_draw();
+	engine_delay_manager_draw();
 
 	engine_font_manager_draw_text( "SCATTR", 26, 21 );
 	first_time = 1;
@@ -48,7 +48,9 @@ void screen_play_screen_update( unsigned char *screen_type )
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
 	struct_enemy_object *eo;
-	unsigned char process_boost = 0;
+	//unsigned char process_boost = 0;
+	unsigned char gamer_boost = 0;
+	unsigned char enemy_boost = 0;
 	unsigned char gamer_direction = direction_type_none;
 	unsigned char enemy_direction = direction_type_none;
 	unsigned char gamer_collision = coll_type_empty;
@@ -64,8 +66,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
-	//engine_frame_manager_draw();
-	//engine_delay_manager_draw();
+	engine_frame_manager_draw();
+	engine_delay_manager_draw();
 	if( !first_time )
 	{
 		proceed = engine_delay_manager_update();
@@ -90,11 +92,11 @@ void screen_play_screen_update( unsigned char *screen_type )
 		engine_gamer_manager_update();
 
 		// Check boost for next cycle.
-		process_boost = engine_gamer_manager_input_boost( go->direction );
-		if( pace_type_none != process_boost )
+		gamer_boost = engine_gamer_manager_input_boost( go->direction );
+		if( pace_type_none != gamer_boost )
 		{
-			//engine_font_manager_draw_data( process_boost, 10, 18 );
-			engine_command_manager_add( frame, command_type_gamer_speed, process_boost );
+			//engine_font_manager_draw_data( gamer_boost, 10, 18 );
+			engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
 		}
 	}
 	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
@@ -128,11 +130,11 @@ void screen_play_screen_update( unsigned char *screen_type )
 			{
 				engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
 
-				process_boost = engine_gamer_manager_input_boost( gamer_direction );
-				if( pace_type_none != process_boost )
+				gamer_boost = engine_gamer_manager_input_boost( gamer_direction );
+				if( pace_type_none != gamer_boost )
 				{
-					//engine_font_manager_draw_data( process_boost, 10, 17 );
-					engine_command_manager_add( frame, command_type_gamer_speed, process_boost );
+					//engine_font_manager_draw_data( gamer_boost, 10, 17 );
+					engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
 				}
 			}
 		}

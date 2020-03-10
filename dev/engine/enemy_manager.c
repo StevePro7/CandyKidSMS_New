@@ -306,7 +306,8 @@ void engine_enemy_manager_move( unsigned char enemy, unsigned char direction )
 void engine_enemy_manager_stop( unsigned char enemy )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
-	unsigned char toggle;
+	//unsigned char toggle;
+
 	//eo->prev_move[ 3 ] = eo->prev_move[ 2 ];
 	//eo->prev_move[ 2 ] = eo->prev_move[ 1 ];
 	//eo->prev_move[ 1 ] = eo->prev_move[ 0 ];
@@ -316,24 +317,27 @@ void engine_enemy_manager_stop( unsigned char enemy )
 	//eo->frame = 0;		// TODO remove as this is done in gohands()
 	calcd_frame( enemy );
 
-	// Detect to swap scatter to attack and vice versa.
-	toggle = eo->toggle[ eo->action ];
-	eo->ticker++;
-	if( eo->ticker >= toggle )
-	{
-		eo->action = 1 - eo->action;
-		eo->ticker = 0;
 
-		//TODO delete
-		if( 0 == eo->action )
-		{
-			engine_font_manager_draw_text( "SCATTR", 26, 21 );
-		}
-		if( 1 == eo->action )
-		{
-			engine_font_manager_draw_text( "ATTACK", 26, 21 );
-		}
-	}
+	eo->ticker++;
+
+	// Detect to swap scatter to attack and vice versa.
+	//toggle = eo->toggle[ eo->action ];
+	//if( eo->ticker >= toggle )
+	//{
+	//	eo->action = 1 - eo->action;
+	//	eo->ticker = 0;
+
+	//	//TODO delete
+	//	if( 0 == eo->action )
+	//	{
+	//		engine_font_manager_draw_text( "SCATTR", 26, 21 );
+	//	}
+	//	if( 1 == eo->action )
+	//	{
+	//		engine_font_manager_draw_text( "ATTACK", 26, 21 );
+	//	}
+	//}
+
 
 	// Every 4x moves check if enemy moved any combination of: U, D, L, R
 	// e.g. if U + D + L + R = 15 then is caught in endless loop so change
