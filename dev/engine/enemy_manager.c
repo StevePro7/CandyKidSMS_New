@@ -126,11 +126,17 @@ void engine_enemy_manager_load()
 		//eo->swaps = 50;			//// 50 frames
 		eo->swaps = enemy_object_hands[ index ];
 
+		index = 4 * enemy + state_object_difficulty * 2 + state_object_pace_speed;
 		//eo->waiter = 64;		// 50 frames
 		//eo->waiter = 80;		// 50 frames
-		eo->waiter = 0;		// 50 frames
-		eo->toggle[ 0 ] = 16;
-		eo->toggle[ 1 ] = 04;// 48;
+		//eo->waiter = 0;		// 50 frames
+		//eo->toggle[ 0 ] = 16;
+		//eo->toggle[ 1 ] = 04;// 48;
+
+		eo->waiter = enemy_object_waits[ index ];
+		eo->toggle[ 0 ] = enemy_object_tours[ index ];
+		eo->toggle[ 1 ] = enemy_object_kills[ index ];
+
 		eo->ticker = 0;
 		eo->action = enemymove_type_wait;
 
@@ -168,6 +174,10 @@ void engine_enemy_manager_load()
 		// TODO delete this - debugging
 		engine_font_manager_draw_data( eo->speed, 10, 0 );
 		engine_font_manager_draw_data( eo->delay, 10, 1 );
+
+		engine_font_manager_draw_data( eo->waiter, 18, 0 );
+		engine_font_manager_draw_data( eo->toggle[ 0 ], 25, 0 );
+		engine_font_manager_draw_data( eo->toggle[ 1 ], 25, 1 );
 		//engine_font_manager_draw_data( eo->speeds, 20, 0 );
 		//engine_font_manager_draw_data( eo->delays, 20, 1 );
 

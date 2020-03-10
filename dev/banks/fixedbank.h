@@ -6,8 +6,9 @@
 extern const unsigned char enemy_object_speed[];
 extern const unsigned char enemy_object_delay[];
 extern const unsigned char enemy_object_hands[];
-//extern const unsigned char enemy_object_waits[];
-//extern const unsigned char enemy_object_paths[];
+extern const unsigned char enemy_object_waits[];
+extern const unsigned char enemy_object_tours[];
+extern const unsigned char enemy_object_kills[];
 
 // Gamer Manager.
 extern const unsigned char gamer_object_speed[];

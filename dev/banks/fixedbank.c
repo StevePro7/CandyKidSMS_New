@@ -63,9 +63,37 @@ const unsigned char enemy_object_delay[] =
 
 const unsigned char enemy_object_hands[] = 
 {
-	100, 90, 80, 70,
-	120, 110, 100, 90,
-	140, 130, 120, 100
+	100,  91,  82, 73,
+	120, 111, 102, 93,
+	140, 131, 122, 103,
+};
+
+const unsigned char enemy_object_waits[] =
+{
+	//Pro: ES,EF,HS,HF.
+	61,71,81,91,
+	//Adi: ES,EF,HS,HF.
+	62,72,82,92,
+	//Suz: ES,EF,HS,HF.
+	63,73,83,93,
+};
+const unsigned char enemy_object_tours[] =
+{
+	//Pro: ES,EF,HS,HF.
+	64,74,84,94,
+	//Adi: ES,EF,HS,HF.
+	65,75,85,95,
+	//Suz: ES,EF,HS,HF.
+	66,76,86,96,
+};
+const unsigned char enemy_object_kills[] =
+{
+	//Pro: ES,EF,HS,HF.
+	67,77,87,97,
+	//Adi: ES,EF,HS,HF.
+	68,78,88,98,
+	//Suz: ES,EF,HS,HF.
+	69,79,89,99,
 };
 
 
