@@ -10,10 +10,10 @@ void devkit_PSGPlay( void *song )
 {
 	PSGPlay( song );
 }
-void devkit_PSGCancelLoop( void )
-{
-	PSGCancelLoop();
-}
+//void devkit_PSGCancelLoop( void )
+//{
+//	PSGCancelLoop();
+//}
 void devkit_PSGPlayNoRepeat( void *song )
 {
 	PSGPlayNoRepeat( song );
@@ -30,23 +30,23 @@ unsigned char devkit_PSGGetStatus( void )
 {
 	return PSGGetStatus();
 }
-void devkit_PSGSetMusicVolumeAttenuation( unsigned char attenuation )
-{
-	PSGSetMusicVolumeAttenuation( attenuation );
-}
+//void devkit_PSGSetMusicVolumeAttenuation( unsigned char attenuation )
+//{
+//	PSGSetMusicVolumeAttenuation( attenuation );
+//}
 
 void devkit_PSGSFXPlay( void *sfx, unsigned char channels )
 {
 	PSGSFXPlay( sfx, channels );
 }
-void devkit_PSGSFXPlayLoop( void *sfx, unsigned char channels )
-{
-	PSGSFXPlayLoop( sfx, channels );
-}
-void devkit_PSGSFXCancelLoop( void )
-{
-	PSGSFXCancelLoop();
-}
+//void devkit_PSGSFXPlayLoop( void *sfx, unsigned char channels )
+//{
+//	PSGSFXPlayLoop( sfx, channels );
+//}
+//void devkit_PSGSFXCancelLoop( void )
+//{
+//	PSGSFXCancelLoop();
+//}
 void devkit_PSGSFXStop( void )
 {
 	PSGSFXStop();

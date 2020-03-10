@@ -53,8 +53,6 @@ void main (void)
 		devkit_SMS_copySpritestoSAT();
 
 		devkit_PSGFrame();
-		//devkit_PSGSFXFrame();
-
-		devkit_PSGSetMusicVolumeAttenuation( 15 );
+		devkit_PSGSFXFrame();
 	}
 }

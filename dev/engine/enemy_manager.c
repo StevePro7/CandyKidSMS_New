@@ -78,7 +78,9 @@ void engine_enemy_manager_load()
 	unsigned char check;
 	unsigned char index;
 	unsigned char count = MAX_ENEMIES + state_object_difficulty;
+	unsigned char offset;
 
+	devkit_SMS_mapROMBank( FIXED_BANK );
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		eo = &global_enemy_objects[ enemy ];
@@ -140,20 +142,40 @@ void engine_enemy_manager_load()
 		//eo->speed = 2;
 		//eo->delay = 1;
 
-		index = 4 * enemy + state_object_pace_speed * 2;
-		eo->speeds[ 0 ] = enemy_object_speed[ index + 0 ];
-		eo->delays[ 0 ] = enemy_object_delay[ index + 0 ];
-		eo->speeds[ 1 ] = enemy_object_speed[ index + 1 ];
-		eo->delays[ 1 ] = enemy_object_delay[ index + 1 ];
-
-		eo->speed = eo->speeds[ 0 ];// 1;
-		eo->delay = eo->delays[ 0 ];// 8;
+		index = 8 * enemy + state_object_difficulty * 2 + state_object_pace_speed;
+		//eo->speeds[ 0 ] = enemy_object_speed[ index + 0 ];
+		//eo->delays[ 0 ] = enemy_object_delay[ index + 0 ];
+		//eo->speeds[ 1 ] = enemy_object_speed[ index + 4 ];
+		//eo->delays[ 1 ] = enemy_object_delay[ index + 4 ];
 
 
-		engine_font_manager_draw_data( eo->speeds[ 0 ], 10, 0 );
-		engine_font_manager_draw_data( eo->delays[ 0 ], 10, 1 );
-		engine_font_manager_draw_data( eo->speeds[ 1 ], 20, 0 );
-		engine_font_manager_draw_data( eo->delays[ 1 ], 20, 1 );
+		offset = enemy;
+		if( actor_type_suz == enemy )
+		{
+			offset = rand() % 2;
+		}
+
+		eo->speeds[ offset ] = enemy_object_speed[ index + 0 ];
+		eo->delays[ offset ] = enemy_object_delay[ index + 0 ];
+
+		offset = 1 - offset;
+		eo->speeds[ offset ] = enemy_object_speed[ index + 4 ];
+		eo->delays[ offset ] = enemy_object_delay[ index + 4 ];
+
+		eo->speed = eo->speeds[ 0 ];
+		eo->delay = eo->delays[ 0 ];
+
+		// TODO delete this - debugging
+		engine_font_manager_draw_data( eo->speed, 10, 0 );
+		engine_font_manager_draw_data( eo->delay, 10, 1 );
+		//engine_font_manager_draw_data( eo->speeds, 20, 0 );
+		//engine_font_manager_draw_data( eo->delays, 20, 1 );
+
+		//engine_font_manager_draw_data( eo->speeds[ 0 ], 10, 0 );
+		//engine_font_manager_draw_data( eo->delays[ 0 ], 10, 1 );
+		//engine_font_manager_draw_data( eo->speeds[ 1 ], 20, 0 );
+		//engine_font_manager_draw_data( eo->delays[ 1 ], 20, 1 );
+		// TODO delete this - debugging
 	}
 }
 
