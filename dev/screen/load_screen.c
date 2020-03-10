@@ -40,6 +40,11 @@ void screen_load_screen_load()
 	engine_enemy_manager_reset_home();
 	engine_gamer_manager_reset();
 
+	// TODO delete - used during debugging.
+	engine_enemy_manager_debug();
+	// TODO delete - used during debugging.
+
+	// TODO do I want to put this after after level draw?
 	engine_gamer_manager_load();
 	engine_enemy_manager_load();
 	engine_actor_manager_get_data( actor_mover, actor_tileZ );
@@ -54,6 +59,9 @@ void screen_load_screen_load()
 
 	print_level();
 	//engine_audio_manager_music_play( music_type_game03 );
+
+	//engine_gamer_manager_load();
+	//engine_enemy_manager_load();
 }
 
 // TODO - could split this into 2x sections

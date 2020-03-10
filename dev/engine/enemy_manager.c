@@ -82,11 +82,6 @@ void engine_enemy_manager_load()
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		eo = &global_enemy_objects[ enemy ];
-
-		// TODO delete as this will be replaced by menu selection.
-		eo->mover = state_object_enemy_move[ enemy ];
-		// TODO delete as this will be replaced by menu selection.
-
 		if( !eo->mover )
 		{
 			continue;
@@ -367,6 +362,22 @@ void engine_enemy_manager_reset_mode( unsigned char enemy, unsigned char mode )
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	eo = &global_enemy_objects[ enemy ];
 	eo->action = mode;
+}
+
+// TODO delete!!
+void engine_enemy_manager_debug()
+{
+	struct_enemy_object *eo;
+	unsigned char enemy;
+
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		eo = &global_enemy_objects[ enemy ];
+
+		// TODO delete as this will be replaced by menu selection.
+		eo->mover = state_object_enemy_move[ enemy ];
+		// TODO delete as this will be replaced by menu selection.
+	}
 }
 
 unsigned char engine_enemy_manager_scatter_direction( unsigned char enemy )
