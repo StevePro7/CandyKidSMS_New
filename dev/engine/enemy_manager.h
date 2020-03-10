@@ -15,6 +15,7 @@ void engine_enemy_manager_update( unsigned char enemy );
 void engine_enemy_manager_draw();
 void engine_enemy_manager_hide();
 void engine_enemy_manager_move( unsigned char enemy, unsigned char direction );
+void engine_enemy_manager_pace( unsigned char enemy, unsigned char boost );
 void engine_enemy_manager_stop( unsigned char enemy );
 void engine_enemy_manager_dead( unsigned char enemy );
 void engine_enemy_manager_reset_all( unsigned char mode );
@@ -28,5 +29,6 @@ unsigned char engine_enemy_manager_scatter_direction( unsigned char enemy );
 unsigned char engine_enemy_manager_gohome_direction( unsigned char enemy );
 unsigned char engine_enemy_manager_attack_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY);
 unsigned char engine_enemy_manager_what_direction( unsigned char enemy, unsigned char targetX, unsigned char targetY );
+unsigned char engine_enemy_manager_input_boost( unsigned char enemy );
 
 #endif//_ENEMY_MANAGER_H_

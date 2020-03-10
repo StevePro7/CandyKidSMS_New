@@ -28,7 +28,11 @@ void engine_actor_manager_exec_gamer_speed( unsigned char args )
 }
 void engine_actor_manager_exec_enemy_speed( unsigned char args )
 {
-	args = 0;
+	unsigned char boost;
+	unsigned char enemy;
+
+	engine_function_manager_convertByteToNibbles( args, &boost, &enemy );
+	engine_enemy_manager_pace( enemy, boost );
 }
 
 

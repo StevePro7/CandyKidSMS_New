@@ -183,18 +183,27 @@ void screen_play_screen_update( unsigned char *screen_type )
 				}
 			}
 
-			if( enemymove_type_tour == eo->action )
+			if( enemymove_type_tour == eo->action || enemymove_type_kill == eo->action )
 			{
-				enemy_direction = engine_enemy_manager_scatter_direction( enemy );
-			}
-			else if( enemymove_type_kill == eo->action )
-			{
-				enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY );
-			}
+				enemy_boost = engine_enemy_manager_input_boost( enemy );
+				if( pace_type_none != enemy_boost )
+				{
+					engine_command_manager_add( frame, command_type_enemy_speed, ( enemy | ( enemy_boost << 4 ) ) );
+				}
 
-			if( direction_type_none != enemy_direction )
-			{
-				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+				if( enemymove_type_tour == eo->action )
+				{
+					enemy_direction = engine_enemy_manager_scatter_direction( enemy );
+				}
+				else if( enemymove_type_kill == eo->action )
+				{
+					enemy_direction = engine_enemy_manager_attack_direction( enemy, go->tileX, go->tileY );
+				}
+
+				if( direction_type_none != enemy_direction )
+				{
+					engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+				}
 			}
 		}
 	}

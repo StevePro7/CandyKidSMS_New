@@ -303,6 +303,13 @@ void engine_enemy_manager_move( unsigned char enemy, unsigned char direction )
 	eo->direction = direction;
 }
 
+void engine_enemy_manager_pace( unsigned char enemy, unsigned char boost )
+{
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	eo->speed = eo->speeds[ boost ];
+	eo->delay = eo->delays[ boost ];
+}
+
 void engine_enemy_manager_stop( unsigned char enemy )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
@@ -399,6 +406,7 @@ void engine_enemy_manager_reset_mode( unsigned char enemy, unsigned char mode )
 	eo = &global_enemy_objects[ enemy ];
 	eo->action = mode;
 }
+
 
 // TODO delete!!
 void engine_enemy_manager_debug()
@@ -770,6 +778,36 @@ unsigned char engine_enemy_manager_what_direction( unsigned char enemy, unsigned
 	}
 
 	return move_direction;
+}
+
+unsigned char engine_enemy_manager_input_boost( unsigned char enemy )
+{
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	unsigned char toggle = eo->toggle[ eo->action ];
+	unsigned char boost = 0;
+
+	// Not ready to swap modes.
+	if( eo->ticker < toggle  )
+	{
+		return pace_type_none;
+	}
+
+	eo->action = 1 - eo->action;		// stevepro disable for testing.
+	eo->ticker = 0;
+	boost = eo->action;
+
+	//TODO delete
+	if( 0 == eo->action )
+	{
+		engine_font_manager_draw_text( "SCATTR", 26, 21 );
+	}
+	if( 1 == eo->action )
+	{
+		engine_font_manager_draw_text( "ATTACK", 26, 21 );
+	}
+
+	//return pace_type_none;
+	return boost;
 }
 
 static void calcd_frame( unsigned char enemy )
