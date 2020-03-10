@@ -321,7 +321,7 @@ void engine_enemy_manager_stop( unsigned char enemy )
 	eo->ticker++;
 	if( eo->ticker >= toggle )
 	{
-		//eo->action = 1 - eo->action;		// stevepro disable for testing.
+		eo->action = 1 - eo->action;
 		eo->ticker = 0;
 
 		//TODO delete

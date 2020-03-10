@@ -71,7 +71,8 @@ const unsigned char enemy_object_hands[] =
 const unsigned char enemy_object_waits[] =
 {
 	//Pro: ES,EF,HS,HF.
-	61,71,81,91,
+	//61,71,81,91,
+	1,71,81,91,
 	//Adi: ES,EF,HS,HF.
 	62,72,82,92,
 	//Suz: ES,EF,HS,HF.
@@ -80,7 +81,8 @@ const unsigned char enemy_object_waits[] =
 const unsigned char enemy_object_tours[] =
 {
 	//Pro: ES,EF,HS,HF.
-	64,74,84,94,
+	4,74,84,94,
+	//64,74,84,94,
 	//Adi: ES,EF,HS,HF.
 	65,75,85,95,
 	//Suz: ES,EF,HS,HF.
@@ -89,7 +91,8 @@ const unsigned char enemy_object_tours[] =
 const unsigned char enemy_object_kills[] =
 {
 	//Pro: ES,EF,HS,HF.
-	67,77,87,97,
+	7,77,87,97,
+	//67,77,87,97,
 	//Adi: ES,EF,HS,HF.
 	68,78,88,98,
 	//Suz: ES,EF,HS,HF.
