@@ -55,6 +55,7 @@ void screen_cont_screen_update( unsigned char *screen_type )
 			if( 0 == cursor )
 			{
 				engine_collision_manager_reset_death();
+				engine_score_manager_reset_boost();
 				engine_score_manager_reset_lives();
 				engine_level_manager_draw_middle();
 				*screen_type = screen_type_ready;
