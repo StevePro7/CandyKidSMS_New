@@ -43,7 +43,7 @@ const unsigned char enemy_object_speed[] =
 		3, 3, 1, 3,		// Boost!
 //Adi: ES,EF,HS,HF.
 		1, 2, 3, 1,		// Normal
-		1, 2, 3, 1,		// Boost!
+		2, 2, 3, 1,		// Boost!
 //Suz: ES,EF,HS,HF.
 		1, 1, 2, 3,		// Normal
 		1, 1, 2, 3,		// Boost!
@@ -55,10 +55,10 @@ const unsigned char enemy_object_delay[] =
 		1, 3, 1, 2,		// Boost!
 //Adi: ES,EF,HS,HF.
 		2, 3, 3, 1,		// Normal
-		2, 3, 3, 1,		// Boost!
+		1, 3, 3, 1,		// Boost!
 //Suz: ES,EF,HS,HF.
 		3, 2, 3, 3,		// Normal
-		3, 2, 3, 3,		// Boost!
+		1, 2, 3, 3,		// Boost!
 };
 
 const unsigned char enemy_object_hands[] = 
@@ -74,29 +74,35 @@ const unsigned char enemy_object_waits[] =
 	//61,71,81,91,
 	1,71,81,91,
 	//Adi: ES,EF,HS,HF.
-	62,72,82,92,
+	//62,72,82,92,
+	2,72,82,92,
 	//Suz: ES,EF,HS,HF.
-	63,73,83,93,
+	3,73,83,93,
+	//63,73,83,93,
 };
 const unsigned char enemy_object_tours[] =
 {
 	//Pro: ES,EF,HS,HF.
 	4,74,84,94,
 	//64,74,84,94,
-	//Adi: ES,EF,HS,HF.
-	65,75,85,95,
+//Adi: ES,EF,HS,HF.
+	//65,75,85,95,
+	5,75,85,95,
 	//Suz: ES,EF,HS,HF.
-	66,76,86,96,
+	6,76,86,96,
+	//66,76,86,96,
 };
 const unsigned char enemy_object_kills[] =
 {
 	//Pro: ES,EF,HS,HF.
 	7,77,87,97,
 	//67,77,87,97,
-	//Adi: ES,EF,HS,HF.
-	68,78,88,98,
+//Adi: ES,EF,HS,HF.
+	8,78,88,98,
+	//68,78,88,98,
 	//Suz: ES,EF,HS,HF.
-	69,79,89,99,
+	9,79,89,99,
+	//69,79,89,99,
 };
 
 

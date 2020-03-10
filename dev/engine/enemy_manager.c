@@ -172,12 +172,12 @@ void engine_enemy_manager_load()
 		eo->delay = eo->delays[ 0 ];
 
 		// TODO delete this - debugging
-		engine_font_manager_draw_data( eo->speed, 10, 0 );
-		engine_font_manager_draw_data( eo->delay, 10, 1 );
+		//engine_font_manager_draw_data( eo->speed, 10, 0 );
+		//engine_font_manager_draw_data( eo->delay, 10, 1 );
 
-		engine_font_manager_draw_data( eo->waiter, 18, 0 );
-		engine_font_manager_draw_data( eo->toggle[ 0 ], 25, 0 );
-		engine_font_manager_draw_data( eo->toggle[ 1 ], 25, 1 );
+		//engine_font_manager_draw_data( eo->waiter, 18, 0 );
+		//engine_font_manager_draw_data( eo->toggle[ 0 ], 25, 0 );
+		//engine_font_manager_draw_data( eo->toggle[ 1 ], 25, 1 );
 		//engine_font_manager_draw_data( eo->speeds, 20, 0 );
 		//engine_font_manager_draw_data( eo->delays, 20, 1 );
 
@@ -321,11 +321,10 @@ void engine_enemy_manager_stop( unsigned char enemy )
 	//eo->prev_move[ 0 ] = eo->direction;
 	eo->prev_move = eo->direction;
 	eo->direction = direction_type_none;
+	eo->ticker++;
 	//eo->frame = 0;		// TODO remove as this is done in gohands()
 	calcd_frame( enemy );
 
-
-	eo->ticker++;
 
 	// Detect to swap scatter to attack and vice versa.
 	//toggle = eo->toggle[ eo->action ];
@@ -797,14 +796,14 @@ unsigned char engine_enemy_manager_input_boost( unsigned char enemy )
 	boost = eo->action;
 
 	//TODO delete
-	if( 0 == eo->action )
-	{
-		engine_font_manager_draw_text( "SCATTR", 26, 21 );
-	}
-	if( 1 == eo->action )
-	{
-		engine_font_manager_draw_text( "ATTACK", 26, 21 );
-	}
+	//if( 0 == eo->action )
+	//{
+	//	engine_font_manager_draw_text( "SCATTR", 26, 21 );
+	//}
+	//if( 1 == eo->action )
+	//{
+	//	engine_font_manager_draw_text( "ATTACK", 26, 21 );
+	//}
 
 	//return pace_type_none;
 	return boost;
