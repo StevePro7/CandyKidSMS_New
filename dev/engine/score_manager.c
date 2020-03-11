@@ -3,9 +3,9 @@
 #include "font_manager.h"
 #include "global_manager.h"
 #include "locale_manager.h"
-#include "..\banks\databank.h"
-#include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
+#include "..\banks\fixedbank.h"
+#include "..\banks\databank.h"
 
 //#define TEXT_X		SCREEN_TILE_LEFT + 24
 //#define DATA_X		SCREEN_TILE_LEFT + 28
@@ -264,13 +264,14 @@ void engine_score_manager_reset_boost()
 static void update_score( unsigned char points )
 {
 	struct_score_object *so = &global_score_object;
+	unsigned int hiscore = state_object_high_score;		// Not sure why this didn't work directly??
 	so->score += points;
 
 	if( so->score > MAX_HI_SCORE )
 	{
 		so->score = MAX_HI_SCORE;
 	}
-	if( so->score > state_object_high_score )
+	if( so->score > hiscore )
 	{
 		state_object_high_score = so->score;
 		draw_highs();
