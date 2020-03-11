@@ -155,11 +155,11 @@ void engine_board_manager_debugger()
 	for( loop = 0; loop < 6; loop++ )
 	//for( loop = 0; loop < 2; loop++ )
 	{
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + spot[ loop ] * 2, 0 );
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + spot[ loop ] * 2, 22 );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + spot[ loop ] * 2, 0 );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + spot[ loop ] * 2, 22 );
 
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT, spot[ loop ] * 2 );
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + 22, spot[ loop ] * 2 );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT, spot[ loop ] * 2 );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + 22, spot[ loop ] * 2 );
 	}
 }
 // TODO - delete!!
@@ -171,13 +171,13 @@ static void draw_side( unsigned char wide, unsigned char right )
 
 	for( loop = 0; loop < wide; loop++ )
 	{
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, TOP_SIDE_Y );
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, BOT_SIDE_Y );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, TOP_SIDE_Y );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, BOT_SIDE_Y );
 	}
 	for( loop = 1; loop < SCREEN_TILE_HIGH - 1; loop++ )
 	{
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_SIDE_Y + loop * 2 );
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + right, TOP_SIDE_Y + loop * 2 );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_SIDE_Y + loop * 2 );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + right, TOP_SIDE_Y + loop * 2 );
 	}
 }
 static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right )
@@ -185,16 +185,16 @@ static void draw_gaps( unsigned char left, unsigned char midd, unsigned char rig
 	unsigned char type = state_object_trees_type;
 	if( exit_type_closed == state_object_exits_type )
 	{
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + left, TOP_SIDE_Y );
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + midd, TOP_SIDE_Y );
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + left, BOT_SIDE_Y );
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + midd, BOT_SIDE_Y );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + left, TOP_SIDE_Y );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + midd, TOP_SIDE_Y );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + left, BOT_SIDE_Y );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + midd, BOT_SIDE_Y );
 
 		// Hard code top and bottom exits as they never move!
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_EXIT_Y );
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, BOT_EXIT_Y );
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + right, TOP_EXIT_Y );
-		engine_tile_manager_main_trees( type, SCREEN_TILE_LEFT + right, BOT_EXIT_Y );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_EXIT_Y );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, BOT_EXIT_Y );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + right, TOP_EXIT_Y );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + right, BOT_EXIT_Y );
 		return;
 	}
 

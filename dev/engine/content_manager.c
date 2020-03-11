@@ -45,7 +45,7 @@ void engine_content_manager_load_tiles_splash()
 void engine_content_manager_load_sprites_game()
 {
 	// Sprite tiles.
-	devkit_SMS_loadPSGaidencompressedTiles( sprites__tiles__psgcompr, SPRITE_TILES );
+	devkit_SMS_loadPSGaidencompressedTiles( sprites__tiles__psgcompr, SPRITE_TILES + 48 );
 	devkit_SMS_loadSpritePalette( ( void * ) sprites__palette__bin );
 }
 

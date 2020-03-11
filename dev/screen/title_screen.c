@@ -11,10 +11,7 @@
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
 
-// TODO does player choose 
-// NEW GAME
-// CONTINUE
-// algorithm: if 0 == world && 0 == round then "new game" else "continue"
+static void draw_tiles();
 
 void screen_title_screen_load()
 {
@@ -39,6 +36,8 @@ void screen_title_screen_load()
 	//engine_locale_manager_draw_text( LOCALE_BUILD_VERSION, SCREEN_TILE_LEFT + 24, 21 );
 	engine_locale_manager_draw_text( 0, SCREEN_TILE_LEFT + 24, 21 );
 	//engine_font_manager_draw_text( LOCALE_BUILD_VERSION, SCREEN_TILE_LEFT + 24, 21 );
+
+	draw_tiles();
 	devkit_SMS_displayOn();
 }
 
@@ -53,4 +52,15 @@ void screen_title_screen_update( unsigned char *screen_type )
 
 	*screen_type = screen_type_title;
 	//*screen_type = screen_type_option;
+}
+
+static void draw_tiles()
+{
+	engine_tile_manager_draw_trees( tree_type_avoid, 10, 8 );
+	engine_tile_manager_draw_trees( tree_type_death, 10, 10 );
+
+	engine_tile_manager_draw_bonus( tile_type_bonusA, 10, 12 );
+	engine_tile_manager_draw_bonus( tile_type_bonusB, 10, 14 );
+	engine_tile_manager_draw_bonus( tile_type_bonusC, 10, 16 );
+	engine_tile_manager_draw_bonus( tile_type_bonusD, 10, 18 );
 }
