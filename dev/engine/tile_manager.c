@@ -91,7 +91,7 @@ void engine_tile_manager_draw_tile( unsigned char tile, unsigned char x, unsigne
 	}
 	else if( tile_type >= tile_type_bonusA  && tile_type <= tile_type_bonusD )
 	{
-		engine_tile_manager_draw_bonus( tile_type, x, y );
+		engine_tile_manager_draw_bonus( tile_type, x, y, level_object_multiplier );
 	}
 	else if( tile_type_candy == tile_type )
 	{
@@ -131,10 +131,11 @@ void engine_tile_manager_draw_candy( unsigned char type, unsigned char x, unsign
 	draw_tile( offset, x, y );
 }
 
-void engine_tile_manager_draw_bonus( unsigned char type, unsigned char x, unsigned char y )
+void engine_tile_manager_draw_bonus( unsigned char type, unsigned char x, unsigned char y, unsigned char multiplier )
 {
 	unsigned char offset = ( type - 1 ) * 2;
-	offset += ( level_object_multiplier - 1 ) * 8;
+	//offset += ( level_object_multiplier - 1 ) * 8;
+	offset += ( multiplier - 1 ) * 8;
 	draw_tile( offset, x, y );
 }
 

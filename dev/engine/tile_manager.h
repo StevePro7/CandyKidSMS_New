@@ -9,7 +9,8 @@ void engine_tile_manager_draw_tile( unsigned char tile, unsigned char x, unsigne
 void engine_tile_manager_draw_blank( unsigned char x, unsigned char y );
 void engine_tile_manager_draw_trees( unsigned char type, unsigned char x, unsigned char y );
 void engine_tile_manager_draw_candy( unsigned char type, unsigned char x, unsigned char y );
-void engine_tile_manager_draw_bonus( unsigned char type, unsigned char x, unsigned char y );
+//void engine_tile_manager_draw_bonus( unsigned char type, unsigned char x, unsigned char y );
+void engine_tile_manager_draw_bonus( unsigned char type, unsigned char x, unsigned char y, unsigned char multiplier );
 void engine_tile_manager_draw_oneup( unsigned char x, unsigned char y );
 void engine_tile_manager_draw_cross( unsigned char type, unsigned char x, unsigned char y );
 void engine_tile_manager_draw_sides( unsigned char x, unsigned char y );

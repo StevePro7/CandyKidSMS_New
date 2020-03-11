@@ -60,11 +60,12 @@ void screen_title_screen_update( unsigned char *screen_type )
 
 static void draw_tiles()
 {
+	const unsigned char multiplier = 1;
 	engine_tile_manager_draw_trees( tree_type_avoid, 10, 8 );
 	engine_tile_manager_draw_trees( tree_type_death, 10, 10 );
 
-	engine_tile_manager_draw_bonus( tile_type_bonusA, 10, 12 );
-	engine_tile_manager_draw_bonus( tile_type_bonusB, 10, 14 );
-	engine_tile_manager_draw_bonus( tile_type_bonusC, 10, 16 );
-	engine_tile_manager_draw_bonus( tile_type_bonusD, 10, 18 );
+	engine_tile_manager_draw_bonus( tile_type_bonusA, 10, 12, multiplier );
+	engine_tile_manager_draw_bonus( tile_type_bonusB, 10, 14, multiplier );
+	engine_tile_manager_draw_bonus( tile_type_bonusC, 10, 16, multiplier );
+	engine_tile_manager_draw_bonus( tile_type_bonusD, 10, 18, multiplier );
 }
