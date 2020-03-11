@@ -63,7 +63,7 @@ void engine_score_manager_init()
 	struct_score_object *so = &global_score_object;
 	so->score = 0;
 	so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
-	so->values[ score_type_lives ] = 1; // stevepro
+	//so->values[ score_type_lives ] = 1; // stevepro
 
 	//so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
 	//so->bonus = 0;

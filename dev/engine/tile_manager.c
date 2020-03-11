@@ -175,11 +175,11 @@ void engine_tile_manager_main_title( unsigned char x, unsigned char y )
 		}
 	}
 }
-void engine_tile_manager_main_trees( unsigned char type, unsigned char x, unsigned char y )
-{
-	unsigned char offset = type * 2;
-	draw_tile( offset, x, y );
-}
+//void engine_tile_manager_main_trees( unsigned char type, unsigned char x, unsigned char y )
+//{
+//	unsigned char offset = type * 2;
+//	draw_tile( offset, x, y );
+//}
 void engine_tile_manager_main_candy( unsigned char type, unsigned char x, unsigned char y )
 {
 	unsigned char offset = type * 2 + MAIN_CANDY_OFFSET;
