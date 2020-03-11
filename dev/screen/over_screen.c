@@ -9,7 +9,7 @@
 #include "..\engine\memo_manager.h"
 #include "..\engine\timer_manager.h"
 
-#define OVER_SCREEN_DELAY		250
+#define OVER_SCREEN_DELAY		275
 
 void screen_over_screen_load()
 {

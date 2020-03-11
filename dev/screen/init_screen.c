@@ -17,10 +17,10 @@ void screen_init_screen_load()
 
 	//if( state_object_mydebugger )
 	//{
-	//	engine_asm_manager_clear_VRAM();
-	//	engine_content_manager_load_tiles_font();
-	//	engine_content_manager_load_tiles_game();
-	//	engine_content_manager_load_sprites_game();
+		engine_asm_manager_clear_VRAM();
+		engine_content_manager_load_tiles_font();
+		engine_content_manager_load_tiles_game();
+		engine_content_manager_load_sprites_game();
 	//}
 
 	// Manually clear any text artifacts.
