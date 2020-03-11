@@ -9,5 +9,6 @@ void engine_audio_manager_music_stop();
 
 // Sound.
 void engine_audio_manager_sound_play( unsigned char index );
+void engine_audio_manager_sfx_play( unsigned char index );
 
 #endif//_AUDIO_MANAGER_H_

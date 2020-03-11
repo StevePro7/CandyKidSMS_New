@@ -82,3 +82,27 @@ void engine_audio_manager_sound_play( unsigned char index )
 	devkit_SMS_mapROMBank( bank );
 	devkit_PSGSFXPlay( ( unsigned char* ) sound, devkit_SFX_CHANNEL2() );
 }
+
+void engine_audio_manager_sfx_play( unsigned char index )
+{
+	const unsigned char *sfx;
+	unsigned char status;
+
+	// If sound effects are  disabled then return.
+	if( !state_object_sound_data )
+	{
+		return;
+	}
+
+	// If sound effect already playing then return.
+	status = devkit_PSGSFXGetStatus();
+	if( status )
+	{
+		return;
+	}
+
+	devkit_SMS_mapROMBank( FIXED_BANK );
+	sfx = sfx_object_data[ index ];
+
+	devkit_PSGSFXPlay( ( unsigned char* ) sfx, devkit_SFX_CHANNEL2() );
+}

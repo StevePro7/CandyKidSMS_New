@@ -23,6 +23,10 @@ extern unsigned char state_object_curr_screen;
 extern unsigned char state_object_next_screen;
 
 
+// Audio Manager.
+extern const unsigned char *sfx_object_data[];
+
+
 // Board Manager.
 extern const unsigned char board_object_posnX[];
 extern const unsigned char board_object_posnY[];
@@ -46,3 +50,4 @@ extern unsigned char level_object_tiles_array[];
 extern unsigned char level_object_bonus_count;
 extern unsigned char level_object_candy_count;
 extern unsigned char level_object_multiplier;
+

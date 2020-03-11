@@ -30,10 +30,10 @@ unsigned char devkit_PSGGetStatus( void )
 {
 	return PSGGetStatus();
 }
-//void devkit_PSGSetMusicVolumeAttenuation( unsigned char attenuation )
-//{
-//	PSGSetMusicVolumeAttenuation( attenuation );
-//}
+void devkit_PSGSetMusicVolumeAttenuation( unsigned char attenuation )
+{
+	PSGSetMusicVolumeAttenuation( attenuation );
+}
 
 void devkit_PSGSFXPlay( void *sfx, unsigned char channels )
 {

@@ -212,6 +212,15 @@ typedef enum tag_enum_sound_type
 
 } enum_sound_type;
 
+typedef enum tag_enum_sfx_type
+{
+	sfx_type_accept = 0,
+	sfx_type_death = 1,
+	sfx_type_power = 2,
+	sfx_type_reset = 3,
+
+} enum_sfx_type;
+
 typedef enum tag_enum_stage_type
 {
 	event_stage_start = 0,

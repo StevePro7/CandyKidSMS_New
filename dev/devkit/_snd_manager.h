@@ -7,7 +7,7 @@ void devkit_PSGPlayNoRepeat( void *song );
 void devkit_PSGStop( void );
 void devkit_PSGResume( void );
 unsigned char devkit_PSGGetStatus( void );
-//void devkit_PSGSetMusicVolumeAttenuation( unsigned char attenuation );
+void devkit_PSGSetMusicVolumeAttenuation( unsigned char attenuation );
 
 void devkit_PSGSFXPlay( void *sfx, unsigned char channels );
 //void devkit_PSGSFXPlayLoop( void *sfx, unsigned char channels );

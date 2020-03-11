@@ -1,5 +1,6 @@
 #include "bank6.h"
 #include "..\engine\enum_manager.h"
+#include "..\psg.h"
 
 // Global state.
 unsigned char state_object_mydebugger;
@@ -25,6 +26,17 @@ unsigned char state_object_enemy_move[] = { 1, 1, 1 };		// TODO delete
 unsigned char state_object_prev_screen;
 unsigned char state_object_curr_screen;
 unsigned char state_object_next_screen;
+
+
+// Audio Manager.
+const unsigned char *sfx_object_data[] =
+{
+	sfx_accept_psg,
+	sfx_death_psg,
+	sfx_power_psg,
+	sfx_reset_psg,
+};
+
 
 // Board Manager.
 const unsigned char board_object_posnX[] =
