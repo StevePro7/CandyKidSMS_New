@@ -11,9 +11,9 @@
 #include "..\banks\databank.h"
 
 //#define PASS_SCREEN_DELAY	50
+//#define PASS_SCREEN_DELAY1	25
 #define PASS_SCREEN_DELAY1	25
-//#define PASS_SCREEN_DELAY2	250
-#define PASS_SCREEN_DELAY2	125
+#define PASS_SCREEN_DELAY2	250
 
 static void next_level();
 
@@ -38,6 +38,8 @@ void screen_pass_screen_load()
 	//engine_board_manager_midd_text();
 	//engine_memo_manager_pass( perfect );
 	event_stage = event_stage_start;
+
+	//engine_audio_manager_sound_play( sound_type_level );
 }
 
 // TODO combine pass + bonus screen
@@ -49,7 +51,11 @@ void screen_pass_screen_update( unsigned char *screen_type )
 	if( event_stage_pause == event_stage )
 	{
 		delay = engine_delay_manager_update();
-		input = engine_input_manager_hold( input_type_fire2 );
+		input = 0;
+		if( state_object_mydebugger )
+		{
+			input = engine_input_manager_hold( input_type_fire2 );
+		}
 		if( delay || input )
 		{
 			next_level();
@@ -76,6 +82,11 @@ void screen_pass_screen_update( unsigned char *screen_type )
 		if( perfect )
 		{
 			engine_score_manager_finish_bonus();
+		}
+
+		if( !state_object_mydebugger )
+		{
+			engine_audio_manager_sound_play( sound_type_level );
 		}
 
 		event_stage = event_stage_pause;
