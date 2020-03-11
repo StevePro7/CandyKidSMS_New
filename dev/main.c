@@ -14,9 +14,9 @@ void main (void)
 	devkit_SMS_useFirstHalfTilesforSprites_False();
 	devkit_SMS_VDPturnOnFeature( devkit_VDPFEATURE_HIDEFIRSTCOL() );
 
-	engine_content_manager_load_tiles_font();
-	engine_content_manager_load_tiles_game();
-	engine_content_manager_load_sprites_game();
+	//engine_content_manager_load_tiles_font();
+	//engine_content_manager_load_tiles_game();
+	//engine_content_manager_load_sprites_game();
 
 	engine_state_manager_init();
 	engine_state_manager_read();
@@ -35,7 +35,7 @@ void main (void)
 	//open_screen_type = screen_type_play;
 	//open_screen_type = screen_type_dead;
 	//open_screen_type = screen_type_cont;
-	open_screen_type = screen_type_over;
+	//open_screen_type = screen_type_over;
 	//open_screen_type = screen_type_pass;
 	//open_screen_type = screen_type_beat;
 	//open_screen_type = screen_type_save;

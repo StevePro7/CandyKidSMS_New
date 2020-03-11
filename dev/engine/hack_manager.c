@@ -76,7 +76,7 @@ void engine_hack_manager_invert()
 	//state_object_enemy_move[ actor_type_adi ] = 0;
 	//state_object_enemy_move[ actor_type_suz ] = 0;
 
-	state_object_mydebugger = 0;
+	state_object_mydebugger = 1;
 	state_object_full_boost = 0;
 	state_object_delay_test = 0;
 	// TODO delete this hard coded

@@ -31,10 +31,10 @@ void screen_cont_screen_load()
 	engine_audio_manager_music_stop();
 	engine_delay_manager_load( CONT_SCREEN_DELAY );
 	engine_memo_manager_draw( 22, 23 );
+	cursor = 0;
 
 	display_cursor();
 	event_stage = event_stage_start;
-	cursor = 0;
 }
 
 void screen_cont_screen_update( unsigned char *screen_type )

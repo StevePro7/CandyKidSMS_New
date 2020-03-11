@@ -60,10 +60,10 @@ void screen_dead_screen_load()
 	//screen = screen_type_cont;
 	//screen = screen_type_ready;
 
-	//if( 0 != lives )
-	//{
+	if( !state_object_mydebugger )
+	{
 		engine_audio_manager_sfx_play( sfx_type_death );
-	//}
+	}
 }
 
 void screen_dead_screen_update( unsigned char *screen_type )
@@ -110,17 +110,20 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	//}
 
 	// Check if Kid want to advance.
-	input = engine_input_manager_hold( input_type_fire2 );
-	if( input )
+	if( state_object_mydebugger )
 	{
-		devkit_PSGSFXStop();
-		if( screen_type_ready == screen )
+		input = engine_input_manager_hold( input_type_fire2 );
+		if( input )
 		{
-			reset_death();
-		}
+			devkit_PSGSFXStop();
+			if( screen_type_ready == screen )
+			{
+				reset_death();
+			}
 
-		*screen_type = screen;
-		return;
+			*screen_type = screen;
+			return;
+		}
 	}
 
 	//engine_frame_manager_draw();
