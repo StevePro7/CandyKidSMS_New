@@ -185,11 +185,11 @@ void engine_tile_manager_main_candy( unsigned char type, unsigned char x, unsign
 	unsigned char offset = type * 2 + MAIN_CANDY_OFFSET;
 	draw_tile( offset, x, y );
 }
-void engine_tile_manager_main_bonus( unsigned char type, unsigned char x, unsigned char y )
-{
-	unsigned char offset = ( type - 1 ) * 2;
-	draw_tile( offset, x, y );
-}
+//void engine_tile_manager_main_bonus( unsigned char type, unsigned char x, unsigned char y )
+//{
+//	unsigned char offset = ( type - 1 ) * 2;
+//	draw_tile( offset, x, y );
+//}
 void engine_tile_manager_main_gamer( unsigned char x, unsigned char y )
 {
 	unsigned char offset = MAIN_GAMER_OFFSET;

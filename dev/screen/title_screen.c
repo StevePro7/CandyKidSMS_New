@@ -17,10 +17,6 @@ void screen_title_screen_load()
 {
 	unsigned char row;
 	devkit_SMS_displayOff();
-	engine_content_manager_load_tiles_main();
-	engine_board_manager_main_full();
-	engine_board_manager_main_exit();
-	engine_tile_manager_main_title( 2, 2 );
 
 	// TODO tweak this as needed... i.e. run on real hardware and look for any graphics glitches...!!
 	for( row = 6; row < 22; row++ )
@@ -37,6 +33,14 @@ void screen_title_screen_load()
 	engine_locale_manager_draw_text( 0, SCREEN_TILE_LEFT + 24, 21 );
 	//engine_font_manager_draw_text( LOCALE_BUILD_VERSION, SCREEN_TILE_LEFT + 24, 21 );
 
+	engine_content_manager_load_tiles_main();
+	engine_board_manager_main_full();
+	engine_board_manager_main_exit();
+	engine_tile_manager_main_title( 2, 2 );
+
+	
+
+	//devkit_SMS_mapROMBank( 2 );
 	draw_tiles();
 	devkit_SMS_displayOn();
 }
