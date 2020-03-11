@@ -32,10 +32,6 @@ void screen_over_screen_update( unsigned char *screen_type )
 	unsigned char input;
 	unsigned char delay;
 
-	// Draw sprites first.
-	//engine_enemy_manager_draw();
-	//engine_gamer_manager_draw_death( 0 );
-
 	input = engine_input_manager_hold( input_type_fire1 );
 	delay = engine_delay_manager_update();
 	if( delay || input )
@@ -45,9 +41,9 @@ void screen_over_screen_update( unsigned char *screen_type )
 		return;
 	}
 
-	// Draw sprites first.
-	engine_enemy_manager_draw();
-	engine_gamer_manager_draw_death( 0 );
+	// Draw sprites last.
+	engine_enemy_manager_hide();
+	engine_gamer_manager_hide_death();
 
 
 	*screen_type = screen_type_over;

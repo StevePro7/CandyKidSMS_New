@@ -42,14 +42,11 @@ void screen_cont_screen_update( unsigned char *screen_type )
 	unsigned char input[ 3 ] = { 0, 0, 0 };
 	unsigned char delay;
 
-	// Draw sprites first.
-	//engine_enemy_manager_draw();
-	//engine_gamer_manager_draw_death( 0 );
-
 	if( event_stage_pause == event_stage )
 	{
-		engine_enemy_manager_draw();
-		engine_gamer_manager_draw_death( 0 );
+		// Draw sprites first.
+		engine_enemy_manager_hide();
+		engine_gamer_manager_hide_death();
 
 		delay = engine_delay_manager_update();
 		if( delay )
@@ -76,9 +73,9 @@ void screen_cont_screen_update( unsigned char *screen_type )
 		}
 	}
 
-	// Draw sprites first.
-	engine_enemy_manager_draw();
-	engine_gamer_manager_draw_death( 0 );
+	// Draw sprites last.
+	engine_enemy_manager_hide();
+	engine_gamer_manager_hide_death();
 
 	input[ 0 ] = engine_input_manager_hold( input_type_left );
 	input[ 1 ] = engine_input_manager_hold( input_type_right );

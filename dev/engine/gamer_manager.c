@@ -186,6 +186,17 @@ void engine_gamer_manager_draw_death( unsigned char frame )
 	engine_sprite_manager_draw_entity( go->posnX, go->posnY, calcd );
 }
 
+void engine_gamer_manager_hide_death()
+{
+	struct_gamer_object *go = &global_gamer_object;
+	if( go->posnX > 60 && go->posnX < 148 && go->posnY > 60 && go->posnY < 116 )
+	{
+		return;
+	}
+
+	engine_gamer_manager_draw_death( 0 );
+}
+
 void engine_gamer_manager_move( unsigned char direction )
 {
 	struct_gamer_object *go = &global_gamer_object;
