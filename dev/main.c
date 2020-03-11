@@ -3,7 +3,7 @@
 void main (void)
 {
 	// Global variables.
-	//static bool global_pause;
+	static bool global_pause;
 	unsigned char open_screen_type;
 
 	engine_asm_manager_clear_VRAM();
@@ -31,7 +31,7 @@ void main (void)
 	//open_screen_type = screen_type_demo;
 	//open_screen_type = screen_type_test;
 	//open_screen_type = screen_type_save;
-	open_screen_type = screen_type_option;
+	//open_screen_type = screen_type_option;
 	//open_screen_type = screen_type_play;
 	//open_screen_type = screen_type_dead;
 	//open_screen_type = screen_type_cont;
@@ -44,6 +44,25 @@ void main (void)
 	devkit_SMS_displayOn();
 	for( ;; )
 	{
+		if( devkit_SMS_queryPauseRequested() )
+		{
+			devkit_SMS_resetPauseRequest();
+			global_pause = !global_pause;
+			if( global_pause )
+			{
+				devkit_PSGSilenceChannels();
+			}
+			else
+			{
+				devkit_PSGRestoreVolumes();
+			}
+		}
+
+		if( global_pause )
+		{
+			continue;
+		}
+
 		devkit_SMS_initSprites();
 		engine_input_manager_update();
 		engine_screen_manager_update();
