@@ -6,6 +6,7 @@
 #include "..\engine\gamer_manager.h"
 #include "..\engine\level_manager.h"
 #include "..\engine\timer_manager.h"
+#include "..\devkit\_sms_manager.h"
 #include "..\banks\databank.h"
 
 #define READY_SCREEN_DELAY	0
@@ -35,6 +36,8 @@ void screen_ready_screen_update( unsigned char *screen_type )
 	delay = engine_delay_manager_update();
 	if( delay )
 	{
+		// TODO stevepro hardcode
+		//devkit_SMS_mapROMBank( 7 );
 		engine_audio_manager_music_resume();
 		//engine_audio_manager_music_play( music_type_title );
 		//engine_audio_manager_music_play( music_type_game03 );

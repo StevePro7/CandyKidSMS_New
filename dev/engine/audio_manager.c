@@ -4,6 +4,9 @@
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 
+static unsigned char music_bank;
+//static unsigned char sound_bank;
+
 // IMPORTANT disable compiler warning 196
 //#ifdef _CONSOLE
 //#else
@@ -14,8 +17,8 @@
 // Music.
 void engine_audio_manager_music_play( unsigned char index )
 {
-	const unsigned char *music;
-	unsigned char bank;
+	const unsigned char *music_data;
+	//unsigned char bank;
 
 	if( !state_object_music_data )
 	{
@@ -23,11 +26,11 @@ void engine_audio_manager_music_play( unsigned char index )
 	}
 
 	devkit_SMS_mapROMBank( FIXED_BANK );
-	music = music_object_data[ index ];
-	bank = music_object_bank[ index ];
+	music_data = music_object_data[ index ];
+	music_bank = music_object_bank[ index ];
 
-	devkit_SMS_mapROMBank( bank );
-	devkit_PSGPlay( ( unsigned char* ) music );
+	devkit_SMS_mapROMBank( music_bank );
+	devkit_PSGPlay( ( unsigned char* ) music_data );
 }
 void engine_audio_manager_music_play_norepeat( unsigned char index )
 {
@@ -48,6 +51,7 @@ void engine_audio_manager_music_play_norepeat( unsigned char index )
 }
 void engine_audio_manager_music_resume()
 {
+	devkit_SMS_mapROMBank( music_bank );
 	devkit_PSGResume();
 }
 void engine_audio_manager_music_stop()
@@ -101,7 +105,6 @@ void engine_audio_manager_sfx_play( unsigned char index )
 		return;
 	}
 
-	//devkit_SMS_mapROMBank( FIXED_BANK );
 	sfx = sfx_object_data[ index ];
 
 	devkit_PSGSFXPlay( ( unsigned char* ) sfx, devkit_SFX_CHANNEL2() );

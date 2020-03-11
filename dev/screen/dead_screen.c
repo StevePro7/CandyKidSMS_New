@@ -11,11 +11,12 @@
 #include "..\engine\score_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
+#include "..\devkit\_snd_manager.h"
 #include "..\banks\databank.h"
 
-#define DEATH_SCREEN_DELAY		150
+#define DEATH_SCREEN_DELAY		100
 #define FLASH_SCREEN_DELAY		20
-#define RESET_SCREEN_DELAY		75
+//#define RESET_SCREEN_DELAY		75
 
 //#define DEATH_SCREEN_DELAY		15
 //#define FLASH_SCREEN_DELAY		5
@@ -40,7 +41,7 @@ void screen_dead_screen_load()
 
 	// TODO play death sound FX
 	engine_delay_manager_load( DEATH_SCREEN_DELAY );
-	engine_reset_manager_load( RESET_SCREEN_DELAY );
+	//engine_reset_manager_load( RESET_SCREEN_DELAY );
 
 	event_stage = event_stage_start;
 	death_frame = 0;
@@ -104,6 +105,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	input = engine_input_manager_hold( input_type_fire2 );
 	if( input )
 	{
+		devkit_PSGSFXStop();
 		if( screen_type_ready == screen )
 		{
 			reset_death();

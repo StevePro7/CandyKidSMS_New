@@ -1,4 +1,5 @@
 #include "cont_screen.h"
+#include "..\engine\audio_manager.h"
 #include "..\engine\collision_manager.h"
 #include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
@@ -27,6 +28,7 @@ static unsigned char cursor;
 
 void screen_cont_screen_load()
 {
+	engine_audio_manager_music_stop();
 	engine_delay_manager_load( CONT_SCREEN_DELAY );
 	engine_memo_manager_draw( 22, 23 );
 
