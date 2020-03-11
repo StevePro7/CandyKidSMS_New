@@ -59,7 +59,8 @@ void screen_dead_screen_load()
 	//screen = screen_type_cont;
 	//screen = screen_type_ready;
 
-	engine_audio_manager_sound_play( 1 );
+	//engine_audio_manager_sound_play( 1 );
+	engine_audio_manager_sfx_play( sfx_type_death );
 }
 
 void screen_dead_screen_update( unsigned char *screen_type )
