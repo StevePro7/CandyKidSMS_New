@@ -60,8 +60,10 @@ void screen_dead_screen_load()
 	//screen = screen_type_cont;
 	//screen = screen_type_ready;
 
-	//engine_audio_manager_sound_play( 1 );
-	engine_audio_manager_sfx_play( sfx_type_death );
+	//if( 0 != lives )
+	//{
+		engine_audio_manager_sfx_play( sfx_type_death );
+	//}
 }
 
 void screen_dead_screen_update( unsigned char *screen_type )
@@ -76,6 +78,12 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	//unsigned char reset;
 	unsigned int frame = fo->frame_count;
 
+	//unsigned char lives = engine_score_manager_get_value( score_type_lives );
+	//if( 0 == lives )
+	//{
+	//	*screen_type = screen;
+	//	return;
+	//}
 
 	// Draw sprites first.
 	engine_enemy_manager_draw();

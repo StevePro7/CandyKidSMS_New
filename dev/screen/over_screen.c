@@ -17,11 +17,14 @@ void screen_over_screen_load()
 	unsigned char y = TOP_SIDE_Y + 10;
 
 	// TODO play game over music.
+	engine_audio_manager_music_stop();
 	engine_delay_manager_load( OVER_SCREEN_DELAY );
 	//engine_memo_manager_draw( 24, 25 );
 
 	engine_locale_manager_draw_text( 24, x, y + 1 );
 	engine_locale_manager_draw_text( 25, x, y + 2 );
+
+	engine_audio_manager_music_play_norepeat( music_type_over );
 }
 
 void screen_over_screen_update( unsigned char *screen_type )
