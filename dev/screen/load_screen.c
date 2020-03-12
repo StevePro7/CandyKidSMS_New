@@ -22,6 +22,7 @@
 //#define LOAD_SCREEN_DELAY	1
 
 static void print_level();
+static void print_enemy();		// TODO delete
 
 void screen_load_screen_load()
 {
@@ -58,6 +59,7 @@ void screen_load_screen_load()
 	//devkit_SMS_displayOn();
 
 	print_level();
+	print_enemy();
 	//engine_audio_manager_music_play( music_type_game03 );
 
 	//engine_gamer_manager_load();
@@ -111,4 +113,33 @@ static void print_level()
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	engine_font_manager_draw_text( locale_object_texts[ 8 ], SCREEN_TILE_LEFT + 8, 11 );
 	engine_font_manager_draw_text( locale_object_texts[ 9 ], SCREEN_TILE_LEFT + 8, 12 );
+}
+
+static void print_enemy()
+{
+	struct_enemy_object *eo;
+
+	eo = &global_enemy_objects[ actor_type_pro ];
+	engine_font_manager_draw_data2( eo->speeds[ 0 ], 1, 0 );
+	engine_font_manager_draw_data2( eo->delays[ 0 ], 1, 1 );
+	engine_font_manager_draw_data2( eo->speeds[ 1 ], 1, 2 );
+	engine_font_manager_draw_data2( eo->delays[ 1 ], 1, 3 );
+	engine_font_manager_draw_data2( eo->toggle[ 0 ], 1, 4 );
+	engine_font_manager_draw_data2( eo->toggle[ 1 ], 1, 5 );
+
+	eo = &global_enemy_objects[ actor_type_adi ];
+	engine_font_manager_draw_data2( eo->speeds[ 0 ], 1, 9 );
+	engine_font_manager_draw_data2( eo->delays[ 0 ], 1, 10 );
+	engine_font_manager_draw_data2( eo->speeds[ 1 ], 1, 11 );
+	engine_font_manager_draw_data2( eo->delays[ 1 ], 1, 12 );
+	engine_font_manager_draw_data2( eo->toggle[ 0 ], 1, 13 );
+	engine_font_manager_draw_data2( eo->toggle[ 1 ], 1, 14 );
+
+	eo = &global_enemy_objects[ actor_type_suz ];
+	engine_font_manager_draw_data2( eo->speeds[ 0 ], 1, 18 );
+	engine_font_manager_draw_data2( eo->delays[ 0 ], 1, 19 );
+	engine_font_manager_draw_data2( eo->speeds[ 1 ], 1, 20 );
+	engine_font_manager_draw_data2( eo->delays[ 1 ], 1, 21 );
+	engine_font_manager_draw_data2( eo->toggle[ 0 ], 1, 22 );
+	engine_font_manager_draw_data2( eo->toggle[ 1 ], 1, 23 );
 }

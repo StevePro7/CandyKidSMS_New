@@ -796,14 +796,14 @@ unsigned char engine_enemy_manager_input_boost( unsigned char enemy )
 	boost = eo->action;
 
 	//TODO delete
-	//if( 0 == eo->action )
-	//{
-	//	engine_font_manager_draw_text( "SCATTR", 26, 21 );
-	//}
-	//if( 1 == eo->action )
-	//{
-	//	engine_font_manager_draw_text( "ATTACK", 26, 21 );
-	//}
+	if( 0 == eo->action )
+		{
+			engine_font_manager_draw_text( "SCATTR", 26, 21 );
+		}
+	if( 1 == eo->action )
+	{
+		engine_font_manager_draw_text( "ATTACK", 26, 21 );
+	}
 
 	//return pace_type_none;
 	return boost;

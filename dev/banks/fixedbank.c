@@ -72,7 +72,7 @@ const unsigned char enemy_object_waits[] =
 {
 	//Pro: ES,EF,HS,HF.
 	//61,71,81,91,
-	1,71,81,91,
+	11,71,81,91,
 	//Adi: ES,EF,HS,HF.
 	//62,72,82,92,
 	2,72,82,92,
@@ -83,7 +83,7 @@ const unsigned char enemy_object_waits[] =
 const unsigned char enemy_object_tours[] =
 {
 	//Pro: ES,EF,HS,HF.
-	4,74,84,94,
+	15,74,84,94,
 	//64,74,84,94,
 //Adi: ES,EF,HS,HF.
 	//65,75,85,95,
@@ -95,7 +95,7 @@ const unsigned char enemy_object_tours[] =
 const unsigned char enemy_object_kills[] =
 {
 	//Pro: ES,EF,HS,HF.
-	7,77,87,97,
+	17,77,87,97,
 	//67,77,87,97,
 //Adi: ES,EF,HS,HF.
 	8,78,88,98,
