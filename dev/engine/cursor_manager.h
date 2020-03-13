@@ -2,6 +2,7 @@
 #define _CURSOR_MANAGER_H_
 
 // Tiles.
-void engine_cursor_manager_init();
+void engine_cursor_manager_cursor1( unsigned char index );
+void engine_cursor_manager_draw1( unsigned char index );
 
 #endif//_CURSOR_MANAGER_H_

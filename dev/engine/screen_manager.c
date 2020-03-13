@@ -8,6 +8,8 @@
 #include "..\screen\intro_screen.h"
 #include "..\screen\title_screen.h"
 #include "..\screen\demo_screen.h"
+#include "..\screen\diff_screen.h"
+#include "..\screen\pace_screen.h"
 #include "..\screen\select_screen.h"
 #include "..\screen\option_screen.h"
 #include "..\screen\init_screen.h"
@@ -45,6 +47,8 @@ void engine_screen_manager_init(unsigned char open_screen_type)
 	load_method[ screen_type_intro ] = screen_intro_screen_load;
 	load_method[ screen_type_title ] = screen_title_screen_load;
 	load_method[ screen_type_demo ] = screen_demo_screen_load;
+	load_method[ screen_type_diff ] = screen_diff_screen_load;
+	load_method[ screen_type_pace ] = screen_pace_screen_load;
 	load_method[ screen_type_select ] = screen_select_screen_load;
 	load_method[ screen_type_option ] = screen_option_screen_load;
 	load_method[ screen_type_init ] = screen_init_screen_load;
@@ -71,6 +75,8 @@ void engine_screen_manager_init(unsigned char open_screen_type)
 	update_method[ screen_type_intro ] = screen_intro_screen_update;
 	update_method[ screen_type_title ] = screen_title_screen_update;
 	update_method[ screen_type_demo ] = screen_demo_screen_update;
+	update_method[ screen_type_diff ] = screen_diff_screen_update;
+	update_method[ screen_type_pace ] = screen_pace_screen_update;
 	update_method[ screen_type_select ] = screen_select_screen_update;
 	update_method[ screen_type_option ] = screen_option_screen_update;
 	update_method[ screen_type_init ] = screen_init_screen_update;

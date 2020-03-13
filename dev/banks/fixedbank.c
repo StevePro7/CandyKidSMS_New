@@ -124,12 +124,12 @@ const unsigned char *locale_object_texts[] =
 
 const unsigned char *locale_object_menus[] =
 {
-	"SELECT",
-	" LEVEL",
-	" WORLD",
-	" ROUND",
-	" XORLD",
-	" ZOUND",
+	"SELECT DIFFICULTY",
+	"EASY",
+	"HARD",
+	"SELECT GAME SPEED",
+	"SLOW",
+	"FAST",
 };
 
 const unsigned char *locale_object_blank[] =

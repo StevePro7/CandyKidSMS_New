@@ -41,9 +41,9 @@ void screen_play_screen_load()
 	//engine_delay_manager_draw();
 
 	//engine_font_manager_draw_text( "SCATTR", 26, 21 );
-	eo = &global_enemy_objects[ actor_type_pro ];	engine_memo_manager_debugging( actor_type_pro, eo->action );
-	eo = &global_enemy_objects[ actor_type_adi ];	engine_memo_manager_debugging( actor_type_adi, eo->action );
-	eo = &global_enemy_objects[ actor_type_suz ];	engine_memo_manager_debugging( actor_type_suz, eo->action );
+	//eo = &global_enemy_objects[ actor_type_pro ];	engine_memo_manager_debugging( actor_type_pro, eo->action );
+	//eo = &global_enemy_objects[ actor_type_adi ];	engine_memo_manager_debugging( actor_type_adi, eo->action );
+	//eo = &global_enemy_objects[ actor_type_suz ];	engine_memo_manager_debugging( actor_type_suz, eo->action );
 	first_time = 1;
 	frame_spot = 0;
 }

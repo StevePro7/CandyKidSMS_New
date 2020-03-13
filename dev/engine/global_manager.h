@@ -1,7 +1,7 @@
 #ifndef _GLOBAL_MANAGER_H_
 #define _GLOBAL_MANAGER_H_
 
-#define MAX_SCREEENS			24
+#define MAX_SCREEENS			26
 #define CONTENT_BANK			2
 
 #define MAX_ENEMIES				3
@@ -69,5 +69,11 @@
 #define TEXT2_Y					9
 #define TEXT3_Y					13
 #define TEXT4_Y					18
+
+// Type1 cursor
+#define TYPE1_TEXT_X			SCREEN_TILE_LEFT + 7
+#define TYPE1_TEXT_Y			18
+#define TYPE1_OPT1_X			TYPE1_TEXT_X + 0
+#define TYPE1_OPT2_X			TYPE1_TEXT_X + 11
 
 #endif//_GLOBAL_MANAGER_H_

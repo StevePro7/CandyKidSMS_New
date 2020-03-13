@@ -28,7 +28,9 @@
 //#define LOCALE_BLANK_SIZE17		"                 "
 //#define LOCALE_BLANK_SIZE18		"                  "
 
+#define LOCALE_SELECT_ARROWS	">>"
 #define LOCALE_SELECT_ARROW		">"
+#define LOCALE_SELECT_SPACES	"  "
 #define LOCALE_SELECT_SPACE		" "
 
 //#define LOCALE_PRESS_START		"PRESS START"
