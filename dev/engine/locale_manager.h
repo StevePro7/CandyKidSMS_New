@@ -25,8 +25,8 @@
 //#define LOCALE_BLANK_WIDTH	"12345678901234567890123456"
 #define LOCALE_BLANK_SIZE8		"        "
 //#define XYZCALE_BLANK_SIZE8		"12345678"
-#define LOCALE_BLANK_SIZE17		"                 "
-#define LOCALE_BLANK_SIZE18		"                  "
+//#define LOCALE_BLANK_SIZE17		"                 "
+//#define LOCALE_BLANK_SIZE18		"                  "
 
 #define LOCALE_SELECT_ARROW		">"
 #define LOCALE_SELECT_SPACE		" "

@@ -50,7 +50,7 @@ void screen_title_screen_update( unsigned char *screen_type )
 	unsigned char input = engine_input_manager_hold( input_type_fire1 );
 	if( input )
 	{
-		*screen_type = screen_type_init;
+		*screen_type = screen_type_select;
 		return;
 	}
 

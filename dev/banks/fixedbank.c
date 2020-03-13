@@ -122,6 +122,16 @@ const unsigned char *locale_object_texts[] =
 	"  WINS  ",
 };
 
+const unsigned char *locale_object_menus[] =
+{
+	"SELECT",
+	" LEVEL",
+	" WORLD",
+	" ROUND",
+	" XORLD",
+	" ZOUND",
+};
+
 const unsigned char *locale_object_blank[] =
 {
 	"                                ",			// 32 wide
