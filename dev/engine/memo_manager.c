@@ -6,8 +6,8 @@
 #include "locale_manager.h"
 #include "score_manager.h"
 #include "..\devkit\_sms_manager.h"
-#include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
+#include "..\banks\databank.h"
 
 void engine_memo_manager_clear()
 {
@@ -90,4 +90,17 @@ void engine_memo_manager_option()
 
 	// TODO did I want this??
 	//engine_font_manager_draw_text( "&", TEXT_X, dataY + 1 );
+}
+
+
+void engine_memo_manager_debugging( unsigned char enemy, unsigned char action )
+{
+	if( 0 == action )
+	{
+		engine_font_manager_draw_text( "SCATTR", 26, 21 + enemy );
+	}
+	if( 1 == action )
+	{
+		engine_font_manager_draw_text( "ATTACK", 26, 21 + enemy );
+	}
 }
