@@ -64,8 +64,8 @@ void engine_hack_manager_invert()
 	// TODO delete this hard coded
 	state_object_trees_type = 0;
 	state_object_exits_type = 0;
-	//state_object_difficulty = 1;
-	//state_object_pace_speed = 1;
+	state_object_difficulty = 0;
+	state_object_pace_speed = 0;
 	state_object_invincibie = 0;
 
 	state_object_enemy_move[ actor_type_pro ] = 1;

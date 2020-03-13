@@ -119,6 +119,12 @@ void engine_enemy_manager_load()
 			}
 		}
 
+		// todo DELETE stevepro
+		//eo->scatter[ 0 ] = 1;
+		//eo->scatter[ 1 ] = 3;
+		//eo->scatter[ 2 ] = 2;
+		//eo->scatter[ 3 ] = 0;
+
 		// TODO look up frame swaps from array in data bank that gets faster as the levels progress...!
 		index = 4 * enemy + state_object_difficulty * 2 + state_object_pace_speed;
 
@@ -366,15 +372,15 @@ void engine_enemy_manager_dead( unsigned char enemy )
 	//calcd_frame( enemy );
 }
 
-void engine_enemy_manager_reset_all( unsigned char mode )
-{
-	unsigned char enemy;
-	engine_enemy_manager_reset_home();
-	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
-	{
-		engine_enemy_manager_reset_mode( enemy, mode );
-	}
-}
+//void engine_enemy_manager_reset_all( unsigned char mode )
+//{
+//	unsigned char enemy;
+//	engine_enemy_manager_reset_home();
+//	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+//	{
+//		engine_enemy_manager_reset_mode( enemy, mode );
+//	}
+//}
 
 void engine_enemy_manager_reset_home()
 {
@@ -404,6 +410,23 @@ void engine_enemy_manager_reset_mode( unsigned char enemy, unsigned char mode )
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	eo = &global_enemy_objects[ enemy ];
 	eo->action = mode;
+
+
+	// IMPORTANT - this will alternate the images during game play - useful for debugging Scatter vs. Attack mode
+	//eo->image = mode;
+	//calcd_frame( enemy );
+	// IMPORTANT - this will alternate the images during game play - useful for debugging Scatter vs. Attack mode
+
+
+	// TODO delete used for debugging
+	if( 0 == eo->action )
+	{
+		engine_font_manager_draw_text( "SCATTR", 26, 21 );
+	}
+	if( 1 == eo->action )
+	{
+		engine_font_manager_draw_text( "ATTACK", 26, 21 );
+	}
 }
 
 
@@ -794,6 +817,16 @@ unsigned char engine_enemy_manager_input_boost( unsigned char enemy )
 	eo->action = 1 - eo->action;		// stevepro disable for testing.
 	eo->ticker = 0;
 	boost = eo->action;
+
+	// IMPORTANT - this will alternate the images during game play - useful for debugging Scatter vs. Attack mode
+	// Swap image to indicate different mode : Scatter vs. Attack.
+	//if( state_object_mydebugger )
+	//{
+	//	eo->image = 1 - eo->image;
+	//	calcd_frame( enemy );
+	//}
+	// IMPORTANT - this will alternate the images during game play - useful for debugging Scatter vs. Attack mode
+
 
 	//TODO delete
 	if( 0 == eo->action )

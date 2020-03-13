@@ -54,6 +54,7 @@ void screen_cont_screen_update( unsigned char *screen_type )
 			if( 0 == cursor )
 			{
 				engine_collision_manager_reset_death();
+				engine_enemy_manager_reset_mode( state_object_actor_kill, enemymove_type_tour );
 				engine_score_manager_reset_boost();
 				engine_score_manager_reset_lives();
 				engine_level_manager_draw_middle();

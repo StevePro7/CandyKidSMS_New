@@ -18,7 +18,7 @@ void engine_enemy_manager_move( unsigned char enemy, unsigned char direction );
 void engine_enemy_manager_pace( unsigned char enemy, unsigned char boost );
 void engine_enemy_manager_stop( unsigned char enemy );
 void engine_enemy_manager_dead( unsigned char enemy );
-void engine_enemy_manager_reset_all( unsigned char mode );
+//void engine_enemy_manager_reset_all( unsigned char mode );
 void engine_enemy_manager_reset_home();
 void engine_enemy_manager_reset_mode( unsigned char enemy, unsigned char mode );
 

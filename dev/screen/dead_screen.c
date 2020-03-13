@@ -229,7 +229,7 @@ static void reset_death()
 	//}
 
 	// TODO test book reset...
-	engine_enemy_manager_reset_all( enemymove_type_tour );
+	engine_enemy_manager_reset_mode( state_object_actor_kill, enemymove_type_tour );
 	engine_score_manager_reset_boost();
 
 	// If Kid collided with Mama then will be reset from dead to idle below...

@@ -237,6 +237,7 @@ void engine_score_manager_reset_lives()
 {
 	struct_score_object *so = &global_score_object;
 	so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
+	//so->values[ score_type_lives ] = 2; // stevepro
 	draw_value( score_type_lives );
 }
 void engine_score_manager_reset_boost()
