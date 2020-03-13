@@ -9,6 +9,7 @@
 #include "tile_manager.h"
 #include "..\banks\databank.h"
 #include "..\devkit\_sms_manager.h"
+#include <stdio.h>
 
 #define BOT_SIDE_Y		22
 #define MID_SIDE_X		22
@@ -23,76 +24,88 @@ static void draw_gaps( unsigned char left, unsigned char midd, unsigned char rig
 // Methods.
 void engine_board_manager_init()
 {
-	unsigned char borders[] = { 0, 1, MAZE_ROWS - 2, MAZE_ROWS - 1 };
-	unsigned char row, col;
-	unsigned char test_type;
-	unsigned char direction;
-	unsigned char index;
-	unsigned char loop;
+	//unsigned char borders[] = { 0, 1, MAZE_ROWS - 2, MAZE_ROWS - 1 };
+	//unsigned char row, col;
+	//unsigned char test_type;
+	//unsigned char direction;
+	//unsigned char index;
+	//unsigned char loop;
 
-	// Initialize 14x14 board.
-	for( row = 0; row < MAZE_ROWS; row++ )
-	{
-		//for( col = 0; col < lo->load_cols; col++ )
-		for( col = 0; col < MAZE_COLS; col++ )
-		{
-			index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
-			level_object_tiles_array[ index ] = coll_type_empty;
-		}
-	}
+	//// Initialize 14x14 board.
+	//for( row = 0; row < MAZE_ROWS; row++ )
+	//{
+	//	//for( col = 0; col < lo->load_cols; col++ )
+	//	for( col = 0; col < MAZE_COLS; col++ )
+	//	{
+	//		index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
+	//		level_object_tiles_array[ index ] = coll_type_empty;
+	//	}
+	//}
 
-	// Calculate 12x12 outside tree border.
-	// Set border to tree and collision = 1
-	test_type = tile_type_trees | COLL_TYPE_MASK;
-	for( col = 0; col < TREE_COLS; col++ )
-	{
-		index = MAZE_ROWS * 1 + (col + 1);
-		level_object_tiles_array[ index ] = test_type;
-	
-		index = MAZE_ROWS * ( MAZE_ROWS - 2 ) + ( col + 1 );
-		level_object_tiles_array[ index ] = test_type;
-	}
-	for( row = 1; row < TREE_ROWS - 1; row++ )
-	{
-		index = ( row + 1 ) * MAZE_COLS + 1;
-		level_object_tiles_array[ index ] = test_type;
+	//// Calculate 12x12 outside tree border.
+	//// Set border to tree and collision = 1
+	//test_type = tile_type_trees | COLL_TYPE_MASK;
+	//for( col = 0; col < TREE_COLS; col++ )
+	//{
+	//	index = MAZE_ROWS * 1 + (col + 1);
+	//	level_object_tiles_array[ index ] = test_type;
+	//
+	//	index = MAZE_ROWS * ( MAZE_ROWS - 2 ) + ( col + 1 );
+	//	level_object_tiles_array[ index ] = test_type;
+	//}
+	//for( row = 1; row < TREE_ROWS - 1; row++ )
+	//{
+	//	index = ( row + 1 ) * MAZE_COLS + 1;
+	//	level_object_tiles_array[ index ] = test_type;
 
-		index = ( row + 1 ) * MAZE_COLS + ( MAZE_COLS - 2 );
-		level_object_tiles_array[ index ] = test_type;
-	}
+	//	index = ( row + 1 ) * MAZE_COLS + ( MAZE_COLS - 2 );
+	//	level_object_tiles_array[ index ] = test_type;
+	//}
 
-	// Calculate 2px border movement options.
-	// Horizontal.
-	for( loop = 0; loop < NUM_DIRECTIONS; loop++ )
-	{
-		row = borders[ loop ];
-		for( col = 0; col < MAZE_COLS; col++ )
-		{
-			direction = engine_level_manager_test_direction( row, col );
+	//// Calculate 2px border movement options.
+	//// Horizontal.
+	//for( loop = 0; loop < NUM_DIRECTIONS; loop++ )
+	//{
+	//	row = borders[ loop ];
+	//	for( col = 0; col < MAZE_COLS; col++ )
+	//	{
+	//		direction = engine_level_manager_test_direction( row, col );
 
-			index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
-			test_type = level_object_tiles_array[ index ];
+	//		index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
+	//		test_type = level_object_tiles_array[ index ];
 
-			engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
-			level_object_tiles_array[ index ] = test_type;
-		}
-	}
+	//		engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
+	//		level_object_tiles_array[ index ] = test_type;
+	//	}
+	//}
 
-	// Vertical.
-	for( loop = 0; loop < NUM_DIRECTIONS; loop++ )
-	{
-		col = borders[ loop ];
-		for( row = 2; row < MAZE_ROWS - 2; row++ )
-		{
-			direction = engine_level_manager_test_direction( row, col );
+	//// Vertical.
+	//for( loop = 0; loop < NUM_DIRECTIONS; loop++ )
+	//{
+	//	col = borders[ loop ];
+	//	for( row = 2; row < MAZE_ROWS - 2; row++ )
+	//	{
+	//		direction = engine_level_manager_test_direction( row, col );
 
-			index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
-			test_type = level_object_tiles_array[ index ];
+	//		index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
+	//		test_type = level_object_tiles_array[ index ];
 
-			engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
-			level_object_tiles_array[ index ] = test_type;
-		}
-	}
+	//		engine_function_manager_convertNibblesToByte( direction, test_type, &test_type );
+	//		level_object_tiles_array[ index ] = test_type;
+	//	}
+	//}
+
+	// TODO - used for debugging
+	//for( row = 0; row < MAZE_ROWS; row++ )
+	//{
+	//	for( col = 0; col < MAZE_COLS; col++ )
+	//	{
+	//		index = ( row + 0 ) * MAZE_COLS + ( col + 0 );
+	//		printf( "0x%02X, ", level_object_tiles_array[ index ] );
+	//	}
+
+	//	printf( "\n" );
+	//}
 }
 
 void engine_board_manager_draw_full()
