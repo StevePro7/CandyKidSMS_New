@@ -39,14 +39,14 @@
 const unsigned char enemy_object_speed[] =
 {
 //Pro: ES,EF,HS,HF.
-		1, 3, 1, 3,		// Normal
-		1, 3, 1, 3,		// Boost!
+		0, 3, 1, 3,		// Normal
+		0, 3, 1, 3,		// Boost!
 //Adi: ES,EF,HS,HF.
-		1, 2, 3, 1,		// Normal
-		2, 2, 3, 1,		// Boost!
+		0, 2, 3, 1,		// Normal
+		0, 2, 3, 1,		// Boost!
 //Suz: ES,EF,HS,HF.
-		1, 1, 2, 3,		// Normal
-		1, 1, 2, 3,		// Boost!
+		0, 1, 2, 3,		// Normal
+		0, 1, 2, 3,		// Boost!
 };
 const unsigned char enemy_object_delay[] =
 {
@@ -75,7 +75,7 @@ const unsigned char enemy_object_waits[] =
 	11,71,81,91,
 	//Adi: ES,EF,HS,HF.
 	//62,72,82,92,
-	2,72,82,92,
+	99,72,82,92,
 	//Suz: ES,EF,HS,HF.
 	3,73,83,93,
 	//63,73,83,93,

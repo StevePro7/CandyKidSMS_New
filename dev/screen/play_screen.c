@@ -35,8 +35,8 @@ void screen_play_screen_load()
 	engine_command_manager_load();
 	engine_frame_manager_load();
 
-	//engine_frame_manager_draw();
-	//engine_delay_manager_draw();
+	engine_frame_manager_draw();
+	engine_delay_manager_draw();
 
 	engine_font_manager_draw_text( "SCATTR", 26, 21 );
 	first_time = 1;
@@ -66,8 +66,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
-	//engine_frame_manager_draw();
-	//engine_delay_manager_draw();
+	engine_frame_manager_draw();
+	engine_delay_manager_draw();
 	if( !first_time )
 	{
 		proceed = engine_delay_manager_update();
