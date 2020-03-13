@@ -64,4 +64,10 @@
 #define TEXT_X					SCREEN_TILE_LEFT + 24
 #define DATA_X					SCREEN_TILE_LEFT + 28
 
+// Generic Y heights
+#define TEXT1_Y					4
+#define TEXT2_Y					9
+#define TEXT3_Y					13
+#define TEXT4_Y					18
+
 #endif//_GLOBAL_MANAGER_H_

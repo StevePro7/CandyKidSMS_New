@@ -12,10 +12,10 @@
 
 #define TITLE_Y		0
 #define HIGHS_Y		0
-#define SCORE_Y		4
-#define LEVEL_Y		9
-#define LIVES_Y		13
-#define BOOST_Y		18
+//#define TEXT1_Y		4
+//#define TEXT2_Y		9
+//#define TEXT3_Y		13
+//#define TEXT4_Y		18
 #define TEXTS_Y		22
 #define WORLD_Y		22
 #define ROUNT_Y		23
@@ -31,8 +31,8 @@ struct_score_object global_score_object;
 
 static unsigned char bonuses[] = { 10, 20, 40, 80, 200 };
 static unsigned char boost_X[] = { 100, 100 };
-static unsigned char value_y[] = { LIVES_Y + 1, LEVEL_Y + 1, BOOST_Y + 1, 22, 23 };
-static unsigned char title_Y[] = { TITLE_Y, TITLE_Y + 1, HIGHS_Y, SCORE_Y, LIVES_Y, LEVEL_Y, BOOST_Y, };
+static unsigned char value_y[] = { TEXT3_Y + 1, TEXT2_Y + 1, TEXT4_Y + 1, 22, 23 };
+static unsigned char title_Y[] = { TITLE_Y, TITLE_Y + 1, HIGHS_Y, TEXT1_Y, TEXT3_Y, TEXT2_Y, TEXT4_Y, };
 
 // TODO need to split the reset functionality.
 //static void reset();
@@ -72,7 +72,7 @@ void engine_score_manager_init()
 	//so->values[ score_type_boost ] = boost_X[ state_object_difficulty ];
 
 	draw_zero( DATA_X + 1, HIGHS_Y + 1 );
-	draw_zero( DATA_X + 1, SCORE_Y + 1 );
+	draw_zero( DATA_X + 1, TEXT1_Y + 1 );
 	draw_highs();
 	draw_score();
 	draw_value( score_type_lives );
@@ -191,7 +191,7 @@ void engine_score_manager_update_boost()
 //	struct_score_object *so = &global_score_object;
 //
 //	draw_zero( DATA_X + 1, HIGHS_Y + 1 );
-//	draw_zero( DATA_X + 1, SCORE_Y + 1 );
+//	draw_zero( DATA_X + 1, TEXT1_Y + 1 );
 //	draw_highs();
 //	draw_score();
 //
@@ -207,7 +207,7 @@ void engine_score_manager_update_boost()
 void engine_score_manager_draw_init()
 {
 		draw_zero( DATA_X + 1, HIGHS_Y + 1 );
-		draw_zero( DATA_X + 1, SCORE_Y + 1 );
+		draw_zero( DATA_X + 1, TEXT1_Y + 1 );
 		draw_highs();
 		draw_score();
 		draw_value( score_type_lives );
@@ -305,8 +305,8 @@ static void draw_highs()
 static void draw_score()
 {
 	struct_score_object *so = &global_score_object;
-	//engine_font_manager_draw_long( so->score, DATA_X + 0, SCORE_Y + 1 );
-	engine_font_manager_draw_data( so->score, DATA_X + 0, SCORE_Y + 1 );
+	//engine_font_manager_draw_long( so->score, DATA_X + 0, TEXT1_Y + 1 );
+	engine_font_manager_draw_data( so->score, DATA_X + 0, TEXT1_Y + 1 );
 }
 
 static void draw_value( unsigned char index )
