@@ -10,6 +10,13 @@
 
 
 // Enemy Manager.
+const unsigned char enemy_object_image[] =
+{
+	0, 2, 4, 12,		// Pro images.
+	14, 16, 24, 26,		// Adi images.
+	28, 36, 38, 40,		// Suz images.
+};
+
 const unsigned char enemy_object_speed[] =
 {
 //Pro: ES,EF,HS,HF.
@@ -70,7 +77,7 @@ const unsigned char enemy_object_kills[] =
 // Gamer Manager.
 //const unsigned char gamer_object_speed[] = { 1, 2, 2, 3 };		// smoother - the other option for HS 3/2 is a bit choppy
 //const unsigned char gamer_object_delay[] = { 1, 1, 1, 1 };
-
+const unsigned char gamer_object_image[] = { 0, 2, 4, 12, 14, 16 };
 const unsigned char gamer_object_speed[] = { 1, 2, 3, 3 };
 const unsigned char gamer_object_delay[] = { 1, 1, 2, 1 };
 

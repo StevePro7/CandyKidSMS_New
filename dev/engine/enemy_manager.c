@@ -7,9 +7,9 @@
 #include "memo_manager.h"
 #include "move_manager.h"
 #include "sprite_manager.h"
-#include "..\banks\databank.h"
-#include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
+#include "..\banks\fixedbank.h"
+#include "..\banks\databank.h"
 #include <stdlib.h>
 
 #define SPRITE_TILES_ENEMY	256 + 48
@@ -24,12 +24,12 @@ static void calcd_spots( unsigned char enemy );
 void engine_enemy_manager_init()
 {
 	struct_enemy_object *eo;
-	unsigned char images[ NUM_ENTITY_IMAGE * NUM_ENTITY_FRAME * MAX_ENEMIES ] =
-	{
-		0, 2, 4, 12,		// Pro images.
-		14, 16, 24, 26,		// Adi images.
-		28, 36, 38, 40,		// Suz images.
-	};
+	//unsigned char images[ NUM_ENTITY_IMAGE * NUM_ENTITY_FRAME * MAX_ENEMIES ] =
+	//{
+	//	0, 2, 4, 12,		// Pro images.
+	//	14, 16, 24, 26,		// Adi images.
+	//	28, 36, 38, 40,		// Suz images.
+	//};
 
 	unsigned char frame;
 	unsigned char enemy;
@@ -57,10 +57,11 @@ void engine_enemy_manager_init()
 		eo->frame = frame_type_stance;
 
 		frame = enemy * NUM_ENTITY_IMAGE * NUM_ENTITY_FRAME + 0;
-		eo->images[ 0 ][ 0 ] = images[ frame + 0 ];
-		eo->images[ 0 ][ 1 ] = images[ frame + 1 ];
-		eo->images[ 1 ][ 0 ] = images[ frame + 2 ];
-		eo->images[ 1 ][ 1 ] = images[ frame + 3 ];
+		//devkit_SMS_mapROMBank( FIXED_BANK );
+		eo->images[ 0 ][ 0 ] = enemy_object_image[ frame + 0 ];
+		eo->images[ 0 ][ 1 ] = enemy_object_image[ frame + 1 ];
+		eo->images[ 1 ][ 0 ] = enemy_object_image[ frame + 2 ];
+		eo->images[ 1 ][ 1 ] = enemy_object_image[ frame + 3 ];
 		eo->scatter[ 0 ] = enemy; eo->scatter[ 1 ] = enemy; eo->scatter[ 2 ] = enemy; eo->scatter[ 3 ] = enemy;
 
 		calcd_frame( enemy );

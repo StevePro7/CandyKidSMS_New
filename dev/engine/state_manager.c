@@ -7,12 +7,16 @@
 #include "global_manager.h"
 #include "hack_manager.h"
 #include "storage_manager.h"
+#include "..\devkit\_sms_manager.h"
+#include "..\banks\fixedbank.h"
 #include "..\banks\databank.h"
 
 void engine_state_manager_init()
 {
-	engine_board_manager_init();
+	//engine_board_manager_init();
 	engine_command_manager_init();
+
+	devkit_SMS_mapROMBank( FIXED_BANK );
 	engine_gamer_manager_init();
 	engine_enemy_manager_init();
 

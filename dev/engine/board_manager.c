@@ -22,6 +22,7 @@ static void draw_side( unsigned char wide, unsigned char right );
 static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right );
 
 // Methods.
+/*
 void engine_board_manager_init()
 {
 	//unsigned char borders[] = { 0, 1, MAZE_ROWS - 2, MAZE_ROWS - 1 };
@@ -107,6 +108,7 @@ void engine_board_manager_init()
 	//	printf( "\n" );
 	//}
 }
+*/
 
 void engine_board_manager_draw_full()
 {
