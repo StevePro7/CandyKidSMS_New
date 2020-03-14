@@ -118,14 +118,16 @@ const unsigned char *locale_object_menus[] =
 	"FAST",
 };
 
-const unsigned char *locale_object_blank[] =
-{
-	"                                ",			// 32 wide
-	"                          ",
-	"        ",
-	"                 ",
-	"                  ",
-};
+//const unsigned char locale_object_blank26[] = "123456789A123456789B123456";
+const unsigned char locale_object_blank26[] = "                          ";
+//const unsigned char *locale_object_blank[] =
+//{
+//	"                                ",			// 32 wide
+//	"                          ",
+//	"        ",
+//	"                 ",
+//	"                  ",
+//};
 
 // Score Manager.
 //const unsigned char *score_object_titles[] =

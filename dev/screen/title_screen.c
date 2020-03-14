@@ -17,12 +17,15 @@ static void draw_tiles();
 void screen_title_screen_load()
 {
 	unsigned char row;
-//	devkit_SMS_displayOff();
+	devkit_SMS_displayOff();
 
 	// TODO tweak this as needed... i.e. run on real hardware and look for any graphics glitches...!!
+
+	devkit_SMS_mapROMBank( FIXED_BANK );
 	for( row = 6; row < 22; row++ )
 	{
-		engine_font_manager_draw_text( LOCALE_BLANK_WIDTH, SCREEN_TILE_LEFT + 2, row );
+		//engine_font_manager_draw_text( LOCALE_BLANK_WIDTH, SCREEN_TILE_LEFT + 2, row );
+		engine_font_manager_draw_text( locale_object_blank26, SCREEN_TILE_LEFT + 2, row );
 	}
 
 	//for( idx = 0; idx < 4; idx++ )
@@ -58,16 +61,12 @@ void screen_title_screen_load()
 	//	engine_font_manager_draw_text( "X", SCREEN_TILE_LEFT - 1, row );
 	//}
 
-//	devkit_SMS_displayOn();
-
+	devkit_SMS_displayOn();
 }
 
 void screen_title_screen_update( unsigned char *screen_type )
 {
 	unsigned char input = engine_input_manager_hold( input_type_fire1 );
-
-	engine_font_manager_draw_text( "HELLOX", SCREEN_TILE_LEFT + 10, 10 );
-
 	if( input )
 	{
 		

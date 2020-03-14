@@ -9,14 +9,14 @@
 #include "..\banks\fixedbank.h"
 #include "..\banks\databank.h"
 
-void engine_memo_manager_clear()
-{
-	unsigned char row;
-	for( row = 0; row < 23; row++ )
-	{
-		engine_font_manager_draw_text( LOCALE_BLANK_WIDTH, 0, row );
-	}
-}
+//void engine_memo_manager_clear()
+//{
+//	unsigned char row;
+//	for( row = 0; row < 23; row++ )
+//	{
+//		engine_font_manager_draw_text( LOCALE_BLANK_WIDTH, 0, row );
+//	}
+//}
 
 void engine_memo_manager_draw( unsigned char topIndex, unsigned char botIndex )
 {
