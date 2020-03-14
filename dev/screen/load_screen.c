@@ -124,9 +124,8 @@ static void print_enemy()
 	//engine_font_manager_draw_data2( eo->speeds[ 1 ], 1, 1 );
 	//engine_font_manager_draw_data2( eo->delays[ 0 ], 1, 2 );
 	//engine_font_manager_draw_data2( eo->delays[ 1 ], 1, 3 );
-
 	engine_font_manager_draw_data2( eo->swaps, 1, 4 );
-
+	engine_font_manager_draw_data2( eo->waiter, 1, 5 );
 	//engine_font_manager_draw_data2( eo->toggle[ 0 ], 1, 4 );
 	//engine_font_manager_draw_data2( eo->toggle[ 1 ], 1, 5 );
 
@@ -135,8 +134,8 @@ static void print_enemy()
 	//engine_font_manager_draw_data2( eo->speeds[ 1 ], 1, 10 );
 	//engine_font_manager_draw_data2( eo->delays[ 0 ], 1, 11 );
 	//engine_font_manager_draw_data2( eo->delays[ 1 ], 1, 12 );
-
 	engine_font_manager_draw_data2( eo->swaps, 1, 13 );
+	engine_font_manager_draw_data2( eo->waiter, 1, 14 );
 	//engine_font_manager_draw_data2( eo->toggle[ 0 ], 1, 13 );
 	//engine_font_manager_draw_data2( eo->toggle[ 1 ], 1, 14 );
 
@@ -145,8 +144,8 @@ static void print_enemy()
 	//engine_font_manager_draw_data2( eo->speeds[ 1 ], 1, 19 );
 	//engine_font_manager_draw_data2( eo->delays[ 0 ], 1, 20 );
 	//engine_font_manager_draw_data2( eo->delays[ 1 ], 1, 21 );
-
 	engine_font_manager_draw_data2( eo->swaps, 1, 22 );
+	engine_font_manager_draw_data2( eo->waiter, 1, 23 );
 	//engine_font_manager_draw_data2( eo->toggle[ 0 ], 1, 22 );
 	//engine_font_manager_draw_data2( eo->toggle[ 1 ], 1, 23 );
 }

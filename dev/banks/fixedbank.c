@@ -46,26 +46,21 @@ const unsigned char enemy_object_hands[] =
 
 const unsigned char enemy_object_waits[] =
 {
-	//Pro: ES,EF,HS,HF.	
-	//61,71,81,91,
-	1,71,81,91,
-	//Adi: ES,EF,HS,HF.
-	//62,72,82,92,
-	39,72,82,92,
-	//Suz: ES,EF,HS,HF.
-	33,73,83,93,
-	//63,73,83,93,
+//	ES, EF, HS, HF.
+	80, 60, 40, 20,		// Pro
+	85, 65, 45, 25,		// Adi
+	90, 70, 50, 30,		// Suz
 };
 const unsigned char enemy_object_tours[] =
 {
 	//Pro: ES,EF,HS,HF.
-	25,74,84,94,
+	20,74,84,94,
 	//64,74,84,94,
 //Adi: ES,EF,HS,HF.
 	//65,75,85,95,
-	25,75,85,95,
+	24,75,85,95,
 	//Suz: ES,EF,HS,HF.
-	6,76,86,96,
+	30,76,86,96,
 	//66,76,86,96,
 };
 const unsigned char enemy_object_kills[] =

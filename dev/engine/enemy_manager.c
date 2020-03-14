@@ -81,6 +81,7 @@ void engine_enemy_manager_load()
 	unsigned char count = MAX_ENEMIES + state_object_difficulty;
 	unsigned char delta;
 	unsigned char offset;
+	unsigned char random = state_object_round_data + 2;
 
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
@@ -130,10 +131,10 @@ void engine_enemy_manager_load()
 		// TODO look up frame swaps from array in data bank that gets faster as the levels progress...!
 		index = 4 * enemy + state_object_difficulty * 2 + state_object_pace_speed;
 
+		// Determine interval that Mama hands swap.
 		eo->hands = 0;
-		//eo->swaps = 50;			//// 50 frames
 		eo->swaps = enemy_object_hands[ index ];
-		delta = rand() % state_object_round_data + 1;
+		delta = rand() % random;
 		eo->swaps -= delta;
 
 		index = 4 * enemy + state_object_difficulty * 2 + state_object_pace_speed;
@@ -143,21 +144,24 @@ void engine_enemy_manager_load()
 		//eo->toggle[ 0 ] = 16;
 		//eo->toggle[ 1 ] = 04;// 48;
 
+		// Determine interval at start of level Mama waits.
 		eo->waiter = enemy_object_waits[ index ];
+		delta = rand() % random;
+		eo->waiter -= delta;
+
+		// Determine interval Mama toggles from scatter to attack mode.
 		eo->toggle[ 0 ] = enemy_object_tours[ index ];
 		eo->toggle[ 1 ] = enemy_object_kills[ index ];
 
 		eo->ticker = 0;
 		eo->action = enemymove_type_wait;
 
-		// stevepro:
-		// will use game speed to determine enemy speeds just like gamer [for consistency]
-		// need to wire this up in the when change scatter to attack mode [only for hard?]
-		// will need to use difficulty for wait / tour / kill durations...
-
+		
+		// TODO - delete hard coded values used for testing.
 		//eo->speed = 2;
 		//eo->delay = 1;
 
+		// Mix up the order depending on Mama enemy.
 		index = 8 * enemy + state_object_difficulty * 2 + state_object_pace_speed;
 		eo->speeds[ 0 ] = enemy_object_speed[ index + 0 ];
 		eo->delays[ 0 ] = enemy_object_delay[ index + 0 ];
@@ -180,6 +184,7 @@ void engine_enemy_manager_load()
 
 		eo->speed = eo->speeds[ 0 ];
 		eo->delay = eo->delays[ 0 ];
+
 
 		// TODO delete this - debugging
 		//engine_font_manager_draw_data( eo->speed, 10, 0 );
