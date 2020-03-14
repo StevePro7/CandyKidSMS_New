@@ -31,9 +31,6 @@
     <Filter Include="Header Files\object">
       <UniqueIdentifier>{cd4027ad-4af5-47ab-bf56-f75e4dadb1b7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\object">
-      <UniqueIdentifier>{3b5a267f-3b92-4a97-bb93-07eda8625a3b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\screen">
       <UniqueIdentifier>{2ce0a400-a383-4102-82ef-da5fc1381201}</UniqueIdentifier>
     </Filter>
@@ -48,6 +45,9 @@
     </Filter>
     <Filter Include="Header Files\output">
       <UniqueIdentifier>{3b778f98-d842-4ff0-aaa8-fa253dabe103}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\output\object">
+      <UniqueIdentifier>{3b5a267f-3b92-4a97-bb93-07eda8625a3b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -459,10 +459,10 @@
       <Filter>Source Files\engine</Filter>
     </ClCompile>
     <ClCompile Include="object\enemy_object.c">
-      <Filter>Source Files\object</Filter>
+      <Filter>Source Files\output\object</Filter>
     </ClCompile>
     <ClCompile Include="object\gamer_object.c">
-      <Filter>Source Files\object</Filter>
+      <Filter>Source Files\output\object</Filter>
     </ClCompile>
     <ClCompile Include="engine\enemy_manager.c">
       <Filter>Source Files\engine</Filter>
@@ -474,10 +474,10 @@
       <Filter>Source Files\engine</Filter>
     </ClCompile>
     <ClCompile Include="object\score_object.c">
-      <Filter>Source Files\object</Filter>
+      <Filter>Source Files\output\object</Filter>
     </ClCompile>
     <ClCompile Include="object\storage_object.c">
-      <Filter>Source Files\object</Filter>
+      <Filter>Source Files\output\object</Filter>
     </ClCompile>
     <ClCompile Include="engine\storage_manager.c">
       <Filter>Source Files\engine</Filter>
@@ -510,7 +510,7 @@
       <Filter>Source Files\engine</Filter>
     </ClCompile>
     <ClCompile Include="object\timer_object.c">
-      <Filter>Source Files\object</Filter>
+      <Filter>Source Files\output\object</Filter>
     </ClCompile>
     <ClCompile Include="screen\boss_screen.c">
       <Filter>Source Files\screen</Filter>

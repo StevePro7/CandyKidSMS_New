@@ -53,27 +53,17 @@ const unsigned char enemy_object_waits[] =
 };
 const unsigned char enemy_object_tours[] =
 {
-	//Pro: ES,EF,HS,HF.
-	20,74,84,94,
-	//64,74,84,94,
-//Adi: ES,EF,HS,HF.
-	//65,75,85,95,
-	24,75,85,95,
-	//Suz: ES,EF,HS,HF.
-	30,76,86,96,
-	//66,76,86,96,
+//	ES, EF, HS, HF.
+	64, 72, 80, 88,		// Pro
+	68, 76, 84, 92,		// Adi
+	72, 80, 88, 96,		// Suz
 };
 const unsigned char enemy_object_kills[] =
 {
-	//Pro: ES,EF,HS,HF.
-	37,77,87,97,
-	//67,77,87,97,
-//Adi: ES,EF,HS,HF.
-	28,78,88,98,
-	//68,78,88,98,
-	//Suz: ES,EF,HS,HF.
-	9,79,89,99,
-	//69,79,89,99,
+//	ES, EF, HS, HF.
+	65, 73, 81, 89,		// Pro
+	69, 77, 85, 93,		// Adi
+	73, 81, 89, 97,		// Suz
 };
 
 
