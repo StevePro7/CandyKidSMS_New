@@ -42,9 +42,6 @@ void engine_gamer_manager_init()
 	go->prev_boost = pace_type_slow;
 	go->curr_boost = pace_type_slow;
 	engine_gamer_manager_pace( go->curr_boost );
-	
-	//go->speed = 1;
-	//go->delay = 1;
 
 	go->timer = 0;
 	go->delta = 0;
@@ -55,7 +52,7 @@ void engine_gamer_manager_init()
 	go->direction = direction_type_none;
 	go->prev_move = direction_type_none;
 
-	go->image = 0;					// TODO select may change this!
+	go->image = 0;
 	go->frame = frame_type_stance;
 	go->images[ 0 ][ 0 ] = images[ 0 ];
 	go->images[ 0 ][ 1 ] = images[ 1 ];

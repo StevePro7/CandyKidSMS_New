@@ -12,7 +12,7 @@ void main (void)
 
 	devkit_SMS_setSpriteMode( devkit_SPRITEMODE_NORMAL() );
 	devkit_SMS_useFirstHalfTilesforSprites_False();
-	//devkit_SMS_VDPturnOnFeature( devkit_VDPFEATURE_HIDEFIRSTCOL() );		// TODO don't forget to uncomment!!
+	devkit_SMS_VDPturnOnFeature( devkit_VDPFEATURE_HIDEFIRSTCOL() );		// TODO don't forget to uncomment!!
 
 	engine_content_manager_load_tiles_font();
 	//engine_content_manager_load_tiles_game();
@@ -24,8 +24,8 @@ void main (void)
 	//open_screen_type = screen_type_intro;
 	//open_screen_type = screen_type_func;
 	//open_screen_type = screen_type_test;
-	//open_screen_type = screen_type_title;
-	open_screen_type = screen_type_init;
+	open_screen_type = screen_type_title;
+	//open_screen_type = screen_type_init;
 	//open_screen_type = screen_type_load;
 	//open_screen_type = screen_type_ready;
 	//open_screen_type = screen_type_demo;
@@ -36,7 +36,7 @@ void main (void)
 	//open_screen_type = screen_type_play;
 	//open_screen_type = screen_type_dead;
 	//open_screen_type = screen_type_cont;
-	//open_screen_type = screen_type_over;
+	open_screen_type = screen_type_over;
 	//open_screen_type = screen_type_pass;
 	//open_screen_type = screen_type_beat;
 

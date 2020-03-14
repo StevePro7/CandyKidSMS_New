@@ -17,7 +17,7 @@ static void draw_tiles();
 void screen_title_screen_load()
 {
 	unsigned char row;
-	devkit_SMS_displayOff();
+//	devkit_SMS_displayOff();
 
 	// TODO tweak this as needed... i.e. run on real hardware and look for any graphics glitches...!!
 	for( row = 6; row < 22; row++ )
@@ -25,10 +25,14 @@ void screen_title_screen_load()
 		engine_font_manager_draw_text( LOCALE_BLANK_WIDTH, SCREEN_TILE_LEFT + 2, row );
 	}
 
-	engine_font_manager_draw_text( " ", SCREEN_TILE_LEFT - 1, 6 );
-	engine_font_manager_draw_text( " ", SCREEN_TILE_LEFT - 1, 7 );
-	engine_font_manager_draw_text( " ", SCREEN_TILE_LEFT - 1, 16 );
-	engine_font_manager_draw_text( " ", SCREEN_TILE_LEFT - 1, 17 );
+	//for( idx = 0; idx < 4; idx++ )
+	//{
+	//	row = sides[ idx ];
+	//	engine_font_manager_draw_text( LOCALE_SELECT_SPACE, SCREEN_TILE_LEFT - 1, row );
+	//	//engine_font_manager_draw_text( "X", SCREEN_TILE_LEFT - 1, row );
+	//}
+
+
 
 	//engine_locale_manager_draw_text( LOCALE_BUILD_VERSION, SCREEN_TILE_LEFT + 24, 21 );
 	engine_locale_manager_draw_text( 0, SCREEN_TILE_LEFT + 24, 21 );
@@ -39,18 +43,35 @@ void screen_title_screen_load()
 	engine_board_manager_main_exit();
 	engine_tile_manager_main_title( 2, 2 );
 
-	
-
 	//devkit_SMS_mapROMBank( 2 );
 	draw_tiles();
-	devkit_SMS_displayOn();
+
+	//engine_font_manager_draw_text( " ", SCREEN_TILE_LEFT - 1, 6 );
+	//engine_font_manager_draw_text( " ", SCREEN_TILE_LEFT - 1, 7 );
+	//engine_font_manager_draw_text( " ", SCREEN_TILE_LEFT - 1, 16 );
+	//engine_font_manager_draw_text( " ", SCREEN_TILE_LEFT - 1, 17 );
+
+	//for( idx = 0; idx < 4; idx++ )
+	//{
+	//	row = sides[ idx ];
+	//	engine_font_manager_draw_text( LOCALE_SELECT_SPACE, SCREEN_TILE_LEFT - 1, row );
+	//	engine_font_manager_draw_text( "X", SCREEN_TILE_LEFT - 1, row );
+	//}
+
+//	devkit_SMS_displayOn();
+
 }
 
 void screen_title_screen_update( unsigned char *screen_type )
 {
 	unsigned char input = engine_input_manager_hold( input_type_fire1 );
+
+	engine_font_manager_draw_text( "HELLOX", SCREEN_TILE_LEFT + 10, 10 );
+
 	if( input )
 	{
+		
+
 		//engine_audio_manager_sound_play( sound_type_accept );
 		engine_audio_manager_sfx_play( sound_type_accept );
 		//*screen_type = screen_type_select;
