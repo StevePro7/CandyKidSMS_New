@@ -3,10 +3,11 @@
 #include "font_manager.h"
 #include "function_manager.h"
 #include "global_manager.h"
+#include "locale_manager.h"
 #include "mask_manager.h"
-#include "..\banks\bank2.h"
-#include "..\banks\databank.h"
 #include "..\devkit\_sms_manager.h"
+#include "..\banks\databank.h"
+#include "..\banks\bank2.h"
 #include "..\gfx.h"
 #include <stdlib.h>
 
@@ -115,8 +116,8 @@ void engine_tile_manager_draw_tile( unsigned char tile, unsigned char x, unsigne
 
 void engine_tile_manager_draw_blank( unsigned char x, unsigned char y )
 {
-	engine_font_manager_draw_text( "  ", x + 0, y + 0 );
-	engine_font_manager_draw_text( "  ", x + 0, y + 1 );
+	engine_font_manager_draw_text( LOCALE_SELECT_SPACES, x + 0, y + 0 );
+	engine_font_manager_draw_text( LOCALE_SELECT_SPACES, x + 0, y + 1 );
 }
 
 void engine_tile_manager_draw_trees( unsigned char type, unsigned char x, unsigned char y )
