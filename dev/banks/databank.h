@@ -4,10 +4,10 @@ extern unsigned char state_object_full_boost;
 extern unsigned char state_object_invincibie;
 extern unsigned long state_object_high_score;
 
-extern unsigned char state_object_trees_type;
-extern unsigned char state_object_exits_type;
 extern unsigned char state_object_difficulty;
 extern unsigned char state_object_pace_speed;
+extern unsigned char state_object_trees_type;
+extern unsigned char state_object_exits_type;
 
 extern unsigned char state_object_world_data;
 extern unsigned char state_object_round_data;

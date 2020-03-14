@@ -79,6 +79,7 @@ void engine_enemy_manager_load()
 	unsigned char check;
 	unsigned char index;
 	unsigned char count = MAX_ENEMIES + state_object_difficulty;
+	unsigned char delta;
 	unsigned char offset;
 
 	devkit_SMS_mapROMBank( FIXED_BANK );
@@ -132,6 +133,8 @@ void engine_enemy_manager_load()
 		eo->hands = 0;
 		//eo->swaps = 50;			//// 50 frames
 		eo->swaps = enemy_object_hands[ index ];
+		delta = rand() % state_object_round_data + 1;
+		eo->swaps -= delta;
 
 		index = 4 * enemy + state_object_difficulty * 2 + state_object_pace_speed;
 		//eo->waiter = 64;		// 50 frames
@@ -156,10 +159,10 @@ void engine_enemy_manager_load()
 		//eo->delay = 1;
 
 		index = 8 * enemy + state_object_difficulty * 2 + state_object_pace_speed;
-		//eo->speeds[ 0 ] = enemy_object_speed[ index + 0 ];
-		//eo->delays[ 0 ] = enemy_object_delay[ index + 0 ];
-		//eo->speeds[ 1 ] = enemy_object_speed[ index + 4 ];
-		//eo->delays[ 1 ] = enemy_object_delay[ index + 4 ];
+		eo->speeds[ 0 ] = enemy_object_speed[ index + 0 ];
+		eo->delays[ 0 ] = enemy_object_delay[ index + 0 ];
+		eo->speeds[ 1 ] = enemy_object_speed[ index + 4 ];
+		eo->delays[ 1 ] = enemy_object_delay[ index + 4 ];
 
 
 		offset = enemy;
