@@ -1,4 +1,5 @@
 #include "diff_screen.h"
+#include "..\engine\audio_manager.h"
 #include "..\engine\cursor_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
@@ -14,7 +15,7 @@
 void screen_diff_screen_load()
 {
 	engine_cursor_manager_draw1( 0 );
-	engine_cursor_manager_cursor1( state_object_pace_speed );
+	engine_cursor_manager_cursor1( state_object_difficulty );
 }
 
 void screen_diff_screen_update( unsigned char *screen_type )
@@ -31,7 +32,7 @@ void screen_diff_screen_update( unsigned char *screen_type )
 	input[ 2 ] = engine_input_manager_hold( input_type_fire1 );
 	if( input[ 2 ] )
 	{
-		//engine_audio_manager_sound_accept();
+		engine_audio_manager_sfx_play( sound_type_accept );
 		*screen_type = screen_type_pace;
 		return;
 	}

@@ -1,4 +1,5 @@
 #include "pace_screen.h"
+#include "..\engine\audio_manager.h"
 #include "..\engine\cursor_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
@@ -14,7 +15,7 @@
 void screen_pace_screen_load()
 {
 	engine_cursor_manager_draw1( 3 );
-	engine_cursor_manager_cursor1( state_object_difficulty );
+	engine_cursor_manager_cursor1( state_object_pace_speed );
 }
 
 void screen_pace_screen_update( unsigned char *screen_type )
@@ -31,14 +32,16 @@ void screen_pace_screen_update( unsigned char *screen_type )
 	input[ 2 ] = engine_input_manager_hold( input_type_fire1);
 	if( input[ 2 ] )
 	{
-		//engine_audio_manager_sound_accept();
-		*screen_type = screen_type_select;
+		// TODO there may need to be a slight delay going to next screen
+		// because I will clear the screen and reload game tiles...
+		engine_audio_manager_sfx_play( sound_type_accept );
+		*screen_type = screen_type_option;
 		return;
 	}
 	input[ 3 ] = engine_input_manager_hold( input_type_fire2 );
 	if( input[ 3 ] )
 	{
-		//engine_audio_manager_sound_reject();
+		engine_audio_manager_sfx_play( sfx_type_reset );
 		*screen_type = screen_type_diff;
 		return;
 	}

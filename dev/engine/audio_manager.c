@@ -106,6 +106,5 @@ void engine_audio_manager_sfx_play( unsigned char index )
 	}
 
 	sfx = sfx_object_data[ index ];
-
 	devkit_PSGSFXPlay( ( unsigned char* ) sfx, devkit_SFX_CHANNEL2() );
 }

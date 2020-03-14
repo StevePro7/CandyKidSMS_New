@@ -35,7 +35,7 @@ void screen_select_screen_load()
 
 	engine_level_manager_load_level( state_object_world_data, state_object_round_data );
 	engine_level_manager_draw_level();
-
+	engine_level_manager_draw_middle();
 
 	//engine_locale_manager_draw_text( 1, SCREEN_TILE_LEFT + LFT_SIDE_X + 24, TOP_SIDE_Y + 0 );
 	//engine_locale_manager_draw_text( 2, SCREEN_TILE_LEFT + LFT_SIDE_X + 24, TOP_SIDE_Y + 1 );
@@ -105,6 +105,7 @@ void screen_select_screen_update( unsigned char *screen_type )
 		engine_score_manager_update_level();
 		engine_level_manager_load_level( state_object_world_data, state_object_round_data );
 		engine_level_manager_draw_level();
+		engine_level_manager_draw_middle();
 	}
 
 	input = engine_input_manager_hold( input_type_fire1 );

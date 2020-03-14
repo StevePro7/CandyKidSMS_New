@@ -1,4 +1,5 @@
 #include "title_screen.h"
+#include "..\engine\audio_manager.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\content_manager.h"
 #include "..\engine\enum_manager.h"
@@ -50,12 +51,15 @@ void screen_title_screen_update( unsigned char *screen_type )
 	unsigned char input = engine_input_manager_hold( input_type_fire1 );
 	if( input )
 	{
-		*screen_type = screen_type_select;
+		//engine_audio_manager_sound_play( sound_type_accept );
+		engine_audio_manager_sfx_play( sound_type_accept );
+		//*screen_type = screen_type_select;
+		*screen_type = screen_type_diff;
 		return;
 	}
 
-	//*screen_type = screen_type_title;
-	*screen_type = screen_type_diff;
+	*screen_type = screen_type_title;
+	//*screen_type = screen_type_diff;
 }
 
 static void draw_tiles()
