@@ -23,3 +23,43 @@ const unsigned char enemy_object_delay[] =
 		3, 2, 3, 3,		// Normal
 		1, 2, 3, 3,		// Boost!
 };
+
+
+
+14/03/2020
+const unsigned char enemy_object_waits[] =
+{
+	//Pro: ES,EF,HS,HF.
+	//61,71,81,91,
+	1,71,81,91,
+	//Adi: ES,EF,HS,HF.
+	//62,72,82,92,
+	39,72,82,92,
+	//Suz: ES,EF,HS,HF.
+	33,73,83,93,
+	//63,73,83,93,
+};
+const unsigned char enemy_object_tours[] =
+{
+	//Pro: ES,EF,HS,HF.
+	25,74,84,94,
+	//64,74,84,94,
+//Adi: ES,EF,HS,HF.
+	//65,75,85,95,
+	25,75,85,95,
+	//Suz: ES,EF,HS,HF.
+	6,76,86,96,
+	//66,76,86,96,
+};
+const unsigned char enemy_object_kills[] =
+{
+	//Pro: ES,EF,HS,HF.
+	37,77,87,97,
+	//67,77,87,97,
+//Adi: ES,EF,HS,HF.
+	28,78,88,98,
+	//68,78,88,98,
+	//Suz: ES,EF,HS,HF.
+	9,79,89,99,
+	//69,79,89,99,
+};

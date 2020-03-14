@@ -54,8 +54,8 @@ void screen_title_screen_update( unsigned char *screen_type )
 		return;
 	}
 
-	*screen_type = screen_type_title;
-	//*screen_type = screen_type_option;
+	//*screen_type = screen_type_title;
+	*screen_type = screen_type_diff;
 }
 
 static void draw_tiles()

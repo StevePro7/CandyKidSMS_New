@@ -12,40 +12,41 @@
 // Enemy Manager.
 const unsigned char enemy_object_speed[] =
 {
-	//Pro: ES,EF,HS,HF.
+//Pro: ES,EF,HS,HF.
 	2, 3, 1, 3, 		// Normal
 	2, 1, 3, 2, 		// Boost!
-						//Adi: ES,EF,HS,HF.
-						1, 1, 2, 3, 		// Normal
-						1, 2, 3, 1, 		// Boost!
-											//Suz: ES,EF,HS,HF.
-											1, 1, 1, 2, 		// Normal
-											1, 1, 2, 3, 		// Boost!
+//Adi: ES,EF,HS,HF.
+	1, 1, 2, 3, 		// Normal
+	1, 2, 3, 1, 		// Boost!
+//Suz: ES,EF,HS,HF.
+	1, 1, 1, 2, 		// Normal
+	1, 1, 2, 3, 		// Boost!
 };
 const unsigned char enemy_object_delay[] =
 {
-	//Pro: ES,EF,HS,HF.
+//Pro: ES,EF,HS,HF.
 	3, 3, 1, 2, 		// Normal
 	3, 1, 2, 1, 		// Boost!
-						//Adi: ES,EF,HS,HF.
-						2, 2, 3, 3, 		// Normal
-						2, 3, 3, 1, 		// Boost!
-											//Suz: ES,EF,HS,HF.
-											3, 3, 2, 3, 		// Normal
-											3, 2, 3, 3, 		// Boost!
+//Adi: ES,EF,HS,HF.
+	2, 2, 3, 3, 		// Normal
+	2, 3, 3, 1, 		// Boost!
+//Suz: ES,EF,HS,HF.
+	3, 3, 2, 3, 		// Normal
+	3, 2, 3, 3, 		// Boost!
 };
 
 
 const unsigned char enemy_object_hands[] = 
 {
-	100,  91,  82, 73,
-	120, 111, 102, 93,
-	140, 131, 122, 103,
+//	ES, EF, HS, HF.
+	90, 80, 70, 60,		// Pro
+	95, 85, 75, 65,		// Adi
+	99, 90, 80, 70,		// Suz
 };
 
 const unsigned char enemy_object_waits[] =
 {
-	//Pro: ES,EF,HS,HF.
+	//Pro: ES,EF,HS,HF.	
 	//61,71,81,91,
 	1,71,81,91,
 	//Adi: ES,EF,HS,HF.

@@ -31,7 +31,7 @@ static unsigned char frame_spot;
 
 void screen_play_screen_load()
 {
-	struct_enemy_object *eo;
+	//struct_enemy_object *eo;
 	engine_delay_manager_load( 0 );
 
 	engine_command_manager_load();

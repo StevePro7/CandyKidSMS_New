@@ -64,8 +64,8 @@ void engine_hack_manager_invert()
 	// TODO delete this hard coded
 	state_object_trees_type = 0;
 	state_object_exits_type = 0;
-	state_object_difficulty = 0;
-	state_object_pace_speed = 0;
+	//state_object_difficulty = 0;
+	//state_object_pace_speed = 0;
 	state_object_invincibie = 0;
 
 	state_object_enemy_move[ actor_type_pro ] = 1;
@@ -119,8 +119,8 @@ void engine_hack_manager_invert()
 	// TODO revert this code to play music + sound FX.
 
 	// TODO delete this hard coded
-	state_object_world_data = 1 - 1;
-	state_object_round_data = 1 - 1;
+	state_object_world_data = 4 - 1;
+	state_object_round_data = 6 - 1;
 
 	//state_object_world_data = 8 - 1;
 	//state_object_round_data = 9 - 1;
