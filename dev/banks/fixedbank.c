@@ -68,11 +68,11 @@ const unsigned char enemy_object_kills[] =
 
 
 // Gamer Manager.
-const unsigned char gamer_object_speed[] = { 1, 2, 2, 3 };		// smoother - the other option for HS 3/2 is a bit choppy
-const unsigned char gamer_object_delay[] = { 1, 1, 1, 1 };
+//const unsigned char gamer_object_speed[] = { 1, 2, 2, 3 };		// smoother - the other option for HS 3/2 is a bit choppy
+//const unsigned char gamer_object_delay[] = { 1, 1, 1, 1 };
 
-//const unsigned char gamer_object_speed[] = { 1, 2, 3, 3 };
-//const unsigned char gamer_object_delay[] = { 1, 1, 2, 1 };
+const unsigned char gamer_object_speed[] = { 1, 2, 3, 3 };
+const unsigned char gamer_object_delay[] = { 1, 1, 2, 1 };
 
 
 // Locale Manager.

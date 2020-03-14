@@ -28,6 +28,7 @@
 // PLAY screen - is the main command add + execute driver
 static unsigned char first_time;
 static unsigned char frame_spot;
+static unsigned char nextr_direction;
 
 void screen_play_screen_load()
 {
@@ -46,6 +47,7 @@ void screen_play_screen_load()
 	//eo = &global_enemy_objects[ actor_type_suz ];	engine_memo_manager_debugging( actor_type_suz, eo->action );
 	first_time = 1;
 	frame_spot = 0;
+	nextr_direction = direction_type_none;
 }
 
 void screen_play_screen_update( unsigned char *screen_type )
@@ -58,6 +60,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	unsigned char enemy_boost = 0;
 	unsigned char gamer_direction = direction_type_none;
 	unsigned char enemy_direction = direction_type_none;
+	unsigned char input_direction = direction_type_none;
 	unsigned char gamer_collision = coll_type_empty;
 	unsigned char gamer_tile_type = tile_type_blank;
 
@@ -94,6 +97,13 @@ void screen_play_screen_update( unsigned char *screen_type )
 	if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
 	{
 		//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
+		input_direction = engine_gamer_manager_input_direction();
+		if( direction_type_none != input_direction && gamer_direction != input_direction )
+		{
+			nextr_direction = gamer_direction;
+			//engine_font_manager_draw_data( nextr_direction, 30, 20 );		// stevepro pre-empt direction
+		}
+
 		engine_gamer_manager_update();
 
 		// Check boost for next cycle.
@@ -128,8 +138,25 @@ void screen_play_screen_update( unsigned char *screen_type )
 	{
 		if( coll_type_empty == gamer_collision )
 		{
-			gamer_direction = engine_gamer_manager_input_direction();
+			if( direction_type_none != nextr_direction )
+			{
+				gamer_direction = nextr_direction;
+				//engine_font_manager_draw_data( gamer_direction, 30, 21 );		// stevepro pre-empt direction
+				////nextr_direction = direction_type_none;
+				//engine_font_manager_draw_data( nextr_direction, 30, 20 );		// stevepro pre-empt direction
+			}
+			else
+			{
+				gamer_direction = engine_gamer_manager_input_direction();
+				//engine_font_manager_draw_data( gamer_direction, 30, 21 );		// stevepro pre-empt direction
+			}
+
+			nextr_direction = direction_type_none;
+			//engine_font_manager_draw_data( nextr_direction, 30, 20 );
+
+			//engine_font_manager_draw_data( gamer_direction, 30, 22 );			// stevepro pre-empt direction
 			gamer_direction = engine_gamer_manager_find_direction( gamer_direction );
+			//engine_font_manager_draw_data( gamer_direction, 30, 23 );			// stevepro pre-empt direction
 
 			if( direction_type_none != gamer_direction )
 			{
