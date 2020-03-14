@@ -85,6 +85,7 @@ void screen_load_screen_update( unsigned char *screen_type )
 	{
 		engine_level_manager_draw_middle();
 		engine_audio_manager_music_play( music_type_game03 );
+		//engine_audio_manager_music_play( music_type_beatgame );
 		*screen_type = state_object_next_screen;
 		return;
 	}
