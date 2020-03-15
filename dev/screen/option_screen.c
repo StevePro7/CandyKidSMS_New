@@ -10,17 +10,17 @@
 
 void screen_option_screen_load()
 {
-	//devkit_SMS_displayOff();
+	devkit_SMS_displayOff();
 
 	engine_content_manager_load_tiles_game();
 	engine_content_manager_load_tiles_screen();
 
-	engine_font_manager_draw_text( "OPTION SCREEN....!!", 2, 10 );
+	//engine_font_manager_draw_text( "OPTION SCREEN....!!", 2, 10 );
 
 	engine_board_manager_border( border_type_game );
 	engine_board_manager_side_tile();
 
-	//devkit_SMS_displayOn();
+	devkit_SMS_displayOn();
 }
 
 void screen_option_screen_update( unsigned char *screen_type )

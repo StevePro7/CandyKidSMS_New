@@ -29,12 +29,12 @@ void screen_select_screen_load()
 	//}
 
 	// TODO delete as this comes after option screen.
-	engine_content_manager_load_tiles_game();
-	engine_content_manager_load_tiles_screen();
+	//engine_content_manager_load_tiles_game();
+	//engine_content_manager_load_tiles_screen();
 	//engine_board_manager_draw_full();
 	//engine_board_manager_draw_exit();
-	engine_board_manager_border( border_type_game );
-	engine_board_manager_side_tile();
+	//engine_board_manager_border( border_type_game );
+	//engine_board_manager_side_tile();
 	// TODO delete as this comes after option screen.
 
 	engine_level_manager_load_level( state_object_world_data, state_object_round_data );

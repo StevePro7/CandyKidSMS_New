@@ -42,7 +42,7 @@ void screen_title_screen_load()
 	//engine_font_manager_draw_text( LOCALE_BUILD_VERSION, SCREEN_TILE_LEFT + 24, 21 );
 
 	engine_content_manager_load_tiles_main();
-	//engine_content_manager_load_tiles_screen();
+	engine_content_manager_load_tiles_screen();
 	//engine_content_manager_load_sprites_game();
 
 	//engine_board_manager_main_full();
