@@ -7,6 +7,7 @@
 #include "..\engine\global_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\locale_manager.h"
+#include "..\engine\memo_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\devkit\_sms_manager.h"
@@ -27,8 +28,10 @@ void screen_intro_screen_load()
 	}
 
 	engine_content_manager_load_tiles_main();
+	//engine_memo_manager_clear();
 	//engine_board_manager_border( border_type_main );
-	engine_board_manager_border( border_type_game );
+
+	//engine_board_manager_border( border_type_game );
 	//engine_font_manager_draw_text( "INTRO SCREEN..!!", 4, 0 );
 }
 

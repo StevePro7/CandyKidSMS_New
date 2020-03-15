@@ -29,8 +29,9 @@ void screen_select_screen_load()
 	}
 
 
-	engine_board_manager_draw_full();
-	engine_board_manager_draw_exit();
+	//engine_board_manager_draw_full();
+	//engine_board_manager_draw_exit();
+	engine_board_manager_border( border_type_game );
 	engine_board_manager_side_tile();
 
 	engine_level_manager_load_level( state_object_world_data, state_object_round_data );

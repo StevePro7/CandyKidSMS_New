@@ -20,6 +20,7 @@ extern const unsigned char gamer_object_delay[];
 extern const unsigned char *locale_object_texts[];
 extern const unsigned char *locale_object_menus[];
 //extern const unsigned char *locale_object_blank[];
+extern const unsigned char locale_object_blank32[];
 extern const unsigned char locale_object_blank26[];
 
 // Score Manager.

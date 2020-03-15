@@ -16,7 +16,7 @@ static void test_fixed();
 
 void screen_func_screen_load()
 {
-	engine_board_manager_draw_full();
+	//engine_board_manager_draw_full();
 	engine_memo_manager_draw( 26, 27 );
 	//engine_font_manager_draw_text( "FUNC SCREEN...!", 10, 2 );
 }

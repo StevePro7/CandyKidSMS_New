@@ -44,9 +44,9 @@ void screen_reset_screen_load()
 	//engine_score_manager_draw_all();
 	engine_score_manager_update_level();
 
-	engine_board_manager_draw_full();
-	engine_board_manager_draw_exit();
-	engine_board_manager_side_tile();
+	//engine_board_manager_draw_full();
+	//engine_board_manager_draw_exit();
+	//engine_board_manager_side_tile();
 
 	engine_level_manager_load_level( 0, 0 );
 	//engine_level_manager_update_level( 0, 0, 0);

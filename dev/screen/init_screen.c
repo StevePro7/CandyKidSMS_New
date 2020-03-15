@@ -27,9 +27,11 @@ void screen_init_screen_load()
 	//engine_memo_manager_clear();
 
 	// Draw tree border with exits.
+	engine_board_manager_border( border_type_game );
 	//engine_board_manager_debugger();
-	engine_board_manager_draw_full();
-	engine_board_manager_draw_exit();
+	//engine_board_manager_draw_full();
+	//engine_board_manager_draw_exit();
+	
 	engine_board_manager_side_tile();
 
 	// Reset all score data.

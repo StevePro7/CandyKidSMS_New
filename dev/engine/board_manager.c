@@ -161,10 +161,10 @@ void engine_board_manager_border( unsigned char index )
 	}
 }
 
-void engine_board_manager_draw_full()
-{
-	draw_side( TREE_COLS, MID_SIDE_X );
-}
+//void engine_board_manager_draw_full()
+//{
+//	draw_side( TREE_COLS, MID_SIDE_X );
+//}
 void engine_board_manager_draw_exit()
 {
 	draw_gaps( TOP_EXIT_Y, BOT_EXIT_Y, MID_SIDE_X );

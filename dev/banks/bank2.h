@@ -10,6 +10,18 @@ extern const unsigned char	main_tiles__tiles__psgcompr[];
 #define				main_tiles__tiles__psgcompr_size 2238
 #define				main_tiles__tiles__psgcompr_bank 2
 
+extern const unsigned char	screen__palette__bin[];
+#define				screen__palette__bin_size 16
+#define				screen__palette__bin_bank 2
+
+extern const unsigned char	screen__tilemap__stmcompr[];
+#define				screen__tilemap__stmcompr_size 25
+#define				screen__tilemap__stmcompr_bank 2
+
+extern const unsigned char	screen__tiles__psgcompr[];
+#define				screen__tiles__psgcompr_size 3
+#define				screen__tiles__psgcompr_bank 2
+
 extern const unsigned char	sound_accept_psg[];
 #define				sound_accept_psg_size 32
 #define				sound_accept_psg_bank 2

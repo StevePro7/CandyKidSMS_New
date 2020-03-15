@@ -10,6 +10,7 @@ cd bank2
 ::bmp2tile.exe raw\game_tiles.png -savetiles "game_tiles (tiles).psgcompr" -noremovedupes -planar -tileoffset 64 -savetilemap "game_tiles (tilemap).bin" -savepalette "game_tiles (palette).bin" -fullpalette -exit
 bmp2tile.exe raw\main_tiles.png -savetiles "main_tiles (tiles).psgcompr" -noremovedupes -planar -tileoffset 64 -savetilemap "main_tiles (tilemap).bin" -savepalette "main_tiles (palette).bin" -fullpalette -exit
 bmp2tile.exe raw\splash.bmp -savetiles "splash (tiles).psgcompr" -removedupes -nomirror -planar -tileoffset 128 -savetilemap "splash (tilemap).stmcompr" -savepalette "splash (palette).bin" -fullpalette -exit
+bmp2tile.exe raw\screen.png -savetiles "screen (tiles).psgcompr" -removedupes -nomirror -planar -tileoffset 224 -savetilemap "screen (tilemap).stmcompr" -savepalette "screen (palette).bin" -fullpalette -exit
 
 :: Sprites
 :: https://github.com/maxim-zhao/bmp2tile

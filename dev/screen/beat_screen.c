@@ -36,8 +36,8 @@ void screen_beat_screen_load()
 	engine_audio_manager_music_stop();
 	engine_delay_manager_load( BEAT_SCREEN_DELAY );
 
-	engine_board_manager_draw_full();
-	engine_board_manager_draw_exit();
+	//engine_board_manager_draw_full();
+	//engine_board_manager_draw_exit();
 	engine_level_manager_beat_level( data, size, bank );
 	engine_level_manager_draw_level();
 	

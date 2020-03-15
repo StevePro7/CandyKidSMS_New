@@ -126,6 +126,8 @@ const unsigned char *locale_object_menus[] =
 	"FAST",
 };
 
+const unsigned char locale_object_blank32[] = "123456789A123456789B123456789C12";
+//const unsigned char locale_object_blank32[] = "                                ";
 //const unsigned char locale_object_blank26[] = "123456789A123456789B123456";
 const unsigned char locale_object_blank26[] = "                          ";
 //const unsigned char *locale_object_blank[] =
