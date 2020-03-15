@@ -125,6 +125,14 @@ void engine_board_manager_border( unsigned char index )
 	rght = board_object_rght[ index ];
 	for( loop = 1; loop < SCREEN_TILE_HIGH - 1; loop++ )
 	{
+		if( TOP_EXIT_Y == loop || BOT_EXIT_Y == loop )
+		{
+			if( exit_type_public == state_object_exits_type )
+			{
+				continue;;
+			}
+		}
+
 		//engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_SIDE_Y + loop * 2 );
 		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + rght, TOP_SIDE_Y + loop * 2 );
 		//engine_tile_manager_draw_trees( type, 30, TOP_SIDE_Y + loop * 2 );
