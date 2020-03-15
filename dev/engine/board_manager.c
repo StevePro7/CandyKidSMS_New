@@ -133,6 +133,8 @@ void engine_board_manager_border( unsigned char index )
 		{
 			if( exit_type_public == state_object_exits_type )
 			{
+				//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, TOP_SIDE_Y );
+				//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, BOT_SIDE_Y );
 				continue;;
 			}
 		}
@@ -148,6 +150,8 @@ void engine_board_manager_border( unsigned char index )
 		{
 			if( exit_type_public == state_object_exits_type )
 			{
+				//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_SIDE_Y + loop * 2 );
+				//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + rght, TOP_SIDE_Y + loop * 2 );
 				continue;;
 			}
 		}
@@ -170,10 +174,10 @@ void engine_board_manager_main_full()
 {
 	draw_side( SCREEN_TILE_WIDE - 1, RGT_SIDE_X );
 }
-void engine_board_manager_main_exit()
-{
-	draw_gaps( 8, 20, RGT_SIDE_X );
-}
+//void engine_board_manager_main_exit()
+//{
+//	draw_gaps( 8, 20, RGT_SIDE_X );
+//}
 
 // This is the function that draws opaque tile to hide Kid when moving through exit!
 void engine_board_manager_side_tile()

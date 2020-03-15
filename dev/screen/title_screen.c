@@ -42,10 +42,11 @@ void screen_title_screen_load()
 	//engine_font_manager_draw_text( LOCALE_BUILD_VERSION, SCREEN_TILE_LEFT + 24, 21 );
 
 	engine_content_manager_load_tiles_main();
-	engine_board_manager_main_full();
-	engine_board_manager_main_exit();
+	
+	//engine_board_manager_main_full();
+	//engine_board_manager_main_exit();
 	engine_tile_manager_main_title( 2, 2 );
-
+	engine_board_manager_border( border_type_main );
 	//devkit_SMS_mapROMBank( 2 );
 	draw_tiles();
 
