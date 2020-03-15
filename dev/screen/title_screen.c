@@ -25,7 +25,7 @@ void screen_title_screen_load()
 	for( row = 6; row < 22; row++ )
 	{
 		//engine_font_manager_draw_text( LOCALE_BLANK_WIDTH, SCREEN_TILE_LEFT + 2, row );
-		engine_font_manager_draw_text( locale_object_blank26, SCREEN_TILE_LEFT + 2, row );
+		//engine_font_manager_draw_text( locale_object_blank26, SCREEN_TILE_LEFT + 2, row );
 	}
 
 	//for( idx = 0; idx < 4; idx++ )
@@ -43,7 +43,7 @@ void screen_title_screen_load()
 
 	engine_content_manager_load_tiles_main();
 	//engine_content_manager_load_tiles_screen();
-	engine_content_manager_load_sprites_game();
+	//engine_content_manager_load_sprites_game();
 
 	//engine_board_manager_main_full();
 	//engine_board_manager_main_exit();
