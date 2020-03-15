@@ -20,19 +20,22 @@ void screen_select_screen_load()
 	//state_object_next_screen = screen_type_option;
 	state_object_next_screen = screen_type_init;
 
-	if( state_object_mydebugger )
-	{
-		engine_asm_manager_clear_VRAM();
-		engine_content_manager_load_tiles_font();
-		engine_content_manager_load_tiles_game();
-		engine_content_manager_load_sprites_game();
-	}
+	//if( state_object_mydebugger )
+	//{
+	//	engine_asm_manager_clear_VRAM();
+	//	engine_content_manager_load_tiles_font();
+	//	engine_content_manager_load_tiles_game();
+	//	engine_content_manager_load_sprites_game();
+	//}
 
-
+	// TODO delete as this comes after option screen.
+	engine_content_manager_load_tiles_game();
+	engine_content_manager_load_tiles_screen();
 	//engine_board_manager_draw_full();
 	//engine_board_manager_draw_exit();
 	engine_board_manager_border( border_type_game );
 	engine_board_manager_side_tile();
+	// TODO delete as this comes after option screen.
 
 	engine_level_manager_load_level( state_object_world_data, state_object_round_data );
 	engine_level_manager_draw_level();

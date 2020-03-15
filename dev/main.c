@@ -16,7 +16,7 @@ void main (void)
 
 	engine_content_manager_load_tiles_font();
 	//engine_content_manager_load_tiles_game();
-	//engine_content_manager_load_sprites_game();
+	engine_content_manager_load_sprites_game();
 
 	engine_state_manager_init();
 	engine_state_manager_read();
@@ -24,7 +24,7 @@ void main (void)
 	open_screen_type = screen_type_intro;
 	//open_screen_type = screen_type_func;
 	//open_screen_type = screen_type_test;
-	//open_screen_type = screen_type_title;
+	open_screen_type = screen_type_title;
 	//open_screen_type = screen_type_init;
 	//open_screen_type = screen_type_load;
 	//open_screen_type = screen_type_ready;

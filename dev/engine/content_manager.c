@@ -7,6 +7,7 @@
 #define FONT_TILES		0
 #define LOAD_TILES		64
 #define SPLASH_TILES	128
+#define SCREEN_TILES	224
 
 // Tiles.
 void engine_content_manager_load_tiles_font()
@@ -35,9 +36,8 @@ void engine_content_manager_load_tiles_main()
 void engine_content_manager_load_tiles_screen()
 {
 	devkit_SMS_mapROMBank( screen__tiles__psgcompr_bank );
-	devkit_SMS_loadPSGaidencompressedTiles( screen__tiles__psgcompr, 224 );
+	devkit_SMS_loadPSGaidencompressedTiles( screen__tiles__psgcompr, SCREEN_TILES );
 	devkit_SMS_loadSTMcompressedTileMap( 0, 0, ( void * ) screen__tilemap__stmcompr );
-	devkit_SMS_loadBGPalette( ( void * ) screen__palette__bin );
 }
 
 void engine_content_manager_load_tiles_splash()

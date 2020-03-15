@@ -42,7 +42,9 @@ void screen_title_screen_load()
 	//engine_font_manager_draw_text( LOCALE_BUILD_VERSION, SCREEN_TILE_LEFT + 24, 21 );
 
 	engine_content_manager_load_tiles_main();
-	
+	//engine_content_manager_load_tiles_screen();
+	engine_content_manager_load_sprites_game();
+
 	//engine_board_manager_main_full();
 	//engine_board_manager_main_exit();
 	engine_tile_manager_main_title( 2, 2 );
@@ -70,8 +72,6 @@ void screen_title_screen_update( unsigned char *screen_type )
 	unsigned char input = engine_input_manager_hold( input_type_fire1 );
 	if( input )
 	{
-		
-
 		//engine_audio_manager_sound_play( sound_type_accept );
 		engine_audio_manager_sfx_play( sound_type_accept );
 		//*screen_type = screen_type_select;

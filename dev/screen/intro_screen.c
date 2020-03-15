@@ -27,9 +27,13 @@ void screen_intro_screen_load()
 		//engine_font_manager_draw_text( locale_object_blank26, SCREEN_TILE_LEFT + 2, row );
 	}
 
+	
 	engine_content_manager_load_tiles_main();
+	engine_content_manager_load_tiles_screen();
+	engine_content_manager_load_sprites_game();
 	//engine_memo_manager_clear();
-	//engine_board_manager_border( border_type_main );
+
+	engine_board_manager_border( border_type_main );
 
 	//engine_board_manager_border( border_type_game );
 	//engine_font_manager_draw_text( "INTRO SCREEN..!!", 4, 0 );
