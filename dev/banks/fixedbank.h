@@ -25,6 +25,11 @@ extern const unsigned char locale_object_blank26[];
 // Score Manager.
 //extern const unsigned char *score_object_titles[];
 
+// Board Manager.
+extern const unsigned char board_object_wide[];
+extern const unsigned char board_object_rght[];
+extern const unsigned char board_object_left[];
+extern const unsigned char board_object_midd[];
 
 // Audio Manager.
 extern const unsigned char *music_object_data[];

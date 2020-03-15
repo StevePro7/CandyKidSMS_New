@@ -6,6 +6,7 @@
 #include "bank8.h"
 #include "bank9.h"
 #include "..\engine\enum_manager.h"
+#include "..\engine\global_manager.h"
 #include "..\engine\locale_manager.h"
 
 
@@ -125,8 +126,8 @@ const unsigned char *locale_object_menus[] =
 	"FAST",
 };
 
-//const unsigned char locale_object_blank26[] = "123456789A123456789B123456";
-const unsigned char locale_object_blank26[] = "                          ";
+const unsigned char locale_object_blank26[] = "123456789A123456789B123456";
+//const unsigned char locale_object_blank26[] = "                          ";
 //const unsigned char *locale_object_blank[] =
 //{
 //	"                                ",			// 32 wide
@@ -147,6 +148,13 @@ const unsigned char locale_object_blank26[] = "                          ";
 //	"LEVEL",
 //	"BOOST",
 //};
+
+
+// Board Manager.
+const unsigned char board_object_wide[] = { TREE_COLS, SCREEN_TILE_WIDE - 1 };
+const unsigned char board_object_rght[] = { 22, 28 };
+const unsigned char board_object_left[] = { 6, 8 };
+const unsigned char board_object_midd[] = { 16, 20 };
 
 
 // Audio Manager.

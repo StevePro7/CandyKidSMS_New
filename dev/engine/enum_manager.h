@@ -230,4 +230,11 @@ typedef enum tag_enum_stage_type
 
 } enum_stage_type;
 
+typedef enum tag_enum_border_type
+{
+	border_type_game = 0,
+	border_type_main = 1,
+
+} enum_border_type;
+
 #endif//_ENUM_MANAGER_H_

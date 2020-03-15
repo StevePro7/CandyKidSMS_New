@@ -7,8 +7,9 @@
 #include "locale_manager.h"
 #include "mask_manager.h"
 #include "tile_manager.h"
-#include "..\banks\databank.h"
 #include "..\devkit\_sms_manager.h"
+#include "..\banks\fixedbank.h"
+#include "..\banks\databank.h"
 #include <stdio.h>
 
 #define BOT_SIDE_Y		22
@@ -109,6 +110,26 @@ void engine_board_manager_init()
 	//}
 }
 */
+void engine_board_manager_border( unsigned char index )
+{
+	unsigned char type = state_object_trees_type;
+	unsigned char rght;
+	unsigned char loop;
+	
+	//for( loop = 0; loop < wide; loop++ )
+	//{
+	//	engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, TOP_SIDE_Y );
+	//	engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, BOT_SIDE_Y );
+	//}
+	devkit_SMS_mapROMBank( FIXED_BANK );
+	rght = board_object_rght[ index ];
+	for( loop = 1; loop < SCREEN_TILE_HIGH - 1; loop++ )
+	{
+		//engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_SIDE_Y + loop * 2 );
+		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + rght, TOP_SIDE_Y + loop * 2 );
+		//engine_tile_manager_draw_trees( type, 30, TOP_SIDE_Y + loop * 2 );
+	}
+}
 
 void engine_board_manager_draw_full()
 {
