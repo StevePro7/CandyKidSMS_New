@@ -27,7 +27,8 @@ void screen_intro_screen_load()
 	}
 
 	engine_content_manager_load_tiles_main();
-	engine_board_manager_border( border_type_main );
+	//engine_board_manager_border( border_type_main );
+	engine_board_manager_border( border_type_game );
 	//engine_font_manager_draw_text( "INTRO SCREEN..!!", 4, 0 );
 }
 

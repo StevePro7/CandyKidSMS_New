@@ -153,8 +153,8 @@ const unsigned char locale_object_blank26[] = "123456789A123456789B123456";
 // Board Manager.
 const unsigned char board_object_wide[] = { TREE_COLS, SCREEN_TILE_WIDE - 1 };
 const unsigned char board_object_rght[] = { 22, 28 };
-const unsigned char board_object_left[] = { 6, 8 };
-const unsigned char board_object_midd[] = { 16, 20 };
+const unsigned char board_object_left[] = { 3, 4 };
+const unsigned char board_object_midd[] = { 8, 10 };
 
 
 // Audio Manager.
