@@ -68,7 +68,8 @@ void screen_diff_screen_update( unsigned char *screen_type )
 		//*screen_type = screen_type_pace;
 		//*screen_type = screen_type_init;
 		//*screen_type = screen_type_option;
-		*screen_type = screen_type_intro;
+		//*screen_type = screen_type_intro;
+		*screen_type = screen_type_fast;
 		return;
 	}
 
