@@ -25,6 +25,8 @@
 #pragma disable_warning 110
 #endif
 
+#define QUIT_SCREEN_DELAY		75
+
 // PLAY screen - is the main command add + execute driver
 static unsigned char first_time;
 static unsigned char frame_spot;
@@ -50,6 +52,8 @@ void screen_play_screen_load()
 	frame_spot = 0;
 	invincible = state_object_invincibie || state_object_localcheat;
 	nextr_direction = direction_type_none;
+
+	engine_reset_manager_load( QUIT_SCREEN_DELAY );
 }
 
 void screen_play_screen_update( unsigned char *screen_type )
@@ -67,7 +71,9 @@ void screen_play_screen_update( unsigned char *screen_type )
 	unsigned char gamer_tile_type = tile_type_blank;
 
 	unsigned char proceed;
+	unsigned char input;
 	unsigned char enemy;
+	unsigned char check;
 	//unsigned char input;
 	unsigned int frame = fo->frame_count;
 	state_object_actor_kill = actor_type_kid;
@@ -93,6 +99,24 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 	// Continue...
 	frame = fo->frame_count;
+
+
+	// Does player want to quit out?
+	input = engine_input_manager_move( input_type_fire2 );
+	if( input )
+	{
+		check = engine_reset_manager_update();
+		if( check )
+		{
+			engine_board_manager_midd_text();
+			*screen_type = screen_type_over;
+			return;
+		}
+	}
+	else
+	{
+		engine_reset_manager_reset();
+	}
 
 
 	// Move gamer.
