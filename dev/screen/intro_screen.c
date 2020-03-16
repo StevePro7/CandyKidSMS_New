@@ -72,7 +72,7 @@ void screen_intro_screen_update( unsigned char *screen_type )
 	{
 		// TODO there may need to be a slight delay going to next screen
 		// because I will clear the screen and reload game tiles...
-		//engine_audio_manager_sfx_play( sound_type_accept );
+		engine_audio_manager_sfx_play( sound_type_accept );
 		state_object_pace_speed = pace_speed;
 		*screen_type = screen_type_option;
 		return;
@@ -82,6 +82,7 @@ void screen_intro_screen_update( unsigned char *screen_type )
 	if( input[ 3 ] )
 	{
 		engine_audio_manager_sfx_play( sfx_type_reset );
+		state_object_pace_speed = pace_speed;
 		*screen_type = screen_type_diff;
 		return;
 	}

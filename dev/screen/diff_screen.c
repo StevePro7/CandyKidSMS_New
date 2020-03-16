@@ -43,9 +43,9 @@ void screen_diff_screen_update( unsigned char *screen_type )
 	input[ 2 ] = engine_input_manager_hold( input_type_fire1 );
 	if( input[ 2 ] )
 	{
-		//engine_audio_manager_sfx_play( sound_type_accept );
+		engine_audio_manager_sfx_play( sound_type_accept );
 		state_object_difficulty = difficulty;
-		*screen_type = screen_type_pace;
+		//*screen_type = screen_type_pace;
 		//*screen_type = screen_type_init;
 		//*screen_type = screen_type_option;
 		*screen_type = screen_type_intro;
