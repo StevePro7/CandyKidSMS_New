@@ -22,6 +22,7 @@ extern const unsigned char *locale_object_menus[];
 //extern const unsigned char *locale_object_blank[];
 extern const unsigned char locale_object_blank32[];
 extern const unsigned char locale_object_blank26[];
+extern const unsigned char locale_object_blank14[];
 
 // Score Manager.
 //extern const unsigned char *score_object_titles[];

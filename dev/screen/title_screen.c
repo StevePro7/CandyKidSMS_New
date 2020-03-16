@@ -12,7 +12,13 @@
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
 
+#define TITLE_FLASH_DELAY	50
+#define COIN_TEXT_X			8
+#define COIN_TEXT_Y			18
+
 static void draw_tiles();
+static unsigned char flash_count;
+static unsigned char cheat_count;
 
 void screen_title_screen_load()
 {
@@ -38,7 +44,7 @@ void screen_title_screen_load()
 
 
 	//engine_locale_manager_draw_text( LOCALE_BUILD_VERSION, SCREEN_TILE_LEFT + 24, 21 );
-	engine_locale_manager_draw_text( 0, SCREEN_TILE_LEFT + 24, 21 );
+	
 	//engine_font_manager_draw_text( LOCALE_BUILD_VERSION, SCREEN_TILE_LEFT + 24, 21 );
 
 	engine_content_manager_load_tiles_main();
@@ -64,12 +70,36 @@ void screen_title_screen_load()
 	//	engine_font_manager_draw_text( "X", SCREEN_TILE_LEFT - 1, row );
 	//}
 
+	engine_locale_manager_draw_text( 0, SCREEN_TILE_LEFT + 24, 21 );
+	engine_locale_manager_draw_text( 28, SCREEN_TILE_LEFT + COIN_TEXT_X, COIN_TEXT_Y );
+
 	devkit_SMS_displayOn();
+
+	engine_delay_manager_load( TITLE_FLASH_DELAY );
+	flash_count = 0;
+	cheat_count = 0;
 }
 
 void screen_title_screen_update( unsigned char *screen_type )
 {
 	unsigned char input = engine_input_manager_hold( input_type_fire1 );
+	unsigned char delay;
+
+	delay = engine_delay_manager_update();
+	if( delay )
+	{
+		flash_count = 1 - flash_count;
+		if( flash_count )
+		{
+			devkit_SMS_mapROMBank( FIXED_BANK );
+			engine_font_manager_draw_text( locale_object_blank14, SCREEN_TILE_LEFT + COIN_TEXT_X, COIN_TEXT_Y );
+		}
+		else
+		{
+			engine_locale_manager_draw_text( 28, SCREEN_TILE_LEFT + COIN_TEXT_X, COIN_TEXT_Y );
+		}
+	}
+
 	if( input )
 	{
 		//engine_audio_manager_sound_play( sound_type_accept );
@@ -86,11 +116,11 @@ void screen_title_screen_update( unsigned char *screen_type )
 static void draw_tiles()
 {
 	const unsigned char multiplier = 1;
-	engine_tile_manager_draw_trees( tree_type_avoid, 10, 8 );
-	engine_tile_manager_draw_trees( tree_type_death, 10, 10 );
+	engine_tile_manager_draw_trees( tree_type_avoid, SCREEN_TILE_LEFT + 10, 8 );
+	engine_tile_manager_draw_trees( tree_type_death, SCREEN_TILE_LEFT + 10, 10 );
 
-	engine_tile_manager_draw_bonus( tile_type_bonusA, 10, 12, multiplier );
-	engine_tile_manager_draw_bonus( tile_type_bonusB, 10, 14, multiplier );
-	engine_tile_manager_draw_bonus( tile_type_bonusC, 10, 16, multiplier );
-	engine_tile_manager_draw_bonus( tile_type_bonusD, 10, 18, multiplier );
+	engine_tile_manager_draw_bonus( tile_type_bonusA, SCREEN_TILE_LEFT + 15, 8, multiplier );
+	engine_tile_manager_draw_bonus( tile_type_bonusB, SCREEN_TILE_LEFT + 15, 10, multiplier );
+	engine_tile_manager_draw_bonus( tile_type_bonusC, SCREEN_TILE_LEFT + 15, 12, multiplier );
+	engine_tile_manager_draw_bonus( tile_type_bonusD, SCREEN_TILE_LEFT + 15, 14, multiplier );
 }

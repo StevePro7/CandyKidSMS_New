@@ -1,0 +1,16 @@
+IMPORTANT
+16/03/2020
+
+Email from Claudio today from email I sent yesterday:
+there was issue on diff => pace screen after game over and game breaking
+some crazy code that caused game to think pause button pressed
+
+Turns out I had similar issue before with global variable
+so the "fix" is to read the global varible into local private variable
+change the private var and set back into the global var
+
+
+EMAIL
+I would say it's some global variable that you fail to initialize when you go back to main menu, as otherwise you'd get the same issue first time you're there. You know, first time you're there they all are at 0 because of the global initialization... but second time they can be any value.
+Cheers!
+Claudio

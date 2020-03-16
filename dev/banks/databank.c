@@ -6,6 +6,7 @@
 unsigned char state_object_mydebugger;
 unsigned char state_object_full_boost;
 unsigned char state_object_invincibie;
+unsigned char state_object_localcheat;
 //unsigned long state_object_high_score;
 unsigned int state_object_high_score;
 
