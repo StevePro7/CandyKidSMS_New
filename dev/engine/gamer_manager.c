@@ -353,7 +353,7 @@ unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction
 	else
 	{
 		// Vulnerable.
-		if( !st->state_object_invincibie )
+		if( !st->state_object_localcheat )
 		{
 			return gamer_direction;
 		}

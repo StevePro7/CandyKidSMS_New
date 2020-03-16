@@ -5,8 +5,8 @@
 // Global state.
 unsigned char state_object_mydebugger;
 unsigned char state_object_full_boost;
-unsigned char state_object_invincibie;
-unsigned char state_object_localcheat;
+//unsigned char state_object_invincibie;
+//unsigned char state_object_localcheat;
 unsigned int state_object_high_score;
 
 //unsigned char state_object_difficulty;
