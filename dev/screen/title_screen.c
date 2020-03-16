@@ -26,6 +26,7 @@ static unsigned char cheat_count;
 
 void screen_title_screen_load()
 {
+	struct_state_object *st = &global_state_object;
 	//unsigned char row;
 	//devkit_SMS_displayOff();
 
@@ -78,15 +79,16 @@ void screen_title_screen_load()
 	engine_locale_manager_draw_text( 28, SCREEN_TILE_LEFT + COIN_TEXT_X, COIN_TEXT_Y );
 	engine_font_manager_draw_text( locale_object_blank18, SCREEN_TILE_LEFT + COIN_TEXT_X, COIN_TEXT_Y + 1 );
 	engine_font_manager_draw_text( locale_object_blank18, SCREEN_TILE_LEFT + 2, BOTT_TEXT_Y );
-	//if( state_object_invincibie )
-	//{
-	//	engine_locale_manager_draw_text( 29, SCREEN_TILE_LEFT + 2, BOTT_TEXT_Y );
-	//}
+
+	if( st->state_object_invincibie )
+	{
+		engine_locale_manager_draw_text( 29, SCREEN_TILE_LEFT + 2, BOTT_TEXT_Y );
+	}
 
 	//devkit_SMS_displayOn();
 
 	engine_delay_manager_load( TITLE_FLASH_DELAY );
-	state_object_localcheat = 0;
+	st->state_object_localcheat = 0;
 	flash_count = 0;
 	cheat_count = 0;
 }
@@ -138,7 +140,7 @@ void screen_title_screen_update( unsigned char *screen_type )
 			{
 				engine_audio_manager_sfx_play( sfx_type_power );
 				engine_locale_manager_draw_text( 29, SCREEN_TILE_LEFT + 2, BOTT_TEXT_Y );
-				state_object_localcheat = 1;
+				st->state_object_localcheat = 1;
 			}
 		}
 	}

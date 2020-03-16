@@ -19,14 +19,15 @@
 void engine_hack_manager_init()
 {
 	struct_state_object *st = &global_state_object;
-	st->state_object_difficulty = 0;
-	st->state_object_difficulty = 0;
 	st->state_object_invincibie = 0;
+	st->state_object_localcheat = 0;
+	st->state_object_difficulty = 0;
+	st->state_object_pace_speed = 0;
 
 	state_object_mydebugger = 0;
 	state_object_full_boost = 0;
 	//state_object_invincibie = 0;
-	state_object_localcheat = 0;
+	//state_object_localcheat = 0;
 
 	//state_object_difficulty = 0;
 	//state_object_pace_speed = 0;
@@ -74,7 +75,7 @@ void engine_hack_manager_invert()
 	struct_state_object *st = &global_state_object;
 	st->state_object_difficulty = 0;
 	st->state_object_pace_speed = 0;
-	st->state_object_invincibie = 1;
+	//st->state_object_invincibie = 0;
 
 	//state_object_difficulty = 0;
 	//state_object_pace_speed = 0;
