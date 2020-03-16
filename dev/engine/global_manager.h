@@ -76,4 +76,6 @@
 #define TYPE1_OPT1_X			TYPE1_TEXT_X + 0
 #define TYPE1_OPT2_X			TYPE1_TEXT_X + 11
 
+#define SOUND_SCREEN_DELAY		30
+
 #endif//_GLOBAL_MANAGER_H_

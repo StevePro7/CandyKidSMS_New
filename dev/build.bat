@@ -35,7 +35,7 @@ cd engine
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 hack_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 input_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 level_manager.c
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 locale_manager.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 locale_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 memo_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 move_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 score_manager.c
@@ -58,17 +58,17 @@ cd ..
 cd screen
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 none_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 splash_screen.c
-::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 intro_screen.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 intro_screen.c
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 title_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 demo_screen.c
-::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 diff_screen.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 diff_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 pace_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 select_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 option_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 init_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 load_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 ready_screen.c
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 play_screen.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 play_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 pass_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 bonus_screen.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 replay_screen.c

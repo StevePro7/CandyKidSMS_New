@@ -15,18 +15,18 @@
 #include "..\banks\fixedbank.h"
 #include "..\banks\databank.h"
 
-#define FAST_SCREEN_DELAY		30
+//#define FAST_SCREEN_DELAY		30
 
 static unsigned char pace_speed;
 static unsigned char event_stage;
 
 void screen_intro_screen_load()
 {
-	engine_font_manager_draw_data( pace_speed, 10, 15 );
-	engine_font_manager_draw_data( state_object_pace_speed, 10, 10 );
+	//engine_font_manager_draw_data( pace_speed, 10, 15 );
+	//engine_font_manager_draw_data( state_object_pace_speed, 10, 10 );
 	pace_speed = state_object_pace_speed;
 	event_stage = event_stage_start;
-	engine_font_manager_draw_data( pace_speed, 10, 16 );
+	//engine_font_manager_draw_data( pace_speed, 10, 16 );
 
 	engine_cursor_manager_draw1( 3 );
 	engine_cursor_manager_cursor1( pace_speed );
@@ -53,7 +53,7 @@ void screen_intro_screen_load()
 	//engine_board_manager_border( border_type_game );
 	//engine_font_manager_draw_text( "INTRO SCREEN..!!", 4, 0 );
 
-	engine_delay_manager_load( FAST_SCREEN_DELAY );
+	engine_delay_manager_load( SOUND_SCREEN_DELAY );
 }
 
 void screen_intro_screen_update( unsigned char *screen_type )
