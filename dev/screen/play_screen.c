@@ -28,6 +28,7 @@
 // PLAY screen - is the main command add + execute driver
 static unsigned char first_time;
 static unsigned char frame_spot;
+static unsigned char invincible;
 static unsigned char nextr_direction;
 
 void screen_play_screen_load()
@@ -47,6 +48,7 @@ void screen_play_screen_load()
 	//eo = &global_enemy_objects[ actor_type_suz ];	engine_memo_manager_debugging( actor_type_suz, eo->action );
 	first_time = 1;
 	frame_spot = 0;
+	invincible = state_object_invincibie || state_object_localcheat;
 	nextr_direction = direction_type_none;
 }
 
@@ -264,7 +266,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	}
 
 	// Kid invincible thus don't check for death collisions.
-	if( state_object_invincibie )
+	if( invincible )
 	{
 		*screen_type = screen_type_play;
 		return;

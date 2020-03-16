@@ -10,11 +10,14 @@
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\devkit\_sms_manager.h"
+#include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 
 #define TITLE_FLASH_DELAY	50
+#define LOCAL_CHEAT_TOTAL	5
 #define COIN_TEXT_X			8
 #define COIN_TEXT_Y			18
+#define BOTT_TEXT_Y			21
 
 static void draw_tiles();
 static unsigned char flash_count;
@@ -70,25 +73,35 @@ void screen_title_screen_load()
 	//	engine_font_manager_draw_text( "X", SCREEN_TILE_LEFT - 1, row );
 	//}
 
-	engine_locale_manager_draw_text( 0, SCREEN_TILE_LEFT + 24, 21 );
+	engine_locale_manager_draw_text( 0, SCREEN_TILE_LEFT + 24, BOTT_TEXT_Y );
 	engine_locale_manager_draw_text( 28, SCREEN_TILE_LEFT + COIN_TEXT_X, COIN_TEXT_Y );
+
+	if( state_object_invincibie )
+	{
+		engine_locale_manager_draw_text( 29, SCREEN_TILE_LEFT + 2, BOTT_TEXT_Y );
+	}
 
 	devkit_SMS_displayOn();
 
 	engine_delay_manager_load( TITLE_FLASH_DELAY );
+	state_object_localcheat = 0;
 	flash_count = 0;
 	cheat_count = 0;
 }
 
 void screen_title_screen_update( unsigned char *screen_type )
 {
-	unsigned char input = engine_input_manager_hold( input_type_fire1 );
+	unsigned char input;
 	unsigned char delay;
 
 	delay = engine_delay_manager_update();
 	if( delay )
 	{
-		flash_count = 1 - flash_count;
+		if( !state_object_delay_test )
+		{
+			flash_count = 1 - flash_count;
+		}
+
 		if( flash_count )
 		{
 			devkit_SMS_mapROMBank( FIXED_BANK );
@@ -100,6 +113,7 @@ void screen_title_screen_update( unsigned char *screen_type )
 		}
 	}
 
+	input = engine_input_manager_hold( input_type_fire1 );
 	if( input )
 	{
 		//engine_audio_manager_sound_play( sound_type_accept );
@@ -107,6 +121,21 @@ void screen_title_screen_update( unsigned char *screen_type )
 		//*screen_type = screen_type_select;
 		*screen_type = screen_type_diff;
 		return;
+	}
+
+	if( !state_object_invincibie )
+	{
+		input = engine_input_manager_hold( input_type_fire2 );
+		if( input )
+		{
+			cheat_count++;
+			if( cheat_count >= LOCAL_CHEAT_TOTAL )
+			{
+				engine_audio_manager_sfx_play( sfx_type_power );
+				engine_locale_manager_draw_text( 29, SCREEN_TILE_LEFT + 2, BOTT_TEXT_Y );
+				state_object_localcheat = 1;
+			}
+		}
 	}
 
 	*screen_type = screen_type_title;

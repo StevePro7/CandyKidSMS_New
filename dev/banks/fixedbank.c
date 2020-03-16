@@ -115,7 +115,7 @@ const unsigned char *locale_object_texts[] =
 	"CANDYKID",
 	"  WINS  ",
 	"INSERT COIN(S)",
-	"              ",
+	"CHEAT!",
 };
 
 const unsigned char *locale_object_menus[] =
