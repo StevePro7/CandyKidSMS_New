@@ -35,6 +35,7 @@ static unsigned char nextr_direction;
 
 void screen_play_screen_load()
 {
+	unsigned char power1, power2;
 	//struct_enemy_object *eo;
 	engine_delay_manager_load( 0 );
 
@@ -50,7 +51,10 @@ void screen_play_screen_load()
 	//eo = &global_enemy_objects[ actor_type_suz ];	engine_memo_manager_debugging( actor_type_suz, eo->action );
 	first_time = 1;
 	frame_spot = 0;
-	invincible = state_object_invincibie || state_object_localcheat;
+
+	power1 = state_object_invincibie;
+	power2 = state_object_localcheat;
+	invincible = 0;// power1 || power2;
 	nextr_direction = direction_type_none;
 
 	engine_reset_manager_load( QUIT_SCREEN_DELAY );
