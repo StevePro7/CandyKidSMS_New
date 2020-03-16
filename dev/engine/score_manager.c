@@ -265,7 +265,7 @@ void engine_score_manager_reset_boost()
 static void update_score( unsigned char points )
 {
 	struct_score_object *so = &global_score_object;
-	unsigned int hiscore = state_object_high_score;		// Not sure why this didn't work directly??
+	unsigned int hiscore = state_object_high_score;		// IMPORTANT Not sure why this didn't work directly??
 	so->score += points;
 
 	if( so->score > MAX_HI_SCORE )
