@@ -66,6 +66,7 @@ unsigned char engine_collision_manager_sprite_collision()
 unsigned char engine_collision_manager_tile_collision( unsigned char tile_type )
 {
 	struct_gamer_object *go = &global_gamer_object;
+	struct_state_object *st = &global_state_object;
 	unsigned char gamer_collision = coll_type_empty;
 	unsigned char erase = 1;			// TODO - use better enum
 
@@ -80,7 +81,7 @@ unsigned char engine_collision_manager_tile_collision( unsigned char tile_type )
 	// Check gamer collision with trees.
 	else if( tile_type_trees == tile_type )
 	{
-		if( !state_object_invincibie && state_object_trees_type == tree_type_death )
+		if( !st->state_object_invincibie && state_object_trees_type == tree_type_death )
 		{
 			gamer_collision = engine_level_manager_get_collision( go->tileX, go->tileY, go->direction, offset_type_none );
 			if( coll_type_block == gamer_collision )
@@ -117,7 +118,7 @@ unsigned char engine_collision_manager_tile_collision( unsigned char tile_type )
 		engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + ( go->tileX - 1 ) * 2, ( go->tileY - 1 ) * 2 );
 
 		// If death tree on border then do not blank tile!
-		if( !state_object_invincibie && state_object_trees_type == tree_type_death )
+		if( !st->state_object_invincibie && state_object_trees_type == tree_type_death )
 		{
 			if( tile_type_trees == tile_type )
 			{
@@ -142,9 +143,10 @@ unsigned char engine_collision_manager_tile_collision( unsigned char tile_type )
 void engine_collision_manager_reset_death()
 {
 	struct_gamer_object *go = &global_gamer_object;
+	struct_state_object *st = &global_state_object;
 
 	// Kid collided with death tree on border so redraw.
-	if( !state_object_invincibie && state_object_trees_type == tree_type_death )
+	if( !st->state_object_invincibie && state_object_trees_type == tree_type_death )
 	{
 		if( actor_type_tree == state_object_actor_kill )
 		{

@@ -1,7 +1,7 @@
 // Global state.
 extern unsigned char state_object_mydebugger;
 extern unsigned char state_object_full_boost;
-extern unsigned char state_object_invincibie;
+//extern unsigned char state_object_invincibie;
 extern unsigned char state_object_localcheat;
 extern unsigned long state_object_high_score;
 

@@ -316,6 +316,7 @@ void engine_gamer_manager_reset()
 unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction )
 {
 	struct_gamer_object *go = &global_gamer_object;
+	struct_state_object *st = &global_state_object;
 	unsigned char collision;
 	unsigned char thru_exit;
 
@@ -352,7 +353,7 @@ unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction
 	else
 	{
 		// Vulnerable.
-		if( !state_object_invincibie )
+		if( !st->state_object_invincibie )
 		{
 			return gamer_direction;
 		}

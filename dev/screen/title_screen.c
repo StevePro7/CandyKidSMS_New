@@ -7,6 +7,7 @@
 #include "..\engine\global_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\locale_manager.h"
+#include "..\engine\state_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\devkit\_sms_manager.h"
@@ -92,6 +93,7 @@ void screen_title_screen_load()
 
 void screen_title_screen_update( unsigned char *screen_type )
 {
+	struct_state_object *st = &global_state_object;
 	unsigned char input;
 	unsigned char delay;
 
@@ -126,7 +128,7 @@ void screen_title_screen_update( unsigned char *screen_type )
 		return;
 	}
 
-	if( !state_object_invincibie )
+	if( !st->state_object_invincibie )
 	{
 		input = engine_input_manager_hold( input_type_fire2 );
 		if( input )
