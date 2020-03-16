@@ -14,3 +14,8 @@ EMAIL
 I would say it's some global variable that you fail to initialize when you go back to main menu, as otherwise you'd get the same issue first time you're there. You know, first time you're there they all are at 0 because of the global initialization... but second time they can be any value.
 Cheers!
 Claudio
+
+
+UPDATE
+While this did work it was not full proof so I went back to what I had similar to Platform Explorer
+and wrapped all the global vars in a struct that was globally accessible and now code is more stable
