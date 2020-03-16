@@ -120,7 +120,7 @@ void screen_title_screen_update( unsigned char *screen_type )
 		//engine_audio_manager_sound_play( sound_type_accept );
 		engine_audio_manager_sfx_play( sound_type_accept );
 		//*screen_type = screen_type_select;
-		//*screen_type = screen_type_diff;
+		//*screen_type = screen_type_diff;		// stevepro corrupt
 		*screen_type = screen_type_intro;
 		return;
 	}
@@ -141,7 +141,6 @@ void screen_title_screen_update( unsigned char *screen_type )
 	}
 
 	*screen_type = screen_type_title;
-	//*screen_type = screen_type_diff;
 }
 
 //static void draw_tiles()

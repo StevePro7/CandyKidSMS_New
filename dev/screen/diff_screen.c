@@ -32,6 +32,7 @@ void screen_diff_screen_load()
 	//engine_cursor_manager_cursor1( state_object_difficulty );
 	engine_cursor_manager_cursor1( difficulty );
 
+	engine_font_manager_draw_text( "DIFF", 10, 16 );
 	engine_delay_manager_load( SOUND_SCREEN_DELAY );
 }
 
