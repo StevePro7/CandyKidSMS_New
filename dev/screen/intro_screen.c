@@ -15,13 +15,17 @@
 #include "..\banks\fixedbank.h"
 #include "..\banks\databank.h"
 
+#define FAST_SCREEN_DELAY		30
+
 static unsigned char pace_speed;
+static unsigned char event_stage;
 
 void screen_intro_screen_load()
 {
 	engine_font_manager_draw_data( pace_speed, 10, 15 );
 	engine_font_manager_draw_data( state_object_pace_speed, 10, 10 );
 	pace_speed = state_object_pace_speed;
+	event_stage = event_stage_start;
 	engine_font_manager_draw_data( pace_speed, 10, 16 );
 
 	engine_cursor_manager_draw1( 3 );
@@ -48,12 +52,26 @@ void screen_intro_screen_load()
 
 	//engine_board_manager_border( border_type_game );
 	//engine_font_manager_draw_text( "INTRO SCREEN..!!", 4, 0 );
+
+	engine_delay_manager_load( FAST_SCREEN_DELAY );
 }
 
 void screen_intro_screen_update( unsigned char *screen_type )
 {
 	//unsigned char input;
 	unsigned char input[ 4 ] = { 0, 0, 0, 0 };
+	unsigned char delay;
+
+	if( event_stage_pause == event_stage )
+	{
+		delay = engine_delay_manager_update();
+		if( delay )
+		{
+			*screen_type = screen_type_option;
+			return;
+		}
+	}
+
 	//unsigned char steve;
 	input[ 0 ] = engine_input_manager_hold( input_type_left );
 	input[ 1 ] = engine_input_manager_hold( input_type_right );
@@ -74,7 +92,8 @@ void screen_intro_screen_update( unsigned char *screen_type )
 		// because I will clear the screen and reload game tiles...
 		engine_audio_manager_sfx_play( sound_type_accept );
 		state_object_pace_speed = pace_speed;
-		*screen_type = screen_type_option;
+		event_stage = event_stage_pause;
+		//*screen_type = screen_type_option;
 		return;
 	}
 
