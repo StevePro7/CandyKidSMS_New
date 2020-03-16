@@ -46,7 +46,7 @@ void screen_over_screen_update( unsigned char *screen_type )
 			engine_font_manager_draw_text( LOCALE_SELECT_SPACE, SCREEN_TILE_LEFT - 1, sides[ index ] );
 		}
 
-		*screen_type = screen_type_title;
+		*screen_type = screen_type_begin;
 		return;
 	}
 

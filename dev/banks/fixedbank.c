@@ -114,7 +114,7 @@ const unsigned char *locale_object_texts[] =
 	"  OVER  ",
 	"CANDYKID",
 	"  WINS  ",
-	"INSERT COIN(S)",
+	"  INSERT COIN(S)  ",
 	"CHEAT!",
 };
 
@@ -132,7 +132,9 @@ const unsigned char locale_object_blank32[] = "123456789A123456789B123456789C12"
 //const unsigned char locale_object_blank32[] = "                                ";
 //const unsigned char locale_object_blank26[] = "123456789A123456789B123456";
 const unsigned char locale_object_blank26[] = "                          ";
-const unsigned char locale_object_blank14[] = "              ";
+const unsigned char locale_object_blank18[] = "                  ";
+//const unsigned char locale_object_blank18[] = "123456789A12345678";
+//const unsigned char locale_object_blank14[] = "              ";
 
 //const unsigned char *locale_object_blank[] =
 //{

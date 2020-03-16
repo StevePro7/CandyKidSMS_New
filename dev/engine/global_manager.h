@@ -69,6 +69,7 @@
 #define TEXT2_Y					9
 #define TEXT3_Y					13
 #define TEXT4_Y					18
+#define BOTT_TEXT_Y				21
 
 // Type1 cursor
 #define TYPE1_TEXT_X			SCREEN_TILE_LEFT + 7

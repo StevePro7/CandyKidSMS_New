@@ -75,12 +75,12 @@ void screen_fast_screen_update( unsigned char *screen_type )
 	input[ 1 ] = engine_input_manager_hold( input_type_right );
 	if( input[ 0 ] || input[ 1 ] )
 	{
-		engine_font_manager_draw_data( pace_speed, 10, 15 );
+		//engine_font_manager_draw_data( pace_speed, 10, 15 );
 		pace_speed = 1 - pace_speed;
 		//state_object_pace_speed = 1 - state_object_pace_speed;
 		//engine_cursor_manager_cursor1( state_object_pace_speed );
 		engine_cursor_manager_cursor1( pace_speed );
-		engine_font_manager_draw_data( pace_speed, 10, 16 );
+		//engine_font_manager_draw_data( pace_speed, 10, 16 );
 	}
 
 	input[ 2 ] = engine_input_manager_hold( input_type_fire1 );
