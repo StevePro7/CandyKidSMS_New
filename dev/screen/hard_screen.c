@@ -16,7 +16,7 @@ static unsigned char event_stage;
 
 void screen_hard_screen_load()
 {
-	struct_state_object *so = &global_state_object;
+	struct_state_object *st = &global_state_object;
 	event_stage = event_stage_start;
 
 	//engine_font_manager_draw_data( difficulty, 10, 16 );
@@ -24,7 +24,7 @@ void screen_hard_screen_load()
 
 	engine_cursor_manager_draw1( 0 );
 	//engine_cursor_manager_cursor1( state_object_difficulty );
-	engine_cursor_manager_cursor1( so->state_object_difficulty );
+	engine_cursor_manager_cursor1( st->state_object_difficulty );
 
 	engine_delay_manager_load( SOUND_SCREEN_DELAY );
 	engine_font_manager_draw_text( "HARD SCREEN!!", 2, 10 );
@@ -32,7 +32,7 @@ void screen_hard_screen_load()
 
 void screen_hard_screen_update( unsigned char *screen_type )
 {
-	struct_state_object *so = &global_state_object;
+	struct_state_object *st = &global_state_object;
 	unsigned char input[ 4 ] = { 0, 0, 0, 0 };
 	unsigned char delay;
 
@@ -50,8 +50,8 @@ void screen_hard_screen_update( unsigned char *screen_type )
 	input[ 1 ] = engine_input_manager_hold( input_type_right );
 	if( input[ 0 ] || input[ 1 ] )
 	{
-		so->state_object_difficulty = 1 - so->state_object_difficulty;
-		engine_cursor_manager_cursor1( so->state_object_difficulty );
+		st->state_object_difficulty = 1 - st->state_object_difficulty;
+		engine_cursor_manager_cursor1( st->state_object_difficulty );
 	}
 
 	input[ 2 ] = engine_input_manager_hold( input_type_fire1 );

@@ -3,6 +3,7 @@
 #include "font_manager.h"
 #include "global_manager.h"
 #include "locale_manager.h"
+#include "state_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
 #include "..\banks\databank.h"
@@ -61,8 +62,10 @@ void engine_score_manager_text()
 void engine_score_manager_init()
 {
 	struct_score_object *so = &global_score_object;
+	struct_state_object *st = &global_state_object;
 	so->score = 0;
-	so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
+	//so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
+	so->values[ score_type_lives ] = NUMBER_LIVES - st->state_object_difficulty;
 	//so->values[ score_type_lives ] = 1; // stevepro
 
 	//so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
@@ -81,13 +84,14 @@ void engine_score_manager_init()
 void engine_score_manager_load()
 {
 	struct_score_object *so = &global_score_object;
+	struct_state_object *st = &global_state_object;
 	//so->score = 0;
 	//so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
 	so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
 	so->bonus = 0;
 	so->candy = 0;
 	//so->total = 0;
-	so->values[ score_type_boost ] = boost_X[ state_object_pace_speed ];
+	so->values[ score_type_boost ] = boost_X[ st->state_object_pace_speed ];
 	//so->delay = 1 - state_object_difficulty;
 	//so->timer = 0;
 
@@ -158,6 +162,7 @@ void engine_score_manager_update_lives( signed char value )
 void engine_score_manager_update_boost()
 {
 	struct_score_object *so = &global_score_object;
+	struct_state_object *st = &global_state_object;
 	if( state_object_full_boost )
 	{
 		return;
@@ -175,7 +180,7 @@ void engine_score_manager_update_boost()
 	//}
 
 	//so->timer = 0;
-	so->values[ score_type_boost ] -= 1 + state_object_difficulty;
+	so->values[ score_type_boost ] -= 1 + st->state_object_difficulty;
 
 	// TODO set enum or #define for this magic no.
 	// TODO Easy = 200  Hard = 100 boost value!
@@ -236,14 +241,18 @@ void engine_score_manager_update_level()
 void engine_score_manager_reset_lives()
 {
 	struct_score_object *so = &global_score_object;
-	so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
+	struct_state_object *st = &global_state_object;
+
+	so->values[ score_type_lives ] = NUMBER_LIVES - st->state_object_difficulty;
 	//so->values[ score_type_lives ] = 2; // stevepro
 	draw_value( score_type_lives );
 }
 void engine_score_manager_reset_boost()
 {
 	struct_score_object *so = &global_score_object;
-	so->values[ score_type_boost ] = boost_X[ state_object_difficulty ];
+	struct_state_object *st = &global_state_object;
+
+	so->values[ score_type_boost ] = boost_X[ st->state_object_difficulty ];
 	draw_value( score_type_boost );
 }
 

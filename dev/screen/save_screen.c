@@ -17,6 +17,7 @@ void screen_save_screen_load()
 	test = engine_storage_manager_available();
 	if( test )
 	{
+		// TODO update!!
 		engine_storage_manager_read();
 
 		//engine_font_manager_draw_long( state_object_high_score, 22, 1 );
@@ -24,8 +25,8 @@ void screen_save_screen_load()
 
 		engine_font_manager_draw_data( state_object_trees_type, 22, 3 );
 		engine_font_manager_draw_data( state_object_exits_type, 22, 4 );
-		engine_font_manager_draw_data( state_object_difficulty, 22, 5 );
-		engine_font_manager_draw_data( state_object_pace_speed, 22, 6 );
+		//engine_font_manager_draw_data( state_object_difficulty, 22, 5 );
+		//engine_font_manager_draw_data( state_object_pace_speed, 22, 6 );
 
 		engine_font_manager_draw_data( state_object_world_data, 22, 8 );
 		engine_font_manager_draw_data( state_object_round_data, 22, 9 );
@@ -43,6 +44,7 @@ void screen_save_screen_load()
 
 void screen_save_screen_update( unsigned char *screen_type )
 {
+	// TODO update!!
 	unsigned char input;
 	input = engine_input_manager_hold( input_type_fire1 );
 	if( input )
@@ -53,8 +55,8 @@ void screen_save_screen_update( unsigned char *screen_type )
 
 		state_object_trees_type = 1;
 		state_object_exits_type = 0;
-		state_object_difficulty = 2;
-		state_object_pace_speed = 3;
+		//state_object_difficulty = 2;
+		//state_object_pace_speed = 3;
 
 		state_object_world_data = 7;
 		state_object_round_data = 8;

@@ -4,6 +4,7 @@
 #include "font_manager.h"
 #include "function_manager.h"
 #include "mask_manager.h"
+#include "state_manager.h"
 #include "tile_manager.h"
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
@@ -60,6 +61,7 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 
 void engine_level_manager_update_level( const unsigned char round, unsigned char *actor_mover, unsigned char *actor_tileZ )
 {
+	struct_state_object *st = &global_state_object;
 	unsigned char actor;
 	unsigned char mover;
 	unsigned char index;
@@ -114,7 +116,7 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 	}
 
 	// However, flip coin if can have free man candy on difficult hard.
-	if( diff_type_hard == state_object_difficulty )
+	if( diff_type_hard == st->state_object_difficulty )
 	{
 		
 		if( 0 != rand() % 2 )

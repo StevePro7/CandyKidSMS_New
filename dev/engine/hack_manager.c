@@ -18,16 +18,17 @@
 
 void engine_hack_manager_init()
 {
-	struct_state_object *so = &global_state_object;
-	so->state_object_difficulty = 0;
+	struct_state_object *st = &global_state_object;
+	st->state_object_difficulty = 0;
+	st->state_object_difficulty = 0;
 
 	state_object_mydebugger = 0;
 	state_object_full_boost = 0;
 	state_object_invincibie = 0;
 	state_object_localcheat = 0;
 
-	state_object_difficulty = 0;
-	state_object_pace_speed = 0;
+	//state_object_difficulty = 0;
+	//state_object_pace_speed = 0;
 	state_object_trees_type = 0;
 	state_object_exits_type = 0;
 
@@ -42,14 +43,16 @@ void engine_hack_manager_init()
 
 void engine_hack_manager_load()
 {
+	struct_state_object *st = &global_state_object;
+
 #ifndef _CONSOLE
 
 	state_object_mydebugger = PEEK( HACKER_START - 3 );			// 0x004D		// Set my debugging from zero-based value.
 	state_object_full_boost = PEEK( HACKER_START - 2 );			// 0x004E		// Set maximum boost for zero-based value.
 	state_object_invincibie = PEEK( HACKER_START - 1 );			// 0x004F		// Set invincibility for zero-based value.
 
-	state_object_difficulty = PEEK( HACKER_START + 0 );			// 0x0050		// Set the difficulty to zero-based value.
-	state_object_pace_speed = PEEK( HACKER_START + 1 );			// 0x0051		// Set the game speed to zero-based value.
+	st->state_object_difficulty = PEEK( HACKER_START + 0 );			// 0x0050		// Set the difficulty to zero-based value.
+	st->state_object_pace_speed = PEEK( HACKER_START + 1 );			// 0x0051		// Set the game speed to zero-based value.
 	state_object_trees_type = PEEK( HACKER_START + 2 );			// 0x0052		// Set start treeType to zero-based value.
 	state_object_exits_type = PEEK( HACKER_START + 3 );			// 0x0053		// Set start exitType to zero-based value.
 
@@ -67,11 +70,12 @@ void engine_hack_manager_load()
 void engine_hack_manager_invert()
 {
 	// TODO delete this hard coded
-	struct_state_object *so = &global_state_object;
-	so->state_object_difficulty = 0;
+	struct_state_object *st = &global_state_object;
+	st->state_object_difficulty = 0;
+	st->state_object_pace_speed = 0;
 
-	state_object_difficulty = 0;
-	state_object_pace_speed = 0;
+	//state_object_difficulty = 0;
+	//state_object_pace_speed = 0;
 	state_object_trees_type = 1;
 	state_object_exits_type = 0;
 	state_object_invincibie = 0;

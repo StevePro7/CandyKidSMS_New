@@ -8,6 +8,7 @@
 #include "move_manager.h"
 #include "score_manager.h"
 #include "sprite_manager.h"
+#include "state_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
 #include "..\banks\databank.h"
@@ -70,7 +71,9 @@ void engine_gamer_manager_init()
 void engine_gamer_manager_load()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	unsigned char index = state_object_pace_speed * 2;
+	struct_state_object *st = &global_state_object;
+
+	unsigned char index = st->state_object_pace_speed * 2;
 
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	go->speeds[ 0 ] = gamer_object_speed[ index + 0 ];

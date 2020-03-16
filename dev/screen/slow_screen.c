@@ -18,20 +18,20 @@ static unsigned char event_stage;
 
 void screen_slow_screen_load()
 {
-	struct_state_object *so = &global_state_object;
+	struct_state_object *st = &global_state_object;
 	event_stage = event_stage_start;
 
 	engine_font_manager_draw_text( "SLOW SCREEN!!", 2, 10 );
 
 	engine_cursor_manager_draw1( 3 );
-	engine_cursor_manager_cursor1( so->state_object_pace_speed );
+	engine_cursor_manager_cursor1( st->state_object_pace_speed );
 
 	engine_delay_manager_load( SOUND_SCREEN_DELAY );
 }
 
 void screen_slow_screen_update( unsigned char *screen_type )
 {
-	struct_state_object *so = &global_state_object;
+	struct_state_object *st = &global_state_object;
 
 	unsigned char input[ 4 ] = { 0, 0, 0, 0 };
 	unsigned char delay;
@@ -52,10 +52,10 @@ void screen_slow_screen_update( unsigned char *screen_type )
 	if( input[ 0 ] || input[ 1 ] )
 	{
 		//engine_font_manager_draw_data( pace_speed, 10, 15 );
-		so->state_object_pace_speed = 1 - so->state_object_pace_speed;
+		st->state_object_pace_speed = 1 - st->state_object_pace_speed;
 		//state_object_pace_speed = 1 - state_object_pace_speed;
 		//engine_cursor_manager_cursor1( state_object_pace_speed );
-		engine_cursor_manager_cursor1( so->state_object_pace_speed );
+		engine_cursor_manager_cursor1( st->state_object_pace_speed );
 		//engine_font_manager_draw_data( pace_speed, 10, 16 );
 	}
 

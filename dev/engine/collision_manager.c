@@ -9,7 +9,8 @@
 #include "level_manager.h"
 #include "move_manager.h"
 #include "score_manager.h"
-#include "tile_manager.h"	
+#include "state_manager.h"
+#include "tile_manager.h"
 #include "..\banks\databank.h"
 
 #define DISTNACE_EASY		8
@@ -19,10 +20,11 @@ static unsigned char collision_distance[] = { DISTNACE_EASY, DISTNACE_HARD };
 unsigned char engine_collision_manager_sprite_collision()
 {
 	struct_gamer_object *go = &global_gamer_object;
+	struct_state_object *st = &global_state_object;
 	struct_enemy_object *eo;
 	unsigned char gamer_collision = actor_type_kid;
 	
-	unsigned char distance = collision_distance[ state_object_difficulty ];
+	unsigned char distance = collision_distance[ st->state_object_difficulty ];
 	unsigned char enemy;
 	unsigned char dx, dy;
 

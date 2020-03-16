@@ -47,21 +47,21 @@ void screen_func_screen_update( unsigned char *screen_type )
 
 static void test_fixed()
 {
-	unsigned char enemy = actor_type_suz;
-	unsigned char index;
-	unsigned char speed;
+	//unsigned char enemy = actor_type_suz;
+	//unsigned char index;
+	//unsigned char speed;
 
-	//index = 4 * actor + pace * 2 + diff;
-	// There are 4x permutations: Easy + Slow, 
-	index = 4 * enemy + state_object_difficulty * 2 + state_object_pace_speed;
+	////index = 4 * actor + pace * 2 + diff;
+	//// There are 4x permutations: Easy + Slow, 
+	//index = 4 * enemy + state_object_difficulty * 2 + state_object_pace_speed;
 
-	devkit_SMS_mapROMBank( FIXED_BANK );
-	speed = enemy_object_speed[ index ];
+	//devkit_SMS_mapROMBank( FIXED_BANK );
+	//speed = enemy_object_speed[ index ];
 
-	engine_font_manager_draw_data( index, 10, 3 );
-	engine_font_manager_draw_data( speed - 1, 10, 4 );
+	//engine_font_manager_draw_data( index, 10, 3 );
+	//engine_font_manager_draw_data( speed - 1, 10, 4 );
 
-	engine_font_manager_draw_text( "FUNC SCREEN!", 10, 2 );
+	//engine_font_manager_draw_text( "FUNC SCREEN!", 10, 2 );
 
-	engine_memo_manager_option();
+	//engine_memo_manager_option();
 }
