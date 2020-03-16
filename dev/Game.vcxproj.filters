@@ -301,10 +301,10 @@
       <Filter>Header Files\screen</Filter>
     </ClInclude>
     <ClInclude Include="screen\hard_screen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\screen</Filter>
     </ClInclude>
     <ClInclude Include="screen\slow_screen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -557,11 +557,11 @@
     <ClCompile Include="screen\fast_screen.c">
       <Filter>Source Files\screen</Filter>
     </ClCompile>
-    <ClCompile Include="screen\hard_screen.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="screen\slow_screen.c">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="screen\hard_screen.c">
+      <Filter>Source Files\screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
