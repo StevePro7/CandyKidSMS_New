@@ -10,6 +10,7 @@
 #include "..\engine\locale_manager.h"
 #include "..\engine\memo_manager.h"
 #include "..\engine\tile_manager.h"
+#include "..\engine\state_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
@@ -20,6 +21,7 @@ static unsigned char event_stage;
 
 void screen_fast_screen_load()
 {
+	struct_state_object *so = &global_state_object;
 	//engine_font_manager_draw_data( pace_speed, 10, 15 );
 	//engine_font_manager_draw_data( state_object_pace_speed, 10, 10 );
 	pace_speed = state_object_pace_speed;
@@ -56,6 +58,8 @@ void screen_fast_screen_load()
 
 void screen_fast_screen_update( unsigned char *screen_type )
 {
+	struct_state_object *so = &global_state_object;
+
 	//unsigned char input;
 	unsigned char input[ 4 ] = { 0, 0, 0, 0 };
 	unsigned char delay;

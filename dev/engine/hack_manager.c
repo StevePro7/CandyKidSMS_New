@@ -1,6 +1,7 @@
 #include "hack_manager.h"
 #include "global_manager.h"
 #include "enum_manager.h"
+#include "state_manager.h"
 #include "..\banks\databank.h"
 
 #define PEEK( addr)			(* ( unsigned char *)( addr ) )
@@ -17,6 +18,9 @@
 
 void engine_hack_manager_init()
 {
+	struct_state_object *so = &global_state_object;
+	so->state_object_difficulty = 0;
+
 	state_object_mydebugger = 0;
 	state_object_full_boost = 0;
 	state_object_invincibie = 0;
@@ -63,6 +67,9 @@ void engine_hack_manager_load()
 void engine_hack_manager_invert()
 {
 	// TODO delete this hard coded
+	struct_state_object *so = &global_state_object;
+	so->state_object_difficulty = 0;
+
 	state_object_difficulty = 0;
 	state_object_pace_speed = 0;
 	state_object_trees_type = 1;

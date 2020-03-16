@@ -8,7 +8,7 @@
 #include "..\engine\locale_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\devkit\_sms_manager.h"
-#include "..\banks\fixedbank.h"
+//#include "..\banks\fixedbank.h"
 #include "..\banks\databank.h"
 
 //static unsigned char cursorX[ 2 ] = { TYPE1_OPT1_X, TYPE1_OPT2_X };

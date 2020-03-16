@@ -11,8 +11,15 @@
 #include "..\banks\fixedbank.h"
 #include "..\banks\databank.h"
 
+// Global variable.
+struct_state_object global_state_object;
+
 void engine_state_manager_init()
 {
+	struct_state_object *so = &global_state_object;
+	so->state_object_difficulty = 0;
+	so->state_object_pace_speed = 0;
+
 	//engine_board_manager_init();
 	engine_command_manager_init();
 
