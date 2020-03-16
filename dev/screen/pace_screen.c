@@ -1,10 +1,10 @@
-//#include "pace_screen.h"
+#include "pace_screen.h"
 //#include "..\engine\audio_manager.h"
 //#include "..\engine\board_manager.h"
 //#include "..\engine\content_manager.h"
 //#include "..\engine\cursor_manager.h"
-//#include "..\engine\enum_manager.h"
-//#include "..\engine\font_manager.h"
+#include "..\engine\enum_manager.h"
+#include "..\engine\font_manager.h"
 //#include "..\engine\global_manager.h"
 //#include "..\engine\input_manager.h"
 //#include "..\engine\locale_manager.h"
@@ -21,8 +21,8 @@
 //
 //static unsigned char pace_speed;
 //
-//void screen_pace_screen_load()
-//{
+void screen_pace_screen_load()
+{
 //	engine_font_manager_draw_data( pace_speed, 10, 15 );
 //	engine_font_manager_draw_data( state_object_pace_speed, 10, 10 );
 //	pace_speed = state_object_pace_speed;
@@ -33,10 +33,10 @@
 //
 //
 //	engine_font_manager_draw_text( "PACE SCREEN", 7, 7 );
-//}
-//
-//void screen_pace_screen_update( unsigned char *screen_type )
-//{
+}
+
+void screen_pace_screen_update( unsigned char *screen_type )
+{
 //	//unsigned char input;
 //	unsigned char input[ 4 ] = { 0, 0, 0, 0 };
 //	//unsigned char steve;
@@ -83,9 +83,9 @@
 //	//	return;
 //	//}
 //
-//	*screen_type = screen_type_pace;
+	*screen_type = screen_type_pace;
 //	//*screen_type = screen_type_option;
-//}
+}
 ////
 ////static void display_cursor()
 ////{
