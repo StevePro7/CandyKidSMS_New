@@ -1,22 +1,27 @@
-#include "hard_screen.h"
-//#include "..\engine\audio_manager.h"
-//#include "..\engine\cursor_manager.h"
+#include "intro_screen.h"
+#include "..\engine\audio_manager.h"
+#include "..\engine\cursor_manager.h"
 #include "..\engine\enum_manager.h"
-//#include "..\engine\font_manager.h"
-//#include "..\engine\global_manager.h"
-//#include "..\engine\input_manager.h"
-//#include "..\engine\locale_manager.h"
-//#include "..\engine\state_manager.h"
-//#include "..\engine\timer_manager.h"
-//#include "..\devkit\_sms_manager.h"
-//#include "..\banks\fixedbank.h"
-//#include "..\banks\databank.h"
+#include "..\engine\font_manager.h"
+#include "..\engine\global_manager.h"
+#include "..\engine\input_manager.h"
+#include "..\engine\locale_manager.h"
+#include "..\engine\timer_manager.h"
+#include "..\devkit\_sms_manager.h"
+#include "..\banks\fixedbank.h"
+#include "..\banks\databank.h"
 
+//#define FAST_SCREEN_DELAY		30
+
+static unsigned char difficulty;
 static unsigned char event_stage;
 
-void screen_hard_screen_load()
+void screen_intro_screen_load()
 {
-	//struct_state_object *st = &global_state_object;
+	//engine_font_manager_draw_data( difficulty, 10, 15 );
+	//engine_font_manager_draw_data( state_object_difficulty, 10, 10 );
+
+	//difficulty = state_object_difficulty;
 	//event_stage = event_stage_start;
 
 	////engine_font_manager_draw_data( difficulty, 10, 16 );
@@ -24,15 +29,13 @@ void screen_hard_screen_load()
 
 	//engine_cursor_manager_draw1( 0 );
 	////engine_cursor_manager_cursor1( state_object_difficulty );
-	//engine_cursor_manager_cursor1( st->state_object_difficulty );
+	//engine_cursor_manager_cursor1( difficulty );
 
 	//engine_delay_manager_load( SOUND_SCREEN_DELAY );
-	//engine_font_manager_draw_text( "HARD SCREEN!!", 2, 10 );
 }
 
-void screen_hard_screen_update( unsigned char *screen_type )
+void screen_intro_screen_update( unsigned char *screen_type )
 {
-	//struct_state_object *st = &global_state_object;
 	//unsigned char input[ 4 ] = { 0, 0, 0, 0 };
 	//unsigned char delay;
 
@@ -50,20 +53,22 @@ void screen_hard_screen_update( unsigned char *screen_type )
 	//input[ 1 ] = engine_input_manager_hold( input_type_right );
 	//if( input[ 0 ] || input[ 1 ] )
 	//{
-	//	st->state_object_difficulty = 1 - st->state_object_difficulty;
-	//	engine_cursor_manager_cursor1( st->state_object_difficulty );
+	//	//state_object_difficulty = 1 - state_object_difficulty;
+	//	difficulty = 1 - difficulty;
+	//	//engine_cursor_manager_cursor1( state_object_difficulty );
+	//	engine_cursor_manager_cursor1( difficulty );
 	//}
 
 	//input[ 2 ] = engine_input_manager_hold( input_type_fire1 );
 	//if( input[ 2 ] )
 	//{
 	//	engine_audio_manager_sfx_play( sound_type_accept );
+	//	state_object_difficulty = difficulty;
 	//	//*screen_type = screen_type_pace;
 	//	//*screen_type = screen_type_init;
 	//	//*screen_type = screen_type_option;
 	//	//*screen_type = screen_type_intro;
-	//	//*screen_type = screen_type_fast;
-	//	*screen_type = screen_type_slow;
+	//	*screen_type = screen_type_fast;
 	//	return;
 	//}
 
@@ -71,10 +76,11 @@ void screen_hard_screen_update( unsigned char *screen_type )
 	//if( input[ 3 ] )
 	//{
 	//	engine_audio_manager_sfx_play( sfx_type_reset );
+	//	state_object_difficulty = difficulty;
 	//	event_stage = event_stage_pause;
 	//	//*screen_type = screen_type_title;
 	//	return;
 	//}
 
-	*screen_type = screen_type_hard;
+	*screen_type = screen_type_intro;
 }
