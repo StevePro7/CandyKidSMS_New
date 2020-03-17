@@ -1,5 +1,5 @@
 XL2
-H 9 areas 12 global symbols
+H 9 areas 13 global symbols
 M state_manager
 O -mz80
 S _engine_hack_manager_load Ref0000
@@ -10,15 +10,16 @@ S _state_object_next_screen Ref0000
 S _engine_hack_manager_init Ref0000
 S _engine_storage_manager_read Ref0000
 S .__.ABS. Def0000
+S _engine_cursor_manager_init Ref0000
 S _engine_enemy_manager_init Ref0000
 S _engine_command_manager_init Ref0000
 S _engine_storage_manager_available Ref0000
 S _level_object_multiplier Ref0000
 S _engine_hack_manager_invert Ref0000
 S _devkit_SMS_mapROMBank Ref0000
-A _CODE size 5F flags 0 addr 0
-S _engine_state_manager_read Def0040
-S _engine_state_manager_write Def005E
+A _CODE size 62 flags 0 addr 0
+S _engine_state_manager_read Def0043
+S _engine_state_manager_write Def0061
 S _engine_state_manager_init Def0000
 A _DATA size 10 flags 0 addr 0
 S _global_state_object Def0000
@@ -39,23 +40,25 @@ T 00 00 21 02 00 36 00 21 03 00 36 00 21 00 00 22
 R 00 00 00 00 00 03 01 00 00 08 01 00
 T 0E 00 04 00 21 06 00 36 00 21 07 00 36 00 CD
 R 00 00 00 00 00 02 01 00 00 05 01 00 00 0A 01 00
-T 1B 00 00 00 3E 0F F5 33 CD 00 00 33 CD 00 00 CD
-R 00 00 00 00 02 02 09 00 02 09 0D 00 02 0D 01 00
-T 29 00 00 00 21 00 00 36 01 21 00 00 36 00 21
-R 00 00 00 00 02 02 08 00 02 05 0B 00 02 0A 03 00
-T 36 00 00 00 36 00 21 00 00 36 00 C9
-R 00 00 00 00 02 02 02 00 02 07 04 00
-T 40 00
+T 1B 00 00 00 CD 00 00 3E 0F F5 33 CD 00 00 33 CD
+R 00 00 00 00 02 02 0A 00 02 05 08 00 02 0C 0E 00
+T 29 00 00 00 CD 00 00 21 00 00 36 01 21
+R 00 00 00 00 02 02 01 00 02 05 09 00 02 08 0C 00
+T 34 00 00 00 36 00 21 00 00 36 00 21 00 00 36 00
+R 00 00 00 00 02 02 03 00 02 07 02 00 02 0C 04 00
+T 42 00 C9
 R 00 00 00 00
-T 40 00 CD 00 00 21 88 13 22 04 00 21 0E 00 36 03
+T 43 00
+R 00 00 00 00
+T 43 00 CD 00 00 21 88 13 22 04 00 21 0E 00 36 03
 R 00 00 00 00 02 03 05 00 00 09 01 00 00 0C 01 00
-T 4E 00 CD 00 00 7D B7 28 03 CD 00 00
-R 00 00 00 00 02 03 0A 00 02 0A 06 00
-T 58 00
+T 51 00 CD 00 00 7D B7 28 03 CD 00 00
+R 00 00 00 00 02 03 0B 00 02 0A 06 00
+T 5B 00
 R 00 00 00 00
-T 58 00 CD 00 00 C3 00 00
-R 00 00 00 00 02 03 00 00 02 06 0C 00
-T 5E 00
+T 5B 00 CD 00 00 C3 00 00
+R 00 00 00 00 02 03 00 00 02 06 0D 00
+T 61 00
 R 00 00 00 00
-T 5E 00 C9
+T 61 00 C9
 R 00 00 00 00

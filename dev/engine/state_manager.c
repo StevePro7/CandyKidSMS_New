@@ -1,5 +1,6 @@
 #include "state_manager.h"
 #include "board_manager.h"
+#include "cursor_manager.h"
 #include "command_manager.h"
 #include "enemy_manager.h"
 #include "enum_manager.h"
@@ -25,6 +26,7 @@ void engine_state_manager_init()
 
 	//engine_board_manager_init();
 	engine_command_manager_init();
+	engine_cursor_manager_init();
 
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	engine_gamer_manager_init();

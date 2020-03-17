@@ -1,4 +1,5 @@
 #include "cursor_manager.h"
+#include "enum_manager.h"
 #include "font_manager.h"
 #include "global_manager.h"
 #include "input_manager.h"
@@ -6,15 +7,15 @@
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
 
-//#define TYPE1_TEXT_X			SCREEN_TILE_LEFT + 7
-//#define TYPE1_TEXT_Y			18
-//#define TYPE1_OPT1_X			TYPE1_TEXT_X + 0
-//#define TYPE1_OPT2_X			TYPE1_TEXT_Y + 11
-//
-//static unsigned char type1_cursorX[ 2 ] = { TYPE1_OPT1_X, TYPE1_OPT2_X };
-
 static unsigned char type1_cursorX[ 2 ] = { TYPE1_OPT1_X, TYPE1_OPT2_X };
 static unsigned char type2_cursorY[ MAX_ACTORS ] = { TEXT1_Y, TEXT2_Y, TEXT3_Y, TEXT4_Y };
+static unsigned char menu_cursor[ 2 ];
+
+void engine_cursor_manager_init()
+{
+	menu_cursor[ menu_type_option ] = 0;
+	menu_cursor[ menu_type_select ] = 0;
+}
 
 void engine_cursor_manager_cursor1( unsigned char index )
 {

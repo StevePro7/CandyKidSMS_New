@@ -20,6 +20,11 @@ static void print_enemy( unsigned char enemy );
 void screen_option_screen_load()
 {
 	unsigned char enemy;
+
+	// Reset actors home.
+	engine_enemy_manager_reset_home();
+	engine_gamer_manager_reset();
+
 	devkit_SMS_displayOff();
 
 	engine_content_manager_load_tiles_game();

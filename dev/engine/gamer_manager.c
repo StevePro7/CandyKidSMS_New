@@ -53,7 +53,7 @@ void engine_gamer_manager_init()
 	go->direction = direction_type_none;
 	go->prev_move = direction_type_none;
 
-	go->image = 0;
+	go->image = 1;
 	go->frame = frame_type_stance;
 
 //	devkit_SMS_mapROMBank( FIXED_BANK );
