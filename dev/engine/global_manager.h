@@ -65,6 +65,7 @@
 #define DATA_X					SCREEN_TILE_LEFT + 28
 
 // Generic Y heights
+#define TEXT0_Y					0
 #define TEXT1_Y					4
 #define TEXT2_Y					9
 #define TEXT3_Y					13

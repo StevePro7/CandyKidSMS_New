@@ -11,12 +11,8 @@
 //#define TEXT_X		SCREEN_TILE_LEFT + 24
 //#define DATA_X		SCREEN_TILE_LEFT + 28
 
-#define TITLE_Y		0
-#define HIGHS_Y		0
-//#define TEXT1_Y		4
-//#define TEXT2_Y		9
-//#define TEXT3_Y		13
-//#define TEXT4_Y		18
+//#define TITLE_Y		0
+//#define HIGHS_Y		0
 #define TEXTS_Y		22
 #define WORLD_Y		22
 #define ROUNT_Y		23
@@ -33,7 +29,7 @@ struct_score_object global_score_object;
 static unsigned char bonuses[] = { 10, 20, 40, 80, 200 };
 static unsigned char boost_X[] = { 100, 100 };
 static unsigned char value_y[] = { TEXT3_Y + 1, TEXT2_Y + 1, TEXT4_Y + 1, 22, 23 };
-static unsigned char title_Y[] = { TITLE_Y, TITLE_Y + 1, HIGHS_Y, TEXT1_Y, TEXT3_Y, TEXT2_Y, TEXT4_Y, };
+static unsigned char title_Y[] = { TEXT0_Y, TEXT0_Y + 1, TEXT0_Y, TEXT1_Y, TEXT3_Y, TEXT2_Y, TEXT4_Y, };
 
 // TODO need to split the reset functionality.
 //static void reset();
@@ -74,7 +70,7 @@ void engine_score_manager_init()
 	//so->total = 0;
 	//so->values[ score_type_boost ] = boost_X[ state_object_difficulty ];
 
-	draw_zero( DATA_X + 1, HIGHS_Y + 1 );
+	draw_zero( DATA_X + 1, TEXT0_Y + 1 );
 	draw_zero( DATA_X + 1, TEXT1_Y + 1 );
 	draw_highs();
 	draw_score();
@@ -211,7 +207,7 @@ void engine_score_manager_update_boost()
 
 void engine_score_manager_draw_init()
 {
-		draw_zero( DATA_X + 1, HIGHS_Y + 1 );
+		draw_zero( DATA_X + 1, TEXT0_Y + 1 );
 		draw_zero( DATA_X + 1, TEXT1_Y + 1 );
 		draw_highs();
 		draw_score();
@@ -310,9 +306,7 @@ static void update_lives( signed char value )
 static void draw_highs()
 {
 	struct_state_object *st = &global_state_object;
-	//engine_font_manager_draw_long( state_object_high_score, DATA_X + 0, HIGHS_Y + 1 );
-	engine_font_manager_draw_data( st->state_object_high_score, DATA_X + 0, HIGHS_Y + 1 );
-	//engine_font_manager_draw_data( 2334, DATA_X + 0, HIGHS_Y + 1 );
+	engine_font_manager_draw_data( st->state_object_high_score, DATA_X + 0, TEXT0_Y + 1 );
 }
 static void draw_score()
 {

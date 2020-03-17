@@ -30,7 +30,7 @@ void screen_option_screen_load()
 
 void screen_option_screen_update( unsigned char *screen_type )
 {
-	struct_state_object *st = &global_state_object;
+	/*struct_state_object *st = &global_state_object;
 	unsigned char input;
 
 	input = engine_input_manager_hold( input_type_fire1 );
@@ -45,7 +45,7 @@ void screen_option_screen_update( unsigned char *screen_type )
 	{
 		st->state_object_trees_type = 1 - st->state_object_trees_type;
 		engine_board_manager_border( border_type_game );
-	}
+	}*/
 
 	//*screen_type = screen_type_select;
 	*screen_type = screen_type_option;
