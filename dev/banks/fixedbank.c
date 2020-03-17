@@ -128,7 +128,7 @@ const unsigned char *locale_object_menus[] =
 	"FAST",
 };
 
-const unsigned char *locale_object_names[] = {  "KID.", "PRO.", "ADI.", "SUZ." };
+//const unsigned char *locale_object_names[] = {  "KID.", "PRO.", "ADI.", "SUZ." };
 
 const unsigned char *locale_object_option[] =
 {

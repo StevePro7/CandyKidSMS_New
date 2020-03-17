@@ -13,24 +13,30 @@
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
 
-static void print_names();
+static void print_title();
+static void print_gamer();
+static void print_enemy( unsigned char enemy );
 
 void screen_option_screen_load()
 {
+	unsigned char enemy;
 	devkit_SMS_displayOff();
 
 	engine_content_manager_load_tiles_game();
 	engine_content_manager_load_tiles_screen();
 
-	//engine_font_manager_draw_text( "OPTION SCREEN....!!", 2, 10 );
-
 	engine_board_manager_border( border_type_game );
 	engine_board_manager_side_tile();
 
-	engine_memo_manager_option();
-	engine_cursor_manager_draw_option();
-	print_names();
+	engine_cursor_manager_draw_titles();
+	print_title();
+	print_gamer();
+	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+	{
+		print_enemy( enemy );
+	}
 
+	engine_memo_manager_option();
 	devkit_SMS_displayOn();
 }
 
@@ -64,18 +70,51 @@ static void print_names()
 	struct_gamer_object *go = &global_gamer_object;
 	struct_enemy_object *eo;
 	unsigned char enemy;
-	unsigned char *actor;
+	unsigned char index;
 
-	devkit_SMS_mapROMBank( FIXED_BANK );
+	// Gamer.
+	index = 2 + actor_type_pro * 3;
+	index += go->image + 1;
+	engine_cursor_manager_draw_option( index, go->tileX * 2 - 1, go->tileY * 2 + 1 );
 
-	actor = ( unsigned char* ) locale_object_names[ actor_type_pro ];
-	engine_font_manager_draw_text( actor, go->tileX * 2 - 1, go->tileY * 2 + 1 );
-
+	// Enemy.
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
 		eo = &global_enemy_objects[ enemy ];
-		actor = ( unsigned char* ) locale_object_names[ enemy + 1 ];
-
-		engine_font_manager_draw_text( actor, eo->tileX * 2 - 1, eo->tileY * 2 + 1 );
+		index = 2 + enemy * 3;
+		index += eo->image + 1;
+		engine_cursor_manager_draw_option( index, eo->tileX * 2 - 1, eo->tileY * 2 + 1 );
 	}
+}
+
+static void print_title()
+{
+	devkit_SMS_mapROMBank( FIXED_BANK );
+
+	engine_font_manager_draw_text( locale_object_option[ 0 ], TEXT_X, TEXT0_Y + 0 );
+	engine_font_manager_draw_text( locale_object_option[ 1 ], TEXT_X, TEXT0_Y + 1 );
+}
+
+static void print_gamer()
+{
+	struct_gamer_object *go = &global_gamer_object;
+	unsigned char index;
+
+	// Gamer.
+	index = 2 + actor_type_pro * 3;
+	index += go->image + 1;
+	engine_cursor_manager_draw_option( index, go->tileX * 2 - 1, go->tileY * 2 + 1 );
+	engine_cursor_manager_draw_option2( index, actor_type_pro );
+}
+
+static void print_enemy( unsigned char enemy )
+{
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	unsigned char index;
+	unsigned char actor = enemy + 1;
+
+	index = 2 + actor * 3;
+	index += eo->image + 1;
+	engine_cursor_manager_draw_option( index, eo->tileX * 2 - 1, eo->tileY * 2 + 1 );
+	engine_cursor_manager_draw_option2( index, actor );
 }
