@@ -22,32 +22,11 @@ void screen_select_screen_load()
 	//state_object_next_screen = screen_type_option;
 	state_object_next_screen = screen_type_init;
 
-	//if( state_object_mydebugger )
-	//{
-	//	engine_asm_manager_clear_VRAM();
-	//	engine_content_manager_load_tiles_font();
-	//	engine_content_manager_load_tiles_game();
-	//	engine_content_manager_load_sprites_game();
-	//}
-
-	// TODO delete as this comes after option screen.
-	//engine_content_manager_load_tiles_game();
-	//engine_content_manager_load_tiles_screen();
-	//engine_board_manager_draw_full();
-	//engine_board_manager_draw_exit();
-	//engine_board_manager_border( border_type_game );
-	//engine_board_manager_side_tile();
-	// TODO delete as this comes after option screen.
 
 	engine_level_manager_load_level( st->state_object_world_data, st->state_object_round_data );
 	engine_level_manager_draw_level();
 	engine_level_manager_draw_middle();
 
-	//engine_locale_manager_draw_text( 1, SCREEN_TILE_LEFT + LFT_SIDE_X + 24, TOP_SIDE_Y + 0 );
-	//engine_locale_manager_draw_text( 2, SCREEN_TILE_LEFT + LFT_SIDE_X + 24, TOP_SIDE_Y + 1 );
-
-	//engine_locale_manager_draw_text( 10, SCREEN_TILE_LEFT + LFT_SIDE_X + 24, TOP_SIDE_Y + 4 );
-	//engine_locale_manager_draw_text(  6, SCREEN_TILE_LEFT + LFT_SIDE_X + 24, TOP_SIDE_Y + 5 );
 }
 
 void screen_select_screen_update( unsigned char *screen_type )

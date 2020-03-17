@@ -50,15 +50,29 @@ void screen_option_screen_load()
 
 void screen_option_screen_update( unsigned char *screen_type )
 {
-	//unsigned char input;
+	unsigned char input;
 
-	// Draw sprites first.
-	engine_enemy_manager_draw();
-	engine_gamer_manager_draw();
+	
 
 
 	engine_cursor_manager_update2( menu_type_option );
 
+	input = engine_input_manager_hold( input_type_fire1 );
+	if( input )
+	{
+		// TODO sfx + pause.
+		*screen_type = screen_type_select;
+		return;
+	}
+
+	// TODO go back
+	input = engine_input_manager_hold( input_type_fire2 );
+	if ( input )
+	{
+		// TODO sfx + pause.
+		*screen_type = screen_type_begin;
+		return;
+	}
 	/*struct_state_object *st = &global_state_object;
 	unsigned char input;
 
@@ -75,6 +89,10 @@ void screen_option_screen_update( unsigned char *screen_type )
 		st->state_object_trees_type = 1 - st->state_object_trees_type;
 		engine_board_manager_border( border_type_game );
 	}*/
+
+	// Draw sprites last.
+	engine_enemy_manager_draw();
+	engine_gamer_manager_draw();
 
 	//*screen_type = screen_type_select;
 	*screen_type = screen_type_option;
