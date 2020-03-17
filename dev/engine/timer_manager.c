@@ -1,5 +1,6 @@
 #include "timer_manager.h"
 #include "font_manager.h"
+#include "state_manager.h"
 #include "..\banks\databank.h"
 
 #define MAX_INT_VALUE		65535
@@ -14,11 +15,12 @@ struct_reset_object global_reset_object;
 void engine_delay_manager_load( unsigned int delay )
 {
 	struct_delay_object *dObj = &global_delay_object;
+	struct_state_object *st = &global_state_object;
 	dObj->delay_value = delay;
 	dObj->delay_timer = 0;
 
 	// Used for testing so no wait.
-	if( state_object_delay_test )
+	if( st->state_object_delay_test )
 	{
 		dObj->delay_value = 0;
 	}

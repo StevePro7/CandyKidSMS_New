@@ -1,6 +1,7 @@
 #include "storage_manager.h"
 #include "enum_manager.h"
 #include "global_manager.h"
+#include "state_manager.h"
 #include "storage_manager.h"
 #include "..\banks\databank.h"
 #include "..\devkit\_sms_manager.h"
@@ -25,39 +26,41 @@ unsigned char engine_storage_manager_available()
 void engine_storage_manager_read()
 {
 	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+	struct_state_object *st = &global_state_object;
 
 	devkit_SMS_enableSRAM();
-	state_object_high_score = savegame->save_high_score;
+	st->state_object_high_score = savegame->save_high_score;
 
-	state_object_trees_type = savegame->save_trees_type;
-	state_object_exits_type = savegame->save_exits_type;
-	state_object_difficulty = savegame->save_difficulty;
-	state_object_pace_speed = savegame->save_game_speed;
+	st->state_object_difficulty = savegame->save_difficulty;
+	st->state_object_pace_speed = savegame->save_game_speed;
+	st->state_object_trees_type = savegame->save_trees_type;
+	st->state_object_exits_type = savegame->save_exits_type;
 
-	state_object_world_data = savegame->save_world_data;
-	state_object_round_data = savegame->save_round_data;
-	state_object_music_data = savegame->save_music_data;
-	state_object_sound_data = savegame->save_sound_data;
+	st->state_object_world_data = savegame->save_world_data;
+	st->state_object_round_data = savegame->save_round_data;
+	st->state_object_music_data = savegame->save_music_data;
+	st->state_object_sound_data = savegame->save_sound_data;
 	devkit_SMS_disableSRAM();
 }
 
 void engine_storage_manager_write()
 {
 	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+	struct_state_object *st = &global_state_object;
 
 	devkit_SMS_enableSRAM();
 	savegame->Magic = MAGIC;
-	savegame->save_high_score = state_object_high_score;
+	savegame->save_high_score = st->state_object_high_score;
 
-	savegame->save_trees_type = state_object_trees_type;
-	savegame->save_exits_type = state_object_exits_type;
-	savegame->save_difficulty = state_object_difficulty;
-	savegame->save_game_speed = state_object_pace_speed;
+	savegame->save_difficulty = st->state_object_difficulty;
+	savegame->save_game_speed = st->state_object_pace_speed;
+	savegame->save_trees_type = st->state_object_trees_type;
+	savegame->save_exits_type = st->state_object_exits_type;
 
-	savegame->save_world_data = state_object_world_data;
-	savegame->save_round_data = state_object_round_data;
-	savegame->save_music_data = state_object_music_data;
-	savegame->save_sound_data = state_object_sound_data;
+	savegame->save_world_data = st->state_object_world_data;
+	savegame->save_round_data = st->state_object_round_data;
+	savegame->save_music_data = st->state_object_music_data;
+	savegame->save_sound_data = st->state_object_sound_data;
 
 	savegame->terminal = FINAL;
 	devkit_SMS_disableSRAM();

@@ -7,6 +7,7 @@
 #include "..\engine\global_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\locale_manager.h"
+#include "..\engine\state_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\devkit\_sms_manager.h"
@@ -25,6 +26,7 @@ static unsigned char cheat_count;
 
 void screen_title_screen_load()
 {
+	struct_state_object *st = &global_state_object;
 	//unsigned char row;
 	//devkit_SMS_displayOff();
 
@@ -77,28 +79,31 @@ void screen_title_screen_load()
 	engine_locale_manager_draw_text( 28, SCREEN_TILE_LEFT + COIN_TEXT_X, COIN_TEXT_Y );
 	engine_font_manager_draw_text( locale_object_blank18, SCREEN_TILE_LEFT + COIN_TEXT_X, COIN_TEXT_Y + 1 );
 	engine_font_manager_draw_text( locale_object_blank18, SCREEN_TILE_LEFT + 2, BOTT_TEXT_Y );
-	//if( state_object_invincibie )
-	//{
-	//	engine_locale_manager_draw_text( 29, SCREEN_TILE_LEFT + 2, BOTT_TEXT_Y );
-	//}
+
+	st->state_object_localcheat = 0;
+	if( st->state_object_invincibie )
+	{
+		engine_locale_manager_draw_text( 29, SCREEN_TILE_LEFT + 2, BOTT_TEXT_Y );
+		st->state_object_localcheat = 1;
+	}
 
 	//devkit_SMS_displayOn();
 
 	engine_delay_manager_load( TITLE_FLASH_DELAY );
-	state_object_localcheat = 0;
 	flash_count = 0;
 	cheat_count = 0;
 }
 
 void screen_title_screen_update( unsigned char *screen_type )
 {
+	struct_state_object *st = &global_state_object;
 	unsigned char input;
 	unsigned char delay;
 
 	delay = engine_delay_manager_update();
 	if( delay )
 	{
-		if( !state_object_delay_test )
+		if( !st->state_object_delay_test )
 		{
 			flash_count = 1 - flash_count;
 		}
@@ -121,11 +126,12 @@ void screen_title_screen_update( unsigned char *screen_type )
 		engine_audio_manager_sfx_play( sound_type_accept );
 		//*screen_type = screen_type_select;
 		//*screen_type = screen_type_diff;		// stevepro corrupt
-		*screen_type = screen_type_intro;
+		//*screen_type = screen_type_intro;
+		*screen_type = screen_type_hard;
 		return;
 	}
 
-	if( !state_object_invincibie )
+	if( !st->state_object_invincibie )
 	{
 		input = engine_input_manager_hold( input_type_fire2 );
 		if( input )
@@ -135,7 +141,7 @@ void screen_title_screen_update( unsigned char *screen_type )
 			{
 				engine_audio_manager_sfx_play( sfx_type_power );
 				engine_locale_manager_draw_text( 29, SCREEN_TILE_LEFT + 2, BOTT_TEXT_Y );
-				state_object_localcheat = 1;
+				st->state_object_localcheat = 1;
 			}
 		}
 	}

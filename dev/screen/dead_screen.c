@@ -9,6 +9,7 @@
 #include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\score_manager.h"
+#include "..\engine\state_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\devkit\_snd_manager.h"
@@ -30,6 +31,7 @@ static unsigned char screen;
 
 void screen_dead_screen_load()
 {
+	struct_state_object *st = &global_state_object;
 	unsigned char lives;
 	engine_audio_manager_music_stop();
 
@@ -60,7 +62,7 @@ void screen_dead_screen_load()
 	//screen = screen_type_cont;
 	//screen = screen_type_ready;
 
-	if( !state_object_mydebugger )
+	if( !st->state_object_mydebugger )
 	{
 		engine_audio_manager_sfx_play( sfx_type_death );
 	}
@@ -69,6 +71,7 @@ void screen_dead_screen_load()
 void screen_dead_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
+	struct_state_object *st = &global_state_object;
 	struct_enemy_object *eo;
 
 	unsigned char enemy_direction = direction_type_none;
@@ -110,7 +113,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	//}
 
 	// Check if Kid want to advance.
-	if( state_object_mydebugger )
+	if( st->state_object_mydebugger )
 	{
 		input = engine_input_manager_hold( input_type_fire2 );
 		if( input )
@@ -212,6 +215,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 
 static void reset_death()
 {
+	struct_state_object *st = &global_state_object;
 	//struct_gamer_object *go = &global_gamer_object;
 	////unsigned char enemy;
 
@@ -229,7 +233,7 @@ static void reset_death()
 	//}
 
 	// TODO test book reset...
-	engine_enemy_manager_reset_mode( state_object_actor_kill, enemymove_type_tour );
+	engine_enemy_manager_reset_mode( st->state_object_actor_kill, enemymove_type_tour );
 	engine_score_manager_reset_boost();
 
 	// If Kid collided with Mama then will be reset from dead to idle below...

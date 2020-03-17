@@ -5,6 +5,7 @@
 #include "global_manager.h"
 #include "locale_manager.h"
 #include "score_manager.h"
+#include "state_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
 #include "..\banks\databank.h"
@@ -59,6 +60,7 @@ void engine_memo_manager_pass( unsigned char perfect )
 
 void engine_memo_manager_option()
 {
+	struct_state_object *st = &global_state_object;
 	const unsigned char *text;
 	const unsigned char dataY = 22;
 	//unsigned char index[ 2 ] = { 11,13 };
@@ -72,20 +74,20 @@ void engine_memo_manager_option()
 	//	index[ 1 ] = 11;
 	//}
 
-	if( diff_type_hard == state_object_difficulty && pace_type_fast == state_object_pace_speed )
+	if( diff_type_hard == st->state_object_difficulty && pace_type_fast == st->state_object_pace_speed )
 	{
-		text = locale_object_texts[ state_object_difficulty + 11 ];
+		text = locale_object_texts[ st->state_object_difficulty + 11 ];
 		engine_font_manager_draw_text( text, TEXT_X, dataY + 0 );
 
-		text = locale_object_texts[ state_object_pace_speed + 13 ];
+		text = locale_object_texts[ st->state_object_pace_speed + 13 ];
 		engine_font_manager_draw_text( text, TEXT_X, dataY + 1 );
 	}
 	else
 	{
-		text = locale_object_texts[ state_object_pace_speed + 13 ];
+		text = locale_object_texts[ st->state_object_pace_speed + 13 ];
 		engine_font_manager_draw_text( text, TEXT_X, dataY + 0 );
 
-		text = locale_object_texts[ state_object_difficulty + 11 ];
+		text = locale_object_texts[ st->state_object_difficulty + 11 ];
 		engine_font_manager_draw_text( text, TEXT_X, dataY + 1 );
 	}
 

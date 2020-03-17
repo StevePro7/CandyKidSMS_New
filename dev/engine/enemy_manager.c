@@ -7,6 +7,7 @@
 #include "memo_manager.h"
 #include "move_manager.h"
 #include "sprite_manager.h"
+#include "state_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
 #include "..\banks\databank.h"
@@ -71,15 +72,16 @@ void engine_enemy_manager_init()
 
 void engine_enemy_manager_load()
 {
+	struct_state_object *st = &global_state_object;
 	struct_enemy_object *eo;
 	unsigned char enemy;
 	unsigned char actor;
 	unsigned char check;
 	unsigned char index;
-	unsigned char count = MAX_ENEMIES + state_object_difficulty;
+	unsigned char count = MAX_ENEMIES + st->state_object_difficulty;
 	unsigned char delta;
 	unsigned char offset;
-	unsigned char random = state_object_round_data + 2;
+	unsigned char random = st->state_object_round_data + 2;
 
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
@@ -127,7 +129,7 @@ void engine_enemy_manager_load()
 		//eo->scatter[ 3 ] = 0;
 
 		// TODO look up frame swaps from array in data bank that gets faster as the levels progress...!
-		index = 4 * enemy + state_object_difficulty * 2 + state_object_pace_speed;
+		index = 4 * enemy + st->state_object_difficulty * 2 + st->state_object_pace_speed;
 
 		// Determine interval that Mama hands swap.
 		eo->hands = 0;
@@ -135,7 +137,7 @@ void engine_enemy_manager_load()
 		delta = rand() % random;
 		eo->swaps -= delta;
 
-		index = 4 * enemy + state_object_difficulty * 2 + state_object_pace_speed;
+		index = 4 * enemy + st->state_object_difficulty * 2 + st->state_object_pace_speed;
 		//eo->waiter = 64;		// 50 frames
 		//eo->waiter = 80;		// 50 frames
 		//eo->waiter = 0;		// 50 frames
@@ -148,8 +150,13 @@ void engine_enemy_manager_load()
 		eo->waiter -= delta;
 
 		// Determine interval Mama toggles from scatter to attack mode.
-		eo->toggle[ 0 ] = enemy_object_tours[ index ];
-		eo->toggle[ 1 ] = enemy_object_kills[ index ];
+		eo->toggle[ enemymove_type_tour ] = enemy_object_tours[ index ];
+		delta = rand() % random;
+		eo->toggle[ enemymove_type_tour ] -= delta;
+
+		eo->toggle[ enemymove_type_kill ] = enemy_object_kills[ index ];
+		delta = rand() % random;
+		eo->toggle[ enemymove_type_kill ] += delta;
 
 		eo->ticker = 0;
 		eo->action = enemymove_type_wait;
@@ -160,7 +167,7 @@ void engine_enemy_manager_load()
 		//eo->delay = 1;
 
 		// Mix up the order depending on Mama enemy.
-		index = 8 * enemy + state_object_difficulty * 2 + state_object_pace_speed;
+		index = 8 * enemy + st->state_object_difficulty * 2 + st->state_object_pace_speed;
 		eo->speeds[ 0 ] = enemy_object_speed[ index + 0 ];
 		eo->delays[ 0 ] = enemy_object_delay[ index + 0 ];
 		eo->speeds[ 1 ] = enemy_object_speed[ index + 4 ];

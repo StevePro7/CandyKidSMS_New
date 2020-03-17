@@ -14,6 +14,7 @@
 #include "..\engine\move_manager.h"
 #include "..\engine\score_manager.h"
 #include "..\engine\sprite_manager.h"
+#include "..\engine\state_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\devkit\_sms_manager.h"
@@ -35,6 +36,7 @@ static unsigned char nextr_direction;
 
 void screen_play_screen_load()
 {
+	struct_state_object *st = &global_state_object;
 	//unsigned char power1, power2;
 	//struct_enemy_object *eo;
 	engine_delay_manager_load( 0 );
@@ -54,7 +56,7 @@ void screen_play_screen_load()
 
 	//power1 = state_object_invincibie;
 	//power2 = state_object_localcheat;
-	//invincible = 0;// power1 || power2;
+	//invincible = st->state_object_invincibie || st->state_object_localcheat;
 	nextr_direction = direction_type_none;
 
 	engine_reset_manager_load( QUIT_SCREEN_DELAY );
@@ -64,6 +66,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
+	struct_state_object *st = &global_state_object;
 	struct_enemy_object *eo;
 	//unsigned char process_boost = 0;
 	unsigned char gamer_boost = 0;
@@ -80,7 +83,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	unsigned char check;
 	//unsigned char input;
 	unsigned int frame = fo->frame_count;
-	state_object_actor_kill = actor_type_kid;
+	st->state_object_actor_kill = actor_type_kid;
 
 	// Draw sprites first.
 	engine_enemy_manager_draw();
@@ -157,7 +160,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 			if( coll_type_block == gamer_collision )
 			{
 				engine_gamer_manager_dead();
-				state_object_actor_kill = actor_type_tree;
+				st->state_object_actor_kill = actor_type_tree;
 			}
 		}
 
@@ -294,16 +297,16 @@ void screen_play_screen_update( unsigned char *screen_type )
 	}
 
 	// Kid invincible thus don't check for death collisions.
-	if( state_object_invincibie )
+	if( st->state_object_localcheat )
 	{
 		*screen_type = screen_type_play;
 		return;
 	}
 
 	// Kid collide with death tree?
-	if( state_object_trees_type == tree_type_death )
+	if( st->state_object_trees_type == tree_type_death )
 	{
-		if( actor_type_kid != state_object_actor_kill )
+		if( actor_type_kid != st->state_object_actor_kill )
 		{
 			*screen_type = screen_type_dead;
 			return;
@@ -314,10 +317,10 @@ void screen_play_screen_update( unsigned char *screen_type )
 	gamer_collision = devkit_isCollisionDetected();
 	if( 0 != gamer_collision )
 	{
-		state_object_actor_kill = engine_collision_manager_sprite_collision();
-		if( actor_type_kid != state_object_actor_kill )
+		st->state_object_actor_kill = engine_collision_manager_sprite_collision();
+		if( actor_type_kid != st->state_object_actor_kill )
 		{
-			engine_enemy_manager_dead( state_object_actor_kill );
+			engine_enemy_manager_dead( st->state_object_actor_kill );
 			*screen_type = screen_type_dead;
 			return;
 		}

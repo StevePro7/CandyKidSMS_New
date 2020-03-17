@@ -9,6 +9,7 @@
 #include "..\engine\level_manager.h"
 #include "..\engine\locale_manager.h"
 #include "..\engine\score_manager.h"
+#include "..\engine\state_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\devkit\_sms_manager.h"
@@ -16,6 +17,7 @@
 
 void screen_select_screen_load()
 {
+	struct_state_object *st = &global_state_object;
 	state_object_curr_screen = screen_type_select;
 	//state_object_next_screen = screen_type_option;
 	state_object_next_screen = screen_type_init;
@@ -37,7 +39,7 @@ void screen_select_screen_load()
 	//engine_board_manager_side_tile();
 	// TODO delete as this comes after option screen.
 
-	engine_level_manager_load_level( state_object_world_data, state_object_round_data );
+	engine_level_manager_load_level( st->state_object_world_data, st->state_object_round_data );
 	engine_level_manager_draw_level();
 	engine_level_manager_draw_middle();
 
@@ -50,6 +52,7 @@ void screen_select_screen_load()
 
 void screen_select_screen_update( unsigned char *screen_type )
 {
+	struct_state_object *st = &global_state_object;
 	unsigned char input;
 	unsigned char check;
 	check = 0;
@@ -58,13 +61,13 @@ void screen_select_screen_update( unsigned char *screen_type )
 	if( input )
 	{
 		check = 1;
-		if( state_object_round_data == 0 )
+		if( st->state_object_round_data == 0 )
 		{
-			state_object_round_data = MAX_ROUNDS - 1;
+			st->state_object_round_data = MAX_ROUNDS - 1;
 		}
 		else
 		{
-			state_object_round_data--;
+			st->state_object_round_data--;
 		}
 	}
 
@@ -72,13 +75,13 @@ void screen_select_screen_update( unsigned char *screen_type )
 	if( input )
 	{
 		check = 1;
-		if( state_object_world_data == 0 )
+		if( st->state_object_world_data == 0 )
 		{
-			state_object_world_data = MAX_WORLDS - 1;
+			st->state_object_world_data = MAX_WORLDS - 1;
 		}
 		else
 		{
-			state_object_world_data--;
+			st->state_object_world_data--;
 		}
 	}
 
@@ -86,10 +89,10 @@ void screen_select_screen_update( unsigned char *screen_type )
 	if( input )
 	{
 		check = 1;
-		state_object_round_data++;
-		if( state_object_round_data >= MAX_ROUNDS )
+		st->state_object_round_data++;
+		if( st->state_object_round_data >= MAX_ROUNDS )
 		{
-			state_object_round_data = 0;
+			st->state_object_round_data = 0;
 		}
 	}
 
@@ -97,17 +100,17 @@ void screen_select_screen_update( unsigned char *screen_type )
 	if( input )
 	{
 		check = 1;
-		state_object_world_data++;
-		if( state_object_world_data >= MAX_WORLDS )
+		st->state_object_world_data++;
+		if( st->state_object_world_data >= MAX_WORLDS )
 		{
-			state_object_world_data = 0;
+			st->state_object_world_data = 0;
 		}
 	}
 
 	if( check )
 	{
 		engine_score_manager_update_level();
-		engine_level_manager_load_level( state_object_world_data, state_object_round_data );
+		engine_level_manager_load_level( st->state_object_world_data, st->state_object_round_data );
 		engine_level_manager_draw_level();
 		engine_level_manager_draw_middle();
 	}

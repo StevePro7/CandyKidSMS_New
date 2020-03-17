@@ -6,6 +6,7 @@
 #include "level_manager.h"
 #include "locale_manager.h"
 #include "mask_manager.h"
+#include "state_manager.h"
 #include "tile_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
@@ -116,7 +117,8 @@ void engine_board_manager_init()
 */
 void engine_board_manager_border( unsigned char index )
 {
-	unsigned char type = state_object_trees_type;
+	struct_state_object *st = &global_state_object;
+	unsigned char type = st->state_object_trees_type;
 	unsigned char wide;
 	unsigned char rght;
 	unsigned char left;
@@ -131,7 +133,7 @@ void engine_board_manager_border( unsigned char index )
 	{
 		if( left == loop || midd == loop )
 		{
-			if( exit_type_public == state_object_exits_type )
+			if( exit_type_public == st->state_object_exits_type )
 			{
 				//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, TOP_SIDE_Y );
 				//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, BOT_SIDE_Y );
@@ -148,7 +150,7 @@ void engine_board_manager_border( unsigned char index )
 	{
 		if( TOP2_EXIT_Y == loop || BOT2_EXIT_Y == loop )
 		{
-			if( exit_type_public == state_object_exits_type )
+			if( exit_type_public == st->state_object_exits_type )
 			{
 				//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_SIDE_Y + loop * 2 );
 				//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + rght, TOP_SIDE_Y + loop * 2 );
@@ -191,7 +193,8 @@ void engine_board_manager_side_tile()
 
 void engine_board_manager_midd_text()
 {
-	unsigned char type = state_object_trees_type;
+	struct_state_object *st = &global_state_object;
+	unsigned char type = st->state_object_trees_type;
 	unsigned char loop;
 
 	for( loop = 0; loop < 6; loop++ )
@@ -214,7 +217,8 @@ void engine_board_manager_midd_text()
 // TODO - delete!!
 void engine_board_manager_debugger()
 {
-	unsigned char type = state_object_trees_type;
+	struct_state_object *st = &global_state_object;
+	unsigned char type = st->state_object_trees_type;
 
 	unsigned char spot[] = { 1, 2, 4, 7, 9, 10 };
 	unsigned char loop;
@@ -232,7 +236,8 @@ void engine_board_manager_debugger()
 
 static void draw_side( unsigned char wide, unsigned char right )
 {
-	unsigned char type = state_object_trees_type;
+	struct_state_object *st = &global_state_object;
+	unsigned char type = st->state_object_trees_type;
 	unsigned char loop;
 
 	for( loop = 0; loop < wide; loop++ )
@@ -248,8 +253,9 @@ static void draw_side( unsigned char wide, unsigned char right )
 }
 static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right )
 {
-	unsigned char type = state_object_trees_type;
-	if( exit_type_closed == state_object_exits_type )
+	struct_state_object *st = &global_state_object;
+	unsigned char type = st->state_object_trees_type;
+	if( exit_type_closed == st->state_object_exits_type )
 	{
 		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + left, TOP_SIDE_Y );
 		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + midd, TOP_SIDE_Y );

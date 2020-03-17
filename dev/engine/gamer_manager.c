@@ -8,6 +8,7 @@
 #include "move_manager.h"
 #include "score_manager.h"
 #include "sprite_manager.h"
+#include "state_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
 #include "..\banks\databank.h"
@@ -70,7 +71,9 @@ void engine_gamer_manager_init()
 void engine_gamer_manager_load()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	unsigned char index = state_object_pace_speed * 2;
+	struct_state_object *st = &global_state_object;
+
+	unsigned char index = st->state_object_pace_speed * 2;
 
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	go->speeds[ 0 ] = gamer_object_speed[ index + 0 ];
@@ -199,12 +202,13 @@ void engine_gamer_manager_hide_death()
 void engine_gamer_manager_move( unsigned char direction )
 {
 	struct_gamer_object *go = &global_gamer_object;
+	struct_state_object *st = &global_state_object;
 	go->direction = direction;
 	go->lifecycle = lifecycle_type_move;
 	go->frame = frame_type_toggle;
 	calcd_frame();
 
-	if( !state_object_full_boost )
+	if( !st->state_object_full_boost )
 	{
 		if( pace_type_fast == go->curr_boost )
 		{
@@ -231,6 +235,7 @@ void engine_gamer_manager_wrap( unsigned char direction )
 void engine_gamer_manager_pace( unsigned char boost )
 {
 	struct_gamer_object *go = &global_gamer_object;
+	struct_state_object *st = &global_state_object;
 	//unsigned char index = go->velocity[ boost ];
 	go->prev_boost = go->curr_boost;
 	go->curr_boost = boost;
@@ -242,7 +247,7 @@ void engine_gamer_manager_pace( unsigned char boost )
 	go->speed = go->speeds[ boost ];
 	go->delay = go->delays[ boost ];
 
-	if( !state_object_full_boost )
+	if( !st->state_object_full_boost )
 	{
 		if( pace_type_fast == go->curr_boost )
 		{
@@ -313,6 +318,7 @@ void engine_gamer_manager_reset()
 unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction )
 {
 	struct_gamer_object *go = &global_gamer_object;
+	struct_state_object *st = &global_state_object;
 	unsigned char collision;
 	unsigned char thru_exit;
 
@@ -322,7 +328,7 @@ unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction
 	}
 
 	// Avoid trees.
-	if( state_object_trees_type == tree_type_avoid )
+	if( st->state_object_trees_type == tree_type_avoid )
 	{
 		collision = engine_level_manager_get_collision( go->tileX, go->tileY, gamer_direction, offset_type_one );
 		if( coll_type_empty == collision )
@@ -331,7 +337,7 @@ unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction
 		}
 
 		// Closed exits.
-		if( exit_type_closed == state_object_exits_type )
+		if( exit_type_closed == st->state_object_exits_type )
 		{
 			return direction_type_none;
 		}
@@ -349,7 +355,7 @@ unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction
 	else
 	{
 		// Vulnerable.
-		if( !state_object_invincibie )
+		if( !st->state_object_localcheat )
 		{
 			return gamer_direction;
 		}
@@ -359,7 +365,7 @@ unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction
 			thru_exit = engine_move_manager_border_exit( go->tileX, go->tileY, gamer_direction );
 			if( thru_exit )
 			{
-				if( exit_type_public == state_object_exits_type )
+				if( exit_type_public == st->state_object_exits_type )
 				{
 					thru_exit = engine_move_manager_gothru_exit( go->tileX, go->tileY, gamer_direction );
 					if( thru_exit )
@@ -421,6 +427,7 @@ unsigned char engine_gamer_manager_input_direction()
 unsigned char engine_gamer_manager_input_boost( unsigned char direction )
 {
 	struct_gamer_object *go = &global_gamer_object;
+	struct_state_object *st = &global_state_object;
 	unsigned char boost;
 	unsigned char input;
 
@@ -438,7 +445,7 @@ unsigned char engine_gamer_manager_input_boost( unsigned char direction )
 	{
 		if( direction_type_none != direction )
 		{
-			if( !state_object_full_boost )
+			if( !st->state_object_full_boost )
 			{
 				boost = engine_score_manager_get_value( score_type_boost );
 				if( 0 == boost )

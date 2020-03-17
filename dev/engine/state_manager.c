@@ -11,8 +11,18 @@
 #include "..\banks\fixedbank.h"
 #include "..\banks\databank.h"
 
+// Global variable.
+struct_state_object global_state_object;
+
 void engine_state_manager_init()
 {
+	struct_state_object *st = &global_state_object;
+	st->state_object_invincibie = 0;
+	st->state_object_localcheat = 0;
+	st->state_object_high_score = 0;
+	st->state_object_difficulty = 0;
+	st->state_object_pace_speed = 0;
+
 	//engine_board_manager_init();
 	engine_command_manager_init();
 
@@ -28,12 +38,13 @@ void engine_state_manager_init()
 
 void engine_state_manager_read()
 {
+	struct_state_object *st = &global_state_object;
 	unsigned char test;
 
 	// Set default global state.
 	engine_hack_manager_init();
-	state_object_high_score = DEF_HI_SCORE;
-	state_object_actor_kill = actor_type_kid;
+	st->state_object_high_score = DEF_HI_SCORE;
+	st->state_object_actor_kill = actor_type_kid;
 
 	// Check if global state previously stored.
 	test = engine_storage_manager_available();

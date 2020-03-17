@@ -3,6 +3,7 @@
 #include "font_manager.h"
 #include "global_manager.h"
 #include "locale_manager.h"
+#include "state_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
 #include "..\banks\databank.h"
@@ -61,8 +62,10 @@ void engine_score_manager_text()
 void engine_score_manager_init()
 {
 	struct_score_object *so = &global_score_object;
+	struct_state_object *st = &global_state_object;
 	so->score = 0;
-	so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
+	//so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
+	so->values[ score_type_lives ] = NUMBER_LIVES - st->state_object_difficulty;
 	//so->values[ score_type_lives ] = 1; // stevepro
 
 	//so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
@@ -81,13 +84,14 @@ void engine_score_manager_init()
 void engine_score_manager_load()
 {
 	struct_score_object *so = &global_score_object;
+	struct_state_object *st = &global_state_object;
 	//so->score = 0;
 	//so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
-	so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
+	so->values[ score_type_level ] = st->state_object_world_data * MAX_WORLDS + st->state_object_round_data + 1;
 	so->bonus = 0;
 	so->candy = 0;
 	//so->total = 0;
-	so->values[ score_type_boost ] = boost_X[ state_object_pace_speed ];
+	so->values[ score_type_boost ] = boost_X[ st->state_object_pace_speed ];
 	//so->delay = 1 - state_object_difficulty;
 	//so->timer = 0;
 
@@ -158,7 +162,8 @@ void engine_score_manager_update_lives( signed char value )
 void engine_score_manager_update_boost()
 {
 	struct_score_object *so = &global_score_object;
-	if( state_object_full_boost )
+	struct_state_object *st = &global_state_object;
+	if( st->state_object_full_boost )
 	{
 		return;
 	}
@@ -175,7 +180,7 @@ void engine_score_manager_update_boost()
 	//}
 
 	//so->timer = 0;
-	so->values[ score_type_boost ] -= 1 + state_object_difficulty;
+	so->values[ score_type_boost ] -= 1 + st->state_object_difficulty;
 
 	// TODO set enum or #define for this magic no.
 	// TODO Easy = 200  Hard = 100 boost value!
@@ -224,7 +229,8 @@ void engine_score_manager_draw_load()
 void engine_score_manager_update_level()
 {
 	struct_score_object *so = &global_score_object;
-	so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
+	struct_state_object *st = &global_state_object;
+	so->values[ score_type_level ] = st->state_object_world_data * MAX_WORLDS + st->state_object_round_data + 1;
 	draw_value( score_type_level );
 
 	// TODO delete this - used for debugging!
@@ -236,14 +242,18 @@ void engine_score_manager_update_level()
 void engine_score_manager_reset_lives()
 {
 	struct_score_object *so = &global_score_object;
-	so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
+	struct_state_object *st = &global_state_object;
+
+	so->values[ score_type_lives ] = NUMBER_LIVES - st->state_object_difficulty;
 	//so->values[ score_type_lives ] = 2; // stevepro
 	draw_value( score_type_lives );
 }
 void engine_score_manager_reset_boost()
 {
 	struct_score_object *so = &global_score_object;
-	so->values[ score_type_boost ] = boost_X[ state_object_difficulty ];
+	struct_state_object *st = &global_state_object;
+
+	so->values[ score_type_boost ] = boost_X[ st->state_object_difficulty ];
 	draw_value( score_type_boost );
 }
 
@@ -265,16 +275,17 @@ void engine_score_manager_reset_boost()
 static void update_score( unsigned char points )
 {
 	struct_score_object *so = &global_score_object;
-	unsigned int hiscore = state_object_high_score;		// IMPORTANT Not sure why this didn't work directly??
+	struct_state_object *st = &global_state_object;
+	//unsigned int hiscore = state_object_high_score;		// IMPORTANT Not sure why this didn't work directly??
 	so->score += points;
 
 	if( so->score > MAX_HI_SCORE )
 	{
 		so->score = MAX_HI_SCORE;
 	}
-	if( so->score > hiscore )
+	if( so->score > st->state_object_high_score )
 	{
-		state_object_high_score = so->score;
+		st->state_object_high_score = so->score;
 		draw_highs();
 	}
 
@@ -298,8 +309,9 @@ static void update_lives( signed char value )
 
 static void draw_highs()
 {
+	struct_state_object *st = &global_state_object;
 	//engine_font_manager_draw_long( state_object_high_score, DATA_X + 0, HIGHS_Y + 1 );
-	engine_font_manager_draw_data( state_object_high_score, DATA_X + 0, HIGHS_Y + 1 );
+	engine_font_manager_draw_data( st->state_object_high_score, DATA_X + 0, HIGHS_Y + 1 );
 	//engine_font_manager_draw_data( 2334, DATA_X + 0, HIGHS_Y + 1 );
 }
 static void draw_score()
@@ -312,6 +324,7 @@ static void draw_score()
 static void draw_value( unsigned char index )
 {
 	struct_score_object *so = &global_score_object;
+	struct_state_object *st = &global_state_object;
 	unsigned char y_val = value_y[ index ];
 	unsigned char value = 0;
 
@@ -321,11 +334,11 @@ static void draw_value( unsigned char index )
 	}
 	else if( score_type_world == index )
 	{
-		value = state_object_world_data + 1;
+		value = st->state_object_world_data + 1;
 	}
 	else if( score_type_round == index )
 	{
-		value = state_object_round_data + 1;
+		value = st->state_object_round_data + 1;
 	}
 
 	// HACK to workaround side tile for exit.

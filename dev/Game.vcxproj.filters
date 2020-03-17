@@ -46,7 +46,7 @@
     <Filter Include="Header Files\output">
       <UniqueIdentifier>{3b778f98-d842-4ff0-aaa8-fa253dabe103}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\output\object">
+    <Filter Include="Source Files\object">
       <UniqueIdentifier>{3b5a267f-3b92-4a97-bb93-07eda8625a3b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -306,6 +306,9 @@
     <ClInclude Include="screen\slow_screen.h">
       <Filter>Header Files\screen</Filter>
     </ClInclude>
+    <ClInclude Include="object\state_object.h">
+      <Filter>Header Files\object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -471,10 +474,10 @@
       <Filter>Source Files\engine</Filter>
     </ClCompile>
     <ClCompile Include="object\enemy_object.c">
-      <Filter>Source Files\output\object</Filter>
+      <Filter>Source Files\object</Filter>
     </ClCompile>
     <ClCompile Include="object\gamer_object.c">
-      <Filter>Source Files\output\object</Filter>
+      <Filter>Source Files\object</Filter>
     </ClCompile>
     <ClCompile Include="engine\enemy_manager.c">
       <Filter>Source Files\engine</Filter>
@@ -486,10 +489,10 @@
       <Filter>Source Files\engine</Filter>
     </ClCompile>
     <ClCompile Include="object\score_object.c">
-      <Filter>Source Files\output\object</Filter>
+      <Filter>Source Files\object</Filter>
     </ClCompile>
     <ClCompile Include="object\storage_object.c">
-      <Filter>Source Files\output\object</Filter>
+      <Filter>Source Files\object</Filter>
     </ClCompile>
     <ClCompile Include="engine\storage_manager.c">
       <Filter>Source Files\engine</Filter>
@@ -522,7 +525,7 @@
       <Filter>Source Files\engine</Filter>
     </ClCompile>
     <ClCompile Include="object\timer_object.c">
-      <Filter>Source Files\output\object</Filter>
+      <Filter>Source Files\object</Filter>
     </ClCompile>
     <ClCompile Include="screen\boss_screen.c">
       <Filter>Source Files\screen</Filter>
@@ -562,6 +565,9 @@
     </ClCompile>
     <ClCompile Include="screen\hard_screen.c">
       <Filter>Source Files\screen</Filter>
+    </ClCompile>
+    <ClCompile Include="object\state_object.c">
+      <Filter>Source Files\object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
