@@ -11,13 +11,13 @@
 
 //unsigned char state_object_difficulty;
 //unsigned char state_object_pace_speed;
-unsigned char state_object_trees_type;
-unsigned char state_object_exits_type;
+//unsigned char state_object_trees_type;
+//unsigned char state_object_exits_type;
 
 unsigned char state_object_world_data;
 unsigned char state_object_round_data;
-unsigned char state_object_music_data;
-unsigned char state_object_sound_data;
+//unsigned char state_object_music_data;
+//unsigned char state_object_sound_data;
 
 //unsigned char state_object_actor_kill;
 //unsigned char state_object_delay_test;						// TODO delete - used for testing...!!

@@ -5,6 +5,7 @@
 #include "global_manager.h"
 #include "locale_manager.h"
 #include "mask_manager.h"
+#include "state_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\databank.h"
 #include "..\banks\bank2.h"
@@ -75,6 +76,7 @@ void engine_tile_manager_load_coll( unsigned char *coll_type, unsigned char tile
 // TODO rename this as is too generic!
 void engine_tile_manager_draw_tile( unsigned char tile, unsigned char x, unsigned char y )
 {
+	struct_state_object *st = &global_state_object;
 	unsigned char upper_nibble;
 	unsigned char lower_nibble;
 	unsigned char tile_type;
@@ -88,7 +90,7 @@ void engine_tile_manager_draw_tile( unsigned char tile, unsigned char x, unsigne
 	}
 	else if( tile_type_trees == tile_type )
 	{
-		engine_tile_manager_draw_trees( state_object_trees_type, x, y );
+		engine_tile_manager_draw_trees( st->state_object_trees_type, x, y );
 	}
 	else if( tile_type >= tile_type_bonusA  && tile_type <= tile_type_bonusD )
 	{

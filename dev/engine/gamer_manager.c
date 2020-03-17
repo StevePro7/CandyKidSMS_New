@@ -328,7 +328,7 @@ unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction
 	}
 
 	// Avoid trees.
-	if( state_object_trees_type == tree_type_avoid )
+	if( st->state_object_trees_type == tree_type_avoid )
 	{
 		collision = engine_level_manager_get_collision( go->tileX, go->tileY, gamer_direction, offset_type_one );
 		if( coll_type_empty == collision )
@@ -337,7 +337,7 @@ unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction
 		}
 
 		// Closed exits.
-		if( exit_type_closed == state_object_exits_type )
+		if( exit_type_closed == st->state_object_exits_type )
 		{
 			return direction_type_none;
 		}
@@ -365,7 +365,7 @@ unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction
 			thru_exit = engine_move_manager_border_exit( go->tileX, go->tileY, gamer_direction );
 			if( thru_exit )
 			{
-				if( exit_type_public == state_object_exits_type )
+				if( exit_type_public == st->state_object_exits_type )
 				{
 					thru_exit = engine_move_manager_gothru_exit( go->tileX, go->tileY, gamer_direction );
 					if( thru_exit )

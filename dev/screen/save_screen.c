@@ -54,7 +54,7 @@ void screen_save_screen_update( unsigned char *screen_type )
 	{
 		engine_font_manager_draw_text( "SAVING...", 4, 3 );
 
-		st->state_object_high_score = 98765;
+		st->state_object_high_score = 54321;
 
 		st->state_object_trees_type = 1;
 		st->state_object_exits_type = 0;

@@ -304,7 +304,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	}
 
 	// Kid collide with death tree?
-	if( state_object_trees_type == tree_type_death )
+	if( st->state_object_trees_type == tree_type_death )
 	{
 		if( actor_type_kid != st->state_object_actor_kill )
 		{

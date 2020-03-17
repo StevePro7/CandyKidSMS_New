@@ -5,6 +5,7 @@
 #include "global_manager.h"
 #include "level_manager.h"
 #include "mask_manager.h"
+#include "state_manager.h"
 #include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
@@ -100,6 +101,7 @@ void engine_move_manager_get_directions( unsigned char srceX, unsigned char srce
 
 unsigned char engine_move_manager_gothru_exit( unsigned char tileX, unsigned char tileY, unsigned char direction )
 {
+	struct_state_object *st = &global_state_object;
 	unsigned char can_go_thru_exit = coll_type_empty;
 
 	// Vertical.
@@ -107,7 +109,7 @@ unsigned char engine_move_manager_gothru_exit( unsigned char tileX, unsigned cha
 	{
 		if( ( EXIT_SPOT1 == tileY && direction_type_upxx == direction ) || ( EXIT_SPOT4 == tileY && direction_type_down == direction ) )
 		{
-			can_go_thru_exit = exit_type_closed == state_object_exits_type ? coll_type_empty : coll_type_block;
+			can_go_thru_exit = exit_type_closed == st->state_object_exits_type ? coll_type_empty : coll_type_block;
 		}
 	}
 
@@ -116,7 +118,7 @@ unsigned char engine_move_manager_gothru_exit( unsigned char tileX, unsigned cha
 	{
 		if( ( EXIT_SPOT1 == tileX && direction_type_left == direction ) || ( EXIT_SPOT4 == tileX && direction_type_rght == direction ) )
 		{
-			can_go_thru_exit = exit_type_closed == state_object_exits_type ? coll_type_empty : coll_type_block;
+			can_go_thru_exit = exit_type_closed == st->state_object_exits_type ? coll_type_empty : coll_type_block;
 		}
 	}
 
@@ -144,8 +146,9 @@ unsigned char engine_move_manager_border_exit( unsigned char tileX, unsigned cha
 
 unsigned char engine_move_manager_inside_exit( unsigned char tileX, unsigned char tileY )
 {
+	struct_state_object *st = &global_state_object;
 	unsigned char collision = coll_type_block;
-	if( exit_type_closed == state_object_exits_type )
+	if( exit_type_closed == st->state_object_exits_type )
 	{
 		return collision;
 	}
