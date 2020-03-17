@@ -14,6 +14,7 @@
 //static unsigned char type1_cursorX[ 2 ] = { TYPE1_OPT1_X, TYPE1_OPT2_X };
 
 static unsigned char type1_cursorX[ 2 ] = { TYPE1_OPT1_X, TYPE1_OPT2_X };
+static unsigned char type2_cursorY[ MAX_ACTORS ] = { TEXT1_Y, TEXT2_Y, TEXT3_Y, TEXT4_Y };
 
 void engine_cursor_manager_cursor1( unsigned char index )
 {
@@ -28,4 +29,23 @@ void engine_cursor_manager_draw1( unsigned char index )
 	engine_font_manager_draw_text( locale_object_menus[ index + 0 ], TYPE1_TEXT_X, TYPE1_TEXT_Y + 0 );
 	engine_font_manager_draw_text( locale_object_menus[ index + 1 ], TYPE1_TEXT_X + 2, TYPE1_TEXT_Y + 1 );
 	engine_font_manager_draw_text( locale_object_menus[ index + 2 ], TYPE1_TEXT_X + 13, TYPE1_TEXT_Y + 1 );
+}
+
+void engine_cursor_manager_draw_option()
+{
+	unsigned char index;
+	unsigned char loops;
+	unsigned char *actor;
+	devkit_SMS_mapROMBank( FIXED_BANK );
+
+	engine_font_manager_draw_text( locale_object_option[ 0 ], TEXT_X, TEXT0_Y + 0 );
+	engine_font_manager_draw_text( locale_object_option[ 1 ], TEXT_X, TEXT0_Y + 1 );
+
+	for( loops = 0; loops < MAX_ACTORS; loops++ )
+	{
+		index = 2 + loops * 3;
+		actor = ( unsigned char * ) locale_object_option[ index ];
+
+		engine_font_manager_draw_text( actor, DATA_X - 2, type2_cursorY[ loops ] );
+	}
 }

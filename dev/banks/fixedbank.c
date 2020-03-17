@@ -128,6 +128,18 @@ const unsigned char *locale_object_menus[] =
 	"FAST",
 };
 
+const unsigned char *locale_object_names[] = {  "KID.", "PRO.", "ADI.", "SUZ." };
+
+const unsigned char *locale_object_option[] =
+{
+	"SELECT",
+	"ACTORS",
+	"KID#", "KID1", "KID2",
+	"PRO#", "PRO1", "PRO2",
+	"ADI#", "ADI1", "ADI2",
+	"SUZ#", "SUZ1", "SUZ2",
+};
+
 const unsigned char locale_object_blank32[] = "123456789A123456789B123456789C12";
 //const unsigned char locale_object_blank32[] = "                                ";
 //const unsigned char locale_object_blank26[] = "123456789A123456789B123456";
