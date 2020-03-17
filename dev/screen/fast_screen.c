@@ -1,23 +1,23 @@
 #include "fast_screen.h"
-#include "..\engine\audio_manager.h"
-#include "..\engine\board_manager.h"
-#include "..\engine\content_manager.h"
-#include "..\engine\cursor_manager.h"
+//#include "..\engine\audio_manager.h"
+//#include "..\engine\board_manager.h"
+//#include "..\engine\content_manager.h"
+//#include "..\engine\cursor_manager.h"
 #include "..\engine\enum_manager.h"
-#include "..\engine\font_manager.h"
-#include "..\engine\global_manager.h"
-#include "..\engine\input_manager.h"
-#include "..\engine\locale_manager.h"
-#include "..\engine\memo_manager.h"
-#include "..\engine\tile_manager.h"
-#include "..\engine\state_manager.h"
-#include "..\engine\timer_manager.h"
-#include "..\devkit\_sms_manager.h"
-#include "..\banks\fixedbank.h"
-#include "..\banks\databank.h"
+//#include "..\engine\font_manager.h"
+//#include "..\engine\global_manager.h"
+//#include "..\engine\input_manager.h"
+//#include "..\engine\locale_manager.h"
+//#include "..\engine\memo_manager.h"
+//#include "..\engine\tile_manager.h"
+//#include "..\engine\state_manager.h"
+//#include "..\engine\timer_manager.h"
+//#include "..\devkit\_sms_manager.h"
+//#include "..\banks\fixedbank.h"
+//#include "..\banks\databank.h"
 
-static unsigned char pace_speed;
-static unsigned char event_stage;
+//static unsigned char pace_speed;
+//static unsigned char event_stage;
 
 void screen_fast_screen_load()
 {
@@ -53,7 +53,7 @@ void screen_fast_screen_load()
 	////engine_board_manager_border( border_type_game );
 	////engine_font_manager_draw_text( "INTRO SCREEN..!!", 4, 0 );
 
-	engine_delay_manager_load( SOUND_SCREEN_DELAY );
+	//engine_delay_manager_load( SOUND_SCREEN_DELAY );
 }
 
 void screen_fast_screen_update( unsigned char *screen_type )

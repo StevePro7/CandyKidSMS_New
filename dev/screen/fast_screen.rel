@@ -1,13 +1,12 @@
 XL2
-H 9 areas 4 global symbols
+H 9 areas 3 global symbols
 M fast_screen
 O -mz80
 S .__.ABS. Def0000
-S _engine_delay_manager_load Ref0000
-A _CODE size 10 flags 0 addr 0
+A _CODE size 8 flags 0 addr 0
 S _screen_fast_screen_load Def0000
-S _screen_fast_screen_update Def0009
-A _DATA size 2 flags 0 addr 0
+S _screen_fast_screen_update Def0001
+A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
@@ -16,18 +15,10 @@ A _GSFINAL size 0 flags 0 addr 0
 A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
-R 00 00 01 00
-T 00 00
-R 00 00 01 00
-T 01 00
-R 00 00 01 00
-T 01 00
-R 00 00 01 00
-T 00 00
 R 00 00 00 00
-T 00 00 21 1E 00 E5 CD 00 00 F1 C9
-R 00 00 00 00 02 07 01 00
-T 09 00
+T 00 00 C9
 R 00 00 00 00
-T 09 00 C1 E1 E5 C5 36 08 C9
+T 01 00
+R 00 00 00 00
+T 01 00 C1 E1 E5 C5 36 08 C9
 R 00 00 00 00

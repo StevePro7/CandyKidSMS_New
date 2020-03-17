@@ -21,12 +21,11 @@ void screen_slow_screen_load()
 	struct_state_object *st = &global_state_object;
 	event_stage = event_stage_start;
 
-	engine_font_manager_draw_text( "SLOW SCREEN!!", 2, 10 );
-
 	engine_cursor_manager_draw1( 3 );
 	engine_cursor_manager_cursor1( st->state_object_pace_speed );
 
 	engine_delay_manager_load( SOUND_SCREEN_DELAY );
+	//engine_font_manager_draw_text( "SLOW SCREEN!!", 2, 10 );
 }
 
 void screen_slow_screen_update( unsigned char *screen_type )
@@ -51,22 +50,15 @@ void screen_slow_screen_update( unsigned char *screen_type )
 	input[ 1 ] = engine_input_manager_hold( input_type_right );
 	if( input[ 0 ] || input[ 1 ] )
 	{
-		//engine_font_manager_draw_data( pace_speed, 10, 15 );
 		st->state_object_pace_speed = 1 - st->state_object_pace_speed;
-		//state_object_pace_speed = 1 - state_object_pace_speed;
-		//engine_cursor_manager_cursor1( state_object_pace_speed );
 		engine_cursor_manager_cursor1( st->state_object_pace_speed );
-		//engine_font_manager_draw_data( pace_speed, 10, 16 );
 	}
 
 	input[ 2 ] = engine_input_manager_hold( input_type_fire1 );
 	if( input[ 2 ] )
 	{
-		// TODO there may need to be a slight delay going to next screen
-		// because I will clear the screen and reload game tiles...
 		engine_audio_manager_sfx_play( sound_type_accept );
 		event_stage = event_stage_pause;
-		//*screen_type = screen_type_option;
 		return;
 	}
 

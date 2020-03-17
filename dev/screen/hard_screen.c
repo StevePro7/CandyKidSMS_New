@@ -19,15 +19,11 @@ void screen_hard_screen_load()
 	struct_state_object *st = &global_state_object;
 	event_stage = event_stage_start;
 
-	//engine_font_manager_draw_data( difficulty, 10, 16 );
-	//devkit_SMS_mapROMBank( FIXED_BANK );
-
 	engine_cursor_manager_draw1( 0 );
-	//engine_cursor_manager_cursor1( state_object_difficulty );
 	engine_cursor_manager_cursor1( st->state_object_difficulty );
 
 	engine_delay_manager_load( SOUND_SCREEN_DELAY );
-	engine_font_manager_draw_text( "HARD SCREEN!!", 2, 10 );
+	//engine_font_manager_draw_text( "HARD SCREEN!!", 2, 10 );
 }
 
 void screen_hard_screen_update( unsigned char *screen_type )
@@ -58,11 +54,6 @@ void screen_hard_screen_update( unsigned char *screen_type )
 	if( input[ 2 ] )
 	{
 		engine_audio_manager_sfx_play( sound_type_accept );
-		//*screen_type = screen_type_pace;
-		//*screen_type = screen_type_init;
-		//*screen_type = screen_type_option;
-		//*screen_type = screen_type_intro;
-		//*screen_type = screen_type_fast;
 		*screen_type = screen_type_slow;
 		return;
 	}
@@ -72,7 +63,6 @@ void screen_hard_screen_update( unsigned char *screen_type )
 	{
 		engine_audio_manager_sfx_play( sfx_type_reset );
 		event_stage = event_stage_pause;
-		//*screen_type = screen_type_title;
 		return;
 	}
 
