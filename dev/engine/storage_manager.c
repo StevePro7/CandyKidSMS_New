@@ -38,8 +38,8 @@ void engine_storage_manager_read()
 
 	state_object_world_data = savegame->save_world_data;
 	state_object_round_data = savegame->save_round_data;
-	state_object_music_data = savegame->save_music_data;
-	state_object_sound_data = savegame->save_sound_data;
+	st->state_object_music_data = savegame->save_music_data;
+	st->state_object_sound_data = savegame->save_sound_data;
 	devkit_SMS_disableSRAM();
 }
 
@@ -59,8 +59,8 @@ void engine_storage_manager_write()
 
 	savegame->save_world_data = state_object_world_data;
 	savegame->save_round_data = state_object_round_data;
-	savegame->save_music_data = state_object_music_data;
-	savegame->save_sound_data = state_object_sound_data;
+	savegame->save_music_data = st->state_object_music_data;
+	savegame->save_sound_data = st->state_object_sound_data;
 
 	savegame->terminal = FINAL;
 	devkit_SMS_disableSRAM();

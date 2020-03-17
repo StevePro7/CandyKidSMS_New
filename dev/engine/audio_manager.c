@@ -1,4 +1,5 @@
 #include "audio_manager.h"
+#include "state_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\devkit\_snd_manager.h"
 #include "..\banks\databank.h"
@@ -17,10 +18,11 @@ static unsigned char music_bank;
 // Music.
 void engine_audio_manager_music_play( unsigned char index )
 {
+	struct_state_object *st = &global_state_object;
 	const unsigned char *music_data;
 	//unsigned char bank;
 
-	if( !state_object_music_data )
+	if( !st->state_object_music_data )
 	{
 		return;
 	}
@@ -34,10 +36,11 @@ void engine_audio_manager_music_play( unsigned char index )
 }
 void engine_audio_manager_music_play_norepeat( unsigned char index )
 {
+	struct_state_object *st = &global_state_object;
 	const unsigned char *music;
 	unsigned char bank;
 
-	if( !state_object_music_data )
+	if( !st->state_object_music_data )
 	{
 		return;
 	}
@@ -62,12 +65,13 @@ void engine_audio_manager_music_stop()
 // Sound.
 void engine_audio_manager_sound_play( unsigned char index )
 {
+	struct_state_object *st = &global_state_object;
 	const unsigned char *sound;
 	unsigned char status;
 	unsigned char bank;
 
 	// If sound effects are  disabled then return.
-	if( !state_object_sound_data )
+	if( !st->state_object_sound_data )
 	{
 		return;
 	}
@@ -89,11 +93,12 @@ void engine_audio_manager_sound_play( unsigned char index )
 
 void engine_audio_manager_sfx_play( unsigned char index )
 {
+	struct_state_object *st = &global_state_object;
 	const unsigned char *sfx;
 	unsigned char status;
 
 	// If sound effects are  disabled then return.
-	if( !state_object_sound_data )
+	if( !st->state_object_sound_data )
 	{
 		return;
 	}

@@ -26,8 +26,15 @@ void engine_hack_manager_init()
 
 	st->state_object_difficulty = 0;
 	st->state_object_pace_speed = 0;
+	//st->state_object_trees_type = 0;
+	//st->state_object_exits_type = 0;
 
+	//st->state_object_world_data = 0;
+	//st->state_object_round_data = 0;
+	st->state_object_music_data = 0;
+	st->state_object_sound_data = 0;
 
+	// TODO delete - used for testing...!!
 	st->state_object_delay_test = 0;
 
 	//state_object_mydebugger = 0;
@@ -42,8 +49,8 @@ void engine_hack_manager_init()
 
 	state_object_world_data = 0;
 	state_object_round_data = 0;
-	state_object_music_data = 0;
-	state_object_sound_data = 0;
+	//state_object_music_data = 0;
+	//state_object_sound_data = 0;
 
 	// TODO delete - used for testing...!!
 	//state_object_delay_test = 0;
@@ -66,8 +73,8 @@ void engine_hack_manager_load()
 
 	state_object_world_data = PEEK( HACKER_START + 4 );			// 0x0054		// Set start world no to zero-based value.
 	state_object_round_data = PEEK( HACKER_START + 5 );			// 0x0055		// Set start round no to zero-based value.
-	state_object_music_data = PEEK( HACKER_START + 6 );			// 0x0056		// Set 0=music to play otherwise disabled.
-	state_object_sound_data = PEEK( HACKER_START + 7 );			// 0x0057		// Set 0=sound to play otherwise disabled.
+	st->state_object_music_data = PEEK( HACKER_START + 6 );			// 0x0056		// Set 0=music to play otherwise disabled.
+	st->state_object_sound_data = PEEK( HACKER_START + 7 );			// 0x0057		// Set 0=sound to play otherwise disabled.
 
 	// TODO delete - used for testing...!!
 	st->state_object_delay_test = PEEK( HACKER_START + 8 );			// 0x0058		// Set 0 enables all delays otherwise off.
@@ -135,8 +142,8 @@ void engine_hack_manager_invert()
 
 	// Invert default values.
 	// TODO revert this code to play music + sound FX.
-	state_object_music_data = !state_object_music_data;
-	state_object_sound_data = !state_object_sound_data;
+	st->state_object_music_data = !st->state_object_music_data;
+	st->state_object_sound_data = !st->state_object_sound_data;
 	// TODO revert this code to play music + sound FX.
 
 	// TODO delete this hard coded
