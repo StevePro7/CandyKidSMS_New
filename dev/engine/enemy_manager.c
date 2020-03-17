@@ -150,8 +150,13 @@ void engine_enemy_manager_load()
 		eo->waiter -= delta;
 
 		// Determine interval Mama toggles from scatter to attack mode.
-		eo->toggle[ 0 ] = enemy_object_tours[ index ];
-		eo->toggle[ 1 ] = enemy_object_kills[ index ];
+		eo->toggle[ enemymove_type_tour ] = enemy_object_tours[ index ];
+		delta = rand() % random;
+		eo->toggle[ enemymove_type_tour ] -= delta;
+
+		eo->toggle[ enemymove_type_kill ] = enemy_object_kills[ index ];
+		delta = rand() % random;
+		eo->toggle[ enemymove_type_kill ] += delta;
 
 		eo->ticker = 0;
 		eo->action = enemymove_type_wait;
