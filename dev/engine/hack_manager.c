@@ -19,13 +19,19 @@
 void engine_hack_manager_init()
 {
 	struct_state_object *st = &global_state_object;
+	st->state_object_mydebugger = 0;
+	st->state_object_full_boost = 0;
 	st->state_object_invincibie = 0;
 	st->state_object_localcheat = 0;
+
 	st->state_object_difficulty = 0;
 	st->state_object_pace_speed = 0;
 
-	state_object_mydebugger = 0;
-	state_object_full_boost = 0;
+
+	st->state_object_delay_test = 0;
+
+	//state_object_mydebugger = 0;
+	//state_object_full_boost = 0;
 	//state_object_invincibie = 0;
 	//state_object_localcheat = 0;
 
@@ -40,7 +46,7 @@ void engine_hack_manager_init()
 	state_object_sound_data = 0;
 
 	// TODO delete - used for testing...!!
-	state_object_delay_test = 0;
+	//state_object_delay_test = 0;
 }
 
 void engine_hack_manager_load()
@@ -49,8 +55,8 @@ void engine_hack_manager_load()
 
 #ifndef _CONSOLE
 
-	state_object_mydebugger = PEEK( HACKER_START - 3 );			// 0x004D		// Set my debugging from zero-based value.
-	state_object_full_boost = PEEK( HACKER_START - 2 );			// 0x004E		// Set maximum boost for zero-based value.
+	st->state_object_mydebugger = PEEK( HACKER_START - 3 );			// 0x004D		// Set my debugging from zero-based value.
+	st->state_object_full_boost = PEEK( HACKER_START - 2 );			// 0x004E		// Set maximum boost for zero-based value.
 	st->state_object_invincibie = PEEK( HACKER_START - 1 );			// 0x004F		// Set invincibility for zero-based value.
 
 	st->state_object_difficulty = PEEK( HACKER_START + 0 );			// 0x0050		// Set the difficulty to zero-based value.
@@ -64,7 +70,7 @@ void engine_hack_manager_load()
 	state_object_sound_data = PEEK( HACKER_START + 7 );			// 0x0057		// Set 0=sound to play otherwise disabled.
 
 	// TODO delete - used for testing...!!
-	state_object_delay_test = PEEK( HACKER_START + 8 );			// 0x0058		// Set 0 enables all delays otherwise off.
+	st->state_object_delay_test = PEEK( HACKER_START + 8 );			// 0x0058		// Set 0 enables all delays otherwise off.
 
 #endif
 }
@@ -91,9 +97,9 @@ void engine_hack_manager_invert()
 	//state_object_enemy_move[ actor_type_adi ] = 0;
 	//state_object_enemy_move[ actor_type_suz ] = 0;
 
-	state_object_mydebugger = 1;		// TODO don't forget to remove this!!
-	state_object_full_boost = 0;
-	state_object_delay_test = 0;
+	st->state_object_mydebugger = 1;		// TODO don't forget to remove this!!
+	st->state_object_full_boost = 0;
+	st->state_object_delay_test = 0;
 	// TODO delete this hard coded
 
 	// Trees.

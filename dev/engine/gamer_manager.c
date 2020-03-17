@@ -202,12 +202,13 @@ void engine_gamer_manager_hide_death()
 void engine_gamer_manager_move( unsigned char direction )
 {
 	struct_gamer_object *go = &global_gamer_object;
+	struct_state_object *st = &global_state_object;
 	go->direction = direction;
 	go->lifecycle = lifecycle_type_move;
 	go->frame = frame_type_toggle;
 	calcd_frame();
 
-	if( !state_object_full_boost )
+	if( !st->state_object_full_boost )
 	{
 		if( pace_type_fast == go->curr_boost )
 		{
@@ -234,6 +235,7 @@ void engine_gamer_manager_wrap( unsigned char direction )
 void engine_gamer_manager_pace( unsigned char boost )
 {
 	struct_gamer_object *go = &global_gamer_object;
+	struct_state_object *st = &global_state_object;
 	//unsigned char index = go->velocity[ boost ];
 	go->prev_boost = go->curr_boost;
 	go->curr_boost = boost;
@@ -245,7 +247,7 @@ void engine_gamer_manager_pace( unsigned char boost )
 	go->speed = go->speeds[ boost ];
 	go->delay = go->delays[ boost ];
 
-	if( !state_object_full_boost )
+	if( !st->state_object_full_boost )
 	{
 		if( pace_type_fast == go->curr_boost )
 		{
@@ -425,6 +427,7 @@ unsigned char engine_gamer_manager_input_direction()
 unsigned char engine_gamer_manager_input_boost( unsigned char direction )
 {
 	struct_gamer_object *go = &global_gamer_object;
+	struct_state_object *st = &global_state_object;
 	unsigned char boost;
 	unsigned char input;
 
@@ -442,7 +445,7 @@ unsigned char engine_gamer_manager_input_boost( unsigned char direction )
 	{
 		if( direction_type_none != direction )
 		{
-			if( !state_object_full_boost )
+			if( !st->state_object_full_boost )
 			{
 				boost = engine_score_manager_get_value( score_type_boost );
 				if( 0 == boost )

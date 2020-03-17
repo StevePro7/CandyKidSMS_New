@@ -1,6 +1,6 @@
 // Global state.
-extern unsigned char state_object_mydebugger;
-extern unsigned char state_object_full_boost;
+//extern unsigned char state_object_mydebugger;
+//extern unsigned char state_object_full_boost;
 //extern unsigned char state_object_invincibie;
 //extern unsigned char state_object_localcheat;
 extern unsigned int state_object_high_score;
@@ -16,7 +16,7 @@ extern unsigned char state_object_music_data;
 extern unsigned char state_object_sound_data;
 
 extern unsigned char state_object_actor_kill;
-extern unsigned char state_object_delay_test;					// TODO delete - used for testing...!!
+//extern unsigned char state_object_delay_test;					// TODO delete - used for testing...!!
 extern unsigned char state_object_enemy_move[];					// TODO delete
 
 extern unsigned char state_object_prev_screen;

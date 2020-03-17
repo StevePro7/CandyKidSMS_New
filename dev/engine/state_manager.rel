@@ -22,7 +22,7 @@ A _CODE size 5F flags 0 addr 0
 S _engine_state_manager_read Def0040
 S _engine_state_manager_write Def005E
 S _engine_state_manager_init Def0000
-A _DATA size A flags 0 addr 0
+A _DATA size D flags 0 addr 0
 S _global_state_object Def0000
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -37,9 +37,9 @@ T 00 00
 R 00 00 01 00
 T 00 00
 R 00 00 00 00
-T 00 00 21 00 00 36 00 21 01 00 36 00 21 00 00 22
+T 00 00 21 02 00 36 00 21 03 00 36 00 21 00 00 22
 R 00 00 00 00 00 03 01 00 00 08 01 00
-T 0E 00 02 00 21 04 00 36 00 21 05 00 36 00 CD
+T 0E 00 04 00 21 06 00 36 00 21 07 00 36 00 CD
 R 00 00 00 00 00 02 01 00 00 05 01 00 00 0A 01 00
 T 1B 00 00 00 3E 0F F5 33 CD 00 00 33 CD 00 00 CD
 R 00 00 00 00 02 02 0B 00 02 09 0F 00 02 0D 01 00

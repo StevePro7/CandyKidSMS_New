@@ -3,8 +3,8 @@
 #include "..\psg.h"
 
 // Global state.
-unsigned char state_object_mydebugger;
-unsigned char state_object_full_boost;
+//unsigned char state_object_mydebugger;
+//unsigned char state_object_full_boost;
 //unsigned char state_object_invincibie;
 //unsigned char state_object_localcheat;
 unsigned int state_object_high_score;
@@ -20,7 +20,7 @@ unsigned char state_object_music_data;
 unsigned char state_object_sound_data;
 
 unsigned char state_object_actor_kill;
-unsigned char state_object_delay_test;						// TODO delete - used for testing...!!
+//unsigned char state_object_delay_test;						// TODO delete - used for testing...!!
 unsigned char state_object_enemy_move[] = { 1, 1, 1 };		// TODO delete
 
 unsigned char state_object_prev_screen;

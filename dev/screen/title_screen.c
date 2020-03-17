@@ -103,7 +103,7 @@ void screen_title_screen_update( unsigned char *screen_type )
 	delay = engine_delay_manager_update();
 	if( delay )
 	{
-		if( !state_object_delay_test )
+		if( !st->state_object_delay_test )
 		{
 			flash_count = 1 - flash_count;
 		}

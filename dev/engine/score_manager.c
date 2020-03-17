@@ -163,7 +163,7 @@ void engine_score_manager_update_boost()
 {
 	struct_score_object *so = &global_score_object;
 	struct_state_object *st = &global_state_object;
-	if( state_object_full_boost )
+	if( st->state_object_full_boost )
 	{
 		return;
 	}
