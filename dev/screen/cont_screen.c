@@ -10,6 +10,7 @@
 #include "..\engine\locale_manager.h"
 #include "..\engine\memo_manager.h"
 #include "..\engine\score_manager.h"
+#include "..\engine\state_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\banks\databank.h"
@@ -39,6 +40,7 @@ void screen_cont_screen_load()
 
 void screen_cont_screen_update( unsigned char *screen_type )
 {
+	struct_state_object *st = &global_state_object;
 	unsigned char input[ 3 ] = { 0, 0, 0 };
 	unsigned char delay;
 
@@ -54,7 +56,7 @@ void screen_cont_screen_update( unsigned char *screen_type )
 			if( 0 == cursor )
 			{
 				engine_collision_manager_reset_death();
-				engine_enemy_manager_reset_mode( state_object_actor_kill, enemymove_type_tour );
+				engine_enemy_manager_reset_mode( st->state_object_actor_kill, enemymove_type_tour );
 				engine_score_manager_reset_boost();
 				engine_score_manager_reset_lives();
 				engine_level_manager_draw_middle();

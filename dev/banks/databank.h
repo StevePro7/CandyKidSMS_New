@@ -15,7 +15,7 @@ extern unsigned char state_object_round_data;
 extern unsigned char state_object_music_data;
 extern unsigned char state_object_sound_data;
 
-extern unsigned char state_object_actor_kill;
+//extern unsigned char state_object_actor_kill;
 //extern unsigned char state_object_delay_test;					// TODO delete - used for testing...!!
 extern unsigned char state_object_enemy_move[];					// TODO delete
 

@@ -215,6 +215,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 
 static void reset_death()
 {
+	struct_state_object *st = &global_state_object;
 	//struct_gamer_object *go = &global_gamer_object;
 	////unsigned char enemy;
 
@@ -232,7 +233,7 @@ static void reset_death()
 	//}
 
 	// TODO test book reset...
-	engine_enemy_manager_reset_mode( state_object_actor_kill, enemymove_type_tour );
+	engine_enemy_manager_reset_mode( st->state_object_actor_kill, enemymove_type_tour );
 	engine_score_manager_reset_boost();
 
 	// If Kid collided with Mama then will be reset from dead to idle below...

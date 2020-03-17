@@ -10,6 +10,7 @@
 #include "..\engine\level_manager.h"
 #include "..\engine\move_manager.h"
 #include "..\engine\score_manager.h"
+#include "..\engine\state_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\banks\databank.h"
@@ -71,6 +72,7 @@ void screen_test_screen_load()
 
 void screen_test_screen_update( unsigned char *screen_type )
 {
+	struct_state_object *st = &global_state_object;
 	unsigned char *test_walking_cmds = test_walking_cmds1;
 	unsigned char *test_walking_args = test_walking_args1;
 
@@ -86,7 +88,7 @@ void screen_test_screen_update( unsigned char *screen_type )
 
 	unsigned char proceed;
 	unsigned int frame = fo->frame_count;
-	state_object_actor_kill = actor_type_kid;
+	st->state_object_actor_kill = actor_type_kid;
 
 	// Draw sprites first.
 	engine_enemy_manager_draw();
@@ -127,7 +129,7 @@ void screen_test_screen_update( unsigned char *screen_type )
 			if( coll_type_block == gamer_collision )
 			{
 				engine_gamer_manager_dead();
-				state_object_actor_kill = actor_type_tree;
+				st->state_object_actor_kill = actor_type_tree;
 			}
 		}
 

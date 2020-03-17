@@ -64,7 +64,6 @@ void engine_score_manager_init()
 	struct_score_object *so = &global_score_object;
 	struct_state_object *st = &global_state_object;
 	so->score = 0;
-	so->score = 4990;	// stevepro
 	//so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
 	so->values[ score_type_lives ] = NUMBER_LIVES - st->state_object_difficulty;
 	//so->values[ score_type_lives ] = 1; // stevepro

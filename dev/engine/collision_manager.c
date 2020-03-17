@@ -148,7 +148,7 @@ void engine_collision_manager_reset_death()
 	// Kid collided with death tree on border so redraw.
 	if( !st->state_object_localcheat && state_object_trees_type == tree_type_death )
 	{
-		if( actor_type_tree == state_object_actor_kill )
+		if( actor_type_tree == st->state_object_actor_kill )
 		{
 			if( 1 == go->tileX || 1 == go->tileY || ( MAZE_COLS - 2 ) == go->tileX || ( MAZE_ROWS - 2 ) == go->tileY )
 			{

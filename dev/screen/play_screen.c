@@ -83,7 +83,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	unsigned char check;
 	//unsigned char input;
 	unsigned int frame = fo->frame_count;
-	state_object_actor_kill = actor_type_kid;
+	st->state_object_actor_kill = actor_type_kid;
 
 	// Draw sprites first.
 	engine_enemy_manager_draw();
@@ -160,7 +160,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 			if( coll_type_block == gamer_collision )
 			{
 				engine_gamer_manager_dead();
-				state_object_actor_kill = actor_type_tree;
+				st->state_object_actor_kill = actor_type_tree;
 			}
 		}
 
@@ -306,7 +306,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// Kid collide with death tree?
 	if( state_object_trees_type == tree_type_death )
 	{
-		if( actor_type_kid != state_object_actor_kill )
+		if( actor_type_kid != st->state_object_actor_kill )
 		{
 			*screen_type = screen_type_dead;
 			return;
@@ -317,10 +317,10 @@ void screen_play_screen_update( unsigned char *screen_type )
 	gamer_collision = devkit_isCollisionDetected();
 	if( 0 != gamer_collision )
 	{
-		state_object_actor_kill = engine_collision_manager_sprite_collision();
-		if( actor_type_kid != state_object_actor_kill )
+		st->state_object_actor_kill = engine_collision_manager_sprite_collision();
+		if( actor_type_kid != st->state_object_actor_kill )
 		{
-			engine_enemy_manager_dead( state_object_actor_kill );
+			engine_enemy_manager_dead( st->state_object_actor_kill );
 			*screen_type = screen_type_dead;
 			return;
 		}
