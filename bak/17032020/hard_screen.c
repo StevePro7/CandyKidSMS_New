@@ -1,4 +1,4 @@
-#include "diff_screen.h"
+#include "hard_screen.h"
 //#include "..\engine\audio_manager.h"
 //#include "..\engine\cursor_manager.h"
 #include "..\engine\enum_manager.h"
@@ -9,10 +9,12 @@
 //#include "..\engine\state_manager.h"
 //#include "..\engine\timer_manager.h"
 //#include "..\devkit\_sms_manager.h"
-//
-//static unsigned char event_stage;
-	
-void screen_diff_screen_load()
+//#include "..\banks\fixedbank.h"
+//#include "..\banks\databank.h"
+
+static unsigned char event_stage;
+
+void screen_hard_screen_load()
 {
 	//struct_state_object *st = &global_state_object;
 	//event_stage = event_stage_start;
@@ -25,10 +27,10 @@ void screen_diff_screen_load()
 	//engine_cursor_manager_cursor1( st->state_object_difficulty );
 
 	//engine_delay_manager_load( SOUND_SCREEN_DELAY );
-	//engine_font_manager_draw_text( "DIFF SCREEN!!", 4, 10 );
+	//engine_font_manager_draw_text( "HARD SCREEN!!", 2, 10 );
 }
 
-void screen_diff_screen_update( unsigned char *screen_type )
+void screen_hard_screen_update( unsigned char *screen_type )
 {
 	//struct_state_object *st = &global_state_object;
 	//unsigned char input[ 4 ] = { 0, 0, 0, 0 };
@@ -56,12 +58,12 @@ void screen_diff_screen_update( unsigned char *screen_type )
 	//if( input[ 2 ] )
 	//{
 	//	engine_audio_manager_sfx_play( sound_type_accept );
-	//	*screen_type = screen_type_pace;
+	//	//*screen_type = screen_type_pace;
 	//	//*screen_type = screen_type_init;
 	//	//*screen_type = screen_type_option;
 	//	//*screen_type = screen_type_intro;
 	//	//*screen_type = screen_type_fast;
-	//	//*screen_type = screen_type_slow;
+	//	*screen_type = screen_type_slow;
 	//	return;
 	//}
 
@@ -74,5 +76,5 @@ void screen_diff_screen_update( unsigned char *screen_type )
 	//	return;
 	//}
 
-	*screen_type = screen_type_diff;
+	*screen_type = screen_type_hard;
 }
