@@ -315,6 +315,13 @@ void engine_gamer_manager_reset()
 	calcd_spots();
 }
 
+void engine_gamer_manager_image()
+{
+	struct_gamer_object *go = &global_gamer_object;
+	go->image = 1 - go->image;
+	calcd_frame();
+}
+
 unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction )
 {
 	struct_gamer_object *go = &global_gamer_object;

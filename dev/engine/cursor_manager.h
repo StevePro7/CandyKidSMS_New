@@ -10,5 +10,6 @@ void engine_cursor_manager_draw2( unsigned char index );
 void engine_cursor_manager_draw_titles();
 void engine_cursor_manager_draw_option( unsigned char index, unsigned char x, unsigned char y );
 void engine_cursor_manager_draw_option2( unsigned char index, unsigned char actor );
+unsigned char engine_cursor_manager_get_cursor( unsigned char index );
 
 #endif//_CURSOR_MANAGER_H_

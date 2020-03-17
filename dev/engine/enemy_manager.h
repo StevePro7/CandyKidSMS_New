@@ -21,6 +21,7 @@ void engine_enemy_manager_dead( unsigned char enemy );
 //void engine_enemy_manager_reset_all( unsigned char mode );
 void engine_enemy_manager_reset_home();
 void engine_enemy_manager_reset_mode( unsigned char enemy, unsigned char mode );
+void engine_enemy_manager_image( unsigned char enemy );
 
 // TODO delete!!
 void engine_enemy_manager_debug();

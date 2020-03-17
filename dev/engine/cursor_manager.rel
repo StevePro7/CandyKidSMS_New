@@ -1,5 +1,5 @@
 XL2
-H 9 areas E global symbols
+H 9 areas F global symbols
 M cursor_manager
 O -mz80
 S _engine_font_manager_draw_text Ref0000
@@ -8,7 +8,7 @@ S .__.ABS. Def0000
 S _engine_input_manager_hold Ref0000
 S _locale_object_menus Ref0000
 S _devkit_SMS_mapROMBank Ref0000
-A _CODE size 20B flags 0 addr 0
+A _CODE size 21B flags 0 addr 0
 S _engine_cursor_manager_draw_option2 Def01E8
 S _engine_cursor_manager_draw1 Def00C1
 S _engine_cursor_manager_draw2 Def011C
@@ -17,6 +17,7 @@ S _engine_cursor_manager_draw_option Def01B9
 S _engine_cursor_manager_update1 Def0009
 S _engine_cursor_manager_init Def0000
 S _engine_cursor_manager_update2 Def0047
+S _engine_cursor_manager_get_cursor Def020B
 A _DATA size 2 flags 0 addr 0
 A _INITIALIZED size 6 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -175,6 +176,12 @@ T F4 01 47 0A 47 04 C5 33 3E 1C F5 33 21 04 00 39
 R 00 00 00 00
 T 02 02 7E F5 33 CD B9 01 F1 33 C9
 R 00 00 00 00 00 06 00 00
+T 0B 02
+R 00 00 00 00
+T 0B 02 3E 00 00 21 02 00 39 86 4F 3E 00 00 CE 00
+R 00 00 00 00 09 03 01 00 89 0C 01 00
+T 17 02 47 0A 6F C9
+R 00 00 00 00
 T 00 00
 R 00 00 07 00
 T 00 00 09 14

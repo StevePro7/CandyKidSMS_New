@@ -117,3 +117,8 @@ void engine_cursor_manager_draw_option2( unsigned char index, unsigned char acto
 {
 	engine_cursor_manager_draw_option( index, DATA_X - 2, type2_cursorY[ actor ] + 1 );
 }
+
+unsigned char engine_cursor_manager_get_cursor( unsigned char index )
+{
+	return menu_cursor[ index ];
+}

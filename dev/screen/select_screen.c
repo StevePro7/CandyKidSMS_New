@@ -2,8 +2,10 @@
 #include "..\engine\asm_manager.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\content_manager.h"
+#include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
+#include "..\engine\gamer_manager.h"
 #include "..\engine\global_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
@@ -22,11 +24,9 @@ void screen_select_screen_load()
 	//state_object_next_screen = screen_type_option;
 	state_object_next_screen = screen_type_init;
 
-
 	engine_level_manager_load_level( st->state_object_world_data, st->state_object_round_data );
 	engine_level_manager_draw_level();
 	engine_level_manager_draw_middle();
-
 }
 
 void screen_select_screen_update( unsigned char *screen_type )
@@ -100,6 +100,10 @@ void screen_select_screen_update( unsigned char *screen_type )
 		*screen_type = state_object_next_screen;
 		return;
 	}
+
+	// Draw sprites last.
+	engine_enemy_manager_draw();
+	engine_gamer_manager_draw();
 
 	*screen_type = screen_type_select;
 }

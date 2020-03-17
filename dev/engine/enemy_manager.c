@@ -422,7 +422,6 @@ void engine_enemy_manager_reset_home()
 void engine_enemy_manager_reset_mode( unsigned char enemy, unsigned char mode )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
-	eo = &global_enemy_objects[ enemy ];
 	eo->action = mode;
 
 
@@ -444,6 +443,12 @@ void engine_enemy_manager_reset_mode( unsigned char enemy, unsigned char mode )
 	//}
 }
 
+void engine_enemy_manager_image( unsigned char enemy )
+{
+	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
+	eo->image = 1 - eo->image;
+	calcd_frame( enemy );
+}
 
 // TODO delete!!
 void engine_enemy_manager_debug()

@@ -20,6 +20,7 @@ void engine_gamer_manager_pace( unsigned char boost );
 void engine_gamer_manager_stop();
 void engine_gamer_manager_dead();
 void engine_gamer_manager_reset();
+void engine_gamer_manager_image();
 
 unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction );
 unsigned char engine_gamer_manager_input_direction();
