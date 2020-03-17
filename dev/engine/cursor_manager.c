@@ -17,11 +17,49 @@ void engine_cursor_manager_init()
 	menu_cursor[ menu_type_select ] = 0;
 }
 
-void engine_cursor_manager_cursor1( unsigned char index )
+void engine_cursor_manager_update1( unsigned char index )
 {
 	engine_font_manager_draw_text( LOCALE_SELECT_SPACES, TYPE1_OPT1_X, TYPE1_TEXT_Y + 1 );
 	engine_font_manager_draw_text( LOCALE_SELECT_SPACES, TYPE1_OPT2_X, TYPE1_TEXT_Y + 1 );
 	engine_font_manager_draw_text( LOCALE_SELECT_ARROWS, type1_cursorX[ index ], TYPE1_TEXT_Y + 1 );
+}
+
+void engine_cursor_manager_update2( unsigned char index )
+{
+	unsigned char input[ 2 ] = { 0, 0 };
+	input[ 0 ] = engine_input_manager_hold( input_type_up );
+	input[ 1 ] = engine_input_manager_hold( input_type_down );
+
+	if( input[ 0 ] || input[ 1 ] )
+	{
+		if( input[ 0 ] )
+		{
+			if( menu_cursor[ index ] <= 0 )
+			{
+				menu_cursor[ index ] = NUM_DIRECTIONS - 1;
+			}
+			else
+			{
+				menu_cursor[ index ]--;
+			}
+		}
+		else
+		{
+			if( input[ 1 ] )
+			{
+				if( menu_cursor[ index ] >= NUM_DIRECTIONS - 1 )
+				{
+					menu_cursor[ index ] = 0;
+				}
+				else
+				{
+					menu_cursor[ index ]++;
+				}
+			}
+		}
+
+		engine_cursor_manager_draw2( index );
+	}
 }
 
 void engine_cursor_manager_draw1( unsigned char index )
@@ -30,6 +68,23 @@ void engine_cursor_manager_draw1( unsigned char index )
 	engine_font_manager_draw_text( locale_object_menus[ index + 0 ], TYPE1_TEXT_X, TYPE1_TEXT_Y + 0 );
 	engine_font_manager_draw_text( locale_object_menus[ index + 1 ], TYPE1_TEXT_X + 2, TYPE1_TEXT_Y + 1 );
 	engine_font_manager_draw_text( locale_object_menus[ index + 2 ], TYPE1_TEXT_X + 13, TYPE1_TEXT_Y + 1 );
+}
+
+void engine_cursor_manager_draw2( unsigned char index )
+{
+	unsigned char cursor;
+	unsigned char yValue;
+	unsigned char loop;
+
+	for( loop = 0; loop < NUM_DIRECTIONS; loop++ )
+	{
+		yValue = type2_cursorY[ loop ] + 1;
+		engine_font_manager_draw_text( LOCALE_SELECT_SPACE, DATA_X - 4, yValue );
+	}
+
+	cursor = menu_cursor[ index ];
+	yValue = type2_cursorY[ cursor ] + 1;
+	engine_font_manager_draw_text( LOCALE_SELECT_ARROW, DATA_X - 4, yValue );
 }
 
 void engine_cursor_manager_draw_titles()

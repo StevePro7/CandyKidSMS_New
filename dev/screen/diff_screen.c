@@ -21,8 +21,8 @@ void screen_diff_screen_load()
 	////devkit_SMS_mapROMBank( FIXED_BANK );
 
 	//engine_cursor_manager_draw1( 0 );
-	////engine_cursor_manager_cursor1( state_object_difficulty );
-	//engine_cursor_manager_cursor1( st->state_object_difficulty );
+	////engine_cursor_manager_update1( state_object_difficulty );
+	//engine_cursor_manager_update1( st->state_object_difficulty );
 
 	//engine_delay_manager_load( SOUND_SCREEN_DELAY );
 	//engine_font_manager_draw_text( "DIFF SCREEN!!", 4, 10 );
@@ -49,7 +49,7 @@ void screen_diff_screen_update( unsigned char *screen_type )
 	//if( input[ 0 ] || input[ 1 ] )
 	//{
 	//	st->state_object_difficulty = 1 - st->state_object_difficulty;
-	//	engine_cursor_manager_cursor1( st->state_object_difficulty );
+	//	engine_cursor_manager_update1( st->state_object_difficulty );
 	//}
 
 	//input[ 2 ] = engine_input_manager_hold( input_type_fire1 );

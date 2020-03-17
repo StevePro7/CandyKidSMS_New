@@ -24,7 +24,7 @@ void screen_pace_screen_load()
 	engine_font_manager_draw_text( "PACE SCREEN!!", 2, 10 );
 
 	engine_cursor_manager_draw1( 3 );
-	engine_cursor_manager_cursor1( st->state_object_pace_speed );
+	engine_cursor_manager_update1( st->state_object_pace_speed );
 
 	engine_delay_manager_load( SOUND_SCREEN_DELAY );*/
 }
@@ -54,8 +54,8 @@ void screen_pace_screen_update( unsigned char *screen_type )
 	//	//engine_font_manager_draw_data( pace_speed, 10, 15 );
 	//	st->state_object_pace_speed = 1 - st->state_object_pace_speed;
 	//	//state_object_pace_speed = 1 - state_object_pace_speed;
-	//	//engine_cursor_manager_cursor1( state_object_pace_speed );
-	//	engine_cursor_manager_cursor1( st->state_object_pace_speed );
+	//	//engine_cursor_manager_update1( state_object_pace_speed );
+	//	engine_cursor_manager_update1( st->state_object_pace_speed );
 	//	//engine_font_manager_draw_data( pace_speed, 10, 16 );
 	//}
 

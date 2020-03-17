@@ -29,7 +29,7 @@ void screen_fast_screen_load()
 	////engine_font_manager_draw_data( pace_speed, 10, 16 );
 
 	//engine_cursor_manager_draw1( 3 );
-	//engine_cursor_manager_cursor1( pace_speed );
+	//engine_cursor_manager_update1( pace_speed );
 	////unsigned char row;
 	//////devkit_SMS_displayOff();
 
@@ -82,8 +82,8 @@ void screen_fast_screen_update( unsigned char *screen_type )
 	//	//engine_font_manager_draw_data( pace_speed, 10, 15 );
 	//	pace_speed = 1 - pace_speed;
 	//	//state_object_pace_speed = 1 - state_object_pace_speed;
-	//	//engine_cursor_manager_cursor1( state_object_pace_speed );
-	//	engine_cursor_manager_cursor1( pace_speed );
+	//	//engine_cursor_manager_update1( state_object_pace_speed );
+	//	engine_cursor_manager_update1( pace_speed );
 	//	//engine_font_manager_draw_data( pace_speed, 10, 16 );
 	//}
 

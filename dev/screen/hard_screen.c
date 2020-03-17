@@ -20,7 +20,7 @@ void screen_hard_screen_load()
 	event_stage = event_stage_start;
 
 	engine_cursor_manager_draw1( 0 );
-	engine_cursor_manager_cursor1( st->state_object_difficulty );
+	engine_cursor_manager_update1( st->state_object_difficulty );
 
 	engine_delay_manager_load( SOUND_SCREEN_DELAY );
 	//engine_font_manager_draw_text( "HARD SCREEN!!", 2, 10 );
@@ -47,7 +47,7 @@ void screen_hard_screen_update( unsigned char *screen_type )
 	if( input[ 0 ] || input[ 1 ] )
 	{
 		st->state_object_difficulty = 1 - st->state_object_difficulty;
-		engine_cursor_manager_cursor1( st->state_object_difficulty );
+		engine_cursor_manager_update1( st->state_object_difficulty );
 	}
 
 	input[ 2 ] = engine_input_manager_hold( input_type_fire1 );

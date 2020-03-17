@@ -13,6 +13,7 @@
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
 
+// Private helper methods.
 static void print_title();
 static void print_gamer();
 static void print_enemy( unsigned char enemy );
@@ -25,14 +26,15 @@ void screen_option_screen_load()
 	engine_enemy_manager_reset_home();
 	engine_gamer_manager_reset();
 
-	devkit_SMS_displayOff();
 
+	devkit_SMS_displayOff();
 	engine_content_manager_load_tiles_game();
 	engine_content_manager_load_tiles_screen();
 
 	engine_board_manager_border( border_type_game );
 	engine_board_manager_side_tile();
 
+	//. Display text.
 	engine_cursor_manager_draw_titles();
 	print_title();
 	print_gamer();
@@ -42,13 +44,21 @@ void screen_option_screen_load()
 	}
 
 	engine_memo_manager_option();
+	engine_cursor_manager_draw2( menu_type_option );
 	devkit_SMS_displayOn();
 }
 
 void screen_option_screen_update( unsigned char *screen_type )
 {
+	//unsigned char input;
+
+	// Draw sprites first.
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
+
+
+	engine_cursor_manager_update2( menu_type_option );
+
 	/*struct_state_object *st = &global_state_object;
 	unsigned char input;
 

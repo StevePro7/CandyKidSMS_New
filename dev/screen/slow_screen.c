@@ -22,7 +22,7 @@ void screen_slow_screen_load()
 	event_stage = event_stage_start;
 
 	engine_cursor_manager_draw1( 3 );
-	engine_cursor_manager_cursor1( st->state_object_pace_speed );
+	engine_cursor_manager_update1( st->state_object_pace_speed );
 
 	engine_delay_manager_load( SOUND_SCREEN_DELAY );
 	//engine_font_manager_draw_text( "SLOW SCREEN!!", 2, 10 );
@@ -51,7 +51,7 @@ void screen_slow_screen_update( unsigned char *screen_type )
 	if( input[ 0 ] || input[ 1 ] )
 	{
 		st->state_object_pace_speed = 1 - st->state_object_pace_speed;
-		engine_cursor_manager_cursor1( st->state_object_pace_speed );
+		engine_cursor_manager_update1( st->state_object_pace_speed );
 	}
 
 	input[ 2 ] = engine_input_manager_hold( input_type_fire1 );
