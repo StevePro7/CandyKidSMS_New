@@ -59,6 +59,5 @@ void engine_cursor_manager_draw_option( unsigned char index, unsigned char x, un
 }
 void engine_cursor_manager_draw_option2( unsigned char index, unsigned char actor )
 {
-	unsigned char *title = ( unsigned char * ) locale_object_option[ index ];
-	engine_font_manager_draw_text( title, DATA_X - 2, type2_cursorY[ actor ] + 1);
+	engine_cursor_manager_draw_option( index, DATA_X - 2, type2_cursorY[ actor ] + 1 );
 }
