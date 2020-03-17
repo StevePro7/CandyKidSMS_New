@@ -1,6 +1,7 @@
 #include "storage_manager.h"
 #include "enum_manager.h"
 #include "global_manager.h"
+#include "state_manager.h"
 #include "storage_manager.h"
 #include "..\banks\databank.h"
 #include "..\devkit\_sms_manager.h"
@@ -24,11 +25,11 @@ unsigned char engine_storage_manager_available()
 
 void engine_storage_manager_read()
 {
-	// TODO update!!
 	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+	struct_state_object *st = &global_state_object;
 
 	devkit_SMS_enableSRAM();
-	state_object_high_score = savegame->save_high_score;
+	st->state_object_high_score = savegame->save_high_score;
 
 	state_object_trees_type = savegame->save_trees_type;
 	state_object_exits_type = savegame->save_exits_type;
@@ -44,12 +45,12 @@ void engine_storage_manager_read()
 
 void engine_storage_manager_write()
 {
-	// TODO update!!
 	struct_storage_object *savegame = ( struct_storage_object* ) ( devkit_SMS_SRAM() );
+	struct_state_object *st = &global_state_object;
 
 	devkit_SMS_enableSRAM();
 	savegame->Magic = MAGIC;
-	savegame->save_high_score = state_object_high_score;
+	savegame->save_high_score = st->state_object_high_score;
 
 	savegame->save_trees_type = state_object_trees_type;
 	savegame->save_exits_type = state_object_exits_type;

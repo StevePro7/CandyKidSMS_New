@@ -64,6 +64,7 @@ void engine_score_manager_init()
 	struct_score_object *so = &global_score_object;
 	struct_state_object *st = &global_state_object;
 	so->score = 0;
+	so->score = 4990;	// stevepro
 	//so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
 	so->values[ score_type_lives ] = NUMBER_LIVES - st->state_object_difficulty;
 	//so->values[ score_type_lives ] = 1; // stevepro
@@ -274,16 +275,17 @@ void engine_score_manager_reset_boost()
 static void update_score( unsigned char points )
 {
 	struct_score_object *so = &global_score_object;
-	unsigned int hiscore = state_object_high_score;		// IMPORTANT Not sure why this didn't work directly??
+	struct_state_object *st = &global_state_object;
+	//unsigned int hiscore = state_object_high_score;		// IMPORTANT Not sure why this didn't work directly??
 	so->score += points;
 
 	if( so->score > MAX_HI_SCORE )
 	{
 		so->score = MAX_HI_SCORE;
 	}
-	if( so->score > hiscore )
+	if( so->score > st->state_object_high_score )
 	{
-		state_object_high_score = so->score;
+		st->state_object_high_score = so->score;
 		draw_highs();
 	}
 
@@ -307,8 +309,9 @@ static void update_lives( signed char value )
 
 static void draw_highs()
 {
+	struct_state_object *st = &global_state_object;
 	//engine_font_manager_draw_long( state_object_high_score, DATA_X + 0, HIGHS_Y + 1 );
-	engine_font_manager_draw_data( state_object_high_score, DATA_X + 0, HIGHS_Y + 1 );
+	engine_font_manager_draw_data( st->state_object_high_score, DATA_X + 0, HIGHS_Y + 1 );
 	//engine_font_manager_draw_data( 2334, DATA_X + 0, HIGHS_Y + 1 );
 }
 static void draw_score()

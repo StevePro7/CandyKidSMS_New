@@ -38,11 +38,12 @@ void engine_state_manager_init()
 
 void engine_state_manager_read()
 {
+	struct_state_object *st = &global_state_object;
 	unsigned char test;
 
 	// Set default global state.
 	engine_hack_manager_init();
-	state_object_high_score = DEF_HI_SCORE;
+	st->state_object_high_score = DEF_HI_SCORE;
 	state_object_actor_kill = actor_type_kid;
 
 	// Check if global state previously stored.
