@@ -29,31 +29,13 @@ void engine_hack_manager_init()
 	st->state_object_trees_type = 0;
 	st->state_object_exits_type = 0;
 
-	//st->state_object_world_data = 0;
-	//st->state_object_round_data = 0;
+	st->state_object_world_data = 0;
+	st->state_object_round_data = 0;
 	st->state_object_music_data = 0;
 	st->state_object_sound_data = 0;
 
 	// TODO delete - used for testing...!!
 	st->state_object_delay_test = 0;
-
-	//state_object_mydebugger = 0;
-	//state_object_full_boost = 0;
-	//state_object_invincibie = 0;
-	//state_object_localcheat = 0;
-
-	//state_object_difficulty = 0;
-	////state_object_pace_speed = 0;
-	//state_object_trees_type = 0;
-	//state_object_exits_type = 0;
-
-	state_object_world_data = 0;
-	state_object_round_data = 0;
-	//state_object_music_data = 0;
-	//state_object_sound_data = 0;
-
-	// TODO delete - used for testing...!!
-	//state_object_delay_test = 0;
 }
 
 void engine_hack_manager_load()
@@ -71,8 +53,8 @@ void engine_hack_manager_load()
 	st->state_object_trees_type = PEEK( HACKER_START + 2 );			// 0x0052		// Set start treeType to zero-based value.
 	st->state_object_exits_type = PEEK( HACKER_START + 3 );			// 0x0053		// Set start exitType to zero-based value.
 
-	state_object_world_data = PEEK( HACKER_START + 4 );			// 0x0054		// Set start world no to zero-based value.
-	state_object_round_data = PEEK( HACKER_START + 5 );			// 0x0055		// Set start round no to zero-based value.
+	st->state_object_world_data = PEEK( HACKER_START + 4 );			// 0x0054		// Set start world no to zero-based value.
+	st->state_object_round_data = PEEK( HACKER_START + 5 );			// 0x0055		// Set start round no to zero-based value.
 	st->state_object_music_data = PEEK( HACKER_START + 6 );			// 0x0056		// Set 0=music to play otherwise disabled.
 	st->state_object_sound_data = PEEK( HACKER_START + 7 );			// 0x0057		// Set 0=sound to play otherwise disabled.
 
@@ -86,18 +68,14 @@ void engine_hack_manager_invert()
 {
 	// TODO delete this hard coded
 	struct_state_object *st = &global_state_object;
+	st->state_object_invincibie = 0;
+	st->state_object_localcheat = 0;
+
 	st->state_object_difficulty = 0;
 	st->state_object_pace_speed = 0;
 	st->state_object_trees_type = 1;
 	st->state_object_exits_type = 0;
-	st->state_object_invincibie = 0;
-	st->state_object_localcheat = 0;
 
-	//state_object_difficulty = 0;
-	//state_object_pace_speed = 0;
-	//state_object_trees_type = 1;
-	//state_object_exits_type = 0;
-	//state_object_invincibie = 0;
 
 	state_object_enemy_move[ actor_type_pro ] = 1;
 	state_object_enemy_move[ actor_type_adi ] = 1;
@@ -106,6 +84,7 @@ void engine_hack_manager_invert()
 	//state_object_enemy_move[ actor_type_pro ] = 0;
 	//state_object_enemy_move[ actor_type_adi ] = 0;
 	//state_object_enemy_move[ actor_type_suz ] = 0;
+
 
 	st->state_object_mydebugger = 1;		// TODO don't forget to remove this!!
 	st->state_object_full_boost = 0;
@@ -120,27 +99,27 @@ void engine_hack_manager_invert()
 
 
 	// World.
-	if( 0 != state_object_world_data )
+	if( 0 != st->state_object_world_data )
 	{
-		if( state_object_world_data > MAX_WORLDS )
+		if( st->state_object_world_data > MAX_WORLDS )
 		{
-			state_object_world_data = MAX_WORLDS;
+			st->state_object_world_data = MAX_WORLDS;
 		}
 
 		// Zero-based index.
-		state_object_world_data -= 1;
+		st->state_object_world_data -= 1;
 	}
 
 	// Round.
-	if( 0 != state_object_round_data )
+	if( 0 != st->state_object_round_data )
 	{
-		if( state_object_round_data > MAX_ROUNDS )
+		if( st->state_object_round_data > MAX_ROUNDS )
 		{
-			state_object_round_data = MAX_ROUNDS;
+			st->state_object_round_data = MAX_ROUNDS;
 		}
 
 		// Zero-based index.
-		state_object_round_data -= 1;
+		st->state_object_round_data -= 1;
 	}
 
 	// Invert default values.
@@ -150,8 +129,8 @@ void engine_hack_manager_invert()
 	// TODO revert this code to play music + sound FX.
 
 	// TODO delete this hard coded
-	state_object_world_data = 1 - 1;
-	state_object_round_data = 1 - 1;
+	st->state_object_world_data = 1 - 1;
+	st->state_object_round_data = 1 - 1;
 
 	//state_object_world_data = 8 - 1;
 	//state_object_round_data = 9 - 1;

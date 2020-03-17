@@ -87,7 +87,7 @@ void engine_score_manager_load()
 	struct_state_object *st = &global_state_object;
 	//so->score = 0;
 	//so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
-	so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
+	so->values[ score_type_level ] = st->state_object_world_data * MAX_WORLDS + st->state_object_round_data + 1;
 	so->bonus = 0;
 	so->candy = 0;
 	//so->total = 0;
@@ -229,7 +229,8 @@ void engine_score_manager_draw_load()
 void engine_score_manager_update_level()
 {
 	struct_score_object *so = &global_score_object;
-	so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
+	struct_state_object *st = &global_state_object;
+	so->values[ score_type_level ] = st->state_object_world_data * MAX_WORLDS + st->state_object_round_data + 1;
 	draw_value( score_type_level );
 
 	// TODO delete this - used for debugging!
@@ -323,6 +324,7 @@ static void draw_score()
 static void draw_value( unsigned char index )
 {
 	struct_score_object *so = &global_score_object;
+	struct_state_object *st = &global_state_object;
 	unsigned char y_val = value_y[ index ];
 	unsigned char value = 0;
 
@@ -332,11 +334,11 @@ static void draw_value( unsigned char index )
 	}
 	else if( score_type_world == index )
 	{
-		value = state_object_world_data + 1;
+		value = st->state_object_world_data + 1;
 	}
 	else if( score_type_round == index )
 	{
-		value = state_object_round_data + 1;
+		value = st->state_object_round_data + 1;
 	}
 
 	// HACK to workaround side tile for exit.

@@ -10,8 +10,8 @@
 //extern unsigned char state_object_trees_type;
 //extern unsigned char state_object_exits_type;
 
-extern unsigned char state_object_world_data;
-extern unsigned char state_object_round_data;
+//extern unsigned char state_object_world_data;
+//extern unsigned char state_object_round_data;
 //extern unsigned char state_object_music_data;
 //extern unsigned char state_object_sound_data;
 

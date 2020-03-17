@@ -81,7 +81,7 @@ void engine_enemy_manager_load()
 	unsigned char count = MAX_ENEMIES + st->state_object_difficulty;
 	unsigned char delta;
 	unsigned char offset;
-	unsigned char random = state_object_round_data + 2;
+	unsigned char random = st->state_object_round_data + 2;
 
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )

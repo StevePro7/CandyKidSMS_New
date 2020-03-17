@@ -10,6 +10,7 @@
 #include "..\engine\level_manager.h"
 #include "..\engine\locale_manager.h"
 #include "..\engine\memo_manager.h"
+#include "..\engine\state_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\banks\databank.h"
 
@@ -56,6 +57,7 @@ void screen_beat_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
+	struct_state_object *st = &global_state_object;
 	unsigned char the_direction;
 	unsigned char delay;
 	unsigned char input;
@@ -66,8 +68,8 @@ void screen_beat_screen_update( unsigned char *screen_type )
 	if( delay || input )
 	{
 		engine_audio_manager_music_stop();
-		state_object_world_data = 0;
-		state_object_round_data = 0;
+		st->state_object_world_data = 0;
+		st->state_object_round_data = 0;
 		*screen_type = state_object_next_screen;
 		return;
 	}

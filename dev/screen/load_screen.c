@@ -12,6 +12,7 @@
 #include "..\engine\level_manager.h"
 #include "..\engine\memo_manager.h"
 #include "..\engine\score_manager.h"
+#include "..\engine\state_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\databank.h"
@@ -26,6 +27,7 @@ static void print_enemy();		// TODO delete
 
 void screen_load_screen_load()
 {
+	struct_state_object *st = &global_state_object;
 	unsigned char actor_mover[ MAX_ACTORS ];
 	unsigned char actor_tileZ[ MAX_ACTORS ];
 
@@ -52,8 +54,8 @@ void screen_load_screen_load()
 
 	// IMPORTANT do not display Off / On here as looks better to load level over border.
 	//devkit_SMS_displayOff();
-	engine_level_manager_load_level( state_object_world_data, state_object_round_data );
-	engine_level_manager_update_level( state_object_round_data, actor_mover, actor_tileZ );
+	engine_level_manager_load_level( st->state_object_world_data, st->state_object_round_data );
+	engine_level_manager_update_level( st->state_object_round_data, actor_mover, actor_tileZ );
 	engine_level_manager_draw_level();
 	//engine_level_manager_draw_level();		// stevepro - testing
 	//devkit_SMS_displayOn();
@@ -95,8 +97,9 @@ void screen_load_screen_update( unsigned char *screen_type )
 
 static void print_level()
 {
-	unsigned char world = state_object_world_data + 1;
-	unsigned char round = state_object_round_data + 1;
+	struct_state_object *st = &global_state_object;
+	unsigned char world = st->state_object_world_data + 1;
+	unsigned char round = st->state_object_round_data + 1;
 
 	engine_board_manager_midd_text();
 	engine_font_manager_draw_data( world, SCREEN_TILE_LEFT + 15, 11 );
