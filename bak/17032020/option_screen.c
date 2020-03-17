@@ -6,8 +6,6 @@
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\input_manager.h"
-#include "..\engine\memo_manager.h"
-#include "..\engine\state_manager.h"
 #include "..\devkit\_sms_manager.h"
 
 void screen_option_screen_load()
@@ -22,31 +20,12 @@ void screen_option_screen_load()
 	engine_board_manager_border( border_type_game );
 	engine_board_manager_side_tile();
 
-	engine_memo_manager_option();
-	engine_board_manager_toggle();
-
 	devkit_SMS_displayOn();
 }
 
 void screen_option_screen_update( unsigned char *screen_type )
 {
-	struct_state_object *st = &global_state_object;
-	unsigned char input;
-
-	input = engine_input_manager_hold( input_type_fire1 );
-	if( input )
-	{
-		st->state_object_exits_type = 1 - st->state_object_exits_type;
-		engine_board_manager_toggle();
-	}
-
-	input = engine_input_manager_hold( input_type_fire2 );
-	if( input )
-	{
-		st->state_object_trees_type = 1 - st->state_object_trees_type;
-		engine_board_manager_border( border_type_game );
-	}
-
-	//*screen_type = screen_type_select;
-	*screen_type = screen_type_option;
+	//*screen_type = screen_type_init;
+	*screen_type = screen_type_select;
+	//*screen_type = screen_type_option;
 }

@@ -24,7 +24,7 @@
 #define BOT2_EXIT_Y		8
 
 
-static void draw_side( unsigned char wide, unsigned char right );
+//static void draw_side( unsigned char wide, unsigned char right );
 static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right );
 
 // Methods.
@@ -135,8 +135,6 @@ void engine_board_manager_border( unsigned char index )
 		{
 			if( exit_type_public == st->state_object_exits_type )
 			{
-				//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, TOP_SIDE_Y );
-				//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, BOT_SIDE_Y );
 				continue;;
 			}
 		}
@@ -144,7 +142,7 @@ void engine_board_manager_border( unsigned char index )
 		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, TOP_SIDE_Y );
 		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, BOT_SIDE_Y );
 	}
-	
+
 	rght = board_object_rght[ index ];
 	for( loop = 1; loop < SCREEN_TILE_HIGH - 1; loop++ )
 	{
@@ -152,8 +150,6 @@ void engine_board_manager_border( unsigned char index )
 		{
 			if( exit_type_public == st->state_object_exits_type )
 			{
-				//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_SIDE_Y + loop * 2 );
-				//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + rght, TOP_SIDE_Y + loop * 2 );
 				continue;;
 			}
 		}
@@ -163,19 +159,56 @@ void engine_board_manager_border( unsigned char index )
 	}
 }
 
+void engine_board_manager_toggle()
+{
+	struct_state_object *st = &global_state_object;
+	unsigned char index;
+	unsigned char x, y;
+
+	devkit_SMS_mapROMBank( FIXED_BANK );
+	for( index = 0; index < 8; index++ )
+	{
+		x = board_object_exitX[ index ] + SCREEN_TILE_LEFT;
+		y = board_object_exitY[ index ];
+
+		if( exit_type_public == st->state_object_exits_type )
+		{
+			engine_tile_manager_draw_blank( x, y );
+		}
+		else
+		{
+			engine_tile_manager_draw_trees( st->state_object_trees_type, x, y );
+		}
+	}
+	//unsigned char left = TOP_EXIT_Y;
+	//unsigned char midd = BOT_EXIT_Y;
+	//unsigned char right = MID_SIDE_X;
+
+	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, TOP_SIDE_Y );
+	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + midd, TOP_SIDE_Y );
+	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, BOT_SIDE_Y );
+	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + midd, BOT_SIDE_Y );
+
+	//// Hard code top and bottom exits as they never move!
+	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_EXIT_Y );
+	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X, BOT_EXIT_Y );
+	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + right, TOP_EXIT_Y );
+	//engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + right, BOT_EXIT_Y );
+}
+
 //void engine_board_manager_draw_full()
 //{
 //	draw_side( TREE_COLS, MID_SIDE_X );
 //}
-void engine_board_manager_draw_exit()
-{
-	draw_gaps( TOP_EXIT_Y, BOT_EXIT_Y, MID_SIDE_X );
-}
+//void engine_board_manager_draw_exit()
+//{
+//	draw_gaps( TOP_EXIT_Y, BOT_EXIT_Y, MID_SIDE_X );
+//}
 
-void engine_board_manager_main_full()
-{
-	draw_side( SCREEN_TILE_WIDE - 1, RGT_SIDE_X );
-}
+//void engine_board_manager_main_full()
+//{
+//	draw_side( SCREEN_TILE_WIDE - 1, RGT_SIDE_X );
+//}
 //void engine_board_manager_main_exit()
 //{
 //	draw_gaps( 8, 20, RGT_SIDE_X );
@@ -234,23 +267,23 @@ void engine_board_manager_debugger()
 }
 // TODO - delete!!
 
-static void draw_side( unsigned char wide, unsigned char right )
-{
-	struct_state_object *st = &global_state_object;
-	unsigned char type = st->state_object_trees_type;
-	unsigned char loop;
-
-	for( loop = 0; loop < wide; loop++ )
-	{
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, TOP_SIDE_Y );
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, BOT_SIDE_Y );
-	}
-	for( loop = 1; loop < SCREEN_TILE_HIGH - 1; loop++ )
-	{
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_SIDE_Y + loop * 2 );
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + right, TOP_SIDE_Y + loop * 2 );
-	}
-}
+//static void draw_side( unsigned char wide, unsigned char right )
+//{
+//	struct_state_object *st = &global_state_object;
+//	unsigned char type = st->state_object_trees_type;
+//	unsigned char loop;
+//
+//	for( loop = 0; loop < wide; loop++ )
+//	{
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, TOP_SIDE_Y );
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X + loop * 2, BOT_SIDE_Y );
+//	}
+//	for( loop = 1; loop < SCREEN_TILE_HIGH - 1; loop++ )
+//	{
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_SIDE_Y + loop * 2 );
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + right, TOP_SIDE_Y + loop * 2 );
+//	}
+//}
 static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right )
 {
 	struct_state_object *st = &global_state_object;
