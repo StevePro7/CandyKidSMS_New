@@ -23,7 +23,6 @@
 
 // Private helper methods.
 static void print_title();
-static void print_level();
 
 static unsigned char event_stage;
 
@@ -50,6 +49,7 @@ void screen_select_screen_load()
 
 	engine_cursor_manager_draw_title2();
 	engine_cursor_manager_draw2( menu_type_select );
+	engine_memo_manager_levels( 28, 5, 10 );
 
 	engine_delay_manager_load( SOUND_SCREEN_DELAY + 10 );
 	st->state_object_curr_screen = screen_type_select;
@@ -86,14 +86,14 @@ void screen_select_screen_update( unsigned char *screen_type )
 		//engine_gamer_manager_draw();
 	}
 
-	engine_cursor_manager_update2( menu_type_select );
+	//engine_cursor_manager_update2( menu_type_select );
 
 	// Draw sprites last.
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
 	input[ 0 ] = engine_input_manager_hold( input_type_left );
-	input[ 1 ] = engine_input_manager_hold( input_type_right );
+	//input[ 1 ] = engine_input_manager_hold( input_type_right );
 	if( input[ 0 ] || input[ 1 ] )
 	{
 		cursor = engine_cursor_manager_get_cursor( menu_type_select );
@@ -111,14 +111,14 @@ void screen_select_screen_update( unsigned char *screen_type )
 					st->state_object_world_data--;
 				}
 			}
-			if( input[ 1 ] )
-			{
-				st->state_object_world_data++;
-				if( st->state_object_world_data >= MAX_WORLDS )
-				{
-					st->state_object_world_data = 0;
-				}
-			}
+			//if( input[ 1 ] )
+			//{
+			//	st->state_object_world_data++;
+			//	if( st->state_object_world_data >= MAX_WORLDS )
+			//	{
+			//		st->state_object_world_data = 0;
+			//	}
+			//}
 		}
 	}
 
@@ -157,22 +157,22 @@ void screen_select_screen_update( unsigned char *screen_type )
 	//	}
 	//}
 
-	//if( check )
-	//{
-	//	engine_score_manager_update_level();
-	//	engine_level_manager_load_level( st->state_object_world_data, st->state_object_round_data );
-	//	engine_level_manager_draw_level();
-	//	engine_level_manager_draw_middle();
-	//}
+	if( check )
+	{
+		engine_level_manager_load_level( st->state_object_world_data, st->state_object_round_data );
+		engine_level_manager_draw_level();
+		engine_level_manager_draw_middle();
+		engine_memo_manager_levels( 28, 5, 10 );
+	}
 
-	//input[ 0 ] = engine_input_manager_hold( input_type_fire1 );
-	//if( input[ 0 ] )
-	//{
-	//	engine_audio_manager_sfx_play( sfx_type_accept );
-	//	st->state_object_next_screen = screen_type_init;
-	//	event_stage = event_stage_pause;
-	//	return;
-	//}
+	input[ 0 ] = engine_input_manager_hold( input_type_fire1 );
+	if( input[ 0 ] )
+	{
+		engine_audio_manager_sfx_play( sfx_type_accept );
+		st->state_object_next_screen = screen_type_init;
+		event_stage = event_stage_pause;
+		return;
+	}
 
 	input[ 1 ] = engine_input_manager_hold( input_type_fire2 );
 	if( input[ 1 ] )
@@ -195,11 +195,4 @@ static void print_title()
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	engine_font_manager_draw_text( locale_object_select[ 0 ], TEXT_X, TEXT0_Y + 0 );
 	engine_font_manager_draw_text( locale_object_select[ 1 ], TEXT_X, TEXT0_Y + 1 );
-}
-
-static void print_level()
-{
-	struct_state_object *st = &global_state_object;
-	unsigned char world = st->state_object_world_data + 1;
-	unsigned char round = st->state_object_round_data + 1;
 }
