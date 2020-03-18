@@ -20,20 +20,21 @@ static unsigned char command_index;
 static unsigned char command_count;
 static unsigned char walking_delta;
 static unsigned char walking_count;
-//static unsigned char first_time;
 
 unsigned char beat_walking_cmds[] = { direction_type_rght, direction_type_down, direction_type_left, direction_type_upxx };
 unsigned char beat_walking_move[] = { 7, 7, 7, 7 };
 
 void screen_beat_screen_load()
 {
+	// TODO wipe all the level before draw empty beat screen
+
 	struct_state_object *st = &global_state_object;
 	const unsigned char *data = beats0000_txt;
 	const unsigned char size = beats0000_txt_size;
 	const unsigned char bank = beats0000_txt_bank;
 
 	st->state_object_curr_screen = screen_type_beat;
-	st->state_object_next_screen = screen_type_title;
+	st->state_object_next_screen = screen_type_begin;
 
 	engine_audio_manager_music_stop();
 	engine_delay_manager_load( BEAT_SCREEN_DELAY );

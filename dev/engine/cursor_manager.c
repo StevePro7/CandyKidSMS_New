@@ -124,7 +124,7 @@ void engine_cursor_manager_draw_title2()
 	}
 }
 
-void engine_cursor_manager_draw_option( unsigned char index, unsigned char x, unsigned char y )
+void engine_cursor_manager_draw_option1( unsigned char index, unsigned char x, unsigned char y )
 {
 	unsigned char *title = ( unsigned char * ) locale_object_option[ index ];
 	devkit_SMS_mapROMBank( FIXED_BANK );
@@ -133,7 +133,7 @@ void engine_cursor_manager_draw_option( unsigned char index, unsigned char x, un
 }
 void engine_cursor_manager_draw_option2( unsigned char index, unsigned char actor )
 {
-	engine_cursor_manager_draw_option( index, DATA_X - 3, type2_cursorY[ actor ] + 1 );
+	engine_cursor_manager_draw_option1( index, DATA_X - 3, type2_cursorY[ actor ] + 1 );
 }
 
 unsigned char engine_cursor_manager_get_cursor( unsigned char index )

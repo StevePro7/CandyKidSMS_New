@@ -86,14 +86,14 @@ void screen_select_screen_update( unsigned char *screen_type )
 		//engine_gamer_manager_draw();
 	}
 
-	//engine_cursor_manager_update2( menu_type_select );
+	engine_cursor_manager_update2( menu_type_select );
 
 	// Draw sprites last.
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
 	input[ 0 ] = engine_input_manager_hold( input_type_left );
-	//input[ 1 ] = engine_input_manager_hold( input_type_right );
+	input[ 1 ] = engine_input_manager_hold( input_type_right );
 	if( input[ 0 ] || input[ 1 ] )
 	{
 		cursor = engine_cursor_manager_get_cursor( menu_type_select );
@@ -111,14 +111,37 @@ void screen_select_screen_update( unsigned char *screen_type )
 					st->state_object_world_data--;
 				}
 			}
-			//if( input[ 1 ] )
-			//{
-			//	st->state_object_world_data++;
-			//	if( st->state_object_world_data >= MAX_WORLDS )
-			//	{
-			//		st->state_object_world_data = 0;
-			//	}
-			//}
+			if( input[ 1 ] )
+			{
+				st->state_object_world_data++;
+				if( st->state_object_world_data >= MAX_WORLDS )
+				{
+					st->state_object_world_data = 0;
+				}
+			}
+		}
+		if( 1 == cursor )
+		{
+			check = 1;
+			if( input[ 0 ] )
+			{
+				if( st->state_object_round_data == 0 )
+				{
+					st->state_object_round_data = MAX_ROUNDS - 1;
+				}
+				else
+				{
+					st->state_object_round_data--;
+				}
+			}
+			if( input[ 1 ] )
+			{
+				st->state_object_round_data++;
+				if( st->state_object_round_data >= MAX_ROUNDS )
+				{
+					st->state_object_round_data = 0;
+				}
+			}
 		}
 	}
 
