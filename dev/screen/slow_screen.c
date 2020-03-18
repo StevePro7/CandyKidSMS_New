@@ -25,7 +25,6 @@ void screen_slow_screen_load()
 	engine_cursor_manager_update1( st->state_object_pace_speed );
 
 	engine_delay_manager_load( SOUND_SCREEN_DELAY );
-	//engine_font_manager_draw_text( "SLOW SCREEN!!", 2, 10 );
 }
 
 void screen_slow_screen_update( unsigned char *screen_type )

@@ -33,7 +33,7 @@ void engine_state_manager_init()
 	engine_enemy_manager_init();
 
 	level_object_multiplier = 1;
-	state_object_prev_screen = screen_type_none;
+	//state_object_prev_screen = screen_type_none;
 	state_object_curr_screen = screen_type_none;
 	state_object_next_screen = screen_type_none;
 }

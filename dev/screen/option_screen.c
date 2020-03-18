@@ -10,13 +10,17 @@
 #include "..\engine\input_manager.h"
 #include "..\engine\memo_manager.h"
 #include "..\engine\state_manager.h"
+#include "..\engine\timer_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
+#include "..\banks\databank.h"
 
 // Private helper methods.
 static void print_title();
 static void print_gamer();
 static void print_enemy( unsigned char enemy );
+
+static unsigned char event_stage;
 
 void screen_option_screen_load()
 {
@@ -46,6 +50,11 @@ void screen_option_screen_load()
 	engine_memo_manager_option();
 	engine_cursor_manager_draw2( menu_type_option );
 	devkit_SMS_displayOn();
+
+	engine_delay_manager_load( SOUND_SCREEN_DELAY );
+	state_object_curr_screen = screen_type_option;
+	state_object_next_screen = screen_type_option;
+	event_stage = event_stage_start;
 }
 
 void screen_option_screen_update( unsigned char *screen_type )
@@ -53,6 +62,21 @@ void screen_option_screen_update( unsigned char *screen_type )
 	unsigned char input[ 2 ] = { 0, 0 };
 	unsigned char cursor;
 	unsigned char enemy;
+	unsigned char delay;
+
+	if( event_stage_pause == event_stage )
+	{
+		delay = engine_delay_manager_update();
+		if( delay )
+		{
+			*screen_type = state_object_next_screen;
+			return;
+		}
+
+		// Draw sprites last.
+		engine_enemy_manager_draw();
+		engine_gamer_manager_draw();
+	}
 
 	engine_cursor_manager_update2( menu_type_option );
 
@@ -75,11 +99,17 @@ void screen_option_screen_update( unsigned char *screen_type )
 		}
 	}
 
+	// Draw sprites last.
+	engine_enemy_manager_draw();
+	engine_gamer_manager_draw();
+
 	input[ 0 ] = engine_input_manager_hold( input_type_fire1 );
 	if( input[ 0 ] )
 	{
-		// TODO sfx + pause.
-		*screen_type = screen_type_select;
+		engine_audio_manager_sfx_play( sound_type_accept );
+		//*screen_type = screen_type_select;
+		state_object_next_screen = screen_type_select;
+		event_stage = event_stage_pause;
 		return;
 	}
 
@@ -87,8 +117,10 @@ void screen_option_screen_update( unsigned char *screen_type )
 	input[ 1 ] = engine_input_manager_hold( input_type_fire2 );
 	if( input[ 1 ] )
 	{
-		// TODO sfx + pause.
-		*screen_type = screen_type_begin;
+		engine_audio_manager_sfx_play( sfx_type_reset );
+		//*screen_type = screen_type_begin;
+		state_object_next_screen = screen_type_begin;
+		event_stage = event_stage_pause;
 		return;
 	}
 
@@ -109,12 +141,10 @@ void screen_option_screen_update( unsigned char *screen_type )
 		engine_board_manager_border( border_type_game );
 	}*/
 
-	// Draw sprites last.
-	engine_enemy_manager_draw();
-	engine_gamer_manager_draw();
+	
 
 	//*screen_type = screen_type_select;
-	*screen_type = screen_type_option;
+	*screen_type = state_object_curr_screen;
 }
 
 static void print_names()

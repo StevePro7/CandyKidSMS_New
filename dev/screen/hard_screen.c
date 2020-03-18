@@ -23,7 +23,6 @@ void screen_hard_screen_load()
 	engine_cursor_manager_update1( st->state_object_difficulty );
 
 	engine_delay_manager_load( SOUND_SCREEN_DELAY );
-	//engine_font_manager_draw_text( "HARD SCREEN!!", 2, 10 );
 }
 
 void screen_hard_screen_update( unsigned char *screen_type )
