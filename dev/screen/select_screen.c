@@ -23,6 +23,7 @@
 
 // Private helper methods.
 static void print_title();
+static void print_level();
 static void print_trees();
 static void print_exits();
 
@@ -50,6 +51,7 @@ void screen_select_screen_load()
 	engine_level_manager_draw_middle();
 
 	engine_cursor_manager_draw_title2();
+	print_level();
 	print_trees();
 	print_exits();
 
@@ -200,6 +202,12 @@ static void print_title()
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	engine_font_manager_draw_text( locale_object_select[ 0 ], TEXT_X, TEXT0_Y + 0 );
 	engine_font_manager_draw_text( locale_object_select[ 1 ], TEXT_X, TEXT0_Y + 1 );
+}
+
+static void print_level()
+{
+	engine_cursor_manager_draw_select2( 3, 0 );
+	engine_cursor_manager_draw_select2( 6, 1 );
 }
 
 static void print_trees()

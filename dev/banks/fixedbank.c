@@ -144,8 +144,8 @@ const unsigned char *locale_object_select[] =
 {
 	"SELECT",
 	" LEVEL",
-	"WORLD", "", "",
-	"ROUND", "", "",
+	"WORLD", "     ", "",
+	"ROUND", "     ", "",
 	"TREES", " STOP", " KILL",
 	"EXITS", " OPEN", " SHUT",
 };
