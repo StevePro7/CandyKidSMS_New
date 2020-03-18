@@ -152,27 +152,28 @@ void screen_option_screen_update( unsigned char *screen_type )
 	*screen_type = st->state_object_curr_screen;
 }
 
-static void print_names()
-{
-	struct_gamer_object *go = &global_gamer_object;
-	struct_enemy_object *eo;
-	unsigned char enemy;
-	unsigned char index;
-
-	// Gamer.
-	index = 2 + actor_type_pro * 3;
-	index += go->image + 1;
-	engine_cursor_manager_draw_option( index, go->tileX * 2 - 1, go->tileY * 2 + 1 );
-
-	// Enemy.
-	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
-	{
-		eo = &global_enemy_objects[ enemy ];
-		index = 2 + enemy * 3;
-		index += eo->image + 1;
-		engine_cursor_manager_draw_option( index, eo->tileX * 2 - 1, eo->tileY * 2 + 1 );
-	}
-}
+// TODO delete!!
+//static void print_names()
+//{
+//	struct_gamer_object *go = &global_gamer_object;
+//	struct_enemy_object *eo;
+//	unsigned char enemy;
+//	unsigned char index;
+//
+//	// Gamer.
+//	index = 2 + actor_type_pro * 3;
+//	index += go->image + 1;
+//	engine_cursor_manager_draw_option( index, go->tileX * 2 - 4, go->tileY * 2 + 1 );
+//
+//	// Enemy.
+//	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
+//	{
+//		eo = &global_enemy_objects[ enemy ];
+//		index = 2 + enemy * 3;
+//		index += eo->image + 1;
+//		engine_cursor_manager_draw_option( index, eo->tileX * 2 - 2, eo->tileY * 2 + 1 );
+//	}
+//}
 
 static void print_title()
 {
@@ -189,7 +190,7 @@ static void print_gamer()
 	// Gamer.
 	index = 2 + actor_type_pro * 3;
 	index += go->image + 1;
-	engine_cursor_manager_draw_option( index, go->tileX * 2 - 1, go->tileY * 2 + 1 );
+	engine_cursor_manager_draw_option( index, go->tileX * 2 - 2, go->tileY * 2 + 1 );
 	engine_cursor_manager_draw_option2( index, actor_type_pro );
 }
 
@@ -201,6 +202,6 @@ static void print_enemy( unsigned char enemy )
 
 	index = 2 + actor * 3;
 	index += eo->image + 1;
-	engine_cursor_manager_draw_option( index, eo->tileX * 2 - 1, eo->tileY * 2 + 1 );
+	engine_cursor_manager_draw_option( index, eo->tileX * 2 - 2, eo->tileY * 2 + 1 );
 	engine_cursor_manager_draw_option2( index, actor );
 }

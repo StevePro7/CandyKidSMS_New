@@ -23,6 +23,7 @@
 
 // Private helper methods.
 static void print_title();
+static void print_level();
 
 static unsigned char event_stage;
 
@@ -48,6 +49,7 @@ void screen_select_screen_load()
 	engine_level_manager_draw_middle();
 
 	engine_cursor_manager_draw_title2();
+	engine_cursor_manager_draw2( menu_type_select );
 
 	engine_delay_manager_load( SOUND_SCREEN_DELAY + 10 );
 	st->state_object_curr_screen = screen_type_select;
@@ -59,6 +61,7 @@ void screen_select_screen_update( unsigned char *screen_type )
 {
 	struct_state_object *st = &global_state_object;
 	unsigned char input[ 2 ] = { 0, 0 };
+	unsigned char cursor;
 	unsigned char check;
 	unsigned char delay;
 	check = 0;
@@ -83,12 +86,43 @@ void screen_select_screen_update( unsigned char *screen_type )
 		//engine_gamer_manager_draw();
 	}
 
+	engine_cursor_manager_update2( menu_type_select );
+
 	// Draw sprites last.
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
-	//input = engine_input_manager_hold( input_type_left );
-	//if( input )
+	input[ 0 ] = engine_input_manager_hold( input_type_left );
+	input[ 1 ] = engine_input_manager_hold( input_type_right );
+	if( input[ 0 ] || input[ 1 ] )
+	{
+		cursor = engine_cursor_manager_get_cursor( menu_type_select );
+		if( 0 == cursor )
+		{
+			check = 1;
+			if( input[ 0 ] )
+			{
+				if( st->state_object_world_data == 0 )
+				{
+					st->state_object_world_data = MAX_WORLDS - 1;
+				}
+				else
+				{
+					st->state_object_world_data--;
+				}
+			}
+			if( input[ 1 ] )
+			{
+				st->state_object_world_data++;
+				if( st->state_object_world_data >= MAX_WORLDS )
+				{
+					st->state_object_world_data = 0;
+				}
+			}
+		}
+	}
+
+	//if( input[ 0 ] )
 	//{
 	//	check = 1;
 	//	if( st->state_object_round_data == 0 )
@@ -98,20 +132,6 @@ void screen_select_screen_update( unsigned char *screen_type )
 	//	else
 	//	{
 	//		st->state_object_round_data--;
-	//	}
-	//}
-
-	//input = engine_input_manager_hold( input_type_down );
-	//if( input )
-	//{
-	//	check = 1;
-	//	if( st->state_object_world_data == 0 )
-	//	{
-	//		st->state_object_world_data = MAX_WORLDS - 1;
-	//	}
-	//	else
-	//	{
-	//		st->state_object_world_data--;
 	//	}
 	//}
 
@@ -175,4 +195,11 @@ static void print_title()
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	engine_font_manager_draw_text( locale_object_select[ 0 ], TEXT_X, TEXT0_Y + 0 );
 	engine_font_manager_draw_text( locale_object_select[ 1 ], TEXT_X, TEXT0_Y + 1 );
+}
+
+static void print_level()
+{
+	struct_state_object *st = &global_state_object;
+	unsigned char world = st->state_object_world_data + 1;
+	unsigned char round = st->state_object_round_data + 1;
 }

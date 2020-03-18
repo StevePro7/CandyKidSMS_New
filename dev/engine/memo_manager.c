@@ -58,6 +58,26 @@ void engine_memo_manager_pass( unsigned char perfect )
 //	engine_memo_manager_draw( topIndex, botIndex );
 //}
 
+void engine_memo_manager_levels( unsigned char x, unsigned char y1, unsigned char y2 )
+{
+	struct_state_object *st = &global_state_object;
+	unsigned char world = st->state_object_world_data + 1;
+	unsigned char round = st->state_object_round_data + 1;
+
+	engine_board_manager_midd_text();
+	engine_font_manager_draw_data( world, SCREEN_TILE_LEFT + x, y1 );
+	engine_font_manager_draw_data( round, SCREEN_TILE_LEFT + x, y2 );
+
+	if( world < MAX_ROUNDS )
+	{
+		engine_font_manager_draw_char( '0', SCREEN_TILE_LEFT + x - 1, y1 );
+	}
+	if( round < MAX_ROUNDS )
+	{
+		engine_font_manager_draw_char( '0', SCREEN_TILE_LEFT + x - 1, y2 );
+	}
+}
+
 void engine_memo_manager_option()
 {
 	struct_state_object *st = &global_state_object;
