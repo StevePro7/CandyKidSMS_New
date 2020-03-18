@@ -17,12 +17,15 @@ static unsigned char event_stage;
 void screen_hard_screen_load()
 {
 	struct_state_object *st = &global_state_object;
-	event_stage = event_stage_start;
 
 	engine_cursor_manager_draw1( 0 );
 	engine_cursor_manager_update1( st->state_object_difficulty );
 
 	engine_delay_manager_load( SOUND_SCREEN_DELAY );
+
+	st->state_object_curr_screen = screen_type_hard;
+	st->state_object_next_screen = screen_type_hard;
+	event_stage = event_stage_start;
 }
 
 void screen_hard_screen_update( unsigned char *screen_type )
@@ -36,7 +39,7 @@ void screen_hard_screen_update( unsigned char *screen_type )
 		delay = engine_delay_manager_update();
 		if( delay )
 		{
-			*screen_type = screen_type_title;
+			*screen_type = st->state_object_next_screen;
 			return;
 		}
 	}
@@ -53,7 +56,8 @@ void screen_hard_screen_update( unsigned char *screen_type )
 	if( input[ 2 ] )
 	{
 		engine_audio_manager_sfx_play( sound_type_accept );
-		*screen_type = screen_type_slow;
+		st->state_object_next_screen = screen_type_slow;
+		event_stage = event_stage_pause;
 		return;
 	}
 
@@ -61,9 +65,10 @@ void screen_hard_screen_update( unsigned char *screen_type )
 	if( input[ 3 ] )
 	{
 		engine_audio_manager_sfx_play( sfx_type_reset );
+		st->state_object_next_screen = screen_type_title;
 		event_stage = event_stage_pause;
 		return;
 	}
 
-	*screen_type = screen_type_hard;
+	*screen_type = st->state_object_curr_screen;
 }

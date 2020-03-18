@@ -1,18 +1,10 @@
 #include "slow_screen.h"
 #include "..\engine\audio_manager.h"
-//#include "..\engine\board_manager.h"
-//#include "..\engine\content_manager.h"
 #include "..\engine\cursor_manager.h"
 #include "..\engine\enum_manager.h"
-//#include "..\engine\font_manager.h"
-//#include "..\engine\global_manager.h"
 #include "..\engine\input_manager.h"
-//#include "..\engine\locale_manager.h"
-//#include "..\engine\memo_manager.h"
 #include "..\engine\state_manager.h"
-//#include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
-//#include "..\devkit\_sms_manager.h"
 
 static unsigned char event_stage;
 
@@ -33,7 +25,6 @@ void screen_slow_screen_load()
 void screen_slow_screen_update( unsigned char *screen_type )
 {
 	struct_state_object *st = &global_state_object;
-
 	unsigned char input[ 4 ] = { 0, 0, 0, 0 };
 	unsigned char delay;
 
@@ -47,7 +38,6 @@ void screen_slow_screen_update( unsigned char *screen_type )
 		}
 	}
 
-	//unsigned char steve;
 	input[ 0 ] = engine_input_manager_hold( input_type_left );
 	input[ 1 ] = engine_input_manager_hold( input_type_right );
 	if( input[ 0 ] || input[ 1 ] )
