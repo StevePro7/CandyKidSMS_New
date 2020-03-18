@@ -1,30 +1,33 @@
 #include "slow_screen.h"
 #include "..\engine\audio_manager.h"
-#include "..\engine\board_manager.h"
-#include "..\engine\content_manager.h"
+//#include "..\engine\board_manager.h"
+//#include "..\engine\content_manager.h"
 #include "..\engine\cursor_manager.h"
 #include "..\engine\enum_manager.h"
-#include "..\engine\font_manager.h"
-#include "..\engine\global_manager.h"
+//#include "..\engine\font_manager.h"
+//#include "..\engine\global_manager.h"
 #include "..\engine\input_manager.h"
-#include "..\engine\locale_manager.h"
-#include "..\engine\memo_manager.h"
+//#include "..\engine\locale_manager.h"
+//#include "..\engine\memo_manager.h"
 #include "..\engine\state_manager.h"
-#include "..\engine\tile_manager.h"
+//#include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
-#include "..\devkit\_sms_manager.h"
+//#include "..\devkit\_sms_manager.h"
 
 static unsigned char event_stage;
 
 void screen_slow_screen_load()
 {
 	struct_state_object *st = &global_state_object;
-	event_stage = event_stage_start;
 
 	engine_cursor_manager_draw1( 3 );
 	engine_cursor_manager_update1( st->state_object_pace_speed );
 
 	engine_delay_manager_load( SOUND_SCREEN_DELAY );
+
+	st->state_object_curr_screen = screen_type_slow;
+	st->state_object_next_screen = screen_type_slow;
+	event_stage = event_stage_start;
 }
 
 void screen_slow_screen_update( unsigned char *screen_type )
@@ -39,7 +42,7 @@ void screen_slow_screen_update( unsigned char *screen_type )
 		delay = engine_delay_manager_update();
 		if( delay )
 		{
-			*screen_type = screen_type_option;
+			*screen_type = st->state_object_next_screen;
 			return;
 		}
 	}
@@ -57,6 +60,7 @@ void screen_slow_screen_update( unsigned char *screen_type )
 	if( input[ 2 ] )
 	{
 		engine_audio_manager_sfx_play( sound_type_accept );
+		st->state_object_next_screen = screen_type_option;
 		event_stage = event_stage_pause;
 		return;
 	}
@@ -65,9 +69,10 @@ void screen_slow_screen_update( unsigned char *screen_type )
 	if( input[ 3 ] )
 	{
 		engine_audio_manager_sfx_play( sfx_type_reset );
-		*screen_type = screen_type_hard;
+		event_stage = event_stage_pause;
+		st->state_object_next_screen = screen_type_hard;
 		return;
 	}
 
-	*screen_type = screen_type_slow;
+	*screen_type = st->state_object_curr_screen;
 }
