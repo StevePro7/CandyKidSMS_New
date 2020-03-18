@@ -19,9 +19,9 @@
 //extern unsigned char state_object_delay_test;					// TODO delete - used for testing...!!
 extern unsigned char state_object_enemy_move[];					// TODO delete
 
-//extern unsigned char state_object_prev_screen;
-extern unsigned char state_object_curr_screen;
-extern unsigned char state_object_next_screen;
+//extern unsigned char state_object_prev_screen;				// TODO delete
+//extern unsigned char state_object_curr_screen;
+//extern unsigned char state_object_next_screen;
 
 
 // Audio Manager.

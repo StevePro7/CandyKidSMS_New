@@ -31,8 +31,8 @@ void screen_load_screen_load()
 	unsigned char actor_mover[ MAX_ACTORS ];
 	unsigned char actor_tileZ[ MAX_ACTORS ];
 
-	state_object_curr_screen = screen_type_load;
-	state_object_next_screen = screen_type_ready;
+	st->state_object_curr_screen = screen_type_load;
+	st->state_object_next_screen = screen_type_ready;
 
 	engine_delay_manager_load( LOAD_SCREEN_DELAY );
 
@@ -73,6 +73,7 @@ void screen_load_screen_load()
 // 2nd can move: start 100
 void screen_load_screen_update( unsigned char *screen_type )
 {
+	struct_state_object *st = &global_state_object;
 //	engine_memo_manager_draw
 	unsigned char delay;
 	unsigned char input;
@@ -88,11 +89,11 @@ void screen_load_screen_update( unsigned char *screen_type )
 		engine_level_manager_draw_middle();
 		engine_audio_manager_music_play( music_type_game03 );
 		//engine_audio_manager_music_play( music_type_beatgame );
-		*screen_type = state_object_next_screen;
+		*screen_type = st->state_object_next_screen;
 		return;
 	}
 
-	*screen_type = state_object_curr_screen;
+	*screen_type = st->state_object_curr_screen;
 }
 
 static void print_level()

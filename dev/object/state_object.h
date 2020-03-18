@@ -22,6 +22,9 @@ typedef struct tag_struct_state_object
 	unsigned char state_object_actor_kill;
 	unsigned char state_object_delay_test;
 
+	unsigned char state_object_curr_screen;
+	unsigned char state_object_next_screen;
+
 } struct_state_object;
 
 #endif//_STATE_OBJECT_H_
