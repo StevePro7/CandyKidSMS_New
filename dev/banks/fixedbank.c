@@ -134,10 +134,20 @@ const unsigned char *locale_object_option[] =
 {
 	"SELECT",
 	"ACTORS",
-	"KID#", "KID1", "KID2",
-	"PRO#", "PRO1", "PRO2",
-	"ADI#", "ADI1", "ADI2",
-	"SUZ#", "SUZ1", "SUZ2",
+	" KID#", " KID1", " KID2",
+	" PRO#", " PRO1", " PRO2",
+	" ADI#", " ADI1", " ADI2",
+	" SUZ#", " SUZ1", " SUZ2",
+};
+
+const unsigned char *locale_object_select[] =
+{
+	"SELECT",
+	" LEVEL",
+	"WORLD", "", "",
+	"ROUND", "", "",
+	"TREES", " SHOW", " KILL",
+	"EXITS", "  YES", "   NO",
 };
 
 const unsigned char locale_object_blank32[] = "123456789A123456789B123456789C12";

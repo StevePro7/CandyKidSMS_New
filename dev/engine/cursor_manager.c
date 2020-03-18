@@ -87,7 +87,7 @@ void engine_cursor_manager_draw2( unsigned char index )
 	engine_font_manager_draw_text( LOCALE_SELECT_ARROW, DATA_X - 4, yValue );
 }
 
-void engine_cursor_manager_draw_titles()
+void engine_cursor_manager_draw_title1()
 {
 	unsigned char index;
 	unsigned char loops;
@@ -102,7 +102,25 @@ void engine_cursor_manager_draw_titles()
 		index = 2 + loops * 3;
 		actor = ( unsigned char * ) locale_object_option[ index ];
 
-		engine_font_manager_draw_text( actor, DATA_X - 2, type2_cursorY[ loops ] );
+		engine_font_manager_draw_text( actor, DATA_X - 3, type2_cursorY[ loops ] );
+	}
+}
+
+void engine_cursor_manager_draw_title2()
+{
+	unsigned char index;
+	unsigned char loops;
+	unsigned char *actor;
+	devkit_SMS_mapROMBank( FIXED_BANK );
+
+	engine_font_manager_draw_text( locale_object_select[ 0 ], TEXT_X, TEXT0_Y + 0 );
+	engine_font_manager_draw_text( locale_object_select[ 1 ], TEXT_X, TEXT0_Y + 1 );
+
+	for( loops = 0; loops < MAX_ACTORS; loops++ )
+	{
+		index = 2 + loops * 3;
+		actor = ( unsigned char * ) locale_object_select[ index ];
+		engine_font_manager_draw_text( actor, DATA_X - 3, type2_cursorY[ loops ] );
 	}
 }
 
@@ -115,7 +133,7 @@ void engine_cursor_manager_draw_option( unsigned char index, unsigned char x, un
 }
 void engine_cursor_manager_draw_option2( unsigned char index, unsigned char actor )
 {
-	engine_cursor_manager_draw_option( index, DATA_X - 2, type2_cursorY[ actor ] + 1 );
+	engine_cursor_manager_draw_option( index, DATA_X - 3, type2_cursorY[ actor ] + 1 );
 }
 
 unsigned char engine_cursor_manager_get_cursor( unsigned char index )

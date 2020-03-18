@@ -3,6 +3,7 @@
 #include "..\engine\audio_manager.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\content_manager.h"
+#include "..\engine\cursor_manager.h"
 #include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
@@ -11,12 +12,17 @@
 #include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
 #include "..\engine\locale_manager.h"
+#include "..\engine\memo_manager.h"
 #include "..\engine\score_manager.h"
 #include "..\engine\state_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\devkit\_sms_manager.h"
+#include "..\banks\fixedbank.h"
 #include "..\banks\databank.h"
+
+// Private helper methods.
+static void print_title();
 
 static unsigned char event_stage;
 
@@ -32,12 +38,16 @@ void screen_select_screen_load()
 
 		engine_board_manager_border( border_type_game );
 		engine_board_manager_side_tile();
+
+		engine_memo_manager_option();
 	}
 	// TODO delete
 
 	engine_level_manager_load_level( st->state_object_world_data, st->state_object_round_data );
 	engine_level_manager_draw_level();
 	engine_level_manager_draw_middle();
+
+	engine_cursor_manager_draw_title2();
 
 	engine_delay_manager_load( SOUND_SCREEN_DELAY + 10 );
 	st->state_object_curr_screen = screen_type_select;
@@ -158,4 +168,11 @@ void screen_select_screen_update( unsigned char *screen_type )
 	//engine_gamer_manager_draw();
 
 	*screen_type = st->state_object_curr_screen;
+}
+
+static void print_title()
+{
+	devkit_SMS_mapROMBank( FIXED_BANK );
+	engine_font_manager_draw_text( locale_object_select[ 0 ], TEXT_X, TEXT0_Y + 0 );
+	engine_font_manager_draw_text( locale_object_select[ 1 ], TEXT_X, TEXT0_Y + 1 );
 }
