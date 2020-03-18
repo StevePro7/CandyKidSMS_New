@@ -1,7 +1,6 @@
 #include "title_screen.h"
 #include "..\engine\audio_manager.h"
 #include "..\engine\board_manager.h"
-#include "..\engine\content_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\global_manager.h"
@@ -12,13 +11,11 @@
 #include "..\engine\timer_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
-#include "..\banks\databank.h"
 
 #define TITLE_FLASH_DELAY	50
 #define LOCAL_CHEAT_TOTAL	5
 #define COIN_TEXT_X			6
 #define COIN_TEXT_Y			18
-//#define BOTT_TEXT_Y			21
 
 //static void draw_tiles();
 static unsigned char flash_count;
@@ -28,7 +25,6 @@ void screen_title_screen_load()
 {
 	struct_state_object *st = &global_state_object;
 
-	//engine_locale_manager_draw_text( 0, SCREEN_TILE_LEFT + 24, BOTT_TEXT_Y );
 	engine_locale_manager_draw_text( 28, SCREEN_TILE_LEFT + COIN_TEXT_X, COIN_TEXT_Y );
 	engine_font_manager_draw_text( locale_object_blank18, SCREEN_TILE_LEFT + COIN_TEXT_X, COIN_TEXT_Y + 1 );
 	engine_font_manager_draw_text( locale_object_blank18, SCREEN_TILE_LEFT + 2, BOTT_TEXT_Y );
@@ -73,7 +69,6 @@ void screen_title_screen_update( unsigned char *screen_type )
 	input = engine_input_manager_hold( input_type_fire1 );
 	if( input )
 	{
-		//engine_audio_manager_sound_play( sound_type_accept );
 		engine_audio_manager_sfx_play( sound_type_accept );
 		*screen_type = screen_type_hard;
 		return;

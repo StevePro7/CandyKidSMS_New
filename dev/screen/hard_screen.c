@@ -2,15 +2,9 @@
 #include "..\engine\audio_manager.h"
 #include "..\engine\cursor_manager.h"
 #include "..\engine\enum_manager.h"
-#include "..\engine\font_manager.h"
-#include "..\engine\global_manager.h"
 #include "..\engine\input_manager.h"
-#include "..\engine\locale_manager.h"
 #include "..\engine\state_manager.h"
 #include "..\engine\timer_manager.h"
-#include "..\devkit\_sms_manager.h"
-#include "..\banks\fixedbank.h"
-#include "..\banks\databank.h"
 
 static unsigned char event_stage;
 
