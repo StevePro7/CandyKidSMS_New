@@ -125,7 +125,7 @@ void screen_select_screen_update( unsigned char *screen_type )
 				}
 			}
 		}
-		if( 1 == cursor )
+		else if( 1 == cursor )
 		{
 			check = 1;
 			if( input[ 0 ] )
@@ -148,42 +148,19 @@ void screen_select_screen_update( unsigned char *screen_type )
 				}
 			}
 		}
+		else if( 2 == cursor )
+		{
+			st->state_object_trees_type = 1 - st->state_object_trees_type;
+			engine_board_manager_border( border_type_game );
+			print_trees();
+		}
+		else if( 3 == cursor )
+		{
+			st->state_object_exits_type = 1 - st->state_object_exits_type;
+			engine_board_manager_toggle();
+			print_exits();
+		}
 	}
-
-	//if( input[ 0 ] )
-	//{
-	//	check = 1;
-	//	if( st->state_object_round_data == 0 )
-	//	{
-	//		st->state_object_round_data = MAX_ROUNDS - 1;
-	//	}
-	//	else
-	//	{
-	//		st->state_object_round_data--;
-	//	}
-	//}
-
-	//input = engine_input_manager_hold( input_type_right );
-	//if( input )
-	//{
-	//	check = 1;
-	//	st->state_object_round_data++;
-	//	if( st->state_object_round_data >= MAX_ROUNDS )
-	//	{
-	//		st->state_object_round_data = 0;
-	//	}
-	//}
-
-	//input = engine_input_manager_hold( input_type_up );
-	//if( input )
-	//{
-	//	check = 1;
-	//	st->state_object_world_data++;
-	//	if( st->state_object_world_data >= MAX_WORLDS )
-	//	{
-	//		st->state_object_world_data = 0;
-	//	}
-	//}
 
 	if( check )
 	{
