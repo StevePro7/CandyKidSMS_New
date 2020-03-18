@@ -23,6 +23,8 @@
 
 // Private helper methods.
 static void print_title();
+static void print_trees();
+static void print_exits();
 
 static unsigned char event_stage;
 
@@ -48,6 +50,9 @@ void screen_select_screen_load()
 	engine_level_manager_draw_middle();
 
 	engine_cursor_manager_draw_title2();
+	print_trees();
+	print_exits();
+
 	engine_cursor_manager_draw2( menu_type_select );
 	engine_memo_manager_levels( 28, 5, 10 );
 
@@ -218,4 +223,18 @@ static void print_title()
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	engine_font_manager_draw_text( locale_object_select[ 0 ], TEXT_X, TEXT0_Y + 0 );
 	engine_font_manager_draw_text( locale_object_select[ 1 ], TEXT_X, TEXT0_Y + 1 );
+}
+
+static void print_trees()
+{
+	struct_state_object *st = &global_state_object;
+	unsigned char index = 8 + st->state_object_trees_type + 1;
+	engine_cursor_manager_draw_select2( index, 2 );
+}
+
+static void print_exits()
+{
+	struct_state_object *st = &global_state_object;
+	unsigned char index = 11 + st->state_object_trees_type + 1;
+	engine_cursor_manager_draw_select2( index, 3 );
 }

@@ -16,7 +16,7 @@
 #include "..\banks\databank.h"
 
 // Private helper methods.
-static void print_title();
+//static void print_title();
 static void print_gamer();
 static void print_enemy( unsigned char enemy );
 
@@ -41,7 +41,7 @@ void screen_option_screen_load()
 
 	//. Display text.
 	engine_cursor_manager_draw_title1();
-	print_title();
+	//print_title();
 	print_gamer();
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
 	{
@@ -175,12 +175,12 @@ void screen_option_screen_update( unsigned char *screen_type )
 //	}
 //}
 
-static void print_title()
-{
-	devkit_SMS_mapROMBank( FIXED_BANK );
-	engine_font_manager_draw_text( locale_object_option[ 0 ], TEXT_X, TEXT0_Y + 0 );
-	engine_font_manager_draw_text( locale_object_option[ 1 ], TEXT_X, TEXT0_Y + 1 );
-}
+//static void print_title()
+//{
+//	devkit_SMS_mapROMBank( FIXED_BANK );
+//	engine_font_manager_draw_text( locale_object_option[ 0 ], TEXT_X, TEXT0_Y + 0 );
+//	engine_font_manager_draw_text( locale_object_option[ 1 ], TEXT_X, TEXT0_Y + 1 );
+//}
 
 static void print_gamer()
 {
