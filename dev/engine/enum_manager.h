@@ -209,12 +209,12 @@ typedef enum tag_enum_music_type
 
 typedef enum tag_enum_sound_type
 {
-	sound_type_accept = 0,
+	//sound_type_accept = 0,
 	sound_type_death = 1,
 	sound_type_gem = 2,
 	sound_type_level = 3,
 	sound_type_power = 4,
-	sound_type_reset = 5,
+	//sound_type_reset = 5,
 
 } enum_sound_type;
 

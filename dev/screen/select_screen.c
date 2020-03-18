@@ -39,7 +39,7 @@ void screen_select_screen_load()
 	engine_level_manager_draw_level();
 	engine_level_manager_draw_middle();
 
-	engine_delay_manager_load( SOUND_SCREEN_DELAY  );
+	engine_delay_manager_load( SOUND_SCREEN_DELAY + 10 );
 	st->state_object_curr_screen = screen_type_select;
 	st->state_object_next_screen = screen_type_select;
 	event_stage = event_stage_start;
@@ -48,7 +48,7 @@ void screen_select_screen_load()
 void screen_select_screen_update( unsigned char *screen_type )
 {
 	struct_state_object *st = &global_state_object;
-	unsigned char input;
+	unsigned char input[ 2 ] = { 0, 0 };
 	unsigned char check;
 	unsigned char delay;
 	check = 0;
@@ -135,19 +135,19 @@ void screen_select_screen_update( unsigned char *screen_type )
 	//	engine_level_manager_draw_middle();
 	//}
 
-	input = engine_input_manager_hold( input_type_fire1 );
-	if( input )
-	{
-		engine_audio_manager_sfx_play( sound_type_accept );
-		st->state_object_next_screen = screen_type_init;
-		event_stage = event_stage_pause;
-		return;
-	}
+	//input[ 0 ] = engine_input_manager_hold( input_type_fire1 );
+	//if( input[ 0 ] )
+	//{
+	//	engine_audio_manager_sfx_play( sfx_type_accept );
+	//	st->state_object_next_screen = screen_type_init;
+	//	event_stage = event_stage_pause;
+	//	return;
+	//}
 
-	input = engine_input_manager_hold( input_type_fire2 );
-	if( input )
+	input[ 1 ] = engine_input_manager_hold( input_type_fire2 );
+	if( input[ 1 ] )
 	{
-		engine_audio_manager_sfx_play( sound_type_reset );
+		engine_audio_manager_sfx_play( sfx_type_reset );
 		st->state_object_next_screen = screen_type_option;
 		event_stage = event_stage_pause;
 		return;

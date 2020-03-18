@@ -49,7 +49,7 @@ void screen_hard_screen_update( unsigned char *screen_type )
 	input[ 2 ] = engine_input_manager_hold( input_type_fire1 );
 	if( input[ 2 ] )
 	{
-		engine_audio_manager_sfx_play( sound_type_accept );
+		engine_audio_manager_sfx_play( sfx_type_accept );
 		st->state_object_next_screen = screen_type_slow;
 		event_stage = event_stage_pause;
 		return;

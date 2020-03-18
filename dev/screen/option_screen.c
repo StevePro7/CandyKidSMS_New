@@ -114,7 +114,7 @@ void screen_option_screen_update( unsigned char *screen_type )
 	input[ 0 ] = engine_input_manager_hold( input_type_fire1 );
 	if( input[ 0 ] )
 	{
-		engine_audio_manager_sfx_play( sound_type_accept );
+		engine_audio_manager_sfx_play( sfx_type_accept );
 		st->state_object_next_screen = screen_type_select;
 		event_stage = event_stage_pause;
 		return;

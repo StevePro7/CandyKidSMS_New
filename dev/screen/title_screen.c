@@ -69,7 +69,7 @@ void screen_title_screen_update( unsigned char *screen_type )
 	input = engine_input_manager_hold( input_type_fire1 );
 	if( input )
 	{
-		engine_audio_manager_sfx_play( sound_type_accept );
+		engine_audio_manager_sfx_play( sfx_type_accept );
 		*screen_type = screen_type_hard;
 		return;
 	}
