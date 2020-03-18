@@ -235,6 +235,6 @@ static void print_trees()
 static void print_exits()
 {
 	struct_state_object *st = &global_state_object;
-	unsigned char index = 11 + st->state_object_trees_type + 1;
+	unsigned char index = 11 + st->state_object_exits_type + 1;
 	engine_cursor_manager_draw_select2( index, 3 );
 }

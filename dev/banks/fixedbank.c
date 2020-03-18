@@ -146,8 +146,8 @@ const unsigned char *locale_object_select[] =
 	" LEVEL",
 	"WORLD", "", "",
 	"ROUND", "", "",
-	"TREES", " SHOW", " KILL",
-	"EXITS", "  YES", "   NO",
+	"TREES", " STOP", " KILL",
+	"EXITS", " OPEN", " SHUT",
 };
 
 const unsigned char *locale_object_number[] = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10" };
