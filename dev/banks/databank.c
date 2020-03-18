@@ -24,8 +24,8 @@
 unsigned char state_object_enemy_move[] = { 1, 1, 1 };		// TODO delete
 
 //unsigned char state_object_prev_screen;
-unsigned char state_object_curr_screen;
-unsigned char state_object_next_screen;
+//unsigned char state_object_curr_screen;
+//unsigned char state_object_next_screen;
 
 
 // Audio Manager.

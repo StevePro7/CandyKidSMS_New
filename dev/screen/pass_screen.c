@@ -24,20 +24,19 @@ static unsigned char perfect;
 void screen_pass_screen_load()
 {
 	struct_score_object *so = &global_score_object;
+	struct_state_object *st = &global_state_object;
 
 	// Draw sprites first.
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
-	state_object_curr_screen = screen_type_pass;
-	state_object_next_screen = screen_type_load;
+	st->state_object_curr_screen = screen_type_pass;
+	st->state_object_next_screen = screen_type_load;
 
 	engine_delay_manager_load( PASS_SCREEN_DELAY1 );
 	engine_audio_manager_music_stop();
 
 	perfect = ( level_object_bonus_count + level_object_candy_count == so->bonus + so->candy );
-	//engine_board_manager_midd_text();
-	//engine_memo_manager_pass( perfect );
 	event_stage = event_stage_start;
 
 	//engine_audio_manager_sound_play( sound_type_level );
@@ -61,12 +60,12 @@ void screen_pass_screen_update( unsigned char *screen_type )
 		if( delay || input )
 		{
 			next_level();
-			*screen_type = state_object_next_screen;
+			*screen_type = st->state_object_next_screen;
 			return;
 		}
 		else
 		{
-			*screen_type = state_object_curr_screen;
+			*screen_type = st->state_object_curr_screen;
 		}
 
 		// Draw sprites first.
@@ -106,7 +105,7 @@ void screen_pass_screen_update( unsigned char *screen_type )
 		engine_gamer_manager_hide();
 	}
 
-	*screen_type = state_object_curr_screen;
+	*screen_type = st->state_object_curr_screen;
 }
 
 static void next_level()
@@ -115,7 +114,7 @@ static void next_level()
 	struct_state_object *st = &global_state_object;
 	if( MAX_WORLDS - 1 == st->state_object_world_data  && MAX_ROUNDS - 1 == st->state_object_round_data )
 	{
-		state_object_next_screen = screen_type_beat;
+		st->state_object_next_screen = screen_type_beat;
 		return;
 	}
 

@@ -20,9 +20,8 @@
 void screen_select_screen_load()
 {
 	struct_state_object *st = &global_state_object;
-	state_object_curr_screen = screen_type_select;
-	//state_object_next_screen = screen_type_option;
-	state_object_next_screen = screen_type_init;
+	st->state_object_curr_screen = screen_type_select;
+	st->state_object_next_screen = screen_type_init;
 
 	engine_level_manager_load_level( st->state_object_world_data, st->state_object_round_data );
 	engine_level_manager_draw_level();
@@ -35,6 +34,10 @@ void screen_select_screen_update( unsigned char *screen_type )
 	unsigned char input;
 	unsigned char check;
 	check = 0;
+
+	// Draw sprites last.
+	engine_enemy_manager_draw();
+	engine_gamer_manager_draw();
 
 	input = engine_input_manager_hold( input_type_left );
 	if( input )
@@ -97,13 +100,13 @@ void screen_select_screen_update( unsigned char *screen_type )
 	input = engine_input_manager_hold( input_type_fire1 );
 	if( input )
 	{
-		*screen_type = state_object_next_screen;
+		*screen_type = st->state_object_next_screen;
 		return;
 	}
 
 	// Draw sprites last.
-	engine_enemy_manager_draw();
-	engine_gamer_manager_draw();
+	//engine_enemy_manager_draw();
+	//engine_gamer_manager_draw();
 
-	*screen_type = screen_type_select;
+	*screen_type = st->state_object_curr_screen;
 }

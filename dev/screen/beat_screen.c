@@ -27,12 +27,13 @@ unsigned char beat_walking_move[] = { 7, 7, 7, 7 };
 
 void screen_beat_screen_load()
 {
+	struct_state_object *st = &global_state_object;
 	const unsigned char *data = beats0000_txt;
 	const unsigned char size = beats0000_txt_size;
 	const unsigned char bank = beats0000_txt_bank;
 
-	state_object_curr_screen = screen_type_beat;
-	state_object_next_screen = screen_type_title;
+	st->state_object_curr_screen = screen_type_beat;
+	st->state_object_next_screen = screen_type_title;
 
 	engine_audio_manager_music_stop();
 	engine_delay_manager_load( BEAT_SCREEN_DELAY );
@@ -70,7 +71,7 @@ void screen_beat_screen_update( unsigned char *screen_type )
 		engine_audio_manager_music_stop();
 		st->state_object_world_data = 0;
 		st->state_object_round_data = 0;
-		*screen_type = state_object_next_screen;
+		*screen_type = st->state_object_next_screen;
 		return;
 	}
 
@@ -130,5 +131,5 @@ void screen_beat_screen_update( unsigned char *screen_type )
 	engine_command_manager_execute( frame );
 
 	//first_time = 0;
-	*screen_type = state_object_curr_screen;
+	*screen_type = st->state_object_curr_screen;
 }

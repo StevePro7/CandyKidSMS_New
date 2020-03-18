@@ -24,6 +24,7 @@ static unsigned char event_stage;
 
 void screen_option_screen_load()
 {
+	struct_state_object *st = &global_state_object;
 	unsigned char enemy;
 
 	// Reset actors home.
@@ -51,14 +52,15 @@ void screen_option_screen_load()
 	engine_cursor_manager_draw2( menu_type_option );
 	devkit_SMS_displayOn();
 
-	engine_delay_manager_load( SOUND_SCREEN_DELAY );
-	state_object_curr_screen = screen_type_option;
-	state_object_next_screen = screen_type_option;
+	engine_delay_manager_load( SOUND_SCREEN_DELAY + 10 );
+	st->state_object_curr_screen = screen_type_option;
+	st->state_object_next_screen = screen_type_option;
 	event_stage = event_stage_start;
 }
 
 void screen_option_screen_update( unsigned char *screen_type )
 {
+	struct_state_object *st = &global_state_object;
 	unsigned char input[ 2 ] = { 0, 0 };
 	unsigned char cursor;
 	unsigned char enemy;
@@ -66,16 +68,22 @@ void screen_option_screen_update( unsigned char *screen_type )
 
 	if( event_stage_pause == event_stage )
 	{
+		if( screen_type_select == st->state_object_next_screen )
+		{
+			engine_enemy_manager_draw();
+			engine_gamer_manager_draw();
+		}
+
 		delay = engine_delay_manager_update();
 		if( delay )
 		{
-			*screen_type = state_object_next_screen;
+			*screen_type = st->state_object_next_screen;
 			return;
 		}
 
-		// Draw sprites last.
-		engine_enemy_manager_draw();
-		engine_gamer_manager_draw();
+		// TODO delete Draw sprites last.
+		//engine_enemy_manager_draw();
+		//engine_gamer_manager_draw();
 	}
 
 	engine_cursor_manager_update2( menu_type_option );
@@ -108,7 +116,7 @@ void screen_option_screen_update( unsigned char *screen_type )
 	{
 		engine_audio_manager_sfx_play( sound_type_accept );
 		//*screen_type = screen_type_select;
-		state_object_next_screen = screen_type_select;
+		st->state_object_next_screen = screen_type_select;
 		event_stage = event_stage_pause;
 		return;
 	}
@@ -119,7 +127,7 @@ void screen_option_screen_update( unsigned char *screen_type )
 	{
 		engine_audio_manager_sfx_play( sfx_type_reset );
 		//*screen_type = screen_type_begin;
-		state_object_next_screen = screen_type_begin;
+		st->state_object_next_screen = screen_type_begin;
 		event_stage = event_stage_pause;
 		return;
 	}
@@ -144,7 +152,7 @@ void screen_option_screen_update( unsigned char *screen_type )
 	
 
 	//*screen_type = screen_type_select;
-	*screen_type = state_object_curr_screen;
+	*screen_type = st->state_object_curr_screen;
 }
 
 static void print_names()
