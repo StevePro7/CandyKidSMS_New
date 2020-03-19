@@ -423,24 +423,15 @@ void engine_enemy_manager_reset_mode( unsigned char enemy, unsigned char mode )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
 	eo->action = mode;
+	eo->ticker = 0;
 
-
-	// IMPORTANT - this will alternate the images during game play - useful for debugging Scatter vs. Attack mode
-	//eo->image = mode;
-	//calcd_frame( enemy );
-	// IMPORTANT - this will alternate the images during game play - useful for debugging Scatter vs. Attack mode
-
+	// Reset speed and delay to the correct mode.
+	eo->speed = eo->speeds[ mode ];
+	eo->delay = eo->delays[ mode ];
 
 	// TODO delete used for debugging
 	//engine_memo_manager_debugging( enemy, eo->action );
-	//if( 0 == eo->action )
-	//{
-	//	engine_font_manager_draw_text( "SCATTR", 26, 21 );
-	//}
-	//if( 1 == eo->action )
-	//{
-	//	engine_font_manager_draw_text( "ATTACK", 26, 21 );
-	//}
+	// TODO delete used for debugging
 }
 
 void engine_enemy_manager_image( unsigned char enemy )
@@ -850,14 +841,7 @@ unsigned char engine_enemy_manager_input_boost( unsigned char enemy )
 
 	//TODO delete
 	//engine_memo_manager_debugging( enemy, eo->action );
-	//if( 0 == eo->action )
-	//{
-	//	engine_font_manager_draw_text( "SCATTR", 26, 21 );
-	//}
-	//if( 1 == eo->action )
-	//{
-	//	engine_font_manager_draw_text( "ATTACK", 26, 21 );
-	//}
+	//TODO delete
 
 	//return pace_type_none;
 	return boost;

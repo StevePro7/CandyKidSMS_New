@@ -37,7 +37,6 @@ static unsigned char nextr_direction;
 void screen_play_screen_load()
 {
 	struct_state_object *st = &global_state_object;
-	//unsigned char power1, power2;
 	//struct_enemy_object *eo;
 	engine_delay_manager_load( 0 );
 
