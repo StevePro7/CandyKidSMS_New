@@ -393,56 +393,56 @@ unsigned char engine_gamer_manager_find_direction( unsigned char gamer_direction
 	return direction_type_none;
 }
 
-unsigned char engine_gamer_manager_input_direction()
-{
-	struct_gamer_object *go = &global_gamer_object;
-	unsigned char direction = direction_type_none;
-	unsigned char upxx;
-	unsigned char down;
-	unsigned char left;
-	unsigned char rght;
-
-	upxx = engine_input_manager_move( input_type_up );
-	down = engine_input_manager_move( input_type_down );
-	left = engine_input_manager_move( input_type_left );
-	rght = engine_input_manager_move( input_type_right );
-
-	// Ignore multi-movement e.g. up-left / down-left / up-right / down-right.
-	if( ( upxx && left ) || ( down && left ) || ( upxx && rght ) || ( down && rght ) )
-	{
-		return direction;
-	}
-	else
-	{
-		if( upxx )
-		{
-			direction = direction_type_upxx;
-		}
-		else
-		{
-			if( down )
-			{
-				direction = direction_type_down;
-			}
-			else
-			{
-				if( left )
-				{
-					direction = direction_type_left;
-				}
-				else
-				{
-					if( rght )
-					{
-						direction = direction_type_rght;
-					}
-				}
-			}
-		}
-	}
-
-	return direction;
-}
+//unsigned char engine_gamer_manager_input_direction()
+//{
+//	struct_gamer_object *go = &global_gamer_object;
+//	unsigned char direction = direction_type_none;
+//	unsigned char upxx;
+//	unsigned char down;
+//	unsigned char left;
+//	unsigned char rght;
+//
+//	upxx = engine_input_manager_move( input_type_up );
+//	down = engine_input_manager_move( input_type_down );
+//	left = engine_input_manager_move( input_type_left );
+//	rght = engine_input_manager_move( input_type_right );
+//
+//	// Ignore multi-movement e.g. up-left / down-left / up-right / down-right.
+//	if( ( upxx && left ) || ( down && left ) || ( upxx && rght ) || ( down && rght ) )
+//	{
+//		return direction;
+//	}
+//	else
+//	{
+//		if( upxx )
+//		{
+//			direction = direction_type_upxx;
+//		}
+//		else
+//		{
+//			if( down )
+//			{
+//				direction = direction_type_down;
+//			}
+//			else
+//			{
+//				if( left )
+//				{
+//					direction = direction_type_left;
+//				}
+//				else
+//				{
+//					if( rght )
+//					{
+//						direction = direction_type_rght;
+//					}
+//				}
+//			}
+//		}
+//	}
+//
+//	return direction;
+//}
 
 //unsigned char engine_gamer_manager_input_directionX()
 //{

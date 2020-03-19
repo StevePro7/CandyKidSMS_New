@@ -4,7 +4,7 @@
 // Tiles.
 void engine_cursor_manager_init();
 void engine_cursor_manager_update1( unsigned char index );
-void engine_cursor_manager_update2( unsigned char index );
+unsigned char engine_cursor_manager_update2( unsigned char index );
 void engine_cursor_manager_draw1( unsigned char index );
 void engine_cursor_manager_draw2( unsigned char index );
 

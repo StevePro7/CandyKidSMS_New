@@ -130,7 +130,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
 	{
 		//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
-		input_direction = engine_gamer_manager_input_direction();
+		//input_direction = engine_gamer_manager_input_direction();
+		input_direction = engine_input_manager_direction();
 		if( direction_type_none != input_direction && gamer_direction != input_direction )
 		{
 			nextr_direction = gamer_direction;
@@ -164,7 +165,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 			}
 		}
 
-		input_direction = engine_gamer_manager_input_direction();
+		//input_direction = engine_gamer_manager_input_direction();
+		input_direction = engine_input_manager_direction();
 		if( direction_type_none != input_direction && gamer_direction != input_direction )
 		{
 			nextr_direction = gamer_direction;
@@ -187,7 +189,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 			}
 			else
 			{
-				gamer_direction = engine_gamer_manager_input_direction();
+				//gamer_direction = engine_gamer_manager_input_direction();
+				gamer_direction = engine_input_manager_direction();
 				//engine_font_manager_draw_data( gamer_direction, 30, 21 );		// stevepro pre-empt direction
 			}
 

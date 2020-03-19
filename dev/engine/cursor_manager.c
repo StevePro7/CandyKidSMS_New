@@ -26,14 +26,16 @@ void engine_cursor_manager_update1( unsigned char index )
 	engine_font_manager_draw_text( LOCALE_SELECT_ARROWS, type1_cursorX[ index ], TYPE1_TEXT_Y + 1 );
 }
 
-void engine_cursor_manager_update2( unsigned char index )
+unsigned char engine_cursor_manager_update2( unsigned char index )
 {
 	unsigned char input[ 2 ] = { 0, 0 };
+	unsigned char check = 0;
 	input[ 0 ] = engine_input_manager_hold( input_type_up );
 	input[ 1 ] = engine_input_manager_hold( input_type_down );
 
 	if( input[ 0 ] || input[ 1 ] )
 	{
+		check = 1;
 		if( input[ 0 ] )
 		{
 			if( menu_cursor[ index ] <= 0 )
@@ -62,6 +64,8 @@ void engine_cursor_manager_update2( unsigned char index )
 
 		engine_cursor_manager_draw2( index );
 	}
+
+	return check;
 }
 
 void engine_cursor_manager_draw1( unsigned char index )

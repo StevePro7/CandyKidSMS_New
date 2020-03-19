@@ -67,6 +67,7 @@ void screen_option_screen_update( unsigned char *screen_type )
 	unsigned char cursor;
 	unsigned char enemy;
 	unsigned char delay;
+	unsigned char check;
 
 	if( event_stage_pause == event_stage )
 	{
@@ -88,7 +89,12 @@ void screen_option_screen_update( unsigned char *screen_type )
 		//engine_gamer_manager_draw();
 	}
 
-	engine_cursor_manager_update2( menu_type_option );
+	check = engine_cursor_manager_update2( menu_type_option );
+	if( check )
+	{
+		*screen_type = st->state_object_curr_screen;
+		return;
+	}
 
 	input[ 0 ] = engine_input_manager_hold( input_type_left );
 	input[ 1 ] = engine_input_manager_hold( input_type_right );
