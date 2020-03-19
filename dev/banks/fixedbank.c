@@ -130,6 +130,22 @@ const unsigned char *locale_object_menus[] =
 
 //const unsigned char *locale_object_names[] = {  "KID.", "PRO.", "ADI.", "SUZ." };
 
+const unsigned char *locale_object_grants[] =
+{
+	"SELECT",
+	"ACTORS",
+	" KID#", "KID1", "KID2",
+	" PRO#", "PRO1", "PRO2",
+	" ADI#", "ADI1", "ADI2",
+	" SUZ#", "SUZ1", "SUZ2",
+	"SELECT",
+	" LEVEL",
+	"WORLD", "ABCD", "",
+	"ROUND", "1234", "",
+	"TREES", "STOP", "KILL",
+	"EXITS", "OPEN", "SHUT",
+};
+
 const unsigned char *locale_object_option[] =
 {
 	"SELECT",

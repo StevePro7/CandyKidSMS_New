@@ -7,8 +7,14 @@ void engine_cursor_manager_update1( unsigned char index );
 void engine_cursor_manager_update2( unsigned char index );
 void engine_cursor_manager_draw1( unsigned char index );
 void engine_cursor_manager_draw2( unsigned char index );
-void engine_cursor_manager_draw_title1();
-void engine_cursor_manager_draw_title2();
+
+void engine_cursor_manager_draw_titles( unsigned char index );
+//void engine_cursor_manager_draw_title1();
+//void engine_cursor_manager_draw_title2();
+
+void engine_cursor_manager_draw_grant1( unsigned char index, unsigned char delta, unsigned char x, unsigned char y );
+void engine_cursor_manager_draw_grant2( unsigned char index, unsigned char delta, unsigned char value );
+
 void engine_cursor_manager_draw_option1( unsigned char index, unsigned char x, unsigned char y );
 void engine_cursor_manager_draw_option2( unsigned char index, unsigned char actor );
 void engine_cursor_manager_draw_select1( unsigned char index, unsigned char x, unsigned char y );

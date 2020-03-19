@@ -50,7 +50,8 @@ void screen_select_screen_load()
 	engine_level_manager_draw_level();
 	engine_level_manager_draw_middle();
 
-	engine_cursor_manager_draw_title2();
+	//engine_cursor_manager_draw_title2();
+	engine_cursor_manager_draw_titles( menu_type_select );
 	print_level();
 	print_trees();
 	print_exits();
