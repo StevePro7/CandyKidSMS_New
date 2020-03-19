@@ -140,8 +140,8 @@ const unsigned char *locale_object_grants[] =
 	" SUZ#", "SUZ1", "SUZ2",
 	"SELECT",
 	" LEVEL",
-	"WORLD", "ABCD", "",
-	"ROUND", "1234", "",
+	"WORLD", "    ", "",
+	"ROUND", "    ", "",
 	"TREES", "STOP", "KILL",
 	"EXITS", "OPEN", "SHUT",
 };
