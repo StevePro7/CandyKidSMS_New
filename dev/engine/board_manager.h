@@ -12,6 +12,6 @@ void engine_board_manager_side_tile();
 void engine_board_manager_midd_text();
 
 //// TODO - delete!!
-void engine_board_manager_debugger();
+//void engine_board_manager_debugger();
 
 #endif//_BOARD_MANAGER_H_

@@ -25,7 +25,7 @@
 
 
 //static void draw_side( unsigned char wide, unsigned char right );
-static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right );
+//static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right );
 
 // Methods.
 /*
@@ -248,23 +248,23 @@ void engine_board_manager_midd_text()
 }
 
 // TODO - delete!!
-void engine_board_manager_debugger()
-{
-	struct_state_object *st = &global_state_object;
-	unsigned char type = st->state_object_trees_type;
-
-	unsigned char spot[] = { 1, 2, 4, 7, 9, 10 };
-	unsigned char loop;
-	for( loop = 0; loop < 6; loop++ )
-	//for( loop = 0; loop < 2; loop++ )
-	{
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + spot[ loop ] * 2, 0 );
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + spot[ loop ] * 2, 22 );
-
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT, spot[ loop ] * 2 );
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + 22, spot[ loop ] * 2 );
-	}
-}
+//void engine_board_manager_debugger()
+//{
+//	struct_state_object *st = &global_state_object;
+//	unsigned char type = st->state_object_trees_type;
+//
+//	unsigned char spot[] = { 1, 2, 4, 7, 9, 10 };
+//	unsigned char loop;
+//	for( loop = 0; loop < 6; loop++ )
+//	//for( loop = 0; loop < 2; loop++ )
+//	{
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + spot[ loop ] * 2, 0 );
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + spot[ loop ] * 2, 22 );
+//
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT, spot[ loop ] * 2 );
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + 22, spot[ loop ] * 2 );
+//	}
+//}
 // TODO - delete!!
 
 //static void draw_side( unsigned char wide, unsigned char right )
@@ -284,34 +284,34 @@ void engine_board_manager_debugger()
 //		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + right, TOP_SIDE_Y + loop * 2 );
 //	}
 //}
-static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right )
-{
-	struct_state_object *st = &global_state_object;
-	unsigned char type = st->state_object_trees_type;
-	if( exit_type_closed == st->state_object_exits_type )
-	{
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + left, TOP_SIDE_Y );
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + midd, TOP_SIDE_Y );
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + left, BOT_SIDE_Y );
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + midd, BOT_SIDE_Y );
-
-		// Hard code top and bottom exits as they never move!
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_EXIT_Y );
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, BOT_EXIT_Y );
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + right, TOP_EXIT_Y );
-		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + right, BOT_EXIT_Y );
-		return;
-	}
-
-	// Otherwise "draw" exits as blank tiles.
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, TOP_SIDE_Y );
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + midd, TOP_SIDE_Y );
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, BOT_SIDE_Y );
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + midd, BOT_SIDE_Y );
-
-	// Hard code top and bottom exits as they never move!
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_EXIT_Y );
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X, BOT_EXIT_Y );
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + right, TOP_EXIT_Y );
-	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + right, BOT_EXIT_Y );
-}
+//static void draw_gaps( unsigned char left, unsigned char midd, unsigned char right )
+//{
+//	struct_state_object *st = &global_state_object;
+//	unsigned char type = st->state_object_trees_type;
+//	if( exit_type_closed == st->state_object_exits_type )
+//	{
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + left, TOP_SIDE_Y );
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + midd, TOP_SIDE_Y );
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + left, BOT_SIDE_Y );
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + midd, BOT_SIDE_Y );
+//
+//		// Hard code top and bottom exits as they never move!
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_EXIT_Y );
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + LFT_SIDE_X, BOT_EXIT_Y );
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + right, TOP_EXIT_Y );
+//		engine_tile_manager_draw_trees( type, SCREEN_TILE_LEFT + right, BOT_EXIT_Y );
+//		return;
+//	}
+//
+//	// Otherwise "draw" exits as blank tiles.
+//	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, TOP_SIDE_Y );
+//	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + midd, TOP_SIDE_Y );
+//	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + left, BOT_SIDE_Y );
+//	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + midd, BOT_SIDE_Y );
+//
+//	// Hard code top and bottom exits as they never move!
+//	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X, TOP_EXIT_Y );
+//	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + LFT_SIDE_X, BOT_EXIT_Y );
+//	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + right, TOP_EXIT_Y );
+//	engine_tile_manager_draw_blank( SCREEN_TILE_LEFT + right, BOT_EXIT_Y );
+//}
