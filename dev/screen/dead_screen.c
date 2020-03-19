@@ -216,6 +216,7 @@ void screen_dead_screen_update( unsigned char *screen_type )
 static void reset_death()
 {
 	struct_state_object *st = &global_state_object;
+	unsigned char boost;
 	//struct_gamer_object *go = &global_gamer_object;
 	////unsigned char enemy;
 
@@ -234,7 +235,15 @@ static void reset_death()
 
 	// TODO test book reset...
 	engine_enemy_manager_reset_mode( st->state_object_actor_kill, enemymove_type_tour );
-	engine_score_manager_reset_boost();
+
+	// IMPORTANT I've decided NOT to reset boost on loss of life.
+	// only reset boost if zero or pass level or continue game.
+	boost = engine_score_manager_get_value( score_type_boost );
+	if( 0 == boost )
+	{
+		engine_score_manager_reset_boost();
+	}
+	
 
 	// If Kid collided with Mama then will be reset from dead to idle below...
 	// Reset all enemies back to scatter mode.

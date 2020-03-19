@@ -28,7 +28,7 @@ S _engine_score_manager_update_lives Ref0000
 S _engine_enemy_manager_stop Ref0000
 S _engine_frame_manager_load Ref0000
 S _engine_delay_manager_load Ref0000
-A _CODE size 1F1 flags 0 addr 0
+A _CODE size 1FB flags 0 addr 0
 S _screen_dead_screen_update Def004B
 S _screen_dead_screen_load Def0000
 A _DATA size 4 flags 0 addr 0
@@ -181,5 +181,7 @@ T DE 01
 R 00 00 00 00
 T DE 01 CD 00 00 21 0E 00 46 AF F5 33 C5 33 CD
 R 00 00 00 00 02 03 0F 00 02 06 13 00
-T EB 01 00 00 F1 C3 00 00
-R 00 00 00 00 02 02 05 00 02 06 06 00
+T EB 01 00 00 26 02 E3 33 CD 00 00 33 7D B7 C0 C3
+R 00 00 00 00 02 02 05 00 02 09 12 00
+T F9 01 00 00
+R 00 00 00 00 02 02 06 00

@@ -165,13 +165,14 @@ void screen_play_screen_update( unsigned char *screen_type )
 			}
 		}
 
+		// IMPORTANT - commenting this out 19/03/2020 as surely doesn't make difference??
 		//input_direction = engine_gamer_manager_input_direction();
-		input_direction = engine_input_manager_direction();
-		if( direction_type_none != input_direction && gamer_direction != input_direction )
-		{
-			nextr_direction = gamer_direction;
-			//engine_font_manager_draw_data( nextr_direction, 30, 20 );		// stevepro pre-empt direction
-		}
+		//input_direction = engine_input_manager_direction();
+		//if( direction_type_none != input_direction && gamer_direction != input_direction )
+		//{
+		//	nextr_direction = gamer_direction;
+		//	//engine_font_manager_draw_data( nextr_direction, 30, 20 );		// stevepro pre-empt direction
+		//}
 
 		engine_gamer_manager_stop();
 	}
