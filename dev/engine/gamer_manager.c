@@ -407,6 +407,7 @@ unsigned char engine_gamer_manager_input_direction()
 	left = engine_input_manager_move( input_type_left );
 	rght = engine_input_manager_move( input_type_right );
 
+	// Ignore multi-movement e.g. up-left / down-left / up-right / down-right.
 	if( ( upxx && left ) || ( down && left ) || ( upxx && rght ) || ( down && rght ) )
 	{
 		return direction;
