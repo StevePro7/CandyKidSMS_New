@@ -69,9 +69,11 @@ void screen_select_screen_update( unsigned char *screen_type )
 {
 	struct_state_object *st = &global_state_object;
 	unsigned char input[ 2 ] = { 0, 0 };
+	unsigned char direction;
 	unsigned char cursor;
 	unsigned char check;
 	unsigned char delay;
+	unsigned char tests;
 	check = 0;
 
 	if( event_stage_pause == event_stage )
@@ -94,78 +96,89 @@ void screen_select_screen_update( unsigned char *screen_type )
 		//engine_gamer_manager_draw();
 	}
 
-	engine_cursor_manager_update2( menu_type_select );
+
+	// Detect possible multi-direction first.
+	direction = engine_input_manager_direction();
+	if( direction_type_none != direction )
+	{
+		// Check up or down for cursor manager.
+		tests = engine_cursor_manager_update2( menu_type_select );
+		if( !tests )
+		{
+			
+			input[ 0 ] = engine_input_manager_hold( input_type_left );
+			input[ 1 ] = engine_input_manager_hold( input_type_right );
+			if( input[ 0 ] || input[ 1 ] )
+			{
+				cursor = engine_cursor_manager_get_cursor( menu_type_select );
+				if( 0 == cursor )
+				{
+					check = 1;
+					if( input[ 0 ] )
+					{
+						if( st->state_object_world_data == 0 )
+						{
+							st->state_object_world_data = MAX_WORLDS - 1;
+						}
+						else
+						{
+							st->state_object_world_data--;
+						}
+					}
+					if( input[ 1 ] )
+					{
+						st->state_object_world_data++;
+						if( st->state_object_world_data >= MAX_WORLDS )
+						{
+							st->state_object_world_data = 0;
+						}
+					}
+				}
+				else if( 1 == cursor )
+				{
+					check = 1;
+					if( input[ 0 ] )
+					{
+						if( st->state_object_round_data == 0 )
+						{
+							st->state_object_round_data = MAX_ROUNDS - 1;
+						}
+						else
+						{
+							st->state_object_round_data--;
+						}
+					}
+					if( input[ 1 ] )
+					{
+						st->state_object_round_data++;
+						if( st->state_object_round_data >= MAX_ROUNDS )
+						{
+							st->state_object_round_data = 0;
+						}
+					}
+				}
+				else if( 2 == cursor )
+				{
+					st->state_object_trees_type = 1 - st->state_object_trees_type;
+					engine_board_manager_border( border_type_game );
+					engine_level_manager_draw_level();
+					engine_level_manager_draw_middle();
+					print_trees();
+				}
+				else if( 3 == cursor )
+				{
+					st->state_object_exits_type = 1 - st->state_object_exits_type;
+					engine_board_manager_toggle();
+					print_exits();
+				}
+			}
+		}
+	}
 
 	// Draw sprites last.
 	engine_enemy_manager_draw();
 	engine_gamer_manager_draw();
 
-	input[ 0 ] = engine_input_manager_hold( input_type_left );
-	input[ 1 ] = engine_input_manager_hold( input_type_right );
-	if( input[ 0 ] || input[ 1 ] )
-	{
-		cursor = engine_cursor_manager_get_cursor( menu_type_select );
-		if( 0 == cursor )
-		{
-			check = 1;
-			if( input[ 0 ] )
-			{
-				if( st->state_object_world_data == 0 )
-				{
-					st->state_object_world_data = MAX_WORLDS - 1;
-				}
-				else
-				{
-					st->state_object_world_data--;
-				}
-			}
-			if( input[ 1 ] )
-			{
-				st->state_object_world_data++;
-				if( st->state_object_world_data >= MAX_WORLDS )
-				{
-					st->state_object_world_data = 0;
-				}
-			}
-		}
-		else if( 1 == cursor )
-		{
-			check = 1;
-			if( input[ 0 ] )
-			{
-				if( st->state_object_round_data == 0 )
-				{
-					st->state_object_round_data = MAX_ROUNDS - 1;
-				}
-				else
-				{
-					st->state_object_round_data--;
-				}
-			}
-			if( input[ 1 ] )
-			{
-				st->state_object_round_data++;
-				if( st->state_object_round_data >= MAX_ROUNDS )
-				{
-					st->state_object_round_data = 0;
-				}
-			}
-		}
-		else if( 2 == cursor )
-		{
-			st->state_object_trees_type = 1 - st->state_object_trees_type;
-			engine_board_manager_border( border_type_game );
-			engine_level_manager_draw_level();
-			engine_level_manager_draw_middle();
-			print_trees();
-		}
-		else if( 3 == cursor )
-		{
-			st->state_object_exits_type = 1 - st->state_object_exits_type;
-			engine_board_manager_toggle();
-			print_exits();
-		}
-	}
 
 	if( check )
 	{

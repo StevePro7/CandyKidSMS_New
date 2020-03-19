@@ -64,10 +64,11 @@ void screen_option_screen_update( unsigned char *screen_type )
 {
 	struct_state_object *st = &global_state_object;
 	unsigned char input[ 2 ] = { 0, 0 };
+	unsigned char direction;
 	unsigned char cursor;
 	unsigned char enemy;
 	unsigned char delay;
-	unsigned char check;
+	unsigned char tests;
 
 	if( event_stage_pause == event_stage )
 	{
@@ -89,31 +90,36 @@ void screen_option_screen_update( unsigned char *screen_type )
 		//engine_gamer_manager_draw();
 	}
 
-	check = engine_cursor_manager_update2( menu_type_option );
-	if( check )
+	// Detect possible multi-direction first.
+	direction = engine_input_manager_direction();
+	if( direction_type_none != direction )
 	{
-		*screen_type = st->state_object_curr_screen;
-		return;
+		// Check up or down for cursor manager.
+		tests = engine_cursor_manager_update2( menu_type_option );
+		if( !tests )
+		{
+			// If not up or down then check left or right for select.
+			input[ 0 ] = engine_input_manager_hold( input_type_left );
+			input[ 1 ] = engine_input_manager_hold( input_type_right );
+
+			if( input[ 0 ] || input[ 1 ] )
+			{
+				cursor = engine_cursor_manager_get_cursor( menu_type_option );
+				if( actor_type_pro == cursor )
+				{
+					engine_gamer_manager_image();
+					print_gamer();
+				}
+				else
+				{
+					enemy = cursor - 1;
+					engine_enemy_manager_image( enemy );
+					print_enemy( enemy );
+				}
+			}
+		}
 	}
 
-	input[ 0 ] = engine_input_manager_hold( input_type_left );
-	input[ 1 ] = engine_input_manager_hold( input_type_right );
-
-	if( input[ 0 ] || input[ 1 ] )
-	{
-		cursor = engine_cursor_manager_get_cursor( menu_type_option );
-		if( actor_type_pro == cursor )
-		{
-			engine_gamer_manager_image();
-			print_gamer();
-		}
-		else
-		{
-			enemy = cursor - 1;
-			engine_enemy_manager_image( enemy );
-			print_enemy( enemy );
-		}
-	}
 
 	// Draw sprites last.
 	engine_enemy_manager_draw();
