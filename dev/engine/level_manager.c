@@ -174,25 +174,6 @@ void engine_level_manager_draw_middle()
 	}
 }
 
-void engine_level_manager_draw_trees()
-{
-	struct_state_object *st = &global_state_object;
-	unsigned char row, col;
-	unsigned char tile_type;
-
-	for( row = 0; row < MAX_ROWS; row++ )
-	{
-		for( col = 0; col < MAX_COLS; col++ )
-		{
-			tile_type = engine_level_manager_get_tile_type( col, row, direction_type_none, offset_type_none );
-			if( tile_type_trees == tile_type )
-			{
-				engine_tile_manager_draw_trees( st->state_object_trees_type, col, row );
-			}
-		}
-	}
-}
-
 //void engine_level_manager_draw_level()
 //{
 //	draw_level( 0, MAX_ROWS, 0, MAX_COLS );

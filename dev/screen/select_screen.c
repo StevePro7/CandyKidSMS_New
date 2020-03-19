@@ -155,7 +155,8 @@ void screen_select_screen_update( unsigned char *screen_type )
 		{
 			st->state_object_trees_type = 1 - st->state_object_trees_type;
 			engine_board_manager_border( border_type_game );
-			engine_level_manager_draw_trees();
+			engine_level_manager_draw_level();
+			engine_level_manager_draw_middle();
 			print_trees();
 		}
 		else if( 3 == cursor )
