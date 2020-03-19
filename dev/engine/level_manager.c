@@ -106,7 +106,7 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 	}
 
 	// Every fifth level award freeman tile if not invincible.
-	if( st->state_object_invincibie )
+	if( st->state_object_localcheat )
 	{
 		return;
 	}

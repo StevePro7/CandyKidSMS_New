@@ -68,8 +68,8 @@ void engine_hack_manager_invert()
 {
 	// TODO delete this hard coded
 	struct_state_object *st = &global_state_object;
-	st->state_object_invincibie = 0;
-	st->state_object_localcheat = 0;
+	//st->state_object_invincibie = 0;
+	//st->state_object_localcheat = 0;
 
 	st->state_object_difficulty = 0;
 	st->state_object_pace_speed = 0;
