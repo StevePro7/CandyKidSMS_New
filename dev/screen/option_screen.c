@@ -40,7 +40,9 @@ void screen_option_screen_load()
 	engine_board_manager_side_tile();
 
 	//. Display text.
-	engine_cursor_manager_draw_title1();
+	//engine_cursor_manager_draw_title1();
+	engine_cursor_manager_draw_titles( menu_type_option );
+
 	//print_title();
 	print_gamer();
 	for( enemy = 0; enemy < MAX_ENEMIES; enemy++ )
@@ -185,23 +187,35 @@ void screen_option_screen_update( unsigned char *screen_type )
 static void print_gamer()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	unsigned char index;
+	unsigned char delta;
 
 	// Gamer.
-	index = 2 + actor_type_pro * 3;
-	index += go->image + 1;
-	engine_cursor_manager_draw_option1( index, go->tileX * 2 - 2, go->tileY * 2 + 1 );
-	engine_cursor_manager_draw_option2( index, actor_type_pro );
+	delta = 2 + actor_type_pro * 3;
+	delta += go->image + 1;
+	//engine_cursor_manager_draw_option1( index, go->tileX * 2 - 2, go->tileY * 2 + 1 );
+	//engine_cursor_manager_draw_option2( delta, actor_type_pro );
+
+	engine_cursor_manager_draw_grant1( menu_type_option, delta, go->tileX * 2 - 1, go->tileY * 2 + 1 );
+	engine_cursor_manager_draw_grant2( menu_type_option, delta, actor_type_pro );
+
+	//engine_cursor_manager_draw_grant1( menu_type_select, delta, go->tileX * 2 - 1, go->tileY * 2 + 1 );
+	//engine_cursor_manager_draw_grant2( menu_type_select, delta, actor_type_pro );
 }
 
 static void print_enemy( unsigned char enemy )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
-	unsigned char index;
+	unsigned char delta;
 	unsigned char actor = enemy + 1;
 
-	index = 2 + actor * 3;
-	index += eo->image + 1;
-	engine_cursor_manager_draw_option1( index, eo->tileX * 2 - 2, eo->tileY * 2 + 1 );
-	engine_cursor_manager_draw_option2( index, actor );
+	delta = 2 + actor * 3;
+	delta += eo->image + 1;
+	//engine_cursor_manager_draw_option1( index, eo->tileX * 2 - 2, eo->tileY * 2 + 1 );
+	//engine_cursor_manager_draw_option2( index, actor );
+
+	engine_cursor_manager_draw_grant1( menu_type_option, delta, eo->tileX * 2 - 1, eo->tileY * 2 + 1 );
+	engine_cursor_manager_draw_grant2( menu_type_option, delta, actor );
+
+	//engine_cursor_manager_draw_grant1( menu_type_select, delta, eo->tileX * 2 - 1, eo->tileY * 2 + 1 );
+	//engine_cursor_manager_draw_grant2( menu_type_select, delta, actor );
 }
