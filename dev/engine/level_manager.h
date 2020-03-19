@@ -7,6 +7,7 @@ void engine_level_manager_beat_level( const unsigned char *data, const unsigned 
 void engine_level_manager_blank_tile( unsigned char index );
 void engine_level_manager_draw_level();
 void engine_level_manager_draw_middle();
+void engine_level_manager_draw_trees();
 
 unsigned char engine_level_manager_get_collision( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset );
 unsigned char engine_level_manager_get_direction( unsigned char x, unsigned char y, unsigned char direction, unsigned char offset );
