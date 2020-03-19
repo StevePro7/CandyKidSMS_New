@@ -23,7 +23,7 @@
 
 // Private helper methods.
 static void print_title();
-static void print_level();
+//static void print_level();
 static void print_trees();
 static void print_exits();
 
@@ -52,7 +52,7 @@ void screen_select_screen_load()
 
 	//engine_cursor_manager_draw_title2();
 	engine_cursor_manager_draw_titles( menu_type_select );
-	print_level();
+	//print_level();
 	print_trees();
 	print_exits();
 
@@ -205,22 +205,25 @@ static void print_title()
 	engine_font_manager_draw_text( locale_object_select[ 1 ], TEXT_X, TEXT0_Y + 1 );
 }
 
-static void print_level()
-{
-	engine_cursor_manager_draw_select2( 3, 0 );
-	engine_cursor_manager_draw_select2( 6, 1 );
-}
+//static void print_level()
+//{
+//	//engine_cursor_manager_draw_grant2( menu_type_select, 3, 0 );
+//	//engine_cursor_manager_draw_select2( 3, 0 );
+//	//engine_cursor_manager_draw_select2( 6, 1 );
+//}
 
 static void print_trees()
 {
 	struct_state_object *st = &global_state_object;
-	unsigned char index = 8 + st->state_object_trees_type + 1;
-	engine_cursor_manager_draw_select2( index, 2 );
+	unsigned char delta = 8 + st->state_object_trees_type + 1;
+	//engine_cursor_manager_draw_select2( index, 2 );
+	engine_cursor_manager_draw_grant2( menu_type_select, delta, 2 );
 }
 
 static void print_exits()
 {
 	struct_state_object *st = &global_state_object;
-	unsigned char index = 11 + st->state_object_exits_type + 1;
-	engine_cursor_manager_draw_select2( index, 3 );
+	unsigned char delta = 11 + st->state_object_exits_type + 1;
+	//engine_cursor_manager_draw_select2( index, 3 );
+	engine_cursor_manager_draw_grant2( menu_type_select, delta, 3 );
 }
