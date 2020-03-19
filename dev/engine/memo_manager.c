@@ -10,15 +10,15 @@
 #include "..\banks\fixedbank.h"
 #include "..\banks\databank.h"
 
-void engine_memo_manager_clear()
-{
-	unsigned char row;
-	devkit_SMS_mapROMBank( FIXED_BANK );
-	for( row = 0; row < 24; row++ )
-	{
-		engine_font_manager_draw_text( locale_object_blank32, 0, row );
-	}
-}
+//void engine_memo_manager_clear()
+//{
+//	unsigned char row;
+//	devkit_SMS_mapROMBank( FIXED_BANK );
+//	for( row = 0; row < 24; row++ )
+//	{
+//		engine_font_manager_draw_text( locale_object_blank32, 0, row );
+//	}
+//}
 
 void engine_memo_manager_draw( unsigned char topIndex, unsigned char botIndex )
 {

@@ -168,7 +168,7 @@ const unsigned char *locale_object_select[] =
 
 const unsigned char *locale_object_number[] = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10" };
 
-const unsigned char locale_object_blank32[] = "123456789A123456789B123456789C12";
+//const unsigned char locale_object_blank32[] = "123456789A123456789B123456789C12";
 //const unsigned char locale_object_blank32[] = "                                ";
 //const unsigned char locale_object_blank26[] = "123456789A123456789B123456";
 const unsigned char locale_object_blank26[] = "                          ";
