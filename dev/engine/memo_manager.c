@@ -89,7 +89,7 @@ void engine_memo_manager_option()
 	//unsigned char index[ 2 ] = { 11,13 };
 	//unsigned char loop;
 
-	devkit_SMS_mapROMBank( FIXED_BANK );
+	
 
 	//if( diff_type_hard == state_object_difficulty && pace_type_fast == state_object_pace_speed )
 	//{
@@ -97,6 +97,7 @@ void engine_memo_manager_option()
 	//	index[ 1 ] = 11;
 	//}
 
+	devkit_SMS_mapROMBank( FIXED_BANK );
 	if( diff_type_hard == st->state_object_difficulty && pace_type_fast == st->state_object_pace_speed )
 	{
 		text = locale_object_texts[ st->state_object_difficulty + 11 ];

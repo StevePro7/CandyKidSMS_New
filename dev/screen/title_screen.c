@@ -25,6 +25,7 @@ void screen_title_screen_load()
 {
 	struct_state_object *st = &global_state_object;
 
+	devkit_SMS_mapROMBank( FIXED_BANK );
 	engine_locale_manager_draw_text( 28, SCREEN_TILE_LEFT + COIN_TEXT_X, COIN_TEXT_Y );
 	engine_font_manager_draw_text( locale_object_blank18, SCREEN_TILE_LEFT + COIN_TEXT_X, COIN_TEXT_Y + 1 );
 	engine_font_manager_draw_text( locale_object_blank18, SCREEN_TILE_LEFT + 2, BOTT_TEXT_Y );

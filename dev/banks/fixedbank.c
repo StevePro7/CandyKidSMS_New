@@ -146,25 +146,25 @@ const unsigned char *locale_object_grants[] =
 	"EXITS", "OPEN", "SHUT",
 };
 
-const unsigned char *locale_object_option[] =
-{
-	"SELECT",
-	"ACTORS",
-	" KID#", " KID1", " KID2",
-	" PRO#", " PRO1", " PRO2",
-	" ADI#", " ADI1", " ADI2",
-	" SUZ#", " SUZ1", " SUZ2",
-};
-
-const unsigned char *locale_object_select[] =
-{
-	"SELECT",
-	" LEVEL",
-	"WORLD", "     ", "",
-	"ROUND", "     ", "",
-	"TREES", " STOP", " KILL",
-	"EXITS", " OPEN", " SHUT",
-};
+//const unsigned char *locale_object_option[] =
+//{
+//	"SELECT",
+//	"ACTORS",
+//	" KID#", " KID1", " KID2",
+//	" PRO#", " PRO1", " PRO2",
+//	" ADI#", " ADI1", " ADI2",
+//	" SUZ#", " SUZ1", " SUZ2",
+//};
+//
+//const unsigned char *locale_object_select[] =
+//{
+//	"SELECT",
+//	" LEVEL",
+//	"WORLD", "     ", "",
+//	"ROUND", "     ", "",
+//	"TREES", " STOP", " KILL",
+//	"EXITS", " OPEN", " SHUT",
+//};
 
 const unsigned char *locale_object_number[] =
 {
@@ -175,7 +175,7 @@ const unsigned char *locale_object_number[] =
 //const unsigned char locale_object_blank32[] = "123456789A123456789B123456789C12";
 //const unsigned char locale_object_blank32[] = "                                ";
 //const unsigned char locale_object_blank26[] = "123456789A123456789B123456";
-const unsigned char locale_object_blank26[] = "                          ";
+//const unsigned char locale_object_blank26[] = "                          ";
 const unsigned char locale_object_blank18[] = "                  ";
 //const unsigned char locale_object_blank18[] = "123456789A12345678";
 //const unsigned char locale_object_blank14[] = "              ";

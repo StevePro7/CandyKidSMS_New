@@ -21,12 +21,12 @@ extern const unsigned char *locale_object_texts[];
 extern const unsigned char *locale_object_menus[];
 //extern const unsigned char *locale_object_names[];
 extern const unsigned char *locale_object_grants[];
-extern const unsigned char *locale_object_option[];
-extern const unsigned char *locale_object_select[];
+//extern const unsigned char *locale_object_option[];
+//extern const unsigned char *locale_object_select[];
 extern const unsigned char *locale_object_number[];
 
 //extern const unsigned char locale_object_blank32[];
-extern const unsigned char locale_object_blank26[];
+//extern const unsigned char locale_object_blank26[];
 extern const unsigned char locale_object_blank18[];
 
 // Score Manager.
