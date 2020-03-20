@@ -138,10 +138,10 @@ static void print_enemy()
 	//engine_font_manager_draw_data2( eo->toggle[ 1 ], 1, 5 );
 
 	eo = &global_enemy_objects[ actor_type_adi ];
-	engine_font_manager_draw_data2( eo->speeds[ 0 ], 1, 9 );
-	engine_font_manager_draw_data2( eo->speeds[ 1 ], 1, 10 );
-	engine_font_manager_draw_data2( eo->delays[ 0 ], 1, 11 );
-	engine_font_manager_draw_data2( eo->delays[ 1 ], 1, 12 );
+	//engine_font_manager_draw_data2( eo->speeds[ 0 ], 1, 9 );
+	//engine_font_manager_draw_data2( eo->speeds[ 1 ], 1, 10 );
+	//engine_font_manager_draw_data2( eo->delays[ 0 ], 1, 11 );
+	//engine_font_manager_draw_data2( eo->delays[ 1 ], 1, 12 );
 	////engine_font_manager_draw_data2( eo->swaps, 1, 13 );
 	////engine_font_manager_draw_data2( eo->waiter, 1, 14 );
 	//engine_font_manager_draw_data2( eo->toggle[ 0 ], 1, 13 );

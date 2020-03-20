@@ -132,7 +132,7 @@ void engine_hack_manager_invert()
 	st->state_object_world_data = 2 - 1;
 	st->state_object_round_data = 1 - 1;
 
-	st->state_object_world_data = 16 - 1;
-	st->state_object_round_data = 1 - 1;
+	//st->state_object_world_data = 8 - 1;
+	//st->state_object_round_data = 1 - 1;
 	// TODO delete this hard coded
 }
