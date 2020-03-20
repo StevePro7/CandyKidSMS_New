@@ -1,6 +1,11 @@
 #ifndef _LEVEL_MANAGER_H_
 #define _LEVEL_MANAGER_H_
 
+#include "..\object\level_object.h"
+
+// Global variable.
+extern struct_level_object global_level_object;
+
 void engine_level_manager_load_level( const unsigned char world, const unsigned char round );
 void engine_level_manager_update_level( const unsigned char round, unsigned char *actor_mover, unsigned char *actor_tileZ );
 void engine_level_manager_beat_level( const unsigned char *data, const unsigned char size, const unsigned char bank );

@@ -15,6 +15,9 @@
 #define CR		'\r'			// 0x0d
 #define LF		'\n'			// 0x0a
 
+// Global variable.
+struct_level_object global_level_object;
+
 // Private helper methods.
 static void load_level( const unsigned char *data, const unsigned char size, const unsigned char bank, unsigned char mult );
 static void draw_level( unsigned char beg_row, unsigned char end_row, unsigned char beg_col, unsigned char end_col );
