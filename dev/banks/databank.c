@@ -176,6 +176,6 @@ unsigned char level_object_tiles_array[] =
 //	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 //};
 
-unsigned char level_object_bonus_count;
-unsigned char level_object_candy_count;
-unsigned char level_object_multiplier;
+//unsigned char level_object_bonus_count;
+//unsigned char level_object_candy_count;
+//unsigned char level_object_multiplier;

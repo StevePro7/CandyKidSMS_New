@@ -48,6 +48,6 @@ extern const unsigned char enemy_object_directions[];
 
 // Level Manager.
 extern unsigned char level_object_tiles_array[];
-extern unsigned char level_object_bonus_count;
-extern unsigned char level_object_candy_count;
-extern unsigned char level_object_multiplier;
+//extern unsigned char level_object_bonus_count;
+//extern unsigned char level_object_candy_count;
+//tern unsigned char level_object_multiplier;

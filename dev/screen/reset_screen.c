@@ -170,16 +170,16 @@ void screen_reset_screen_update( unsigned char *screen_type )
 	first_time = 0;
 
 	// Check candy collision before sprite collision as we want to test if all candy eaten = level complete
-	if( coll_type_candy == gamer_collision )
-	{
-		// TODO update correct screen.
-		unsigned char candy_count = engine_score_manager_get_candy();
-		if( level_object_candy_count == candy_count )
-		{
-			*screen_type = screen_type_pass;
-			return;
-		}
-	}
+	//if( coll_type_candy == gamer_collision )
+	//{
+	//	// TODO update correct screen.
+	//	unsigned char candy_count = engine_score_manager_get_candy();
+	//	if( level_object_candy_count == candy_count )
+	//	{
+	//		*screen_type = screen_type_pass;
+	//		return;
+	//	}
+	//}
 
 	if( actor_type_kid != st->state_object_actor_kill )
 	{

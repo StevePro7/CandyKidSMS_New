@@ -20,7 +20,7 @@ struct_level_object global_level_object;
 
 // Private helper methods.
 static void load_level( const unsigned char *data, const unsigned char size, const unsigned char bank, unsigned char mult );
-static void draw_level( unsigned char beg_row, unsigned char end_row, unsigned char beg_col, unsigned char end_col );
+//static void draw_level( unsigned char beg_row, unsigned char end_row, unsigned char beg_col, unsigned char end_col );
 static void draw_tiles( unsigned char x, unsigned char y );
 static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction );
 
@@ -64,6 +64,7 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 
 void engine_level_manager_update_level( const unsigned char round, unsigned char *actor_mover, unsigned char *actor_tileZ )
 {
+	struct_level_object *lo = &global_level_object;
 	struct_state_object *st = &global_state_object;
 	unsigned char actor;
 	unsigned char mover;
@@ -94,11 +95,11 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 
 		if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
 		{
-			level_object_bonus_count--;
+			lo->level_object_bonus_count--;
 		}
 		if( tile_type_candy == tile_type )
 		{
-			level_object_candy_count--;
+			lo->level_object_candy_count--;
 		}
 
 		tile_type = engine_level_manager_get_next_tile( tileX, tileY, direction_type_none, offset_type_none );
@@ -135,11 +136,11 @@ void engine_level_manager_update_level( const unsigned char round, unsigned char
 
 	if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
 	{
-		level_object_bonus_count--;
+		lo->level_object_bonus_count--;
 	}
 	if( tile_type_candy == tile_type )
 	{
-		level_object_candy_count--;
+		lo->level_object_candy_count--;
 	}
 
 	tile_type = engine_level_manager_get_next_tile( tileX, tileY, direction_type_none, offset_type_none );
@@ -347,6 +348,7 @@ unsigned char engine_level_manager_test_direction( unsigned char row, unsigned c
 // Private helper methods.
 static void load_level( const unsigned char *data, const unsigned char size, const unsigned char bank, unsigned char mult )
 {
+	struct_level_object *lo = &global_level_object;
 	const unsigned char *o = data;
 	unsigned char row, col;
 	unsigned char tile_data;
@@ -362,9 +364,9 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 	load_cols = size / MAX_ROWS;
 	draw_cols = load_cols - CRLF;
 
-	level_object_bonus_count = 0;
-	level_object_candy_count = 0;
-	level_object_multiplier = mult;
+	lo->level_object_bonus_count = 0;
+	lo->level_object_candy_count = 0;
+	lo->level_object_multiplier = mult;
 
 	mult = 0;
 	devkit_SMS_mapROMBank( bank );
@@ -380,11 +382,11 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 
 				if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
 				{
-					level_object_bonus_count++;
+					lo->level_object_bonus_count++;
 				}
 				if( tile_type_candy == tile_type )
 				{
-					level_object_candy_count++;
+					lo->level_object_candy_count++;
 				}
 
 				engine_tile_manager_load_coll( &coll_type, tile_data );
@@ -418,12 +420,13 @@ static void load_level( const unsigned char *data, const unsigned char size, con
 
 static void draw_tiles( unsigned char x, unsigned char y )
 {
+	struct_level_object *lo = &global_level_object;
 	unsigned char index;
 	unsigned char tile;
 
 	index = ( y + 2 ) * MAZE_COLS + ( x + 2 );
 	tile = level_object_tiles_array[ index ];
-	engine_tile_manager_draw_tile( tile, SCREEN_TILE_LEFT + ( x + 1 ) * 2, ( y + 1 ) * 2 );
+	engine_tile_manager_draw_tile( tile, SCREEN_TILE_LEFT + ( x + 1 ) * 2, ( y + 1 ) * 2, lo->level_object_multiplier );
 }
 
 static unsigned char test_direction( unsigned char x, unsigned char y, unsigned char input_direction )

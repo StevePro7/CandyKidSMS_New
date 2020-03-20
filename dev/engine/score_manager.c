@@ -3,6 +3,7 @@
 #include "font_manager.h"
 #include "global_manager.h"
 #include "locale_manager.h"
+#include "level_manager.h"
 #include "state_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
@@ -126,10 +127,11 @@ void engine_score_manager_finish_bonus()
 void engine_score_manager_update_bonus( unsigned char index )
 {
 	struct_score_object *so = &global_score_object;
+	struct_level_object *lo = &global_level_object;
 
 	// The bonus tile enum is 3x values off.
 	unsigned char bonus = bonuses[ index - 3 ];
-	bonus *= level_object_multiplier;
+	bonus *= lo->level_object_multiplier;
 	so->bonus++;
 	//so->total++;
 	update_score( bonus );

@@ -74,7 +74,7 @@ void engine_tile_manager_load_coll( unsigned char *coll_type, unsigned char tile
 }
 
 // TODO rename this as is too generic!
-void engine_tile_manager_draw_tile( unsigned char tile, unsigned char x, unsigned char y )
+void engine_tile_manager_draw_tile( unsigned char tile, unsigned char x, unsigned char y, unsigned char mult )
 {
 	struct_state_object *st = &global_state_object;
 	unsigned char upper_nibble;
@@ -94,7 +94,8 @@ void engine_tile_manager_draw_tile( unsigned char tile, unsigned char x, unsigne
 	}
 	else if( tile_type >= tile_type_bonusA  && tile_type <= tile_type_bonusD )
 	{
-		engine_tile_manager_draw_bonus( tile_type, x, y, level_object_multiplier );
+		//engine_tile_manager_draw_bonus( tile_type, x, y, level_object_multiplier );
+		engine_tile_manager_draw_bonus( tile_type, x, y, mult );
 	}
 	else if( tile_type_candy == tile_type )
 	{

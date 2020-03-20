@@ -1,5 +1,5 @@
 XL2
-H 9 areas 13 global symbols
+H 9 areas 10 global symbols
 M databank
 O -mz80
 S _sfx_reset_psg Ref0000
@@ -13,10 +13,7 @@ S _board_object_homeY Def0020
 S _enemy_object_directions Def0024
 S _board_object_posnX Def0000
 S _board_object_posnY Def000E
-A _DATA size 3 flags 0 addr 0
-S _level_object_candy_count Def0001
-S _level_object_bonus_count Def0000
-S _level_object_multiplier Def0002
+A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 4CF flags 0 addr 0
 S _level_object_tiles_array Def040B
 S _command_object_cmds Def020B
@@ -30,18 +27,6 @@ A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
 A _INITIALIZER size 4CF flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
-T 00 00
-R 00 00 01 00
-T 00 00
-R 00 00 01 00
-T 01 00
-R 00 00 01 00
-T 01 00
-R 00 00 01 00
-T 02 00
-R 00 00 01 00
-T 02 00
-R 00 00 01 00
 T 00 00
 R 00 00 02 00
 T 00 00

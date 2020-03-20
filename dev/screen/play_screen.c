@@ -37,6 +37,7 @@ static unsigned char nextr_direction;
 void screen_play_screen_load()
 {
 	struct_state_object *st = &global_state_object;
+
 	//struct_enemy_object *eo;
 	engine_delay_manager_load( 0 );
 
@@ -66,6 +67,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	struct_frame_object *fo = &global_frame_object;
 	struct_gamer_object *go = &global_gamer_object;
 	struct_state_object *st = &global_state_object;
+	struct_level_object *lo = &global_level_object;
 	struct_enemy_object *eo;
 	//unsigned char process_boost = 0;
 	unsigned char gamer_boost = 0;
@@ -292,7 +294,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	{
 		// TODO update correct screen.
 		unsigned char candy_count = engine_score_manager_get_candy();
-		if( level_object_candy_count == candy_count )
+		if( lo->level_object_candy_count == candy_count )
 		{
 			*screen_type = screen_type_pass;
 			return;

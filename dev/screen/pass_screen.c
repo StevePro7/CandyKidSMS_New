@@ -6,6 +6,7 @@
 #include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\memo_manager.h"
+#include "..\engine\level_manager.h"
 #include "..\engine\score_manager.h"
 #include "..\engine\state_manager.h"
 #include "..\engine\timer_manager.h"
@@ -25,6 +26,7 @@ void screen_pass_screen_load()
 {
 	struct_score_object *so = &global_score_object;
 	struct_state_object *st = &global_state_object;
+	struct_level_object *lo = &global_level_object;
 
 	// Draw sprites first.
 	engine_enemy_manager_draw();
@@ -36,7 +38,7 @@ void screen_pass_screen_load()
 	engine_delay_manager_load( PASS_SCREEN_DELAY1 );
 	engine_audio_manager_music_stop();
 
-	perfect = ( level_object_bonus_count + level_object_candy_count == so->bonus + so->candy );
+	perfect = ( lo->level_object_bonus_count + lo->level_object_candy_count == so->bonus + so->candy );
 	event_stage = event_stage_start;
 
 	//engine_audio_manager_sound_play( sound_type_level );
