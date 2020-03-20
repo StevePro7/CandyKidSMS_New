@@ -105,7 +105,6 @@ void screen_select_screen_update( unsigned char *screen_type )
 		tests = engine_cursor_manager_update2( menu_type_select );
 		if( !tests )
 		{
-			
 			input[ 0 ] = engine_input_manager_hold( input_type_left );
 			input[ 1 ] = engine_input_manager_hold( input_type_right );
 			if( input[ 0 ] || input[ 1 ] )

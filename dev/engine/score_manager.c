@@ -84,7 +84,7 @@ void engine_score_manager_load()
 	struct_state_object *st = &global_state_object;
 	//so->score = 0;
 	//so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
-	so->values[ score_type_level ] = st->state_object_world_data * MAX_WORLDS + st->state_object_round_data + 1;
+	so->values[ score_type_level ] = st->state_object_world_data * MAX_ROUNDS + st->state_object_round_data + 1;
 	so->bonus = 0;
 	so->candy = 0;
 	//so->total = 0;
@@ -228,7 +228,7 @@ void engine_score_manager_update_level()
 {
 	struct_score_object *so = &global_score_object;
 	struct_state_object *st = &global_state_object;
-	so->values[ score_type_level ] = st->state_object_world_data * MAX_WORLDS + st->state_object_round_data + 1;
+	so->values[ score_type_level ] = st->state_object_world_data * MAX_ROUNDS + st->state_object_round_data + 1;
 	draw_value( score_type_level );
 
 	// TODO delete this - used for debugging!

@@ -44,7 +44,7 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 	{
 		index = level;
 	}
-//
+
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	if( level < halve )
 	{

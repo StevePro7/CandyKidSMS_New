@@ -5,7 +5,7 @@ O -mz80
 S .__.ABS. Def0000
 S _global_state_object Ref0000
 S _state_object_enemy_move Ref0000
-A _CODE size 132 flags 0 addr 0
+A _CODE size 136 flags 0 addr 0
 S _engine_hack_manager_load Def0042
 S _engine_hack_manager_init Def0000
 S _engine_hack_manager_invert Def0098
@@ -73,9 +73,9 @@ T E4 00 3E 00
 R 00 00 00 00
 T E6 00
 R 00 00 00 00
-T E6 00 12 21 0A 00 4E 79 B7 28 13 3E 0A 91 30 05
+T E6 00 12 21 0A 00 4E 79 B7 28 13 3E 14 91 30 05
 R 00 00 00 00 02 04 01 00
-T F4 00 21 0A 00 36 0A
+T F4 00 21 0A 00 36 14
 R 00 00 00 00 02 03 01 00
 T F9 00
 R 00 00 00 00
@@ -95,5 +95,5 @@ T 14 01 3A 0C 00 D6 01 3E 00 17 32 0C 00 3A 0D 00
 R 00 00 00 00 02 03 01 00 02 0B 01 00 02 0E 01 00
 T 22 01 D6 01 3E 00 17 32 0D 00 21 0A 00 36 01 AF
 R 00 00 00 00 02 08 01 00 02 0B 01 00
-T 30 01 12 C9
+T 30 01 12 36 0F AF 12 C9
 R 00 00 00 00
