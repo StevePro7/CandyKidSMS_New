@@ -18,12 +18,6 @@
 #define WORLD_Y		22
 #define ROUNT_Y		23
 
-// IMPORTANT disable compiler warning 196
-//#ifdef _CONSOLE
-//#else
-//#pragma disable_warning 196
-//#endif
-
 // Global variable.
 struct_score_object global_score_object;
 
@@ -106,16 +100,7 @@ unsigned char engine_score_manager_get_value( unsigned char index )
 	struct_score_object *so = &global_score_object;
 	return so->values[ index ];
 }
-//unsigned char engine_score_manager_get_lives()
-//{
-//	struct_score_object *so = &global_score_object;
-//	return so->values[ score_type_lives ];
-//}
-//unsigned char engine_score_manager_get_boost()
-//{
-//	struct_score_object *so = &global_score_object;
-//	return so->values[ score_type_boost ];
-//}
+
 
 void engine_score_manager_finish_bonus()
 {
@@ -189,21 +174,6 @@ void engine_score_manager_update_boost()
 
 	draw_value( score_type_boost );
 }
-//void engine_score_manager_draw_all()
-//{
-//	struct_score_object *so = &global_score_object;
-//
-//	draw_zero( DATA_X + 1, HIGHS_Y + 1 );
-//	draw_zero( DATA_X + 1, TEXT1_Y + 1 );
-//	draw_highs();
-//	draw_score();
-//
-//	draw_value( score_type_lives );
-//	draw_value( score_type_level );
-//	draw_value( score_type_boost );
-//	draw_value( score_type_world );
-//	draw_value( score_type_round );
-//}
 
 
 
@@ -255,20 +225,6 @@ void engine_score_manager_reset_boost()
 	draw_value( score_type_boost );
 }
 
-//static void reset()
-//{
-//	struct_score_object *so = &global_score_object;
-//	so->score = 0;
-//	so->values[ score_type_lives ] = NUMBER_LIVES - state_object_difficulty;
-//	so->values[ score_type_level ] = state_object_world_data * MAX_WORLDS + state_object_round_data + 1;
-//
-//	so->bonus = 0;
-//	so->candy = 0;
-//	//so->total = 0;
-//	so->values[ score_type_boost ] = boost_X[ state_object_difficulty ];
-//	//so->delay = 1 - state_object_difficulty;
-//	//so->timer = 0;
-//}
 
 static void update_score( unsigned char points )
 {
@@ -336,16 +292,6 @@ static void draw_value( unsigned char index )
 	{
 		value = st->state_object_round_data + 1;
 	}
-
-	// HACK to workaround side tile for exit.
-	//if( score_type_level == index && exit_type_public == state_object_exits_type )
-	//{
-	//	engine_font_manager_draw_data4( value, DATA_X + 1, y_val );
-	//}
-	//else
-	//{
-	//	engine_font_manager_draw_data( value, DATA_X + 1, y_val );
-	//}
 
 	engine_font_manager_draw_data( value, DATA_X + 1, y_val );
 

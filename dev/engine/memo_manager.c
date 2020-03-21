@@ -65,20 +65,6 @@ void engine_memo_manager_levels( unsigned char x, unsigned char y1, unsigned cha
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	engine_font_manager_draw_text( locale_object_number[ st->state_object_world_data ], SCREEN_TILE_LEFT + x, y1 );
 	engine_font_manager_draw_text( locale_object_number[ st->state_object_round_data ], SCREEN_TILE_LEFT + x, y2 );
-	//unsigned char world = st->state_object_world_data + 1;
-	//unsigned char round = st->state_object_round_data + 1;
-
-	//engine_font_manager_draw_data( world, SCREEN_TILE_LEFT + x, y1 );
-	//engine_font_manager_draw_data( round, SCREEN_TILE_LEFT + x, y2 );
-
-	//if( world < MAX_ROUNDS )
-	//{
-	//	engine_font_manager_draw_char( '0', SCREEN_TILE_LEFT + x - 1, y1 );
-	//}
-	//if( round < MAX_ROUNDS )
-	//{
-	//	engine_font_manager_draw_char( '0', SCREEN_TILE_LEFT + x - 1, y2 );
-	//}
 }
 
 void engine_memo_manager_option()
@@ -86,16 +72,6 @@ void engine_memo_manager_option()
 	struct_state_object *st = &global_state_object;
 	const unsigned char *text;
 	const unsigned char dataY = 22;
-	//unsigned char index[ 2 ] = { 11,13 };
-	//unsigned char loop;
-
-	
-
-	//if( diff_type_hard == state_object_difficulty && pace_type_fast == state_object_pace_speed )
-	//{
-	//	index[ 0 ] = 13;
-	//	index[ 1 ] = 11;
-	//}
 
 	devkit_SMS_mapROMBank( FIXED_BANK );
 	if( diff_type_hard == st->state_object_difficulty && pace_type_fast == st->state_object_pace_speed )

@@ -178,27 +178,6 @@ void engine_level_manager_draw_middle()
 	}
 }
 
-//void engine_level_manager_draw_level()
-//{
-//	draw_level( 0, MAX_ROWS, 0, MAX_COLS );
-//}
-//void engine_level_manager_draw_middle()
-//{
-//	// TODO define...!!
-//	 beg_row, unsigned char end_row, unsigned char beg_col, unsigned char end_col
-//	draw_level( 3, 7, 2, 8 );
-//}
-//static void draw_level( unsigned char beg_row, unsigned char end_row, unsigned char beg_col, unsigned char end_col )
-//{
-//	unsigned char row, col;
-//	for( row = beg_row; row < end_row; row++ )
-//	{
-//		for( col = beg_col; col < end_col; col++ )
-//		{
-//			draw_tiles( col, row );
-//		}
-//	}
-//}
 
 
 void engine_level_manager_beat_level( const unsigned char *data, const unsigned char size, const unsigned char bank )

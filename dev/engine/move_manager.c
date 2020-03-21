@@ -73,32 +73,6 @@ void engine_move_manager_get_directions( unsigned char srceX, unsigned char srce
 	*half = minusY ? 0 : 1;
 }
 
-//unsigned char engine_move_manager_actor_direction( unsigned char direction )
-//{
-//	//unsigned char loop;
-//	unsigned char index;
-//
-//	// If actor already traveling in direction then return that direction,
-//	if( direction_type_none != direction )
-//	{
-//		return direction;
-//	}
-//
-//	// Otherwise calculate random direction for further game code function.
-//	//direction = 1;
-//	//time = rand() % 4;
-//	index = rand() % 4;
-//	return  movement[ index ];
-//	// Algorithm will give 1, 2, 4, 8	that is : Up / Down / Left / Right.
-//	//for( loop = 0; loop < time; loop++ )
-//	//{
-//	//	direction *= 2;
-//	//}
-//
-//	//direction = movement[ index ];
-//	//return direction;
-//}
-
 unsigned char engine_move_manager_gothru_exit( unsigned char tileX, unsigned char tileY, unsigned char direction )
 {
 	struct_state_object *st = &global_state_object;
