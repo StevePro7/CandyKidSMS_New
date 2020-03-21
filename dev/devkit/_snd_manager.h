@@ -2,7 +2,6 @@
 #define _PSG_MANAGER_H_
 
 void devkit_PSGPlay( void *song );
-//void devkit_PSGCancelLoop( void );
 void devkit_PSGPlayNoRepeat( void *song );
 void devkit_PSGStop( void );
 void devkit_PSGResume( void );
@@ -10,8 +9,6 @@ unsigned char devkit_PSGGetStatus( void );
 void devkit_PSGSetMusicVolumeAttenuation( unsigned char attenuation );
 
 void devkit_PSGSFXPlay( void *sfx, unsigned char channels );
-//void devkit_PSGSFXPlayLoop( void *sfx, unsigned char channels );
-//void devkit_PSGSFXCancelLoop( void );
 void devkit_PSGSFXStop( void );
 unsigned char devkit_PSGSFXGetStatus( void );
 

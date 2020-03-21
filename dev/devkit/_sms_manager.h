@@ -46,12 +46,6 @@ unsigned char devkit_isCollisionDetected();
 
 // input
 unsigned int devkit_SMS_getKeysStatus();
-//unsigned int devkit_PORT_A_KEY_UP();
-//unsigned int devkit_PORT_A_KEY_DOWN();
-//unsigned int devkit_PORT_A_KEY_LEFT();
-//unsigned int devkit_PORT_A_KEY_RIGHT();
-//unsigned int devkit_PORT_A_KEY_1();
-//unsigned int devkit_PORT_A_KEY_2();
 
 // #defines
 unsigned char devkit_SPRITEMODE_NORMAL();

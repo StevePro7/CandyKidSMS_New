@@ -1,5 +1,5 @@
 #include "play_screen.h"
-#include "..\engine\actor_manager.h"
+//#include "..\engine\actor_manager.h"
 #include "..\engine\audio_manager.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\collision_manager.h"
@@ -279,6 +279,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 				if( direction_type_none != enemy_direction )
 				{
 //					engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+					//engine_actor_manager_exec_enemy_mover( enemy | ( enemy_direction << 4 ) );
+					engine_enemy_manager_move( enemy, enemy_direction );
 				}
 			}
 		}
