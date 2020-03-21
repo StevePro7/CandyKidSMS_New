@@ -25,7 +25,7 @@ void engine_state_manager_init()
 	st->state_object_pace_speed = 0;
 
 	//engine_board_manager_init();
-	engine_command_manager_init();
+//	engine_command_manager_init();
 	engine_cursor_manager_init();
 
 	devkit_SMS_mapROMBank( FIXED_BANK );

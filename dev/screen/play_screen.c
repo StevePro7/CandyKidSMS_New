@@ -41,7 +41,7 @@ void screen_play_screen_load()
 	//struct_enemy_object *eo;
 	engine_delay_manager_load( 0 );
 
-	engine_command_manager_load();
+//	engine_command_manager_load();
 	engine_frame_manager_load();
 
 	//engine_frame_manager_draw();
@@ -146,7 +146,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 		if( pace_type_none != gamer_boost )
 		{
 			//engine_font_manager_draw_data( gamer_boost, 10, 18 );
-			engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
+//			engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
 		}
 	}
 	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
@@ -203,13 +203,14 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 			if( direction_type_none != gamer_direction )
 			{
-				engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+				//engine_command_manager_add( frame, command_type_gamer_mover, gamer_direction );
+				engine_gamer_manager_move( gamer_direction );
 
 				gamer_boost = engine_gamer_manager_input_boost( gamer_direction );
 				if( pace_type_none != gamer_boost )
 				{
 					//engine_font_manager_draw_data( gamer_boost, 10, 17 );
-					engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
+//					engine_command_manager_add( frame, command_type_gamer_speed, gamer_boost );
 				}
 			}
 		}
@@ -263,7 +264,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 				enemy_boost = engine_enemy_manager_input_boost( enemy );
 				if( pace_type_none != enemy_boost )
 				{
-					engine_command_manager_add( frame, command_type_enemy_speed, ( enemy | ( enemy_boost << 4 ) ) );
+//					engine_command_manager_add( frame, command_type_enemy_speed, ( enemy | ( enemy_boost << 4 ) ) );
 				}
 
 				if( enemymove_type_tour == eo->action )
@@ -277,14 +278,14 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 				if( direction_type_none != enemy_direction )
 				{
-					engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+//					engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
 				}
 			}
 		}
 	}
 
 	// Execute all commands for this frame.
-	engine_command_manager_execute( frame );
+	//engine_command_manager_execute( frame );
 	first_time = 0;
 
 

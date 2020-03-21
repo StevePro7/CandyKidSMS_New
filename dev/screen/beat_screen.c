@@ -124,12 +124,12 @@ void screen_beat_screen_update( unsigned char *screen_type )
 			walking_delta = 0;
 		}
 
-		engine_command_manager_add( frame, command_type_gamer_mover, the_direction );
+//		engine_command_manager_add( frame, command_type_gamer_mover, the_direction );
 	}
 
 
 	// Execute all commands for this frame.
-	engine_command_manager_execute( frame );
+//	engine_command_manager_execute( frame );
 
 	//first_time = 0;
 	*screen_type = st->state_object_curr_screen;

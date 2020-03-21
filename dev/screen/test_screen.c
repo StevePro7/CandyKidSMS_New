@@ -39,7 +39,7 @@ void screen_test_screen_load()
 {
 	command_count = 2;
 
-	engine_command_manager_load();
+//	engine_command_manager_load();
 	engine_delay_manager_load( 0 );
 
 	engine_gamer_manager_load();
@@ -160,7 +160,7 @@ void screen_test_screen_update( unsigned char *screen_type )
 				actor_args = test_walking_args[ command_index ];
 				if( command_type_gamer_speed == actor_cmds )
 				{
-					engine_command_manager_add( frame, actor_cmds, actor_args );
+//					engine_command_manager_add( frame, actor_cmds, actor_args );
 					command_index++;
 				}
 
@@ -179,7 +179,7 @@ void screen_test_screen_update( unsigned char *screen_type )
 					actor_args = engine_gamer_manager_find_direction( actor_args );
 					if( direction_type_none != actor_args )
 					{
-						engine_command_manager_add( frame, actor_cmds, actor_args );
+//						engine_command_manager_add( frame, actor_cmds, actor_args );
 					}
 				}
 			}
@@ -188,7 +188,7 @@ void screen_test_screen_update( unsigned char *screen_type )
 
 
 	// Execute all commands for this frame.
-	engine_command_manager_execute( frame );
+//	engine_command_manager_execute( frame );
 	first_time = 0;
 
 	*screen_type = curr_screen;

@@ -35,7 +35,7 @@ void screen_dead_screen_load()
 	unsigned char lives;
 	engine_audio_manager_music_stop();
 
-	engine_command_manager_load();
+//	engine_command_manager_load();
 	engine_frame_manager_load();
 
 	//engine_frame_manager_draw();
@@ -75,11 +75,16 @@ void screen_dead_screen_update( unsigned char *screen_type )
 	struct_enemy_object *eo;
 
 	unsigned char enemy_direction = direction_type_none;
+	//unsigned char enemy_direction;
 	unsigned char input;
 	unsigned char enemy;
 	unsigned char delay;
+	//unsigned int frame;
 	//unsigned char reset;
 	unsigned int frame = fo->frame_count;
+
+	//enemy_direction = direction_type_none;
+	//frame = fo->frame_count;
 
 	//unsigned char lives = engine_score_manager_get_value( score_type_lives );
 	//if( 0 == lives )
@@ -191,13 +196,13 @@ void screen_dead_screen_update( unsigned char *screen_type )
 			enemy_direction = engine_enemy_manager_gohome_direction( enemy );
 			if( direction_type_none != enemy_direction )
 			{
-				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
+//				engine_command_manager_add( frame, command_type_enemy_mover, ( enemy | ( enemy_direction << 4 ) ) );
 			}
 		}
 	}
 
 	// Execute all commands for this frame.
-	engine_command_manager_execute( frame );
+//	engine_command_manager_execute( frame );
 
 
 	if( event_stage_start == event_stage )
