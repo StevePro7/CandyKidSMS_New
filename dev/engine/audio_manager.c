@@ -2,18 +2,12 @@
 #include "state_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\devkit\_snd_manager.h"
-#include "..\banks\databank.h"
+#include "..\object\audio_object.h"
+////#include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 
 static unsigned char music_bank;
 //static unsigned char sound_bank;
-
-// IMPORTANT disable compiler warning 196
-//#ifdef _CONSOLE
-//#else
-//#pragma disable_warning 196
-//#endif
-
 
 // Music.
 void engine_audio_manager_music_play( unsigned char index )

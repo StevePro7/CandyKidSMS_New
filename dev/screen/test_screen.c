@@ -13,7 +13,7 @@
 #include "..\engine\state_manager.h"
 #include "..\engine\tile_manager.h"
 #include "..\engine\timer_manager.h"
-#include "..\banks\databank.h"
+//#include "..\banks\databank.h"
 
 static unsigned char curr_screen = screen_type_test;
 static unsigned char next_screen = screen_type_pass;

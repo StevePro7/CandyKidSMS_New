@@ -43,4 +43,8 @@ typedef struct tag_struct_enemy_object
 
 } struct_enemy_object;
 
+// DATA bank.
+// Enemy Manager.
+extern const unsigned char enemy_object_directions[];
+
 #endif//_ENEMY_OBJECT_H_

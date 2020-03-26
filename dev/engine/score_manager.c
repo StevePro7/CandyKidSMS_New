@@ -7,7 +7,7 @@
 #include "state_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
-#include "..\banks\databank.h"
+//#include "..\banks\databank.h"
 
 //#define TEXT_X		SCREEN_TILE_LEFT + 24
 //#define DATA_X		SCREEN_TILE_LEFT + 28

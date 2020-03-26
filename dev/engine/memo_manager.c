@@ -8,7 +8,7 @@
 #include "state_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
-#include "..\banks\databank.h"
+//#include "..\banks\databank.h"
 
 //void engine_memo_manager_clear()
 //{

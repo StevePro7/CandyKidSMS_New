@@ -25,6 +25,8 @@ typedef struct tag_struct_state_object
 	unsigned char state_object_curr_screen;
 	unsigned char state_object_next_screen;
 
+	unsigned char state_object_enemy_move[];
+
 } struct_state_object;
 
 #endif//_STATE_OBJECT_H_

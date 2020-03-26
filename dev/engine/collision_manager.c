@@ -11,7 +11,7 @@
 #include "score_manager.h"
 #include "state_manager.h"
 #include "tile_manager.h"
-#include "..\banks\databank.h"
+//#include "..\banks\databank.h"
 
 #define DISTNACE_EASY		8
 #define DISTNACE_HARD		10

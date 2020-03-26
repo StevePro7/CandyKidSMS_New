@@ -1,5 +1,5 @@
 #include "state_manager.h"
-#include "board_manager.h"
+//#include "board_manager.h"
 #include "cursor_manager.h"
 #include "command_manager.h"
 #include "enemy_manager.h"
@@ -10,7 +10,7 @@
 #include "storage_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\banks\fixedbank.h"
-#include "..\banks\databank.h"
+//#include "..\banks\databank.h"
 
 // Global variable.
 struct_state_object global_state_object;

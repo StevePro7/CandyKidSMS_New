@@ -9,8 +9,10 @@
 #include "sprite_manager.h"
 #include "state_manager.h"
 #include "..\devkit\_sms_manager.h"
+#include "..\object\board_object.h"
+#include "..\object\enemy_object.h"
 #include "..\banks\fixedbank.h"
-#include "..\banks\databank.h"
+//#include "..\banks\databank.h"
 #include <stdlib.h>
 
 #define SPRITE_TILES_ENEMY	256 + 48
@@ -40,8 +42,8 @@ void engine_enemy_manager_init()
 		eo = &global_enemy_objects[ enemy ];
 		eo->actor = enemy;
 
-		eo->tileX = board_object_homeX[ enemy ];
-		eo->tileY = board_object_homeY[ enemy ];
+		//eo->tileX = board_object_homeX[ enemy ];
+		//eo->tileY = board_object_homeY[ enemy ];
 		eo->action = enemymove_type_wait;
 
 		eo->paths = 0;
@@ -366,8 +368,8 @@ void engine_enemy_manager_reset_home()
 		eo = &global_enemy_objects[ enemy ];
 
 		// Reset at home.
-		eo->tileX = board_object_homeX[ enemy ];
-		eo->tileY = board_object_homeY[ enemy ];
+		//eo->tileX = board_object_homeX[ enemy ];
+		//eo->tileY = board_object_homeY[ enemy ];
 		calcd_spots( enemy );
 
 		eo->lifecycle = lifecycle_type_idle;
@@ -404,6 +406,7 @@ void engine_enemy_manager_image( unsigned char enemy )
 // TODO delete!!
 void engine_enemy_manager_debug()
 {
+	struct_state_object *st = &global_state_object;
 	struct_enemy_object *eo;
 	unsigned char enemy;
 
@@ -412,7 +415,7 @@ void engine_enemy_manager_debug()
 		eo = &global_enemy_objects[ enemy ];
 
 		// TODO delete as this will be replaced by menu selection.
-		eo->mover = state_object_enemy_move[ enemy ];
+		eo->mover = st->state_object_enemy_move[ enemy ];
 		// TODO delete as this will be replaced by menu selection.
 	}
 }
@@ -433,8 +436,8 @@ unsigned char engine_enemy_manager_scatter_direction( unsigned char enemy )
 
 	// SCATTER.
 	actor = eo->scatter[ eo->paths ];
-	targetX = board_object_homeX[ actor ];
-	targetY = board_object_homeY[ actor ];
+	targetX = 0;// board_object_homeX[ actor ];
+	targetY = 0;// board_object_homeY[ actor ];
 
 	if( targetX == eo->tileX && targetY == eo->tileY )
 	{
@@ -445,8 +448,8 @@ unsigned char engine_enemy_manager_scatter_direction( unsigned char enemy )
 		}
 
 		actor = eo->scatter[ eo->paths ];
-		targetX = board_object_homeX[ actor ];
-		targetY = board_object_homeY[ actor ];
+		//targetX = board_object_homeX[ actor ];
+		//targetY = board_object_homeY[ actor ];
 	}
 
 	enemy_direction = engine_enemy_manager_what_direction( enemy, targetX, targetY );
@@ -468,8 +471,8 @@ unsigned char engine_enemy_manager_gohome_direction( unsigned char enemy )
 	//}
 
 	// GO HOME.
-	targetX = board_object_homeX[ enemy ];
-	targetY = board_object_homeY[ enemy ];
+	targetX = 0;//board_object_homeX[ enemy ];
+	targetY = 0;// board_object_homeY[ enemy ];
 
 	// If enemy at home tile then just stop.
 	if( targetX == eo->tileX && targetY == eo->tileY )
@@ -704,7 +707,7 @@ static void calcd_frame( unsigned char enemy )
 static void calcd_spots( unsigned char enemy )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ enemy ];
-	eo->posnX = board_object_posnX[ eo->tileX ];
-	eo->posnY = board_object_posnY[ eo->tileY ];
+	//eo->posnX = board_object_posnX[ eo->tileX ];
+	//eo->posnY = board_object_posnY[ eo->tileY ];
 	engine_function_manager_convertXYtoZ( MAZE_ROWS, eo->tileX, eo->tileY, &eo->tileZ );
 }

@@ -8,7 +8,7 @@
 #include "..\engine\state_manager.h"
 #include "..\engine\timer_manager.h"
 #include "..\devkit\_sms_manager.h"
-#include "..\banks\databank.h"
+//#include "..\banks\databank.h"
 
 #define READY_SCREEN_DELAY	0
 //#define READY_SCREEN_DELAY	15

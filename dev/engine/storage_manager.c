@@ -3,7 +3,7 @@
 #include "global_manager.h"
 #include "state_manager.h"
 #include "storage_manager.h"
-#include "..\banks\databank.h"
+//#include "..\banks\databank.h"
 #include "..\devkit\_sms_manager.h"
 
 #define MAGIC			0xACE0B004

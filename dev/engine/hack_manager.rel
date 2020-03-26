@@ -1,10 +1,9 @@
 XL2
-H 9 areas 6 global symbols
+H 9 areas 5 global symbols
 M hack_manager
 O -mz80
 S .__.ABS. Def0000
 S _global_state_object Ref0000
-S _state_object_enemy_move Ref0000
 A _CODE size 132 flags 0 addr 0
 S _engine_hack_manager_load Def0042
 S _engine_hack_manager_init Def0000
@@ -49,10 +48,10 @@ T 98 00
 R 00 00 00 00
 T 98 00 21 06 00 36 01 21 07 00 36 01 11 08 00 3E
 R 00 00 00 00 02 03 01 00 02 08 01 00 02 0D 01 00
-T A6 00 01 12 01 09 00 AF 02 21 00 00 36 01 21
-R 00 00 00 00 02 05 01 00 02 0A 02 00
-T B3 00 01 00 36 01 21 02 00 36 01 21 00 00 36 01
-R 00 00 00 00 02 02 02 00 02 07 02 00 02 0C 01 00
+T A6 00 01 12 01 09 00 AF 02 21 12 00 36 01 21
+R 00 00 00 00 02 05 01 00 02 0A 01 00
+T B3 00 13 00 36 01 21 14 00 36 01 21 00 00 36 01
+R 00 00 00 00 02 02 01 00 02 07 01 00 02 0C 01 00
 T C1 00 21 01 00 36 00 21 0F 00 36 00 1A 3D 20 04
 R 00 00 00 00 02 03 01 00 02 08 01 00
 T CF 00 1E 01 18 02

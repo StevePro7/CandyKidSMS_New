@@ -3,7 +3,7 @@
 //#include "enum_manager.h"
 //#include "font_manager.h"
 //#include "global_manager.h"
-//#include "..\banks\databank.h"
+////#include "..\banks\databank.h"
 //
 ////static void( *execute[ MAX_CMD_TYPE ] )( unsigned char args );
 ////static void( *undo[ MAX_CMD_TYPE ] )( unsigned char args );

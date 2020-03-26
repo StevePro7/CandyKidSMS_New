@@ -6,7 +6,7 @@
 #include "mask_manager.h"
 #include "state_manager.h"
 #include "tile_manager.h"
-#include "..\banks\databank.h"
+//#include "..\banks\databank.h"
 #include "..\banks\fixedbank.h"
 #include "..\devkit\_sms_manager.h"
 #include <stdlib.h>

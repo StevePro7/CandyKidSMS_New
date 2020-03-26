@@ -1,0 +1,29 @@
+XL2
+H 9 areas 6 global symbols
+M audio_object
+O -mz80
+S _sfx_reset_psg Ref0000
+S .__.ABS. Def0000
+S _sfx_power_psg Ref0000
+S _sfx_accept_psg Ref0000
+S _sfx_death_psg Ref0000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 8 flags 0 addr 0
+S _sfx_object_data Def0000
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 8 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 02 00
+T 00 00
+R 00 00 02 00
+T 00 00
+R 00 00 07 00
+T 00 00 00 00 00 00 00 00
+R 00 00 07 00 02 02 03 00 02 04 04 00 02 06 02 00
+T 06 00 00 00
+R 00 00 07 00 02 02 00 00

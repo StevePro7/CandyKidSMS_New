@@ -9,7 +9,7 @@
 #include "..\engine\sprite_manager.h"
 //#include "..\engine\tile_manager.h"
 //#include "..\devkit\_sms_manager.h"
-//#include "..\banks\databank.h"
+////#include "..\banks\databank.h"
 //#include "..\banks\fixedbank.h"
 
 static void test_fixed();

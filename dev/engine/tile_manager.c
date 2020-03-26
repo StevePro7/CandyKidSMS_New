@@ -7,7 +7,7 @@
 #include "mask_manager.h"
 #include "state_manager.h"
 #include "..\devkit\_sms_manager.h"
-#include "..\banks\databank.h"
+//#include "..\banks\databank.h"
 #include "..\banks\bank2.h"
 #include "..\gfx.h"
 #include <stdlib.h>

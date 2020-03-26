@@ -2,7 +2,7 @@
 #include "global_manager.h"
 #include "enum_manager.h"
 #include "state_manager.h"
-#include "..\banks\databank.h"
+//#include "..\banks\databank.h"
 
 #define PEEK( addr)			(* ( unsigned char *)( addr ) )
 #define POKE( addr, data )	(* ( unsigned char *)( addr ) = ( data ) )
@@ -77,13 +77,13 @@ void engine_hack_manager_invert()
 	st->state_object_exits_type = 0;
 
 
-	state_object_enemy_move[ actor_type_pro ] = 1;
-	state_object_enemy_move[ actor_type_adi ] = 1;
-	state_object_enemy_move[ actor_type_suz ] = 1;
+	st->state_object_enemy_move[ actor_type_pro ] = 1;
+	st->state_object_enemy_move[ actor_type_adi ] = 1;
+	st->state_object_enemy_move[ actor_type_suz ] = 1;
 
-	//state_object_enemy_move[ actor_type_pro ] = 0;
-	//state_object_enemy_move[ actor_type_adi ] = 0;
-	//state_object_enemy_move[ actor_type_suz ] = 0;
+	//st->state_object_enemy_move[ actor_type_pro ] = 0;
+	//st->state_object_enemy_move[ actor_type_adi ] = 0;
+	//st->state_object_enemy_move[ actor_type_suz ] = 0;
 
 
 	st->state_object_mydebugger = 1;		// TODO don't forget to remove this!!

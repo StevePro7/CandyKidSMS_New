@@ -10,8 +10,9 @@
 #include "sprite_manager.h"
 #include "state_manager.h"
 #include "..\devkit\_sms_manager.h"
+//#include "..\object\board_object.h"
 #include "..\banks\fixedbank.h"
-#include "..\banks\databank.h"
+////#include "..\banks\databank.h"
 #include <stdlib.h>
 
 #define SPRITE_TILES_GAMER	256 + 96
@@ -29,8 +30,8 @@ void engine_gamer_manager_init()
 	// Kid images.
 	//unsigned char images[ NUM_ENTITY_IMAGE * NUM_ENTITY_FRAME + 2 ] = { 0, 2, 4, 12, 14, 16 };		// Allow extra image for death.
 	
-	go->tileX = board_object_homeX[ actor_type_kid ];
-	go->tileY = board_object_homeY[ actor_type_kid ];
+	//go->tileX = board_object_homeX[ actor_type_kid ];
+	//go->tileY = board_object_homeY[ actor_type_kid ];
 
 	// Speed:	1, 2, 4, 8
 	// Delay:	1, 2, 4, 8
@@ -298,8 +299,8 @@ void engine_gamer_manager_reset()
 	struct_gamer_object *go = &global_gamer_object;
 
 	// Reset at home.
-	go->tileX = board_object_homeX[ actor_type_kid ];
-	go->tileY = board_object_homeY[ actor_type_kid ];
+	//go->tileX = board_object_homeX[ actor_type_kid ];
+	//go->tileY = board_object_homeY[ actor_type_kid ];
 
 	go->lifecycle = lifecycle_type_idle;
 	go->direction = direction_type_none;
@@ -447,7 +448,7 @@ static void calcd_frame()
 static void calcd_spots()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	go->posnX = board_object_posnX[ go->tileX ];
-	go->posnY = board_object_posnY[ go->tileY ];
+	//go->posnX = board_object_posnX[ go->tileX ];
+	//go->posnY = board_object_posnY[ go->tileY ];
 	engine_function_manager_convertXYtoZ( MAZE_ROWS, go->tileX, go->tileY, &go->tileZ );
 }

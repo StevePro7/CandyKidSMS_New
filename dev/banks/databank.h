@@ -17,7 +17,7 @@
 
 //extern unsigned char state_object_actor_kill;
 //extern unsigned char state_object_delay_test;					// TODO delete - used for testing...!!
-extern unsigned char state_object_enemy_move[];					// TODO delete
+//extern unsigned char state_object_enemy_move[];					// TODO delete
 
 //extern unsigned char state_object_prev_screen;				// TODO delete
 //extern unsigned char state_object_curr_screen;
@@ -25,29 +25,29 @@ extern unsigned char state_object_enemy_move[];					// TODO delete
 
 
 // Audio Manager.
-extern const unsigned char *sfx_object_data[];
+//extern const unsigned char *sfx_object_data[];
 
 
 // Board Manager.
-extern const unsigned char board_object_posnX[];
-extern const unsigned char board_object_posnY[];
-extern const unsigned char board_object_homeX[];
-extern const unsigned char board_object_homeY[];
+//extern const unsigned char board_object_posnX[];
+//extern const unsigned char board_object_posnY[];
+//extern const unsigned char board_object_homeX[];
+//extern const unsigned char board_object_homeY[];
 
 // Boost Manager.
 //extern const unsigned char boost_object_speed[];
 //extern const unsigned char boost_object_delay[];
 
 // Command Manager.
-extern unsigned int command_object_frames[];
-extern unsigned char command_object_cmds[];
-extern unsigned char command_object_args[];
+//extern unsigned int command_object_frames[];
+//extern unsigned char command_object_cmds[];
+//extern unsigned char command_object_args[];
 
 // Enemy Manager.
-extern const unsigned char enemy_object_directions[];
+//extern const unsigned char enemy_object_directions[];
 
 // Level Manager.
-extern unsigned char level_object_tiles_array[];
+//extern unsigned char level_object_tiles_array[];
 //extern unsigned char level_object_bonus_count;
 //extern unsigned char level_object_candy_count;
 //tern unsigned char level_object_multiplier;
