@@ -34,7 +34,7 @@ void main (void)
 	//open_screen_type = screen_type_demo;
 	//open_screen_type = screen_type_test;
 	//open_screen_type = screen_type_save;
-	//open_screen_type = screen_type_option;
+	open_screen_type = screen_type_option;
 	//open_screen_type = screen_type_select;
 	//open_screen_type = screen_type_play;
 	//open_screen_type = screen_type_dead;
